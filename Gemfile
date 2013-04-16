@@ -31,4 +31,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
 end
