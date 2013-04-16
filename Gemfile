@@ -24,10 +24,11 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem 'debugger'
-  gem 'rspec-rails', '~> 2.0'
+  gem 'rspec-rails', '~> 2.12'
 end
 
 group :test do
   gem 'factory_girl_rails'
   gem 'launchy'
+  gem 'shoulda-matchers'
 end
