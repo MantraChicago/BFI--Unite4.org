@@ -24,6 +24,13 @@ class Settings
   end
 
 
+  # CarrierWave
+
+  def carrierwave_storage
+    production? ? :fog : :file
+  end
+
+
 private
 
   RequiredValue = Class.new(StandardError)

@@ -21,4 +21,32 @@ describe Settings do
     end
   end
 
+  context 'CarrierWave' do
+    describe '#carrierwave_storage' do
+      context 'in development' do
+        let(:rails_env) { 'development' }
+
+        it 'returns :file' do
+          expect(settings.carrierwave_storage).to eq(:file)
+        end
+      end
+
+      context 'in production' do
+        let(:rails_env) { 'production' }
+
+        it 'returns :fog' do
+          expect(settings.carrierwave_storage).to eq(:fog)
+        end
+      end
+
+      context 'in staging' do
+        let(:rails_env) { 'staging' }
+
+        it 'returns :fog' do
+          expect(settings.carrierwave_storage).to eq(:fog)
+        end
+      end
+    end
+  end
+
 end
