@@ -199,6 +199,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   meta_search (>= 1.1.0.pre)
+  mime-types
   mysql2
   rails (= 3.2.12)
   rspec-rails (~> 2.12)
