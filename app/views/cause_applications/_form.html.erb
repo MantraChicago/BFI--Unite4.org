@@ -1,0 +1,26 @@
+<%= form_for(@cause_application) do |f| %>
+  <% if @cause_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cause_application.errors.count, "error") %> prohibited this cause_application from being saved:</h2>
+
+      <ul>
+      <% @cause_application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    Your name <%= text_field(:cause_application, :name) %><br/>
+    Your email <%= text_field(:cause_application, :email) %><br/>
+    Your phone number <%= text_field(:cause_application, :phone_number) %><br/>
+    Organization name <%= text_field(:cause_application, :org_name) %><br/>
+    Website <%= text_field(:cause_application, :website) %><br/>
+    Organization mission <%= text_field(:cause_application, :mission) %><br/>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
