@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -45,18 +46,6 @@ ActiveRecord::Schema.define(:version => 20130507202850) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
-  create_table "cause_applications", :force => true do |t|
-    t.string   "name"
-    t.string   "org_name"
-    t.string   "website"
-    t.string   "email"
-    t.string   "phone_number"
-    t.text     "mission"
-    t.text     "how_hear"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
   create_table "cause_needs", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -67,7 +56,6 @@ ActiveRecord::Schema.define(:version => 20130507202850) do
   create_table "cause_types", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "cause_id"
     t.string   "name"
   end
 
@@ -85,8 +73,8 @@ ActiveRecord::Schema.define(:version => 20130507202850) do
   end
 
   create_table "causes_cause_needs", :id => false, :force => true do |t|
-    t.integer "causes_id"
-    t.integer "cause_needs_id"
+    t.integer "cause_id"
+    t.integer "cause_need_id"
   end
 
   create_table "locations", :force => true do |t|
