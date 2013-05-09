@@ -1,0 +1,12 @@
+<div>
+	<%= @user.display_name %>
+</div>
+<div>
+	<%= image_tag @user.avatar.url %>
+</div>
+<div>
+	<%= link_to "Edit", profiles_edit_path%>
+</div>
+<div>
+	<%=  render "follow_form" %>
+</div>

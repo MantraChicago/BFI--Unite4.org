@@ -1,0 +1,36 @@
+<%= form_for(@user, :url => '', :html => { :multipart => true } ) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    First name <%= text_field(:user, :first_name) %>
+    
+  </div>
+
+  <div>
+    Last name <%= text_field(:user, :last_name) %>
+    
+  </div>
+
+  <div>
+   email <%= text_field(:user, :email) %>
+    
+  </div>
+
+  <div>
+  	Picture <%= f.file_field :avatar %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -3,8 +3,16 @@
 <%= if user_signed_in? 
      link_to 'Logout', destroy_user_session_path, :method=>'delete' 
  	else
- 	 link_to 'Create User Account', new_user_registration_path 
- 	 link_to 'Login', new_user_session_path
+ 	 createLink= link_to 'Create User Account', new_user_registration_path
+ 	 loginLink=link_to 'Login', new_user_session_path
+ 	 createLink+' | '+loginLink
+ 	 
  	end
  %><br/>
 <%= link_to 'Submit Cause Application', new_cause_application_path %>
+
+<%= render 'subscribes/form' %>
+
+<%= link_to 'Profile', profiles_path %>
+
+<%= link_to 'Causes', causes_path %>

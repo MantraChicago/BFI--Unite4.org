@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
-	def pages
-
+	def index
+		@subscribe = Subscribe.new
 	end
+
+
 end

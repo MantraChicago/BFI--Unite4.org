@@ -1,0 +1,15 @@
+<%= form_for(@user, :remote => true, :url => '/profiles/addProfileFollow') do |f| %>  
+
+<div>
+	<% f.fields_for :causes do |cause_fields| %>
+      <%= cause_fields.text_field :name %>          
+   	<% end %>
+</div>
+
+<div class="actions">
+   <%= f.submit %>
+</div>
+
+<% end %>
+
+here
