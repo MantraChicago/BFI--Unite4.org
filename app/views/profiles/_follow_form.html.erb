@@ -1,10 +1,12 @@
-<%= form_for(@user, :remote => true, :url => '/profiles/addProfileFollow') do |f| %>  
+Follow Causes
+<%= form_for(@user,  :url => '/profiles/update') do |f| %>  
 
+<% for cause in Cause.find(:all) %>
 <div>
-	<% f.fields_for :causes do |cause_fields| %>
-      <%= cause_fields.text_field :name %>          
-   	<% end %>
+  <%= check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) %>
+  <%= cause.name %>
 </div>
+<% end %>
 
 <div class="actions">
    <%= f.submit %>
@@ -12,4 +14,3 @@
 
 <% end %>
 
-here

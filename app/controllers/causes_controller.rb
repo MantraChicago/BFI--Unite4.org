@@ -3,4 +3,8 @@ class CausesController < ApplicationController
 		@causes= Cause.find(:all)
 		
 	end
+
+	def show
+		@cause = Cause.find(params[:id])
+	end
 end

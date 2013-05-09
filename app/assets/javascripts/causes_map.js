@@ -22,7 +22,7 @@ var populateMapMarkers=function(id,causes){
 		    });
 
     		var infowindow = new google.maps.InfoWindow({
-			    content: location.name
+			    content: '<a href="/causes/'+location.id+'">'+location.name+'</a>'
 			});
 
 		    google.maps.event.addListener(marker, 'click', function() {

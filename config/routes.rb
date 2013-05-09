@@ -5,6 +5,7 @@ GiveInspireLove::Application.routes.draw do
 
   match "/profiles/edit" => "profiles#edit"
   resources :profiles
+  resources :causeneeds
 
 
   resources :causes

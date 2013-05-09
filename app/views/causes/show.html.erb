@@ -1,0 +1,14 @@
+<div>
+<%= @cause.name %>
+</div>
+
+<div>
+	needs
+</div>
+<% for causeneed in @cause.causeneeds %>
+	<%= link_to causeneed.name, causeneed %>
+<% end %>
+
+<br/>
+<div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="true" data-width="450" data-show-faces="true"></div>
+

@@ -1,4 +1,3 @@
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508214108) do
+ActiveRecord::Schema.define(:version => 20130509204054) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,14 +57,21 @@ ActiveRecord::Schema.define(:version => 20130508214108) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "cause_needs", :force => true do |t|
+  create_table "cause_causeneeds", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "cause_id"
+    t.integer  "causeneed_id"
+  end
+
+  create_table "cause_types", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "cause_id"
     t.string   "name"
   end
 
-  create_table "cause_types", :force => true do |t|
+  create_table "causeneeds", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "cause_id"
@@ -83,11 +89,6 @@ ActiveRecord::Schema.define(:version => 20130508214108) do
     t.string   "email"
     t.string   "website"
     t.integer  "cause_type_id"
-  end
-
-  create_table "causes_cause_needs", :id => false, :force => true do |t|
-    t.integer "causes_id"
-    t.integer "cause_needs_id"
   end
 
   create_table "locations", :force => true do |t|
@@ -117,7 +118,7 @@ ActiveRecord::Schema.define(:version => 20130508214108) do
     t.string   "email"
   end
 
-  create_table "user_causes", :force => true do |t|
+  create_table "usercauses", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "cause_id"
@@ -139,11 +140,11 @@ ActiveRecord::Schema.define(:version => 20130508214108) do
     t.datetime "updated_at",                             :null => false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "img_name"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
