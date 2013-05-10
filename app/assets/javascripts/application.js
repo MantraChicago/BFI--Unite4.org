@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+(function($) {
+    $(document).ready(function(){
+	$('.cascade .cascade-single').css('opacity',0).each(function(i){
+	    $(this).delay(i*50+100).animate({'opacity':1});
+	})
+    })
+})(jQuery);
