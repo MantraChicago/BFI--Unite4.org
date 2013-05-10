@@ -6,5 +6,9 @@ class CausesController < ApplicationController
 
 	def show
 		@cause = Cause.find(params[:id])
+		@allNeeds= @cause.allNeeds
+
 	end
+
+	
 end

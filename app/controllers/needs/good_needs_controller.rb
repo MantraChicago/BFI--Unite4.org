@@ -1,0 +1,2 @@
+class GoodNeedsController < ApplicationController
+end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509204054) do
+ActiveRecord::Schema.define(:version => 20130509225646) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -57,21 +57,7 @@ ActiveRecord::Schema.define(:version => 20130509204054) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "cause_causeneeds", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "cause_id"
-    t.integer  "causeneed_id"
-  end
-
   create_table "cause_types", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "cause_id"
-    t.string   "name"
-  end
-
-  create_table "causeneeds", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "cause_id"
@@ -91,6 +77,16 @@ ActiveRecord::Schema.define(:version => 20130509204054) do
     t.integer  "cause_type_id"
   end
 
+  create_table "donation_needs", :force => true do |t|
+    t.integer "cause_id"
+    t.text    "discription"
+  end
+
+  create_table "good_needs", :force => true do |t|
+    t.integer "cause_id"
+    t.text    "discription"
+  end
+
   create_table "locations", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -108,6 +104,11 @@ ActiveRecord::Schema.define(:version => 20130509204054) do
   create_table "permissions", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "social_needs", :force => true do |t|
+    t.integer "cause_id"
+    t.text    "discription"
   end
 
   create_table "subscribes", :force => true do |t|
@@ -149,5 +150,10 @@ ActiveRecord::Schema.define(:version => 20130509204054) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "volunteer_needs", :force => true do |t|
+    t.integer "cause_id"
+    t.text    "discription"
+  end
 
 end

@@ -5,11 +5,16 @@ GiveInspireLove::Application.routes.draw do
 
   match "/profiles/edit" => "profiles#edit"
   resources :profiles
-  resources :causeneeds
 
 
   resources :causes
 
+  namespace :needs do
+       resources :donations_needs
+       resources :good_needs
+       resources :social_needs
+       resources :volunteer_needs
+  end
 
   root :to => "pages#index"
 
@@ -63,6 +68,8 @@ GiveInspireLove::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

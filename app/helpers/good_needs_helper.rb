@@ -1,0 +1,2 @@
+module GoodNeedsHelper
+end
