@@ -1,24 +1,79 @@
-<h2>Sign up</h2>
+<div class="row fullwidth mlimit-top">
+    <div class="large-12 columns">
+	<div class="back-arrow inline"></div>
+	<h2 class="inline"><strong>Go back to Give Inspire</strong></h2>
+    </div>    
+</div>
+
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= devise_error_messages! %>
+<div class="row mlimit-top blimit cascade">
+    <div class="large-12 columns">
+	<h2>Give Inspire Love is a Bright Future company.</h2>
+	<h3 class="slimit">Tell us about the cause you’d like to add</h3>	  
+    </div>
+    <div class="large-6 columns">
+	<div>
+	    
+	    <%= f.text_field :first_name, :autofocus => true,:placeholder => "first name", :class => "cascade-single" %>
+	</div>
 
-  <div><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></div>
+	<div>
+	    
+	    <%= f.text_field :last_name, :placeholder => "last name", :class => "cascade-single" %>
+	</div>
 
-  <div><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></div>
+	<div>
+	   
+	    <%= f.email_field :email,:placeholder => "email adress", :class => "cascade-single" %>
+	</div>	  
+    </div>
+    <div class="large-6 columns">
+	<div>
+	    
+	    <%= f.password_field :password,:placeholder => "password", :class => "cascade-single" %>
+	</div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+	<div>
+	    
+	    <%= f.password_field :password_confirmation,:placeholder => "confirm password", :class => "cascade-single"  %>
+	</div>	
+	<div>
+	    <div class="row">
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+		<div class="large-6 columns right text-right">
+		    <%= f.submit "Sign up",:class => "button-submit cascade-single" %>
+		</div>
+	    </div>
+	    
+	</div>
+    </div>
+</div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+<div class="row fullwidth">
+    <div class="large-2 columns">
+	<h2 class="centered-text"><%= link_to image_tag("logo.png", alt: "Rails"), 'http://rubyonrails.org/' %></h2>
+    </div>  
+    <div class="large-2 columns">
+	<h2>Bright Future</h2>
+	<p>
+	    600 W. Chicago Ave.            
+	</p>
+	<p>
+	    Chicago IL 60654
+	</p>
+    </div> 
+    <div class="large-4 columns left">
+	<h2>About Bright Future</h2>
+	<p>
+	    GiveInspireLove uses technology and social networks to help you find local organizations that need you, making it easier than ever to give back to your community. 
+	</p>
+    </div>     
+</div>
 
-  <div><%= f.submit "Sign up" %></div>
+
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+
