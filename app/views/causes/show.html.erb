@@ -8,7 +8,7 @@
 <% for needs in @allNeeds 
 	for need in needs
 	%>
-	<%= need.inspect%>
+	<%= link_to need.name, need %>
 	
 	
 <% end

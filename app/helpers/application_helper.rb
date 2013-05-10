@@ -4,4 +4,9 @@ module ApplicationHelper
 			@additional_head_content
 		end
 	end
+
+	def render_title
+	  return @title if defined?(@title)
+	  "Give Inspire Love"
+	end
 end

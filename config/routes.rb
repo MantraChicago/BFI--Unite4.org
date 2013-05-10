@@ -9,12 +9,13 @@ GiveInspireLove::Application.routes.draw do
 
   resources :causes
 
-  namespace :needs do
-       resources :donations_needs
-       resources :good_needs
-       resources :social_needs
-       resources :volunteer_needs
-  end
+
+  resources :donations_needs
+  resources :good_needs
+  resources :social_needs
+  resources :volunteer_needs
+
+
 
   root :to => "pages#index"
 

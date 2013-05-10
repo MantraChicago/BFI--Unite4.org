@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509225646) do
+ActiveRecord::Schema.define(:version => 20130510170054) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -77,14 +77,29 @@ ActiveRecord::Schema.define(:version => 20130509225646) do
     t.integer  "cause_type_id"
   end
 
-  create_table "donation_needs", :force => true do |t|
+  create_table "donations", :force => true do |t|
+    t.float    "amount"
+    t.float    "tip"
+    t.string   "tracking"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "donations_needs", :force => true do |t|
     t.integer "cause_id"
     t.text    "discription"
+    t.string  "name"
   end
 
   create_table "good_needs", :force => true do |t|
-    t.integer "cause_id"
-    t.text    "discription"
+    t.integer  "cause_id"
+    t.string   "name"
+    t.text     "description"
+    t.text     "address"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "locations", :force => true do |t|
@@ -109,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20130509225646) do
   create_table "social_needs", :force => true do |t|
     t.integer "cause_id"
     t.text    "discription"
+    t.string  "name"
   end
 
   create_table "subscribes", :force => true do |t|
@@ -154,6 +170,7 @@ ActiveRecord::Schema.define(:version => 20130509225646) do
   create_table "volunteer_needs", :force => true do |t|
     t.integer "cause_id"
     t.text    "discription"
+    t.string  "name"
   end
 
 end
