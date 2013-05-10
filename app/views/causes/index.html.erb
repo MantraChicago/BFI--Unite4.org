@@ -1,18 +1,28 @@
 <% @additional_head_content= render 'google_maps_header' %>
 
+<%= render "backbone_templates"%>
 
+<div style="height:100%">
 
-<div id="map-canvas" style="width: 80%; height: 100%"></div>
+<div id="map-canvas" style="width: 80%; height: 100%: "></div>
+
+<div id="accordian-holder" style="width: 20%; height: 100%; position:absolute; right:0px; top:0px"></div>
+
+</div>
 
 <script>
 
 var causesObj=<%= @causes.to_json.html_safe %>
 var locationsObj=<%= @locations.to_json.html_safe %>
+
 var donationsNeedsObj=<%= @donation_needs.to_json.html_safe %>
 var goodNeedsObj=<%= @good_needs.to_json.html_safe %>
-var volunteerObj=<%= @volunteer_needs.to_json.html_safe %>
+var volunteerNeedsObj=<%= @volunteer_needs.to_json.html_safe %>
 var socialNeedsObj=<%= @social_needs.to_json.html_safe %>
 
+//var allNeeds= combineArrays(donationsNeedsObj,goodNeedsObj,volunteerNeedsObj,socialNeedsObj)
+
+//var needsCollection=parseObjIntoModels(allNeeds, Need)
 
 var causesCollection=parseObjIntoModels(causesObj, Cause)
 var locationsCollection=parseObjIntoModels(locationsObj, Location)
@@ -21,6 +31,9 @@ var locationsCollection=parseObjIntoModels(locationsObj, Location)
 var map =createGoogleMap($('#map-canvas')[0])
 
 populateMapMarkers(map,locationsCollection.models)
+
+var filterView= new FilterView({el: $('#accordian-holder'),
+								causesCollection: causesCollection })
 
 
 
