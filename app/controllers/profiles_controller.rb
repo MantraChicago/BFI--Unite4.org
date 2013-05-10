@@ -1,12 +1,25 @@
 class ProfilesController < ApplicationController
 
 	def index
-		unless user_signed_in?
+
+		if user_signed_in?
+			@user=User.find(current_user.id)
+		else
 			render "noAccount"
 		end
 
+	end
+
+	def update
+		params[:user] ||= {}
+		params[:user][:cause_ids] ||= []
+
 		@user=User.find(current_user.id)
-		@causes=Cause.find(:all)
+		if(@user.update_attributes params[:user])
+			redirect_to profiles_path, :notice => "You have successfully updated your profile" 
+		else
+			# todo
+		end
 	end
 
 	def edit

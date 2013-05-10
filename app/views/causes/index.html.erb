@@ -5,8 +5,23 @@
 <div id="map-canvas" style="width: 80%; height: 100%"></div>
 
 <script>
-var causesData=<%= @causes.to_json(:include => [:locations]).html_safe %>
 
-populateMapMarkers('map-canvas',causesData)
+var causesObj=<%= @causes.to_json.html_safe %>
+var locationsObj=<%= @locations.to_json.html_safe %>
+var donationsNeedsObj=<%= @donation_needs.to_json.html_safe %>
+var goodNeedsObj=<%= @good_needs.to_json.html_safe %>
+var volunteerObj=<%= @volunteer_needs.to_json.html_safe %>
+var socialNeedsObj=<%= @social_needs.to_json.html_safe %>
+
+
+var causesCollection=parseObjIntoModels(causesObj, Cause)
+var locationsCollection=parseObjIntoModels(locationsObj, Location)
+
+
+var map =createGoogleMap($('#map-canvas')[0])
+
+populateMapMarkers(map,locationsCollection.models)
+
+
 
 </script>

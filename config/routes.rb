@@ -10,6 +10,13 @@ GiveInspireLove::Application.routes.draw do
   resources :causes
 
 
+  resources :donations_needs
+  resources :good_needs
+  resources :social_needs
+  resources :volunteer_needs
+
+
+
   root :to => "pages#index"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -62,6 +69,8 @@ GiveInspireLove::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

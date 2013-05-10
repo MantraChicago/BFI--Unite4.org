@@ -1,0 +1,21 @@
+<% @title ="Give money"
+money_amount={'$5' => '5','$10'=>'10'}
+%>
+Give money
+
+<%= form_for(@donation, :url => '' ) do |f| %>
+  
+  <div>
+    Donation amount <%= select(:donation, :amount, money_amount) %>
+    
+  </div>
+
+  <div>
+    Tip amount <%= select(:donation, :tip, money_amount) %>
+    
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

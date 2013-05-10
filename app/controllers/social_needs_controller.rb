@@ -1,0 +1,2 @@
+class SocialNeedsController < ApplicationController
+end

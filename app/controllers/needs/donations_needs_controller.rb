@@ -1,0 +1,2 @@
+class DonationsNeedsController < ApplicationController
+end
