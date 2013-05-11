@@ -34,6 +34,11 @@
      width: 32px;
      height: 32px;
      margin-right: 25px;     
+     position: relative;
+     cursor: pointer;
+ }
+ .back-arrow:hover{
+     left:-2px;
  }
  
  .slimit {
@@ -53,4 +58,20 @@
  }
  .blimit-top{
      margin-top: 4em !important;
+ }
+ 
+ .fixed-footer {
+     position:fixed;
+     bottom: 0;
+     padding-bottom: 4em;
+     width: 100%;
+ }
+ 
+ 
+ 
+ 
+ @media only screen and (max-width: 48em), only screen and (max-height: 42em) {
+     .small-static {
+	 position: static !important;
+     }
  }
