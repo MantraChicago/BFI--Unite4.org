@@ -109,6 +109,7 @@
     height:128px;
     margin: 0 16px 16px 0;
     border: 1px solid #d3d3d3;
+    background-color: #fafafa;
 }
 
 .tile-1-1{
@@ -137,8 +138,23 @@
 .tile-4-2,.tile-4-4{
     padding:40px;
 }
+.home-tile-single .bottom-button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #f49234;
+    background-color: #eee;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #d3d3d3;
+}
 .nopadding {
     padding: 0;
+}
+
+
+.bold {
+    font-weight: 700;
 }
 
 @media only screen and (max-width: 48em), only screen and (max-height: 42em) {

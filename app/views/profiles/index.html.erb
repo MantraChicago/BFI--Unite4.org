@@ -3,7 +3,7 @@
 <div class="home-tiles-container mlimit-top columns">
     <div class="home-tiles-group">
 	
-	<div class="home-tile-single tile-2-2 nopadding" style="background: url(assets/example.jpg) center;background-size: cover"></div>
+	<div class="home-tile-single tile-2-2 nopadding" style="background: url(assets/examples/example.jpg) center;background-size: cover"></div>
 	<div class="home-tile-single tile-2-2 text-center">
 	    <h2>AMBASSADOR LEVEL</h2>
 	    <h1 class="big-number">2</h1>
@@ -16,10 +16,27 @@
     </div>
     <div class="home-tiles-group">
 
-	<div class="home-tile-single tile-2-2"></div>
-	<div class="home-tile-single tile-2-2"></div>
-	<div class="home-tile-single tile-2-2"></div>
-	<div class="home-tile-single tile-2-2"></div>
+	<div class="home-tile-single tile-2-2 nopadding">
+	    <%= link_to image_tag("examples/t1.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
+	    <h3>Chicago African Education Foundation</h3>
+	    <%= render "devise/shared/tilebutton" %>
+	</div>
+	<div class="home-tile-single tile-2-2 nopadding">
+	    <%= link_to image_tag("examples/t2.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
+	    <h3>Chicago African Education Foundation</h3>
+	    <%= render "devise/shared/tilebutton" %>
+	</div>
+	<div class="home-tile-single tile-2-2 nopadding">
+	    <%= link_to image_tag("examples/t3.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
+	    <h3>Chicago African Education Foundation</h3>
+	    <%= render "devise/shared/tilebutton" %>
+	</div>
+	<div class="home-tile-single tile-2-2 nopadding">
+	    <%= link_to image_tag("examples/t4.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
+	    <h3>Chicago African Education Foundation</h3>
+	    <%= render "devise/shared/tilebutton" %>
+	</div>
+
 	
     </div>
     <div class="home-tiles-group">
