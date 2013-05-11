@@ -84,12 +84,20 @@
 }
 
 
-
+.secondary {
+    opacity: 0.8;
+}
+.tertiary {
+    opacity: 0.4;
+}
 
 
 
 .home-tiles-container{
     white-space: nowrap;
+}
+.home-tiles-container *{
+    white-space: normal;
 }
 .home-tiles-group{
     height:600px;
@@ -100,7 +108,7 @@
     width:128px;
     height:128px;
     margin: 0 16px 16px 0;
-    background-color: gray;
+    border: 1px solid #d3d3d3;
 }
 
 .tile-1-1{
@@ -116,12 +124,21 @@
     height:272px;     
 }
 .tile-4-2{
-    width: 562px;
+    width: 560px;
     height: 272px;
 }
 .tile-4-4{
-    width: 562px;
-    height: 562px;
+    width: 560px;
+    height: 560px;
+}
+.tile-1-1,.tile-2-1,.tile-2-2 {
+    padding:20px;
+}
+.tile-4-2,.tile-4-4{
+    padding:40px;
+}
+.nopadding {
+    padding: 0;
 }
 
 @media only screen and (max-width: 48em), only screen and (max-height: 42em) {
@@ -142,4 +159,10 @@
 	margin-right: 0;
 	
     }
+}
+
+.big-number {
+    font-size: 100pt;
+    line-height: 1em;
+    color: #f49234;
 }
