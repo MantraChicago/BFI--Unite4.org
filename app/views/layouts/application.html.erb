@@ -25,7 +25,9 @@
 <% if flash[:error] %>
   <p class="error"><%= flash[:error] %></p>
 <% end %>
-
+<div class="hide-for-small"></div> <!-- used to see if is in responsive mode via js --!>
+<div class="background-fill"></div> <!-- used to fill all window to allow mouse events on places without DOM elements --!>
+				   
 <!--<div>
 	<%= link_to "home", root_path%>
 </div>

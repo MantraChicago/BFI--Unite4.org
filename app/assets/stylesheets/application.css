@@ -116,12 +116,12 @@
     height:272px;     
 }
 .tile-4-2{
-    width: 564px;
+    width: 562px;
     height: 272px;
 }
 .tile-4-4{
-    width: 564px;
-    height: 564px;
+    width: 562px;
+    height: 562px;
 }
 
 @media only screen and (max-width: 48em), only screen and (max-height: 42em) {

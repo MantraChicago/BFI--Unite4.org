@@ -40,13 +40,12 @@
 	
     }
     $.fn.horizontalScroll = function(time,easing)
-    {	
-
+    {
 	var multipler=1;
+	
 	$(this).mousewheel(function(event, delta) {
-			
+            if ($.isMobile()) {return;}    
 	    var distance = 4*((-1)*delta * 60);	
-
 	    var scrollTo=$(this).scrollLeft()+multipler*distance;
 				
 	    scrollTo=scrollTo<0?0:scrollTo;//smoothing scrolling if scrolled to begining of page
@@ -62,7 +61,10 @@
 	    multipler=multipler>5?5:multipler;
 	    event.preventDefault();
 	});
-    }   
+    }
+    $.isMobile = function(){
+	return !$('.hide-for-small').eq(0).is(':visible');
+    }
     $(document).ready(function(){
 	$('html,body').horizontalScroll(400,'easeOutQuart');
 	$('.cascade .cascade-single').css('opacity',0).each(function(i){
