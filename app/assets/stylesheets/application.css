@@ -66,6 +66,22 @@
      padding-bottom: 4em;
      width: 100%;
  }
+ .upper-notice{
+     position: fixed;
+     padding:20px 40px 20px 40px;
+     background-color: #399a98;
+     top: 0;
+     left: 0;
+     right: 0;
+     z-index: 999;
+     color: #fff;
+ }
+ 
+ .notice-close {
+     width: 14px;
+     height: 14px;
+     cursor: pointer;
+ }
  
  
  
@@ -74,4 +90,28 @@
      .small-static {
 	 position: static !important;
      }
+ }
+ 
+ .square-256{
+     width: 256px;
+     height:256px;
+     padding:20px;
+ }
+ .square-512{
+     height:532px; /*512 + 20px margin*/
+     width: 532px;
+     padding: 40px;
+ }
+ .home-tile{
+     border: 1px solid #d8d8d8;
+     margin: 0 20px 20px 0;
+     
+ }
+ .tile-avatar{
+     background-color: #a4a4a4;
+ }
+ .huge-number{
+     font-size: 110pt;
+     color: #f49234;
+     font-weight: 700;
  }

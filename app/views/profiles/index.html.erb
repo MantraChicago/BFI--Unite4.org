@@ -1,8 +1,19 @@
-<div>
-	<%= @user.display_name %>
-</div>
-<div>
+<%= render "devise/shared/mainheader" %>
+<div class="inline">
+<div class="square-256 home-tile tile-avatar">
 	<%= image_tag @user.avatar.url %>
+</div>
+<div class="square-256 home-tile text-center">
+    <h2>AMBASSADOR LEVEL</h2>
+    <div class="huge-number">2</div>
+</div>
+</div>
+<div class="inline">
+<div class="square-512 home-tile">
+    <h2><%= @user.display_name %></h2>
+    <h4>Chicago, IL</h4>
+    <p>I’m a designer from Chicago and love to volunteer at events!  I have a strong love of Africa and hope to help in every way I can.</p>
+</div>
 </div>
 <div>
 	<%= link_to "Edit", profiles_edit_path%>
@@ -10,3 +21,4 @@
 <div>
 	<%=  render "follow_form" %>
 </div>
+<%= render "devise/shared/mainfooter" %>

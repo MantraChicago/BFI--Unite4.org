@@ -15,9 +15,21 @@
 //= require_tree .
 
 (function($) {
+    //custom functions
+    
+    $.fn.fadeSlideUp = function(){
+	var height = $(this).outerHeight();
+	
+	$(this).animate({'top':'-=' + height + 'px'},200);
+    }
+    
     $(document).ready(function(){
 	$('.cascade .cascade-single').css('opacity',0).each(function(i){
 	    $(this).delay(i*50+100).animate({'opacity':1});
-	})
+	});
+	$('.notice-close').click(function(){
+	    
+	    $(this).parents('.upper-notice').fadeSlideUp();
+	});
     })
 })(jQuery);
