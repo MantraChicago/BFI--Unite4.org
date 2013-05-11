@@ -1,24 +1,40 @@
 <%= render "devise/shared/mainheader" %>
-<div class="inline">
-<div class="square-256 home-tile tile-avatar">
-	<%= image_tag @user.avatar.url %>
+
+<div class="home-tiles-container slimit-top columns">
+    <div class="home-tiles-group">
+
+	<div class="home-tile-single tile-4-4"></div>
+	<div class="home-tile-single tile-2-2"></div>
+	<div class="home-tile-single tile-2-2"></div>	
+    </div>
+    <div class="home-tiles-group">
+
+	<div class="home-tile-single tile-4-2"></div>
+	<div class="home-tile-single"></div>
+	<div class="home-tile-single"></div>	
+    </div>
+    <div class="home-tiles-group">
+
+	<div class="home-tile-single"></div>
+	<div class="home-tile-single"></div>
+	<div class="home-tile-single"></div>	
+    </div>
+     <div class="home-tiles-group">
+
+	<div class="home-tile-single tile-4-4"></div>
+	<div class="home-tile-single tile-2-2"></div>
+	<div class="home-tile-single tile-2-2"></div>	
+    </div>   
 </div>
-<div class="square-256 home-tile text-center">
-    <h2>AMBASSADOR LEVEL</h2>
-    <div class="huge-number">2</div>
-</div>
-</div>
-<div class="inline">
-<div class="square-512 home-tile">
-    <h2><%= @user.display_name %></h2>
-    <h4>Chicago, IL</h4>
-    <p>I’m a designer from Chicago and love to volunteer at events!  I have a strong love of Africa and hope to help in every way I can.</p>
-</div>
+
+
+
+
+
+<div>
+    <%= link_to "Edit", profiles_edit_path%>
 </div>
 <div>
-	<%= link_to "Edit", profiles_edit_path%>
-</div>
-<div>
-	<%=  render "follow_form" %>
+    <%=  render "follow_form" %>
 </div>
 <%= render "devise/shared/mainfooter" %>

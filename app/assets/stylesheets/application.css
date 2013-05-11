@@ -92,26 +92,38 @@
      }
  }
  
- .square-256{
-     width: 256px;
-     height:256px;
-     padding:20px;
+ .home-tiles-container{
+     white-space: nowrap;
  }
- .square-512{
-     height:532px; /*512 + 20px margin*/
-     width: 532px;
-     padding: 40px;
+ .home-tiles-group{
+     height:600px;
+     display: inline-block;
+     margin-right: 40px;
  }
- .home-tile{
-     border: 1px solid #d8d8d8;
-     margin: 0 20px 20px 0;
-     
+ .home-tile-single{
+     width:128px;
+     height:128px;
+     margin: 0 16px 16px 0;
+     background-color: gray;
  }
- .tile-avatar{
-     background-color: #a4a4a4;
+ 
+ .tile-1-1{
+     width:128px;
+     height:128px;
  }
- .huge-number{
-     font-size: 110pt;
-     color: #f49234;
-     font-weight: 700;
+ .tile-2-1{
+     width:272px;
+     height:128px;
+ }
+ .tile-2-2{
+     width: 272px;
+     height:272px;     
+ }
+ .tile-4-2{
+     width: 564px;
+     height: 272px;
+ }
+ .tile-4-4{
+     width: 564px;
+     height: 564px;
  }

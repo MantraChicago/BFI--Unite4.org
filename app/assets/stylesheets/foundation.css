@@ -26,7 +26,7 @@ a:focus {
 img,
 object,
 embed {
-  max-width: 96%;
+  max-width: 100%;
   height: auto; }
 
 object,
@@ -89,7 +89,7 @@ select {
   max-width: 77.5em;
   zoom: 1; }
 .row.fullwidth {
-    max-width: 96%;
+    max-width: 100%;
 }
   .row:before, .row:after {
     content: " ";
