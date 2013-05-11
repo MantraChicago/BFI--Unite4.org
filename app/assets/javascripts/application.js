@@ -31,7 +31,7 @@
 	    $(this).css({
 		'opacity':0,
 		left: left+80+'px'
-		}).animate({
+	    }).animate({
 		'left':left+'px',
 		'opacity':1
 	    });	    
@@ -39,8 +39,32 @@
 
 	
     }
-    
+    $.fn.horizontalScroll = function(time,easing)
+    {	
+
+	var multipler=1;
+	$(this).mousewheel(function(event, delta) {
+			
+	    var distance = 4*((-1)*delta * 60);	
+
+	    var scrollTo=$(this).scrollLeft()+multipler*distance;
+				
+	    scrollTo=scrollTo<0?0:scrollTo;//smoothing scrolling if scrolled to begining of page
+	    scrollTo=scrollTo>($(document).width()-$(window).width())?($(document).width()-$(window).width()):scrollTo;//smoothing scrolling if scrolled to end of page	
+				
+	    $(this).stop().animate({
+		'scrollLeft': scrollTo
+	    }, time,easing,function(){
+		multipler=1
+	    });
+				
+	    multipler+=0.02;
+	    multipler=multipler>5?5:multipler;
+	    event.preventDefault();
+	});
+    }   
     $(document).ready(function(){
+	$('html,body').horizontalScroll(400,'easeOutQuart');
 	$('.cascade .cascade-single').css('opacity',0).each(function(i){
 	    $(this).delay(i*50+100).animate({
 		'opacity':1
