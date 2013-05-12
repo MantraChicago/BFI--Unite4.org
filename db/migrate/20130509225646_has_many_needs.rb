@@ -3,6 +3,7 @@ class HasManyNeeds < ActiveRecord::Migration
   	
   	drop_table :cause_causeneeds
   	drop_table :causeneeds
+    
 
   	create_table :donations_needs do |t|
   		t.references :cause
