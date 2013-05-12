@@ -1,4 +1,4 @@
-
+<%= render "devise/shared/mainheader" %>
 
 <%= if user_signed_in? 
      link_to 'Logout', destroy_user_session_path, :method=>'delete' 
@@ -16,3 +16,5 @@
 <%= link_to 'Profile', profiles_path %>
 
 <%= link_to 'Causes', causes_path %>
+
+<%= render "devise/shared/mainfooter" %>

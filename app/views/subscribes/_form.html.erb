@@ -1,7 +1,7 @@
 <%= form_for(@subscribe) do |f| %>
   <% if @subscribe.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@subscribe.errors.count, "error") %>:</h2>
+      <h3><%= pluralize(@subscribe.errors.count, "error") %>:</h3>
 
       <ul>
       <% @subscribe.errors.full_messages.each do |msg| %>

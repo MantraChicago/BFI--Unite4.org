@@ -15,9 +15,87 @@
 //= require_tree .
 
 (function($) {
-    $(document).ready(function(){
-	$('.cascade .cascade-single').css('opacity',0).each(function(i){
-	    $(this).delay(i*50+100).animate({'opacity':1});
+    //custom functions
+    
+    $.fn.fadeSlideUp = function(){
+	var height = $(this).outerHeight();	
+	$(this).animate({
+	    'top':'-=' + height + 'px'
+	},200);
+    }
+    
+    $.fn.fadeSlideIn = function(){
+	$(this).each(function(){
+	    var left = parseInt($(this).css('left'));
+	    
+	    $(this).css({
+		'opacity':0,
+		left: left+80+'px'
+	    }).animate({
+		'left':left+'px',
+		'opacity':1
+	    });	    
 	})
-    })
+
+	
+    }
+    $.fn.horizontalScroll = function(time,easing)
+    {
+	var multipler=1;
+	
+	$(this).mousewheel(function(event, delta) {
+            if ($.isMobile()) {return;}    
+	    var distance = 4*((-1)*delta * 60);	
+	    var scrollTo=$(this).scrollLeft()+multipler*distance;
+				
+	    scrollTo=scrollTo<0?0:scrollTo;//smoothing scrolling if scrolled to begining of page
+	    scrollTo=scrollTo>($(document).width()-$(window).width())?($(document).width()-$(window).width()):scrollTo;//smoothing scrolling if scrolled to end of page	
+				
+	    $(this).stop().animate({
+		'scrollLeft': scrollTo
+	    }, time,easing,function(){
+		multipler=1
+	    });
+				
+	    multipler+=0.02;
+	    multipler=multipler>5?5:multipler;
+	    event.preventDefault();
+	});
+    }
+    $.isMobile = function(){
+	return !$('.hide-for-small').eq(0).is(':visible');
+    }
+    $(document).ready(function(){
+	$('html,body').horizontalScroll(400,'easeOutQuart');
+	$('.cascade .cascade-single').css('opacity',0).each(function(i){
+	    $(this).delay(i*50+100).animate({
+		'opacity':1
+	    });
+	});
+	$('.notice-close').click(function(){
+	    
+	    $(this).parents('.upper-notice').fadeSlideUp();
+	});
+	
+	$('.home-tiles-container .home-tiles-group').isotope({
+	    itemSelector: '.home-tile-single',	
+	    animationEngine: 'jquery',
+	    layoutMode: 'masonryHorizontal',
+	    masonryHorizontal: {
+		rowHeight: 16
+	    },
+	    animationOptions: {
+		duration: 750,
+		easing:'easeOutExpo'
+	    }
+	//when done
+	}).promise().done(function(){
+	    $(this).css('overflow','visible');
+	    $('.home-tile-single',this).each(function(i){
+		$(this).delay(i*60+400).fadeSlideIn();
+	    })
+	});		
+	
+	
+    });
 })(jQuery);
