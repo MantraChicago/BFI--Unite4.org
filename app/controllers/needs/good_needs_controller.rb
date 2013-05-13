@@ -1,2 +1,0 @@
-class GoodNeedsController < ApplicationController
-end
