@@ -3,7 +3,7 @@ money_amount={'$5' => '5','$10'=>'10'}
 %>
 Give money
 
-<%= form_for(@donation, :url => '' ) do |f| %>
+<%= form_for(@donation ) do |f| %>
   
   <div>
     Donation amount <%= select(:donation, :amount, money_amount) %>
