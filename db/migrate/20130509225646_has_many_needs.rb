@@ -1,7 +1,6 @@
 class HasManyNeeds < ActiveRecord::Migration
   def change
   	
-  	drop_table :cause_causeneeds
   	drop_table :causeneeds
     
 
