@@ -1,1 +1,29 @@
-show.html.erb
+<div><%= @volunteer_need.name%></div>
+
+<div><%= @volunteer_need.description %></div>
+
+<div><%= @volunteer_need.address %></div>
+
+
+
+<%= form_for(@volunteer ) do |f| %>
+	<%
+	 	default_first_name = current_user.first_name || ''
+	 	default_last_name = current_user.last_name || '' 
+	%>
+
+	<div>First name<%= text_field :volunteer, :first_name, :value=>default_first_name %></div>
+
+	<div>Last name<%= text_field :volunteer, :last_name, :value=>default_last_name%></div>
+
+	<div>Phone number<%= text_field :volunteer, :phone_number%></div>
+
+	<%= hidden_field :volunteer, :volunteer_need_id, :value=> @volunteer_need.id %>
+
+  <div class="actions">
+    <%= f.submit :Volunteer %>
+  </div>
+<% end %>
+
+
+

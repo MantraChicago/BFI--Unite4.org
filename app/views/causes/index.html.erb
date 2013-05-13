@@ -33,6 +33,11 @@ var goodCollection=parseObjIntoModels(goodNeedsObj, Backbone.Model.extend({
 																})
 )
 
+var volunteerCollection=parseObjIntoModels(volunteerNeedsObj, Backbone.Model.extend({
+																    name:'volunteer_needs'
+																})
+)
+
 
 var map =createGoogleMap($('#map-canvas')[0])
 
@@ -58,6 +63,13 @@ var filterOptions={'Causes':{'collection':causesCollection,
 							 	}
 
 							},
+					'Volunteer needs':{'collection':volunteerCollection,
+							 'filterFunction':function(model,id){
+							 		var need=volunteerCollection.get(id)
+							 		return model.get('cause_id')==need.get('cause_id')
+							 	}
+
+							}
 
 				  }
 

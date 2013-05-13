@@ -6,7 +6,7 @@ task :populateDevData => [:environment, 'db:seed'] do
 	cause2 = Cause.find_or_create_by_name("AIDS Foundation")
 	cause2.update_attributes({ :cause_type_id =>CauseType.find_by_name(:Health).id })
 
-	cause3 = Cause.find_or_create_by_name("Habitate For Humanity")
+	cause3 = Cause.find_or_create_by_name("Habitat for Humanity")
 	cause3.update_attributes({ :cause_type_id =>CauseType.find_by_name(:Social).id })
 
 	location1= Location.find_or_create_by_name("ABC school")
@@ -46,11 +46,11 @@ task :populateDevData => [:environment, 'db:seed'] do
 
 	need1= DonationsNeed.find_or_create_by_name("We need money for a car")
 	need1.update_attributes({:cause_id => cause3.id, 
-							 :discription=> 'We need a car'	 })
+							 :description=> 'We need a car'	 })
 
 	need2= DonationsNeed.find_or_create_by_name("We need money for a boat")
 	need2.update_attributes({:cause_id => cause1.id, 
-							 :discription=> 'We need a boat'	 })
+							 :description=> 'We need a boat'	 })
 
 	need3= GoodNeed.find_or_create_by_name("We need a desk")
 	need3.update_attributes({:cause_id => cause2.id, 
@@ -59,6 +59,14 @@ task :populateDevData => [:environment, 'db:seed'] do
 	need4= GoodNeed.find_or_create_by_name("We need a car")
 	need4.update_attributes({:cause_id => cause3.id, 
 							 :description=> 'We need a car'	 })
+
+	need5= VolunteerNeed.find_or_create_by_name("We need a programmer")
+	need5.update_attributes({:cause_id => cause3.id, 
+							 :description=> 'Programmer'	 })
+
+	need6= VolunteerNeed.find_or_create_by_name("We need a driver")
+	need6.update_attributes({:cause_id => cause2.id, 
+							 :description=> 'Driver'	 })
 
 	puts "Development data loaded"
 end

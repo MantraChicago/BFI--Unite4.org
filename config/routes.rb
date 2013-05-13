@@ -9,6 +9,7 @@ GiveInspireLove::Application.routes.draw do
 
   resources :causes
   resources :donations
+  resources :volunteers
 
 
   resources :donations_needs

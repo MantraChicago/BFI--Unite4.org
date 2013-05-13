@@ -4,9 +4,6 @@ class DonationsController < ApplicationController
 		if params[:donation]
 			@donation.update_attributes params[:donation]
 		end
-
-		
-	
 	end
 
 end
