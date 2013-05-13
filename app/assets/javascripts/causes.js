@@ -27,11 +27,13 @@ var FilterView=Backbone.View.extend({
 
     for(var name in this.options.filterOptions){
         var collection=this.options.filterOptions[name].collection
-        template.append(_.template($('#filter-header-row-template').html(),{name:name}))
+        var html=$(_.template($('#filter-header-row-template').html(),{name:name}))
         for(var i in collection.models){
           var model = collection.models[i]
-          template.append(_.template($('#filter-row-template').html(),{type:name,id:model.id,name:model.get('name') }))
+          html.find('.filterHolder').append(_.template($('#filter-row-template').html(),{type:name,id:model.id,name:model.get('name') }))
+          
         }
+        template.find('.filterTypeHolder').append(html)
     }
 
 		$(this.el).html(template)

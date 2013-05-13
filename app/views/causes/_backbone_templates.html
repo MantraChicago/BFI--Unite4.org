@@ -1,14 +1,21 @@
 <script type="text/template" id="filter-template"><div>
 	<a class="showAll">Show All Locations</a>
+	<ul class="filterTypeHolder">
+
+	</ul>
 </div>
 </script>
 
-<script type="text/template" id="filter-row-template"><div>
+<script type="text/template" id="filter-row-template"><li>
 	<a class="filter" data-id="<%= id %>" data-type="<%= type %>"><%= name %></a>
-</div>
+</li>
 </script>
 
-<script type="text/template" id="filter-header-row-template"><div>
+<script type="text/template" id="filter-header-row-template"><li>
 	<h2><%= name %></h2>
-</div>
+
+	<ul class="filterHolder">
+	</ul>
+	
+</li>
 </script>
