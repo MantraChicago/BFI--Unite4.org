@@ -1,6 +1,6 @@
 <% @additional_head_content= render 'google_maps_header' %>
 
-<%= render "backbone_templates"%>
+<%= File.read("app/views/causes/_backbone_templates.html").html_safe %>
 
 <div style="height:100%">
 
@@ -20,20 +20,51 @@ var goodNeedsObj=<%= @good_needs.to_json.html_safe %>
 var volunteerNeedsObj=<%= @volunteer_needs.to_json.html_safe %>
 var socialNeedsObj=<%= @social_needs.to_json.html_safe %>
 
-//var allNeeds= combineArrays(donationsNeedsObj,goodNeedsObj,volunteerNeedsObj,socialNeedsObj)
-
-//var needsCollection=parseObjIntoModels(allNeeds, Need)
-
 var causesCollection=parseObjIntoModels(causesObj, Cause)
 var locationsCollection=parseObjIntoModels(locationsObj, Location)
+
+var donationsCollection=parseObjIntoModels(donationsNeedsObj, Backbone.Model.extend({
+																    name:'donation_needs'
+																})
+)
+
+var goodCollection=parseObjIntoModels(goodNeedsObj, Backbone.Model.extend({
+																    name:'good_needs'
+																})
+)
 
 
 var map =createGoogleMap($('#map-canvas')[0])
 
 populateMapMarkers(map,locationsCollection.models)
 
+var filterOptions={'Causes':{'collection':causesCollection,
+							 'filterFunction':function(model,id){
+							 		return model.get('cause_id')==id
+							 	}
+
+							},
+					'Donation needs':{'collection':donationsCollection,
+							 'filterFunction':function(model,id){
+							 		var need=donationsCollection.get(id)
+							 		return model.get('cause_id')==need.get('cause_id')
+							 	}
+
+							},
+					'Good needs':{'collection':goodCollection,
+							 'filterFunction':function(model,id){
+							 		var need=goodCollection.get(id)
+							 		return model.get('cause_id')==need.get('cause_id')
+							 	}
+
+							},
+
+				  }
+
+
 var filterView= new FilterView({el: $('#accordian-holder'),
-								causesCollection: causesCollection })
+								locationsCollection:locationsCollection,
+								filterOptions:filterOptions })
 
 
 

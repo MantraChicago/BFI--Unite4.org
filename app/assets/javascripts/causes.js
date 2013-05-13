@@ -20,22 +20,40 @@ var FilterView=Backbone.View.extend({
 	initialize:function(){
 		this.render()
 	},
-	events:{'click .filter':'filter'},
+	events:{'click .filter':'filter',
+          'click .showAll': 'showAll'},
 	render:function(){
 		var template=$(_.template($('#filter-template').html(),{}))
 
-    for(var i in this.options.causesCollection.models){
-        var cause= this.options.causesCollection.models[i]
-        template.find('.causeHolder').append('<div><a data-id="'+cause.id+'" data-type="causeCollection" class="filter">'+cause.get('name')+'</a></div>')
+    for(var name in this.options.filterOptions){
+        var collection=this.options.filterOptions[name].collection
+        template.append(_.template($('#filter-header-row-template').html(),{name:name}))
+        for(var i in collection.models){
+          var model = collection.models[i]
+          template.append(_.template($('#filter-row-template').html(),{type:name,id:model.id,name:model.get('name') }))
+        }
     }
 
 		$(this.el).html(template)
 	},
 
-  filter:function(){
+  showAll:function(){
     clearMapOverlays()
-    var id = $(this).attr('data-id')
-    var type = $(this).attr('data-type')
+    populateMapMarkers(map,this.options.locationsCollection.models)
+
+  },
+
+  filter:function(event){
+    var self=this
+    clearMapOverlays()
+    var id = $(event.target).attr('data-id')
+    var type = $(event.target).attr('data-type')
+    var filterOption=this.options.filterOptions[type]
+    
+    var locations = this.options.locationsCollection.filter(function(model){
+       return filterOption.filterFunction(model,id)
+    }) 
+    populateMapMarkers(map,locations)
   }
 })
 

@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
+
+causeTypes=['Animal','Environmental','NGO','Health','Education', 'Social']
+
+causeTypes.each do |type|
+	CauseType.find_or_create_by_name(type)
+end
