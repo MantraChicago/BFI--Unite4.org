@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -46,7 +45,6 @@ ActiveRecord::Schema.define(:version => 20130512184801) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
-
   create_table "cause_applications", :force => true do |t|
     t.string "name"
     t.string "org_name"
@@ -55,6 +53,11 @@ ActiveRecord::Schema.define(:version => 20130512184801) do
     t.string "phone_number"
     t.text   "mission"
     t.text   "how_hear"
+  end
+
+  create_table "cause_causeneeds", :force => true do |t|
+    t.integer "cause_id"
+    t.integer "causeneed_id"
   end
 
   create_table "cause_types", :force => true do |t|
@@ -74,6 +77,11 @@ ActiveRecord::Schema.define(:version => 20130512184801) do
     t.string   "email"
     t.string   "website"
     t.integer  "cause_type_id"
+  end
+
+  create_table "causes_causeneeds", :id => false, :force => true do |t|
+    t.integer "cause_id"
+    t.integer "cause_need_id"
   end
 
   create_table "donations", :force => true do |t|
