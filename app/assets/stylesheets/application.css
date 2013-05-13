@@ -110,6 +110,11 @@
     margin: 0 16px 16px 0;
     border: 1px solid #d3d3d3;
     background-color: #fafafa;
+    overflow: hidden;
+    
+}
+.home-tile-single .header-img {
+    width:100%;
 }
 
 .tile-1-1{
@@ -147,6 +152,10 @@
     text-align: center;
     padding: 10px;
     border-top: 1px solid #d3d3d3;
+    cursor: pointer;
+}
+.home-tile-single .bottom-button:hover {
+    background-color: #dfdfdf;
 }
 .nopadding {
     padding: 0;
@@ -181,4 +190,20 @@
     font-size: 100pt;
     line-height: 1em;
     color: #f49234;
+}
+
+.cyan-text {
+    color: #399a98;
+}
+.yellow-text {
+    color: #f49234;
+}
+
+.map-corner-logo {
+    position:fixed;
+    top:40px;
+    left:40px;
+    z-index: 2;
+    background-color: #fff;
+    padding:20px;
 }

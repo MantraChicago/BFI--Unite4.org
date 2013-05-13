@@ -44,7 +44,9 @@
 	var multipler=1;
 	
 	$(this).mousewheel(function(event, delta) {
-            if ($.isMobile()) {return;}    
+	    if ($.isMobile()) {
+		return;
+	    }    
 	    var distance = 4*((-1)*delta * 60);	
 	    var scrollTo=$(this).scrollLeft()+multipler*distance;
 				
@@ -65,7 +67,45 @@
     $.isMobile = function(){
 	return !$('.hide-for-small').eq(0).is(':visible');
     }
+    
+    $.fn.keepRatio = function(ratio) {
+	ratio = ratio || $(this).attr('ratio') || 1;
+	var t = $(this);
+	t.height(t.width/ratio);
+	$(window).resize(function(){
+	    t.height(t.width/ratio);
+	})
+    }
+    
+    $.keepRatio = function(classes) {
+	var elems = $();
+        
+	for(var one in classes) {
+	    if(classes.hasOwnProperty(one)) {	
+		$('.' + one).attr('ratio',classes[one]);
+                elems = elems.add('.' + one);
+		//alert(elems.length);
+	    } 
+	}
+        elems.each(function(){
+	    var t = $(this);
+	    var ratio = t.attr('ratio');
+	    
+	    t.height(t.width()/ratio);
+	    $(window).resize(function(){
+		t.height(t.width()/ratio);
+	    })
+	})
+    }
+    
     $(document).ready(function(){
+	$.keepRatio({
+	    'tile-1-1' : 1,
+	    'tile-2-2' : 1,
+	    'tile-4-4' : 1,
+	    'tile-2-1' : 2,
+	    'tile-4-2' : 2	    
+	})
 	$('html,body').horizontalScroll(400,'easeOutQuart');
 	$('.cascade .cascade-single').css('opacity',0).each(function(i){
 	    $(this).delay(i*50+100).animate({
