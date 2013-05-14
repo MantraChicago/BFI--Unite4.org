@@ -1,18 +1,19 @@
 <script type="text/template" id="filter-template"><div>
-	<a class="showAll">Show All Locations</a>
+	<a class="showAll"><h3>Show All Locations</h3></a>
 	<ul class="filterTypeHolder">
 
 	</ul>
 </div>
 </script>
 
-<script type="text/template" id="filter-row-template"><li>
-	<a class="filter" data-id="<%= id %>" data-type="<%= type %>"><%= name %></a>
+<script type="text/template" id="filter-row-template"><li class="animation-color">
+	<a class="filter" data-id="<%= id %>" data-type="<%= type %>"><strong><%= name %></strong></a>
+	<div class="map-bar-button right">ACT</div>
 </li>
 </script>
 
 <script type="text/template" id="filter-header-row-template"><li>
-	<h2><%= name %></h2>
+	<h3><%= name %></h3>
 
 	<ul class="filterHolder">
 	</ul>

@@ -5,10 +5,10 @@
 <div style="height:100%">
     <div class="row fullwidth collapse" style="height:100%">
 
-	<div class="large-3 push-9 columns" style="height: 100%;">
+	<div class="large-2 push-10 columns map-bar" style="height: 100%;">
 	    <div id="accordian-holder" style="height: 100%;"></div>
 	</div>
-	<div class="large-9 pull-3 columns" style="height: 100%;">
+	<div class="large-10 pull-2 columns" style="height: 100%;">
 	    <div id="map-canvas" style="width: 100%; height: 100%: "></div>
 	</div>	
     </div>
@@ -31,10 +31,7 @@
 	var causesCollection=parseObjIntoModels(causesObj, Cause)
     var locationsCollection=parseObjIntoModels(locationsObj, Location)
 
-    var donationsCollection=parseObjIntoModels(donationsNeedsObj, Backbone.Model.extend({
-	name:'donation_needs'
-    })
-)
+    var donationsCollection=parseObjIntoModels(donationsNeedsObj, Backbone.Model.extend({ name:'donation_needs' }));
 
     var goodCollection=parseObjIntoModels(goodNeedsObj, Backbone.Model.extend({
 	name:'good_needs'
