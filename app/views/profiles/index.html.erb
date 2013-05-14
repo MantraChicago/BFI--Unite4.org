@@ -11,57 +11,29 @@
 	<div class="home-tile-single tile-4-4">
 	    <h2><%= @user.display_name %></h2>
 	    <h4 class="mlimit secondary">Chicago, IL</h4>
+	    <%= link_to "Edit", profiles_edit_path %>
+	    <h3><%= @user.bio%></h3>
+	    <h2 class="yellow-text mlimit-top">Ways <%= @user.first_name %> has helped</h2>
 
-	    <h3>I’m a designer from Chicago and love to volunteer at events!  I have a strong love of Africa and hope to help in every way I can.</h3>
-	    <h2 class="yellow-text mlimit-top">Ways Amy has helped</h2>
-
-	    <h3><%= @user.bio %></h3>
+	    
 
 	</div>
     </div>
     <div class="home-tiles-group">
 
+    <% @featured_causes.each do |cause| %>
 	<div class="home-tile-single tile-2-2 nopadding">
-	    <%= link_to image_tag("examples/t1.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
+	    <%= link_to image_tag(cause.picture.url, :alt => "Rails") %>
 	   
 	    
 	    <div class="columns">
-		<h3 class="bold">Chicago African Education Foundation</h3>
-		<h4 class="tertiary">Chicago, IL</h4>
+		<h3 class="bold"><%= cause.name %></h3>
+		<h4 class="tertiary"><%= "#{cause.city}, #{cause.state}" %></h4>
 	    </div>
 	    
 	    <%= render "devise/shared/tilebutton" %>
 	</div>
-	<div class="home-tile-single tile-2-2 nopadding">
-	    <%= link_to image_tag("examples/t2.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
-	    
-	    
-	    <div class="columns">
-		<h3 class="bold">Chicago African Education Foundation</h3>
-		<h4 class="tertiary">Chicago, IL</h4>
-	    </div>
-	    <%= render "devise/shared/tilebutton" %>
-	</div>
-	<div class="home-tile-single tile-2-2 nopadding">
-	    <%= link_to image_tag("examples/t3.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
-	    
-	   
-	    <div class="columns">
-		<h3 class="bold">Chicago African Education Foundation</h3>
-		<h4 class="tertiary">Chicago, IL</h4>
-	    </div>
-	    <%= render "devise/shared/tilebutton" %>
-	</div>
-	<div class="home-tile-single tile-2-2 nopadding">
-	    <%= link_to image_tag("examples/t4.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
-	    
-	    
-	    <div class="columns">
-		<h3 class="bold">Chicago African Education Foundation</h3>
-		<h4 class="tertiary">Chicago, IL</h4>
-	    </div>
-	    <%= render "devise/shared/tilebutton" %>
-	</div>
+	<% end %>
 
 	
     </div>

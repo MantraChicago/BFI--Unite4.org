@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 
 		if user_signed_in?
 			@user=User.find(current_user.id)
+			@featured_causes=Cause.find_all_by_is_featured(true);
 		else
 			render "noAccount"
 		end

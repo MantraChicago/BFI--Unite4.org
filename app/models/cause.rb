@@ -21,4 +21,5 @@ class Cause < ActiveRecord::Base
    		end
    		allNeeds
    end
+
 end

@@ -1,24 +1,27 @@
 <%= render "devise/shared/mainheader" %>
 
-
 <div class="home-tiles-container slimit-top columns">
     <div class="home-tiles-group">
 
-	<div class="home-tile-single tile-4-2 nopadding" style="background-image: url(assets/examples/h1.jpg);">
+
+    <% cause= @featured_causes.pop  %>
+
+	<div class="home-tile-single tile-4-2 nopadding" style="background-image: url(<%= cause.picture.url %>);">
 	    <div class="bottom-panel">		 
 		<h4 class="tertiary">FEATURED CAUSE</h4>
-		<p class="arial">Books for Bangladesh</p>
-		<div class="tile-small-button right arial">TAKE ACTION</div>
+		<p class="arial"><%= cause.name %></p>
+		<div class="tile-small-button right arial"><%= link_to "TAKE ACTION", cause%></div>
 	    </div>
 	</div>
+
+
 	<div class="home-tile-single tile-2-2 small-height-auto">
 	    <h2 class="slimit">Immediate Needs</h2>
 	    <ul>
-		<li><a href="#">Cancer Kids of America</a></li>
-		<li><a href="#">Live United</a></li>
-		<li><a href="#">Veterans for Peace</a></li>
-		<li><a href="#">Action is Everything</a></li>
-		<li><a href="#">Support Uganda</a></li>
+	    	<% @recent_needs.each do |need| %>
+	    		<li><%= link_to need.name, need %></li>
+	    	<% end %>
+		
 	    </ul>
 	</div>
 	<div class="home-tile-single tile-2-2 small-height-auto">	     	
@@ -45,6 +48,7 @@
 	<% end %>
 
     </div>
+    <!--
     <div class="home-tiles-group">
 	<div class="home-tiles-group">
 
@@ -72,7 +76,7 @@
 
 
     </div>
-
+	-->
 
 
 
