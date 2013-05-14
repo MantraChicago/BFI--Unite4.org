@@ -3,13 +3,13 @@ class Cause < ActiveRecord::Base
    
    has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
-   has_many :volunteer_needs
-   has_many :social_needs
-   has_many :donations_needs
-   has_many :good_needs
+   has_many :volunteer_needs, :dependent => :delete_all
+   has_many :social_needs, :dependent => :delete_all
+   has_many :donations_needs, :dependent => :delete_all
+   has_many :good_needs, :dependent => :delete_all
    
    belongs_to :cause_type
-   has_many :locations
+   has_many :locations, :dependent => :delete_all
 
    def allNeeds
    		allNeeds=[]
