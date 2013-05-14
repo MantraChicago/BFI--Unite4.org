@@ -128,7 +128,7 @@
 	    animationEngine: 'jquery',
 	    layoutMode: 'masonryHorizontal',
 	    masonryHorizontal: {
-		rowHeight: 16
+		rowHeight: 4
 	    },
 	    animationOptions: {
 		duration: 750,

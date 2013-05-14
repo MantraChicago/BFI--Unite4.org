@@ -72,6 +72,9 @@ h2{
 h3 {
   font-size: 12.85pt;
 }
+h4 {
+  font-size:9pt;
+}
 
 
 
@@ -82,7 +85,7 @@ p, ol, ul, td {
 }
 
 p{
-  margin-bottom:0.5em;
+  
   line-height:1.7em;
 }
 
@@ -93,10 +96,10 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #399a98;
   text-decoration: none;
   &:visited {
-    color: #666;
+    color: #399a98;
   }
 
 }
