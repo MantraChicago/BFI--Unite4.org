@@ -22,7 +22,7 @@
 
 	    <div class="pink-big-button slimit slimit-top">
 		
-		<h2><%= link_to "#{@allNeeds.count} ways to help", "/causes/need/#{@cause.id}"  %></h2>
+		<h2><%=  link_to "#{pluralize(@allNeeds.count, "way") } to help", "/causes/need/#{@cause.id}"  %></h2>
 		
 	    </div>
 	    <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="true" data-width="300" data-show-faces="true"></div>

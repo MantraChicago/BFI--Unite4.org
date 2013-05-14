@@ -15,7 +15,7 @@ class Cause < ActiveRecord::Base
    		allNeeds=[]
    		for needType in ['volunteer_needs', 'social_needs', 'donations_needs', 'good_needs']
    			needs=self.send("#{needType}")
-   			if needs
+   			if needs.count>0
    				allNeeds.push(needs)
    			end
    		end

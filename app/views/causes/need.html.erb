@@ -1,8 +1,8 @@
-<% @allNeeds.each do |needs|
+<% for needs in @allNeeds 
 	for need in needs%>
 		
 		<%= link_to need.name, need %> <br/>
 
 
-		<% end
- end%>
+<% end
+end%>
