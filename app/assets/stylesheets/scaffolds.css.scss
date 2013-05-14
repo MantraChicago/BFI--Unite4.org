@@ -76,7 +76,9 @@ h4 {
   font-size:9pt;
 }
 
-
+.arial, .arial * {
+    font-family: Arial;
+}
 
 p, ol, ul, td {
   font-family: 'Oxygen', sans-serif;

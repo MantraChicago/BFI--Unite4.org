@@ -1,26 +1,43 @@
 <div class="">
-<div class="row fullwidth mlimit-top">
+<div class="row fullwidth slimit-top">
     <div class="large-2 columns text-left">
 	<h2><%= link_to image_tag("logo.png", :alt =>  "Rails"), root_url  %></h2>
     </div> 
     <div class="large-2 small-4 columns">
-	<h2 class="cyan-text"><%= link_to 'Find', causes_path %></h2>
+	<h2 class="cyan-text arial"><%= link_to 'Find', causes_path %></h2>
 	<p>
 	    Explore causes
 	</p>
     </div> 
     <div class="large-2 small-4 columns">
-	<h2 class="cyan-text"><%= link_to 'Add', new_cause_application_path %></h2>
+	<h2 class="cyan-text arial"><%= link_to 'Add', new_cause_application_path %></h2>
 	<p>
 	    Your cause
 	</p>
     </div>  
-    <div class="large-2 small-4 columns left">
-	<h2 class="cyan-text">News</h2>
+    <div class="large-2 small-4 columns">
+	<h2 class="cyan-text arial">News</h2>
 	<p>
 	    Only the good
 	</p>
-    </div>  
+    </div> 
+    <div class="large-4 columns">
+	<%= if user_signed_in? 
+     link_to 'Logout', destroy_user_session_path, :method=>'delete' 
+ 	else
+ 	 createLink= link_to 'Create User Account', new_user_registration_path
+ 	 loginLink=link_to 'Login', new_user_session_path
+ 	 createLink+' | '+loginLink
+ 	 
+ 	end
+ %>
+ 
+<%= render 'subscribes/form' %>
+
+<%= link_to 'Profile', profiles_path %>
+
+
+    </div>
      
 </div>    
 </div>

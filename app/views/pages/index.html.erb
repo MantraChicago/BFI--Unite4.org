@@ -1,24 +1,14 @@
 <%= render "devise/shared/mainheader" %>
 
-<%= if user_signed_in? 
-     link_to 'Logout', destroy_user_session_path, :method=>'delete' 
- 	else
- 	 createLink= link_to 'Create User Account', new_user_registration_path
- 	 loginLink=link_to 'Login', new_user_session_path
- 	 createLink+' | '+loginLink
- 	 
- 	end
- %>
 
-
- <div class="home-tiles-container mlimit-top columns">
+ <div class="home-tiles-container slimit-top columns">
      <div class="home-tiles-group">
 
 	 <div class="home-tile-single tile-4-2 nopadding" style="background-image: url(assets/examples/h1.jpg);">
 	     <div class="bottom-panel">		 
 		 <h4 class="tertiary">FEATURED CAUSE</h4>
-		 <p>Books for Bangladesh</p>
-		 <div class="tile-small-button right">Take action</div>
+		 <p class="arial">Books for Bangladesh</p>
+		 <div class="tile-small-button right arial">TAKE ACTION</div>
 	     </div>
 	 </div>
 	 <div class="home-tile-single tile-2-2 small-height-auto">
@@ -45,7 +35,7 @@
 	     <div class="bottom-panel">		 
 		 <h4 class="tertiary">FEATURED CAUSE</h4>
 		 <p>Woman in Iran</p>
-		 <div class="tile-small-button right">Take action</div>
+		 <div class="tile-small-button right">TAKE ACTION</div>
 	     </div>	     
 	 </div>
 	 <div class="home-tile-single tile-2-1 nopadding" style="background-image: url(assets/examples/h3.jpg);"></div>
@@ -87,10 +77,5 @@
  
 
 
-<%= render 'subscribes/form' %>
-
-<%= link_to 'Profile', profiles_path %>
-
-<%= link_to 'Causes', causes_path %>
 
 <%= render "devise/shared/mainfooter" %>
