@@ -89,8 +89,10 @@ var parseObjIntoModels=function(dataObj,model){
 }
 
 var markersArray=[]
-var markers = {
-    darkblue:'http://localhost:3000/assets/ui/map/marker-dblue.png'
+var markerIcons = {
+    darkblue:'http://localhost:3000/assets/ui/map/marker-dblue.png',
+    another:'http://localhost:3000/assets/ui/map/marker-dblue.png'
+    //...
 } 
 var populateMapMarkers=function(map,locations){
 	clearMapOverlays()
@@ -103,7 +105,7 @@ var populateMapMarkers=function(map,locations){
               position: myLatlng,
               map: map,
               title: location.get('name'),
-	      icon: markers.darkblue,
+	      icon: markerIcons.darkblue,
               user_content: location.get('name')+'<br/><a href="/causes/'+location.get('cause_id')+'">'+cause.get('name')+'</a>'
             });
         markersArray.push(marker)
