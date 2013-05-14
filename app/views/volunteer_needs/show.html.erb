@@ -1,7 +1,24 @@
-<div><%= @volunteer_need.name%></div>
+<%= render "devise/shared/goback" %>
 
-<div><%= @volunteer_need.description %></div>
 
-<div><%= @volunteer_need.address %></div>
+<div class="row blimit-top blimit cascade">
+    <div class="large-12 columns cascade-single">
+	<h2><%= @volunteer_need.name%></h2>
+	<h3 class="slimit"><%= @volunteer_need.description %></h3>	  
+    </div>
+ 
+    
 
-<%= link_to "Sign up", new_volunteer_path({:volunteer_need_id=>@volunteer_need.id}) %>
+    <div class="large-6 columns">
+	<div>
+	    <h3>Address</h3>
+	    <%= @volunteer_need.address %>
+	</div>
+    </div> <div class="large-6 columns">
+	<div>
+
+	    <%= link_to "Sign up", new_volunteer_path({:volunteer_need_id=>@volunteer_need.id}) %>
+	</div>
+    </div>
+
+</div>
