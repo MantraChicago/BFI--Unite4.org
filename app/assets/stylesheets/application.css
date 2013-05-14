@@ -318,3 +318,19 @@ background-color: rgba(240,240,240,0.6);
     color: #fff;
     padding: 2px 10px 2px 10px; 
 }
+
+.action-button {
+    background-color: #fff;
+    padding: 20px;
+    border: 5px solid #e3e3e3;
+    font-weight: 700;    
+}
+.action-button a {
+    color: #000;
+}
+.action-button:hover {
+    background-color: #399a98;
+}
+.action-button:hover a {
+    color: #fff;
+}

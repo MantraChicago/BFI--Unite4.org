@@ -1,50 +1,50 @@
 <%= render "devise/shared/mainheader" %>
 
 
- <div class="home-tiles-container slimit-top columns">
-     <div class="home-tiles-group">
+<div class="home-tiles-container slimit-top columns">
+    <div class="home-tiles-group">
 
-	 <div class="home-tile-single tile-4-2 nopadding" style="background-image: url(assets/examples/h1.jpg);">
-	     <div class="bottom-panel">		 
-		 <h4 class="tertiary">FEATURED CAUSE</h4>
-		 <p class="arial">Books for Bangladesh</p>
-		 <div class="tile-small-button right arial">TAKE ACTION</div>
-	     </div>
-	 </div>
-	 <div class="home-tile-single tile-2-2 small-height-auto">
-	     <h2 class="slimit">Immediate Needs</h2>
-	     <ul>
-		 <li><a href="#">Cancer Kids of America</a></li>
-		 <li><a href="#">Live United</a></li>
-		 <li><a href="#">Veterans for Peace</a></li>
-		 <li><a href="#">Action is Everything</a></li>
-		 <li><a href="#">Support Uganda</a></li>
-	     </ul>
-	 </div>
-	 <div class="home-tile-single tile-2-2 small-height-auto">	     	
-	     <h2 class="slimit">New Causes</h2>
-	     <ul>
-	     	<% @new_causes.each do |cause| %>
-	     	<li><%= link_to cause.name, cause %></li>
-		 
-	     	<% end %>
-		 
-	     </ul>
-	 </div>
+	<div class="home-tile-single tile-4-2 nopadding" style="background-image: url(assets/examples/h1.jpg);">
+	    <div class="bottom-panel">		 
+		<h4 class="tertiary">FEATURED CAUSE</h4>
+		<p class="arial">Books for Bangladesh</p>
+		<div class="tile-small-button right arial">TAKE ACTION</div>
+	    </div>
+	</div>
+	<div class="home-tile-single tile-2-2 small-height-auto">
+	    <h2 class="slimit">Immediate Needs</h2>
+	    <ul>
+		<li><a href="#">Cancer Kids of America</a></li>
+		<li><a href="#">Live United</a></li>
+		<li><a href="#">Veterans for Peace</a></li>
+		<li><a href="#">Action is Everything</a></li>
+		<li><a href="#">Support Uganda</a></li>
+	    </ul>
+	</div>
+	<div class="home-tile-single tile-2-2 small-height-auto">	     	
+	    <h2 class="slimit">New Causes</h2>
+	    <ul>
+		<% @new_causes.each do |cause| %>
+		<li><%= link_to cause.name, cause %></li>
 
-	 <% @featured_causes.each do |cause| %>
- 	
-	 	<div class="home-tile-single tile-2-1 nopadding" style="background-image: url(<%= cause.picture.url %>);">
-		     <div class="bottom-panel">		 
-			 <h4 class="tertiary">FEATURED CAUSE</h4>
-			 <p><%= cause.name %></p>
-			 <div class="tile-small-button right"><%= link_to "TAKE ACTION", cause%></div>
-		     </div>	     
-		 </div>
- 
- 	<% end %>
+		<% end %>
 
- 	<!--
+	    </ul>
+	</div>
+
+	<% @featured_causes.each do |cause| %>
+
+	<div class="home-tile-single tile-2-1 nopadding" style="background-image: url(<%= cause.picture.url %>);">
+	    <div class="bottom-panel">		 
+		<h4 class="tertiary">FEATURED CAUSE</h4>
+		<p><%= cause.name %></p>
+		<div class="tile-small-button right"><%= link_to "TAKE ACTION", cause%></div>
+	    </div>	     
+	</div>
+
+	<% end %>
+
+	<!--
 	 <div class="home-tile-single tile-2-1 nopadding" style="background-image: url(assets/examples/h2.jpg);">
 	     <div class="bottom-panel">		 
 		 <h4 class="tertiary">FEATURED CAUSE</h4>
@@ -66,31 +66,42 @@
 
      </div> 
 
-     -->    
+	-->    
+    </div>
     <div class="home-tiles-group">
+	<div class="home-tiles-group">
+
+	    <div class="home-tile-single tile-16-10 nopadding">
+		<iframe src="http://player.vimeo.com/video/27882235?color=ff9933" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+	    </div>
+	    <div class="home-tile-single tile-2-2 nopadding"></div>
+	    <div class="home-tile-single tile-2-2 nopadding"></div>
+
+
+	</div> 
 
 	<div class="home-tile-single tile-2-2 nopadding">
 	    <%= link_to image_tag("examples/t1.jpg", :alt => "Rails"), 'http://rubyonrails.org/' %>
-	   
-	    
+
+
 	    <div class="columns">
 		<h3 class="bold">Chicago African Education Foundation</h3>
 		<h4 class="tertiary">Chicago, IL</h4>
 	    </div>
-	    
+
 	    <%= render "devise/shared/tilebutton" %>
 	</div>
-	
 
-	
+
+
     </div>
 
-	
-    
-  
+
+
+
 </div>
- 
- 
+
+
 
 
 

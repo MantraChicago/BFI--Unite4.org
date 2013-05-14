@@ -173,10 +173,10 @@ input[type="checkbox"]:checked + label span {
 }
 
 .animation-color {
-       transition: border 0.2s ease-in-out, background 0.2s ease-in-out;
-      -moz-transition: border 0.2s ease-in-out, background 0.2s ease-in-out;    /* FF3.7+ */
-      -o-transition: border 0.2s ease-in-out, background 0.2s ease-in-out;      /* Opera 10.5 */
-      -webkit-transition: border 0.2s ease-in-out, background 0.2s ease-in-out; /* Saf3.2+, Chrome */ 
+       transition: border 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;
+      -moz-transition: border 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;    /* FF3.7+ */
+      -o-transition: border 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out;      /* Opera 10.5 */
+      -webkit-transition: border 0.2s ease-in-out, background 0.2s ease-in-out, color 0.2s ease-in-out; /* Saf3.2+, Chrome */ 
 }
 
 .position-animation {
