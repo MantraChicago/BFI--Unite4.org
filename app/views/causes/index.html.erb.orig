@@ -46,10 +46,9 @@ var volunteerCollection=parseObjIntoModels(volunteerNeedsObj, Backbone.Model.ext
 																})
 )
 
-<<<<<<< .mine    var map =createGoogleMap($('#map-canvas')[0])
-=======
-var map =createGoogleMap($('#map-canvas')[0])
->>>>>>> .theirs
+
+    var map =createGoogleMap($('#map-canvas')[0])
+
     populateMapMarkers(map,locationsCollection.models)
 
     var filterOptions={'Causes':{'collection':causesCollection,
@@ -71,22 +70,24 @@ var map =createGoogleMap($('#map-canvas')[0])
 		return model.get('cause_id')==need.get('cause_id')
 	    }
 
+<<<<<<< HEAD
 	},
+=======
+							},
 					'Volunteer needs':{'collection':volunteerCollection,
 							 'filterFunction':function(model,id){
 							 		var need=volunteerCollection.get(id)
 							 		return model.get('cause_id')==need.get('cause_id')
 							 	}
 
-<<<<<<< .mine    }
-=======							}
->>>>>>> .theirs
-				  }
+							}
+>>>>>>> 97f14a618b7890b7c4029c8be3ba39e14f065a25
 
-<<<<<<< .mine    var filterView= new FilterView({el: $('#accordian-holder'),
-=======
-var filterView= new FilterView({el: $('#accordian-holder'),
->>>>>>> .theirs	locationsCollection:locationsCollection,
+    }
+
+
+    var filterView= new FilterView({el: $('#accordian-holder'),
+	locationsCollection:locationsCollection,
 	filterOptions:filterOptions })
 
 
