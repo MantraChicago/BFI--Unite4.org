@@ -6,15 +6,15 @@
     <div class="row fullwidth collapse" style="height:100%">
 
 	<div class="large-3 push-9 columns" style="height: 100%;">
-	     <div id="accordian-holder" style="height: 100%;"></div>
+	    <div id="accordian-holder" style="height: 100%;"></div>
 	</div>
 	<div class="large-9 pull-3 columns" style="height: 100%;">
 	    <div id="map-canvas" style="width: 100%; height: 100%: "></div>
 	</div>	
     </div>
-    
 
-   
+
+
 
 </div>
 
@@ -41,15 +41,14 @@
     })
 )
 
-var volunteerCollection=parseObjIntoModels(volunteerNeedsObj, Backbone.Model.extend({
-																    name:'volunteer_needs'
-																})
+    var volunteerCollection=parseObjIntoModels(volunteerNeedsObj, Backbone.Model.extend({
+	name:'volunteer_needs'
+    })
 )
 
-<<<<<<< .mine    var map =createGoogleMap($('#map-canvas')[0])
-=======
-var map =createGoogleMap($('#map-canvas')[0])
->>>>>>> .theirs
+
+    var map =createGoogleMap($('#map-canvas')[0])
+
     populateMapMarkers(map,locationsCollection.models)
 
     var filterOptions={'Causes':{'collection':causesCollection,
@@ -72,22 +71,20 @@ var map =createGoogleMap($('#map-canvas')[0])
 	    }
 
 	},
-					'Volunteer needs':{'collection':volunteerCollection,
-							 'filterFunction':function(model,id){
-							 		var need=volunteerCollection.get(id)
-							 		return model.get('cause_id')==need.get('cause_id')
-							 	}
+	'Volunteer needs':{'collection':volunteerCollection,
+	    'filterFunction':function(model,id){
+		var need=volunteerCollection.get(id)
+		return model.get('cause_id')==need.get('cause_id')
+	    }
 
-<<<<<<< .mine    }
-=======							}
->>>>>>> .theirs
-				  }
 
-<<<<<<< .mine    var filterView= new FilterView({el: $('#accordian-holder'),
-=======
-var filterView= new FilterView({el: $('#accordian-holder'),
->>>>>>> .theirs	locationsCollection:locationsCollection,
-	filterOptions:filterOptions })
+	}
+    }
+
+        var filterView = new FilterView({
+	    el: $('#accordian-holder'),	
+	    locationsCollection:locationsCollection,
+	    filterOptions:filterOptions })
 
 
 
