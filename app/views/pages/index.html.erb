@@ -8,8 +8,52 @@
  	 createLink+' | '+loginLink
  	 
  	end
- %><br/>
-<%= link_to 'Submit Cause Application', new_cause_application_path %>
+ %>
+
+
+ <div class="home-tiles-container mlimit-top columns">
+     <div class="home-tiles-group">
+
+	 <div class="home-tile-single tile-4-2 nopadding"></div>
+	 <div class="home-tile-single tile-2-2 nopadding"></div>
+	 <div class="home-tile-single tile-2-2 nopadding"></div>
+	 <div class="home-tile-single tile-2-2 nopadding"></div>
+	 <div class="home-tile-single tile-2-2 nopadding"></div>
+
+     </div>
+     <div class="home-tiles-group">
+
+	 <div class="home-tile-single tile-16-10 nopadding"></div>
+	 <div class="home-tile-single tile-2-2 nopadding"></div>
+	 <div class="home-tile-single tile-2-2 nopadding"></div>
+
+
+     </div>     
+    <div class="home-tiles-group">
+
+	<div class="home-tile-single tile-2-2 nopadding">
+	    <%= link_to image_tag("examples/t1.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
+	   
+	    
+	    <div class="columns">
+		<h3 class="bold">Chicago African Education Foundation</h3>
+		<h4 class="tertiary">Chicago, IL</h4>
+	    </div>
+	    
+	    <%= render "devise/shared/tilebutton" %>
+	</div>
+	
+
+	
+    </div>
+
+	
+    
+  
+</div>
+ 
+ 
+
 
 <%= render 'subscribes/form' %>
 
