@@ -4,18 +4,21 @@ task :populateDevData => [:environment, 'db:seed'] do
 	cause1.update_attributes({ :cause_type_id =>CauseType.find_by_name(:Environmental).id,
 							   :city => 'Chicago',
 							   :state => 'IL',
+							   :is_featured =>true,
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933" })
 
 	cause2 = Cause.find_or_create_by_name("AIDS Foundation")
 	cause2.update_attributes({ :cause_type_id =>CauseType.find_by_name(:Health).id,
 							   :city => 'Chicago',
 							   :state => 'IL',
+							   :is_featured =>true,
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })
 
 	cause3 = Cause.find_or_create_by_name("Habitat for Humanity")
 	cause3.update_attributes({ :cause_type_id =>CauseType.find_by_name(:Social).id,
 							   :city => 'Chicago',
 							   :state => 'IL',
+							   :is_featured =>true,
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })
 
 	location1= Location.find_or_create_by_name("ABC school")

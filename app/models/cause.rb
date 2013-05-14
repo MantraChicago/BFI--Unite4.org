@@ -1,12 +1,13 @@
 class Cause < ActiveRecord::Base
-   attr_accessible :city, :state, :name, :description, :mission_statement, :how_hear, :email, :website, :phone_number, :cause_type_id
+   attr_accessible :video_link,:is_featured,:picture,:city, :state, :name, :description, :mission_statement, :how_hear, :email, :website, :phone_number, :cause_type_id
    
+   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
+
    has_many :volunteer_needs
    has_many :social_needs
    has_many :donations_needs
    has_many :good_needs
    
-
    belongs_to :cause_type
    has_many :locations
 

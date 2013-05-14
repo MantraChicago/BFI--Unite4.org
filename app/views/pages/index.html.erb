@@ -31,6 +31,20 @@
 		 
 	     </ul>
 	 </div>
+
+	 <% @featured_causes.each do |cause| %>
+ 	
+	 	<div class="home-tile-single tile-2-1 nopadding" style="background-image: url(<%= cause.picture.url %>);">
+		     <div class="bottom-panel">		 
+			 <h4 class="tertiary">FEATURED CAUSE</h4>
+			 <p><%= cause.name %></p>
+			 <div class="tile-small-button right"><%= link_to "TAKE ACTION", cause%></div>
+		     </div>	     
+		 </div>
+ 
+ 	<% end %>
+
+ 	<!--
 	 <div class="home-tile-single tile-2-1 nopadding" style="background-image: url(assets/examples/h2.jpg);">
 	     <div class="bottom-panel">		 
 		 <h4 class="tertiary">FEATURED CAUSE</h4>
@@ -50,7 +64,9 @@
 	 <div class="home-tile-single tile-2-2 nopadding"></div>
 
 
-     </div>     
+     </div> 
+
+     -->    
     <div class="home-tiles-group">
 
 	<div class="home-tile-single tile-2-2 nopadding">
