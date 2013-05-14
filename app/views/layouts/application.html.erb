@@ -20,10 +20,17 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <% if flash[:notice] %>
-  <p class="notice"><%= flash[:notice] %></p>
+<div class="fs-bg">  
+    <div class="fs-message">
+	<%= flash[:notice] %>
+    </div>
+</div>
+
+      
+ 
 <% end %>
 <% if flash[:error] %>
-  <p class="error"><%= flash[:error] %></p>
+  <div class="error fs-message"><%= flash[:error] %></div>
 <% end %>
 <div class="hide-for-small"></div> <!-- used to see if is in responsive mode via js --!>
 <div class="background-fill"></div> <!-- used to fill all window to allow mouse events on places without DOM elements --!>

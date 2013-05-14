@@ -70,11 +70,12 @@
     position: fixed;
     padding:20px 40px 20px 40px;
     background-color: #399a98;
-    top: 0;
+    top: -100px;
     left: 0;
     right: 0;
     z-index: 999;
     color: #fff;
+    border-bottom: 2px solid #fff;
 }
 
 .notice-close {
@@ -89,6 +90,24 @@
 }
 .tertiary {
     opacity: 0.4;
+}
+.fs-bg{
+position: fixed;
+width: 100%;
+z-index: 999;
+top: 0; bottom: 0;
+background-color: rgba(240,240,240,0.6);
+}
+.fs-message {
+    box-shadow: 0 0 40px #aaa;
+    background-color: #fff;
+    border: 3px solid #399a98;
+    z-index: 999;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 13%;
 }
 
 
@@ -192,6 +211,7 @@
 	margin-right: 0;
 	
     }
+    .hide-for-small {display: none !important;}
 }
 
 .big-number {
@@ -237,6 +257,10 @@
     cursor: pointer;
     white-space: nowrap;
 }
+.filterHolder li img {
+    vertical-align: -25%;
+    margin-right: 5px;
+}
 .filterHolder li:hover {
     background-color: #f2f2f2;
 }
@@ -250,7 +274,19 @@
 
 .pink-big-button {
     border-radius: 5px;
-    background-color: #c61566;
+    background-image: linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
+
+    background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(197,20,100)),
+	color-stop(1, rgb(201,73,131))
+	);
     color: #fff;
     text-align: center;
     padding-top: 20px;

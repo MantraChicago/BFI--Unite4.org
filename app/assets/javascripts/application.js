@@ -104,7 +104,9 @@
 	    'tile-2-2' : 1,
 	    'tile-4-4' : 1,
 	    'tile-2-1' : 2,
-	    'tile-4-2' : 2	    
+	    'tile-4-2' : 2,
+	    'tile-2-4' : 0.5,
+	    'tile-16-10' : 1.6
 	})
 	$('html,body').horizontalScroll(400,'easeOutQuart');
 	$('.cascade .cascade-single').css('opacity',0).each(function(i){
@@ -112,11 +114,15 @@
 		'opacity':1
 	    });
 	});
+	setTimeout(function(){$('.upper-notice').css('top',0);},1500);
 	$('.notice-close').click(function(){
 	    
 	    $(this).parents('.upper-notice').fadeSlideUp();
 	});
-	
+	$('.fs-bg').click(function(e){
+	    $(this).fadeOut(200);
+	    e.stopPropagation();
+	})
 	$('.home-tiles-container .home-tiles-group').isotope({
 	    itemSelector: '.home-tile-single',	
 	    animationEngine: 'jquery',
