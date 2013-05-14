@@ -91,7 +91,7 @@
 	    var t = $(this);
 	    var ratio = t.attr('ratio');
 	    
-	    t.height(t.width()/ratio);
+	    t.height(Math.floor(t.width()/ratio)-1);
 	    $(window).resize(function(){
 		t.height(t.width()/ratio);
 	    })
@@ -103,9 +103,9 @@
 	    'tile-1-1' : 1,
 	    'tile-2-2' : 1,
 	    'tile-4-4' : 1,
-	    'tile-2-1' : 2,
-	    'tile-4-2' : 2,
-	    'tile-2-4' : 0.5,
+	    'tile-2-1' : 272/128,
+	    'tile-4-2' : 560/272,
+	    'tile-2-4' : 272/560,
 	    'tile-16-10' : 1.6
 	})
 	$('html,body').horizontalScroll(400,'easeOutQuart');
