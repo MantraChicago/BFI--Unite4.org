@@ -137,7 +137,15 @@
     width: 560px;
     height: 560px;
 }
-.tile-1-1,.tile-2-1,.tile-2-2 {
+.tile-3-4 {
+    height: 560px;
+    width: 328px;
+}
+.tile-16-10 {
+    height: 560px;
+    width:896px;
+}
+.tile-1-1,.tile-2-1,.tile-2-2,.tile-3-4 {
     padding:20px;
 }
 .tile-4-2,.tile-4-4{
@@ -222,6 +230,7 @@
     display: block;
     
 }
+
 .filterHolder li {
     padding: 13px 20px 13px 20px;
     border-bottom: 1px solid #e1e1e1;
@@ -237,4 +246,14 @@
     border-radius: 4px;
     color: #fff;
     padding: 2px 10px 2px 10px;   
+}
+
+.pink-big-button {
+    border-radius: 5px;
+    background-color: #c61566;
+    color: #fff;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+	
 }

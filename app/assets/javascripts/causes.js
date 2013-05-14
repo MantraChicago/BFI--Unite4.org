@@ -95,7 +95,8 @@ var markerIcons = {
     //...
 } 
 var populateMapMarkers=function(map,locations){
-	clearMapOverlays()
+   
+	clearMapOverlays();
 	for(var j in locations){
 		var location = locations[j]
 		var myLatlng = new google.maps.LatLng(location.get('latitude'),location.get('longitude'))

@@ -1,19 +1,45 @@
-<div>
-<%= @cause.name %>
-</div>
+<%= render "devise/shared/mainheader" %>
+<%= render "devise/shared/uppernotice" %>
 
-<div>
-	needs
-</div>
-<% for needs in @allNeeds 
-	for need in needs
-	%>
-	<%= link_to need.name, need %>
-	
-	
-<% end
-end %>
 
 <br/>
-<div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="true" data-width="450" data-show-faces="true"></div>
+
+
+<div class="home-tiles-container mlimit-top columns">
+    <div class="home-tiles-group">
+
+	<div class="home-tile-single tile-16-10 nopadding">
+	    <iframe src="http://player.vimeo.com/video/27882235?color=ff9933" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
+	</div>
+
+	<div class="home-tile-single tile-3-4">
+	    <h1><%= @cause.name %></h1>
+	    <h4 class="mlimit secondary">Chicago, IL</h4>
+
+	    <h3><% for needs in @allNeeds 
+		for need in needs
+		%>
+		<%= link_to need.name, need %>
+
+
+		<% end
+		end %></h3>
+
+	    <div class="pink-big-button slimit slimit-top">
+		<h2>7 ways to help</h2>
+	    </div>
+	    <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="true" data-width="450" data-show-faces="true"></div>
+	    <h3></h3>
+
+	</div>
+    </div>
+ 
+
+
+
+</div>
+<div>
+
+</div>
+<%= render "devise/shared/mainfooter" %>
 
