@@ -1,9 +1,4 @@
-<div><%= @volunteer_need.name %></div>
-
-<div><%= @volunteer_need.description %></div>
-
-<div><%= @volunteer_need.address %></div>
-
+<%= render "devise/shared/goback" %>
 
 
 <%= form_for(@volunteer ) do |f| %>
@@ -24,15 +19,53 @@
 	    </div>
 	  <% end %>
 
-	<div>First name<%= text_field :volunteer, :first_name, :value=>default_first_name %></div>
 
-	<div>Last name<%= text_field :volunteer, :last_name, :value=>default_last_name%></div>
 
-	<div>Phone number<%= text_field :volunteer, :phone_number%></div>
 
-	<%= hidden_field :volunteer, :volunteer_need_id, :value=> @volunteer_need.id %>
 
-  <div class="actions">
-    <%= f.submit :Volunteer %>
-  </div>
-<% end %>
+
+<div class="row blimit-top blimit cascade">
+    <div class="large-12 columns cascade-single">
+	<h2><%= @volunteer_need.name%></h2>
+	<h3 class="slimit"><%= @volunteer_need.description %></h3>	  
+    </div>
+ 
+    <%= hidden_field :volunteer, :volunteer_need_id, :value=> @volunteer_need.id %>
+
+    <div class="large-12 columns">
+	<div>
+	    <h3>Address:</h3>
+	    <p class="slimit"><%= @volunteer_need.address %></p>
+	</div>
+    </div> 
+    <div class="large-6 columns">
+	<div>
+	    
+	    <%= text_field :volunteer, :first_name, :value=>default_first_name, :placeholder => "first name", :class => "animation-color cascade-single" %>
+	</div>
+    </div> 
+    <div class="large-6 columns">
+	<div>
+	    
+	   <%= text_field :volunteer, :last_name, :value=>default_last_name, :placeholder => "last name", :class => "animation-color cascade-single"%>
+	</div>
+    </div> 
+    <div class="large-6 columns">
+	<div>
+	    
+	    <%= text_field :volunteer, :phone_number, :placeholder => "phone number", :class => "animation-color cascade-single"%>
+	</div>
+    </div> 
+    <div class="large-6 columns">
+	<div>
+	    <%= f.submit "Volunteer",:class => "animation-color button-submit cascade-single right"  %>
+	    
+	</div>
+    </div> 
+
+
+</div>
+	
+	<% end %>
+	
+	<%= render "devise/shared/footer" %>
