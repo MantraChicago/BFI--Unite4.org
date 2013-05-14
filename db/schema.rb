@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514204920) do
+ActiveRecord::Schema.define(:version => 20130514221827) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -85,6 +85,8 @@ ActiveRecord::Schema.define(:version => 20130514204920) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.boolean  "is_featured",          :default => false
+    t.string   "twitter_handle"
+    t.string   "facebook_url"
   end
 
   create_table "causes_causeneeds", :id => false, :force => true do |t|

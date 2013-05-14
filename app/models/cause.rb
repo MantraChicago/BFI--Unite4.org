@@ -1,5 +1,5 @@
 class Cause < ActiveRecord::Base
-   attr_accessible :video_link,:is_featured,:picture,:city, :state, :name, :description, :mission_statement, :how_hear, :email, :website, :phone_number, :cause_type_id
+   attr_accessible :facebook_url,:twitter_handle, :video_link,:is_featured,:picture,:city, :state, :name, :description, :mission_statement, :how_hear, :email, :website, :phone_number, :cause_type_id
    
    has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
