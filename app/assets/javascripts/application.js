@@ -23,6 +23,17 @@
 	    'top':'-=' + height + 'px'
 	},200);
     }
+   
+    $.fn.strethDown = function(marginDown,multiply)
+    {
+	return $(this).each(function(){
+	    if (!$(this).length) return $();
+	    var height=$(window).height() - $(this).offset().top - marginDown;
+	    if (multiply) height = height - height%multiply;
+	    $(this).height(height);	
+	    return height;	
+	});
+    }    
     
     $.fn.fadeSlideIn = function(){
 	$(this).each(function(){
@@ -140,7 +151,22 @@
 	    $('.home-tile-single',this).each(function(i){
 		$(this).delay(i*60+400).fadeSlideIn();
 	    })
-	});		
+	});
+	
+	var vCenterTiles = function() {	    
+	    var cont = $(".home-tiles-container").addClass('position-animation');  
+	    
+	    if ($.isMobile()) { cont.attr('style', function(i,s) { return s + '; margin-top:0px !important; margin-bottom: 0px !important;' }); return; }
+	    
+	    var marg = ($(window).height() - ((cont.offset().top-parseInt(cont.css('margin-top')))+cont.height())) / 2 - 20;	    
+	    marg = marg < 10 ? 10 : marg;
+
+	    cont.attr('style', function(i,s) { return s + '; margin-top: ' + marg + 'px !important; margin-bottom: ' + marg + 'px !important;' });
+	}
+	vCenterTiles();
+	$(window).resize(function(){
+	    vCenterTiles();
+	})
 	
 	
     });

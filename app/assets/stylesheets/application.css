@@ -334,3 +334,8 @@ background-color: rgba(240,240,240,0.6);
 .action-button:hover a {
     color: #fff;
 }
+
+.logo-column {
+    max-width: 160px;
+    min-height: 104px;
+}
