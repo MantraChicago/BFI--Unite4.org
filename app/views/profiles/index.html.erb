@@ -6,7 +6,7 @@
 	<div class="home-tile-single tile-2-2 nopadding" style="background: url(<%= @user.avatar.url%>) center;background-size: cover"></div>
 	<div class="home-tile-single tile-2-2 text-center">
 	    <h2>AMBASSADOR LEVEL</h2>
-	    <h1 class="big-number">2</h1>
+	    <h1 class="big-number"><%= @user.level%></h1>
 	</div>	
 	<div class="home-tile-single tile-4-4">
 	    <h2><%= @user.display_name %></h2>
@@ -62,9 +62,6 @@
 
 
 
-<div>
-    <%= link_to "Edit", profiles_edit_path%>
-</div>
 <div>
     <%=  render "follow_form" %>
 </div>
