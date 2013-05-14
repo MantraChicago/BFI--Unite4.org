@@ -8,6 +8,11 @@ class CausesController < ApplicationController
 		@social_needs = SocialNeed.find(:all)
 	end
 
+	def need
+		@cause = Cause.find(params[:id])
+		@allNeeds= @cause.allNeeds
+	end
+
 	def show
 		@cause = Cause.find(params[:id])
 		@allNeeds= @cause.allNeeds

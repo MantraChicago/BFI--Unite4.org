@@ -6,11 +6,11 @@ GiveInspireLove::Application.routes.draw do
   match "/profiles/edit" => "profiles#edit"
   resources :profiles
 
-
+  match "/causes/need/:id" => "causes#need"
   resources :causes
+  
   resources :donations
   resources :volunteers
-
 
   resources :donations_needs
   resources :good_needs

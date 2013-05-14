@@ -1,5 +1,5 @@
 class Cause < ActiveRecord::Base
-   attr_accessible :name, :description, :mission_statement, :how_hear, :email, :website, :phone_number, :cause_type_id
+   attr_accessible :city, :state, :name, :description, :mission_statement, :how_hear, :email, :website, :phone_number, :cause_type_id
    
    has_many :volunteer_needs
    has_many :social_needs

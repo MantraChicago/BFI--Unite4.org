@@ -14,21 +14,18 @@
 
 	<div class="home-tile-single tile-3-4">
 	    <h1><%= @cause.name %></h1>
-	    <h4 class="mlimit secondary">Chicago, IL</h4>
+	    <h4 class="mlimit secondary"><%= "#{@cause.city}, #{@cause.state}" %></h4>
 
-	    <h3><% for needs in @allNeeds 
-		for need in needs
-		%>
-		<%= link_to need.name, need %>
-
-
-		<% end
-		end %></h3>
+	    <h3>
+	    	<%= @cause.description %>
+		</h3>
 
 	    <div class="pink-big-button slimit slimit-top">
-		<h2>7 ways to help</h2>
+		
+		<h2><%= link_to "#{@allNeeds.count} ways to help", "/causes/need/#{@cause.id}"  %></h2>
+		
 	    </div>
-	    <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="true" data-width="450" data-show-faces="true"></div>
+	    <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="true" data-width="300" data-show-faces="true"></div>
 	    <h3></h3>
 
 	</div>
