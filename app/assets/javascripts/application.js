@@ -153,7 +153,8 @@
 	    })
 	});
 	
-	var vCenterTiles = function() {	    
+	var vCenterTiles = function() {
+            if ( !$(".home-tiles-container").length ) {return;}
 	    var cont = $(".home-tiles-container").addClass('position-animation');  
 	    
 	    if ($.isMobile()) {cont.attr('style', function(i,s) {return s + '; margin-top:0px !important; margin-bottom: 0px !important;'});return;}
@@ -170,7 +171,7 @@
 	
 	$('a').click(function(){
 	    var href = $(this).attr('href');
-
+            
  
 	    $('#giveinspirelove').load(href + " #giveinspirelove",function(){
 		$.GILready();
