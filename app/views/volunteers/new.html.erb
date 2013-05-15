@@ -1,3 +1,5 @@
+
+
 <%= render "shared/goback" %>
 <%
  	default_first_name = (current_user)? current_user.first_name : nil
@@ -23,10 +25,19 @@
 <div class="row blimit-top blimit cascade">
     <div class="large-12 columns cascade-single">
 	<h2><%= @volunteer_need.name%></h2>
+
 	<h3 class="slimit"><%= @volunteer_need.description %></h3>	  
     </div>
+
+    <div class="large-12 columns">
+	<div>	
+	    <p class="slimit">
+
+	    	<%= "#{@volunteer_need.start_date.strftime('%A %B %d at %I:%M %p')} to #{@volunteer_need.end_date.strftime('%A %B %d at %I:%M %p')}" %>
+	    </p>
+	</div>
+    </div>
  
-    <%= hidden_field :volunteer, :volunteer_need_id, :value=> @volunteer_need.id %>
 
     <div class="large-12 columns">
 	<div>	
@@ -61,6 +72,7 @@
 
     <div class="large-6 columns">
 	<div>
+		<%= hidden_field :volunteer, :volunteer_need_id, :value=> @volunteer_need.id %>
 	    <%= f.submit "Volunteer",:class => "animation-color button-submit cascade-single right"  %>
 	    
 	</div>

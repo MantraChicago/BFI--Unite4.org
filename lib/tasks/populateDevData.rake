@@ -5,6 +5,7 @@ task :populateDevData => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :is_featured =>true,
+							   :twitter_handle => 'PETA',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933" })
 
 	cause2 = Cause.find_or_create_by_name("AIDS Foundation")
@@ -12,6 +13,7 @@ task :populateDevData => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :is_featured =>true,
+							   :twitter_handle =>'AIDS',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })
 
 	cause3 = Cause.find_or_create_by_name("Habitat for Humanity")
@@ -19,6 +21,7 @@ task :populateDevData => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :is_featured =>true,
+							   :twitter_handle => 'Habitat',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })
 
 	location1= Location.find_or_create_by_name("ABC school")
@@ -74,10 +77,16 @@ task :populateDevData => [:environment, 'db:seed'] do
 
 	need5= VolunteerNeed.find_or_create_by_name("We need a programmer")
 	need5.update_attributes({:cause_id => cause3.id, 
+							 :address => '123 N. State st. Chicago, IL',
+							 :start_date => '2013-05-13 21:01:20.900349',
+							 :end_date => '2013-05-14 21:01:20.900349',
 							 :description=> 'Programmer'	 })
 
 	need6= VolunteerNeed.find_or_create_by_name("We need a driver")
 	need6.update_attributes({:cause_id => cause2.id, 
+		 					 :address => '123 N. State st. Chicago, IL',
+		 					 :start_date => '2013-05-13 21:01:20.900349',
+							 :end_date => '2013-05-14 21:01:20.900349',
 							 :description=> 'Driver'	 })
 
 	puts "Development data loaded"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515194902) do
+ActiveRecord::Schema.define(:version => 20130515202234) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -189,10 +189,12 @@ ActiveRecord::Schema.define(:version => 20130515194902) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "volunteer_needs", :force => true do |t|
-    t.integer "cause_id"
-    t.text    "description"
-    t.string  "name"
-    t.string  "address"
+    t.integer  "cause_id"
+    t.text     "description"
+    t.string   "name"
+    t.string   "address"
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
   create_table "volunteers", :force => true do |t|

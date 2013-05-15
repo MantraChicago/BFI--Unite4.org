@@ -278,7 +278,7 @@
 .map-corner-logo {
     position:fixed;
     top:40px;
-    left:40px;
+    left:80px;
     z-index: 2;
     background-color: #fff;
     padding:20px;
