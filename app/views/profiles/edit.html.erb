@@ -1,50 +1,23 @@
-
 <%= render "shared/goback" %>
 <%= form_for(@user, :url => '', :html => { :multipart => true } ) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
 <div class="row blimit-top blimit cascade">
     <div class="large-12 columns cascade-single">
 	<h2>Edit your profile</h2>
 	<h3 class="slimit">Tell us about you</h3>	  
     </div>
-
+<% if @user.errors.any? %>
 <div class="large-12 columns">
-    <h3></h3>
+    <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
 
     <ul class="slimit">
-	
-        <li></li>
-	
+	<% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+	<% end %>
     </ul>
 </div>
-
-    
-	   
+<% end %>	   
     <div class="large-6 columns">
 	<div>
 
@@ -53,12 +26,12 @@
 
 	<div>
 
-	    <%= text_field(:user, :last_name,:placeholder => "email", :class => "animation-color cascade-single") %>
+	    <%= text_field(:user, :last_name,:placeholder => "last name", :class => "animation-color cascade-single") %>
 	</div>
 
 	<div>
 
-	    <%= text_field(:user, :email,:placeholder => "phone number", :class => "animation-color cascade-single") %>
+	    <%= text_field(:user, :email,:placeholder => "email", :class => "animation-color cascade-single") %>
 	</div>	 
 	<div>
 

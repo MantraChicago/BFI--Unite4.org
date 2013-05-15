@@ -131,7 +131,7 @@ div {
   }
 }
 
-input[type=text],input[type=password],input[type=email],textarea {
+input[type=text],input[type=password],input[type=email],textarea, select {
   
   & {
     border: 5px solid #e3e3e3;
