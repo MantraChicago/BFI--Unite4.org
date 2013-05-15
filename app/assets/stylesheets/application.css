@@ -209,6 +209,9 @@
 .large-mlimit-left {
     padding-left: 35px !important;
 }
+.slimit-left {
+    margin-left: 10px;
+}
 
 @media only screen and (max-width: 48em), only screen and (max-height: 42em) {
     .small-static {
