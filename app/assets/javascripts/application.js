@@ -169,7 +169,7 @@
 	    vCenterTiles();
 	});
 	
-	$('a').click(function(){
+	/*$('a').click(function(){
 	    var href = $(this).attr('href');
             
  
@@ -179,7 +179,7 @@
 	    });
 	    
 	    return false;
-	})	
+	})*/	
     }
     
     $(document).ready(function(){	
