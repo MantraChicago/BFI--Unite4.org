@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515184426) do
+ActiveRecord::Schema.define(:version => 20130515194902) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20130515184426) do
     t.integer  "volunteer_need_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "email"
   end
 
 end

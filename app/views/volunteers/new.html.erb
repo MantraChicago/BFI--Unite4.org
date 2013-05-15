@@ -1,11 +1,12 @@
 <%= render "shared/goback" %>
-
+<%
+ 	default_first_name = (current_user)? current_user.first_name : nil
+ 	default_last_name = (current_user)? current_user.last_name : nil 
+ 	default_email = (current_user)? current_user.email : nil 
+%>
 
 <%= form_for(@volunteer ) do |f| %>
-	<%
-	 	default_first_name = (current_user)? current_user.first_name : nil
-	 	default_last_name = (current_user)? current_user.last_name : nil 
-	%>
+	
 
 	<% if @volunteer.errors.any? %>
 	    <div id="error_explanation">
@@ -50,6 +51,14 @@
 	    <%= text_field :volunteer, :phone_number, :placeholder => "phone number", :class => "animation-color cascade-single"%>
 	</div>
     </div> 
+
+    <div class="large-6 columns">
+	<div>
+	    
+	    <%= text_field :volunteer, :email, :value => default_email, :placeholder => "Email", :class => "animation-color cascade-single"%>
+	</div>
+    </div> 
+
     <div class="large-6 columns">
 	<div>
 	    <%= f.submit "Volunteer",:class => "animation-color button-submit cascade-single right"  %>
