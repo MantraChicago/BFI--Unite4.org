@@ -9,6 +9,8 @@ gem 'omniauth-facebook'
 
 gem "paperclip", "~> 2.7"
 
+gem 'customerio'
+
 gem 'activeadmin'
 gem "meta_search",    '>= 1.1.0.pre'
 # Bundle edge Rails instead:

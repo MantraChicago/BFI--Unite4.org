@@ -21,57 +21,29 @@
 	    }(document, 'script', 'facebook-jssdk'));</script>
 
 	    <% if flash[:notice] %>
-	    <div class="fs-bg">  
-		<div class="fs-message">
-		    <%= flash[:notice] %>
-		</div>
-	    </div>
+  	    <div class="fs-bg">  
+      		<div class="fs-message">
+      		    <%= flash[:notice] %>
+      		</div>
+  	    </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+        <div class="fs-bg">  
+          <div class="fs-message fs-message-alert">
+              <%= flash[:alert] %>
+          </div>
+        </div>
+      <% end %>
 
 
-
-	    <% end %>
 	    <% if flash[:error] %>
 	    <div class="error fs-message"><%= flash[:error] %></div>
 	    <% end %>
 	    <div class="hide-for-small"></div>
 	    <%= yield %>
 
-	    <script type="text/javascript">
-	    var _cio = _cio || [];
-	    (function() {
-		var a,b,c;a=function(f){return function(){_cio.push([f].
-			    concat(Array.prototype.slice.call(arguments,0)))}};b=["identify",
-		    "sidentify","track"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};
-		var t = document.createElement('script'),
-		s = document.getElementsByTagName('script')[0];
-		t.async = true;
-		t.id    = 'cio-tracker';
-		t.setAttribute('data-site-id', 'ada058e0651fd45712ee');
-		t.src = 'https://assets.customer.io/assets/track.js';
-		s.parentNode.insertBefore(t, s);
-	    })();
-	    </script>
-
-<%
-  cioId= (current_user)? current_user.id : "none" 
-  cioEmail=(current_user)? current_user.email : "none" 
-  cioCreatedAt=(current_user)? current_user.created_at : "none" 
-  cioFirstName=(current_user)? current_user.first_name : "none" 
-%>
-
-	    <script type="text/javascript">
-	    _cio.identify({
-  		// Required attributes
-  		id: '<%= cioId %>',           // Unique id for the currently signed in user in your application.
-  		email: '<%= cioEmail %>', // Email of the currently signed in user.
-  		created_at: '<%= cioCreatedAt %>',   // Timestamp in your system that represents when
-  		// the user first signed up. You'll want to send it
-  		// as seconds since the epoch.
-
-  		first_name: '<%= cioFirstName %>',       // Add any attributes you'd like to use in the email subject or body.
-  		//plan_name: 'premium'      // To use the example segments, set this to 'free' or 'premium'.
-	    });
-	    </script>
+	    <%= render "shared/js_snippits"%>
 	</div>
     </body>
 </html>

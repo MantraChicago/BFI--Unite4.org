@@ -3,4 +3,6 @@ class Volunteer < ActiveRecord::Base
    has_one :volunteer_need
 
    validates :first_name, :last_name, :presence => true
+
+    
 end

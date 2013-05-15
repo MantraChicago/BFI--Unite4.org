@@ -1,0 +1,35 @@
+<% money_amount={'$5' => '5','$10'=>'10'} %>
+
+<%= form_for(@donation ) do |f| %>
+
+<div class="row blimit-top blimit cascade">
+    <div class="large-12 columns cascade-single">
+	<h2>Give money</h2>
+	<h3 class="slimit">Every little bit counts</h3>	  
+    </div>
+
+    <div class="large-6 columns">
+	<div>
+	    <h3>Donation amount</h3>
+	    <%= select(:donation, :amount, money_amount,:class => "animation-color cascade-single right") %>
+	</div>
+
+
+    </div>
+    <div class="large-6 columns">
+
+	<div>
+	    <h3>Tip amount</h3>
+	    <%= select(:donation, :tip, money_amount,:class => "animation-color cascade-single right") %>
+	</div>
+
+	<div>
+		<%= hidden_field :donation, :donations_need_id, :value=> @donation_need.id %>
+
+	    <%= f.submit "Donate",:class => "animation-color button-submit cascade-single right"  %>
+	</div>
+
+    </div>
+</div>
+
+<% end %>

@@ -1,0 +1,1 @@
+$customerio = Customerio::Client.new("ada058e0651fd45712ee", "f271b754ff8348b9bd7e")

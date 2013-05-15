@@ -15,6 +15,18 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :presence => true
 
+  after_create do
+    $customerio.identify(
+      :id => self.id,
+      :email => self.email,
+      :created_at => self.created_at.to_i,
+      :first_name => self.first_name
+    )
+  end
+
+  after_destroy do
+    $customerio.delete(self.id)
+  end
 
   def display_name
   	first_name+' '+last_name

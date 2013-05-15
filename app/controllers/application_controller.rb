@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-
   def getRecentNeeds
 
    		allNeeds=[]
@@ -13,6 +12,8 @@ class ApplicationController < ActionController::Base
    		end
    		allNeeds
 
-  	
   end
+
+  
+
 end

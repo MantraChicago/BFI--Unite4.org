@@ -3,8 +3,13 @@ Follow Causes
 
 <% for cause in Cause.find(:all) %>
 <div>
-  <%= check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) %>
-  <%= cause.name %>
+  <% causeFollowId= "causeFollow#{cause.id}" %>
+  <%= check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause), :id => causeFollowId %>
+  <label for="<%= causeFollowId %>">
+    <span class="animation-color"></span><%= cause.name %>
+</label>
+
+
 </div>
 <% end %>
 

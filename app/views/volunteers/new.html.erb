@@ -19,11 +19,6 @@
 	    </div>
 	  <% end %>
 
-
-
-
-
-
 <div class="row blimit-top blimit cascade">
     <div class="large-12 columns cascade-single">
 	<h2><%= @volunteer_need.name%></h2>
@@ -33,8 +28,7 @@
     <%= hidden_field :volunteer, :volunteer_need_id, :value=> @volunteer_need.id %>
 
     <div class="large-12 columns">
-	<div>
-	    <h3>Address:</h3>
+	<div>	
 	    <p class="slimit"><%= @volunteer_need.address %></p>
 	</div>
     </div> 

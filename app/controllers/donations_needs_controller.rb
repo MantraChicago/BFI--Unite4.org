@@ -2,7 +2,7 @@ class DonationsNeedsController < ApplicationController
 
 	def show
 		
-		@donation=Donation.new
+		@donations_need=DonationsNeed.find(params[:id])
 	end
 
 	

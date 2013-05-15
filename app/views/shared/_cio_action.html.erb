@@ -1,0 +1,7 @@
+<% 
+	j = ActiveSupport::JSON
+	properties = (properties)? j.encode properties : '{}' 
+%>
+<script type="text/javascript">
+  _cio.track("<%= action %>", <%= properties %>);
+</script>
