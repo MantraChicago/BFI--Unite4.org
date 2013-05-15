@@ -17,7 +17,7 @@
 
 	<div class="home-tile-single tile-2-2 small-height-auto">
 	    <h2 class="slimit">Immediate Needs</h2>
-	    <ul>
+	    <ul class="high-list">
 	    	<% @recent_needs.each do |need| %>
 	    		<li><%= link_to need.name, need %></li>
 	    	<% end %>
@@ -26,7 +26,7 @@
 	</div>
 	<div class="home-tile-single tile-2-2 small-height-auto">	     	
 	    <h2 class="slimit">New Causes</h2>
-	    <ul>
+	    <ul class="high-list">
 		<% @new_causes.each do |cause| %>
 		<li><%= link_to cause.name, cause %></li>
 

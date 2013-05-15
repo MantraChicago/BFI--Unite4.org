@@ -213,6 +213,10 @@
     margin-left: 10px;
 }
 
+.high-list li {
+    line-height: 2em;
+}
+
 @media only screen and (max-width: 48em), only screen and (max-height: 42em) {
     .small-static {
 	position: static !important;
