@@ -131,14 +131,16 @@ div {
   }
 }
 
-input[type=text],input[type=password],input[type=email] {
+input[type=text],input[type=password],input[type=email],textarea {
   
   & {
     border: 5px solid #e3e3e3;
     padding: 14px 17px 14px 17px;
     outline: none;
     width:100%;
+    max-width: 100%;
     margin-bottom: 1em;
+    max-height: 200px;
   }
   &:focus {
     border-color: #d2d2d2;

@@ -4,11 +4,14 @@
     <div class="home-tiles-group">
 	
 	<div class="home-tile-single tile-2-2 nopadding" style="background: url(<%= @user.avatar.url%>) center;background-size: cover"></div>
-	<div class="home-tile-single tile-2-2 text-center">
+	<div class="home-tile-single tile-2-2 text-center small-height-auto">
+	    <div class="mlimit mlimit-top">
 	    <h2>AMBASSADOR LEVEL</h2>
-	    <h1 class="big-number"><%= @user.level%></h1>
+	    <h1 class="big-number"><%= @user.level%></h1>		
+	    </div>
+
 	</div>	
-	<div class="home-tile-single tile-4-4">
+	<div class="home-tile-single tile-4-4 small-height-auto">
 	    <h2><%= @user.display_name %></h2>
 	    <h4 class="mlimit secondary">Chicago, IL</h4>
 	    <%= link_to "Edit", profiles_edit_path %>
@@ -22,7 +25,7 @@
     <div class="home-tiles-group">
 
     <% @featured_causes.each do |cause| %>
-	<div class="home-tile-single tile-2-2 nopadding">
+	<div class="home-tile-single tile-2-2 nopadding  small-height-auto">
 	    <%= link_to image_tag(cause.picture.url, :alt => "Rails") %>
 	   
 	    
