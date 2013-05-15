@@ -52,17 +52,24 @@
 	    })();
 	    </script>
 
+<%
+  cioId= (current_user)? current_user.id : "none" 
+  cioEmail=(current_user)? current_user.email : "none" 
+  cioCreatedAt=(current_user)? current_user.created_at : "none" 
+  cioFirstName=(current_user)? current_user.first_name : "none" 
+%>
+
 	    <script type="text/javascript">
 	    _cio.identify({
-		// Required attributes
-		id: <%= current_user.id%>,           // Unique id for the currently signed in user in your application.
-		email: '<%= current_user.email%>', // Email of the currently signed in user.
-		created_at: '<%= current_user.created_at%>',   // Timestamp in your system that represents when
-		// the user first signed up. You'll want to send it
-		// as seconds since the epoch.
+  		// Required attributes
+  		id: '<%= cioId %>',           // Unique id for the currently signed in user in your application.
+  		email: '<%= cioEmail %>', // Email of the currently signed in user.
+  		created_at: '<%= cioCreatedAt %>',   // Timestamp in your system that represents when
+  		// the user first signed up. You'll want to send it
+  		// as seconds since the epoch.
 
-		first_name: '<%= current_user.first_name%>',       // Add any attributes you'd like to use in the email subject or body.
-		//plan_name: 'premium'      // To use the example segments, set this to 'free' or 'premium'.
+  		first_name: '<%= cioFirstName %>',       // Add any attributes you'd like to use in the email subject or body.
+  		//plan_name: 'premium'      // To use the example segments, set this to 'free' or 'premium'.
 	    });
 	    </script>
 	</div>
