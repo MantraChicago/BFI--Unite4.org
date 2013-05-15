@@ -11,6 +11,10 @@
  *= require_self
  *= require_tree .
 */
+
+#giveinspirelove {
+    height: 100%;
+}
 .button-submit {
     border-radius: 5px;
     background-color: #399a98;
