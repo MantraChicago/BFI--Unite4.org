@@ -2,6 +2,6 @@
 
 
 To populate development data run
-```bash
+```
 $ rake populateDevData
 ```
