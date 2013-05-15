@@ -1,25 +1,21 @@
 <div class="">
-<div class="row fullwidth slimit-top">
-    <div class="large-2 columns text-left logo-column">
+<div class="row fullwidth mlimit-top large-mlimit-left">
+    <div class="large-3 small-12 columns text-left logo-column">
 	<h2><%= link_to image_tag("logo.png", :alt =>  "Rails"), root_url  %></h2>
     </div> 
-    <div class="large-2 small-4 columns">
+    <div class="large-3 small-4 columns main-header-single">
 	<h2 class="cyan-text arial"><%= link_to 'Find', causes_path %></h2>
-	<p>
-	    Explore causes
-	</p>
+	<h3>Explore causes</h3>
     </div> 
-    <div class="large-2 small-4 columns">
+    <div class="large-3 small-4 columns main-header-single">
 	<h2 class="cyan-text arial"><%= link_to 'Add', new_cause_application_path %></h2>
-	<p>
-	    Your cause
-	</p>
+
+	<h3>Your cause</h3>
     </div>  
-    <div class="large-2 small-4 columns">
+    <div class="large-3 small-4 columns main-header-single">
 	<h2 class="cyan-text arial">News</h2>
-	<p>
-	    Only the good
-	</p>
+
+	<h3>Only the good</h3>
     </div> 
     <div class="large-4 columns">
 	<%= if user_signed_in? 

@@ -1,4 +1,4 @@
-<%= render "devise/shared/goback" %>
+<%= render "shared/goback" %>
 
 
 <div class="row blimit-top blimit cascade">
@@ -10,15 +10,17 @@
     
 
     <div class="large-6 columns">
-	<div>
+	<div class="cascade-single">
 	    <h3>Address</h3>
 	    <%= @volunteer_need.address %>
 	</div>
     </div> <div class="large-6 columns">
 	<div>
 
-	    <%= link_to "Sign up", new_volunteer_path({:volunteer_need_id=>@volunteer_need.id}) %>
+	    <%= link_to "Sign up", new_volunteer_path({:volunteer_need_id=>@volunteer_need.id}),:class => 'animation-color button-submit cascade-single' %>
 	</div>
     </div>
 
 </div>
+
+<%= render "shared/footer" %>

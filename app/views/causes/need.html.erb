@@ -1,6 +1,6 @@
 
 
-<%= render "devise/shared/goback" %>
+<%= render "shared/goback" %>
 
 
 <div class="row blimit-top blimit cascade">
@@ -11,7 +11,7 @@
 <% @allNeeds.each do |needs|
 	for need in needs%>
 	<div class="large-6 columns cascade-single">
-	    <div class="action-button animation-color"><%= link_to need.name, need %></div>
+	    <div class="action-button animation-color slimit"><%= link_to need.name, need %></div>
 	</div>
 
 
@@ -20,3 +20,5 @@
 end %>
     
 </div>
+
+<%= render "shared/footer" %>

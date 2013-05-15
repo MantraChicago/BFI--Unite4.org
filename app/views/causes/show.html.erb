@@ -1,18 +1,18 @@
-<%= render "devise/shared/mainheader" %>
-<%= render "devise/shared/uppernotice" %>
+<%= render "shared/mainheader" %>
+<%= render "shared/uppernotice" %>
 
 
 <br/>
 
 
-<div class="home-tiles-container mlimit-top columns">
+<div class="home-tiles-container mlimit-top">
     <div class="home-tiles-group">
 
 	<div class="home-tile-single tile-16-10 nopadding">
 	    <iframe src="http://player.vimeo.com/video/27882235?color=ff9933" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> 
 	</div>
 
-	<div class="home-tile-single tile-3-4">
+	<div class="home-tile-single tile-3-4 small-height-auto">
 	    <h1><%= @cause.name %></h1>
 	    <h4 class="mlimit secondary"><%= "#{@cause.city}, #{@cause.state}" %></h4>
 
@@ -38,5 +38,5 @@
 <div>
 
 </div>
-<%= render "devise/shared/mainfooter" %>
+<%= render "shared/mainfooter" %>
 

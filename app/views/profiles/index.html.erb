@@ -1,6 +1,6 @@
-<%= render "devise/shared/mainheader" %>
+<%= render "shared/mainheader" %>
 
-<div class="home-tiles-container mlimit-top columns">
+<div class="home-tiles-container mlimit-top">
     <div class="home-tiles-group">
 	
 	<div class="home-tile-single tile-2-2 nopadding" style="background: url(<%= @user.avatar.url%>) center;background-size: cover"></div>
@@ -31,7 +31,7 @@
 		<h4 class="tertiary"><%= "#{cause.city}, #{cause.state}" %></h4>
 	    </div>
 	    
-	    <%= render "devise/shared/tilebutton" %>
+	    <%= render "shared/tilebutton" %>
 	</div>
 	<% end %>
 
@@ -65,4 +65,4 @@
 <div>
     <%=  render "follow_form" %>
 </div>
-<%= render "devise/shared/mainfooter" %>
+<%= render "shared/mainfooter" %>

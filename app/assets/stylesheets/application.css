@@ -92,11 +92,11 @@
     opacity: 0.4;
 }
 .fs-bg{
-position: fixed;
-width: 100%;
-z-index: 999;
-top: 0; bottom: 0;
-background-color: rgba(240,240,240,0.6);
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    top: 0; bottom: 0;
+    background-color: rgba(240,240,240,0.6);
 }
 .fs-message {
     box-shadow: 0 0 40px #aaa;
@@ -115,6 +115,8 @@ background-color: rgba(240,240,240,0.6);
 .home-tiles-container{
     white-space: nowrap;
     min-width: 320px;
+    padding-left: 35px;
+
 }
 .home-tiles-container *{
     white-space: normal;
@@ -123,6 +125,7 @@ background-color: rgba(240,240,240,0.6);
     height:600px;
     display: inline-block;
     margin-right: 40px;
+    padding-left: 0.9375em;
 }
 .home-tile-single{
     width:128px;
@@ -133,7 +136,7 @@ background-color: rgba(240,240,240,0.6);
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    
+
 }
 
 .home-tile-single .bottom-panel {
@@ -203,6 +206,9 @@ background-color: rgba(240,240,240,0.6);
 .bold {
     font-weight: 700;
 }
+.large-mlimit-left {
+    padding-left: 35px !important;
+}
 
 @media only screen and (max-width: 48em), only screen and (max-height: 42em) {
     .small-static {
@@ -216,18 +222,29 @@ background-color: rgba(240,240,240,0.6);
     }
     .home-tiles-container{
 	white-space: normal !important;
+	padding-left: 0;
     }
     .home-tiles-group{
 	height: auto !important;
 	width: auto !important;
 	display: block !important;
 	margin-right: 0;
-	
+
     }
     .hide-for-small {display: none !important;}
     .small-height-auto {
 	height: auto !important;
     }
+    .large-mlimit-left {
+	padding-left: 0 !important;
+    }
+    .logo-column {
+	max-width: none !important;
+    }
+
+    .main-header-single {
+	max-width: none !important;
+    }    
 }
 
 .big-number {
@@ -264,7 +281,7 @@ background-color: rgba(240,240,240,0.6);
     line-height: 42px;
     padding-left:20px;
     display: block;
-    
+
 }
 
 .filterHolder li {
@@ -307,7 +324,7 @@ background-color: rgba(240,240,240,0.6);
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
-	
+
 }
 .pink-big-button a {
     color: #fff;
@@ -342,6 +359,15 @@ background-color: rgba(240,240,240,0.6);
 }
 
 .logo-column {
-    max-width: 160px;
+    max-width: 200px;
     min-height: 104px;
+}
+
+.main-header-single {
+    padding-top: 20px;
+    max-width: 200px;
+}
+.main-header-single h2 {
+    font-size: 23pt;
+    line-height: 1em;
 }
