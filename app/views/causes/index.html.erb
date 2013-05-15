@@ -35,13 +35,11 @@
 
     var goodCollection=parseObjIntoModels(goodNeedsObj, Backbone.Model.extend({
 	name:'good_needs'
-    })
-)
+    }))
 
     var volunteerCollection=parseObjIntoModels(volunteerNeedsObj, Backbone.Model.extend({
 	name:'volunteer_needs'
-    })
-)
+    }))
 
 
     var map =createGoogleMap($('#map-canvas')[0])
