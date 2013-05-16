@@ -18,7 +18,7 @@
 .button-submit,.cyan-button {
     border-radius: 5px;
     background-color: #399a98;
-    padding: 15px 35px 15px 35px;
+    padding: 19px 35px 19px 35px;
     color: #fff;
     font-family: Arial;
     font-weight: 700;
@@ -151,6 +151,10 @@
     background-size: cover;
     background-position: center;
 
+}
+.home-tile-single.blank {
+    border: 0;
+    background: none;
 }
 
 .home-tile-single .bottom-panel {
@@ -334,6 +338,10 @@
 .cyan-text {
     color: #399a98;
 }
+.cyan-bg {
+    background-color: #399a98;
+    color: #fff;
+}
 .yellow-text {
     color: #f49234;
 }
@@ -423,7 +431,7 @@
 }
 .tile-header-image {    
     
-    height: 30%;
+    height: 45%;
     width: 100%;
     background-size: cover;
     background-position: center;
