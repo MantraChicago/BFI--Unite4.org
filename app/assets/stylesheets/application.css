@@ -20,6 +20,8 @@
     background-color: #399a98;
     padding: 15px 35px 15px 35px;
     color: #fff;
+    font-family: Arial;
+    font-weight: 700;
     display: inline-block;
     cursor:pointer;
 }
@@ -221,8 +223,22 @@
 .large-mlimit-left {
     padding-left: 35px !important;
 }
+
 .slimit-left {
     margin-left: 10px;
+}
+.slimit-right {
+    margin-right: 10px;
+}
+.need-icon {
+    vertical-align: middle;
+    margin-right: 20px;
+}
+.cboth {
+    clear:both;
+}
+.donation-select  {
+    max-width: 200px;
 }
 
 .high-list li {
@@ -294,7 +310,7 @@
     }
     .toggle-map {
 	background: url(ui/map-list-bg.gif) repeat-x;
-	
+	cursor: pointer;
 	height: 42px;
 	width: 42px;	
 	padding: 13px;
@@ -306,7 +322,9 @@
 	border-bottom-left-radius: 5px;
     }
 }
-
+#goback, #goback * {
+    color: #4e4e4e;
+}
 .big-number {
     font-size: 100pt;
     line-height: 1em;
@@ -411,7 +429,7 @@
 
 .action-button {
     background-color: #fff;
-    color:#000;
+    color:#4e4e4e;
     padding: 20px;
     border: 5px solid #e3e3e3;
     font-weight: 700;    
