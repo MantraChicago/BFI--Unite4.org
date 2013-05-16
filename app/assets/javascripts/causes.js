@@ -113,11 +113,32 @@ var populateMapMarkers=function(map,locations){
         
         google.maps.event.addListener(marker, 'click', function() {
             var self=this
-            var infowindow = new google.maps.InfoWindow({
+            
+
+                
+        var boxText =  document.getElementById('cause-single-window');
+         
+        
+        var myOptions = {
+                 content: boxText
+                ,disableAutoPan: false
+		,boxClass : 'map-infobox'                
+                ,pixelOffset: new google.maps.Size(-40, 0)               
+                ,closeBoxMargin: "10px 2px 2px 2px"
+                ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
+                ,infoBoxClearance: new google.maps.Size(1, 1)                
+                ,pane: "floatPane"
+                
+        };
+
+        var ib = new InfoBox(myOptions);
+        ib.open(map, marker);
+	
+	    /*var infowindow = new google.maps.InfoWindow({
                 content:self.user_content
             });
 
-          infowindow.open(map,this);
+          infowindow.open(map,this);*/
         });
 	    
 	}

@@ -221,7 +221,7 @@
     background-color: #dfdfdf;
 }
 .nopadding {
-    padding: 0;
+    padding: 0 !important;
 }
 
 
@@ -488,4 +488,21 @@ select {
 }
 .user-manager a {
     color: #fff;
+}
+
+.map-infobox {
+    position: absolute;
+    background: #fff !important;
+    width: 740px !important;
+    padding: 20px !important;
+}
+.map-infobox > div {
+    background: none !important;
+    border: none !important;
+    padding: 20px !important;
+    
+}
+
+.cause-single-window {
+    padding: 20px;
 }
