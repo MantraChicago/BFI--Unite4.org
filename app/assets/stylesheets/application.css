@@ -230,9 +230,7 @@
 }
 
 @media only screen and (max-width: 48em), only screen and (max-height: 42em) {
-    body {
-	margin-top: 55px !important;
-    }
+
     .small-static {
 	position: static !important;
     }
@@ -274,6 +272,38 @@
     .row,.home-tiles-container {
 	max-width: 700px !important;
 	margin: auto;
+    }
+    .row.fullwidth {
+	max-width: 100% !important;
+    }
+}
+.toggle-map {
+    display: none;
+}
+
+@media only screen and (max-width: 48em) {
+    .map-menu {
+	position: fixed !important;
+	left: 100%;
+    }
+    .menu-visible {
+	left: 0 !important;
+    }
+    .map-corner-logo {
+	left: 20px;	
+    }
+    .toggle-map {
+	background: url(ui/map-list-bg.gif) repeat-x;
+	
+	height: 42px;
+	width: 42px;	
+	padding: 13px;
+	display: block;
+	position: fixed;
+	top:0;
+	right: 0;
+	z-index: 999;
+	border-bottom-left-radius: 5px;
     }
 }
 
