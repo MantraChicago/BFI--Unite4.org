@@ -6,25 +6,29 @@
 
 <div class="row blimit-top blimit cascade">
     <div class="large-12 columns cascade-single">
-	<h2>Give money</h2>
-	<h3 class="slimit">Every little bit counts</h3>	  
+	<h2 class="slimit">Tell us how much you would like to donate.</h2>
+	<h3>100% of your donation will go directly to the Chicago African Education Foundation.</h3>	
+	<h4 class="slimit">GiveInspireLove is a 501(c)3 organization, which means that your donations are tax deductable.  </h4>
     </div>
 
-    <div class="large-6 columns">
-	<div>
-	    <h3>Donation amount</h3>
-	    <%= select(:donation, :amount, money_amount,:class => "animation-color cascade-single right") %>
+    <div class="large-9 columns left cboth">
+	<div>	    
+	    <div class="large-3"><%= select(:donation, :amount, money_amount,:class => "animation-color cascade-single right") %></div>
 	</div>
 
 
     </div>
-    <div class="large-6 columns">
+    <div class="large-9 columns left cboth">
 
 	<div>
-	    <h3>Tip amount</h3>
-	    <%= select(:donation, :tip, money_amount,:class => "animation-color cascade-single right") %>
+	    <h2>Give an optional tip for Give Inspire Love.</h2>
+	    <h3 class="slimit">Help our organization grow. Your donation will directly help us support many more causes in the future.</h3>
+	    <div class="large-3"><%= select(:donation, :tip, money_amount,:class => "animation-color cascade-single right") %></div>
 	</div>
-
+	<div>
+	    <h2>Total: 27$</h2>
+	    <h3>We currently only accept payments using Credit Cards with a US billing address</h3>
+	</div>
 	<div>
 		<%= hidden_field :donation, :donations_need_id, :value=> @donation_need.id %>
 

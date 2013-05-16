@@ -176,6 +176,10 @@
 	    });
 	})
 	
+	$('.toggle-map').click(function(){
+	    $('.map-menu').toggleClass('menu-visible');
+	})
+	
 	/*$('a').click(function(){
 	    var href = $(this).attr('href');
             
