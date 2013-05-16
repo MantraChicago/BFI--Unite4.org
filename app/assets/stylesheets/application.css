@@ -250,10 +250,13 @@
 	margin-right: 0;
 
     }
-    
+    .tile-header-image {
+	min-height: 250px;
+    }
     .ismobileflag {display: none !important;}
     .small-height-auto {
 	height: auto !important;
+	min-height: 200px;
     }
     .large-mlimit-left {
 	padding-left: 0 !important;
@@ -365,8 +368,8 @@
 .tile-small-button a {
     color: #fff;
 }
-.tile-header-image {
-    max-height: 30%;
+.tile-header-image {    
+    
     height: 30%;
     width: 100%;
     background-size: cover;
