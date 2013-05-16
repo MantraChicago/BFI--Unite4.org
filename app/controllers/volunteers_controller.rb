@@ -1,7 +1,7 @@
 class VolunteersController < ApplicationController
 	def new
 		if not current_user
-			#session["user_return_to"]='abc'
+			session["user_return_to"] = request.url
 			redirect_to new_user_registration_path, :notice => "You need to have an account to be a volunteer." 
 		end
 		@volunteer_need=VolunteerNeed.find(params[:volunteer_need_id])
