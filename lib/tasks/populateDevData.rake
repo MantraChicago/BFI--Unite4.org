@@ -1,5 +1,6 @@
 task :createActiveAdminUser => [:environment] do
 	AdminUser.create :email => 'eddie@meetmantra.com', :password => 'letmein'
+	puts "Active Admin user created"
 end
 
 
