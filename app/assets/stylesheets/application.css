@@ -378,19 +378,17 @@
 
 .action-button {
     background-color: #fff;
+    color:#000;
     padding: 20px;
     border: 5px solid #e3e3e3;
     font-weight: 700;    
 }
-.action-button a {
-    color: #000;
-}
+
 .action-button:hover {
     background-color: #399a98;
+    color:#fff;;
 }
-.action-button:hover a {
-    color: #fff;
-}
+
 
 .logo-column {
     max-width: 200px;

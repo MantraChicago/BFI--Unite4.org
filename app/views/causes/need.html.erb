@@ -11,8 +11,12 @@
 <% @allNeeds.each do |needs|
 	for need in needs%>
 	<div class="large-6 columns cascade-single left">
-	    <div class="action-button animation-color slimit"><%= link_to need.name, need %></div>
+	    
+	    <%= link_to need do %>
+	    <div class="action-button animation-color slimit"><%= need.name %></div>
+	    <% end %>
 	</div>
+	
 
 
 
