@@ -6,7 +6,7 @@
 
 
     <% cause= @featured_causes.pop  %>
-
+    <% if cause %>
 	<div class="home-tile-single tile-4-2 nopadding" style="background-image: url(<%= cause.picture.url %>);">
 	    <div class="bottom-panel">		 
 		<h4 class="tertiary">FEATURED CAUSE</h4>
@@ -14,7 +14,7 @@
 		<div class="tile-small-button right arial"><%= link_to "TAKE ACTION", cause%></div>
 	    </div>
 	</div>
-
+	<% end %>
 
 	<div class="home-tile-single tile-2-2 small-height-auto">
 	    <h2 class="slimit">Immediate Needs</h2>
