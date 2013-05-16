@@ -230,6 +230,9 @@
 }
 
 @media only screen and (max-width: 48em), only screen and (max-height: 42em) {
+    body {
+	margin-top: 55px !important;
+    }
     .small-static {
 	position: static !important;
     }
@@ -409,4 +412,18 @@ select {
    font-size: inherit;   
    -webkit-appearance: none;
    background: url(/assets/ui/dropdown.png) no-repeat 97% center #fff;
+}
+
+.user-manager {
+    position: fixed;
+    background-color: #399a98;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    top:0;
+    right:30px;
+    padding:10px 20px 10px 20px;
+    color: #fff;
+}
+.user-manager a {
+    color: #fff;
 }
