@@ -169,6 +169,13 @@
 	    vCenterTiles();
 	});
 	
+	$('.follow-cause').click(function(){
+	    $(this).parents('.home-tile-single').delay(500).fadeOut(300,function(){
+		$(this).remove();
+		$('.isotope').isotope('reLayout');
+	    });
+	})
+	
 	/*$('a').click(function(){
 	    var href = $(this).attr('href');
             
