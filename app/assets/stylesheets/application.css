@@ -246,7 +246,8 @@
 	margin-right: 0;
 
     }
-    .hide-for-small {display: none !important;}
+    
+    .ismobileflag {display: none !important;}
     .small-height-auto {
 	height: auto !important;
     }
@@ -259,7 +260,11 @@
 
     .main-header-single {
 	max-width: none !important;
-    }    
+    }
+    .row,.home-tiles-container {
+	max-width: 700px !important;
+	margin: auto;
+    }
 }
 
 .big-number {

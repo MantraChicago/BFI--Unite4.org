@@ -76,7 +76,7 @@
 	});
     }
     $.isMobile = function(){
-	return !$('.hide-for-small').eq(0).is(':visible');
+	return !$('.ismobileflag').eq(0).is(':visible');
     }
     
     $.fn.keepRatio = function(ratio) {
