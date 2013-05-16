@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
       :created_at => self.created_at.to_i,
       :first_name => self.first_name
     )
+    recordAction self.id, "New user"
   end
 
   after_destroy do

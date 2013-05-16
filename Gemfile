@@ -18,7 +18,9 @@ gem "meta_search",    '>= 1.1.0.pre'
 
 gem 'oauth'
 
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
+gem 'taps'
 
 gem 'json'
 
