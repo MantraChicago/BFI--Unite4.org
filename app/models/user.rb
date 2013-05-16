@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
-  validates :first_name, :last_name, :presence => true
 
   after_create do
     $customerio.identify(
@@ -22,7 +21,8 @@ class User < ActiveRecord::Base
       :created_at => self.created_at.to_i,
       :first_name => self.first_name
     )
-    recordAction self.id, "New user"
+
+    $customerio.track(self.id, "New user") 
   end
 
   after_destroy do

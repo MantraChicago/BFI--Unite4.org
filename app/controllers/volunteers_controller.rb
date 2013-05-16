@@ -1,5 +1,9 @@
 class VolunteersController < ApplicationController
 	def new
+		if not current_user
+			#session["user_return_to"]='abc'
+			redirect_to new_user_registration_path, :notice => "You need to have an account to be a volunteer." 
+		end
 		@volunteer_need=VolunteerNeed.find(params[:volunteer_need_id])
 		@volunteer=Volunteer.new
 
@@ -10,7 +14,7 @@ class VolunteersController < ApplicationController
 		@volunteer=Volunteer.new(params[:volunteer])
 		@volunteer_need=VolunteerNeed.find(params[:volunteer][:volunteer_need_id])
 		if @volunteer.save
-			recordAction("New volunteer")
+			recordAction("New volunteer", @volunteer.attributes)
 	      	redirect_to volunteer_need_path(@volunteer_need), :notice => "You have successfully applied to be a volunteer" 
 	    else
 	      

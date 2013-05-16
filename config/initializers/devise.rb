@@ -240,5 +240,5 @@ Devise.setup do |config|
 
   #https://github.com/plataformatec/devise/wiki/OmniAuth%3a-Overview
   require "omniauth-facebook"
-  config.omniauth :facebook, "APP_ID", "APP_SECRET"
+  config.omniauth :facebook, "145343622317172", "bd6476438158a450568b75e82b7a4304"
 end

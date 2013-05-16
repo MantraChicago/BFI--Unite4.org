@@ -10,9 +10,5 @@ module ApplicationHelper
 	  "Give Inspire Love"
 	end
 
-	def recordAction action, params={}
-		if current_user
-			$customerio.track(current_user.id, action, params) 
-		end   
-	end
+	
 end

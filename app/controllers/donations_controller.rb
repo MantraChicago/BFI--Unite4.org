@@ -7,7 +7,7 @@ class DonationsController < ApplicationController
 	def create
 		@donation=Donation.new( params[:donation])
 		if @donation.save
-	    	recordAction('New donation')
+	    	recordAction('New donation',@donation.attributes)
 		else
 			render :action => "new" 
 		end
