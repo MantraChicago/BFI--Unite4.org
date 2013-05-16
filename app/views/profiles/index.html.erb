@@ -14,7 +14,7 @@
 	<div class="home-tile-single tile-4-4 small-height-auto">
 	    <h2><%= @user.display_name %></h2>
 	    <h4 class="mlimit secondary">Chicago, IL</h4>
-	    <%= link_to "Edit", profiles_edit_path %>
+	    <div class="cyan-button"><%= link_to "Edit profile", profiles_edit_path %></div>
 	    <h3><%= @user.bio%></h3>
 	    <h2 class="yellow-text mlimit-top">Ways <%= @user.first_name %> has helped</h2>
 
@@ -26,10 +26,11 @@
 
     <% @featured_causes.each do |cause| %>
 	<div class="home-tile-single tile-2-2 nopadding  small-height-auto">
-	    <%= link_to image_tag(cause.picture.url, :alt => "Rails") %>
+	    <div class="tile-header-image slimit" style="background-image: url(<%= cause.picture.url %>);"></div>
+	    
 	   
 	    
-	    <div class="columns">
+	    <div class="columns blimit">
 		<h3 class="bold"><%= cause.name %></h3>
 		<h4 class="tertiary"><%= "#{cause.city}, #{cause.state}" %></h4>
 	    </div>
@@ -41,21 +42,25 @@
 	
     </div>
     <div class="home-tiles-group">
-
-	<div class="home-tile-single tile-4-2"></div>
-	<div class="home-tile-single tile-2-2"></div>
-	<div class="home-tile-single tile-2-2"></div>
-	<div class="home-tile-single tile-2-2"></div>	
-    </div>
-     <div class="home-tiles-group">
-
-	<div class="home-tile-single tile-2-1"></div>
-	<div class="home-tile-single tile-2-1"></div>
-	<div class="home-tile-single tile-2-1"></div>
+	<% for cause in Cause.find(:all) %>
 	
-	<div class="home-tile-single tile-2-2"></div>
-	<div class="home-tile-single tile-2-2"></div>	
-    </div> 
+	<div class="home-tile-single tile-2-2 nopadding small-height-auto" cause-id="<%= cause.id %>">
+	    <div class="tile-header-image slimit" style="background-image: url(<%= cause.picture.url %>);"></div>
+	    
+	    <div class="columns blimit">
+		<h3 class="bold"><%= cause.name %></h3>
+		<h4 class="tertiary"><%= "#{cause.city}, #{cause.state}" %></h4>
+	    </div>
+	    
+	    
+	    
+            <%= render "shared/tilebutton-follow" %>
+
+	</div>
+	<% end %>
+
+    </div>
+
 	
     
   
@@ -66,6 +71,11 @@
 
 
 <div>
-    <%=  render "follow_form" %>
+
+ 
+
+
+
+
 </div>
 <%= render "shared/mainfooter" %>

@@ -40,7 +40,7 @@
 	    <% if flash[:error] %>
 	    <div class="error fs-message"><%= flash[:error] %></div>
 	    <% end %>
-	    <div class="hide-for-small"></div>
+	    <div class="ismobileflag"></div>
 	    <%= yield %>
 
 	    <%= render "shared/js_snippits"%>

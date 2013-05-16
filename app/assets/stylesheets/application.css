@@ -15,12 +15,16 @@
 #giveinspirelove {
     height: 100%;
 }
-.button-submit {
+.button-submit,.cyan-button {
     border-radius: 5px;
     background-color: #399a98;
     padding: 15px 35px 15px 35px;
     color: #fff;
+    display: inline-block;
     cursor:pointer;
+}
+.button-submit a,.cyan-button a{
+    color: #fff;
 }
 .button-submit:hover{
     background-color: #2e8987;
@@ -246,9 +250,13 @@
 	margin-right: 0;
 
     }
-    .hide-for-small {display: none !important;}
+    .tile-header-image {
+	min-height: 250px;
+    }
+    .ismobileflag {display: none !important;}
     .small-height-auto {
 	height: auto !important;
+	min-height: 200px;
     }
     .large-mlimit-left {
 	padding-left: 0 !important;
@@ -259,7 +267,11 @@
 
     .main-header-single {
 	max-width: none !important;
-    }    
+    }
+    .row,.home-tiles-container {
+	max-width: 700px !important;
+	margin: auto;
+    }
 }
 
 .big-number {
@@ -356,6 +368,13 @@
 .tile-small-button a {
     color: #fff;
 }
+.tile-header-image {    
+    
+    height: 30%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
 
 .action-button {
     background-color: #fff;
@@ -385,4 +404,11 @@
 .main-header-single h2 {
     font-size: 23pt;
     line-height: 1em;
+}
+
+select {
+   font-family: inherit;
+   font-size: inherit;   
+   -webkit-appearance: none;
+   background: url(/assets/ui/dropdown.png) no-repeat 97% center #fff;
 }

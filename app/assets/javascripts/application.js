@@ -76,7 +76,7 @@
 	});
     }
     $.isMobile = function(){
-	return !$('.hide-for-small').eq(0).is(':visible');
+	return !$('.ismobileflag').eq(0).is(':visible');
     }
     
     $.fn.keepRatio = function(ratio) {
@@ -168,6 +168,13 @@
 	$(window).resize(function(){
 	    vCenterTiles();
 	});
+	
+	$('.follow-cause').click(function(){
+	    $(this).parents('.home-tile-single').delay(300).fadeOut(300,function(){
+		$(this).remove();
+		$('.isotope').isotope('reLayout');
+	    });
+	})
 	
 	/*$('a').click(function(){
 	    var href = $(this).attr('href');
