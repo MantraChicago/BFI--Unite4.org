@@ -21,11 +21,13 @@ GiveInspireLove::Application.routes.draw do
 
   root :to => "pages#index"
 
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
