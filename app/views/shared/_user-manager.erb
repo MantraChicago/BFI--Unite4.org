@@ -3,7 +3,7 @@
     <%= if user_signed_in? and current_user
     logoutLink=link_to 'Logout', destroy_user_session_path, :method=>'delete' 
     profileLink=link_to 'Profile', profiles_path
-    # "Hi, #{ current_user.display_name } | #{profileLink} | #{logoutLink}".html_safe
+    "Hi, #{ current_user.display_name } | #{profileLink} | #{logoutLink}".html_safe
     else
     createLink= link_to 'Create User Account', new_user_registration_path
     loginLink=link_to 'Login', new_user_session_path

@@ -1,3 +1,7 @@
+task :createActiveAdminUser => [:environment] do
+	AdminUser.create :email => 'eddie@meetmantra.com', :password => 'letmein'
+end
+
 
 task :populateDevData => [:environment, 'db:seed'] do
 	cause1 = Cause.find_or_create_by_name("PETA")

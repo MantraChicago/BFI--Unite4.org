@@ -30,7 +30,9 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-  	first_name+' '+last_name
+    if first_name and last_name
+  	 first_name+' '+last_name
+    end
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
