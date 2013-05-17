@@ -77,8 +77,8 @@ class User < ActiveRecord::Base
 
                             })
 
-      user.picture_from_url "https://graph.facebook.com/#{auth.info.id}/picture"
-      user.save
+      #user.picture_from_url "https://graph.facebook.com/#{auth.info.id}/picture"
+      #user.save
     else
       
 
