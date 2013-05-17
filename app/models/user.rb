@@ -72,8 +72,8 @@ class User < ActiveRecord::Base
       locationArray=auth.info.location.split(',')
       user.update_attributes({:first_name => auth.info.first_name,
                           :last_name => auth.info.last_name,
-                          :city => locationArray[0] ||=''
-                          :state => locationArray[1] ||='',
+                          :city => locationArray[0] ||='',
+                          :state => locationArray[1] ||=''
 
                             })
 
