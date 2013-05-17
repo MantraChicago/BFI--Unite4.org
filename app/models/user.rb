@@ -30,14 +30,20 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    if first_name and last_name
-  	 first_name+' '+last_name
+    name=''
+    if first_name
+      name +=first_name
     end
+    if last_name
+      name +=' '+last_name
+    end
+
+    name
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    logger.debug auth.extra.raw_info.inspect
+    logger.info auth.extra.raw_info.inspect
     unless user
       user = User.create(:name => auth.extra.raw_info.name,
                            :provider => auth.provider,
