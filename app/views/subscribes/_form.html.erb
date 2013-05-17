@@ -1,21 +1,22 @@
 <%= form_for(@subscribe) do |f| %>
-  <% if @subscribe.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= pluralize(@subscribe.errors.count, "error") %>:</h3>
+  <div class="row">
+      <div class="large-12 columns">           
+         
+      </div>
+      <div class="large-12 columns slimit">
+          <h2 class="arial cyan-text bold inline">TAKE THE FIRST ACTION! </h2> <h2 class="arial bold inline">Be in the know!</h2>
+      </div>
+      
+      <div class="large-8 small-8 columns">
+          <%= email_field(:subscribe, :email, :placeholder => 'Your email') %>
+      </div>
+      <div class="large-4 small-4 text-right columns">
+          <%= f.submit 'Subscribe' , :class => 'animation-color button-submit cascade-single' %>
+      </div>
+      <div class="cboth slimit-top large-12 columns">
+          <h4>YOUR EMAIL WILL BE NEVER SHARED</h4>
+      </div>
 
-      <ul>
-      <% @subscribe.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    Your email <%= email_field(:subscribe, :email) %><br/>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+         
   </div>
 <% end %>
