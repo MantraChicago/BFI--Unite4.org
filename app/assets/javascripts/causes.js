@@ -16,6 +16,16 @@ var Need= Backbone.Model.extend({
 })
 */
 
+var CauseView = Backbone.View.extend({
+  initialize:function(){
+    this.render()
+  },
+  render:function(){
+    var html =_.template($('#cause_template').html(),this.model.attributes)
+    $(this.el).html(html)
+  }
+})
+
 var FilterView=Backbone.View.extend({
 	initialize:function(){
 		this.render()
@@ -107,7 +117,7 @@ var populateMapMarkers=function(map,locations){
               map: map,
               title: location.get('name'),
 	      icon: markerIcons.darkblue,
-              user_content: location.get('name')+'<br/><a href="/causes/'+location.get('cause_id')+'">'+cause.get('name')+'</a>'
+              user_cause_id: cause.id
             });
         markersArray.push(marker)
         
@@ -115,14 +125,17 @@ var populateMapMarkers=function(map,locations){
             var self=this
             
 
-                
-        var boxText =  document.getElementById('cause-single-window');
+        var element =$('<div></div>')
+        var causeView= new CauseView({ el: element,
+                                       model: causesCollection.get(self.user_cause_id)})
+
+        //$('.popoverHolder').append(element)
          
         
         var myOptions = {
-                 content: boxText
+                 content: element.html()
                 ,disableAutoPan: false
-		,boxClass : 'map-infobox'                
+		            ,boxClass : 'map-infobox'                
                 ,pixelOffset: new google.maps.Size(-40, 0)               
                 ,closeBoxMargin: "10px 2px 2px 2px"
                 ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
@@ -133,7 +146,7 @@ var populateMapMarkers=function(map,locations){
 
         var ib = new InfoBox(myOptions);
         ib.open(map, marker);
-	
+	     
 	    /*var infowindow = new google.maps.InfoWindow({
                 content:self.user_content
             });
