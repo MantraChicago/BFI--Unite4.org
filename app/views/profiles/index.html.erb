@@ -14,7 +14,7 @@
 	</div>	
 	<div class="home-tile-single tile-4-4 small-height-auto">
 	    <h2><%= @user.display_name %></h2>
-	    <h4 class="mlimit secondary">Chicago, IL</h4>
+	    <h4 class="mlimit secondary"><%= @user.location %></h4>
 	    <div class="cyan-button"><%= link_to "Edit profile", profiles_edit_path %></div>
 	    <h3><%= @user.bio%></h3>
 	    <h2 class="yellow-text mlimit-top">Ways <%= @user.first_name %> has helped</h2>

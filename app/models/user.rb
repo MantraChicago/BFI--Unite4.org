@@ -43,22 +43,41 @@ class User < ActiveRecord::Base
     name
   end
 
+  def location
+    location = ""
+    if city
+      location = city
+    end
+
+    if state
+      location = state
+    end
+
+    if city and state
+      location = "#{city}, #{state}"
+    end
+
+    location
+  end
+
   def picture_from_url(url)
     self.avatar = open(url)
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    logger.info auth.to_yaml
+    #logger.info auth.to_yaml
     unless user
-      user = User.create(:first_name => auth.extra.raw_info.first_name,
-                          :last_name => auth.extra.raw_info.last_name,
+      user = User.create(:first_name => auth.info.first_name,
+                          :last_name => auth.info.last_name,
+                          :city => auth.info.city,
+                          :state => auth.info.state,
                            :provider => auth.provider,
                            :uid => auth.uid,
                            :email => auth.info.email,
                            :password => Devise.friendly_token[0,20]
                            )
-      picture_url ="https://graph.facebook.com/#{auth.extra.raw_info.id}/picture"
+      picture_url ="https://graph.facebook.com/#{auth.info.id}/picture"
       user.picture_from_url
 
       user.save
