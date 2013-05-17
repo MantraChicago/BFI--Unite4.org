@@ -1,3 +1,5 @@
+require "open-uri"
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -41,16 +43,25 @@ class User < ActiveRecord::Base
     name
   end
 
+  def picture_from_url(url)
+    self.avatar = open(url)
+  end
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    logger.info auth.extra.raw_info.inspect
+    #logger.info auth.extra.raw_info.inspect
     unless user
-      user = User.create(:name => auth.extra.raw_info.name,
+      user = User.create(:first_name => auth.extra.raw_info.first_name,
+                          :last_name => auth.extra.raw_info.last_name,
                            :provider => auth.provider,
                            :uid => auth.uid,
                            :email => auth.info.email,
                            :password => Devise.friendly_token[0,20]
                            )
+      picture_url ="https://graph.facebook.com/#{auth.extra.raw_info.id}/picture"
+      user.picture_from_url
+
+      user.save
     end
     user
   end
