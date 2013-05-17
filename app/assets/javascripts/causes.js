@@ -126,7 +126,7 @@ var populateMapMarkers=function(map,locations){
                 ,pixelOffset: new google.maps.Size(-40, 0)               
                 ,closeBoxMargin: "10px 2px 2px 2px"
                 ,closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-                ,infoBoxClearance: new google.maps.Size(1, 1)                
+                //,infoBoxClearance: new google.maps.Size(1, 1)                
                 ,pane: "floatPane"
                 
         };
