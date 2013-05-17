@@ -15,6 +15,11 @@ var Need= Backbone.Model.extend({
     name:'Need'
 })
 */
+$(document).ready(function(){
+    windowhtml = $('#cause-single-window').html();
+    $('#cause-single-window').html('');
+})
+
 
 var CauseView = Backbone.View.extend({
   initialize:function(){
@@ -122,16 +127,17 @@ var populateMapMarkers=function(map,locations){
         markersArray.push(marker)
         
         google.maps.event.addListener(marker, 'click', function() {
-            var self=this
+            var self=this;
+	    
             
+
 
         var element =$('<div></div>')
         var causeView= new CauseView({ el: element,
                                        model: causesCollection.get(self.user_cause_id)})
 
         //$('.popoverHolder').append(element)
-         
-        
+             
         var myOptions = {
                  content: element.html()
                 ,disableAutoPan: false
@@ -146,7 +152,7 @@ var populateMapMarkers=function(map,locations){
 
         var ib = new InfoBox(myOptions);
         ib.open(map, marker);
-	     
+
 	    /*var infowindow = new google.maps.InfoWindow({
                 content:self.user_content
             });
