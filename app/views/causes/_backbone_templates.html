@@ -31,13 +31,14 @@
     </div>
     
     <div class="large-7 columns mlimit-top">
-	<iframe width="100%" height="200px" src="http://www.youtube.com/embed/UYNkc2SS8jg" frameborder="0" allowfullscreen></iframe>
+	<iframe width="100%" height="200px" src="<%= video_link %>" frameborder="0" allowfullscreen></iframe>
 	<p class="slimit-top"><%= description %></p>
     </div>
     <div class="large-5 columns mlimit-top">
 	<h2><%= name %></h2>
 	<h3 class="secondary"><%= city %>, <%= state %></h3>
-	<a href="/causes/need/3"><div class="pink-big-button mlimit-top">7 ways to help</div></a>
+	<a href="/causes/<%= id %>"><div class="pink-big-button mlimit-top">view cause</div></a>
+	<a href="/causes/need/<%= id %>"><div class="pink-big-button mlimit-top">help</div></a>
     </div>
 </div>
 </div>
