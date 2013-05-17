@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     #logger.info auth.info.to_yaml
     if user
-      logger.info "HERERERHERHEHERHERHERHERH"
+      
       locationArray=auth.info.location.split(',')
       user.update_attributes({:first_name => auth.info.first_name,
                           :last_name => auth.info.last_name,
@@ -77,8 +77,7 @@ class User < ActiveRecord::Base
 
                             })
 
-      picture_url ="https://graph.facebook.com/#{auth.info.id}/picture"
-      user.picture_from_url
+      user.picture_from_url "https://graph.facebook.com/#{auth.info.id}/picture"
       user.save
     else
       
