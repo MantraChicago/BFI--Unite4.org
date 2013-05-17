@@ -66,24 +66,30 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    logger.info auth.info.to_yaml
-    unless user
+    #logger.info auth.info.to_yaml
+    if user
       logger.info "HERERERHERHEHERHERHERHERH"
-
-
-      user = User.create(:first_name => auth.info.first_name,
+      locationArray=auth.info.location.split(',')
+      user.update_attributes({:first_name => auth.info.first_name,
                           :last_name => auth.info.last_name,
-                          :city => auth.info.city,
-                          :state => auth.info.state,
-                           :provider => auth.provider,
+                          :city => locationArray[0] ||=''
+                          :state => locationArray[1] ||='',
+
+                            })
+
+      picture_url ="https://graph.facebook.com/#{auth.info.id}/picture"
+      user.picture_from_url
+      user.save
+    else
+      
+
+
+      user = User.create(  :provider => auth.provider,
                            :uid => auth.uid,
                            :email => auth.info.email,
                            :password => Devise.friendly_token[0,20]
                            )
-      picture_url ="https://graph.facebook.com/#{auth.info.id}/picture"
-      user.picture_from_url
-
-      user.save
+      
     end
     user
   end
