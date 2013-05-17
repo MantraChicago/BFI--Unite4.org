@@ -15,6 +15,11 @@ var Need= Backbone.Model.extend({
     name:'Need'
 })
 */
+$(document).ready(function(){
+    windowhtml = $('#cause-single-window').html();
+    $('#cause-single-window').html('');
+})
+
 
 var FilterView=Backbone.View.extend({
 	initialize:function(){
@@ -112,12 +117,13 @@ var populateMapMarkers=function(map,locations){
         markersArray.push(marker)
         
         google.maps.event.addListener(marker, 'click', function() {
-            var self=this
+            var self=this;
+	    
             
-
                 
         var boxText =  document.getElementById('cause-single-window');
-         
+        
+	
         
         var myOptions = {
                  content: boxText
@@ -133,7 +139,9 @@ var populateMapMarkers=function(map,locations){
 
         var ib = new InfoBox(myOptions);
         ib.open(map, marker);
-	
+	setTimeout(function(){
+	    $('.map-infobox').append(windowhtml);
+	},200);
 	    /*var infowindow = new google.maps.InfoWindow({
                 content:self.user_content
             });
