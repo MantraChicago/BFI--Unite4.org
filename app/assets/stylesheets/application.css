@@ -363,6 +363,7 @@
     z-index: 2;
     background-color: #fff;
     border-left: 1px solid #e1e1e1;
+    overflow: auto;
 }
 .map-bar ul > li h3, .showAll h3 {
     background: url(ui/map-list-bg.gif) repeat-x;
@@ -394,6 +395,10 @@
     border-radius: 4px;
     color: #fff;
     padding: 2px 10px 2px 10px;   
+}
+
+.no-min-width {
+    min-width: 0px !important;
 }
 
 .pink-big-button {
