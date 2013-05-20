@@ -23,7 +23,7 @@
 
 	    <div class="pink-big-button slimit slimit-top">
 		
-		<h2><%=  link_to "#{pluralize(@allNeeds.count, "way") } to help", "/causes/need/#{@cause.id}"  %></h2>
+		<h2><%=  link_to "#{pluralize(@cause.needs.count, "way") } to help", "/causes/need/#{@cause.id}"  %></h2>
 
 		
 	    </div>

@@ -19,8 +19,8 @@ test:
   encoding: utf8
   database: bfi_test
   pool: 5
-  username: 
-  password:
+  username: postgres
+  password: secret
 
 production:
   adapter: postgresql

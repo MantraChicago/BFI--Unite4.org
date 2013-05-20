@@ -5,11 +5,10 @@
 
 <div class="row blimit-top blimit cascade">
     <div class="large-12 columns cascade-single">
-	<h2>Take action. There are <%= "#{pluralize(@allNeeds.count, "way") }"%> main ways you can help!</h2>
+	<h2>Take action. There are <%= "#{pluralize(@cause.needs.count, "way") }"%> main ways you can help!</h2>
 	<h3 class="mlimit">Every little bit counts</h3>	  
     </div>
-<% @allNeeds.each do |needs|
-	for need in needs%>
+<% @cause.needs.each do |need| %>
 	<div class="large-6 columns cascade-single left">
 	    
 	    <%= link_to need do %>
@@ -20,8 +19,7 @@
 
 
 
-<% end 
-end %>
+<% end %>
     
 </div>
 

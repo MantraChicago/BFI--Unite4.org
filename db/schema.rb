@@ -143,12 +143,18 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
 
   create_table "needs", :force => true do |t|
     t.string   "name"
-    t.integer  "needable_id"
-    t.string   "needable_type"
+    t.string   "type"
     t.integer  "cause_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
     t.text     "description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "address"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "permissions", :force => true do |t|
