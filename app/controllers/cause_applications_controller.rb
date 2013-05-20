@@ -4,8 +4,6 @@ class CauseApplicationsController < ApplicationController
     @cause_application = CauseApplication.new 
   end
 
-  # POST /cause_applications
-  # POST /cause_applications.json
   def create
     
     @cause_application = CauseApplication.new(params[:cause_application])
