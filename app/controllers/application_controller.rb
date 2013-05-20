@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+=begin
   def getRecentNeeds
 
    		allNeeds=[]
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
    		allNeeds
 
   end
-
+=end
   def recordAction action, params={}
     if current_user
       $customerio.track(current_user.id, action, params) 

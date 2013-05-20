@@ -10,7 +10,7 @@ class Cause < ActiveRecord::Base
    
    belongs_to :cause_type
    has_many :locations, :dependent => :delete_all
-
+=begin
    def allNeeds
    		allNeeds=[]
    		for needType in ['volunteer_needs', 'social_needs', 'donations_needs', 'good_needs']
@@ -21,5 +21,5 @@ class Cause < ActiveRecord::Base
    		end
    		allNeeds
    end
-
+=end
 end

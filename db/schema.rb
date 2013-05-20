@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516214554) do
+ActiveRecord::Schema.define(:version => 20130520183638) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -105,13 +104,11 @@ ActiveRecord::Schema.define(:version => 20130516214554) do
   end
 
   create_table "donations_needs", :force => true do |t|
-    t.integer "cause_id"
-    t.text    "description"
-    t.string  "name"
+    t.text   "description"
+    t.string "name"
   end
 
   create_table "good_needs", :force => true do |t|
-    t.integer  "cause_id"
     t.string   "name"
     t.text     "description"
     t.text     "address"
@@ -135,15 +132,33 @@ ActiveRecord::Schema.define(:version => 20130516214554) do
     t.integer "cause_id"
   end
 
+  create_table "name", :force => true do |t|
+    t.string   "name"
+    t.integer  "needable_id"
+    t.string   "needable_type"
+    t.integer  "cause_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "needs", :force => true do |t|
+    t.string   "name"
+    t.integer  "needable_id"
+    t.string   "needable_type"
+    t.integer  "cause_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.text     "description"
+  end
+
   create_table "permissions", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "social_needs", :force => true do |t|
-    t.integer "cause_id"
-    t.text    "description"
-    t.string  "name"
+    t.text   "description"
+    t.string "name"
   end
 
   create_table "subscribes", :force => true do |t|
@@ -192,7 +207,6 @@ ActiveRecord::Schema.define(:version => 20130516214554) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "volunteer_needs", :force => true do |t|
-    t.integer  "cause_id"
     t.text     "description"
     t.string   "name"
     t.string   "address"

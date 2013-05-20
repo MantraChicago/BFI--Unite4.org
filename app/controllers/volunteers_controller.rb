@@ -1,4 +1,4 @@
-class VolunteersController < ApplicationController
+	class VolunteersController < ApplicationController
 	def new
 		if not current_user
 			session["user_return_to"] = request.url

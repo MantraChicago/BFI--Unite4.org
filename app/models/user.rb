@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    #logger.info auth.info.to_yaml
+    logger.info auth.info.to_yaml
     if user
       
       locationArray=auth.info.location.split(',')
@@ -74,15 +74,11 @@ class User < ActiveRecord::Base
                           :last_name => auth.info.last_name,
                           :city => locationArray[0] ||='',
                           :state => locationArray[1] ||=''
-
-                            })
+                          })
 
       #user.picture_from_url "https://graph.facebook.com/#{auth.info.id}/picture"
       #user.save
     else
-      
-
-
       user = User.create(  :provider => auth.provider,
                            :uid => auth.uid,
                            :email => auth.info.email,
