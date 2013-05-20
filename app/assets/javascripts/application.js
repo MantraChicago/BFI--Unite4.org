@@ -118,7 +118,8 @@
 	    'tile-4-2' : 560/272,
 	    'tile-4-1' : 560/128,
 	    'tile-2-4' : 272/560,
-	    'tile-16-10' : 1.6
+	    'tile-16-10' : 16/10,
+	    'video-container': 16/10
 	})
 	$('html,body').horizontalScroll(400,'easeOutQuart');
 	$('.cascade .cascade-single').css('opacity',0).each(function(i){

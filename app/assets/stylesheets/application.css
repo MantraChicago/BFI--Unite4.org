@@ -378,7 +378,7 @@
     padding: 13px 20px 13px 20px;
     border-bottom: 1px solid #e1e1e1;
     cursor: pointer;
-    white-space: nowrap;
+    
 }
 .filterHolder li img {
     vertical-align: -25%;
@@ -390,6 +390,7 @@
 
 .map-bar-button {
     background-color: #399a98;
+    display:inline-block;
     border-radius: 4px;
     color: #fff;
     padding: 2px 10px 2px 10px;   
@@ -506,3 +507,4 @@ select {
 .cause-single-window {
     padding: 20px;
 }
+

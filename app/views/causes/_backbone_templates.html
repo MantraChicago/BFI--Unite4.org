@@ -7,8 +7,11 @@
 </script>
 
 <script type="text/template" id="filter-row-template"><li class="animation-color">
-        <img src="assets/ui/map/icon-hand.png"/><a class="filter" data-id="<%= id %>" data-type="<%= type %>"><%= name %></a>
-	<div class="map-bar-button right">ACT</div>
+        <div class="row">
+	    <div class="large-2 small-2 columns"><img src="assets/ui/map/icon-hand.png"/></div>
+	 <div class="large-8 small-8 columns"><a class="filter" data-id="<%= id %>" data-type="<%= type %>"><%= name %></a></div>
+	 <div class="large-2 small-2 columns text-right"><div class="map-bar-button">ACT</div></div>
+	</div>
 </li>
 </script>
 
@@ -33,7 +36,9 @@
     
 
     <div class="large-7 columns mlimit-top">
-	<iframe width="100%" height="200px" src="<%= video_link %>" frameborder="0" allowfullscreen></iframe>
+	<div class="video-container">
+	    <iframe width="100%" height="200px" src="<%= video_link %>" frameborder="0" allowfullscreen></iframe>
+	</div>
 	<p class="slimit-top"><%= description %></p>
     </div>
     <div class="large-5 columns mlimit-top">
