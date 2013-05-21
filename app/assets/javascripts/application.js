@@ -16,7 +16,17 @@
 
 (function($) {
     //custom functions
-    
+    $.fn.prevOrLast = function(selector)
+    {
+	var prev = this.prev(selector);
+	return (prev.length) ? prev : this.nextAll(selector).last();
+    };
+
+    $.fn.nextOrFirst = function(selector)
+    {
+	var next = this.next(selector);
+	return (next.length) ? next : this.prevAll(selector).last();
+    };    
     $.fn.fadeSlideUp = function(){
 	var height = $(this).outerHeight();	
 	$(this).animate({
@@ -87,6 +97,73 @@
 	    t.height(t.width/ratio);
 	})
     }
+    $.fn.tileSlide = function()
+    {
+	return $(this).each(function(){
+	    var elem = $(this);
+	    var slides = $('.slide',elem);
+		
+	    if(slides.length<2) return; //continue only if there is at least 2 slides.
+		
+	    var itemH = elem.outerHeight();
+		
+	    var random = Math.floor(Math.random() * 2000)+1000;	//from 1 to 3 sec's to avoid many tiles sliding at the same time
+	    var down = Math.floor(Math.random() * 2);	//		
+		
+	    var slide = function(down){
+				
+		var current = $('.slide.current',elem);
+		var next = current.nextOrFirst('.slide');
+		if ( down ) {
+		    current.animate({
+			'top':itemH
+		    },2000,'easeOutExpo',function(){
+			$(this).css({
+			    'top':(-1)*itemH
+			    })
+			}).removeClass('current');
+		    next.animate({
+			'top':'0px'
+		    },2000,'easeOutExpo').addClass('current');
+		}	else {
+		    current.animate({
+			'top':-1*itemH
+			},2000,'easeOutExpo',function(){
+			$(this).css({
+			    'top':itemH
+			})
+			}).removeClass('current');
+		    next.animate({
+			'top':'0px'
+		    },2000,'easeOutExpo').addClass('current');				
+		}
+	    }
+	
+	    slides.removeClass('current').eq(0).addClass('current');//set first slide as 'current'
+		
+	    if(down) {
+		slides.not('.current').css({
+		    'top':(-1)*itemH
+		    });
+	    }
+	    else{
+		slides.not('.current').css({
+		    'top':(1)*itemH
+		    });
+	    }
+		
+	    setTimeout(function(){
+		
+		slide(down);	//after random 0-2 sec's time make first slide
+
+			
+		setInterval(function(){	
+				
+		    slide(down);
+		},4500);
+	    },random);	
+	});
+    };    
     
     
     $.classObjToJQuery = function(classes,dataLabel) {
@@ -133,7 +210,8 @@
 	    'tile-2-4' : 272/560,
 	    'tile-16-10' : 16/10,
 	    'video-container': 16/10,
-	    'tile-150-150' : 1
+	    'tile-150-150' : 1,
+	    'tile-3-1' : 3
 	})
 	$('html,body').horizontalScroll(400,'easeOutQuart');
 	$('.cascade .cascade-single').css('opacity',0).each(function(i){
@@ -168,6 +246,7 @@
 		$(this).delay(i*60+400).fadeSlideIn();
 	    })
 	});
+	$('.tileSlide').tileSlide();
 	
 	var vCenterTiles = function() {
             if ( !$(".home-tiles-container").length ) {return;}

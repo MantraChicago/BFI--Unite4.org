@@ -170,6 +170,7 @@
     padding: 10px;
     color: #fff;
     background: url(tile-black-gradient.png) repeat-x bottom;
+    z-index: 30;
 }
 .home-tile-single .header-img {
     width:100%;
@@ -479,6 +480,26 @@ select {
 .cause-single-window {
     padding: 20px;
 }
+
+
+.slide{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:20;
+	background-position:center;
+	background-size: cover;
+}
+.slide.last{
+	z-index:21;
+}
+.slide.current{
+	z-index:22;
+}
+
+
 
 
 @media only screen and (max-width: 48em), only screen and (max-height: 42em) {
