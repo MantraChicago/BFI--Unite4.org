@@ -200,7 +200,13 @@
     height: 560px;
     width:896px;
 }
-.tile-1-1,.tile-2-1,.tile-2-2,.tile-3-4 {
+.tile-150-150 {
+    height: 176px;
+    width:176px;
+}
+
+
+.tile-1-1,.tile-2-1,.tile-2-2,.tile-3-4,.tile-150-150 {
     padding:20px;
 }
 .tile-4-2,.tile-4-4{
@@ -527,7 +533,7 @@ select {
 	left: 5% !important;
 	right: 5% !important;
 	top: 5% !important;
-	bottom: 15% !important;	
+	bottom: 5% !important;	
 	padding: 10px 10px 30px 10px !important;
     }
     .map-infobox > div {
