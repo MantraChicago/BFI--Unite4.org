@@ -34,9 +34,10 @@
 
 	    <%= text_field(:user, :email,:placeholder => "email", :class => "animation-color cascade-single") %>
 	</div>	 
-	<div >
-		<%= image_tag @user.avatar.url, :height =>75%>
-	   <%= f.file_field :avatar, :class => "slimit" %>
+	<div>
+	    <div class="large-6 columns"><%= f.file_field :avatar, :class => "slimit" %></div>
+	    <div class="large-6 columns text-right"><%= image_tag @user.avatar.url, :height =>75%></div>
+	    
 	</div>	
     </div>
     <div class="large-6 columns">
