@@ -24,7 +24,7 @@
 	</div>
     </div>
     <div class="home-tiles-group">
-
+	<div class="home-tiles-group-header small-static slimit"><h2><%= @user.display_name %> is following <span class="yellow-text">48</span> causes</h2></div>
     <% @featured_causes.each do |cause| %>
 	<div class="home-tile-single tile-2-2 nopadding  small-height-auto">
 	    <div class="tile-header-image slimit" style="background-image: url(<%= cause.picture.url %>);"></div>

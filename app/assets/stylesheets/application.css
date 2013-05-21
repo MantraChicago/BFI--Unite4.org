@@ -163,6 +163,10 @@
     border: 0;
     background: none;
 }
+.home-tiles-group-header {
+    position: absolute;
+    top: -45px;
+}
 
 .home-tile-single .bottom-panel {
     position: absolute;
