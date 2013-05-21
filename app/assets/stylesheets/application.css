@@ -108,6 +108,13 @@
     top: 0; bottom: 0;
     background-color: rgba(240,240,240,0.6);
 }
+.fs-bg-back {
+    position: fixed;
+    width: 100%;
+    z-index: -999;
+    top: 0; bottom: 0;
+    background: none;
+}
 .fs-message {
     box-shadow: 0 0 40px #aaa;
     background-color: #fff;
