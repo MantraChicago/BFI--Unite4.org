@@ -9,6 +9,9 @@ describe CauseApplicationController do
 											   :phone_number => '4143240411',
 											   :misison => 'To party',
 											   :how_hear => 'Grapevine' }
-											   
+
+		flash[:notice].should_not be_nil
+    	response.should redirect_to(root_path)
+
 	end
 end
