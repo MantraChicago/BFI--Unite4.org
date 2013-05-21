@@ -113,8 +113,8 @@ var parseObjIntoModels=function(dataObj,model){
 
 var markersArray=[]
 var markerIcons = {
-    darkblue:'http://localhost:3000/assets/ui/map/marker-dblue.png',
-    another:'http://localhost:3000/assets/ui/map/marker-dblue.png'
+    darkblue:'/assets/ui/map/marker-dblue.png',
+    another:'/assets/ui/map/marker-dblue.png'
 //...
 } 
 var lastOpenedWindow;
