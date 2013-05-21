@@ -253,83 +253,11 @@
     line-height: 2em;
 }
 
-@media only screen and (max-width: 48em), only screen and (max-height: 42em) {
-
-    .small-static {
-	position: static !important;
-    }
-    .home-tile-single {
-	position: relative !important;
-	top: 0 !important;
-	left: 0 !important;
-	width: auto !important;
-    }
-    .home-tiles-container{
-	white-space: normal !important;
-	padding-left: 0;
-    }
-    .home-tiles-group{
-	height: auto !important;
-	width: auto !important;
-	display: block !important;
-	margin-right: 0;
-
-    }
-    .tile-header-image {
-	min-height: 250px;
-    }
-    .ismobileflag {display: none !important;}
-    .small-height-auto {
-	height: auto !important;
-	min-height: 200px;
-    }
-    .large-mlimit-left {
-	padding-left: 0 !important;
-    }
-    .logo-column {
-	max-width: none !important;
-    }
-
-    .main-header-single {
-	max-width: none !important;
-    }
-    .row,.home-tiles-container {
-	max-width: 700px !important;
-	margin: auto;
-    }
-    .row.fullwidth {
-	max-width: 100% !important;
-    }
-}
 .toggle-map {
     display: none;
 }
 
-@media only screen and (max-width: 48em) {
-    .map-menu {
-	position: fixed !important;
-	left: 100%;
-    }
-    .menu-visible {
-	left: 0 !important;
-    }
-    .map-corner-logo {
-	left: 20px;	
-    }
-    .toggle-map {
-	background: url(ui/map-list-bg.gif) repeat-x;
-	cursor: pointer;
-	height: 42px;
-	width: 42px;	
-	padding: 13px;
-	display: block;
-	position: fixed;
-	top:0;
-	right: 0;
-	z-index: 999;
-	border-bottom-left-radius: 5px;
-    }
-}
+
 #goback, #goback * {
     color: #4e4e4e;
 }
@@ -379,7 +307,7 @@
     padding: 13px 20px 13px 20px;
     border-bottom: 1px solid #e1e1e1;
     cursor: pointer;
-    
+
 }
 .filterHolder li img {
     vertical-align: -25%;
@@ -440,7 +368,7 @@
     color: #fff;
 }
 .tile-header-image {    
-    
+
     height: 45%;
     width: 100%;
     background-size: cover;
@@ -476,10 +404,10 @@
 }
 
 select {
-   font-family: inherit;
-   font-size: inherit;   
-   -webkit-appearance: none;
-   background: url(/assets/ui/dropdown.png) no-repeat 97% center #fff;
+    font-family: inherit;
+    font-size: inherit;   
+    -webkit-appearance: none;
+    background: url(/assets/ui/dropdown.png) no-repeat 97% center #fff;
 }
 
 .user-manager {
@@ -499,17 +427,110 @@ select {
 .map-infobox {
     position: absolute;
     background: #fff !important;
-    width: 740px !important;
+
     padding: 20px !important;
+    z-index: 999;
+    width: 70% !important;
+    left: 15% !important;
+    right: 15% !important;
+    top: 10% !important;
+    box-shadow: 0 0 50px;   
 }
 .map-infobox > div {
     background: none !important;
     border: none !important;
     padding: 20px !important;
-    
+
 }
 
 .cause-single-window {
     padding: 20px;
 }
 
+
+@media only screen and (max-width: 48em), only screen and (max-height: 42em) {
+
+    .small-static {
+	position: static !important;
+    }
+    .home-tile-single {
+	position: relative !important;
+	top: 0 !important;
+	left: 0 !important;
+	width: auto !important;
+    }
+    .home-tiles-container{
+	white-space: normal !important;
+	padding-left: 0;
+    }
+    .home-tiles-group{
+	height: auto !important;
+	width: auto !important;
+	display: block !important;
+	margin-right: 0;
+
+    }
+    .tile-header-image {
+	min-height: 250px;
+    }
+    .ismobileflag {display: none !important;}
+    .small-height-auto {
+	height: auto !important;
+	min-height: 200px;
+    }
+    .large-mlimit-left {
+	padding-left: 0 !important;
+    }
+    .logo-column {
+	max-width: none !important;
+    }
+
+    .main-header-single {
+	max-width: none !important;
+    }
+    .row,.home-tiles-container {
+	max-width: 700px !important;
+	margin: auto;
+    }
+    .row.fullwidth {
+	max-width: 100% !important;
+    }
+}
+
+
+@media only screen and (max-width: 48em) {
+    .map-menu {
+	position: fixed !important;
+	left: 100%;
+    }
+    .menu-visible {
+	left: 0 !important;
+    }
+    .map-corner-logo {
+	left: 20px;	
+    }
+    .toggle-map {
+	background: url(ui/map-list-bg.gif) repeat-x;
+	cursor: pointer;
+	height: 42px;
+	width: 42px;	
+	padding: 13px;
+	display: block;
+	position: fixed;
+	top:0;
+	right: 0;
+	z-index: 999;
+	border-bottom-left-radius: 5px;
+    }
+    .map-infobox {
+	width: 90% !important;
+	left: 5% !important;
+	right: 5% !important;
+	top: 10% !important;
+	padding: 10px 10px 30px 10px !important;
+    }
+    .map-infobox > div {
+	padding: 5px !important;
+    }
+
+}
