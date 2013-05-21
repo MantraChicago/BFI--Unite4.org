@@ -88,25 +88,38 @@
 	})
     }
     
-    $.keepRatio = function(classes) {
+    
+    $.classObjToJQuery = function(classes,dataLabel) {
 	var elems = $();
-        
+	
 	for(var one in classes) {
-	    if(classes.hasOwnProperty(one)) {	
-		$('.' + one).attr('ratio',classes[one]);
-                elems = elems.add('.' + one);
-		//alert(elems.length);
+	    if(classes.hasOwnProperty(one)) {		
+		elems = elems.add('.' + one);
+		$('.' + one).attr(dataLabel,classes[one])
 	    } 
 	}
-        elems.each(function(){
-	    var t = $(this);
-	    var ratio = t.attr('ratio');
-	    
-	    t.height(Math.floor(t.width()/ratio)-1);
-	    $(window).resize(function(){
-		t.height(t.width()/ratio);
-	    })
+        return elems;	
+    }
+    
+    $.keepRatio = function(classes) {
+	
+	var setRatio = function(){
+	    var elems = $.classObjToJQuery(classes,'ratio');
+	    console.log(elems);
+	    elems.each(function(){
+		var t = $(this);
+		var ratio = t.attr('ratio');
+	   
+		t.attr('ratio',ratio);
+		t.height(t.width()/ratio);	    
+	    })	    
+	}
+	setRatio();
+	$(window).resize(function(){	    
+	    setRatio();
 	})
+
+	
     }
     
     $.GILready = function() {

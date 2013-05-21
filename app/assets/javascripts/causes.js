@@ -176,7 +176,9 @@ var populateMapMarkers=function(map,locations){
 	    
 	    ib.open(map, marker);
 	    google.maps.event.addListener(ib, 'domready', function() {
-	     $('.map-infobox').prependTo('body');
+	     $('.map-infobox').prependTo('body').promise().done(function(){
+		 $(window).trigger('resize');
+	     });	     
 	    } )
 	    
 
