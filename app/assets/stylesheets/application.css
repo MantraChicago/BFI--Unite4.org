@@ -172,6 +172,7 @@
     position: absolute;
     bottom: 0; left: 0; right: 0;
     padding: 10px;
+    padding-bottom:4px;
     color: #fff;
     background: url(tile-black-gradient.png) repeat-x bottom;
     z-index: 30;
@@ -255,6 +256,9 @@
     padding: 0 !important;
 }
 
+.m-padding {
+    padding:20px;
+}
 
 .bold {
     font-weight: 700;
