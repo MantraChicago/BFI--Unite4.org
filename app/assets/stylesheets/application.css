@@ -451,6 +451,7 @@ select {
     right:30px;
     padding:10px 20px 10px 20px;
     color: #fff;
+    z-index: 999;
 }
 .user-manager a {
     color: #fff;
