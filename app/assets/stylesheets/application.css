@@ -425,9 +425,9 @@ select {
 }
 
 .map-infobox {
-    position: absolute;
+    position: fixed;
     background: #fff !important;
-
+    overflow: auto;
     padding: 20px !important;
     z-index: 999;
     width: 70% !important;
@@ -526,11 +526,16 @@ select {
 	width: 90% !important;
 	left: 5% !important;
 	right: 5% !important;
-	top: 10% !important;
+	top: 5% !important;
+	bottom: 15% !important;	
 	padding: 10px 10px 30px 10px !important;
     }
     .map-infobox > div {
 	padding: 5px !important;
+    }
+    .map-corner-logo {
+	top: auto;
+	bottom: 20px;
     }
 
 }
