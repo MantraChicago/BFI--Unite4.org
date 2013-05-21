@@ -1,5 +1,5 @@
 task :createActiveAdminUser => [:environment] do
-	AdminUser.create :email => 'eddie@meetmantra.com', :password => 'password', :password_confirmation => 'password'
+	AdminUser.create :email => 'eddie@meetmantra.com', :password => '12345678', :password_confirmation => '12345678'
 	puts "Active Admin user created"
 end
 
@@ -9,7 +9,8 @@ task :populateDevData => [:environment, 'db:seed'] do
 	cause1.update_attributes({ :cause_type_id =>CauseType.find_by_name(:Environmental).id,
 							   :city => 'Chicago',
 							   :state => 'IL',
-							   :picture => File.join(Rails.root, 'lib','assets','default_images','cloths.jpg'),
+							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/cloths.jpg'),
+
 							   :is_featured =>true,
 							   :twitter_handle => 'PETA',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933" })
@@ -19,7 +20,7 @@ task :populateDevData => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :is_featured =>true,
-							   :picture => File.join(Rails.root, 'lib','assets','default_images','sheep.jpg'),
+							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/sheep.jpg'),
 							   :twitter_handle =>'AIDS',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })
 
@@ -28,7 +29,7 @@ task :populateDevData => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :is_featured =>true,
-							   :picture => File.join(Rails.root, 'lib','assets','default_images','pray.jpg'),
+							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/pray.jpg'),
 							   :twitter_handle => 'Habitat',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })
 
