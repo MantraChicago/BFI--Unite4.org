@@ -13,7 +13,7 @@
 
     <div class="large-9 columns left cboth">
 	<div>	    
-	    <div class="large-3"><%= select(:donation, :amount, money_amount,:class => "animation-color cascade-single right") %></div>
+	    <div class="large-3"><%= select(:donation, :amount, money_amount,:class => "animation-color cascade-single right" ) %></div>
 	</div>
 
 
@@ -26,7 +26,7 @@
 	    <div class="large-3"><%= select(:donation, :tip, money_amount,:class => "animation-color cascade-single right") %></div>
 	</div>
 	<div>
-	    <h2>Total: 27$</h2>
+	    <h2>Total: <span id="total"></span></h2>
 	    <h3>We currently only accept payments using Credit Cards with a US billing address</h3>
 	</div>
 	<div>

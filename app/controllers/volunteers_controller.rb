@@ -15,7 +15,7 @@
 		@volunteer_need=VolunteerNeed.find(params[:volunteer][:volunteer_need_id])
 		if @volunteer.save
 			recordAction("New volunteer", @volunteer.attributes)
-	      	redirect_to volunteer_need_path(@volunteer_need), :notice => "You have successfully applied to be a volunteer" 
+	      	redirect_to @volunteer_need.cause, :notice => "You have successfully applied to be a volunteer" 
 	    else
 	      
 	      render :new

@@ -2,21 +2,25 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'devise'
+gem 'devise', '2.2.3'
 
-gem 'omniauth'
+gem 'omniauth','1.1.4'
 gem 'omniauth-facebook'
 
 gem "paperclip", "~> 2.7"
 
-gem 'customerio'
+gem 'customerio','0.5.0'
 
-gem 'activeadmin'
+gem 'activeadmin', '0.6.0'
 gem "meta_search",    '>= 1.1.0.pre'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'oauth'
+group :development, :test do
+  gem 'rspec-rails', '~> 2.0'
+end
+
+#gem 'oauth'
 
 #gem 'sqlite3'
 gem 'pg'

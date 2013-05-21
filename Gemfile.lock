@@ -67,6 +67,7 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -109,7 +110,6 @@ GEM
     multi_json (1.7.3)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
-    oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -164,6 +164,17 @@ GEM
       railties (~> 3.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rspec-core (2.13.1)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.13.1)
+    rspec-rails (2.13.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
     sass (3.2.8)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -199,19 +210,19 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  activeadmin
+  activeadmin (= 0.6.0)
   coffee-rails (~> 3.2.1)
-  customerio
-  devise
+  customerio (= 0.5.0)
+  devise (= 2.2.3)
   jquery-rails
   json
   meta_search (>= 1.1.0.pre)
-  oauth
-  omniauth
+  omniauth (= 1.1.4)
   omniauth-facebook
   paperclip (~> 2.7)
   pg
   rails (= 3.2.13)
+  rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   taps
   uglifier (>= 1.0.3)

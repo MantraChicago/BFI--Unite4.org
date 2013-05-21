@@ -60,5 +60,6 @@ module GiveInspireLove
     config.assets.version = '1.0'
 
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'controllers', '{**}')]
   end
 end

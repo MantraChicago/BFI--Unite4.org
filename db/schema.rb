@@ -55,10 +55,6 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
     t.text   "how_hear"
   end
 
-  create_table "cause_causeneeds", :force => true do |t|
-    t.integer "cause_id"
-    t.integer "causeneed_id"
-  end
 
   create_table "cause_types", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -103,20 +99,6 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
     t.integer  "donations_need_id"
   end
 
-  create_table "donations_needs", :force => true do |t|
-    t.text   "description"
-    t.string "name"
-  end
-
-  create_table "good_needs", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.text     "address"
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
-  end
 
   create_table "locations", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -162,10 +144,6 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "social_needs", :force => true do |t|
-    t.text   "description"
-    t.string "name"
-  end
 
   create_table "subscribes", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -211,14 +189,6 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "volunteer_needs", :force => true do |t|
-    t.text     "description"
-    t.string   "name"
-    t.string   "address"
-    t.datetime "start_date"
-    t.datetime "end_date"
-  end
 
   create_table "volunteers", :force => true do |t|
     t.string   "first_name"

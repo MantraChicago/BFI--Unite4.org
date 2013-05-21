@@ -10,8 +10,10 @@ class DonationsController < ApplicationController
 
 	def create
 		@donation=Donation.new( params[:donation])
+		donation_need=DonationsNeed.find(params[:donation][:donations_need_id])
 		if @donation.save
 	    	recordAction('New donation',@donation.attributes)
+	    	redirect_to donation_need.cause, :notice => "Thank You for your donation"
 		else
 			render :action => "new" 
 		end
