@@ -9,7 +9,7 @@ task :populateDevData => [:environment, 'db:seed'] do
 	cause1.update_attributes({ :cause_type_id =>CauseType.find_by_name(:Environmental).id,
 							   :city => 'Chicago',
 							   :state => 'IL',
-							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/cloths.jpg'),
+							   :picture => File.join(Rails.root, 'lib','assets','default_images','cloths.jpg'),
 							   :is_featured =>true,
 							   :twitter_handle => 'PETA',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933" })
@@ -19,7 +19,7 @@ task :populateDevData => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :is_featured =>true,
-							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/sheep.jpg'),
+							   :picture => File.join(Rails.root, 'lib','assets','default_images','sheep.jpg'),
 							   :twitter_handle =>'AIDS',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })
 
@@ -28,7 +28,7 @@ task :populateDevData => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :is_featured =>true,
-							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/pray.jpg'),
+							   :picture => File.join(Rails.root, 'lib','assets','default_images','pray.jpg'),
 							   :twitter_handle => 'Habitat',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })
 
@@ -98,4 +98,19 @@ task :populateDevData => [:environment, 'db:seed'] do
 							 :description=> 'Driver'	 })
 
 	puts "Development data loaded"
+end
+
+desc "Setup test database - drops, loads schema, migrates and seeds the test db"
+task :test_db_setup => [:environment] do
+  Rails.env = ENV['RAILS_ENV'] = 'test'
+  Rake::Task['db:drop'].invoke
+  Rake::Task['db:create'].invoke
+  Rake::Task['db:schema:load'].invoke 
+ 
+  Rake::Task['populateDevData'].invoke
+  #File.open(File.join(ENV['CC_BUILD_ARTIFACTS'] || 'log', 'schema-load.log'), 'w') { |f| f.write(result) }
+  Rake::Task['db:seed'].invoke
+  ActiveRecord::Base.establish_connection
+  Rake::Task['db:migrate'].invoke
+  puts "Teat data loaded"
 end

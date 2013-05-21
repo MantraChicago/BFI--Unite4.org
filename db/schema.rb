@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
     t.text   "how_hear"
   end
 
-
   create_table "cause_types", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -98,7 +97,6 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
     t.datetime "updated_at",        :null => false
     t.integer  "donations_need_id"
   end
-
 
   create_table "locations", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -143,7 +141,6 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
 
   create_table "subscribes", :force => true do |t|
     t.datetime "created_at", :null => false
