@@ -147,6 +147,7 @@
     display: inline-block;
     margin-right: 40px;
     padding-left: 0.9375em;
+    min-width: 272px;
 }
 .home-tile-single{
     width:128px;
@@ -170,8 +171,12 @@
     background: none;
 }
 .home-tiles-group-header {
+    white-space: nowrap;
     position: absolute;
     top: -45px;
+}
+.home-tiles-group-header * {
+    white-space: nowrap;
 }
 
 .home-tile-single .bottom-panel {
@@ -500,6 +505,9 @@ select {
     padding: 20px;
 }
 
+.abs-right {
+    right:0;
+}
 
 .slide{
 	width:100%;

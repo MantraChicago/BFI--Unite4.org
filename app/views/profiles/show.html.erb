@@ -28,12 +28,11 @@
 	</div>
     </div>
 
+
 <div class="home-tiles-group">
     <div class="home-tiles-group-header small-static slimit"><h2><%= @user.display_name %> is following <span class="yellow-text"> </span> <%= pluralize @user.causes.count, 'cause' %></h2></div>
 
     
-    
-		
 	    <% @user.causes.each do |cause| %>
 		<div class="home-tile-single tile-2-2 nopadding  small-height-auto">
 		    <div class="tile-header-image slimit" style="background-image: url(<%= cause.picture.url %>);"></div>
