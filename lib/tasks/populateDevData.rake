@@ -10,7 +10,6 @@ task :populateDevData => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/cloths.jpg'),
-
 							   :is_featured =>true,
 							   :twitter_handle => 'PETA',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933" })

@@ -18,6 +18,7 @@ gem "meta_search",    '>= 1.1.0.pre'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'factory_girl_rails'
 end
 
 #gem 'oauth'

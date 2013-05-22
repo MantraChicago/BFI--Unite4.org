@@ -10,12 +10,10 @@ class CausesController < ApplicationController
 
 	def need
 		@cause = Cause.find(params[:id])
-		#@allNeeds= @cause.needs
 	end
 
 	def show
 		@cause = Cause.find(params[:id])
-		#@needs= @cause.needs
 
 	end
 
