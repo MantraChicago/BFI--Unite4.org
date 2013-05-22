@@ -1,4 +1,3 @@
-
 <%= render "shared/mainheader" %>
 
 <% @additional_head_content= render 'shared/google_maps_header' %>
@@ -55,12 +54,14 @@
     <div class="home-tiles-group">
 	<div class="home-tiles-group-header small-static slimit"><h2>Featured Ambassadors</h2></div>
 	<% @featured_users.each do |user| %>
-	<div class="home-tile-single tile-150-150" style="background-image: url(<%= user.avatar.url %>);">
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED AMBASSADOR</h4>
-		<h3 class="arial bold"><%= user.display_name %></h3>		
-	    </div>	    
-	</div>
+	<a href="<%= "/profiles/#{user.id}" %>">
+		<div class="home-tile-single tile-150-150" style="background-image: url(<%= user.avatar.url %>);">
+		    <div class="bottom-panel">		 
+			<h4 class="secondary">FEATURED AMBASSADOR</h4>
+			<h3 class="arial bold"><%= user.display_name %></h3>	
+		    </div>	    
+		</div>
+	</a>
 	<% end %>
 	
     </div>
