@@ -35,7 +35,7 @@
 	var causesCollection=parseObjIntoModels(causesObj, Cause)
     var locationsCollection=parseObjIntoModels(locationsObj, Location)
 
-    var donationsCollection=parseObjIntoModels(donationsNeedsObj, Backbone.Model.extend({ name:'donation_needs' }));
+    var donationsCollection= parseObjIntoModels(donationsNeedsObj, Backbone.Model.extend({ name: 'donation_needs' }));
 
     var goodCollection=parseObjIntoModels(goodNeedsObj, Backbone.Model.extend({
 	name:'good_needs'
