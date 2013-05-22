@@ -159,6 +159,12 @@
     background-position: center;
 
 }
+.bordered {
+    border: 2px solid #d3d3d3;
+}
+.static {
+    position: static !important;
+}
 .home-tile-single.blank {
     border: 0;
     background: none;
@@ -196,6 +202,10 @@
 .tile-4-2{
     width: 560px;
     height: 272px;
+}
+.tile-4-3{
+    width: 560px;
+    height: 415px;
 }
 .tile-4-1 {
     width: 560px;
@@ -460,7 +470,7 @@ select {
     right:30px;
     padding:10px 20px 10px 20px;
     color: #fff;
-    z-index: 999;
+    z-index: 998;
 }
 .user-manager a {
     color: #fff;
@@ -556,6 +566,9 @@ select {
     }
     .row.fullwidth {
 	max-width: 100% !important;
+    }
+    #mapHolder {
+	min-height: 500px;
     }
 }
 
