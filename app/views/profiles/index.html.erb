@@ -13,7 +13,7 @@
 
 	</div>	
 	<div class="home-tile-single tile-4-4 small-height-auto">
-	    <h2><%= @user.display_name %></h2>
+	    <h1><%= @user.display_name %></h1>
 	    <h4 class="mlimit secondary"><%= @user.location %></h4>
 	    <div class="cyan-button"><%= link_to "Edit profile", profiles_edit_path %></div>
 	    <h3><%= @user.bio%></h3>
@@ -43,6 +43,37 @@
 	
     </div>
     <div class="home-tiles-group">
+	<div class="home-tiles-group-header small-static slimit"><h2>Last stories</h2></div>
+	
+	<div class="home-tile-single tile-3-1 tileSlide nopadding">
+	    <div class="slide"  style="background-image: url(assets/examples/story1.jpg);"></div>
+	    <div class="slide"  style="background-image: url(assets/examples/story3.jpg);"></div>
+	    
+	    <div class="bottom-panel">		 
+		<h4 class="secondary">FEATURED STORY</h4>
+		<h3 class="arial bold">Carl Rogers</h3>		
+	    </div>	    
+	</div>
+	<div class="home-tile-single tile-3-2 nopadding" style="background-image: url(assets/examples/story2.jpg);">
+	    <div class="bottom-panel">		 
+		<h4 class="secondary">FEATURED STORY</h4>
+		<h3 class="arial bold">Carl Rogers</h3>		
+	    </div>	    
+	</div>	
+	
+	<div class="home-tile-single tile-3-1 yellow-bg no-min-height tileSlide nopadding">
+	    <div class="slide m-padding"><h3>At the moment, there are more than 1.5 million nonprofit organizations registered in the U.S. </h3></div>
+	    <div class="slide m-padding"><h3>The number is staggering. How do you find out. At the moment, there are more than 1.5 </h3></div>
+	    
+	</div>
+
+	
+
+	
+    </div>    
+    
+    <div class="home-tiles-group">
+	<div class="home-tiles-group-header small-static slimit"><h2>Follow causes</div>
 	<% for cause in Cause.find(:all) %>
 	
 	<div class="home-tile-single tile-2-2 nopadding small-height-auto" cause-id="<%= cause.id %>">

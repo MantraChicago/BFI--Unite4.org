@@ -208,7 +208,7 @@
 	    'tile-16-10' : 16/10,
 	    'video-container': 16/10,
 	    'tile-150-150' : 1,
-	    'tile-3-1' : 3
+	    'tile-3-1' : 328/128
 	})
 	$('html,body').horizontalScroll(400,'easeOutQuart');
 	$('.cascade .cascade-single').css('opacity',0).each(function(i){
