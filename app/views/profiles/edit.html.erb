@@ -1,80 +1,88 @@
 <% @title = "Edit profile"%>
 <%= render "shared/goback" %>
 <%= form_for(@user, :url => '', :html => { :multipart => true } ) do |f| %>
-  
 
-<div class="row blimit-top blimit cascade">
+
+<div class="row blimit-top blimit cascade">    
     <div class="large-12 columns cascade-single">
 	<h2>Edit your profile</h2>
 	<h3 class="slimit">Tell us about you</h3>	  
     </div>
-<% if @user.errors.any? %>
-<div class="large-12 columns">
-    <h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
+    <% if @user.errors.any? %>
+    <div class="large-12 columns">
+	<h3><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h3>
 
-    <ul class="slimit">
-	<% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-	<% end %>
-    </ul>
-</div>
-<% end %>	   
-    <div class="large-6 columns">
-	<div>
-
-	    <%= text_field(:user, :first_name,:placeholder => "name", :class => "animation-color cascade-single") %>
-	</div>
-
-	<div>
-
-	    <%= text_field(:user, :last_name,:placeholder => "last name", :class => "animation-color cascade-single") %>
-	</div>
-
-	<div>
-
-	    <%= text_field(:user, :email,:placeholder => "email", :class => "animation-color cascade-single") %>
-	</div>	 
-	<div>
-	    <div class="large-6 columns"><%= f.file_field :avatar, :class => "slimit" %></div>
-	    <div class="large-6 columns text-right"><%= image_tag @user.avatar.url, :height =>75%></div>
-	    
-	</div>	
+	<ul class="slimit">
+	    <% @user.errors.full_messages.each do |msg| %>
+	    <li><%= msg %></li>
+	    <% end %>
+	</ul>
     </div>
-
-      <div>
-	    Followed Causes
+    <% end %>	   
+    
+	<div class="large-6 columns">
 	    <div>
-	    	<% for cause in Cause.find(:all) %>
-			<div>
-				<% id = "#{cause.id}_cause"%>
-			  <%= check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) , :id => id %>
-			  <label for="<%= id %>">
-			    <span class="animation-color"></span>Remember me
-			  </label>
-			  <%= cause.name %>
-			</div>
-			<% end %>
+
+		<%= text_field(:user, :first_name,:placeholder => "name", :class => "animation-color cascade-single") %>
 	    </div>
-	  </div>
 
-    <div class="large-6 columns">
-	<div>
+	    <div>
 
-	   <%= text_area(:user, :bio, :class => "animation-color cascade-single",:placeholder => "about") %>
+		<%= text_field(:user, :last_name,:placeholder => "last name", :class => "animation-color cascade-single") %>
+	    </div>
+
+	    <div>
+
+		<%= text_field(:user, :email,:placeholder => "email", :class => "animation-color cascade-single") %>
+	    </div>
+	    <div class=" cascade-single">
+		<h2 class="slimit">Followed Causes</h2>
+		<div>
+		    <% for cause in Cause.find(:all) %>
+		    <div class="large-6 left">
+			<% id = "#{cause.id}_cause"%>
+			<%= check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) , :id => id %>
+			<label for="<%= id %>">
+			    <span class="animation-color slimit"></span><%= cause.name %>
+			</label>
+			
+		    </div>
+		    <% end %>
+		</div>
+	    </div>	    
+	
 	</div>
 
 
 
+	<div class="large-6 columns">
+	    <div>
 
-	<div>
+		<%= text_area(:user, :bio, :class => "animation-color cascade-single",:placeholder => "about") %>
+	    </div>
 
-	    <%= f.submit "Save changes",:class => "animation-color button-submit cascade-single right"  %>
+
+	    <div class=" cascade-single">
+		<div class="large-6 columns"><%= f.file_field :avatar, :class => "slimit" %></div>
+		<div class="large-6 columns text-right"><%= image_tag @user.avatar.url, :height =>75%></div>
+
+	    </div>
+
+	    <div class="cboth"></div>
+	    <div class="mlimit-top">
+
+		<%= f.submit "Save changes",:class => "animation-color button-submit cascade-single right"  %>
+	    </div>
 	</div>
-
-    </div>
+	<div class="large-12 columns">
+	    
+	</div>
+    
 </div>
 
 <% end %>
 
 
 <%= render "shared/footer" %>
+
+

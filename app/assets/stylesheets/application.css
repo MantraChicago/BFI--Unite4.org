@@ -251,6 +251,7 @@
 .home-tile-single .bottom-button {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
     color: #f49234;
     background-color: #eee;
