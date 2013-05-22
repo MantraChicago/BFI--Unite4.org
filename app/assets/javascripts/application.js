@@ -103,11 +103,11 @@
 	    var elem = $(this);
 	    var slides = $('.slide',elem);
 		
-	    if(slides.length<2) return; //continue only if there is at least 2 slides.
+	    if(slides.length<2) return; 
 		
 	    var itemH = elem.outerHeight();
 		
-	    var random = Math.floor(Math.random() * 2000)+1000;	//from 1 to 3 sec's to avoid many tiles sliding at the same time
+	    var random = Math.floor(Math.random() * 2000)+1000;	
 	    var down = Math.floor(Math.random() * 2);	//		
 		
 	    var slide = function(down){
@@ -139,7 +139,7 @@
 		}
 	    }
 	
-	    slides.removeClass('current').eq(0).addClass('current');//set first slide as 'current'
+	    slides.removeClass('current').eq(0).addClass('current');
 		
 	    if(down) {
 		slides.not('.current').css({
@@ -152,11 +152,8 @@
 		    });
 	    }
 		
-	    setTimeout(function(){
-		
-		slide(down);	//after random 0-2 sec's time make first slide
-
-			
+	    setTimeout(function(){		
+		slide(down);				
 		setInterval(function(){	
 				
 		    slide(down);

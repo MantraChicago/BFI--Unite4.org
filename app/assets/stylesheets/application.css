@@ -467,7 +467,7 @@ select {
 }
 
 .map-infobox {
-    position: fixed;
+    position: fixed !important;
     background: #fff !important;
     overflow: auto;
     padding: 20px !important;
