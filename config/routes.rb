@@ -1,5 +1,7 @@
 GiveInspireLove::Application.routes.draw do
-  
+    
+  match '/games(/:action(/:id(.:format)))', :controller => 'Games' 
+
   resources :cause_applications
   resources :subscribes
 

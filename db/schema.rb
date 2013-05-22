@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130520183638) do
+ActiveRecord::Schema.define(:version => 20130522213942) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -99,6 +99,13 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
     t.integer  "donations_need_id"
   end
 
+  create_table "games", :force => true do |t|
+    t.integer  "level"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
   create_table "locations", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -183,6 +190,7 @@ ActiveRecord::Schema.define(:version => 20130520183638) do
     t.integer  "level",                  :default => 0
     t.string   "provider"
     t.string   "uid"
+    t.integer  "game_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

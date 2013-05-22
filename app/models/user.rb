@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   has_many :usercauses
   has_many :causes, :through => :usercauses
+  has_one :game
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
