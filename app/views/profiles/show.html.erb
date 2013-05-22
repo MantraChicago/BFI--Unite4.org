@@ -27,9 +27,12 @@
 
 	</div>
     </div>
-    <% if @user.causes.count > 0%>
-    <div class="home-tiles-group">
-		<div class="home-tiles-group-header small-static slimit abs-right"><h2><%= @user.display_name %> is following <span class="yellow-text"> <%= @user.causes.count %> </span> causes</h2></div>
+
+
+<div class="home-tiles-group">
+    <div class="home-tiles-group-header small-static slimit"><h2><%= @user.display_name %> is following <span class="yellow-text"> </span> <%= pluralize @user.causes.count, 'cause' %></h2></div>
+
+    
 	    <% @user.causes.each do |cause| %>
 		<div class="home-tile-single tile-2-2 nopadding  small-height-auto">
 		    <div class="tile-header-image slimit" style="background-image: url(<%= cause.picture.url %>);"></div>
@@ -48,10 +51,10 @@
 	
     </div>
 
-    <% end %>
+    
 
     <div class="home-tiles-group">
-	<div class="home-tiles-group-header small-static slimit"><h2>Last stories</h2></div>
+	<div class="home-tiles-group-header small-static slimit"><h2>Latest stories</h2></div>
 	
 	<div class="home-tile-single tile-3-1 tileSlide nopadding">
 	    <div class="slide"  style="background-image: url(assets/examples/story1.jpg);"></div>
