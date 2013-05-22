@@ -1,3 +1,4 @@
+=begin
 FactoryGirl.define do
   factory :donations_need do |f|
   	cause
@@ -5,3 +6,4 @@ FactoryGirl.define do
     f.lastname "Doe"
   end
 end
+=end

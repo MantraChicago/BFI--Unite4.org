@@ -1,6 +1,9 @@
 
 <%= render "shared/mainheader" %>
 
+<% @additional_head_content= render 'shared/google_maps_header' %>
+<%= File.read("app/views/shared/_backbone_templates.html").html_safe %>
+
 <div class="home-tiles-container slimit-top large-mlimit-left">
     <div class="home-tiles-group">
 
@@ -137,6 +140,16 @@
 	 
     </div>
 
+    <div class="home-tiles-group">
+     	<div id="mapHolder" class="home-tile-single tile-4-1 blank nopadding small-height-auto">
+     	  
+        </div>
+
+
+
+	 
+    </div>
+
 
 </div>
 
@@ -145,3 +158,9 @@
 
 
 <%= render "shared/mainfooter" %>
+<script>
+	var causesCollection=parseObjIntoModels(<%= @causes.to_json.html_safe %>, Cause)
+	var locationsCollection=parseObjIntoModels(<%= @locations.to_json.html_safe %>, Location)
+	var map = createGoogleMap( $('#mapHolder')[0])
+	populateMapMarkers(map,locationsCollection.models)
+</script>

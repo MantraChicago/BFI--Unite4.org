@@ -10,11 +10,7 @@ var Cause= Backbone.Model.extend({
 var Location= Backbone.Model.extend({
     name:'Location'
 })
-/*
-var Need= Backbone.Model.extend({
-    name:'Need'
-})
-*/
+
 $(document).ready(function(){
     windowhtml = $('#cause-single-window').html();
     $('#cause-single-window').html('');
@@ -115,7 +111,6 @@ var markersArray=[]
 var markerIcons = {
     darkblue:'/assets/ui/map/marker-dblue.png',
     another:'/assets/ui/map/marker-dblue.png'
-//...
 } 
 var lastOpenedWindow;
 var populateMapMarkers=function(map,locations){

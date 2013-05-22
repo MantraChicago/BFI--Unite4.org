@@ -4,6 +4,10 @@ class PagesController < ApplicationController
 		@new_causes = Cause.order('created_at asc').limit(5);
 		@featured_causes=Cause.find_all_by_is_featured(true);
 		@recent_needs=Need.order('created_at asc').limit(5);
+
+		#for map
+		@causes=Cause.all
+		@locations=Location.all
 	end
 
 

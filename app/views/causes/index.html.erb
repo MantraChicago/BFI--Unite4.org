@@ -1,8 +1,8 @@
 <% @title = "Causes"%>
-<% @additional_head_content= render 'google_maps_header' %>
-<script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
-<%= File.read("app/views/causes/_backbone_templates.html").html_safe %>
+<% @additional_head_content= render 'shared/google_maps_header' %>
+<%= File.read("app/views/shared/_backbone_templates.html").html_safe %>
 <%= render "shared/map-corner-logo" %>
+
 <div style="height:100%">
     <div class="row fullwidth" style="height:100%">
 
