@@ -164,6 +164,7 @@ var populateMapMarkers=function(map,locations){
 		//,infoBoxClearance: new google.maps.Size(1, 1)                
 		,
 		pane: "floatPane"
+		
                 
 	    };
 
@@ -174,6 +175,12 @@ var populateMapMarkers=function(map,locations){
 	    lastOpenedWindow = ib;
 	    
 	    ib.open(map, marker);
+	    google.maps.event.addListener(ib, 'domready', function() {
+	     $('.map-infobox').prependTo('body').promise().done(function(){
+		 $(window).trigger('resize');
+	     });	     
+	    } )
+	    
 
 	/*var infowindow = new google.maps.InfoWindow({
                 content:self.user_content
