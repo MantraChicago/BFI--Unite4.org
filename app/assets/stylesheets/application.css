@@ -159,6 +159,12 @@
     background-position: center;
 
 }
+.bordered {
+    border: 2px solid #d3d3d3;
+}
+.static {
+    position: static !important;
+}
 .home-tile-single.blank {
     border: 0;
     background: none;
