@@ -17,7 +17,7 @@
 	    <h4 class="mlimit secondary"><%= @user.location %></h4>
 
 	    <% if @allow_edit %>
-	    	<div class="cyan-button"><%= link_to "Edit profile", profiles_edit_path %></div>
+	    	<%= link_to "<div class='cyan-button'>Edit profile</div>".html_safe, profiles_edit_path %>
 	    <% end %>
 	   
 	    <h3><%= @user.bio%></h3>

@@ -31,13 +31,18 @@ class ProfilesController < ApplicationController
 	end
 
 	def follow_cause 
-		user=User.find(current_user.id)
-		cause = Cause.find(params[:id])
-		unless user.causes.include? cause
-			user.causes << cause
-			user.save
+		if not user_signed_in?
+			session["user_return_to"] = request.url
+			redirect_to new_user_registration_path, :notice => "You need to have an account to follow a cause." 
+		else
+			user=User.find(current_user.id)
+			cause = Cause.find(params[:id])
+			unless user.causes.include? cause
+				user.causes << cause
+				user.save
+			end
+			redirect_to cause, :notice => "You are now following "+cause.name 
 		end
-		redirect_to cause, :notice => "You are now following "+cause.name 
 	end
 
 	def edit
