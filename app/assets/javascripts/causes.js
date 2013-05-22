@@ -145,9 +145,7 @@ var populateMapMarkers=function(map,locations){
 	    //$('.popoverHolder').append(element)
              
 	    var myOptions = {
-		content: element.html()
-		,
-		disableAutoPan: false
+		content: element.html()		
 		,
 		boxClass : 'map-infobox'                
 		,
@@ -159,6 +157,8 @@ var populateMapMarkers=function(map,locations){
 		//,infoBoxClearance: new google.maps.Size(1, 1)                
 		,
 		pane: "floatPane"
+		,
+		disableAutoPan: true
 		
                 
 	    };
