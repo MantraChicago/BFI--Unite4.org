@@ -40,11 +40,30 @@
 	    
 	</div>	
     </div>
+
+      <div>
+	    Followed Causes
+	    <div>
+	    	<% for cause in Cause.find(:all) %>
+			<div>
+				<% id = "#{cause.id}_cause"%>
+			  <%= check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) , :id => id %>
+			  <label for="<%= id %>">
+			    <span class="animation-color"></span>Remember me
+			  </label>
+			  <%= cause.name %>
+			</div>
+			<% end %>
+	    </div>
+	  </div>
+
     <div class="large-6 columns">
 	<div>
 
 	   <%= text_area(:user, :bio, :class => "animation-color cascade-single",:placeholder => "about") %>
 	</div>
+
+
 
 
 	<div>

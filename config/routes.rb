@@ -4,6 +4,7 @@ GiveInspireLove::Application.routes.draw do
   resources :subscribes
 
   match "/profiles/edit" => "profiles#edit"
+  match "/profiles/follow_cause/:id" => "profiles#follow_cause"
   resources :profiles
 
   match "/causes/need/:id" => "causes#need"

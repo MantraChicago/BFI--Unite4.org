@@ -8,4 +8,21 @@ class Cause < ActiveRecord::Base
    belongs_to :cause_type
    has_many :locations, :dependent => :delete_all
 
+   def location
+    location = ""
+    if city
+      location = city
+    end
+
+    if state
+      location = state
+    end
+
+    if city and state
+      location = "#{city}, #{state}"
+    end
+
+    location
+  end
+
 end

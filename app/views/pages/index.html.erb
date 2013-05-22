@@ -54,42 +54,14 @@
     </div>
     <div class="home-tiles-group">
 	<div class="home-tiles-group-header small-static slimit"><h2>Featured Ambassadors</h2></div>
-	<div class="home-tile-single tile-150-150" style="background-image: url(assets/examples/amb1.jpg);">
+	<% @featured_users.each do |user| %>
+	<div class="home-tile-single tile-150-150" style="background-image: url(<%= user.avatar.url %>);">
 	    <div class="bottom-panel">		 
 		<h4 class="secondary">FEATURED AMBASSADOR</h4>
-		<h3 class="arial bold">Carl Rogers</h3>		
+		<h3 class="arial bold"><%= user.display_name %></h3>		
 	    </div>	    
 	</div>
-	<div class="home-tile-single tile-150-150" style="background-image: url(assets/examples/amb2.jpg);">
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED AMBASSADOR</h4>
-		<h3 class="arial bold">Carl Rogers</h3>		
-	    </div>	    
-	</div>
-	<div class="home-tile-single tile-150-150" style="background-image: url(assets/examples/amb3.jpg);">
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED AMBASSADOR</h4>
-		<h3 class="arial bold">Carl Rogers</h3>		
-	    </div>	    
-	</div>
-	<div class="home-tile-single tile-150-150" style="background-image: url(assets/examples/amb1.jpg);">
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED AMBASSADOR</h4>
-		<h3 class="arial bold">Carl Rogers</h3>		
-	    </div>	    
-	</div>
-	<div class="home-tile-single tile-150-150" style="background-image: url(assets/examples/amb2.jpg);">
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED AMBASSADOR</h4>
-		<h3 class="arial bold">Carl Rogers</h3>		
-	    </div>	    
-	</div>
-	<div class="home-tile-single tile-150-150" style="background-image: url(assets/examples/amb3.jpg);">
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED AMBASSADOR</h4>
-		<h3 class="arial bold">Carl Rogers</h3>		
-	    </div>	    
-	</div>
+	<% end %>
 	
     </div>
     

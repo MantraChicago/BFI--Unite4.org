@@ -15,7 +15,11 @@
 	<div class="home-tile-single tile-4-4 small-height-auto">
 	    <h2><%= @user.display_name %></h2>
 	    <h4 class="mlimit secondary"><%= @user.location %></h4>
-	    <div class="cyan-button"><%= link_to "Edit profile", profiles_edit_path %></div>
+
+	    <% if @allow_edit %>
+	    	<div class="cyan-button"><%= link_to "Edit profile", profiles_edit_path %></div>
+	    <% end %>
+	   
 	    <h3><%= @user.bio%></h3>
 	    <h2 class="yellow-text mlimit-top">Ways <%= @user.first_name %> has helped</h2>
 
@@ -23,25 +27,29 @@
 
 	</div>
     </div>
+    <% if @user.causes.count > 0%>
     <div class="home-tiles-group">
-	<div class="home-tiles-group-header small-static slimit"><h2><%= @user.display_name %> is following <span class="yellow-text">48</span> causes</h2></div>
-    <% @featured_causes.each do |cause| %>
-	<div class="home-tile-single tile-2-2 nopadding  small-height-auto">
-	    <div class="tile-header-image slimit" style="background-image: url(<%= cause.picture.url %>);"></div>
-	    
-	   
-	    
-	    <div class="columns blimit">
-		<h3 class="bold"><%= cause.name %></h3>
-		<h4 class="tertiary"><%= "#{cause.city}, #{cause.state}" %></h4>
-	    </div>
-	    
-	    <%= render "shared/tilebutton" %>
-	</div>
-	<% end %>
+		<div class="home-tiles-group-header small-static slimit"><h2><%= @user.display_name %> is following <span class="yellow-text"> <%= @user.causes.count %> </span> causes</h2></div>
+	    <% @user.causes.each do |cause| %>
+		<div class="home-tile-single tile-2-2 nopadding  small-height-auto">
+		    <div class="tile-header-image slimit" style="background-image: url(<%= cause.picture.url %>);"></div>
+		    
+		   
+		    
+		    <div class="columns blimit">
+			<h3 class="bold"><%= cause.name %></h3>
+			<h4 class="tertiary"><%= cause.location %></h4>
+		    </div>
+		    
+		    <%= render "shared/tilebutton" %>
+		</div>
+		<% end %>
 
 	
     </div>
+
+    <% end %>
+
     <div class="home-tiles-group">
 	<% for cause in Cause.find(:all) %>
 	
@@ -52,9 +60,6 @@
 		<h3 class="bold"><%= cause.name %></h3>
 		<h4 class="tertiary"><%= "#{cause.city}, #{cause.state}" %></h4>
 	    </div>
-	    
-	    
-	    
             <%= render "shared/tilebutton-follow" %>
 
 	</div>
