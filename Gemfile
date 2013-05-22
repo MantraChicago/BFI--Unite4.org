@@ -23,7 +23,6 @@ end
 
 #gem 'oauth'
 
-#gem 'sqlite3'
 gem 'pg'
 gem 'taps'
 
