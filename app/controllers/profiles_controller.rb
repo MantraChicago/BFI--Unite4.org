@@ -37,18 +37,21 @@ class ProfilesController < ApplicationController
 		else
 			user=User.find(current_user.id)
 			cause = Cause.find(params[:id])
+
+			message = "You are already following "+cause.name
 			unless user.causes.include? cause
 				user.causes << cause
 				user.save
+				message = "You are now following "+cause.name
 			end
-			redirect_to cause, :notice => "You are now following "+cause.name 
+			redirect_to cause, :notice =>  message
 		end
 	end
 
 	def edit
 	    @user = User.find(current_user.id)
 
-	    if @user.update_attributes(params[:user]) and params[:user]
+	    if params[:user] and @user.update_attributes(params[:user]) 
 	        redirect_to profiles_path, :notice => "You have successfully updated your profile" 
 	    else
 	        render :action => "edit" 

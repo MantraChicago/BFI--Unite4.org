@@ -33,9 +33,13 @@
 			<%= render "causes/twitter_handle"%>
 		<% end %>
 
-		
-<div class="bottom-button bold animation-color follow-cause"><%= link_to "FOLLOW THIS CAUSE", "/profiles/follow_cause/#{@cause.id}" %></div>
+	<% if current_user.causes.include? @cause %>
+		<div class="bottom-button bold animation-color follow-cause">You are already following this cause</div>
+
+	<% else %>	
+	<div class="bottom-button bold animation-color follow-cause"><%= link_to "FOLLOW THIS CAUSE", "/profiles/follow_cause/#{@cause.id}" %></div>
 	</div>
+	<% end %>
     </div>
  
 

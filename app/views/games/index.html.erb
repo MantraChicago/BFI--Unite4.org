@@ -1,1 +1,12 @@
+<% if @game.show_instructions? %>
+	<div>
+		This is how you play the game
+	</div>
+<% end %>
+
+<% if @new_badge %>
+	<div>
+		<%= @new_badge.inspect %>
+	</div>
+<% end %>
 <%= render "games/badge_level/level_#{@game.level}" %>

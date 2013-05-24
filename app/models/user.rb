@@ -1,6 +1,7 @@
 require "open-uri"
 
 class User < ActiveRecord::Base
+  validates :first_name, :last_name, :presence => true
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -16,6 +17,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
+  has_and_belongs_to_many :badges, :join_table=>:badges_users
 
   after_create do
     $customerio.identify(

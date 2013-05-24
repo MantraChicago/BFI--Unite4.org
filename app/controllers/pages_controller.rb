@@ -21,7 +21,9 @@ module ActiveRecord
   class Base
     def self.random number
       if (c = count) != 0
-      	 find(:all,:limit =>number, :order => 'RANDOM()')  
+      	 find(:all,:limit =>number, :order => 'RANDOM()')
+      	 else
+      	 []  
       end
     end
   end

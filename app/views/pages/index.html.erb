@@ -53,7 +53,7 @@
     </div>
     <div class="home-tiles-group">
 	<div class="home-tiles-group-header small-static slimit"><h2>Featured Ambassadors</h2></div>
-	<% @featured_users.each do |user| %>
+	<%  @featured_users.each do |user| %>
 	<a href="<%= "/profiles/#{user.id}" %>">
 		<div class="home-tile-single tile-150-150" style="background-image: url(<%= user.avatar.url %>);">
 		    <div class="bottom-panel">		 
