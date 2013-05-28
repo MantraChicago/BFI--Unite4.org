@@ -1,10 +1,10 @@
-=begin
 FactoryGirl.define do
   factory :cause do |f|
-    f.cause_type_id  CauseType.find_by_name(:Environmental).id
-    f.city  'Chicago'
-    f.state 'IL'
-    f.twitter_handle 'PETA'
+    #causeType  CauseType.find_by_name(:Environmental).id
+    city  'Chicago'
+    state 'IL'
+    twitter_handle 'PETA'
+    name "PETA"
   end
 end
-=end
+
