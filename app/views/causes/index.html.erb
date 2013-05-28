@@ -26,26 +26,14 @@
 
     var causesObj=<%= @causes.to_json.html_safe %>
 	var locationsObj=<%= @locations.to_json.html_safe %>
-
 	var needsObj=<%= @needs.to_json(:methods => :type).html_safe %>	
+
 	var needsCollection=parseObjIntoModels(needsObj, Backbone.Model.extend({
 		name:'needs'
     }))
 	var causesCollection=parseObjIntoModels(causesObj, Cause)
     var locationsCollection=parseObjIntoModels(locationsObj, Location)
-/*
-    var donationsCollection= parseObjIntoModels(donationsNeedsObj, Backbone.Model.extend({ name: 'donation_needs' }));
 
-    var goodCollection=parseObjIntoModels(goodNeedsObj, Backbone.Model.extend({
-	name:'good_needs'
-    }))
-
-    var volunteerCollection=parseObjIntoModels(volunteerNeedsObj, Backbone.Model.extend({
-	name:'volunteer_needs'
-    }))
-*/
-
-	
     var map =createGoogleMap($('#map-canvas')[0])
 
     populateMapMarkers(map,locationsCollection.models)
@@ -55,30 +43,21 @@
 		return model.get('cause_id')==id
 	    }
 
-	},
-	'Donation needs':{'models':needsCollection.filter(function(model){ return model.get('type')=='DonationsNeed'}),
-	    'filterFunction':function(model,id){
-			var need=needsCollection.get(id)
-			return model.get('cause_id')==need.get('cause_id')
-	    }
+	}}
+	var modelNames = ['DonationsNeed', 'GoodNeed', 'VolunteerNeed'] 
+	for(var i in modelNames ){
+		var modelName= modelNames[i]
+		filterOptions[modelName.replace('N',' N')]={
+			'models':needsCollection.filter(function(model){ return model.get('type')==modelName}),
+		    'filterFunction':function(model,id){
+				var need=needsCollection.get(id)
+				return model.get('cause_id')==need.get('cause_id')
+		    }
 
-	},
-	'Good needs':{'models':needsCollection.filter(function(model){ return model.get('type')=='GoodNeed'}),
-	    'filterFunction':function(model,id){
-			var need=needsCollection.get(id)
-			return model.get('cause_id')==need.get('cause_id')
-	    }
-
-	},
-	'Volunteer needs':{'models':needsCollection.filter(function(model){ return model.get('type')=='VolunteerNeed'}),
-	    'filterFunction':function(model,id){
-			var need=needsCollection.get(id)
-			return model.get('cause_id')==need.get('cause_id')
-	    }
-
-
+		
+		}
 	}
-    }
+
 
     var filterView = new FilterView({
 	el: $('#accordian-holder'),	
