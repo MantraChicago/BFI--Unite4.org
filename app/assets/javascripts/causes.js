@@ -39,16 +39,16 @@ var FilterView=Backbone.View.extend({
 	var template=$(_.template($('#filter-template').html(),{}))
 
 	for(var name in this.options.filterOptions){
-	    var collection=this.options.filterOptions[name].collection
+	    var models=this.options.filterOptions[name].models
 	    var html=$(_.template($('#filter-header-row-template').html(),{
 		name:name
 	    }))
-	    for(var i in collection.models){
-		var model = collection.models[i]
-		html.find('.filterHolder').append(_.template($('#filter-row-template').html(),{
-		    type:name,
-		    id:model.id,
-		    name:model.get('name')
+	    for(var i in models){
+			var model = models[i]
+			html.find('.filterHolder').append(_.template($('#filter-row-template').html(),{
+			    type:name,
+			    id:model.id,
+			    name:model.get('name')
 		}))
           
 	    }
@@ -67,12 +67,12 @@ var FilterView=Backbone.View.extend({
     filter:function(event){
 	var self=this
 	clearMapOverlays()
-	var id = $(event.target).attr('data-id')
+	var target_id = $(event.target).attr('data-id')
 	var type = $(event.target).attr('data-type')
 	var filterOption=this.options.filterOptions[type]
     
 	var locations = this.options.locationsCollection.filter(function(model){
-	    return filterOption.filterFunction(model,id)
+	    return filterOption.filterFunction(model,target_id)
 	}) 
 	populateMapMarkers(map,locations)
     }

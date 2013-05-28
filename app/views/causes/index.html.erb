@@ -27,14 +27,13 @@
     var causesObj=<%= @causes.to_json.html_safe %>
 	var locationsObj=<%= @locations.to_json.html_safe %>
 
-	var donationsNeedsObj=<%= @donation_needs.to_json.html_safe %>
-	var goodNeedsObj=<%= @good_needs.to_json.html_safe %>
-	var volunteerNeedsObj=<%= @volunteer_needs.to_json.html_safe %>
-	var socialNeedsObj=<%= @social_needs.to_json.html_safe %>
-
+	var needsObj=<%= @needs.to_json(:methods => :type).html_safe %>	
+	var needsCollection=parseObjIntoModels(needsObj, Backbone.Model.extend({
+		name:'needs'
+    }))
 	var causesCollection=parseObjIntoModels(causesObj, Cause)
     var locationsCollection=parseObjIntoModels(locationsObj, Location)
-
+/*
     var donationsCollection= parseObjIntoModels(donationsNeedsObj, Backbone.Model.extend({ name: 'donation_needs' }));
 
     var goodCollection=parseObjIntoModels(goodNeedsObj, Backbone.Model.extend({
@@ -44,36 +43,37 @@
     var volunteerCollection=parseObjIntoModels(volunteerNeedsObj, Backbone.Model.extend({
 	name:'volunteer_needs'
     }))
+*/
 
-
+	
     var map =createGoogleMap($('#map-canvas')[0])
 
     populateMapMarkers(map,locationsCollection.models)
 
-    var filterOptions={'Causes':{'collection':causesCollection,
+    var filterOptions={'Causes':{'models':causesCollection.models,
 	    'filterFunction':function(model,id){
 		return model.get('cause_id')==id
 	    }
 
 	},
-	'Donation needs':{'collection':donationsCollection,
+	'Donation needs':{'models':needsCollection.filter(function(model){ return model.get('type')=='DonationsNeed'}),
 	    'filterFunction':function(model,id){
-		var need=donationsCollection.get(id)
-		return model.get('cause_id')==need.get('cause_id')
+			var need=needsCollection.get(id)
+			return model.get('cause_id')==need.get('cause_id')
 	    }
 
 	},
-	'Good needs':{'collection':goodCollection,
+	'Good needs':{'models':needsCollection.filter(function(model){ return model.get('type')=='GoodNeed'}),
 	    'filterFunction':function(model,id){
-		var need=goodCollection.get(id)
-		return model.get('cause_id')==need.get('cause_id')
+			var need=needsCollection.get(id)
+			return model.get('cause_id')==need.get('cause_id')
 	    }
 
 	},
-	'Volunteer needs':{'collection':volunteerCollection,
+	'Volunteer needs':{'models':needsCollection.filter(function(model){ return model.get('type')=='VolunteerNeed'}),
 	    'filterFunction':function(model,id){
-		var need=volunteerCollection.get(id)
-		return model.get('cause_id')==need.get('cause_id')
+			var need=needsCollection.get(id)
+			return model.get('cause_id')==need.get('cause_id')
 	    }
 
 
