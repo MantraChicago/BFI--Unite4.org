@@ -1,5 +1,4 @@
 require 'spec_helper'
-include Devise::TestHelpers
 
 describe DonationsController do
 	it "A donation should save" do

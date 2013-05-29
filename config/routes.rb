@@ -30,7 +30,11 @@ GiveInspireLove::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-
+  namespace :api do 
+    resources :needs
+    resources :causes
+    match 'all_data' =>'Api#all_data'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
