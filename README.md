@@ -1,7 +1,7 @@
-== BFI
+### BFI
 
 
-==setup
+###Setup
 The app requires a postgesql database connection. 
 
 To populate the initial database schema run
@@ -9,7 +9,7 @@ To populate the initial database schema run
 
 The app requires Imagemagick to be installed. 
 
-==Commands
+###Commands
 
 To populate development data run
 
@@ -19,7 +19,7 @@ To create an Active Admin user
 
 > `$ rake createActiveAdminUser $email $password`
 
-==Testing
+###Testing
 
 The app uses rspec to run its tests. 
 
