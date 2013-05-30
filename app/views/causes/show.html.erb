@@ -33,7 +33,7 @@
 			<%= render "causes/twitter_handle"%>
 		<% end %>
 
-	<% if current_user.causes.include? @cause %>
+	<% if current_user && current_user.causes.include?(@cause) %>
 		<div class="bottom-button bold animation-color follow-cause">You are already following this cause</div>
 
 	<% else %>	

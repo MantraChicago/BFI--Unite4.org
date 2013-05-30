@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
 		@featured_causes=Cause.find_all_by_is_featured(true);
 		@user=User.find(params[:id])
 	end
-
+=begin
 	def update
 		params[:user] ||= {}
 		params[:user][:cause_ids] ||= []
@@ -29,7 +29,7 @@ class ProfilesController < ApplicationController
 			# todo
 		end
 	end
-
+=end
 	def follow_cause 
 		if not user_signed_in?
 			session["user_return_to"] = request.url
@@ -51,7 +51,11 @@ class ProfilesController < ApplicationController
 	def edit
 	    @user = User.find(current_user.id)
 
-	    if params[:user] and @user.update_attributes(params[:user]) 
+	    params[:user] ||= {}
+		params[:user][:cause_ids] ||= []
+
+	    if not request.get? and @user.update_attributes(params[:user]) 
+
 	        redirect_to profiles_path, :notice => "You have successfully updated your profile" 
 	    else
 	        render :action => "edit" 

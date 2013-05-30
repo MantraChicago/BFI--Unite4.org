@@ -1,5 +1,5 @@
 class Api::ProfilesController < Api::ApiController
-  include Devise::Controllers::InternalHelpers
+  #include Devise::Controllers::InternalHelpers
 
   def login
     build_resource

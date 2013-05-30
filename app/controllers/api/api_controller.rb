@@ -3,11 +3,10 @@ class Api::ApiController < ActionController::Base
   
   #after_filter render_json
   def all_data
-  	causes=Cause.all
-  	needs =Need.all
 
-  	render :json =>{:causes=> causes,
-  					:needs =>needs}	
+  	render :json =>{:causes=> Cause.all,
+  					:locations =>Location.all,
+  					:needs =>Need.all}	
   end
 
   def render_json
