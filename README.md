@@ -18,7 +18,7 @@ To populate development data run
 
 To create an Active Admin user
 
-> `$ rake createActiveAdminUser $email $password`
+> `$ rake rake createActiveAdminUser[$email,$password]`
 
 ###Testing
 

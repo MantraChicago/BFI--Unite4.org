@@ -1,4 +1,7 @@
-task :createActiveAdminUser, email, password, :needs => [:environment] do
+task :createActiveAdminUser, [:email, :password] => [:environment] do |t,args|
+#task :createActiveAdminUser, :email, :password, :needs => [:environment] do |t,args|
+	email =args.email
+	password=args.password
 	AdminUser.create :email => email, :password => password, :password_confirmation => password
 	puts "Active Admin user created for #{email}"
 end
