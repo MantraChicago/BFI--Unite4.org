@@ -15,21 +15,9 @@
 #giveinspirelove {
     height: 100%;
 }
-.button-submit,.cyan-button {
-    border-radius: 5px;
-    background-color: #399a98;
-    padding: 19px 35px 19px 35px;
-    color: #fff;
-    font-family: Arial;
-    font-weight: 700;
-    display: inline-block;
-    cursor:pointer;
-}
-.button-submit a,.cyan-button a{
-    color: #fff;
-}
-.button-submit:hover{
-    background-color: #2e8987;
+.tile-4-3 {
+    height: 400px;
+    width:400px;
 }
 .centered-text {
     text-align: center;
@@ -37,18 +25,6 @@
 .inline {
     display: inline-block;
     vertical-align: middle;
-}
-.back-arrow{
-    background-image: url(back-arrow.png);
-    background-size: cover;
-    width: 32px;
-    height: 32px;
-    margin-right: 25px;     
-    position: relative;
-    cursor: pointer;
-}
-.back-arrow:hover{
-    left:-2px;
 }
 
 .slimit {
@@ -70,29 +46,6 @@
     margin-top: 4em !important;
 }
 
-.fixed-footer {
-    position:fixed;
-    bottom: 0;
-    padding-bottom: 4em;
-    width: 100%;
-}
-.upper-notice{
-    position: fixed;
-    padding:20px 40px 20px 40px;
-    background-color: #399a98;
-    top: -100px;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    color: #fff;
-    border-bottom: 2px solid #fff;
-}
-
-.notice-close {
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-}
 
 
 .secondary {
@@ -101,173 +54,14 @@
 .tertiary {
     opacity: 0.4;
 }
-.fs-bg{
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-    top: 0; bottom: 0;
-    background-color: rgba(240,240,240,0.6);
-}
-.fs-bg-back {
-    position: fixed;
-    width: 100%;
-    z-index: -999;
-    top: 0; bottom: 0;
-    background: none;
-}
-.fs-message {
-    box-shadow: 0 0 40px #aaa;
-    background-color: #fff;
-    border: 3px solid #399a98;
-    z-index: 999;
-    padding: 20px;
-    width: 90%;
-    max-width: 400px;
-    margin: auto;
-    margin-top: 13%;
-}
 
-.fs-message-alert{
-    border: 3px solid #990000;
-}
-
-
-
-.home-tiles-container{
-    white-space: nowrap;
-    min-width: 320px;
-    padding-left: 35px;
-
-}
-.home-tiles-container *{
-    white-space: normal;
-}
-.home-tiles-group{
-    height:600px;
-    display: inline-block;
-    margin-right: 40px;
-    padding-left: 0.9375em;
-    min-width: 272px;
-}
-.home-tile-single{
-    width:128px;
-    height:128px;
-    margin: 0 16px 16px 0;
-    border: 1px solid #d3d3d3;
-    background-color: #fafafa;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-
-}
 .bordered {
     border: 2px solid #d3d3d3;
 }
 .static {
     position: static !important;
 }
-.home-tile-single.blank {
-    border: 0;
-    background: none;
-}
-.home-tiles-group-header {
-    white-space: nowrap;
-    position: absolute;
-    top: -45px;
-}
-.home-tiles-group-header * {
-    white-space: nowrap;
-}
 
-.home-tile-single .bottom-panel {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 10px;
-    padding-bottom:4px;
-    color: #fff;
-    background: url(tile-black-gradient.png) repeat-x bottom;
-    z-index: 30;
-}
-.home-tile-single .header-img {
-    width:100%;
-}
-
-.tile-1-1{
-    width:128px;
-    height:128px;
-}
-.tile-2-1{
-    width:272px;
-    height:128px;
-}
-.tile-2-2{
-    width: 272px;
-    height:272px;     
-}
-.tile-4-2{
-    width: 560px;
-    height: 272px;
-}
-.tile-4-3{
-    width: 560px;
-    height: 415px;
-}
-.tile-4-1 {
-    width: 560px;
-    height: 128px;
-}
-.tile-4-4{
-    width: 560px;
-    height: 560px;
-}
-.tile-3-4 {
-    height: 560px;
-    width: 328px;
-}
-.tile-16-10 {
-    height: 560px;
-    width:896px;
-}
-.tile-150-150 {
-    height: 176px;
-    width:176px;
-}
-.tile-3-150 {
-    height: 176px;
-    width: 328px;
-}
-.tile-3-1 {
-    width:328px;
-    height: 128px;
-}
-.tile-3-2 {
-    width:328px;
-    height: 272px;
-}
-
-
-
-.tile-1-1,.tile-2-1,.tile-2-2,.tile-3-4,.tile-150-150, .tile-3-150, .tile-3-1 {
-    padding:20px;
-}
-.tile-4-2,.tile-4-4{
-    padding:40px;
-}
-.home-tile-single .bottom-button {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: #f49234;
-    background-color: #eee;
-    text-align: center;
-    padding: 10px;
-    border-top: 1px solid #d3d3d3;
-    cursor: pointer;
-}
-.home-tile-single .bottom-button:hover {
-    background-color: #dfdfdf;
-}
 .nopadding {
     padding: 0 !important;
 }
@@ -289,34 +83,11 @@
 .slimit-right {
     margin-right: 10px;
 }
-.need-icon {
-    vertical-align: middle;
-    margin-right: 20px;
-}
+
 .cboth {
     clear:both;
 }
-.donation-select  {
-    max-width: 200px;
-}
 
-.high-list li {
-    line-height: 2em;
-}
-
-.toggle-map {
-    display: none;
-}
-
-
-#goback, #goback * {
-    color: #4e4e4e;
-}
-.big-number {
-    font-size: 100pt;
-    line-height: 1em;
-    color: #f49234;
-}
 
 .cyan-text {
     color: #399a98;
@@ -333,52 +104,7 @@
     color: #373737;
 }
 
-.map-corner-logo {
-    position:fixed;
-    top:40px;
-    left:80px;
-    z-index: 2;
-    background-color: #fff;
-    padding:20px;
-}
-.map-bar {
-    box-shadow: 0px 0px 60px #aaa;
-    z-index: 2;
-    background-color: #fff;
-    border-left: 1px solid #e1e1e1;
-    overflow: auto;
-}
-.map-bar ul > li h3, .showAll h3 {
-    background: url(ui/map-list-bg.gif) repeat-x;
-    color: #ededed;
-    height:42px;
-    line-height: 42px;
-    padding-left:20px;
-    display: block;
 
-}
-
-.filterHolder li {
-    padding: 13px 20px 13px 20px;
-    border-bottom: 1px solid #e1e1e1;
-    cursor: pointer;
-
-}
-.filterHolder li img {
-    vertical-align: -25%;
-    margin-right: 5px;
-}
-.filterHolder li:hover {
-    background-color: #f2f2f2;
-}
-
-.map-bar-button {
-    background-color: #399a98;
-    display:inline-block;
-    border-radius: 4px;
-    color: #fff;
-    padding: 2px 10px 2px 10px;   
-}
 
 .no-min-width {
     min-width: 0px !important;
@@ -410,62 +136,7 @@
 .pink-big-button a {
     color: #fff;
 }
-.tile-small-button {
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
-    background-color: #399a98;
-    border-radius: 0px;
-    font-size:8pt;
-    font-weight: 700;
-    color: #fff;
-    padding: 5px 10px 5px 10px; 
-}
-.tile-small-button a {
-    color: #fff;
-}
-.tile-header-image {    
 
-    height: 45%;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-}
-
-.action-button {
-    background-color: #fff;
-    color:#4e4e4e;
-    padding: 20px;
-    border: 5px solid #e3e3e3;
-    font-weight: 700;    
-}
-
-.action-button:hover {
-    background-color: #399a98;
-    color:#fff;;
-}
-
-
-.logo-column {
-    max-width: 200px;
-    min-height: 104px;
-}
-
-.main-header-single {
-    padding-top: 20px;
-    max-width: 200px;
-}
-.main-header-single h2 {
-    font-size: 23pt;
-    line-height: 1em;
-}
-
-select {
-    font-family: inherit;
-    font-size: inherit;   
-    -webkit-appearance: none;
-    background: url(/assets/ui/dropdown.png) no-repeat 97% center #fff;
-}
 
 .user-manager {
     position: fixed;
@@ -500,87 +171,6 @@ select {
     padding: 20px !important;
 
 }
-
-.cause-single-window {
-    padding: 20px;
-}
-
-.abs-right {
-    right:0;
-}
-
-.slide{
-	width:100%;
-	height:100%;
-	position:absolute;
-	top:0px;
-	left:0px;
-	z-index:20;
-	background-position:center;
-	background-size: cover;
-}
-.slide.last{
-	z-index:21;
-}
-.slide.current{
-	z-index:22;
-}
-
-
-
-
-@media only screen and (max-width: 48em), only screen and (max-height: 42em) {
-
-    .small-static {
-	position: static !important;
-    }
-    .home-tile-single {
-	position: relative !important;
-	top: 0 !important;
-	left: 0 !important;
-	width: auto !important;
-    }
-    .home-tiles-container{
-	white-space: normal !important;
-	padding-left: 0;
-    }
-    .home-tiles-group{
-	height: auto !important;
-	width: auto !important;
-	display: block !important;
-	margin-right: 0;
-
-    }
-    .tile-header-image {
-	min-height: 250px;
-    }
-    .ismobileflag {display: none !important;}
-    .small-height-auto {
-	height: auto !important;
-	min-height: 200px;
-    }
-    .large-mlimit-left {
-	padding-left: 0 !important;
-    }
-    .logo-column {
-	max-width: none !important;
-    }
-
-    .main-header-single {
-	max-width: none !important;
-    }
-    .row,.home-tiles-container {
-	max-width: 700px !important;
-	margin: auto;
-    }
-    .row.fullwidth {
-	max-width: 100% !important;
-    }
-    #mapHolder {
-	min-height: 500px;
-    }
-}
-
 
 @media only screen and (max-width: 48em) {
     .map-menu {
