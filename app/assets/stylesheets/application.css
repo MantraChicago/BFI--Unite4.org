@@ -21,7 +21,20 @@
     width:400px;
 }
 
+#topbar {
+    height: 52px;
+    line-height: 52px;
+    background: url(topbar-bg.jpg) repeat-x center;
+    box-shadow: 0 0 5px #000;
+}
 
+#topbar nav li {
+    display: inline-block;
+    margin-left: 20px;
+}
+#header {
+    min-height: 510px;
+}
 
 .map-infobox {
     position: fixed !important;
