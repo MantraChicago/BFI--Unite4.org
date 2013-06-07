@@ -1,126 +1,121 @@
 <%= render "shared/mainheader" %>
 
 <% @additional_head_content= render 'shared/google_maps_header' %>
-<%= File.read("app/views/shared/_backbone_templates.html").html_safe %>
 
-<div class="home-tiles-container slimit-top large-mlimit-left">
-    <div class="home-tiles-group">
-
-
-    <% cause= @featured_causes.pop  %>
-    <% if cause %>
-	<div class="home-tile-single tile-4-2 nopadding" style="background-image: url(<%= cause.picture.url %>);">
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED CAUSE</h4>
-		<h2 class="arial"><%= cause.name %></h2>
-		<div class="tile-small-button right arial"><%= link_to "TAKE ACTION", cause%></div>
-	    </div>
-	</div>
-	<% end %>
-
-	<div class="home-tile-single tile-2-2 small-height-auto">
-	    <h2 class="slimit">Immediate Needs</h2>
-	    <ul class="high-list">
-	    	<% @recent_needs.each do |need| %>
-	    		<li><%= link_to need.name, need %></li>
-	    	<% end %>
-		
-	    </ul>
-	</div>
-	<div class="home-tile-single tile-2-2 small-height-auto">	     	
-	    <h2 class="slimit">New Causes</h2>
-	    <ul class="high-list">
-		<% @new_causes.each do |cause| %>
-		<li><%= link_to cause.name, cause %></li>
-
-		<% end %>
-
-	    </ul>
-	</div>
-
-	<% @featured_causes.each do |cause| %>
-
-	<div class="home-tile-single tile-2-1 nopadding" style="background-image: url(<%= cause.picture.url %>);">
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED CAUSE</h4>
-		<h3 class="arial"><%= cause.name %></h3>
-		<div class="tile-small-button right"><%= link_to "TAKE ACTION", cause%></div>
-	    </div>	     
-	</div>
-
-	<% end %>
-
-    </div>
-    <div class="home-tiles-group">
-	<div class="home-tiles-group-header small-static slimit"><h2>Featured Ambassadors</h2></div>
-	<%  @featured_users.each do |user| %>
-	<a href="<%= "/profiles/#{user.id}" %>">
-		<div class="home-tile-single tile-150-150" style="background-image: url(<%= user.avatar.url %>);">
-		    <div class="bottom-panel">		 
-			<h4 class="secondary">FEATURED AMBASSADOR</h4>
-			<h3 class="arial bold"><%= user.display_name %></h3>	
-		    </div>	    
-		</div>
-	</a>
-	<% end %>
-	
-    </div>
-    
-    <div class="home-tiles-group">
-	<div class="home-tiles-group-header small-static slimit"><h2>Last stories</h2></div>
-	
-	<div class="home-tile-single tile-3-1 tileSlide nopadding">
-	    <div class="slide"  style="background-image: url(assets/examples/story1.jpg);"></div>
-	    <div class="slide"  style="background-image: url(assets/examples/story3.jpg);"></div>
-	    
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED STORY</h4>
-		<h3 class="arial bold">Carl Rogers</h3>		
-	    </div>	    
-	</div>
-	<div class="home-tile-single tile-3-2 nopadding" style="background-image: url(assets/examples/story2.jpg);">
-	    <div class="bottom-panel">		 
-		<h4 class="secondary">FEATURED STORY</h4>
-		<h3 class="arial bold">Carl Rogers</h3>		
-	    </div>	    
-	</div>	
-	
-	<div class="home-tile-single tile-3-1 yellow-bg no-min-height tileSlide nopadding">
-	    <div class="slide m-padding"><h3>At the moment, there are more than 1.5 million nonprofit organizations registered in the U.S. </h3></div>
-	    <div class="slide m-padding"><h3>The number is staggering. How do you find out. At the moment, there are more than 1.5 </h3></div>
-	    
-	</div>
-
-	
-
-	
-    </div>
-    
-    
-    <div class="home-tiles-group">
-	
-	<div class="home-tile-single tile-16-10">
-	    <iframe width="100%" height="100%" src="http://www.youtube.com/embed/UYNkc2SS8jg" frameborder="0" allowfullscreen></iframe>
-	</div>
-    </div>
-    
-     <div class="home-tiles-group">
-<div class="home-tiles-group-header small-static slimit"><h2 class="inline">Find causes</h2><div class="tile-small-button inline arial static slimit-left"><a href="<%= causes_path  %>">EXPLORE</a></div></div>
-	
-     	<div id="mapHolder" class="home-tile-single tile-4-3 nopadding bordered"></div>
-     	<div class="home-tile-single tile-4-1 blank nopadding small-height-auto">
-     	   <%= render "subscribes/form.html" %>
-        </div>
-
-
-
-
-
-	 
-    </div>
-
+<div id="header">
 
 </div>
+<div id="sub-header" class="blimit">
+    <div class="row">
+	<div class="large-4 columns">
+	    ONE
+	</div>
+	<div class="large-4 columns">
+	    ONE
+	</div>
+	<div class="large-4 columns">
+	    ONE
+	</div>
+
+    </div>
+</div>
+
+<div id="causes" class="blimit">
+    <div class="row">
+	<div class="large-3 columns">
+	    <div class="cause-single">
+		<div class="cause-header" style="background-image: url(assets/t1.jpg);">
+		    <div class="cause-title">
+			Foundation of greater Chicago Homeless
+		    </div>
+		</div>
+		<div class="oxygen s-padding">
+		    <h4>Help us reach 500 supporters by July 1, 2013</h4>
+		    <div class="bar-cont s-limit-top s-limit">
+			<div class="bar reset" style="width:60%"></div>
+		    </div>
+		    <div class="purple-bg button cabin">
+			<h4>Be a supporter</h4>
+		    </div>
+		</div>
+	    </div>
+	</div>
+
+	<div class="large-3 columns">
+	    <div class="cause-single">
+		<div class="cause-header" style="background-image: url(assets/t2.jpg);">
+		    <div class="cause-title">
+			Foundation of greater Chicago Homeless
+		    </div>
+		</div>
+		<div class="oxygen s-padding">
+		    <h4>Help us reach 500 supporters by July 1, 2013</h4>
+		    <div class="bar-cont s-limit-top s-limit">
+			<div class="bar reset" style="width:30%"></div>
+		    </div>
+		    <div class="purple-bg button cabin">
+			<h4>Be a supporter</h4>
+		    </div>
+		</div>
+	    </div>
+	</div>
+
+	<div class="large-3 columns">
+	    <div class="cause-single">
+		<div class="cause-header" style="background-image: url(assets/t3.jpg);">
+		    <div class="cause-title">
+			Foundation of greater Chicago Homeless
+		    </div>
+		</div>
+		<div class="oxygen s-padding">
+		    <h4>Help us reach 500 supporters by July 1, 2013</h4>
+		    <div class="bar-cont s-limit-top s-limit">
+			<div class="bar reset" style="width:10%"></div>
+		    </div>
+		    <div class="purple-bg button cabin">
+			<h4>Be a supporter</h4>
+		    </div>
+		</div>
+	    </div>
+	</div>
+
+	<div class="large-3 columns">
+	    <div class="cause-single">
+		<div class="cause-header" style="background-image: url(assets/t4.jpg);">
+		    <div class="cause-title">
+			Foundation of greater Chicago Homeless
+		    </div>
+		</div>
+		<div class="oxygen s-padding">
+		    <h4>Help us reach 500 supporters by July 1, 2013</h4>
+		    <div class="bar-cont s-limit-top s-limit">
+			<div class="bar reset" style="width:95%"></div>
+		    </div>
+		    <div class="purple-bg button cabin">
+			<h4>Be a supporter</h4>
+		    </div>
+		</div>
+	    </div>
+	</div>	    
+    </div>
+</div>
+
+<div class="row">
+    <div class="group-header">
+	FIND
+    </div>
+    <div id="mapHolder"></div>    
+    <div class="large-12 text-right">ALL</div>
+    <div class="cboth"></div>
+</div>
+
+<div class="row" id="companies">
+    COMPS
+</div>
+
+
+
+
 
 
 
@@ -128,8 +123,8 @@
 
 <%= render "shared/mainfooter" %>
 <script>
-	var causesCollection=parseObjIntoModels(<%= @causes.to_json.html_safe %>, Cause)
-	var locationsCollection=parseObjIntoModels(<%= @locations.to_json.html_safe %>, Location)
-	var map = createGoogleMap( $('#mapHolder')[0])
-	populateMapMarkers(map,locationsCollection.models)
+    var causesCollection=parseObjIntoModels(<%= @causes.to_json.html_safe %>, Cause)
+    var locationsCollection=parseObjIntoModels(<%= @locations.to_json.html_safe %>, Location)
+    var map = createGoogleMap( $('#mapHolder')[0])
+    populateMapMarkers(map,locationsCollection.models)
 </script>

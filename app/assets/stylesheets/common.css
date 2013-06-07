@@ -1,0 +1,117 @@
+.m-padding {
+    padding: 40px;
+}
+.s-padding {
+    padding: 10px;
+    
+}
+
+.purple-bg {
+    background-color: #9e0253;
+color: #fff; 
+}
+
+.blue-bg {
+    background-color: #009dd1;
+color: #fff; 
+}
+
+.centered-text {
+    text-align: center;
+}
+.inline {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.slimit {
+    margin-bottom: 1em !important;
+}
+.mlimit{
+    margin-bottom: 2em !important;
+}
+.blimit{
+    margin-bottom: 4em !important;
+}
+.slimit-top {
+    margin-top: 1em !important;
+}
+.mlimit-top{
+    margin-top: 2em !important;
+}
+.blimit-top{
+    margin-top: 4em !important;
+}
+
+
+
+.secondary {
+    opacity: 0.8;
+}
+.tertiary {
+    opacity: 0.4;
+}
+
+.bordered {
+    border: 2px solid #d3d3d3;
+}
+.static {
+    position: static !important;
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.m-padding {
+    padding:20px;
+}
+
+.bold {
+    font-weight: 700;
+}
+.large-mlimit-left {
+    padding-left: 35px !important;
+}
+
+.slimit-left {
+    margin-left: 10px;
+}
+.slimit-right {
+    margin-right: 10px;
+}
+
+.cboth {
+    clear:both;
+}
+
+
+.cyan-text {
+    color: #399a98;
+}
+.cyan-bg {
+    background-color: #399a98;
+    color: #fff;
+}
+.yellow-text {
+    color: #f49234;
+}
+.yellow-bg {
+    background-color: #f6d332;
+    color: #373737;
+}
+
+
+
+.no-min-width {
+    min-width: 0px !important;
+}
+.no-min-height {
+    min-height: 0px !important;
+}
+
+.button {
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0 10px 0;
+}

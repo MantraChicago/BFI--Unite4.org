@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require_normalize
  *= require_tree .
 */
 
@@ -19,139 +20,8 @@
     height: 400px;
     width:400px;
 }
-.centered-text {
-    text-align: center;
-}
-.inline {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.slimit {
-    margin-bottom: 1em !important;
-}
-.mlimit{
-    margin-bottom: 2em !important;
-}
-.blimit{
-    margin-bottom: 4em !important;
-}
-.slimit-top {
-    margin-top: 1em !important;
-}
-.mlimit-top{
-    margin-top: 2em !important;
-}
-.blimit-top{
-    margin-top: 4em !important;
-}
 
 
-
-.secondary {
-    opacity: 0.8;
-}
-.tertiary {
-    opacity: 0.4;
-}
-
-.bordered {
-    border: 2px solid #d3d3d3;
-}
-.static {
-    position: static !important;
-}
-
-.nopadding {
-    padding: 0 !important;
-}
-
-.m-padding {
-    padding:20px;
-}
-
-.bold {
-    font-weight: 700;
-}
-.large-mlimit-left {
-    padding-left: 35px !important;
-}
-
-.slimit-left {
-    margin-left: 10px;
-}
-.slimit-right {
-    margin-right: 10px;
-}
-
-.cboth {
-    clear:both;
-}
-
-
-.cyan-text {
-    color: #399a98;
-}
-.cyan-bg {
-    background-color: #399a98;
-    color: #fff;
-}
-.yellow-text {
-    color: #f49234;
-}
-.yellow-bg {
-    background-color: #f6d332;
-    color: #373737;
-}
-
-
-
-.no-min-width {
-    min-width: 0px !important;
-}
-.no-min-height {
-    min-height: 0px !important;
-}
-.pink-big-button {
-    border-radius: 5px;
-    background-image: linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
-    background-image: -o-linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
-    background-image: -moz-linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
-    background-image: -webkit-linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
-    background-image: -ms-linear-gradient(bottom, rgb(197,20,100) 0%, rgb(201,73,131) 100%);
-
-    background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(197,20,100)),
-	color-stop(1, rgb(201,73,131))
-	);
-    color: #fff;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-
-}
-.pink-big-button a {
-    color: #fff;
-}
-
-
-.user-manager {
-    position: fixed;
-    background-color: #399a98;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    top:0;
-    right:30px;
-    padding:10px 20px 10px 20px;
-    color: #fff;
-    z-index: 998;
-}
-.user-manager a {
-    color: #fff;
-}
 
 .map-infobox {
     position: fixed !important;
@@ -173,29 +43,7 @@
 }
 
 @media only screen and (max-width: 48em) {
-    .map-menu {
-	position: fixed !important;
-	left: 100%;
-    }
-    .menu-visible {
-	left: 0 !important;
-    }
-    .map-corner-logo {
-	left: 20px;	
-    }
-    .toggle-map {
-	background: url(ui/map-list-bg.gif) repeat-x;
-	cursor: pointer;
-	height: 42px;
-	width: 42px;	
-	padding: 13px;
-	display: block;
-	position: fixed;
-	top:0;
-	right: 0;
-	z-index: 999;
-	border-bottom-left-radius: 5px;
-    }
+
     .map-infobox {
 	width: 90% !important;
 	left: 5% !important;
@@ -217,3 +65,80 @@
     
 
 }
+
+
+
+
+#header-big {
+    background: url(header-bg.jpg) no-repeat center top;
+    background-size: cover;
+    position: relative;
+    
+}
+
+#header-big-slogan {
+    background: url(header-big-slogan.png) no-repeat top right;
+    background-size: cover;
+    height:403px;
+    width:676px;
+    position: absolute;
+    bottom: 40px;
+    right: 50px;
+   
+}
+
+
+
+
+#sub-header {
+    background-color: #f4f4f4;
+    padding:40px;
+    padding-bottom: 40px;
+    
+}
+
+.cause-single {
+    background-color: #fafafa;
+    border: 1px solid #e3e3e3;
+    margin-bottom: 20px;
+}
+
+.cause-header {
+    background-size: cover;
+    min-height: 130px;
+    position: relative;
+}
+
+.cause-title {
+    background: #000;
+    color: #fff;
+    display: inline;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 80%;
+}
+
+.bar-cont {
+    background: #c2c2c2;
+    border-radius: 4px;
+    height: 10px;
+}
+
+.bar-cont .bar {
+    border-radius: 4px;
+    background: #2ab200;
+    height: 10px;
+    transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;    /* FF3.7+ */
+    -o-transition: width 1s ease-in-out;      /* Opera 10.5 */
+    -webkit-transition: width 1s ease-in-out; /* Saf3.2+, Chrome */      
+}
+.bar.reset {
+    width: 10px !important;
+}
+
+#mapHolder {
+    min-height: 400px;
+}
+
