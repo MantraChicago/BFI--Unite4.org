@@ -90,7 +90,9 @@
 .slimit-right {
     margin-right: 10px;
 }
-
+.mlimit-right {
+    margin-right: 20px;
+}
 .cboth {
     clear:both;
 }
