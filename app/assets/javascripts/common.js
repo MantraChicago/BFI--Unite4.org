@@ -9,7 +9,8 @@
 	    slides: "quick-slider-single",
 	    next: "quick-slider-next",
 	    prev: "quick-slider-prev",
-	    nav: "quick-slider-nav"
+	    nav: "quick-slider-nav",
+	    auto: 5000
 	};
 	options = $.extend({}, defaults, options);
 	
@@ -17,6 +18,8 @@
 	var prev = $('.' + options.prev,t);
 	var next = $('.' + options.next,t);
 	var nav = $('.' + options.nav,t);
+	
+	var interval = 0;
 	
 	slides.removeClass('active').eq(0).addClass('active');
 	nav.removeClass('active').eq(0).addClass('active');
@@ -30,14 +33,18 @@
 	    $('.' + options.nav,t).eq(index).addClass('active');	    
 	    	    
 	    elem.addClass('active');
+	    
+	    clearInterval(interval);
+	    auto();	    
 	};
 	
 	prev.click(function(){
 	    slide($('.active.' + options.slides,t).prevOrLast('.' + options.slides));
 	});
 	next.click(function(){
-	    slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
+	    slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));	    
 	});
+	
 	nav.click(function(){
 	    var index = nav.index(this);
 	    slide($('.' + options.slides,t).eq(index));
@@ -50,7 +57,16 @@
 	    if (e.keyCode == 39) { 
 		slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
 	    }    
-	});	
+	});
+	
+	var auto = function() {
+	    interval = setInterval(function(){
+		slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
+	    },options.auto)
+	}
+	if ( options.auto ) {
+	    auto();
+	}
     }
     
     
