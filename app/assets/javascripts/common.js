@@ -10,16 +10,16 @@
 	    next: "quick-slider-next",
 	    prev: "quick-slider-prev",
 	    nav: "quick-slider-nav",
-	    auto: 5000
+	    autoplay: 5000,
+	    hoverpause : true
 	};
 	options = $.extend({}, defaults, options);
 	
-	var slides = $('.' + options.slides,t);
-	var prev = $('.' + options.prev,t);
-	var next = $('.' + options.next,t);
-	var nav = $('.' + options.nav,t);
-	
-	var interval = 0;
+	var slides = $('.' + options.slides,t),
+	    prev = $('.' + options.prev,t),
+	    next = $('.' + options.next,t),
+	    nav = $('.' + options.nav,t),
+	    interval = 0;
 	
 	slides.removeClass('active').eq(0).addClass('active');
 	nav.removeClass('active').eq(0).addClass('active');
@@ -35,7 +35,7 @@
 	    elem.addClass('active');
 	    
 	    clearInterval(interval);
-	    auto();	    
+	    autoPlay();	    
 	};
 	
 	prev.click(function(){
@@ -52,20 +52,28 @@
 	
 	$(document).keydown(function(e){
 	    if (e.keyCode == 37) {
-		 slide($('.active.' + options.slides,t).prevOrLast('.' + options.slides));
+		slide($('.active.' + options.slides,t).prevOrLast('.' + options.slides));
 	    }
 	    if (e.keyCode == 39) { 
 		slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
 	    }    
 	});
 	
-	var auto = function() {
+	var autoPlay = function() {
 	    interval = setInterval(function(){
 		slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
-	    },options.auto)
+	    },options.autoplay)
 	}
-	if ( options.auto ) {
-	    auto();
+	if ( options.autoplay ) {
+	    autoPlay();
+	}
+	if ( options.hoverpause ) {
+	    slides.mouseenter(function(){
+		clearInterval(interval);
+	    });
+	    slides.mouseleave(function(){
+		autoPlay();
+	    })
 	}
     }
     
