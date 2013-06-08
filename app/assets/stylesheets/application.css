@@ -19,6 +19,8 @@
     line-height: 52px;
     background: url(topbar-bg.jpg) repeat-x center;
     box-shadow: 0 0 5px #000;
+    position: relative;
+    z-index: 3;
 }
 
 #topbar nav li {
@@ -26,9 +28,21 @@
     margin-left: 20px;
 }
 #header {
-    
+ position: relative;   
 }
 
+.header-slide {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+    background-size: cover;
+    background-position: center;
+}
+.header-nav {
+    position: relative;
+    z-index:2;
+}
 
 #header-big {
     background: url(header-bg.jpg) no-repeat center top;

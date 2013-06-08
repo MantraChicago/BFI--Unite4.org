@@ -3,17 +3,21 @@
 }
 .s-padding {
     padding: 10px;
-    
+
 }
 
 .purple-bg {
     background-color: #9e0253;
-color: #fff; 
+    color: #fff; 
 }
+.purple-text {
+    color: #9e0253;
+}
+
 
 .blue-bg {
     background-color: #009dd1;
-color: #fff; 
+    color: #fff; 
 }
 
 .centered-text {
@@ -90,7 +94,12 @@ color: #fff;
 .cboth {
     clear:both;
 }
-
+.no-margin {
+    margin: 0 !important;
+}
+.smoke-bg {
+    background-color: #f4f4f4;
+}
 
 .cyan-text {
     color: #399a98;
@@ -139,3 +148,12 @@ color: #fff;
     background-color:#eee;
 }
 
+.equal-col-cont {
+   overflow: hidden;
+   clear:    both;
+}
+.equal-col-cont .equal-col {
+   float: right;
+   padding-bottom: 100000px;
+   margin-bottom:  -100000px;
+}
