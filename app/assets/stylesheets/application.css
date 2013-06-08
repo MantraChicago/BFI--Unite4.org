@@ -118,7 +118,12 @@
 }
 
 
-
+.group-header {
+    background-color: #fafafa;
+    border: 1px solid #dadada;
+    padding: 20px;
+    font-size: 160%;
+}
 
 
 

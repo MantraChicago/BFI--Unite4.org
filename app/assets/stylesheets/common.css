@@ -157,3 +157,8 @@
    padding-bottom: 100000px;
    margin-bottom:  -100000px;
 }
+
+.plain-list {
+    list-style: none;
+    padding: 0;
+}
