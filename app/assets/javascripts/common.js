@@ -4,7 +4,7 @@
     
     //this handles class changing with support of next/prev and nav buttons. All animation are supposed to be handled with css3, not js.
     $.fn.quickSlider = function(options) {
-	var t = $(this);
+	var t = $(this).css('overflow','hidden');
 	var defaults = {
 	    slides: "quick-slider-single",
 	    next: "quick-slider-next",
