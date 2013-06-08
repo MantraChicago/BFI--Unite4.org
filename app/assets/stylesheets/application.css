@@ -20,7 +20,7 @@
     background: url(topbar-bg.jpg) repeat-x center;
     box-shadow: 0 0 5px #000;
     position: relative;
-    z-index: 3;
+    z-index: 14;
 }
 
 #topbar nav li {
@@ -88,7 +88,7 @@
 .header-label .arrow-left {
     position: absolute;
     left:0px;
-    top:50%;    
+    top:40%;    
 }
 .header-label.active .arrow-left {
     left:-10px;
