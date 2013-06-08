@@ -110,6 +110,7 @@ var parseObjIntoModels=function(dataObj,model){
 var markersArray=[]
 var markerIcons = {
     darkblue:'/assets/ui/map/marker-dblue.png',
+    one : '/assets/ui/map/marker-1.png',
     another:'/assets/ui/map/marker-dblue.png'
 } 
 var lastOpenedWindow;
@@ -125,7 +126,7 @@ var populateMapMarkers=function(map,locations){
 	    position: myLatlng,
 	    map: map,
 	    title: location.get('name'),
-	    icon: markerIcons.darkblue,
+	    icon: markerIcons.one,
 	    user_cause_id: cause.id
 	});
 	markersArray.push(marker)
