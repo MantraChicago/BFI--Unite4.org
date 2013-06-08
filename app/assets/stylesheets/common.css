@@ -23,7 +23,13 @@ color: #fff;
     display: inline-block;
     vertical-align: middle;
 }
-
+.inline-inline {
+    display: inline;
+    vertical-align: middle;
+}
+.no-limit-top {
+    margin-top: 0 !important;
+}
 .slimit {
     margin-bottom: 1em !important;
 }
@@ -100,7 +106,13 @@ color: #fff;
     background-color: #f6d332;
     color: #373737;
 }
-
+.black-bg {
+    background-color: #000;
+    color: #fff;
+}
+.blue-text{
+    color: #009dd1;
+}
 
 
 .no-min-width {
@@ -115,3 +127,15 @@ color: #fff;
     padding: 10px;
     margin: 10px 0 10px 0;
 }
+.small-button {
+    padding: 2px 11px 2px 11px;
+    font-size:70%;
+    text-align: center;
+}
+
+.label {
+    padding: 20px;
+    border: 1px solid #dcdcdc;
+    background-color:#eee;
+}
+

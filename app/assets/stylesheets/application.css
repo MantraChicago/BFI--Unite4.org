@@ -13,13 +13,6 @@
  *= require_tree .
 */
 
-#giveinspirelove {
-    height: 100%;
-}
-.tile-4-3 {
-    height: 400px;
-    width:400px;
-}
 
 #topbar {
     height: 52px;
@@ -33,7 +26,30 @@
     margin-left: 20px;
 }
 #header {
-    min-height: 510px;
+    
+}
+
+
+#header-big {
+    background: url(header-bg.jpg) no-repeat center top;
+    background-size: cover;
+    position: relative;
+    
+}
+
+#header-big-slogan {
+    background: url(header-big-slogan.png) no-repeat top right;
+    background-size: cover;
+    height:403px;
+    width:676px;
+    position: absolute;
+    bottom: 40px;
+    right: 50px;
+}
+
+.header-label {
+    width: 250px;
+    border-bottom: 1px solid #4a4a4a;
 }
 
 .map-infobox {
@@ -82,23 +98,7 @@
 
 
 
-#header-big {
-    background: url(header-bg.jpg) no-repeat center top;
-    background-size: cover;
-    position: relative;
-    
-}
 
-#header-big-slogan {
-    background: url(header-big-slogan.png) no-repeat top right;
-    background-size: cover;
-    height:403px;
-    width:676px;
-    position: absolute;
-    bottom: 40px;
-    right: 50px;
-   
-}
 
 
 
