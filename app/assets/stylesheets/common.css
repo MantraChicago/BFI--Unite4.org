@@ -183,6 +183,22 @@
        -o-transition: all 0.8s ease-out;  /* Opera 10.50–12.00 */
           transition: all 0.8s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
 }
+.transition-quick {
+  -webkit-transition: all 0.3s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+     -moz-transition: all 0.3s ease-out;  /* Firefox 4-15 */
+       -o-transition: all 0.3s ease-out;  /* Opera 10.50–12.00 */
+          transition: all 0.3s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+
+.arrow-left {
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent; 	
+	border-right:10px solid #000; 
+	border-right-color: rgba(0,0,0,0.9);
+}
 
 
 

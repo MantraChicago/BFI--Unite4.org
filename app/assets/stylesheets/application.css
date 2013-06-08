@@ -81,8 +81,17 @@
 }
 
 .header-label {
+    position: relative;
     width: 250px;
     border-bottom: 1px solid #4a4a4a;
+}
+.header-label .arrow-left {
+    position: absolute;
+    left:0px;
+    top:50%;    
+}
+.header-label.active .arrow-left {
+    left:-10px;
 }
 .header-slogan {
     position: absolute;    

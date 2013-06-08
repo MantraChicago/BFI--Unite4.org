@@ -22,8 +22,13 @@
 	nav.removeClass('active').eq(0).addClass('active');
 	
 	var slide = function(elem) {
+	    var index = slides.index(elem);
 	    $('.last.' + options.slides,t).removeClass('last');
-	    $('.active.' + options.slides,t).addClass('last').removeClass('active');
+	    $('.active.' + options.slides,t).addClass('last').removeClass('active');	    
+	    
+	    $('.active.' + options.nav,t).removeClass('active')
+	    $('.' + options.nav,t).eq(index).addClass('active');	    
+	    	    
 	    elem.addClass('active');
 	};
 	
