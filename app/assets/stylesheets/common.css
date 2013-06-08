@@ -54,7 +54,6 @@
 }
 
 
-
 .secondary {
     opacity: 0.8;
 }
@@ -85,7 +84,7 @@
 }
 
 .slimit-left {
-    margin-left: 10px;
+    margin-left: 10px !important;
 }
 .slimit-right {
     margin-right: 10px;
@@ -121,6 +120,11 @@
     background-color: #000;
     color: #fff;
 }
+.black-bg-tp {
+    background-color: #000;
+    background-color: rgba(0,0,0,0.9);
+    color: #fff;
+}
 .blue-text{
     color: #009dd1;
 }
@@ -136,8 +140,9 @@
 .button {
     text-align: center;
     padding: 20px;
-    margin: 20px 0 20px 0;
+    margin: 10px 0 10px 0;
     font-size: 150%;
+    line-height: 150%;
 }
 .button * {
     margin: 0;
@@ -168,7 +173,9 @@
     list-style: none;
     padding: 0;
 }
-
+.pos-rel {
+    position: relative;
+}
 
 @media only screen and (max-width: 48em) {
     .small-inline-list li{

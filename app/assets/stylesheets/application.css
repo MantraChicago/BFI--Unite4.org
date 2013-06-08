@@ -35,6 +35,9 @@
     padding: 0 40px 0 40px;
     font-size: 90%;
 }
+#topbar nav ul {
+    padding-left: 20px;
+}
 #mobile-menu {
     height: 52px;
     width: 52px;
@@ -64,26 +67,19 @@
     z-index:2;
 }
 
-#header-big {
-    background: url(header-bg.jpg) no-repeat center top;
-    background-size: cover;
-    position: relative;
-    
-}
-
-#header-big-slogan {
-    background: url(header-big-slogan.png) no-repeat top right;
-    background-size: cover;
-    height:403px;
-    width:676px;
-    position: absolute;
-    bottom: 40px;
-    right: 50px;
-}
-
 .header-label {
     width: 250px;
     border-bottom: 1px solid #4a4a4a;
+}
+.header-slogan {
+    position: absolute;    
+    max-width: 70%;
+    bottom: 20px;    
+    background: url(header-slogan.png) no-repeat bottom left;
+    background-position-x: 10px;
+    background-size: contain;
+    width:601px;
+    height: 163px;
 }
 
 .map-infobox {
