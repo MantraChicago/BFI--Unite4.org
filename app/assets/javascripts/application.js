@@ -17,7 +17,7 @@
 (function($) {
     
     $(document).ready(function(){	
-
+	$('.bar').delay(500).promise().done(function(){$(this).removeClass('reset')});
     });
     
 })(jQuery);

@@ -133,8 +133,12 @@
 
 .button {
     text-align: center;
-    padding: 10px;
-    margin: 10px 0 10px 0;
+    padding: 20px;
+    margin: 20px 0 20px 0;
+    font-size: 150%;
+}
+.button * {
+    margin: 0;
 }
 .small-button {
     padding: 2px 11px 2px 11px;
@@ -161,4 +165,14 @@
 .plain-list {
     list-style: none;
     padding: 0;
+}
+
+
+@media only screen and (max-width: 48em) {
+    .small-inline-list li{
+	display: inline-block;
+	margin-right: 30px;
+	margin-bottom: 10px;
+    }
+
 }
