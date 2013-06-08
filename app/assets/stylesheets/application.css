@@ -61,10 +61,23 @@
     top: 0;
     background-size: cover;
     background-position: center;
+    opacity: 0;
+    z-index: 10;
+    left: 50px;
+}
+.header-slide.active {
+    opacity: 1;
+    z-index: 12;
+    left: 0;
+}
+.header-slide.last {
+    opacity: 1;
+    z-index: 11;
+    left: 0;
 }
 .header-nav {
     position: relative;
-    z-index:2;
+    z-index:13;
 }
 
 .header-label {

@@ -18,6 +18,10 @@
     
     $(document).ready(function(){	
 	$('.bar').delay(500).promise().done(function(){$(this).removeClass('reset')});
+	$('#header').quickSlider({
+	    slides: 'header-slide',
+	    nav : 'header-label'
+	});
     });
     
 })(jQuery);

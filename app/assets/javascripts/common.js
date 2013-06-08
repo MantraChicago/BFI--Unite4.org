@@ -1,6 +1,54 @@
 
 
 (function($) {
+    
+    //this handles class changing with support of next/prev and nav buttons. All animation are supposed to be handled with css3, not js.
+    $.fn.quickSlider = function(options) {
+	var t = $(this);
+	var defaults = {
+	    slides: "quick-slider-single",
+	    next: "quick-slider-next",
+	    prev: "quick-slider-prev",
+	    nav: "quick-slider-nav"
+	};
+	options = $.extend({}, defaults, options);
+	
+	var slides = $('.' + options.slides,t);
+	var prev = $('.' + options.prev,t);
+	var next = $('.' + options.next,t);
+	var nav = $('.' + options.nav,t);
+	
+	slides.removeClass('active').eq(0).addClass('active');
+	nav.removeClass('active').eq(0).addClass('active');
+	
+	var slide = function(elem) {
+	    $('.last.' + options.slides,t).removeClass('last');
+	    $('.active.' + options.slides,t).addClass('last').removeClass('active');
+	    elem.addClass('active');
+	};
+	
+	prev.click(function(){
+	    slide($('.active.' + options.slides,t).prevOrLast('.' + options.slides));
+	});
+	next.click(function(){
+	    slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
+	});
+	nav.click(function(){
+	    var index = nav.index(this);
+	    slide($('.' + options.slides,t).eq(index));
+	});
+	
+	$(document).keydown(function(e){
+	    if (e.keyCode == 37) {
+		 slide($('.active.' + options.slides,t).prevOrLast('.' + options.slides));
+	    }
+	    if (e.keyCode == 39) { 
+		slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
+	    }    
+	});	
+    }
+    
+    
     //custom functions
     $.fn.prevOrLast = function(selector)
     {
@@ -71,19 +119,19 @@
 		    },2000,'easeOutExpo',function(){
 			$(this).css({
 			    'top':(-1)*itemH
-			    })
-			}).removeClass('current');
+			})
+		    }).removeClass('current');
 		    next.animate({
 			'top':'0px'
 		    },2000,'easeOutExpo').addClass('current');
 		}	else {
 		    current.animate({
 			'top':-1*itemH
-			},2000,'easeOutExpo',function(){
+		    },2000,'easeOutExpo',function(){
 			$(this).css({
 			    'top':itemH
 			})
-			}).removeClass('current');
+		    }).removeClass('current');
 		    next.animate({
 			'top':'0px'
 		    },2000,'easeOutExpo').addClass('current');				
@@ -95,12 +143,12 @@
 	    if(down) {
 		slides.not('.current').css({
 		    'top':(-1)*itemH
-		    });
+		});
 	    }
 	    else{
 		slides.not('.current').css({
 		    'top':(1)*itemH
-		    });
+		});
 	    }
 		
 	    setTimeout(function(){		
