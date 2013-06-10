@@ -1,14 +1,17 @@
-
 # BFI
 
 
 ###Setup
 The app requires a postgesql database connection. 
 
+The app requires Imagemagick to be installed. 
+
+The factory_girl gems might need to be not loaded when populating the initial schema
+
 To populate the initial database schema run
 > `$ rake db:schema:load`
 
-The app requires Imagemagick to be installed. 
+
 
 ###Commands
 
