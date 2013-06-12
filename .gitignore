@@ -24,6 +24,6 @@
 Icon?
 ehthumbs.db
 Thumbs.db
-
 coverage
 /nbproject/private/
+config/database.yml
