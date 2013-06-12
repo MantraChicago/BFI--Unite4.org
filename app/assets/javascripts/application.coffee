@@ -1,5 +1,6 @@
 #= require ./causes
 #= require ./donations
+#= require_tree ./templates
 
 $ ->
   _.delay ()->
