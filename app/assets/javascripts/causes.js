@@ -1,8 +1,3 @@
-
-
-//= require libs/underscore-min.js
-//= require libs/backbone-min.js
-
 var Cause= Backbone.Model.extend({
     name:'Cause'
 })
@@ -50,7 +45,7 @@ var FilterView=Backbone.View.extend({
 			    id:model.id,
 			    name:model.get('name')
 		}))
-          
+
 	    }
 	    template.find('.filterTypeHolder').append(html)
 	}
@@ -70,10 +65,10 @@ var FilterView=Backbone.View.extend({
 	var target_id = $(event.target).attr('data-id')
 	var type = $(event.target).attr('data-type')
 	var filterOption=this.options.filterOptions[type]
-    
+
 	var locations = this.options.locationsCollection.filter(function(model){
 	    return filterOption.filterFunction(model,target_id)
-	}) 
+	})
 	populateMapMarkers(map,locations)
     }
 })
@@ -87,7 +82,7 @@ var createGoogleMap=function(element){
     };
     var map = new google.maps.Map(element,
 	mapOptions);
-	
+
     return map
 }
 
@@ -112,10 +107,10 @@ var markerIcons = {
     darkblue:'/assets/ui/map/marker-dblue.png',
     one : '/assets/ui/map/marker-1.png',
     another:'/assets/ui/map/marker-dblue.png'
-} 
+}
 var lastOpenedWindow;
 var populateMapMarkers=function(map,locations){
-   
+
     clearMapOverlays();
     for(var j in locations){
 	var location = locations[j]
@@ -130,11 +125,11 @@ var populateMapMarkers=function(map,locations){
 	    user_cause_id: cause.id
 	});
 	markersArray.push(marker)
-        
+
 	google.maps.event.addListener(marker, 'click', function() {
 	    var self=this;
-	    
-            
+
+
 
 
 	    var element =$('<div></div>')
@@ -144,39 +139,39 @@ var populateMapMarkers=function(map,locations){
 		})
 
 	    //$('.popoverHolder').append(element)
-             
+
 	    var myOptions = {
-		content: element.html()		
+		content: element.html()
 		,
-		boxClass : 'map-infobox'                
+		boxClass : 'map-infobox'
 		,
-		pixelOffset: new google.maps.Size(-40, 0)               
+		pixelOffset: new google.maps.Size(-40, 0)
 		,
 		closeBoxMargin: "10px 2px 2px 2px"
 		,
 		closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-		//,infoBoxClearance: new google.maps.Size(1, 1)                
+		//,infoBoxClearance: new google.maps.Size(1, 1)
 		,
 		pane: "floatPane"
 		,
 		disableAutoPan: true
-		
-                
+
+
 	    };
 
 	    if (lastOpenedWindow) {
 		lastOpenedWindow.close();
-	    } 
+	    }
 	    var ib = new InfoBox(myOptions);
 	    lastOpenedWindow = ib;
-	    
+
 	    ib.open(map, marker);
 	    google.maps.event.addListener(ib, 'domready', function() {
 	     $('.map-infobox').prependTo('body').promise().done(function(){
 		 $(window).trigger('resize');
-	     });	     
+	     });
 	    } )
-	    
+
 
 	/*var infowindow = new google.maps.InfoWindow({
                 content:self.user_content
@@ -184,7 +179,7 @@ var populateMapMarkers=function(map,locations){
 
           infowindow.open(map,this);*/
 	});
-	    
+
     }
 
 
@@ -205,8 +200,8 @@ var combineArrays=function(){
 	    var obj = array[j]
 	    retArray.push(obj)
 	}
-		
-		
+
+
     }
     return retArray
 }

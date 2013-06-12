@@ -6,9 +6,9 @@ module ApplicationHelper
 	end
 
 	def render_title
-	  return @title if defined?(@title)
+	  return @title if @title.present?
 	  "Give Inspire Love"
 	end
 
-	
+
 end
