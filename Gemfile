@@ -36,5 +36,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'haml_coffee_assets'
+gem 'ejs'
+
 gem 'jquery-rails'
 gem 'rvm-capistrano', '~> 1.3.1'
