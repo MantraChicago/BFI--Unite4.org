@@ -1,83 +1,77 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
+ *= require normalize
+ *= require foundation
+ *= require ./common
+ *= require ./scaffolds
  *= require_self
- *= require_normalize
- *= require_tree .
 */
 
-
 #topbar {
-    height: 52px;
-    line-height: 52px;
-    background: url(topbar-bg.jpg) repeat-x center;
-    box-shadow: 0 0 5px #000;
-    position: relative;
-    z-index: 14;
+  height: 52px;
+  line-height: 52px;
+  background: url(topbar-bg.jpg) repeat-x center;
+  box-shadow: 0 0 5px #000;
+  position: relative;
+  z-index: 14;
 }
 
 #topbar nav li {
-    display: inline-block;
-    
+  display: inline-block;
 }
 
 #top-logo {
-    margin-right: 20px;
+  margin-right: 20px;
 }
+
 #topbar nav li.top-nav-item {
-    padding: 0 40px 0 40px;
-    font-size: 90%;
+  padding: 0 40px 0 40px;
+  font-size: 90%;
 }
+
 #topbar nav ul {
     padding-left: 20px;
 }
+
 #mobile-menu {
-    height: 52px;
-    width: 52px;
-    background: url(mobile-menu.png) center no-repeat;
-    position: absolute;
-    right: 0;
-    top: 0;
-    display: none;
-    cursor: pointer;
+  height: 52px;
+  width: 52px;
+  background: url(mobile-menu.png) center no-repeat;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+  cursor: pointer;
 }
 
 
 #header {
- position: relative;   
+ position: relative;
 }
 
 .header-slide {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    top: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    left: -20px;
-    z-index: 10;
-
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  left: -20px;
+  z-index: 10;
 }
+
 .header-slide.active {
-    opacity: 1;
-    z-index: 12;
-    left: 0;
-
+  opacity: 1;
+  z-index: 12;
+  left: 0;
 }
+
 .header-slide.last {
-
 }
+
 .header-nav {
-    position: relative;
-    z-index:13;
+  position: relative;
+  z-index:13;
 }
 
 .header-label {
@@ -88,15 +82,15 @@
 .header-label .arrow-left {
     position: absolute;
     left:0px;
-    top:40%;    
+    top:40%;
 }
 .header-label.active .arrow-left {
     left:-10px;
 }
 .header-slogan {
-    position: absolute;    
+    position: absolute;
     max-width: 70%;
-    bottom: 20px;    
+    bottom: 20px;
     background: url(header-slogan.png) no-repeat bottom left;
     background-position-x: 10px;
     background-size: contain;
@@ -114,7 +108,7 @@
     left: 15% !important;
     right: 15% !important;
     top: 10% !important;
-    box-shadow: 0 0 50px;   
+    box-shadow: 0 0 50px;
 }
 .map-infobox > div {
     background: none !important;
@@ -142,9 +136,9 @@
 
 #sub-header {
     background-color: #f4f4f4;
-    padding:40px;    
+    padding:40px;
     padding-bottom: 20px;
-    
+
 }
 
 .cause-single {
@@ -182,7 +176,7 @@
     transition: width 1s ease-in-out;
     -moz-transition: width 1s ease-in-out;    /* FF3.7+ */
     -o-transition: width 1s ease-in-out;      /* Opera 10.5 */
-    -webkit-transition: width 1s ease-in-out; /* Saf3.2+, Chrome */      
+    -webkit-transition: width 1s ease-in-out; /* Saf3.2+, Chrome */
 }
 .bar.reset {
     width: 10px !important;
@@ -203,7 +197,7 @@
 	left: 5% !important;
 	right: 5% !important;
 	top: 5% !important;
-	bottom: 5% !important;	
+	bottom: 5% !important;
 	padding: 10px 10px 30px 10px !important;
     }
     .map-infobox > div {
@@ -223,7 +217,7 @@
 	font-size: 160%;
 	line-height: 160%;
     }
-    
+
     #topbar nav li.top-nav-item {
 	display: none;
     }
@@ -231,4 +225,4 @@
 	display: inherit;
     }
 
-} 
+}
