@@ -4,6 +4,6 @@
 #= require jquery.easing.1.3.js
 #= require jquery.isotope.min
 #= require jquery.mousewheel.min
-#= require jquery.quickslider
+#= require jquery-quickslider
 #= require underscore-min
 #= require backbone-min
