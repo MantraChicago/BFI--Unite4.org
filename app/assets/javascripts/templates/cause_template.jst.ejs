@@ -1,0 +1,25 @@
+<div>
+<div class="row fullwidth">
+    
+    <div class="large-12 columns">
+	<a href="/" id="goback">
+	    <div class="back-arrow inline position-animation"></div>
+	    <h2 class="inline"><strong>Go back to Give Inspire Love</strong></h2>
+	</a>
+    </div>
+    
+
+    <div class="large-7 columns mlimit-top">
+	<div class="video-container">
+	    <iframe width="100%" height="100%" src="<%= video_link %>" frameborder="0" allowfullscreen></iframe>
+	</div>
+	<p class="slimit-top"><%= description %></p>
+    </div>
+    <div class="large-5 columns mlimit-top">
+	<h2><%= name %></h2>
+	<h3 class="secondary"><%= city %>, <%= state %></h3>
+	<a href="/causes/<%= id %>"><div class="pink-big-button mlimit-top"><h2>view cause</h2></div></a>
+	<a href="/causes/need/<%= id %>"><div class="pink-big-button mlimit-top"><h2>help</h2></div></a>
+    </div>
+</div>
+</div>
