@@ -1,5 +1,9 @@
 GiveInspireLove::Application.routes.draw do
-    
+
+  scope '/api/v1' do
+    resource :causes
+  end
+
   match '/game' => 'Games#index'
 
   resources :cause_applications
@@ -10,8 +14,8 @@ GiveInspireLove::Application.routes.draw do
   resources :profiles
 
   match "/causes/need/:id" => "causes#need"
+
   resources :causes
-  
   resources :donations
   resources :volunteers
 
@@ -30,7 +34,7 @@ GiveInspireLove::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  namespace :api do 
+  namespace :api do
     resources :needs
     resources :causes
     resources :locations
