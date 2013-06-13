@@ -1,4 +1,5 @@
 #= require_tree ./templates
+#= require ./views
 #= require ./causes
 
 $ ->
