@@ -7,6 +7,7 @@ Application.causes = ()->
 Application.causes.index = ()->
   App.googleMap     = new Application.views.GoogleMapsPanel(id: "map-canvas")
   App.causes        = new Application.collections.Causes()
+  App.causesFilter  = new Application.views.CausesFilter(collection: App.causes)
 
   App.googleMap.render()
 
