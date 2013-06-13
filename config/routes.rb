@@ -33,6 +33,7 @@ GiveInspireLove::Application.routes.draw do
   namespace :api do 
     resources :needs
     resources :causes
+    resources :locations
     match 'all_data' =>'Api#all_data'
   end
 
