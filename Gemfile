@@ -12,7 +12,6 @@ gem "paperclip", "~> 2.7"
 gem 'customerio','0.5.0'
 
 gem 'activeadmin', '0.6.0'
-gem "meta_search",    '>= 1.1.0.pre'
 
 group :development, :test do
   gem 'pry-rails'
@@ -39,7 +38,8 @@ end
 
 gem 'haml_coffee_assets'
 gem 'ejs'
+gem 'slim', '1.2.2'
+gem 'skim', '0.8.6'
 
 gem 'jquery-rails'
 gem 'rvm-capistrano', '~> 1.3.1'
-gem 'ejs'

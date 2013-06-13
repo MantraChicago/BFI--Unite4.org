@@ -1,19 +1,16 @@
 class CausesController < ApplicationController
+	respond_to :html
+
 	def index
-		@causes= Cause.find(:all)
-		@locations= Location.find(:all)
-		@needs = Need.find(:all)
-		logger.debug @needs[0].to_json
-		
+		@causes 		= Cause.scoped
+		@locations 	= Location.scoped
+		@needs 			= Need.scoped
+
 		@needs.each do |need|
 			need.type=need.type
 		end
-=begin
-		@donation_needs = DonationsNeed.find(:all)
-		@good_needs = GoodNeed.find(:all)
-		@volunteer_needs = VolunteerNeed.find(:all)
-		@social_needs = SocialNeed.find(:all)
-=end
+
+		render :layout => "application"
 	end
 
 	def need
@@ -22,8 +19,5 @@ class CausesController < ApplicationController
 
 	def show
 		@cause = Cause.find(params[:id])
-
 	end
-
-	
 end

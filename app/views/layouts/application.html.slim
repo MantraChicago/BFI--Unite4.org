@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title #{ render_title }
+    meta name="viewport" content="initial-scale=1.0, user-scalable=no"
+
+    == stylesheet_link_tag 'application', media: 'all'
+    == csrf_meta_tags
+
+    javascript:
+      window.Application = {
+        data: {},
+        views: {},
+        models: {},
+        collections: {},
+        util: {}
+      };
+
+    == yield(:head)
+
+  body id=body_id class=body_class data-controller=controller_name data-action=action_name
+    == render :partial => "shared/facebook"
+    == render :partial => "shared/flash"
+
+    .ismobileflag
+
+    == yield
+
+    == render :partial => "shared/javascripts"
