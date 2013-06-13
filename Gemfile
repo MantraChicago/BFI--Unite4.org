@@ -24,6 +24,7 @@ group :test do
 end
 
 gem 'pg'
+gem 'annotate'
 gem 'taps'
 
 gem 'json'
