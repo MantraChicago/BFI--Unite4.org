@@ -10,26 +10,30 @@ class Api::ApiController < ActionController::Base
   					:needs =>Need.all}	
   end
 
+  def base_model
+  	self.class.to_s.gsub('Controller','').gsub('Api::','').singularize.camelize.constantize
+  end
+
   def index
-    @results = base_model.to_s.constantize.all
+    @results = base_model.all
 
     render json: @results
   end
 
   def show
-    @api_test = base_model.to_s.constantize.find(params[:id])
+    @api_test = base_model.find(params[:id])
 
     render json: @results
   end
 
   def new
-    @result = base_model.to_s.constantize.new
+    @result = base_model.new
 
     render json: @results
   end
 
   def update
-    @result = base_model.to_s.constantize.find(params[:id])
+    @result = base_model.find(params[:id])
 
     if @result.update_attributes(params[:api_test])
    
@@ -40,7 +44,7 @@ class Api::ApiController < ActionController::Base
   end
 
   def destroy
-    @result = base_model.to_s.constantize.find(params[:id])
+    @result = base_model.find(params[:id])
     @result.destroy
 
     format.json { head :no_content }
