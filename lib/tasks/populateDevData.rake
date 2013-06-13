@@ -1,4 +1,4 @@
-task :createActiveAdminUser, [:email, :password] => [:environment] do |t,args|
+task :create_active_admin_user, [:email, :password] => [:environment] do |t,args|
 #task :createActiveAdminUser, :email, :password, :needs => [:environment] do |t,args|
 	email =args.email
 	password=args.password
@@ -7,7 +7,7 @@ task :createActiveAdminUser, [:email, :password] => [:environment] do |t,args|
 end
 
 
-task :populateDevData => [:environment, 'db:seed'] do
+task :populate_dev_data => [:environment, 'db:seed'] do
 	cause1 = Cause.find_or_create_by_name("PETA")
 	cause1.update_attributes({ :cause_type_id =>CauseType.find_by_name(:Environmental).id,
 							   :city => 'Chicago',

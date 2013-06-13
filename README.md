@@ -17,11 +17,11 @@ To populate the initial database schema run
 
 To populate development data run
 
-> `$ rake populateDevData`
+> `$ rake populate_dev_data`
 
 To create an Active Admin user
 
-> `$ rake rake createActiveAdminUser[$email,$password]`
+> `$ rake rake create_active_admin_user[$email,$password]`
 
 ###Testing
 
