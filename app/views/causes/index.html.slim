@@ -1,0 +1,18 @@
+- content_for(:head) do
+  == stylesheet_link_tag 'causes'
+
+  script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5nbu6QghhMZ7nUg8KppPc--tPG1QFWkA&sensor=true"
+  script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"
+
+  javascript:
+    window.Application = window.Application || {};
+
+    Application.data = Application.data || {};
+
+    Application.data.causes=     #{ @causes.to_json.html_safe };
+    Application.data.locations=  #{ @locations.to_json.html_safe };
+    Application.data.needs=      #{ @needs.to_json(:methods => :type).html_safe }
+
+
+.canvas-wrapper style="height:100%;width:100%"
+  #map-canvas

@@ -6,12 +6,6 @@ var Location= Backbone.Model.extend({
     name:'Location'
 })
 
-$(document).ready(function(){
-    windowhtml = $('#cause-single-window').html();
-    $('#cause-single-window').html('');
-})
-
-
 var CauseView = Backbone.View.extend({
     initialize:function(){
   this.render()

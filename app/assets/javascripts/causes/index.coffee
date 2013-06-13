@@ -5,11 +5,7 @@
 Application.causes = ()->
 
 Application.causes.index = ()->
-  window.App = {}
-
-  App.needsCollection = new Application.collections.Causes()
-
-
+  App.map = createGoogleMap( document.getElementById('map-canvas') )
 
 # needsCollection=parseObjIntoModels(Application.data.needs, Backbone.Model.extend({
 #     name:'needs'
@@ -18,7 +14,6 @@ Application.causes.index = ()->
 #   var causesCollection=parseObjIntoModels(Application.data.causes, Cause)
 #     var locationsCollection=parseObjIntoModels(Application.data.locations, Location)
 
-#     var map =createGoogleMap($('#map-canvas')[0])
 
 #     populateMapMarkers(map,locationsCollection.models)
 
