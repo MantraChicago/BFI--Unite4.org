@@ -1,9 +1,29 @@
-#= require_tree ./templates
-#= require ./views
-#= require ./causes
+# The templates are compiled by the asset pipeline and provide us with functions to
+# render strings.  We should use either template.jst.hamlc or template.jst.skim.
 
-$ ->
-  body        = $('body')
+#= require_tree ./templates
+
+# The lib directory contains base classes that our models, views, collections extend from.
+# As well as any other utility classes, etc
+
+#= require_tree ./lib
+
+# The components folder should be used to store re-usable view elements
+
+#= require ./components
+
+
+# The data sources contain our collection manager, and all of the collections
+# and models which map our restful API endpoints
+
+#= require ./data_sources
+
+# The On Ready function routes to a function on the Application namespace
+# based on the body class, and body id.  It will run a function that matches
+# the name of the class, and a function which matches the name of the id
+Application.onReady = ->
+  body        = $ 'body'
+
   controller  = body.attr 'data-controller'
   action      = body.attr 'data-action'
 
@@ -38,3 +58,5 @@ $ ->
 
 
 
+
+$(Application.onReady)

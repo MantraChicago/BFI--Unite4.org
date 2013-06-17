@@ -1,11 +1,7 @@
-<%= render "shared/mainheader" %>
-
-
-
 <div id="header">
 
     <div class="right header-nav">
-    <% @featured_causes.each do |cause| %>	
+    <% @featured_causes.each do |cause| %>
 		<%= render 'featured_cause', :cause => cause %>
 	<% end %>
 
@@ -16,7 +12,7 @@
 	</div>
     </div>
     <div style="background-image: url(assets/h2.jpg);"class="header-slide transition"></div>
-    <div style="background-image: url(assets/h1.jpg);"class="header-slide transition"></div>    
+    <div style="background-image: url(assets/h1.jpg);"class="header-slide transition"></div>
     <div class="cboth"></div>
 
 </div>
@@ -40,10 +36,10 @@
 
 <div id="causes" class="mlimit">
     <div class="row">
-	
+
 	<% @recent_needs.each do |need| %>
 		<%= render 'featured_need', :need => need %>
-	<% end %>	
+	<% end %>
 
     </div>
 </div>
@@ -51,7 +47,7 @@
 <div class="row blimit">
     <div class="large-12 columns">
 	<div class="group-header">Find quality causes in your area</div>
-	<div id="mapHolder"></div>  	
+	<div id="mapHolder"></div>
     </div>
     <div class="large-12 columns text-right purple-text slimit-top">View all causes in your area</div>
     <div class="cboth"></div>
@@ -62,12 +58,4 @@
 </div>
 
 
-
-
 <%= render "shared/mainfooter" %>
-<script>
-    var causesCollection=parseObjIntoModels(<%= @causes.to_json.html_safe %>, Cause)
-    var locationsCollection=parseObjIntoModels(<%= @locations.to_json.html_safe %>, Location)
-    var map = createGoogleMap( $('#mapHolder')[0])
-    populateMapMarkers(map,locationsCollection.models)
-</script>
