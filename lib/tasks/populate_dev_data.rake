@@ -14,6 +14,7 @@ task :populate_dev_data => [:environment, 'db:seed'] do
 							   :state => 'IL',
 							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/cloths.jpg'),
 							   :is_featured =>true,
+							   :description =>'More than 800,000 people in Cook County--1 in 6 people--are food insecure and unsure of when they will receive their next meal. In some communities, more than 1 in 3 people are food insecure. The number of people served by the Greater Chicago Food Depository and its network of 650 partners including 400 pantries, soup kitchens and shelters has steadily increased in recent years. ',
 							   :twitter_handle => 'PETA',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933" })
 
@@ -22,6 +23,7 @@ task :populate_dev_data => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :is_featured =>true,
+							   :description =>'More than 800,000 people in Cook County--1 in 6 people--are food insecure and unsure of when they will receive their next meal. In some communities, more than 1 in 3 people are food insecure. The number of people served by the Greater Chicago Food Depository and its network of 650 partners including 400 pantries, soup kitchens and shelters has steadily increased in recent years. ',
 							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/sheep.jpg'),
 							   :twitter_handle =>'AIDS',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })
@@ -31,6 +33,7 @@ task :populate_dev_data => [:environment, 'db:seed'] do
 							   :city => 'Chicago',
 							   :state => 'IL',
 							   :is_featured =>true,
+							   :description =>'More than 800,000 people in Cook County--1 in 6 people--are food insecure and unsure of when they will receive their next meal. In some communities, more than 1 in 3 people are food insecure. The number of people served by the Greater Chicago Food Depository and its network of 650 partners including 400 pantries, soup kitchens and shelters has steadily increased in recent years. ',
 							   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/pray.jpg'),
 							   :twitter_handle => 'Habitat',
 							   :video_link => "http://player.vimeo.com/video/27882235?color=ff9933"  })

@@ -4,6 +4,8 @@
  *= require ./common
  *= require ./scaffolds
  *= require_self
+ *= require_tree . 
+ *= require_tree ./shared
 */
 
 #topbar {

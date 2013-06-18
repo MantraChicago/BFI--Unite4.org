@@ -2,6 +2,60 @@ html, body {
   height: 100%;
   width: 100%;
 }
+.top_holder{
+  background-color:#fafafa;
+  .left_cause{
+    display:inline-block;
+    vertical-align:top;
+    width: 80%;
+    height: 100%;
+  }
+  .right_cause{
+    display:inline-block;
+    vertical-align:top;
+    
+    height:100%;
+    width: 20%;
+    padding: 25px;
+    .subheadline{
+      color:#8b8a8a;
+      padding-top:25px;
+      padding-bottome:25px;
+    }
+    p{
+      line-height:2.2;
+    }
+  }
+}
+
+.middle_bar{ 
+  background-color:#f3f4f5;
+  
+  vertical-align:top;
+  ul{
+    display:inline;
+    padding-left:0px;
+
+  }
+  li{
+   display: inline-block;
+   padding:20px;
+   font-weight: bold;
+  }
+  .active{
+    background-color: #e5e6e7;
+  }
+}
+
+.middle_content{
+  width:1000px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.spaced_content{
+  margin-top:75px;
+}
 
 body.causes {
   height: 100%;
