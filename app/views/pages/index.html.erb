@@ -38,7 +38,7 @@
     <div class="row">
 
 	<% @recent_needs.each do |need| %>
-		<%= render 'featured_need', :need => need %>
+		<%= render 'shared/featured_need', :need => need, :stats=> [{:upper=> 'party', :lower=>'hard'}] %>
 	<% end %>
 
     </div>

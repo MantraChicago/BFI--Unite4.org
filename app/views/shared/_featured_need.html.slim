@@ -1,0 +1,12 @@
+.featured_need
+ .cause_header style="background-image: url(#{need.cause.picture.url(:medium)});"
+ .featured_need_title
+  .need_title_upper GOAL
+  .need_title_lower #{need.name}
+ .goal_progress_holder
+  .goal_progress style="width:10%"
+ .goal_stats
+  -stats.each do |stat|
+   .goal_stat
+    .goal_upper #{stat[:upper]}
+    .goal_lower #{stat[:lower]}

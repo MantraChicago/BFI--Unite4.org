@@ -1,27 +1,27 @@
 - @title =  @cause.name
 == render "shared/mainheader"
 
-div class="top_holder"
- div class="left_cause "
+.top_holder
+ .left_cause
   iframe src="#{@cause.video_link}" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
- div class="right_cause "
-  div class="subheadline" OUR MISSION
+ .right_cause
+  .subheadline OUR MISSION
   p
    == @cause.description
-div class="middle_bar"
- div class="middle_content"
+.middle_bar
+ .middle_content
   ul class="no-margin"
    li class="active" OUR NEEDS
    li UPCOMING EVENTS
-div class="middle_content spaced_content"
- == render "shared/goal_box", :goal=> {:title=>"do work", :percent=>10, :more_link => '#', :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Party'}]}
+.middle_content.spaced_content
+  == render "shared/goal_box", :goal=> {:title=>"do work", :percent=>10, :more_link => '#', :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Party'}]}
 
-div class="middle_content spaced_content"
+.middle_content.spaced_content
  ==render 'shared/needs_box', :needs => @cause.needs
 
 div
- div class="cause_content"
- div class="cause_followers"
+ .cause_content
+ .cause_followers
 
 
 
