@@ -15,14 +15,14 @@ class Application.CollectionManager
   constructor: (@options={})->
     _.extend(@, @options)
 
-  scope: ()->
-    instances[@scope]
+  getScope: ()->
+    @instances[@scope]
 
-  setScope: (@scope)->
+  setScope: (@scope="default")->
     @scope()
 
   get:(name, initialModels=[], options={})->
-    scope = @scope()
+    scope = @getScope()
 
     if existing = scope[name]
       return existing
@@ -40,3 +40,6 @@ Application.CollectionManager.findCollectionClassByName = (name, searchInNamespa
 
 Application.CollectionManager.getSingleton = (options={})->
   Application.CollectionManager.singleton ||= new Application.CollectionManager(options)
+
+Application.collection = (collectionName, models=[], options={})->
+  Application.CollectionManager.getSingleton().get(collectionName, models, options)
