@@ -72,9 +72,26 @@ body.causes {
     margin: 0px;
   }
 }
-
 // Modals start here
 .thankyou-modal {
+
+  a.btn {
+    display: inline-block;
+    padding: 8px 5px;
+    &.large {
+      padding: 20px 20px;
+    }
+    &.purple {
+      color: white;
+      background-color: $darkPurple;
+    }
+    &.blue {
+      color: white;
+      background-color: $lightBlue;
+
+    }
+  }
+
   input {
     padding: 12px 12px;
     -moz-border-radius: 5px;
@@ -106,18 +123,5 @@ body.causes {
   }
   .byline {
   	margin-top: 30px;
-  }
-  a.share-btn {
-    margin-top: 30px;
-    display: inline-block;
-    font-size: 1.5em;
-    background-color: $darkPurple;
-    color: white;
-    padding: 20px 20px;
-  }
-  a.more-info {
-    padding: 8px 5px;
-    background-color: rgb(48,139,198);
-    color: white;
   }
 }
