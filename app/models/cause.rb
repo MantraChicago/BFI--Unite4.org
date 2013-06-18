@@ -1,6 +1,6 @@
 class Cause < ActiveRecord::Base
   include Queryable
-  attr_accessible :cause_type_id, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link
+  attr_accessible :cause_type_id, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
   has_many :needs
