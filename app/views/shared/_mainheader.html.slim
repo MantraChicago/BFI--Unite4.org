@@ -1,0 +1,15 @@
+#topbar
+	.row
+		nav
+			ul.no-margin.plain-list
+				li#top-logo
+					a href=root_path
+						img src=image_path('logo-unite4good.png')
+
+				li.top-nav-item Cities
+				li.top-nav-item Causes
+				li.top-nav-item News
+				li.top-nav-item
+					== render "shared/user-manager"
+
+		#mobile-menu
