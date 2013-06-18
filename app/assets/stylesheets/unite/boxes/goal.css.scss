@@ -1,0 +1,78 @@
+.goal_box{
+  border:1px solid #e3e3e3;
+  background-color: #fafafa;
+  position:relative;
+  .goal_title_holder{
+
+    padding:32px 0px 32px 32px;
+    .goal_title{
+      color:#959494;
+      font-size: 18px;
+      padding-bottom:15px;
+      font-weight:bold;
+    }
+    .goal_subtitle{
+      color:#000;
+      font-size: 20px
+
+    }
+  }
+  .goal_progress_holder{
+    height: 31px;
+    background-color:#c2c2c2;
+    .goal_progress{
+      display:inline-block;
+      background-color:#00af43;
+      height:100%;
+    }
+  }
+
+  .goal_stats{
+    height:73px;
+    padding-left:32px;
+    .goal_stat{
+      padding-right:50px;
+      padding-top:20px;
+    }
+    .goal_upper{
+      font-weight:bold;
+      font-size: 18px;
+    }
+    .goal_lower{
+      font-size: 15px;
+      color: #959494;
+    }
+  }
+  .goal_right_holder{
+    position:absolute;
+    height:73px;
+    right:0px;
+    bottom:0px;
+    a{
+      padding-top:27px;
+
+    }
+
+    .goal_more_link{
+      display:inline-block;
+      color:#a5a4a4;
+      padding-right:20px;
+    }
+
+    .goal_give_link{
+      display:inline-block;
+      height:100%;
+      width:211px;
+      background-color:#9e0253;
+      color:#fff;
+      text-align:center;
+      font-size:20px;
+    }
+
+    .goal_give_link:hover{
+      text-decoration:none;
+      background-color:red;
+    }
+  }
+
+}

@@ -27,7 +27,7 @@ Application.Model.extend = _(Application.Model.extend).wrap (original, payload={
     model = @
 
     payload[relationship] = ()->
-      collection  = Application.CollectionManager.getSingleton().get(relationship)
+      collection  = Application.collection(relationship)
       foreignKey  = "#{ model.name }_id"
 
       throw "Could not retrieve collection for relationship #{ relationship} " unless collection?
@@ -43,7 +43,7 @@ Application.Model.extend = _(Application.Model.extend).wrap (original, payload={
 
     payload[relationship] = ()->
       collectionName  = _.str.pluralize(relationship)
-      collection      = Application.CollectionManager.getSingleton().get(collectionName)
+      collection      = Application.collection(collectionName)
       relatedId       = model.get("#{ relationship }_id")
 
       throw "Could not retrieve collection for relationship #{ relationship} " unless collection?

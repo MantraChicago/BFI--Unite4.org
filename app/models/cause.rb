@@ -9,21 +9,7 @@ class Cause < ActiveRecord::Base
   has_many :locations, :dependent => :delete_all
 
   def location
-    location = ""
-
-    if city
-      location = city
-    end
-
-    if state
-      location = state
-    end
-
-    if city and state
-      location = "#{city}, #{state}"
-    end
-
-    location
+    [city,state].compact.join(", ")
   end
 
 end

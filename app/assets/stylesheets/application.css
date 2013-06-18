@@ -3,9 +3,8 @@
  *= require foundation
  *= require ./common
  *= require ./scaffolds
+ *= require ./unite
  *= require_self
- *= require_tree . 
- *= require_tree ./shared
 */
 
 #topbar {
