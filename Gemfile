@@ -41,5 +41,8 @@ gem 'ejs'
 gem 'slim', '1.2.2'
 gem 'skim', '0.8.6'
 
-gem 'jquery-rails'
 gem 'rvm-capistrano', '~> 1.3.1'
+
+gem 'jquery-rails'
+gem 'compass'
+gem 'zurb-foundation'
