@@ -1,3 +1,5 @@
+@import "unite/colors";
+
 html, body {
   height: 100%;
   width: 100%;
@@ -68,5 +70,32 @@ body.causes {
     width: 100%;
     padding: 0px;
     margin: 0px;
+  }
+}
+
+// Modals start here
+.thankyou-modal {
+  text-align: center;
+  background-color: $creame;
+  padding: 80px 80px;
+  .well {
+    &.headline {
+     	font-size: 2em; 
+    }
+    margin-top:30px;
+    padding: 20px 20px;
+    background-color: white;
+    border: 1px solid rgb(221,221,221);
+  }
+  .byline {
+  	margin-top: 30px;
+  }
+  a.share-btn {
+    margin-top: 30px;
+    display: inline-block;
+    font-size: 1.5em;
+    background-color: $darkPurple;
+    color: white;
+    padding: 20px 20px;
   }
 }
