@@ -1,8 +1,3 @@
 @import "unite/variables";
-
-/*
- *= require ./containers
- *= require ./boxes/goal
- *= require ./boxes/needs
- *= require ./causes
-*/
+@import "unite/containers";
+@import "unite/causes";
