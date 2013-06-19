@@ -13,7 +13,7 @@ GiveInspireLove::Application.routes.draw do
   resources :causes
   resources :donations
   resources :volunteers
-
+  resources :cause_applications
   resources :donations_needs
   resources :good_needs
   resources :social_needs

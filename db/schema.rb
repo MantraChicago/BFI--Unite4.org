@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614165638) do
+ActiveRecord::Schema.define(:version => 20130619163135) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -99,9 +99,19 @@ ActiveRecord::Schema.define(:version => 20130614165638) do
     t.string   "facebook_url"
   end
 
+  create_table "causes_cause_types", :force => true do |t|
+    t.integer "cause_id"
+    t.integer "cause_type_id"
+  end
+
   create_table "causes_causeneeds", :id => false, :force => true do |t|
     t.integer "cause_id"
     t.integer "cause_need_id"
+  end
+
+  create_table "causes_causestypes", :force => true do |t|
+    t.integer "cause_id"
+    t.integer "causetype_id"
   end
 
   create_table "donations", :force => true do |t|

@@ -211,3 +211,226 @@
 
 }
 
+
+/* HEADER */
+
+#topbar {
+  height: 52px;
+  line-height: 52px;
+  background: url(topbar-bg.jpg) repeat-x center;
+  box-shadow: 0 0 5px #000;
+  position: relative;
+  z-index: 14;
+}
+
+#topbar nav li {
+  display: inline-block;
+}
+
+#top-logo {
+  margin-right: 20px;
+}
+
+#topbar nav li.top-nav-item {
+  padding: 0 40px 0 40px;
+  font-size: 90%;
+}
+
+#topbar nav ul {
+    padding-left: 20px;
+}
+
+#mobile-menu {
+  height: 52px;
+  width: 52px;
+  background: url(mobile-menu.png) center no-repeat;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+  cursor: pointer;
+}
+
+
+#header {
+ position: relative;
+}
+
+.header-slide {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  top: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  left: -20px;
+  z-index: 10;
+}
+
+.header-slide.active {
+  opacity: 1;
+  z-index: 12;
+  left: 0;
+}
+
+.header-slide.last {
+}
+
+.header-nav {
+  position: relative;
+  z-index:13;
+}
+
+.header-label {
+    position: relative;
+    width: 250px;
+    border-bottom: 1px solid #4a4a4a;
+}
+.header-label .arrow-left {
+    position: absolute;
+    left:0px;
+    top:40%;
+}
+.header-label.active .arrow-left {
+    left:-10px;
+}
+.header-slogan {
+    position: absolute;
+    max-width: 70%;
+    bottom: 20px;
+    background: url(header-slogan.png) no-repeat bottom left;
+    background-position-x: 10px;
+    background-size: contain;
+    width:601px;
+    height: 163px;
+}
+
+.map-infobox {
+    position: fixed !important;
+    background: #fff !important;
+    overflow: auto;
+    padding: 20px !important;
+    z-index: 999;
+    width: 70% !important;
+    left: 15% !important;
+    right: 15% !important;
+    top: 10% !important;
+    box-shadow: 0 0 50px;
+}
+.map-infobox > div {
+    background: none !important;
+    border: none !important;
+    padding: 20px !important;
+
+}
+
+
+
+
+.group-header {
+    background-color: #fafafa;
+    border: 1px solid #dadada;
+    padding: 20px;
+    font-size: 160%;
+}
+
+
+
+#companies {
+    overflow: hidden;
+}
+
+
+#sub-header {
+    background-color: #f4f4f4;
+    padding:40px;
+    padding-bottom: 20px;
+
+}
+
+.cause-single {
+    background-color: #fafafa;
+    border: 1px solid #e3e3e3;
+    margin-bottom: 20px;
+}
+
+.cause-header {
+    background-size: cover;
+    min-height: 130px;
+    position: relative;
+}
+
+.cause-title {
+    background: #000;
+    color: #fff;
+    display: inline;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 80%;
+}
+
+.bar-cont {
+    background: #c2c2c2;
+    border-radius: 4px;
+    height: 10px;
+}
+
+.bar-cont .bar {
+    border-radius: 4px;
+    background: #2ab200;
+    height: 10px;
+    transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;    /* FF3.7+ */
+    -o-transition: width 1s ease-in-out;      /* Opera 10.5 */
+    -webkit-transition: width 1s ease-in-out; /* Saf3.2+, Chrome */
+}
+.bar.reset {
+    width: 10px !important;
+}
+
+#mapHolder {
+    min-height: 400px;
+}
+
+#map-canvas { height: 100% }
+
+
+@media only screen and (max-width: 48em) {
+
+    .map-infobox {
+    width: 90% !important;
+    left: 5% !important;
+    right: 5% !important;
+    top: 5% !important;
+    bottom: 5% !important;
+    padding: 10px 10px 30px 10px !important;
+    }
+    .map-infobox > div {
+    padding: 5px !important;
+    }
+    .map-corner-logo {
+    top: auto;
+    bottom: 20px;
+    }
+    .home-tiles-group {
+    margin-bottom: 80px;
+    }
+    .cause-header {
+    min-height: 240px;
+    }
+    .cause-title {
+    font-size: 160%;
+    line-height: 160%;
+    }
+
+    #topbar nav li.top-nav-item {
+    display: none;
+    }
+    #mobile-menu {
+    display: inherit;
+    }
+
+}
+

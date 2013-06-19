@@ -1,6 +1,6 @@
 class CauseType < ActiveRecord::Base
   attr_accessible :name
-  has_many :causes
+  has_and_belongs_to_many :causes, :join_table => 'causes_cause_types'
 end
 
 # == Schema Information
