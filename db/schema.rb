@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619163135) do
+ActiveRecord::Schema.define(:version => 20130619224505) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -221,6 +221,7 @@ ActiveRecord::Schema.define(:version => 20130619163135) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "game_id"
+    t.text     "fb_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

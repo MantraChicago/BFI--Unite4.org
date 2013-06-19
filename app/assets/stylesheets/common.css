@@ -440,6 +440,7 @@
 }
 
 .fs-bg{
+    z-index: 9;
     width:300px;
     margin-left: auto;
     margin-right: auto;

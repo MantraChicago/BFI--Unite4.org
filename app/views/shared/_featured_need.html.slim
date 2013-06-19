@@ -2,7 +2,7 @@
  .cause_header style="background-image: url(#{need.cause.picture.url(:medium)});"
  .featured_need_title
   .need_title_upper GOAL
-  .need_title_lower #{need.name}
+  a.need_title_lower href="#{url_for(need)}" #{need.name}
  .goal_progress_holder
   .goal_progress style="width:10%"
  .goal_stats

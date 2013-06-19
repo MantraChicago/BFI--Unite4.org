@@ -12,9 +12,9 @@
 			top:0px;
 			right:0px;
 			width:1px;
-			height:300px;
+			height:100%;
 			position:absolute;
-			background-color: grey;
+			background-color: #ccc;
 		}
 	}
 	.right{
@@ -38,6 +38,12 @@
 	.input_row{
 		padding-top:20px;
 		text-align:center;
+	}
+
+	.fb_login_text{
+		color: #8d8a8a;
+		margin-top:15px;
+		font-size:12px;
 	}
 	.signup_row{
 		
