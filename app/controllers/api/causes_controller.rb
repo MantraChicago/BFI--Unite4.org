@@ -1,4 +1,3 @@
-class Api::CausesController < Api::ApiController
-
-
+class Api::CausesController < Presentable::Controller
+  self.resource = "Cause"
 end

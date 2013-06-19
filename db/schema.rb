@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619224505) do
+ActiveRecord::Schema.define(:version => 20130619230424) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -109,9 +109,9 @@ ActiveRecord::Schema.define(:version => 20130619224505) do
     t.integer "cause_need_id"
   end
 
-  create_table "causes_causestypes", :force => true do |t|
+  create_table "causes_causetypes", :force => true do |t|
     t.integer "cause_id"
-    t.integer "causetype_id"
+    t.integer "cause_type_id"
   end
 
   create_table "donations", :force => true do |t|
@@ -221,7 +221,7 @@ ActiveRecord::Schema.define(:version => 20130619224505) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "game_id"
-    t.text     "fb_token"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

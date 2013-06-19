@@ -6,7 +6,7 @@ module Queryable
     # its own query method, which handles all of the various
     # parameters that make sense for that resource
     def query(params={})
-      scoped = {}
+      scoped
     end
   end
 end
