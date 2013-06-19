@@ -1,0 +1,18 @@
+@import "unite/colors";
+@import "unite/mixins";
+
+a.btn {
+  display: inline-block;
+  padding: 9px 7px;
+  color: white;
+  &.large {
+    font-size: 1.5em;
+    padding: 20px 20px;
+  }
+  &.purple {
+    @include darkBorder($darkPurple);
+  }
+  &.blue {
+    @include darkBorder($lightBlue);
+  }
+}
