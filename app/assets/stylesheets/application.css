@@ -1,7 +1,7 @@
 /*
  *= require normalize
  *= require ./common
- *= require ./unite
+ *= require_tree ./unite
  *= require_self
 */
 

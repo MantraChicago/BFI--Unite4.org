@@ -434,6 +434,11 @@
 
 }
 
+.centered{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .fs-bg{
     width:300px;
     margin-left: auto;
@@ -462,3 +467,4 @@
 .fs-error{
     background-color: red;
 }
+

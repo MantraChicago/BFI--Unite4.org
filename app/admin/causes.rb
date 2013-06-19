@@ -14,6 +14,7 @@ ActiveAdmin.register Cause do
 	    f.input :video_link
 	    f.input :twitter_handle
 	    f.input :facebook_url
+	    f.input :is_featured
 	    
 	    f.inputs "Cause types" do # Make a panel that holds inputs for lifestyles
 	      f.input :cause_types, as: :check_boxes, collection: CauseType.all 
