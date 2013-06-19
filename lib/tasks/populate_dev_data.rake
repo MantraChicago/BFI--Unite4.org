@@ -123,4 +123,4 @@ namespace :db do
 	  puts "Teat data loaded"
 	end
 end
->>>>>>> 61db8ef70ed88fe3823671f884b68f9b82cffafa
+
