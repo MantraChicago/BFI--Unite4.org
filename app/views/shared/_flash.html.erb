@@ -1,6 +1,6 @@
 <% if flash && flash[:notice] %>
   <div class="fs-bg">
-      <div class="fs-message">
+      <div class="fs-message fs-notice">
         <%= flash[:notice] %>
       </div>
   </div>
@@ -8,12 +8,12 @@
 
 <% if flash && flash[:alert] %>
   <div class="fs-bg">
-    <div class="fs-message fs-message-alert">
+    <div class="fs-message fs-alert">
       <%= flash[:alert] %>
     </div>
   </div>
 <% end %>
 
 <% if flash && flash[:error] %>
-  <div class="error fs-message"><%= flash[:error] %></div>
+  <div class="fs-message fs-error"><%= flash[:error] %></div>
 <% end %>
