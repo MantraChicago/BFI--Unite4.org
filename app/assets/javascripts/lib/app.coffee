@@ -4,22 +4,45 @@ class Application.App extends Backbone.Events
 
     @setupViewport()
 
+  # Allows you to get a reference to a single collection
+  # by saying App.collection('causes').  This will route
+  # all requests through the collection manager, so you can
+  # ensure you're getting access to the authoritative client side
+  # collection for that resource.
+  collection: (name, models, options)->
+    Application.collection(name, models, options)
+
   setupViewport: ()->
-    metaQuery.onBreakpointChange 'small', @onSmallBreakpoint
+    metaQuery.onBreakpointChange 'small', ()=>
+      @onSmallBreakpoint?.apply(@, arguments)
 
-    metaQuery.onBreakpointChange 'medium', @onMediumBreakpoint
+    metaQuery.onBreakpointChange 'medium', ()=>
+      @onMediumBreakpoint?.apply(@, arguments)
 
-    metaQuery.onBreakpointChange 'large', @onLargeBreakpoint
+    metaQuery.onBreakpointChange 'large', ()=>
+      @onLargeBreakpoint?.apply(@, arguments)
+
+    metaQuery.onBreakpointChange 'portrait', ()=>
+      @onOrientationChange?.apply(@, arguments)
+
+    metaQuery.onBreakpointChange 'landscape', ()=>
+      @onOrientationChange?.apply(@, arguments)
 
     @viewport =
+      isPortrait: ()->
+        $('html').is(".breakpoint-portrait")
+
+      isLandscape: ()->
+        $('html').is(".breakpoint-landscape")
+
       isLarge: ()->
-        Modernizr.mq('(min-width: 768px)')
+        $('html').is(".breakpoint-large")
 
       isMedium: ()->
-        Modernizr.mq('(max-width: 768px)')
+        $('html').is(".breakpoint-medium")
 
       isSmall: ()->
-        Modernizr.mq('(max-width: 420px)')
+        $('html').is(".breakpoint-small")
 
   # Use the controller name, and action name properties
   # stored on the body element, to delegate to a specific
@@ -40,6 +63,12 @@ class Application.App extends Backbone.Events
 
     controllerSpecific?.call(window)
     actionSpecific?.call(window)
+
+  # Viewport Sizing Change Events
+  #
+  # Just to demonstrate where you can hook into changes like this.
+  # It is a really bad sign if you need these, but they're good development helpers
+  onOrientationChange: (match)->
 
   onSmallBreakpoint: (match)->
 

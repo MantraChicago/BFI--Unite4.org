@@ -41,7 +41,6 @@ Application.onReady = ->
     controller: controller
     action: action
 
-
   App.initializePage()
 
 
