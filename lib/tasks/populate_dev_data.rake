@@ -1,4 +1,5 @@
 namespace :db do
+	desc "Create a new Active Admin user"
 	task :create_active_admin_user, [:email, :password] => [:environment] do |t,args|
 	#task :createActiveAdminUser, :email, :password, :needs => [:environment] do |t,args|
 		email =args.email
@@ -122,3 +123,4 @@ namespace :db do
 	  puts "Teat data loaded"
 	end
 end
+
