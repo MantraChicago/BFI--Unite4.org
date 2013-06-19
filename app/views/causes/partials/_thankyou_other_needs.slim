@@ -1,6 +1,9 @@
-.thankyou-modal
+.inner-modal
 	.well.padded.headline headline
 	.byline byline
 	.well
 		.muted OTHER WAYS TO HELP
-		a.btn.blue MORE-INFO
+    - related.each do |related|
+      .related_cause
+        = related[:text]
+        a.btn.blue{ src: related[:link] } MORE INFO
