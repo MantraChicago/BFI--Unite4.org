@@ -4,16 +4,18 @@ html
     title #{ render_title }
     meta name="viewport" content="initial-scale=1.0, user-scalable=no"
 
-    meta name="breakpoint" content="small" media="(max-width: 420px)"
-    meta name="breakpoint" content="medium" media="(max-width: 768px)"
-    meta name="breakpoint" content="large" media="(min-width: 768px)"
-
+    meta name="breakpoint" content="small" media="only screen and (max-width: 420px)"
+    meta name="breakpoint" content="medium" media="only screen and (max-width: 768px)"
+    meta name="breakpoint" content="large" media="only screen and (min-width: 769px)"
     meta name="breakpoint" content="retina" media="only screen and (-webkit-min-device-pixel-ratio : 2)"
-
-    == javascript_include_tag 'modernizr', 'metaquery'
-    == stylesheet_link_tag 'application', media: 'all'
+    meta name="breakpoint" content="landscape" media="only screen and (orientation: landscape)"
+    meta name="breakpoint" content="portrait" media="only screen and (orientation: portrait)"
 
     == csrf_meta_tags
+
+    == stylesheet_link_tag 'application', media: 'all'
+
+    == javascript_include_tag 'modernizr', 'metaquery'
 
     javascript:
       window.Application = {

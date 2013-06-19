@@ -94,6 +94,8 @@ GEM
     faraday (0.8.7)
       multipart-post (~> 1.1)
     fastercsv (1.5.5)
+    font-awesome-rails (3.2.1.0)
+      railties (>= 3.2, < 5.0)
     formtastic (2.2.1)
       actionpack (>= 3.0)
     fssm (0.2.10)
@@ -279,6 +281,7 @@ DEPENDENCIES
   devise (= 2.2.3)
   ejs
   factory_girl_rails
+  font-awesome-rails
   haml_coffee_assets
   jquery-rails
   json
