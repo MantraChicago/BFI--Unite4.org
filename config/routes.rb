@@ -1,5 +1,6 @@
 GiveInspireLove::Application.routes.draw do
-
+  
+  
   scope '/api/v1', :namespace => :api do
     resource :causes
   end
@@ -24,9 +25,9 @@ GiveInspireLove::Application.routes.draw do
   root :to => "pages#index"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
   devise_for :users
 
 end
