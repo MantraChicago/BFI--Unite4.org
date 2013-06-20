@@ -1,0 +1,29 @@
+.centered
+	=form_for(@cause_application) do |f|
+		.row
+			.large-12.columns.cascade-single
+				h2 New Cause Application
+				h3 Tell us about the cause you’d like to add
+			-if @cause_application.errors.any?
+				.large-12.columns
+					h3 #{ pluralize(@cause_application.errors.count, "error")} prohibited this cause_application from being saved:
+					ul
+						-@cause_application.errors.full_messages.each do |msg|
+							li #{msg}
+			.large-6.columns
+				.input_row
+					= text_field(:cause_application, :name,:placeholder => "name")
+				.input_row
+					= text_field(:cause_application, :email,:placeholder => "email")
+				.input_row
+					= text_field(:cause_application, :phone_number,:placeholder => "phone number")
+			.large-6.columns
+				.input_row
+					= text_field(:cause_application, :org_name,:placeholder => "organization name")
+				.input_row
+					= text_field(:cause_application, :website,:placeholder => "website")
+				.input_row
+					= text_area(:cause_application, :mission,:placeholder => "your mission", :rows=>5) 
+				.input_row
+					=f.submit "Submit Application"
+				    

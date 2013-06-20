@@ -17,18 +17,18 @@ To populate the initial database schema run
 
 To populate development data run
 
-> `$ rake populate_dev_data`
+> `$ rake db:populate_dev_data`
 
 To create an Active Admin user
 
-> `$ rake create_active_admin_user[$email,$password]`
+> `$ rake db:create_active_admin_user[$email,$password]`
 
 ###Testing
 
 The app uses rspec to run its tests. 
 
 To create and populate the testing environment run
-> `$ rake test_db_setup`
+> `$ rake db:test_db_setup`
 
 To run the tests run
 > `$ bundle exec rspec`
