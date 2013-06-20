@@ -234,6 +234,7 @@
 #topbar nav li.top-nav-item {
   padding: 0 40px 0 40px;
   font-size: 90%;
+  color: #333;
 }
 
 #topbar nav ul {
@@ -428,10 +429,44 @@
     #topbar nav li.top-nav-item {
     display: none;
     }
+    
     #mobile-menu {
     display: inherit;
     }
 
+}
+
+.top-bordered:hover{
+  background-color: #999;
+}
+.top-bordered:hover a{
+  color:#eee;
+}
+
+.top-bordered a:hover{
+  text-decoration: none;
+
+}
+
+
+.top-bordered{
+  border-left:2px solid #e3e3e3;
+}
+.top-bordered-last{
+  border-right:2px solid #e3e3e3;
+}
+
+.submit-cause{
+  padding-right: 40px;
+}
+
+.top-nav-item a{
+  color: #666;
+}
+
+.right-nav{
+  float:right;
+  padding-right: 0px !important;
 }
 
 .centered{

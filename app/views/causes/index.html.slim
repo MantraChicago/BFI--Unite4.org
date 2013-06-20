@@ -26,4 +26,5 @@
     - (1+(@causes.length / 4)).times do |row_index|
       .row
         - @causes.slice(row_index * 4, 4).each do |cause|
-          == render :partial => "causes/partials/grid_list_item", :locals => {cause: cause}
+          .small-12.large-3.columns
+          == render 'shared/featured_need',{need: cause.needs[0], stats: [{upper: "do work", lower:"now"}]}
