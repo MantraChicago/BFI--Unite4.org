@@ -1,10 +1,5 @@
 class PresentablesController < ApplicationController
-  respond_to :json
-
-  def index
-    results = resource_model.present(params).as(presenter_format).to(recipient_role)
-    respond_with(results.to_a)
-  end
+  include Smooth::Presentable::Controller
 
   protected
     def presenter_format

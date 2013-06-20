@@ -1,6 +1,6 @@
 class Cause < ActiveRecord::Base
-  include Queryable
-  include Presentable
+  include Smooth::Queryable
+  include Smooth::Presentable
 
   attr_accessible :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"

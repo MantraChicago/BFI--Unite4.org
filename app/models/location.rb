@@ -1,6 +1,18 @@
 class Location < ActiveRecord::Base
+  include Smooth::Queryable
+  include Smooth::Presentable
+
   attr_accessible :name, :latitude, :longitude, :cause_id
   belongs_to :cause
+
+  def self.query params={}
+    results = scoped
+
+    results = results.where(:cause_id => params[:cause_id]) if params[:cause_id]
+
+    results
+  end
+
 end
 
 # == Schema Information

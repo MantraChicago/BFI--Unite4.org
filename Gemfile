@@ -15,6 +15,8 @@ gem 'activeadmin', '0.6.0'
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -40,6 +42,8 @@ gem 'haml_coffee_assets'
 gem 'ejs'
 gem 'slim', '1.2.2'
 gem 'skim', '0.8.6'
+gem 'smooth', :git => "git@github.com:datapimp/smooth.git" 
+#gem 'smooth', :path => File.join(ENV['HOME'],'Projects','smooth')
 
 gem 'rvm-capistrano', '~> 1.3.1'
 
