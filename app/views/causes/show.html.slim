@@ -7,9 +7,10 @@
   .subheadline OUR MISSION
   p
    = @cause.description
+  div
    = render 'causes/partials/follow', cause:@cause
-  -if @cause.twitter_handle
-	=render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
+   -if @cause.twitter_handle
+		=render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
 
 .middle_bar
  .middle_content
