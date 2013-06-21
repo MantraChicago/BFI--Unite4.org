@@ -1,0 +1,5 @@
+-if current_user && current_user.causes.include?(cause) 
+		div You are already following this cause
+
+-else
+	= link_to "FOLLOW THIS CAUSE", "/profiles/follow_cause/#{cause.id}"

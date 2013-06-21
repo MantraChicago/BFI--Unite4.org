@@ -16,3 +16,5 @@
 
 .wide_side_container.right
 	.profile_title #{@user.display_name.upcase}'S CAUSES
+	- @user.usercauses.each do |usercause|
+		=render 'shared/featured_need', :need => usercause.cause.needs.first, :stats =>[]

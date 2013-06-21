@@ -6,7 +6,11 @@
  .right_cause
   .subheadline OUR MISSION
   p
-   == @cause.description
+   = @cause.description
+   = render 'causes/partials/follow', cause:@cause
+  -if @cause.twitter_handle
+	=render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
+
 .middle_bar
  .middle_content
   ul class="no-margin"
@@ -14,6 +18,7 @@
    /li UPCOMING EVENTS
 .middle_content.spaced_content
   == render "shared/goal_box", :goal=> {:title=>"do work", :percent=>10, :more_link => '#', :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Party'}]}
+
 
 .middle_content.spaced_content
  ==render 'shared/needs_box', :needs => @cause.needs

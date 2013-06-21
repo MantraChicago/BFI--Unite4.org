@@ -4,9 +4,10 @@ class Cause < ActiveRecord::Base
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
   has_many :needs
-
   has_and_belongs_to_many :cause_types, :join_table => 'causes_cause_types'
   has_many :locations, :dependent => :delete_all
+
+  validates :name, :uniqueness => true
 
   def location
     [city,state].compact.join(", ")
