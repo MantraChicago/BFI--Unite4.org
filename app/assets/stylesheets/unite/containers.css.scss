@@ -10,3 +10,18 @@
     margin-right: auto;
   }
 }
+
+.narrow_side_container{
+	position:relative;
+	background-color: rgb(255,255,255);
+	width:20%;
+	height:100%;
+}
+
+.wide_side_container{
+	padding:20px;
+	position:relative;
+	background-color: rgb(244,244,244);
+	width:80%;
+	height:100%;
+}

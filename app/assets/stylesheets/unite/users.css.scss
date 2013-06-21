@@ -43,7 +43,38 @@
 		margin-top:15px;
 		font-size:12px;
 	}
+}
+
+.profile_title{
+	font-weight:bold;
+	color:#999;
+	margin:20px 0px 10px 0px;
+}
+
+.profile_picture{
+		width:100%;
+		height:300px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+
+
+.profile_containter{
+	margin-left:27px;
+
+	.profile_name{
+		font-weight:bold;
+		font-size:30px;
+		margin:10px 0px 10px 0px;
+	}
+	.profile_location{
+		font-size:20px;
+		margin:10px 0px 10px 0px;
+	}
 	
 
-
 }
+
+
+	

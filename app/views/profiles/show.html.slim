@@ -1,0 +1,18 @@
+.narrow_side_container.left
+	.profile_picture style="background-image: url(#{@user.avatar.url})"
+	.profile_containter
+		.profile_name #{@user.display_name}
+		.profile_location #{@user.location}
+		
+		-if @allow_edit
+			.profile_title
+	    		=link_to "Edit Profile".html_safe, profiles_edit_path
+	    
+		.profile_title BIO
+		.profile_content #{@user.bio}
+		/.profile_interests #{@user.display_name}
+		.profile_title STATS
+
+
+.wide_side_container.right
+	.profile_title #{@user.display_name.upcase}'S CAUSES

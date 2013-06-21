@@ -1,0 +1,44 @@
+- @title = "Edit profile"
+= form_for(@user, :url => '', :html => { :multipart => true } ) do |f|
+  .row
+    	.large-12
+      		h2 Edit your profile
+      		h3 Tell us about you
+
+    	- if @user.errors.any?
+      		.large-12.columns
+		        h3 "#{pluralize(@user.errors.count, "error")}"  prohibited this user from being saved:
+		        ul
+		          -  for msg in @user.errors.full_messages.each
+		            	li msg
+		       
+	    .large-6.columns
+		      .input_row
+		        = text_field(:user, :first_name,:placeholder => "name")
+		      .input_row
+		        = text_field(:user, :last_name,:placeholder => "last name")
+		      .input_row
+		        = text_field(:user, :email,:placeholder => "email")
+		      .input_row
+		        = text_field(:user, :city,:placeholder => "city")
+		      .input_row
+		        = text_field(:user, :state,:placeholder => "state")
+		      .input_row
+		        h2 Followed Causes
+		        div style="padding-left:50px; text-align:left"
+		          - for cause in Cause.all
+		            .large-6
+		              label #{cause.name}
+		              = check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) , :id => "#{cause.id}_cause"
+	          
+	              
+	    .large-6.columns
+		      .input_row
+		        	= text_area(:user, :bio, :placeholder => "bio")
+		      .input_row
+		      		= image_tag @user.avatar.url
+		      		= f.file_field :avatar, :class => "slimit"
+		      		
+		      .input_row
+		      		= f.submit "Save changes"
+
