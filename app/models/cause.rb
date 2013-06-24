@@ -9,6 +9,7 @@ class Cause < ActiveRecord::Base
 
   has_many :needs, :dependent => :destroy_all
   has_many :locations, :dependent => :destroy_all
+
   has_many :campaigns, :dependent => :destroy_all
 
   validates :name, :uniqueness => true
