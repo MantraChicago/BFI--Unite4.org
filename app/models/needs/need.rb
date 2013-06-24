@@ -2,8 +2,6 @@ class Need < ActiveRecord::Base
   attr_accessible :name,  :cause_id, :description, :picture, :address, :start_date, :end_date
   belongs_to :cause
   has_one :campaign
-
-  
 end
 
 # == Schema Information
