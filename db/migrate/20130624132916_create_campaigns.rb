@@ -11,5 +11,10 @@ class CreateCampaigns < ActiveRecord::Migration
       t.boolean :active, :default => false
       t.timestamps
     end
+
+    add_index :campaigns, :id, :unique => true
+    add_index :campaigns, :active
+    add_index :campaigns, :need_id
+    add_index :campaigns, :cause_id
   end
 end
