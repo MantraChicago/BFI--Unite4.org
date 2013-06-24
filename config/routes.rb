@@ -3,6 +3,8 @@ GiveInspireLove::Application.routes.draw do
   match "/profiles/edit" => "profiles#edit"
   match "/profiles/follow_cause/:id" => "profiles#follow_cause"
 
+  match '/page/:action' => 'StaticPages'
+
   resources :profiles
 
   match "/causes/need/:id" => "causes#need"

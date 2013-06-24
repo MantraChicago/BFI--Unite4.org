@@ -10,7 +10,7 @@
 
 # The components folder should be used to store re-usable view elements
 
-#= require ./components
+#= require_tree ./components
 
 
 # The data sources contain our collection manager, and all of the collections

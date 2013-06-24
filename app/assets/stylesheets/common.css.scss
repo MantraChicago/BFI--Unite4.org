@@ -438,14 +438,10 @@
 
 .top-bordered:hover{
   background-color: #999;
+  cursor: pointer;
 }
-.top-bordered:hover a{
+.top-bordered:hover span{
   color:#eee;
-}
-
-.top-bordered a:hover{
-  text-decoration: none;
-
 }
 
 
@@ -506,5 +502,43 @@
 
 .fs-error{
     background-color: red;
+}
+.header_popover_holder{
+    position: relative;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header_popover{
+  width: 800px;
+  height: 300px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:white;
+  top:-300px;
+  z-index: 13;
+}
+
+.drop_down_wrapper{
+  .drop_down_title{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+  }
+  .cities{
+   width: 100%;
+   
+   position: absolute;
+   bottom: 0px;
+   .city{
+      height: 245px;
+      background-color: #444;
+   }
+   .city:hover{
+      background-color: rgb(57,196,242);
+      cursor: pointer;
+   }
+  }
 }
 

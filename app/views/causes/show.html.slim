@@ -16,10 +16,9 @@
  .middle_content
   ul class="no-margin"
    li class="active" OUR NEEDS
-   /li UPCOMING EVENTS
-.middle_content.spaced_content
-  == render "shared/goal_box", :goal=> {:title=>"do work", :percent=>10, :more_link => '#', :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Party'}]}
-
+-if @cause.active_campaign
+  .middle_content.spaced_content
+    == render "shared/goal_box", :goal=> {:title=>@cause.active_campaign.need.name, :percent=>10, :more_link => url_for(@cause.active_campaign.need), :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Party'}]}
 
 .middle_content.spaced_content
  ==render 'shared/needs_box', :needs => @cause.needs
