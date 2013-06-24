@@ -38,8 +38,8 @@
 <div id="causes" class="mlimit">
     <div class="row">
 
-	<% @recent_needs.each do |need| %>
-		<%= render 'shared/featured_need', :need => need, :stats=> [{:upper=> 'party', :lower=>'hard'}] %>
+	<% @campaigns.each do |campaign| %>
+		<%= render 'shared/featured_need', :need => campaign.need, :stats=> [{:upper=> 'party', :lower=>'hard'}], :percent=>campaign.percent_complete %>
 	<% end %>
 
     </div>

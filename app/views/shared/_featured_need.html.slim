@@ -7,7 +7,7 @@
 	  .need_title_upper GOAL
 	  a.need_title_lower href="#{url_for(need)}" #{need.name}
 	 .goal_progress_holder
-	  .goal_progress style="width:10%"
+	  .goal_progress style='width: #{percent ||=0 }%'
 	 .goal_stats
 	  -stats.each do |stat|
 	   .goal_stat

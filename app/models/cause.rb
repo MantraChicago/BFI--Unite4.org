@@ -10,6 +10,7 @@ class Cause < ActiveRecord::Base
   has_many :locations, :dependent => :delete_all
 
   validates :name, :uniqueness => true
+  #has_one :campaign
 
   def location
     [city,state].compact.join(", ")

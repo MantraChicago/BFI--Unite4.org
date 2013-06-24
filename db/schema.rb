@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619230424) do
+ActiveRecord::Schema.define(:version => 20130624165547) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(:version => 20130619230424) do
   create_table "badges_users", :force => true do |t|
     t.integer "user_id"
     t.integer "badge_id"
+  end
+
+  create_table "campaigns", :force => true do |t|
+    t.integer  "cause_id"
+    t.integer  "need_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "percent_complete"
+    t.string   "desired_state"
+    t.string   "current_state"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "cause_applications", :force => true do |t|
@@ -109,9 +121,9 @@ ActiveRecord::Schema.define(:version => 20130619230424) do
     t.integer "cause_need_id"
   end
 
-  create_table "causes_causetypes", :force => true do |t|
+  create_table "causes_causestypes", :force => true do |t|
     t.integer "cause_id"
-    t.integer "cause_type_id"
+    t.integer "causetype_id"
   end
 
   create_table "donations", :force => true do |t|
@@ -173,6 +185,7 @@ ActiveRecord::Schema.define(:version => 20130619230424) do
     t.datetime "picture_updated_at"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.integer  "campaign_id"
   end
 
   create_table "permissions", :force => true do |t|
@@ -221,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20130619230424) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "game_id"
+    t.text     "fb_token"
     t.string   "role"
   end
 

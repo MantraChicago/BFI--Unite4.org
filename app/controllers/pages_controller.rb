@@ -7,11 +7,7 @@ class PagesController < ApplicationController
 
 		
 		@featured_users = User.random 2
-		
-
-		#for map
-		#@causes=Cause.all
-		#@locations=Location.all
+		@campaigns=Campaign.find(:all, :order => 'RANDOM()', :limit=>4)
 	end
 
 

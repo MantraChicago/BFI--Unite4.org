@@ -27,4 +27,4 @@
       .row
         - @causes.slice(row_index * 4, 4).each do |cause|
           .small-12.large-3.columns
-          == render 'shared/featured_need',{need: cause.needs[0], stats: [{upper: "do work", lower:"now"}]}
+          == render 'shared/featured_need',{need: cause.campaign.need, stats: [{upper: "do work", lower:"now"}]}
