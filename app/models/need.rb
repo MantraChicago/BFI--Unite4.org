@@ -1,8 +1,9 @@
-class GoodNeed < Need
-    has_many :needs, :as => :needable
+class Need < ActiveRecord::Base
+  attr_accessible :name,  :cause_id, :description, :picture, :address, :start_date, :end_date
+  belongs_to :cause
 
-   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
-
+  
+end
 
 # == Schema Information
 #

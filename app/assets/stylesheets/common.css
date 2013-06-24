@@ -469,6 +469,10 @@
   padding-right: 0px !important;
 }
 
+.gray_border{
+  border:1px solid #e3e3e3;
+}
+
 .centered{
   margin-left: auto;
   margin-right: auto;
