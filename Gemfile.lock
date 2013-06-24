@@ -145,6 +145,7 @@ GEM
     faye-websocket (0.6.1)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.2.0)
+    ffaker (1.16.1)
     ffi (1.9.0)
     font-awesome-rails (3.2.1.0)
       railties (>= 3.2, < 5.0)
@@ -380,6 +381,7 @@ DEPENDENCIES
   devise (= 2.2.3)
   ejs
   factory_girl_rails
+  ffaker
   font-awesome-rails
   guard
   guard-rspec
