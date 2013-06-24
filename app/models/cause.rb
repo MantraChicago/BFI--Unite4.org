@@ -7,9 +7,9 @@ class Cause < ActiveRecord::Base
 
   has_and_belongs_to_many :cause_types, :join_table => 'causes_cause_types'
 
-  has_many :needs, :dependent => :destroy_all
-  has_many :locations, :dependent => :destroy_all
-  has_many :campaigns, :dependent => :destroy_all
+  has_many :needs, :dependent => :delete_all
+  has_many :locations, :dependent => :delete_all
+  has_many :campaigns, :dependent => :delete_all
 
   validates :name, :uniqueness => true
   #has_one :campaign
@@ -19,7 +19,7 @@ class Cause < ActiveRecord::Base
   end
 
   def active_campaign
-    campaigns.active.limit(1)
+    campaigns.active.limit(1)[0]
   end
 
   def self.query(params={})
