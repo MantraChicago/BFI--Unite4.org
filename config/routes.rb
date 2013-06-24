@@ -11,10 +11,6 @@ GiveInspireLove::Application.routes.draw do
   resources :donations
   resources :volunteers
   resources :cause_applications
-  resources :donations_needs
-  resources :good_needs
-  resources :social_needs
-  resources :volunteer_needs
 
   root :to => "pages#index"
 
