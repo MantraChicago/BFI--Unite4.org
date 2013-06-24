@@ -62,3 +62,6 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'factory_girl_rails'
 end
+
+
+gem 'rb-readline'
