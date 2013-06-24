@@ -13,16 +13,6 @@ gem 'customerio','0.5.0'
 
 gem 'activeadmin', '0.6.0'
 
-group :development, :test do
-  gem 'pry-rails'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
-
-group :test do
-  gem 'rspec-rails', '~> 2.0'
-  gem 'factory_girl_rails'
-end
 
 gem 'pg'
 gem 'annotate'
@@ -51,3 +41,24 @@ gem 'jquery-rails'
 gem 'compass'
 gem 'zurb-foundation'
 gem 'font-awesome-rails'
+
+
+gem 'pry-rails'
+
+group :test, :development do
+  gem 'zeus'
+  gem 'rspec-rails'
+  gem 'capybara', '>= 2.0'
+  gem 'shoulda'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+end
+
+group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'factory_girl_rails'
+end

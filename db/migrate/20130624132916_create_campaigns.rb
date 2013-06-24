@@ -8,7 +8,7 @@ class CreateCampaigns < ActiveRecord::Migration
       t.integer :percent_complete
       t.string :desired_state
       t.string :current_state
-
+      t.boolean :active, :default => false
       t.timestamps
     end
   end
