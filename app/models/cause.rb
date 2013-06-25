@@ -29,11 +29,11 @@ class Cause < ActiveRecord::Base
     join_ids = []
 
     if params[:cause_type_id]
-      join_ids += CauseType.where()
+      join_ids += CauseType.where(id: params[:cause_type_id]).map(&:cause_id)
     end
 
     if params[:location]
-      ids = Location.near(params[:location]).select("distinct cause_id").collect(&:cause_id)
+      join_ids += Location.near(params[:location]).select("distinct cause_id").collect(&:cause_id)
       results = results.where(id: ids)
     end
 
