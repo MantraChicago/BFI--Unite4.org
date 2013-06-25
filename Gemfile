@@ -28,10 +28,10 @@ end
 gem 'ejs'
 gem 'slim', '1.2.2'
 gem 'skim', '0.8.6'
-#gem 'smooth', :git => "git@github.com:datapimp/smooth.git" 
-gem 'smooth', :path => File.join(ENV['HOME'],'Projects','smooth')
-
+gem 'smooth', :git => "git@github.com:datapimp/smooth.git" 
+#gem 'smooth', :path => File.join(ENV['HOME'],'Projects','smooth')
 gem 'jquery-rails'
+
 gem 'compass'
 gem 'zurb-foundation'
 gem 'font-awesome-rails'
