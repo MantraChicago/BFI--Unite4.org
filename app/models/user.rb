@@ -126,5 +126,7 @@ end
 #  provider               :string(255)
 #  uid                    :string(255)
 #  game_id                :integer
+#  role                   :string(255)
+#  fb_token               :text
 #
 

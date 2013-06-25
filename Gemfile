@@ -13,11 +13,8 @@ gem 'customerio','0.5.0'
 
 gem 'activeadmin', '0.6.0'
 
-
 gem 'pg'
 gem 'annotate'
-gem 'taps'
-
 gem 'json'
 
 # Gems used only for assets and not required
@@ -28,28 +25,22 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'haml_coffee_assets'
 gem 'ejs'
 gem 'slim', '1.2.2'
 gem 'skim', '0.8.6'
-gem 'smooth', :git => "git@github.com:datapimp/smooth.git" 
-#gem 'smooth', :path => File.join(ENV['HOME'],'Projects','smooth')
-
-gem 'rvm-capistrano', '~> 1.3.1'
+#gem 'smooth', :git => "git@github.com:datapimp/smooth.git" 
+gem 'smooth', :path => File.join(ENV['HOME'],'Projects','smooth')
 
 gem 'jquery-rails'
 gem 'compass'
 gem 'zurb-foundation'
 gem 'font-awesome-rails'
 
-
 gem 'pry-rails'
 
 group :test, :development do
-  gem 'zeus'
   gem 'rspec-rails'
-  gem 'capybara', '>= 2.0'
-  gem 'shoulda'
+  gem 'database_cleaner'
   gem 'guard'
   gem 'guard-rspec'
   gem 'rb-inotify', :require => false
@@ -58,7 +49,6 @@ group :test, :development do
 end
 
 group :development, :test do
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'factory_girl_rails'
+  gem 'ffaker'
 end

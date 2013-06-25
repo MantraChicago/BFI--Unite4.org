@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(:version => 20130625180954) do
     t.integer  "percent_complete"
     t.string   "desired_state"
     t.string   "current_state"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.boolean  "active"
+    t.boolean  "active",           :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   create_table "cause_applications", :force => true do |t|
@@ -127,9 +127,9 @@ ActiveRecord::Schema.define(:version => 20130625180954) do
     t.integer "cause_need_id"
   end
 
-  create_table "causes_causestypes", :force => true do |t|
+  create_table "causes_causetypes", :force => true do |t|
     t.integer "cause_id"
-    t.integer "causetype_id"
+    t.integer "cause_type_id"
   end
 
   create_table "cities", :force => true do |t|
@@ -201,7 +201,6 @@ ActiveRecord::Schema.define(:version => 20130625180954) do
     t.datetime "picture_updated_at"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
-    t.integer  "campaign_id"
   end
 
   create_table "permissions", :force => true do |t|
@@ -250,8 +249,8 @@ ActiveRecord::Schema.define(:version => 20130625180954) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "game_id"
-    t.text     "fb_token"
     t.string   "role"
+    t.text     "fb_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
