@@ -26,8 +26,15 @@ class Cause < ActiveRecord::Base
     results = scoped
     results = results.includes(:locations, :needs, :campaigns)
 
+    join_ids = []
+
     if params[:cause_type_id]
-      results = results.joins(:cause_type)
+      join_ids += CauseType.where()
+    end
+
+    if params[:location]
+      ids = Location.near(params[:location]).select("distinct cause_id").collect(&:cause_id)
+      results = results.where(id: ids)
     end
 
     results
