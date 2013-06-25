@@ -2,9 +2,11 @@ class CausesController < ApplicationController
 	respond_to :html
 
 	def index
-		conditions={}
+		query= params.clone
+		query.delete(:action)
+		query.delete(:controller)
 		
-		@causes = Cause.all(:include => :cause_types, :conditions=>conditions)
+		@causes = Cause.query(query)
 
 	end
 

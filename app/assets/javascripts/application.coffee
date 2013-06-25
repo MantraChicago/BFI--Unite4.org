@@ -1,6 +1,6 @@
 # The templates are compiled by the asset pipeline and provide us with functions to
 # render strings.  We should use either template.jst.hamlc or template.jst.skim.
-
+//= require_tree ./templates
 
 # The lib directory contains base classes that our models, views, collections extend from.
 # As well as any other utility classes, etc
