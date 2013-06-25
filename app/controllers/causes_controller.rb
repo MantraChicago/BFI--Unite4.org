@@ -2,15 +2,10 @@ class CausesController < ApplicationController
 	respond_to :html
 
 	def index
-		@causes 		= Cause.scoped
-		@locations 	= Location.scoped
-		@needs 			= Need.scoped
+		conditions={}
+		
+		@causes = Cause.all(:include => :cause_types, :conditions=>conditions)
 
-		@needs.each do |need|
-			need.type=need.type
-		end
-
-		render :layout => "application"
 	end
 
 	def need

@@ -524,21 +524,24 @@
     }
    .popover_box{
       background-color:black;
+      float: left !important;
    }
 
    .popover_box:hover{
       background-color: rgb(57,196,242);
       cursor: pointer;
+      text-decoration: none;
    }
 
    .popover_box_background{
       text-align:center;
       margin:20px;
-       height: 195px;
+      height: 195px;
       color:white;
       font-weight: bold;
       font-size: 25px;
       line-height: 1.5;
+      padding-top: 30px; 
    }
 
    .popover_box{
@@ -553,6 +556,9 @@
 
    .causes{
       height: 550px;
+      .popover_box_background{
+        font-size: 20px;
+      }
    }
 
    .cities{

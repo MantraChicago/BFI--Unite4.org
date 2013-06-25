@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624181837) do
+ActiveRecord::Schema.define(:version => 20130625180954) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -84,9 +84,13 @@ ActiveRecord::Schema.define(:version => 20130624181837) do
   end
 
   create_table "cause_types", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "name"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "causes", :force => true do |t|
@@ -110,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20130624181837) do
     t.boolean  "is_featured",          :default => false
     t.string   "twitter_handle"
     t.string   "facebook_url"
+    t.integer  "city_id"
   end
 
   create_table "causes_cause_types", :force => true do |t|
@@ -125,6 +130,16 @@ ActiveRecord::Schema.define(:version => 20130624181837) do
   create_table "causes_causestypes", :force => true do |t|
     t.integer "cause_id"
     t.integer "causetype_id"
+  end
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "donations", :force => true do |t|

@@ -15,9 +15,20 @@ causeTypes=[
 	'Religion' ,
 	'Global Outreach',
 	'Social Equality']
+CauseType.delete_all
 causeTypes.each do |type|
 	CauseType.find_or_create_by_name(type)
 end
+
+cities=[
+	'Chicago',
+	'New York City',
+	'San Francisco']
+City.delete_all
+cities.each do |name|
+	City.find_or_create_by_name(name)
+end
+
 
 gameBadges=[{name: 'Complete profile', file_name:'', accomplishment: "level_0"},
 			{name: 'Watch Video', file_name:'', accomplishment: "level_1"},

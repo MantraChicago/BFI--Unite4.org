@@ -1,4 +1,4 @@
-ActiveAdmin.register CauseType do
+ActiveAdmin.register City do
 	form :html => { :enctype => "multipart/form-data" } do |f|
 	   f.inputs "Details" do
 	    
