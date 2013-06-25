@@ -1,0 +1,10 @@
+div.drop_down_wrapper.causes
+	div.drop_down_title
+		|What causes are you interested in?
+	div.row_holder
+		-for row in this.cause_types
+			.row
+				-for type in row
+					div.large-3.columns.cause.popover_box
+						div.popover_box_background style="background-image: url(/assets/t4.jpg)"
+							= type

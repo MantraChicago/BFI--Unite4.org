@@ -1,11 +1,15 @@
-div.drop_down_wrapper
+div.drop_down_wrapper.cities
 	div.drop_down_title
 		|What city are you closest to?
-	div.cities
+	div.row_holder
 		.row
-			div.large-4.columns.city.newyork
-				|New York
-			div.large-4.columns.city.sanfran
-				|New York
-			div.large-4.columns.city.chitown
-				|New York
+			div.large-4.columns.popover_box.newyork 
+				div.popover_box_background style="background-image: url(/assets/t4.jpg)"
+					|New York City
+			div.large-4.columns.popover_box.sanfran
+				div.popover_box_background
+					|San Francisco
+				
+			div.large-4.columns.popover_box.chitown
+				div.popover_box_background
+					|Chicago

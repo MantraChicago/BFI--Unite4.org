@@ -1,21 +1,58 @@
-Application.header={open_nav:function(){
-	var element=$('<div class="header_popover_holder"><div class="header_popover"></div></div>');
-	$('#topbar').after(element);
-	var popover=element.find('.header_popover')
-	popover.animate({
-		top:0
-	},500)
-	return popover
+Application.header={
+	popover_open:false,
+	popover_time:300,
+	open_nav:function(type){
+		var element=$('<div class="header_popover_holder"><div class="header_popover"></div></div>');
+		$('#topbar').after(element);
+		var popover=element.find('.header_popover')
+		popover.animate({
+			top:0
+		},this.popover_time)
+		this.popover_open=type
+		return popover
 	},
 
-	open_cities_nav:function(){
-		var popover = this.open_nav()
-		popover.html(JST['templates/header_cities_dropdown']())
+	close_nav:function(callback){
+		var self =this
+		$('.header_popover').animate({
+			top:-800
+		},this.popover_time,function(){
+			$(this).remove()
+			self.popover_open=false
+			if(callback){
+				callback()
+			}
+			
+		})
+	},
+
+	toggle_nav:function(html,popover_type){
+		var self =this
+		if(this.popover_open == popover_type){
+			this.close_nav()
+		}if(this.popover_open==false){
+			var popover = this.open_nav(popover_type)
+			popover.html(html)
+		}else{
+			this.close_nav(function(){
+				var popover = self.open_nav(popover_type)
+				popover.html(html)
+			})
+			
+			
+		}
+		
 	}
 
 }
 
 
+$('#cities_nav').click(function(){
+	Application.header.toggle_nav(JST['templates/header_cities_dropdown'](),'cities')
+});
+
+
 $('#causes_nav').click(function(){
-	Application.header.open_cities_nav()
+	types=[['The Arts', 'Education', 'Environment', 'Health & Wellness'],['Youth', 'Religion', 'Global Outreach', 'Social Equality']] //replace with collection
+	Application.header.toggle_nav(JST['templates/header_causes_dropdown']( {cause_types:types} ), 'causes')
 });
