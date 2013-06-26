@@ -48,6 +48,7 @@ group :test, :development do
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
+  gem "better_errors"
 end
 
 group :development, :test do
