@@ -53,6 +53,7 @@ group :test, :development do
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
   gem "better_errors"
+  gem 'binding_of_caller'
 end
 
 group :development, :test do

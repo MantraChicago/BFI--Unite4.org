@@ -4,7 +4,7 @@ div.drop_down_wrapper.cities
 	div.row_holder
 		.row
 			- for city in this.cities
-				a.large-4.columns.popover_box href="/causes/?city_id=#{city.id}"
+				a.large-4.columns.popover_box href="/causes/?name=#{city.name}"
 					div.popover_box_background style="background-image: url(#{city.picture})"
 						|#{city.name}
 				

@@ -2,7 +2,6 @@
  *= require normalize
  *= require ./common
  *= require_tree ./unite
- *= require_self
 */
 
 body {

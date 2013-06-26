@@ -46,8 +46,9 @@ Application.header={
 
 }
 setupHeader=function(){
-	var cities_html=JST['templates/header_cities_dropdown']({cities:App.collection("cities").models})
-	var causes_html=JST['templates/header_causes_dropdown']( {cause_types:App.collection("cause_types").models} )
+	var cities_html=JST['templates/header_cities_dropdown']({cities:Application.data.cities})
+	
+	var causes_html=JST['templates/header_causes_dropdown']( {cause_types:Application.data.cause_types} )
 
 	$('#cities_nav').click(function(){
 		Application.header.toggle_nav(cities_html,'cities')

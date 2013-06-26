@@ -3,7 +3,7 @@
 #= require ./locations
 #= require ./needs
 #= require ./cities
-#= require ./cause_types
+
 
 
 # The CollectionManager is a proxy for singleton instances of any
