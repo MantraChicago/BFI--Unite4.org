@@ -2,8 +2,38 @@ class Location < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
-  attr_accessible :name, :latitude, :longitude, :cause_id
+  attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country
   belongs_to :cause
+  before_save :lookup_geo_coordinates, :if => :requires_geo_lookup?
+
+  def lookup_geo_coordinates
+    # TODO
+    # Implement call to geokit
+  end
+
+  def requires_geo_lookup?
+    country_changed? || address_line_one_changed? || city_changed? || state_changed? || postal_code_changed? || !has_coordinates?
+  end
+
+  def has_coordinates?
+    lat.present? && lng.present?
+  end
+
+  def lat
+    latitude
+  end
+
+  def lng
+    longitude
+  end
+
+  def lat=value
+    self.latitude = value
+  end
+
+  def lng=value
+    self.longitude = value
+  end
 
   def self.query params={}
     results = scoped
