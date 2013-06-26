@@ -12,20 +12,4 @@
     Application.data.needs=      #{ @needs.to_json(:methods => :type).html_safe }
 
 .page-container
-  nav
-    a href="#list-view"
-      i.icon.icon-th-large
-
-    a href="#map-view"
-      i.icon.icon-map-marker
-
-    span.current-nav
-      | Causes
-
-  section role="results"
-    - (1+(@causes.length / 4)).times do |row_index|
-      .row
-        - @causes.slice(row_index * 4, 4).each do |cause|
-          .small-12.large-3.columns
-          -if cause.active_campaign
-            == render 'shared/featured_need',{need: cause.active_campaign.need, stats: [{upper: "do work", lower:"now"}]}
+  #causesapp
