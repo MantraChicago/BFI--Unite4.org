@@ -58,11 +58,11 @@ class Application.App extends Backbone.Events
   #
   # Application.causes = ()->
   initializePage: ()->
-    controllerSpecific = Application[@controller]
+    controllerSpecific = Application?[@controller]
     actionSpecific = Application[@controller]?[@action]
 
-    controllerSpecific?.call(window)
-    actionSpecific?.call(window)
+    controllerSpecific?.call?(window)
+    actionSpecific?.call?(window)
 
   # Viewport Sizing Change Events
   #

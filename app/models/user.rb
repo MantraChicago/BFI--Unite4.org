@@ -19,7 +19,13 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :badges, :join_table=>:badges_users
 
-  after_create do
+  after_create :identify_customer_with_customer_io
+
+  after_destroy do
+    $customerio.delete(self.id)
+  end
+
+  def identify_customer_with_customer_io
     $customerio.identify(
       :id => self.id,
       :email => self.email,
@@ -27,11 +33,7 @@ class User < ActiveRecord::Base
       :first_name => self.first_name
     )
 
-    $customerio.track(self.id, "New user") 
-  end
-
-  after_destroy do
-    $customerio.delete(self.id)
+    $customerio.track(self.id, "New user")     
   end
 
   def display_name
@@ -124,5 +126,7 @@ end
 #  provider               :string(255)
 #  uid                    :string(255)
 #  game_id                :integer
+#  role                   :string(255)
+#  fb_token               :text
 #
 

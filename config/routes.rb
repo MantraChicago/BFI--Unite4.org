@@ -3,6 +3,8 @@ GiveInspireLove::Application.routes.draw do
   match "/profiles/edit" => "profiles#edit"
   match "/profiles/follow_cause/:id" => "profiles#follow_cause"
 
+  match '/page/:action' => 'StaticPages'
+
   resources :profiles
 
   match "/causes/need/:id" => "causes#need"
@@ -15,6 +17,7 @@ GiveInspireLove::Application.routes.draw do
   resources :donations_needs
   resources :volunteer_needs
   resources :good_needs
+  resources :social_needs
 
   root :to => "pages#index"
 
@@ -24,5 +27,5 @@ GiveInspireLove::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  get "/api/v1/:resource/:presenter_format", :to => "presentables#index"
+  get "/api/v1/:resource(/:presenter_format)", :to => "presentables#index", :format => :json, :presenter_format => :default
 end

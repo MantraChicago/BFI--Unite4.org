@@ -2,15 +2,12 @@ class CausesController < ApplicationController
 	respond_to :html
 
 	def index
-		@causes 		= Cause.scoped
-		@locations 	= Location.scoped
-		@needs 			= Need.scoped
+		query= params.clone
+		query.delete(:action)
+		query.delete(:controller)
+		
+		@causes = Cause.query(query)
 
-		@needs.each do |need|
-			need.type=need.type
-		end
-
-		render :layout => "application"
 	end
 
 	def need

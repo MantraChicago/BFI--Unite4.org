@@ -44,6 +44,6 @@ GiveInspireLove::Application.configure do
       :controller_specs => true,
       :request_specs => true
 
-    g.fixture_replacement :factory_girl, :dir => "spec/factories"
+    g.fixture_replacement :factory_girl, :dir => "spec/support/factories"
     end
 end

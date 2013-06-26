@@ -2,7 +2,7 @@ class Cause < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
-  attr_accessible :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url
+  attr_accessible :cause_types, :city_id,:cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
   has_and_belongs_to_many :cause_types, :join_table => 'causes_cause_types'
@@ -12,7 +12,7 @@ class Cause < ActiveRecord::Base
   has_many :campaigns, :dependent => :delete_all
 
   validates :name, :uniqueness => true
-  #has_one :campaign
+  belongs_to :city
 
   def location
     [city,state].compact.join(", ")
@@ -26,8 +26,17 @@ class Cause < ActiveRecord::Base
     results = scoped
     results = results.includes(:locations, :needs, :campaigns)
 
+    join_ids = []
+
     if params[:cause_type_id]
-      results = results.joins(:cause_type)
+      Array(params[:cause_type_id]).each do |cause_type_id|
+        join_ids += CauseType.cause_type_ids_for_cause( cause_type_id )
+      end
+    end
+
+    if params[:near]
+      join_ids += Location.near(params[:near]).select("distinct cause_id").collect(&:cause_id)
+      results = results.where(id: ids)
     end
 
     results
