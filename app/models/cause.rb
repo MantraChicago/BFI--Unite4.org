@@ -11,6 +11,9 @@ class Cause < ActiveRecord::Base
   has_many :locations, :dependent => :delete_all
   has_many :campaigns, :dependent => :delete_all
 
+  has_many :usercauses
+  has_many :users, :through => :usercauses
+
   validates :name, :uniqueness => true
   belongs_to :city
 

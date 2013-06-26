@@ -1,5 +1,6 @@
 class SocialNeed < Need
-  belongs_to :cause
+	attr_accessible :name, :description, :cause_id
+  	belongs_to :cause
   #has_many :needs, :as => :needable
 end
 

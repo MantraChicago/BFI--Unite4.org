@@ -1,4 +1,23 @@
-class City < ActiveRecord::Base
-  attr_accessible :picture, :name
-  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing_city.jpg"
+class City
+  def self.all 
+  	[{
+  	  name: "Chicago",
+      asset_url: "/blah/chicago.png",
+      latitude: 0,
+      longitude: 0,
+    },
+    {
+  	  name: "San Francisco",
+      asset_url: "/blah/chicago.png",
+      latitude: 0,
+      longitude: 0,
+    },
+    {
+  	  name: "New York City",
+      asset_url: "/blah/chicago.png",
+      latitude: 0,
+      longitude: 0,
+    },
+	]
+  end
 end
