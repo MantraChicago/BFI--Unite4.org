@@ -5,7 +5,7 @@
 			ul.plain-list.small-inline-list
 				-CauseType.all.each do |type|
 					li
-						== link_to type.name, type
+						== link_to type.name, "/causes/?cause_type_id=#{type.id}"
 
 		.large-3.columns
 			h4.tertiary Get Involved
