@@ -45,18 +45,16 @@ Application.header={
 	}
 
 }
-$(document).ready(function(){
-	var types=[[{id:1,name:'The Arts', picture:'/assets/missing_cause_type.jpg'},{id:2,name:'The Arts', picture:'/assets/missing_cause_type.jpg'},{id:3,name:'The Arts', picture:'/assets/missing_cause_type.jpg'},{id:4,name:'The Arts', picture:'/assets/missing_cause_type.jpg'}],[{id:5,name:'The Arts', picture:'/assets/missing_cause_type.jpg'},{id:6,name:'The Arts', picture:'/assets/missing_cause_type.jpg'}]] //replace with collection
-	var causes_html=$(JST['templates/header_causes_dropdown']( {cause_types:types} ))
-		
+setupHeader=function(){
+	var cities_html=JST['templates/header_cities_dropdown']({cities:App.collection("cities").models})
+	var causes_html=JST['templates/header_causes_dropdown']( {cause_types:App.collection("cause_types").models} )
 
 	$('#cities_nav').click(function(){
-		Application.header.toggle_nav(JST['templates/header_cities_dropdown'](),'cities')
+		Application.header.toggle_nav(cities_html,'cities')
 	});
 
 
 	$('#causes_nav').click(function(){
-
 		Application.header.toggle_nav(causes_html, 'causes')
 	});
-})
+}

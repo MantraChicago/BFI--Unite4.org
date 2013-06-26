@@ -10,6 +10,8 @@
     Application.data.causes=     #{ @causes.to_json.html_safe };
     Application.data.locations=  #{ @locations.to_json.html_safe };
     Application.data.needs=      #{ @needs.to_json(:methods => :type).html_safe }
+    Application.data.cause_types=      #{ CauseTypes.all.to_json.html_safe }
+    
 
 .page-container
   nav

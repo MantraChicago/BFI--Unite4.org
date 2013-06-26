@@ -64,6 +64,8 @@ class Application.App extends Backbone.Events
     controllerSpecific?.call?(window)
     actionSpecific?.call?(window)
 
+    setupHeader()
+
   # Viewport Sizing Change Events
   #
   # Just to demonstrate where you can hook into changes like this.
