@@ -1,4 +1,5 @@
 class FeaturedCause < ActiveRecord::Base
+  attr_accessible :cause_id
   include Smooth::Queryable
   include Smooth::Presentable
 

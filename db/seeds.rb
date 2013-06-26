@@ -1,10 +1,3 @@
-[
-  Cause,
-  Campaign,
-  Need,
-  FeaturedCause
-].each &:delete_all
-
 
 causeTypes=[
 	"Arts", 
@@ -15,7 +8,7 @@ causeTypes=[
 	'Religion' ,
 	'Global Outreach',
 	'Social Equality']
-CauseType.delete_all
+
 causeTypes.each do |type|
 	CauseType.find_or_create_by_name(type)
 end
@@ -24,7 +17,7 @@ cities=[
 	'Chicago',
 	'New York City',
 	'San Francisco']
-City.delete_all
+
 cities.each do |name|
 	City.find_or_create_by_name(name)
 end
@@ -39,11 +32,4 @@ gameBadges.each do |badgeObj|
 	badge.update_attributes badgeObj
 end
 
-5.times.each do
-  Factory.create(:cause)
-end
-
-Cause.all.each do |cause|
-  FeaturedCause.create(cause:cause)
-end
 

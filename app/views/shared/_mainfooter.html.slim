@@ -3,10 +3,10 @@
 		.large-3.columns
 			h4.tertiary Programs
 			ul.plain-list.small-inline-list
-				li 
-					a href="" Program 1
-				li 
-					a href="" Program 2
+				-CauseType.all.each do |type|
+					li
+						== link_to type.name, type
+
 		.large-3.columns
 			h4.tertiary Get Involved
 			ul.plain-list.small-inline-list

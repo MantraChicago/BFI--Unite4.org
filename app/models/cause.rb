@@ -2,7 +2,7 @@ class Cause < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
-  attr_accessible :city_id,:cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url
+  attr_accessible :cause_types, :city_id,:cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
   has_and_belongs_to_many :cause_types, :join_table => 'causes_cause_types'

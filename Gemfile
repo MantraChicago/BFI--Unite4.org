@@ -13,6 +13,8 @@ gem 'customerio','0.5.0'
 
 gem 'activeadmin', '0.6.0'
 
+gem 'rvm-capistrano'
+
 gem 'pg'
 gem 'annotate'
 gem 'json'
