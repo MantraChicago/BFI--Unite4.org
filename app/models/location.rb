@@ -4,17 +4,17 @@ class Location < ActiveRecord::Base
 
   attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country
   belongs_to :cause
-  before_save :lookup_geo_coordinates, :if => :requires_geo_lookup?
+  #before_save :lookup_geo_coordinates, :if => :requires_geo_lookup? #This is causing error messages "undefined method `requires_geo_lookup?'"
 
   def lookup_geo_coordinates
     # TODO
     # Implement call to geokit
   end
-
+=begin  
   def requires_geo_lookup?
     country_changed? || address_line_one_changed? || city_changed? || state_changed? || postal_code_changed? || !has_coordinates?
   end
-
+=end
   def has_coordinates?
     lat.present? && lng.present?
   end
