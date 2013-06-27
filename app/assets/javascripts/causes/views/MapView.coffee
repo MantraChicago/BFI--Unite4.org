@@ -7,7 +7,6 @@ BFI.MapView = Ember.View.extend
   didInsertElement: ->
     mapDiv = $("<div></div>")
     mapDiv.attr({id: "map"})
-          .css({height: document.height/2, width: document.width/2})
           .appendTo @$()
 
     self = @
@@ -46,16 +45,12 @@ BFI.MapView = Ember.View.extend
     @get('map').remove()
 
   createMap: ->
-    zoomControls = @createZoomControl 'topright'
-    mapData = @createMapData()
-
     #finds the div w/ id "map" in the DOM and adds layers/controls
     #also defines our initial lat/long settings
-    @set('map', new L.map('map')
+    map = new L.map('map')
       .setView([41.87, -87.65], 13)
-      .addLayer(mapData)
-      .addControl(zoomControls)
-    )
+      .addLayer(@createMapData())
+    @set 'map', map
 
   #observer that re-creates markers whenever causes change
   placeMarkers: ->
@@ -79,9 +74,6 @@ BFI.MapView = Ember.View.extend
     activeCause = @get 'controller.controllers.cause.content'
     if activeCause
       @get('map').setView([activeCause.lat, activeCause.long], 13)
-
-  createZoomControl: (position) ->
-    new L.Control.Zoom({position: position})
 
   createMapData: () ->
     new L.tileLayer(

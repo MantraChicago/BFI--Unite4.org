@@ -1,32 +1,23 @@
 <div id="causenav">
-  <ul class="button-group">
-    <li>
-      <a href="#" class="small button round" {{action "showmap"}}>
-        Map
-      </a>
-    </li>
-    <li>
-      <a href="#" class="small button round" {{action "showgrid"}}>
-        Grid 
-      </a>
-    </li>
-
-    <li>
     {{
       view Ember.Select 
       contentBinding="controller.cities"
       selectionBinding="controller.activeCity" 
     }}
-    </li>
-    <li>
     {{
       view Ember.Select 
       contentBinding="controller.types"
       selectionBinding="controller.activeType" 
     }}
+    <a class="nav" href="#" {{action "showmap"}}>
+      MAP
+    </a>
+    <a class="nav" href="#" {{action "showgrid"}}>
+      GRID
+    </a>
       
-    </li>
-  </ul>
 </div>
 
-{{outlet}}
+<div id="mapwrapper">
+  {{outlet}}
+</div>

@@ -16,8 +16,7 @@
 
 #= require ./data_sources
 
-#= require ./causes/show
-
+#= require ./causes/index
 
 # The On Ready function routes to a function on the Application namespace
 # based on the body class, and body id.  It will run a function that matches

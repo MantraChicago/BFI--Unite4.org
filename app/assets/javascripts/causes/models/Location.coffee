@@ -1,1 +1,1 @@
-BFI.Location = Ember.Object.extend()
+BFI.Location = BFI.Model.extend()

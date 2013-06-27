@@ -1,40 +1,52 @@
-#map
-  left: 0
-  z-index: 0
+@import "unite/colors"
+@import "unite/mixins"
 
-#causenav
-  top: 0px
-  left: 0px
-  height: 50px
-  z-index: 1
+#causesapp
+  height: 654px
+  background-color: $white
 
-#causecontainer
-  position: fixed 
-  top: 60px
-  left: 0
-  z-index: 1
-  .pricing-table
-    padding-top: 20px
-    padding-bottom: 20px
-    background-color: white 
-    border-radius: 2px
-    border: 2px solid #CCCCCC 
-    li.title
-      margin-left: 1px
-      margin-right: 1px
-      padding: 10px 5px
-      font-size: 1.5em  
-      font-family: 'Jura', sans-serif
+  #causenav
+    height: 50px
+    padding-top: 10px
+    .nav
+      display: inline-block
+      font-family: serif
+    select
+      @include unselectable
+      display: inline-block
+      height: 80%
+      width: 120px
+      background-color: $darkPurple 
+      color: $white
       border-radius: 5px
-      border: 1px solid #CCCCCC
-    li.bullet-item
-      margin-left: 1px
-      margin-right: 1px
-      background-color: #DDDDDD
-      font-family: "Jura", sans-serif
-      text-align: left
-      padding: 2px 2px 2px 2px
-      border-radius: 5px
-      border: 1px solid #CCCCCC
-      .progress
-        background-color: white
+      option
+        @include unselectable
+        background-color: $mutedGray
+        color: $darkPurple
+
+  #mapwrapper
+    height: 600px
+    position: relative
+    #map
+      position: absolute
+      left: 200px
+      width: 800px
+      height: 600px
+
+    .causelist
+      margin: 0
+      position: absolute 
+      top: 0px
+      left: 0px
+      list-style-type: none
+      background-color: $white
+      width: 200px
+      height: 100% 
+      border-top: 1px solid $mutedGray
+      border-right: 1px solid $mutedGray
+      border-bottom: 1px solid $mutedGray
+      .cause
+        img
+          display: inline-block
+          width: 20px
+          height: 20px

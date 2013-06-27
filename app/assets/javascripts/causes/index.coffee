@@ -1,8 +1,17 @@
 #= require_self
-#= require ./models/Cause
 #= require ./router/router
+
+#= require ./models/Model
+#= require ./models/Need
+#= require ./models/Cause
+#= require ./models/Location
+
 #= require ./controllers/CausesController
+#= require ./controllers/NeedsController
+#= require ./controllers/LocationsController
+
 #= require ./controllers/CauseController
+
 #= require ./views/GridTileView
 #= require ./views/GridView
 
@@ -17,11 +26,11 @@
 
 window.BFI = Ember.Application.create
   rootElement: "#causesapp"
-  LOG_ACTIVE_GENERATION: true
-  LOG_VIEW_LOOKUPS: true
-  LOG_TRANSITIONS: true
+  #LOG_ACTIVE_GENERATION: true
+  #LOG_VIEW_LOOKUPS: true
+  #LOG_TRANSITIONS: true
 
 Application.causes ||= {}
 
 Application.causes.index = ()->
-  console.log "map ready"
+  console.log 'yo'
