@@ -13,5 +13,5 @@ div.drop_down_wrapper.causes
 			.row
 				-for type in row
 					a.large-3.columns.cause.popover_box href="/causes/?cause_type_id=#{type.id}"
-						div.popover_box_background style="background-image: url(#{type.picture_file_name})"
+						div.popover_box_background style="background-image: url(#{type.picture_url})"
 							= type.name
