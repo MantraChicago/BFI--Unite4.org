@@ -1,7 +1,7 @@
 .featured_need
  .cause_header style="background-image: url(#{cause.picture.url(:medium)});"
  .featured_need_cause
- 	a href="#{url_for(cause)}" #{cause.name}
+ 	a href="#{url_for(cause)}" #{cause.display_name}
  -if cause.active_campaign
 	 .featured_need_title
 	  .need_title_upper GOAL
