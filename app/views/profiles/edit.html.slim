@@ -28,7 +28,7 @@
 		        div style="padding-left:50px; text-align:left"
 		          - for cause in Cause.all
 		            .large-6
-		              label #{cause.name}
+		              label #{cause.display_name}
 		              = check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) , :id => "#{cause.id}_cause"
 	          
 	              

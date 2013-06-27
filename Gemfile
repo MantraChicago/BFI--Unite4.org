@@ -67,4 +67,4 @@ group :development, :test do
 end
 
 
-gem 'rb-readline'
+#gem 'rb-readline'

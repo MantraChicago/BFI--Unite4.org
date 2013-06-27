@@ -3,6 +3,7 @@ ActiveAdmin.register Cause do
 	   f.inputs "Details" do
 	    
 	    f.input :name
+	    f.input :display_name
 	    f.input :description
 	    f.input :mission_statement
 	    f.input :how_hear

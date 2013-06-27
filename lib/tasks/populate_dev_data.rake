@@ -1,7 +1,6 @@
 namespace :db do
 	desc "Create a new Active Admin user"
 	task :create_active_admin_user, [:email, :password] => [:environment] do |t,args|
-	#task :createActiveAdminUser, :email, :password, :needs => [:environment] do |t,args|
 		email =args.email
 		password=args.password
 		AdminUser.create :email => email, :password => password, :password_confirmation => password
@@ -14,6 +13,7 @@ namespace :db do
 		cause1.update_attributes({ :cause_types =>[CauseType.find(:first, :conditions=>{:name=> 'Arts'})],
 								   :city =>'Chicago',
 								   :state => 'IL',
+								   :display_name => 'PETA',
 								   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/cloths.jpg'),
 								   :is_featured =>true,
 								   :description =>'More than 800,000 people in Cook County--1 in 6 people--are food insecure and unsure of when they will receive their next meal. In some communities, more than 1 in 3 people are food insecure. The number of people served by the Greater Chicago Food Depository and its network of 650 partners including 400 pantries, soup kitchens and shelters has steadily increased in recent years. ',
@@ -24,6 +24,7 @@ namespace :db do
 		cause2.update_attributes({ :cause_types =>[CauseType.find(:first, :conditions=>{:name=> 'Environment'})],
 								   :city =>'New York',
 								   :state => 'IL',
+								   :display_name => 'AIDS Foundation',
 								   :is_featured =>true,
 								   :description =>'More than 800,000 people in Cook County--1 in 6 people--are food insecure and unsure of when they will receive their next meal. In some communities, more than 1 in 3 people are food insecure. The number of people served by the Greater Chicago Food Depository and its network of 650 partners including 400 pantries, soup kitchens and shelters has steadily increased in recent years. ',
 								   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/sheep.jpg'),
@@ -32,6 +33,7 @@ namespace :db do
 
 		cause3 = Cause.find_or_create_by_name("Habitat for Humanity")
 		cause3.update_attributes({ :cause_types =>[CauseType.find(:first, :conditions=>{:name=> 'Arts'})],
+								   :display_name => 'Habitat for Humanity',
 								   :city =>'San Francisco',
 								   :state => 'IL',
 								   :is_featured =>true,

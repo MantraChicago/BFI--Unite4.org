@@ -1,10 +1,10 @@
-- @title =  @cause.name
+- @title =  @cause.display_name
 
 .top_holder
  .left_cause
   iframe src="#{@cause.video_link}" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
  .right_cause
-  .subheadline OUR MISSION
+  .subheadline DESCRIPTION
   p
    = @cause.description
   div
@@ -23,12 +23,12 @@
     #needs_content.bar_content.show
       -if @cause.active_campaign
         .middle_content.spaced_content
-          == render "shared/goal_box", :goal=> {:title=>@cause.active_campaign.need.name, :percent=>10, :more_link => url_for(@cause.active_campaign.need), :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Party'}]}
+          == render "shared/goal_box", :goal=> {:button_text => button_text_for_need(@cause.active_campaign.need),:title=>@cause.active_campaign.need.name, :percent=>10, :more_link => url_for(@cause.active_campaign.need), :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Goal'}]}
       .middle_content.spaced_content
         ==render 'shared/needs_box', :needs => @cause.needs
     #about_content.bar_content.hide
-       .middle_content.spaced_content
-        |Why, hello there
+       .middle_content.spaced_content #{@cause.mission_statement}
+        
       
   .narrow_side_container.right.gray_border
     h2 Followers

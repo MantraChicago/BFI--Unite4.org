@@ -39,7 +39,7 @@
     <div class="row">
 
 	<% @campaigns.each do |campaign| %>
-		<%= render 'shared/featured_need', :need => campaign.need, :stats=> [{:upper=> 'party', :lower=>'hard'}], :percent=>campaign.percent_complete %>
+		<%= render 'shared/featured_need', :need => campaign.need, :stats=> [{:upper=> 'donate', :lower=>'$20'}], :percent=>campaign.percent_complete %>
 	<% end %>
 
     </div>
