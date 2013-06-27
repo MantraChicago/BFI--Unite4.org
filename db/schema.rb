@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625180954) do
+ActiveRecord::Schema.define(:version => 20130626213516) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(:version => 20130625180954) do
     t.integer  "percent_complete"
     t.string   "desired_state"
     t.string   "current_state"
-    t.boolean  "active",           :default => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.boolean  "active"
   end
 
   create_table "cause_applications", :force => true do |t|
@@ -127,19 +127,9 @@ ActiveRecord::Schema.define(:version => 20130625180954) do
     t.integer "cause_need_id"
   end
 
-  create_table "causes_causetypes", :force => true do |t|
+  create_table "causes_causestypes", :force => true do |t|
     t.integer "cause_id"
-    t.integer "cause_type_id"
-  end
-
-  create_table "cities", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
+    t.integer "causetype_id"
   end
 
   create_table "donations", :force => true do |t|
@@ -201,6 +191,7 @@ ActiveRecord::Schema.define(:version => 20130625180954) do
     t.datetime "picture_updated_at"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.integer  "campaign_id"
   end
 
   create_table "permissions", :force => true do |t|
@@ -249,8 +240,8 @@ ActiveRecord::Schema.define(:version => 20130625180954) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "game_id"
-    t.string   "role"
     t.text     "fb_token"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
