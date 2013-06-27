@@ -1,5 +1,5 @@
 #= require_self
-#= require .models/Cause
+#= require ./models/Cause
 #= require ./router/router
 #= require ./controllers/CausesController
 #= require ./controllers/CauseController
