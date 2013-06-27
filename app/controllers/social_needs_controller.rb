@@ -1,5 +1,5 @@
 class SocialNeedsController < ApplicationController
-	def index
+	def show
 		@social_need=SocialNeed.find(params[:id])
 	end
 end
