@@ -12,6 +12,7 @@ namespace :db do
 	task :populate_dev_data => [:environment, 'db:seed'] do
 		cause1 = Cause.find_or_create_by_name("PETA")
 		cause1.update_attributes({ :cause_types =>[CauseType.find(:first, :conditions=>{:name=> 'Arts'})],
+								   :city =>'Chicago',
 								   :state => 'IL',
 								   :picture => File.open(Rails.root.to_s+'/lib/assets/default_images/cloths.jpg'),
 								   :is_featured =>true,
@@ -21,6 +22,7 @@ namespace :db do
 
 		cause2 = Cause.find_or_create_by_name("AIDS Foundation")
 		cause2.update_attributes({ :cause_types =>[CauseType.find(:first, :conditions=>{:name=> 'Environment'})],
+								   :city =>'New York',
 								   :state => 'IL',
 								   :is_featured =>true,
 								   :description =>'More than 800,000 people in Cook County--1 in 6 people--are food insecure and unsure of when they will receive their next meal. In some communities, more than 1 in 3 people are food insecure. The number of people served by the Greater Chicago Food Depository and its network of 650 partners including 400 pantries, soup kitchens and shelters has steadily increased in recent years. ',
@@ -30,6 +32,7 @@ namespace :db do
 
 		cause3 = Cause.find_or_create_by_name("Habitat for Humanity")
 		cause3.update_attributes({ :cause_types =>[CauseType.find(:first, :conditions=>{:name=> 'Arts'})],
+								   :city =>'San Francisco',
 								   :state => 'IL',
 								   :is_featured =>true,
 								   :description =>'More than 800,000 people in Cook County--1 in 6 people--are food insecure and unsure of when they will receive their next meal. In some communities, more than 1 in 3 people are food insecure. The number of people served by the Greater Chicago Food Depository and its network of 650 partners including 400 pantries, soup kitchens and shelters has steadily increased in recent years. ',
