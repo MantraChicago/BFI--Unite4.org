@@ -1,3 +1,4 @@
+-this.cause_types=this.cause_types.slice(0,8) #max 8 cause_types
 -this.cause_types_rows=[]
 -start=0
 -while(start<this.cause_types.length)
@@ -12,5 +13,5 @@ div.drop_down_wrapper.causes
 			.row
 				-for type in row
 					a.large-3.columns.cause.popover_box href="/causes/?cause_type_id=#{type.id}"
-						div.popover_box_background style="background-image: url(#{type.picture})"
+						div.popover_box_background style="background-image: url(#{type.picture_file_name})"
 							= type.name
