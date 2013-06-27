@@ -12,7 +12,8 @@ class Location < ActiveRecord::Base
   end
 
   def requires_geo_lookup?
-    country_changed? || address_line_one_changed? || city_changed? || state_changed? || postal_code_changed? || !has_coordinates?
+  #  #country_changed? || address_line_one_changed? || city_changed? || state_changed? || postal_code_changed? || !has_coordinates?
+  #  address_line_one_changed? || city_changed? || state_changed? || postal_code_changed? || !has_coordinates?
   end
 
   def has_coordinates?

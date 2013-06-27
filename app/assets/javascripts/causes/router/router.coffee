@@ -1,5 +1,5 @@
 BFI.Router.map ->
-  @resource "causes", ->
+  @resource "causes", {path: '/'}, ->
     @route "map"
     @route "grid"
 

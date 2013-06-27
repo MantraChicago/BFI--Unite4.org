@@ -18,6 +18,9 @@
 *.sql
 *.sqlite
 
+*.swo
+*.swp
+
 # OS generated files #
 .DS_Store
 .DS_Store?

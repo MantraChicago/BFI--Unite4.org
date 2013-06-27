@@ -1,5 +1,8 @@
 /*
  *= require normalize
+ *= require foundation
+ *= require maps
+ *= require leaflet
  *= require ./common
  *= require_tree ./unite
 */

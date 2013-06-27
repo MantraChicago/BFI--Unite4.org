@@ -7,7 +7,8 @@ BFI.MapView = Ember.View.extend
   didInsertElement: ->
     mapDiv = $("<div></div>")
     mapDiv.attr({id: "map"})
-    mapDiv.appendTo @$()
+          .css({height: document.height/2, width: document.width/2})
+          .appendTo @$()
 
     self = @
     self.createMap()

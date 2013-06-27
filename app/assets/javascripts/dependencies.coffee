@@ -6,6 +6,7 @@
 #= require jquery.mousewheel.min
 #= require jquery-quickslider
 #= require underscore-min
+#= require leaflet.js
 #= require underscore-string.min
 #= require backbone-min
 #= require backbone-query.min
