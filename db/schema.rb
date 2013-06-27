@@ -129,11 +129,6 @@ ActiveRecord::Schema.define(:version => 20130627201141) do
     t.integer "cause_need_id"
   end
 
-  create_table "causes_causestypes", :force => true do |t|
-    t.integer "cause_id"
-    t.integer "causetype_id"
-  end
-
   create_table "donations", :force => true do |t|
     t.float    "amount"
     t.float    "tip"
@@ -157,12 +152,18 @@ ActiveRecord::Schema.define(:version => 20130627201141) do
   end
 
   create_table "locations", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "cause_id"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "name"
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "country"
   end
 
   create_table "locations_causes", :id => false, :force => true do |t|

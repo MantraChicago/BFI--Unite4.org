@@ -2,13 +2,23 @@ class Location < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
-  attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country
+  attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country, :address
   belongs_to :cause
   #before_save :lookup_geo_coordinates, :if => :requires_geo_lookup? #This is causing error messages "undefined method `requires_geo_lookup?'"
 
+  # parse an address into its parts
+  def address= value
+    @address = value
+  end
+
+  def address
+    @address
+  end
+
   def lookup_geo_coordinates
-    # TODO
-    # Implement call to geokit
+    lat, lng = Unite::Util.lookup(@address)
+    self.lat = lat
+    self.lng = lng
   end
 =begin  
   def requires_geo_lookup?
@@ -60,8 +70,10 @@ class Location < ActiveRecord::Base
       lat, lng = origin.symbolize_keys.values_at(:lat, :lng)
     end
 
-    if origin.is_a?(String)
-      lat, lng = "#{ origin }.strip.split(', ') }".compact.map(&:strip)
+    if origin.is_a?(String) and origin.match(/\d+\,\d+/)
+      lat, lng = origin.strip.split(',').compact.map(&:strip)
+    elsif origin.is_a?(String)
+      lat, lng = Unite::Util.perform_cached_geolookup_of(origin.strip)
     end
 
     perform_distance_query(lat,lng,options[:within])
@@ -72,14 +84,14 @@ class Location < ActiveRecord::Base
 
     {
       :conditions => %(
-        (acos(cos(#{origin_lat})*cos(#{origin_lng})*cos(radians(users.lat))*cos(radians(users.lng))+
-        cos(#{origin_lat})*sin(#{origin_lng})*cos(radians(users.lat))*sin(radians(users.lng))+
-        sin(#{origin_lat})*sin(radians(users.lat)))*3963) <= #{within}
+        (acos(cos(#{origin_lat})*cos(#{origin_lng})*cos(radians(locations.lat))*cos(radians(locations.lng))+
+        cos(#{origin_lat})*sin(#{origin_lng})*cos(radians(locations.lat))*sin(radians(locations.lng))+
+        sin(#{origin_lat})*sin(radians(locations.lat)))*3963) <= #{within}
       ),
-      :select => %( users.*,
-        (acos(cos(#{origin_lat})*cos(#{origin_lng})*cos(radians(users.lat))*cos(radians(users.lng))+
-        cos(#{origin_lat})*sin(#{origin_lng})*cos(radians(users.lat))*sin(radians(users.lng))+
-        sin(#{origin_lat})*sin(radians(users.lat)))*3963) as distance
+      :select => %( locations.*,
+        (acos(cos(#{origin_lat})*cos(#{origin_lng})*cos(radians(locations.lat))*cos(radians(locations.lng))+
+        cos(#{origin_lat})*sin(#{origin_lng})*cos(radians(locations.lat))*sin(radians(locations.lng))+
+        sin(#{origin_lat})*sin(radians(locations.lat)))*3963) as distance
       )
     }
 
@@ -97,6 +109,6 @@ end
 #  cause_id   :integer
 #  latitude   :float
 #  longitude  :float
-#  name       :string(255)
+#  name       :string(257)
 #
 

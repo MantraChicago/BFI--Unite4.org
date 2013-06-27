@@ -3,6 +3,7 @@ class CauseType < ActiveRecord::Base
   has_and_belongs_to_many :causes, :join_table => 'causes_cause_types'
 
   attr_accessible :picture
+
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing_cause_type.jpg"
 
   after_find :add_picture_url
@@ -12,7 +13,11 @@ class CauseType < ActiveRecord::Base
   end
 
   def add_picture_url
-  	self[:picture_url]=picture.url
+    self[:picture_url] = picture.url
+  end
+
+  def self.random(count=1)
+    order("random()").limit(1).first
   end
 end
 
