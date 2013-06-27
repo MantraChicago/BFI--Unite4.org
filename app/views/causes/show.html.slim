@@ -16,15 +16,18 @@
  .middle_bar_holder
   .middle_content
    ul class="no-margin"
-    li class="active" OUR NEEDS
+    li.active data-show_id="needs_content" OUR NEEDS
+    li data-show_id="about_content" ABOUT US
 .cause_content
   .wide_side_container.left
-    -if @cause.active_campaign
+    #needs_content.bar_content.show
+      -if @cause.active_campaign
+        .middle_content.spaced_content
+          == render "shared/goal_box", :goal=> {:title=>@cause.active_campaign.need.name, :percent=>10, :more_link => url_for(@cause.active_campaign.need), :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Party'}]}
       .middle_content.spaced_content
-        == render "shared/goal_box", :goal=> {:title=>@cause.active_campaign.need.name, :percent=>10, :more_link => url_for(@cause.active_campaign.need), :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Party'}]}
-
-    .middle_content.spaced_content
-      ==render 'shared/needs_box', :needs => @cause.needs
+        ==render 'shared/needs_box', :needs => @cause.needs
+    #about_content.bar_content.hide
+      Why, hello there
   .narrow_side_container.right.gray_border
     h2 Followers
     -@cause.users.each do |user|
