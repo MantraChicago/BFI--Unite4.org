@@ -15,9 +15,10 @@
 # and models which map our restful API endpoints
 
 #= require ./data_sources
-#= require ./causes
 
-#
+#= require ./causes/show
+
+
 # The On Ready function routes to a function on the Application namespace
 # based on the body class, and body id.  It will run a function that matches
 # the name of the class, and a function which matches the name of the id

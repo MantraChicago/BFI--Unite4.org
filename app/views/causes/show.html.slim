@@ -27,7 +27,9 @@
       .middle_content.spaced_content
         ==render 'shared/needs_box', :needs => @cause.needs
     #about_content.bar_content.hide
-      Why, hello there
+       .middle_content.spaced_content
+        |Why, hello there
+      
   .narrow_side_container.right.gray_border
     h2 Followers
     -@cause.users.each do |user|
