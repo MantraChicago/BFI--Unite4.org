@@ -1,4 +1,7 @@
 GiveInspireLove::Application.configure do
+  #ember configuration
+  config.ember.variant = :development
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on

@@ -19,6 +19,11 @@ gem 'pg'
 gem 'annotate'
 gem 'json'
 
+#ember gems
+gem 'ember-rails'
+gem 'ember-source', '1.0.0.rc6'
+gem 'handlebars-source', '1.0.0.rc4'
+
 # location gems
 gem 'carmen'
 gem 'geokit'
@@ -60,3 +65,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
 end
+
+
+gem 'rb-readline'

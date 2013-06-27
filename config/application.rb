@@ -22,6 +22,9 @@ module GiveInspireLove
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
+    #ember
+    config.handlebars.templates_root = "templates/handlebars" 
+
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
