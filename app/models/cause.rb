@@ -16,6 +16,7 @@ class Cause < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
+
   def location
     [city,state].compact.join(", ")
   end

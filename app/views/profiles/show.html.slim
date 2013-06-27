@@ -18,4 +18,4 @@
 	.profile_title #{@user.display_name.upcase}'S CAUSES
 	- @user.usercauses.each do |usercause|
 		-if usercause.cause
-			=render 'shared/featured_need', :need => usercause.cause.needs.first, :stats =>[]
+			=render 'causes/partials/featured_cause', :cause => usercause.cause, :stats =>[]

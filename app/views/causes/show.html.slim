@@ -23,7 +23,7 @@
     #needs_content.bar_content.show
       -if @cause.active_campaign
         .middle_content.spaced_content
-          == render "shared/goal_box", :goal=> {:title=>@cause.active_campaign.need.name, :percent=>10, :more_link => url_for(@cause.active_campaign.need), :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Goal'}]}
+          == render "shared/goal_box", :goal=> {:button_text => button_text_for_need(@cause.active_campaign.need),:title=>@cause.active_campaign.need.name, :percent=>10, :more_link => url_for(@cause.active_campaign.need), :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Goal'}]}
       .middle_content.spaced_content
         ==render 'shared/needs_box', :needs => @cause.needs
     #about_content.bar_content.hide
