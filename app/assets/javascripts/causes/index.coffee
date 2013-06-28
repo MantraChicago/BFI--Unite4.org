@@ -2,6 +2,7 @@
 #= require_tree ./bb/templates
 #= require ./bb/utils
 #= require ./bb/CauseNavView
+#= require ./bb/CauseItemView
 #= require ./bb/CauseListView
 #= require ./bb/MapView
 #= require ./bb/MapContainerView

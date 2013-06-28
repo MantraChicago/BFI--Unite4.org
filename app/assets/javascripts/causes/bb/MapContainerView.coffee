@@ -11,20 +11,18 @@ BFI.MapContainerView = Backbone.View.extend
     if not @map and @causelist
       throw new Error 'must provide map and causelist view instances'
 
-    #define the target nodes for each child view
-    @mapNode = @$ '#map'
-    @causelistNode = @$ '#causelist'
+    #TODO: this injection is ghetto...fix it
+    #inject the container onto the causelist and map  
+    @causelist.container = @
+    @map.container = @
 
     #configure our response to events on the filterBus
     @configureFilterBus()
 
-  #TRADITIONAL BB EVENTS
-  events:
-    "click .cause":     "clickCause"
-  
-  #BB EVENT HANDLERS
-  clickCause: (event) ->
-    @map.focusMap()
+  #broadcast up to the container from clicks on the list
+  changeActive: (model) ->
+    console.log model
+    #@map.focusMap(model)
     
   #wire up responses to events on the filter bus
   #for this object, we will respond by triggering a change
@@ -35,11 +33,9 @@ BFI.MapContainerView = Backbone.View.extend
 
   render: ->
     #render ourselves
-    @$el.html(JST['causes/bb/templates/causelist'](@))
+    @$el.html(JST['causes/bb/templates/causecontainer'](@))
     
-    #render our children
-    @mapNode.html @map.render().el
-    @causelistNode.html @causelist.render().el
+    #render our children and re-establish bindings
+    @causelist.setElement(@$('#causelist')).render()
+    @map.setElement(@$('#map')).render()
     return @
-
-  

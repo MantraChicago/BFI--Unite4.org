@@ -13,10 +13,10 @@
     width: 120px
     background-color: $darkPurple 
     color: $white
-    border-radius: 5px
+    border-radius: 4px
     option
       background-color: $mutedGray
-      color: $darkPurple
+      color: $white
 
 #mapcontainer
   height: 654px
@@ -27,7 +27,7 @@
     position: relative
     #map
       position: absolute
-      left: 200px
+      left: 250px
       width: 800px
       height: 600px
 
@@ -38,13 +38,26 @@
       left: 0px
       list-style-type: none
       background-color: $white
-      width: 200px
-      height: 100% 
-      border-top: 1px solid $mutedGray
-      border-right: 1px solid $mutedGray
-      border-bottom: 1px solid $mutedGray
+      width: 250px
       .cause
+        position: relative
+        height: 60px
+        margin: 1px 0px
+        border-top: 1px solid $mutedGray
+        border-right: 1px solid $mutedGray
+        border-bottom: 1px solid $mutedGray
+        border-radius: 4px
         img
-          display: inline-block
-          width: 20px
-          height: 20px
+          position: absolute
+          border-radius: 4px
+          left: 0px 
+          width: 55px 
+          height: 55px 
+          margin: 1px
+        div 
+          position: absolute
+          left: 60px
+          padding: 20px 5px 20px 5px
+          width: 80%
+          font-size: 1.2em
+          font-family: "Lura", sans-serif

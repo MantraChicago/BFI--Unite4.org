@@ -1,2 +1,3 @@
-div id="causelist"
-div id="map"
+div id="mapwrapper"
+  div id="map"
+  div id="causelist"
