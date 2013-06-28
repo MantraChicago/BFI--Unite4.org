@@ -21,7 +21,7 @@ class Location < ActiveRecord::Base
     self.lat = lat
     self.lng = lng
   end
-=begin  
+=begin
   def requires_geo_lookup?
   #  #country_changed? || address_line_one_changed? || city_changed? || state_changed? || postal_code_changed? || !has_coordinates?
   #  address_line_one_changed? || city_changed? || state_changed? || postal_code_changed? || !has_coordinates?
@@ -56,6 +56,10 @@ class Location < ActiveRecord::Base
   end
 
   def self.near origin, options={}
+    scoped
+  end
+
+  def self.near origin, options={}
     # TODO build in support for dealing with multiple possible
     # objects representing an origin. accept an active record model,
     # an array, a hash, a string, etc
@@ -74,27 +78,37 @@ class Location < ActiveRecord::Base
     if origin.is_a?(String) and origin.match(/\d+\,\d+/)
       lat, lng = origin.strip.split(',').compact.map(&:strip)
     elsif origin.is_a?(String)
-      lat, lng = Unite::Util.perform_cached_geolookup_of(origin.strip)
+      lat, lng = Unite::Util.perform_cached_geolocation_of(origin.strip)
+
+      if !lat.is_a?(Float) && city = City[origin]
+        lat, lng = City.coordinates_for(origin)
+      else
+        lat, lng = [0.0,0.0]
+      end
     end
 
-    perform_distance_query(lat,lng,options[:within])
+    perform_distance_query(lat.to_f,lng.to_f,options[:within])
   end
 
-  def self.perform_distance_query origin_lat, origin_lng, within
+  def self.deg2rad(degrees)
+    degrees * (Math::PI / 180)
+  end
+
+  # http://www.inf.ufrgs.br/~vbogorny/CMP539/exercicio1/spatialQueries.html
+  def self.perform_distance_query origin_lat, origin_lng, within=50
     origin_lat, origin_lng = deg2rad(origin_lat), deg2rad(origin_lng)
 
-    {
-      :conditions => %(
-        (acos(cos(#{origin_lat})*cos(#{origin_lng})*cos(radians(locations.lat))*cos(radians(locations.lng))+
-        cos(#{origin_lat})*sin(#{origin_lng})*cos(radians(locations.lat))*sin(radians(locations.lng))+
-        sin(#{origin_lat})*sin(radians(locations.lat)))*3963) <= #{within}
-      ),
-      :select => %( locations.*,
-        (acos(cos(#{origin_lat})*cos(#{origin_lng})*cos(radians(locations.lat))*cos(radians(locations.lng))+
-        cos(#{origin_lat})*sin(#{origin_lng})*cos(radians(locations.lat))*sin(radians(locations.lng))+
-        sin(#{origin_lat})*sin(radians(locations.lat)))*3963) as distance
-      )
-    }
+    results = scoped.where %(
+      (acos(cos(#{origin_lat})*cos(#{origin_lng})*cos(radians(locations.latitude))*cos(radians(locations.longitude))+
+      cos(#{origin_lat})*sin(#{origin_lng})*cos(radians(locations.latitude))*sin(radians(locations.longitude))+
+      sin(#{origin_lat})*sin(radians(locations.latitude)))*3963) <= #{within}
+    )
+
+    results = results.select %( locations.*,
+        (acos(cos(#{origin_lat})*cos(#{origin_lng})*cos(radians(locations.latitude))*cos(radians(locations.longitude))+
+        cos(#{origin_lat})*sin(#{origin_lng})*cos(radians(locations.latitude))*sin(radians(locations.longitude))+
+        sin(#{origin_lat})*sin(radians(locations.latitude)))*3964) as distance
+    )
 
   end
 

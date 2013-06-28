@@ -27,14 +27,16 @@ module Unite
         end
       end
 
-      def create_sample_causes_and_locations_for city=:chicago, count=nil
+      def create_sample_causes_and_location_in city=:chicago, count=nil
         load_factories unless @factories_loaded
 
         list = Array(SampleAddresses[city]).slice(0, count || 5)
 
         list.map do |address|
-          cause     = FactoryGirl.create(:cause)
-          FactoryGirl.create(:location, cause_type_id: CauseType.random().id, cause_id: cause.id, address:address )
+          cause       = FactoryGirl.create(:cause)
+          #cause_type  = CauseType.random() || FactoryGirl.create(:cause_type)
+
+          FactoryGirl.create(:location, cause_id: cause.id, address:address )
 
           cause
         end

@@ -1,3 +1,14 @@
+require "spec_helper"
+
+describe Location do
+  it "should convert degrees 2 radians" do
+    Location.deg2rad(37.47080).should be_a(Float)
+  end
+
+  it "should return an empty scope if i pass it something that can't be geocoded" do
+    Location.near("Barrington").count.should == 0
+  end
+end
 
 
 # == Schema Information

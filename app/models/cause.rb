@@ -16,7 +16,6 @@ class Cause < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
-
   # every cause by default has a social need ( for followers )
   def create_default_need
     SocialNeed.create(cause_id: self.id)
@@ -47,8 +46,8 @@ class Cause < ActiveRecord::Base
     end
 
     if params[:near]
-      join_ids += Location.near(params[:near]).select("distinct cause_id").collect(&:cause_id)
-      results = results.where(id: ids)
+      join_ids += Location.near(params[:near]).collect(&:cause_id)
+      results = results.where(id: join_ids)
     end
 
     results
