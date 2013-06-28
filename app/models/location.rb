@@ -8,11 +8,12 @@ class Location < ActiveRecord::Base
 
   # parse an address into its parts
   def address= value
+    # 600 W Chicago Ave. Chicago, IL
     @address = value
   end
 
   def address
-    @address
+    @address ||
   end
 
   def lookup_geo_coordinates

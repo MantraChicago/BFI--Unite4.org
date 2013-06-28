@@ -9,6 +9,8 @@ namespace :db do
 
 	desc "Populate development data"
 	task :populate_dev_data => [:environment, 'db:seed'] do
+    causes = Unite::Development.create_sample_causes_and_locations_in(:chicago) 
+    Unite::Development.create_default_needs_for(causes)
 	end
 
 	desc "Setup test database - drops, loads schema, migrates and seeds the test db"
@@ -26,4 +28,3 @@ namespace :db do
 	  puts "Teat data loaded"
 	end
 end
-

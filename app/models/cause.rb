@@ -17,6 +17,15 @@ class Cause < ActiveRecord::Base
   validates :name, :uniqueness => true
 
 
+  # every cause by default has a social need ( for followers )
+  def create_default_need
+    SocialNeed.create(cause_id: self.id)
+  end
+
+  def create_default_campaign need=nil
+    campaigns.create(need_id: need)
+  end
+
   def location
     [city,state].compact.join(", ")
   end
@@ -71,5 +80,6 @@ end
 #  is_featured          :boolean          default(FALSE)
 #  twitter_handle       :string(255)
 #  facebook_url         :string(255)
+#  city_id              :integer
 #
 
