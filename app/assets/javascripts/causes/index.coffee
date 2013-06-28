@@ -1,36 +1,36 @@
 #= require_self
-#= require ./router/router
+#= require_tree ./bb/templates
+#= require ./bb/utils
+#= require ./bb/CauseNavView
+#= require ./bb/CauseListView
+#= require ./bb/MapView
+#= require ./bb/MapContainerView
 
-#= require ./models/Model
-#= require ./models/Need
-#= require ./models/Cause
-#= require ./models/Location
-
-#= require ./controllers/CausesController
-#= require ./controllers/NeedsController
-#= require ./controllers/LocationsController
-
-#= require ./controllers/CauseController
-
-#= require ./views/GridTileView
-#= require ./views/GridView
-
-#= require ./views/CauseListView
-#= require ./views/MapView
-#= require ./views/MapContainerView
-
-#= require ./views/CausesView
-#= require ./views/CauseItemView
-#= require ./views/CausesGridView
-#= require ./views/CausesMapView
-
-window.BFI = Ember.Application.create
-  rootElement: "#causesapp"
-  #LOG_ACTIVE_GENERATION: true
-  #LOG_VIEW_LOOKUPS: true
-  #LOG_TRANSITIONS: true
+window.BFI = {}
 
 Application.causes ||= {}
 
 Application.causes.index = ()->
-  console.log 'yo'
+  #create a bacon event bus.  change notice events will
+  #be pushed onto this from various sources
+  filterBus = new Bacon.Bus()
+
+  #render the cause navigation header
+  BFI.causenav = new BFI.CauseNavView
+    $el: $ '#causenav'
+    filterBus: filterBus
+
+  #create child views for map
+  BFI.map = new BFI.MapView()
+  BFI.causelist = new BFI.CauseListView()
+
+  #create map container view and pass in children
+  BFI.mapContainer = new BFI.MapContainerView
+    $el: $ '#mapcontainer'
+    map: BFI.map
+    causelist: BFI.causelist
+    filterBus: filterBus
+
+  #render nav and container
+  BFI.causenav.render()
+  BFI.mapContainer.render()

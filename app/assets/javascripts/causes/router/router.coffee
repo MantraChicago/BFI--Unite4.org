@@ -9,10 +9,12 @@ BFI.QueryRoute = Ember.Route.extend
     query = {}
     url = document.URL
     #take the portion after the ? token
-    queryString = url.split("?")[1]
-    query.type = queryString.split("=")[0]
-    query.filter = queryString.split("=")[1]
-    return query
+    if url.indexOf('?') > -1
+      queryString = url.split("?")[1]
+      query.type = queryString.split("=")[0]
+      query.filter = queryString.split("=")[1]
+      return query
+    else return false
 
 BFI.IndexRoute = BFI.QueryRoute.extend
   redirect: ->

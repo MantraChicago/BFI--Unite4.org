@@ -20,6 +20,7 @@
 
 *.swo
 *.swp
+*.orig
 
 # OS generated files #
 .DS_Store
