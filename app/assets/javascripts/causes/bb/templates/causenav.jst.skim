@@ -1,0 +1,8 @@
+div id="causenav"
+  select id="cityselect"
+    - for city in this.cities
+      option = city 
+
+  select id="causeselect"
+    - for cause in this.causes
+      option = cause
