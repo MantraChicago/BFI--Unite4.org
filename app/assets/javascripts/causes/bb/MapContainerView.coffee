@@ -21,13 +21,13 @@ BFI.MapContainerView = Backbone.View.extend
 
   #broadcast up to the container from clicks on the list
   changeActive: (model) ->
-    console.log model
-    #@map.focusMap(model)
+    @map.focusMap(model.lat, model.long)
     
   #wire up responses to events on the filter bus
   #for this object, we will respond by triggering a change
   #in our data by filtering the local store with the values
   #in the recieved event object
+  #TODO: wire up the bus to filter the collection
   configureFilterBus: ->
     @filterBus.onValue((obj) -> console.log obj)
 
@@ -38,4 +38,6 @@ BFI.MapContainerView = Backbone.View.extend
     #render our children and re-establish bindings
     @causelist.setElement(@$('#causelist')).render()
     @map.setElement(@$('#map')).render()
+    #TODO: place markers once causes have lat/long available
+    #@map.placeMarkers @causelist.collection.models.map((model) -> model.toJSON())
     return @
