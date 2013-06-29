@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627201141) do
+ActiveRecord::Schema.define(:version => 20130627210130) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(:version => 20130627201141) do
     t.integer  "percent_complete"
     t.string   "desired_state"
     t.string   "current_state"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.boolean  "active"
+    t.boolean  "active",           :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   create_table "cause_applications", :force => true do |t|
@@ -127,6 +127,11 @@ ActiveRecord::Schema.define(:version => 20130627201141) do
   create_table "causes_causeneeds", :id => false, :force => true do |t|
     t.integer "cause_id"
     t.integer "cause_need_id"
+  end
+
+  create_table "causes_causetypes", :force => true do |t|
+    t.integer "cause_id"
+    t.integer "cause_type_id"
   end
 
   create_table "donations", :force => true do |t|
@@ -243,8 +248,8 @@ ActiveRecord::Schema.define(:version => 20130627201141) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "game_id"
-    t.text     "fb_token"
     t.string   "role"
+    t.text     "fb_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

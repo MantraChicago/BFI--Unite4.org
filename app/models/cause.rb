@@ -80,5 +80,7 @@ end
 #  twitter_handle       :string(255)
 #  facebook_url         :string(255)
 #  city_id              :integer
+#  active               :boolean
+#  display_name         :string(255)
 #
 

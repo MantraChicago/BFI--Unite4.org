@@ -27,5 +27,6 @@ GiveInspireLove::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  get "/api/v1/:resource(/:presenter_format)", :to => "presentables#index", :format => :json, :presenter_format => :default
+  get "/api/v1/:resource", :to => "presentables#index", :format => :json, :presenter_format => :default
+  get "/api/v1/:resource/:presenter_format", :to => "presentables#index", :format => :json
 end

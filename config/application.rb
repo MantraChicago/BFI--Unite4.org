@@ -23,7 +23,7 @@ module GiveInspireLove
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
     #ember
-    config.handlebars.templates_root = "templates/handlebars" 
+    config.handlebars.templates_root = "templates/handlebars"
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer

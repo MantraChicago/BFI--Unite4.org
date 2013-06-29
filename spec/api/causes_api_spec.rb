@@ -25,6 +25,8 @@ describe "The Causes Resource API", :type => :api do
   it "should allow me to query by latitude and longitude" do
     get "/api/v1/causes", :near => "60010"
     results = JSON.parse(response.body)
+    binding.pry
+
     names = results.map {|r| r["name"] }
     names.should include("The People's Champ")
   end

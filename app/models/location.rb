@@ -2,9 +2,11 @@ class Location < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
-  attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country, :address
+  #attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country, :address
   belongs_to :cause
-  #before_save :lookup_geo_coordinates, :if => :requires_geo_lookup? #This is causing error messages "undefined method `requires_geo_lookup?'"
+  #before_save :lookup_geo_coordinates, :if => :requires_geo_lookup? #This is causing error messages "undefined method `requires_geo_lookup?'`
+
+  #validates_presence_of :city, :state, :address_line_one, :postal_code, :state, :country
 
   # parse an address into its parts
   def address= value
@@ -13,7 +15,7 @@ class Location < ActiveRecord::Base
   end
 
   def address
-    @address ||
+    @address || "#{ address_line_one } #{ city }, #{ state }"
   end
 
   def lookup_geo_coordinates
@@ -21,14 +23,17 @@ class Location < ActiveRecord::Base
     self.lat = lat
     self.lng = lng
   end
-=begin
-  def requires_geo_lookup?
-  #  #country_changed? || address_line_one_changed? || city_changed? || state_changed? || postal_code_changed? || !has_coordinates?
-  #  address_line_one_changed? || city_changed? || state_changed? || postal_code_changed? || !has_coordinates?
-  end
-=end
+
   def has_coordinates?
     lat.present? && lng.present?
+  end
+
+  def zip
+    postal_code
+  end
+
+  def zip= value
+    self.postal_code = value
   end
 
   def lat
@@ -56,10 +61,10 @@ class Location < ActiveRecord::Base
   end
 
   def self.near origin, options={}
-    scoped
+    where(:city => origin)
   end
 
-  def self.near origin, options={}
+  def self.lookup_coordinates_of(origin)
     # TODO build in support for dealing with multiple possible
     # objects representing an origin. accept an active record model,
     # an array, a hash, a string, etc
@@ -80,13 +85,20 @@ class Location < ActiveRecord::Base
     elsif origin.is_a?(String)
       lat, lng = Unite::Util.perform_cached_geolocation_of(origin.strip)
 
-      if !lat.is_a?(Float) && city = City[origin]
+      if !lat.is_a?(Float) && City[origin]
         lat, lng = City.coordinates_for(origin)
       else
         lat, lng = [0.0,0.0]
       end
     end
 
+    [lat, lng]
+  end
+
+  # We need to hook up the postgis postgres extension to be able to do
+  # this. because fuck this noise.
+  def self.__near origin, options={}
+    lat, lng = lookup_coordinates_of(origin)
     perform_distance_query(lat.to_f,lng.to_f,options[:within])
   end
 
@@ -118,12 +130,18 @@ end
 #
 # Table name: locations
 #
-#  id         :integer          not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  cause_id   :integer
-#  latitude   :float
-#  longitude  :float
-#  name       :string(257)
+#  id               :integer          not null, primary key
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  cause_id         :integer
+#  latitude         :float
+#  longitude        :float
+#  name             :string(255)
+#  address_line_one :string(255)
+#  address_line_two :string(255)
+#  city             :string(255)
+#  state            :string(255)
+#  zip              :string(255)
+#  country          :string(255)
 #
 
