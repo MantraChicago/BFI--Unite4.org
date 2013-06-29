@@ -48,6 +48,10 @@ gem 'zurb-foundation'
 gem 'font-awesome-rails'
 
 gem 'pry-rails'
+gem 'pry-nav'
+
+# segfault
+#gem 'pry-stack_explorer'
 
 group :development do
   gem 'better_errors'

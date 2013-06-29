@@ -16,17 +16,29 @@ class Cause < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
+  after_create :create_default_records
+
+  def create_default_location
+    existing = locations.where(name:'Main Office')
+
+    if existing.count == 0
+      location_attributes = attributes.slice(:address_line_one,:address_line_two,:city,:region,:postal_code,:country)
+      locations.create location_attributes.merge(name:"Main Office")
+    end
+  end
+
+  def create_default_records
+    create_default_location
+    create_default_campaign(create_default_need)
+  end
+
   # every cause by default has a social need ( for followers )
   def create_default_need
-    SocialNeed.create(cause_id: self.id)
+    SocialNeed.create(cause_id: self.id) if needs.count == 0
   end
 
   def create_default_campaign need=nil
-    campaigns.create(need_id: need)
-  end
-
-  def location
-    [city,state].compact.join(", ")
+    campaigns.create(need_id: need.id, active: true, start_date: Time.now, end_date: 30.days.from_now)  if campaigns.count == 0
   end
 
   def active_campaign

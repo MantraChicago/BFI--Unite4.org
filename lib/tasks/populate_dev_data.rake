@@ -9,6 +9,7 @@ namespace :db do
 
 	desc "Populate development data"
 	task :populate_dev_data => [:environment, 'db:seed'] do
+    Unite::Development.clear_database
     causes = Unite::Development.create_sample_causes_and_locations_in(:chicago) 
     Unite::Development.create_default_needs_for(causes)
 	end

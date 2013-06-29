@@ -2,39 +2,27 @@ require "spec_helper"
 
 describe "The Causes Resource API", :type => :api do
   before(:all) do
-    create_sample_causes_in(:chicago)
-    create_sample_causes_in(:new_york)
+    Unite::Development.create_sample_causes_and_locations_in(:chicago, 3)
+    Unite::Development.create_sample_causes_and_locations_in(:new_york, 2)
+    Unite::Development.create_sample_causes_and_locations_in(:san_francisco, 1)
   end
+
+  let(:parsed) { JSON.parse(response.body) }
 
   it "should return a list of causes" do
-    get "/api/v1/causes"
+    get "/api/v1/causes/default"
     response.should be_success
+    parsed.length.should == 6
   end
 
-  it "should allow me to query by cause type" do
-    get "/api/v1/causes", :cause_type_id => cause_type.id
-    results = JSON.parse(response.body)
+  it "should allow me to filter by city" do
+    get "/api/v1/causes?near=Chicago"
+    parsed.length.should == 3
   end
 
-  it "should allow me to query by zip code" do
-    get "/api/v1/causes", :zip_code => "60010"
-    results = JSON.parse(response.body)
-    results.should_not be_empty
+  it "should allow me to filter by cause type" do
+
   end
 
-  it "should allow me to query by latitude and longitude" do
-    get "/api/v1/causes", :near => "60010"
-    results = JSON.parse(response.body)
-    binding.pry
 
-    names = results.map {|r| r["name"] }
-    names.should include("The People's Champ")
-  end
-
-  it "should allow me to query by city" do
-    get "/api/v1/causes", :near => "Chicago"
-    results = JSON.parse(response.body)
-    names = results.map {|r| r["name"] }
-    names.should_not include("We gettin Money")
-  end
 end

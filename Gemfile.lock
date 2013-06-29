@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:datapimp/smooth.git
-  revision: 89425162a29339643b603d7a7cefa83ebe78acb7
+  revision: 8f82506bdd946a35eea4600b429cf21bc0982fb2
   specs:
     smooth (0.0.1)
       activerecord (>= 3.2.12)
@@ -256,6 +256,8 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pry-nav (0.2.3)
+      pry (~> 0.9.10)
     pry-rails (0.3.1)
       pry (>= 0.9.10)
     rack (1.4.5)
@@ -394,6 +396,7 @@ DEPENDENCIES
   omniauth-facebook
   paperclip (~> 2.7)
   pg
+  pry-nav
   pry-rails
   rails (= 3.2.13)
   rb-fchange

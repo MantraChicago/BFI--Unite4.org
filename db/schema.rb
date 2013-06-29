@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627210130) do
+ActiveRecord::Schema.define(:version => 20130629153742) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20130627210130) do
     t.string   "website"
     t.integer  "cause_type_id"
     t.string   "city"
-    t.string   "state"
+    t.string   "region"
     t.string   "video_link"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
@@ -117,6 +117,10 @@ ActiveRecord::Schema.define(:version => 20130627210130) do
     t.integer  "city_id"
     t.boolean  "active"
     t.string   "display_name"
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "postal_code"
+    t.string   "country"
   end
 
   create_table "causes_cause_types", :force => true do |t|
@@ -166,8 +170,8 @@ ActiveRecord::Schema.define(:version => 20130627210130) do
     t.string   "address_line_one"
     t.string   "address_line_two"
     t.string   "city"
-    t.string   "state"
-    t.string   "zip"
+    t.string   "region"
+    t.string   "postal_code"
     t.string   "country"
   end
 

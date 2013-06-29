@@ -2,30 +2,50 @@ class Location < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
-  #attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country, :address
+  attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country, :address
+
+  attr_accessor :skip_geocoding
+
   belongs_to :cause
-  #before_save :lookup_geo_coordinates, :if => :requires_geo_lookup? #This is causing error messages "undefined method `requires_geo_lookup?'`
 
-  #validates_presence_of :city, :state, :address_line_one, :postal_code, :state, :country
+  before_save :lookup_geo_coordinates, :if => :should_geocode?
 
-  # parse an address into its parts
-  def address= value
-    # 600 W Chicago Ave. Chicago, IL
-    @address = value
-  end
+  validates_presence_of :city, :state, :address_line_one
 
   def address
-    @address || "#{ address_line_one } #{ city }, #{ state }"
+    [address_line_one, address_line_two, "#{ city },#{ region }", postal_code].compact.join(" ")
   end
 
   def lookup_geo_coordinates
-    lat, lng = Unite::Util.lookup(@address)
-    self.lat = lat
-    self.lng = lng
+    address_details = Unite::Util.lookup_address_details(address) || {}
+
+    self.lat            = address_details[:lat]
+    self.lng            = address_details[:lng]
+    self.region       ||= address_details[:region]
+    self.country      ||= address_details[:country]
+    self.postal_code  ||= address_details[:postal_code]
+
+    self
+  end
+
+  def should_geocode?
+   !skip_geocoding && (!has_coordinates? || address_changed?)
+  end
+
+  def address_changed?
+    postal_code_changed? || address_line_one_changed? || city_changed? || region_changed? || country_changed?
   end
 
   def has_coordinates?
     lat.present? && lng.present?
+  end
+
+  def state
+    self.region
+  end
+
+  def state= value
+    self.region= value
   end
 
   def zip

@@ -8,9 +8,16 @@ module Unite
         @cache[input] ||= Geokit::Geocoders::MultiGeocoder.geocode(input)
       end
 
-      def get_coordinates_for(input)
+      def lookup_address_details(input)
         response = perform_cached_geolocation_of(input)
-        [ response.try(:lat), response.try(:lng) ].compact
+
+        {
+          lat: response.lat,
+          lng: response.lng,
+          country: response.country_code || response.country,
+          region: response.state || response.province,
+          postal_code: response.zip
+        }
       end
     end
   end

@@ -3,11 +3,22 @@ module Unite
 
     SampleAddresses = {
       :chicago => [
-        '600 W. Chicago Ave. Chicago, IL',
-        '2350 N. Clark Ave. Chicago, IL',
-        '1200 W. Division St. Chicago, IL',
-        '7530 N. Harlem Ave. Chicago, IL',
-        '3800 S. Halsted St. Chicago, IL'
+        '600 W. Chicago Ave',
+        '2350 N. Clark Ave',
+        '1200 W. Division St',
+        '7530 N. Harlem Ave',
+        '3800 S. Halsted St'
+      ],
+      :new_york => [
+        '4 New York Plaza',
+        'One Bowling Green',
+        '20 West St'
+      ],
+      :san_francisco => [
+        '2130 Fulton Street',
+        '109 Germania St',
+        '1653 Haight St',
+        '1720 Fulton St'
       ]
     }
 
@@ -16,6 +27,16 @@ module Unite
         require 'factory_girl'
         Dir[Rails.root.join("spec/support/factories/*.rb")].each {|f| require f}
         @factories_loaded = true
+      end
+
+      def random_address_in city
+        list = (SampleAddresses[city] || SampleAddresses[:chicago])
+        index = (list.length * rand()).to_i
+        list[index]
+      end
+
+      def clear_database
+        [Cause,Location,Need,Campaign].each(&:delete_all)
       end
 
       def create_default_needs_for(causes)
@@ -27,17 +48,16 @@ module Unite
         end
       end
 
-      def create_sample_causes_and_location_in city=:chicago, count=nil
+      def create *args
+        FactoryGirl.send(:create, *args)
+      end
+
+      def create_sample_causes_and_locations_in city=:chicago, count=5
         load_factories unless @factories_loaded
 
-        list = Array(SampleAddresses[city]).slice(0, count || 5)
-
-        list.map do |address|
-          cause       = FactoryGirl.create(:cause)
-          #cause_type  = CauseType.random() || FactoryGirl.create(:cause_type)
-
-          FactoryGirl.create(:location, cause_id: cause.id, address:address )
-
+        count.times.map do
+          cause = create(:cause)
+          create(:location, city, cause: cause)
           cause
         end
       end

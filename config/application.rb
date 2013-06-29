@@ -25,6 +25,7 @@ module GiveInspireLove
     #ember
     config.handlebars.templates_root = "templates/handlebars"
 
+    config.active_record.include_root_in_json = false
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 

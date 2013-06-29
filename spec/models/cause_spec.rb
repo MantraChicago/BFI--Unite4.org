@@ -1,3 +1,25 @@
+require "spec_helper"
+
+describe Cause do
+  before(:all) do
+    Cause.destroy_all
+  end
+
+  let(:cause) { create(:cause) }
+
+  it "should have a default campaign" do
+    cause.active_campaign.should be_present
+  end
+
+  it "should have a default location" do
+    cause.locations.should_not be_empty
+  end
+
+  it "should have a default social need" do
+    cause.needs.first.should be_a(SocialNeed)
+  end
+
+end
 
 
 # == Schema Information
