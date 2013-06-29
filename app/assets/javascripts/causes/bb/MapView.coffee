@@ -1,5 +1,7 @@
 BFI.MapView = Backbone.View.extend
 
+  markers: []
+
   focusMap: (lat, long) ->
     #TODO: THIS IS HARDCODED UNTIL LAT/LONG AVAILABLE ON CAUSE
     @map.setView([41.85, -87.70], 13)
@@ -42,7 +44,7 @@ BFI.MapView = Backbone.View.extend
   #observer that re-creates markers whenever causes change
   placeMarkers: (causes) ->
     #wipe out old markers
-    for marker in markers
+    for marker in @markers
       @map.removeLayer marker
 
     ##flush the markers

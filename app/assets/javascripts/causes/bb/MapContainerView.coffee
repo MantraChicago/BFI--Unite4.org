@@ -29,7 +29,20 @@ BFI.MapContainerView = Backbone.View.extend
   #in the recieved event object
   #TODO: wire up the bus to filter the collection
   configureFilterBus: ->
-    @filterBus.onValue((obj) -> console.log obj)
+    @filterBus.onValue @applyFilter
+    
+  applyFilter: (data) ->
+    city = data.city
+    type = data.type
+    locs = _(Application.data.locations)
+    causes = _(Application.data.causes)
+    types = _(Application.data.cause_types)
+    cities = _(Application.data.cities)
+    
+    #TODO: city filtering not possible atm
+    #filteredTypes = types.where name: type
+
+    console.log data
 
   render: ->
     #render ourselves
@@ -39,5 +52,7 @@ BFI.MapContainerView = Backbone.View.extend
     @causelist.setElement(@$('#causelist')).render()
     @map.setElement(@$('#map')).render()
     #TODO: place markers once causes have lat/long available
-    #@map.placeMarkers @causelist.collection.models.map((model) -> model.toJSON())
+    @map.placeMarkers @causelist.collection.models.map(
+      (model) -> model.toJSON()
+    )
     return @
