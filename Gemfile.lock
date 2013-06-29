@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:datapimp/smooth.git
-  revision: 8f82506bdd946a35eea4600b429cf21bc0982fb2
+  revision: 35b1806d84eb504668df146486255d045674eba6
   specs:
     smooth (0.0.1)
       activerecord (>= 3.2.12)
