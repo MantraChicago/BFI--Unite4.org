@@ -51,6 +51,7 @@ setupHeader=function(){
 	var causes_html=JST['templates/header_causes_dropdown']( {cause_types:Application.data.cause_types} )
 
 	$('#cities_nav').click(function(){
+		$(this).addClass('active')
 		Application.header.toggle_nav(cities_html,'cities')
 	});
 

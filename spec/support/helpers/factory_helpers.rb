@@ -1,14 +1,5 @@
 module FactoryHelpers
-  def create_sample_causes_in city
-    if city == :chicago
-      [{
-        city: "Chicago",
-        lat:0,
-        lng:0
-      }]
-    end
-
-    if city == :new_york
-    end
+  def create_sample_causes_in city=:chicago
+    Unite::Development.create_sample_causes_and_locations_in(city)
   end
 end

@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :featured_cause do
+    association(:cause)
   end
 end

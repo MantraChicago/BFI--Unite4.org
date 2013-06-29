@@ -1,6 +1,5 @@
 class GoodNeed < Need
-
-  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
+#  has_attached_file :picture, :styles => { :medium => "302300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 end
 
 # == Schema Information
@@ -21,5 +20,6 @@ end
 #  picture_updated_at   :datetime
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  campaign_id          :integer
 #
 

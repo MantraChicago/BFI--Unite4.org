@@ -5,6 +5,8 @@ class Cause < ActiveRecord::Base
   attr_accessible :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
+  belongs_to :cause_type
+
   has_and_belongs_to_many :cause_types, :join_table => 'causes_cause_types'
 
   has_many :needs, :dependent => :delete_all
@@ -16,13 +18,37 @@ class Cause < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
+  after_create :create_default_records
 
-  def location
-    [city,state].compact.join(", ")
+  def create_default_location
+    existing = locations.where(name:'Main Office')
+
+    if existing.count == 0
+      location_attributes = attributes.slice(:address_line_one,:address_line_two,:city,:region,:postal_code,:country)
+      locations.create location_attributes.merge(name:"Main Office")
+    end
+  end
+
+  def create_default_records
+    create_default_location
+    create_default_campaign(create_default_need)
+  end
+
+  # every cause by default has a social need ( for followers )
+  def create_default_need
+    SocialNeed.create(cause_id: self.id) if needs.count == 0
+  end
+
+  def create_default_campaign need=nil
+    campaigns.create(need_id: need.id, active: true, start_date: Time.now, end_date: 30.days.from_now)  if campaigns.count == 0
   end
 
   def active_campaign
-    campaigns.active.limit(1)[0]
+    campaigns.active.limit(1).first
+  end
+
+  def picture_url style=:medium
+    picture.url(style)
   end
 
   def self.query(params={})
@@ -31,16 +57,26 @@ class Cause < ActiveRecord::Base
 
     join_ids = []
 
-    if params[:cause_type_id]
-      Array(params[:cause_type_id]).each do |cause_type_id|
-        join_ids += CauseType.cause_type_ids_for_cause( cause_type_id )
-      end
-    end
+    # NOTE:
+    #
+    # For this iteration we will only support one cause type per cause.  I want to move over
+    # to acts_as_taggable for this because has and belongs to many relationships require way too many
+    # acrobatics to do querying naturally and cleanly
+    #
+    #
+    #    if params[:cause_type_id]
+    #      Array(params[:cause_type_id]).each do |cause_type_id|
+    #        join_ids += CauseType.cause_ids_for_cause_type(cause_type_id)
+    #      end
+    #    end
 
     if params[:near]
-      join_ids += Location.near(params[:near]).select("distinct cause_id").collect(&:cause_id)
-      results = results.where(id: ids)
+      join_ids += Location.near(params[:near]).flatten.collect(&:cause_id)
     end
+
+    results = results.where(id: join_ids) unless join_ids.empty?
+
+    results = results.where(cause_type_id: params[:cause_type_id]) if params[:cause_type_id]
 
     results
   end
@@ -71,5 +107,8 @@ end
 #  is_featured          :boolean          default(FALSE)
 #  twitter_handle       :string(255)
 #  facebook_url         :string(255)
+#  city_id              :integer
+#  active               :boolean
+#  display_name         :string(255)
 #
 

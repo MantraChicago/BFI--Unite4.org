@@ -4,6 +4,7 @@ module ApiSpecType
   def app
     Rails.application
   end
+
 end
 
 RSpec.configure do |c|

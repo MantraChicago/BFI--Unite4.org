@@ -48,6 +48,15 @@ gem 'zurb-foundation'
 gem 'font-awesome-rails'
 
 gem 'pry-rails'
+gem 'pry-nav'
+
+# segfault
+#gem 'pry-stack_explorer'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 group :test, :development do
   gem 'rspec-rails'
@@ -57,14 +66,9 @@ group :test, :development do
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
-  gem "better_errors"
-  gem 'binding_of_caller'
 end
 
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
 end
-
-
-#gem 'rb-readline'

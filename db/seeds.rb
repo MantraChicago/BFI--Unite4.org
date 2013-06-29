@@ -1,6 +1,5 @@
-
 causeTypes=[
-	"Arts", 
+	"Arts",
 	'Education' ,
 	'Environment' ,
 	'Health & Wellness' ,
@@ -22,5 +21,3 @@ gameBadges.each do |badgeObj|
 	badge=Badge.find_or_create_by_accomplishment badgeObj[:accomplishment]
 	badge.update_attributes badgeObj
 end
-
-

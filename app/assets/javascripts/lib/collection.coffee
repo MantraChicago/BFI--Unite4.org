@@ -7,7 +7,9 @@ Application.Collection = Backbone.QueryCollection.extend
   initialize: (initialModels=[], @options={})->
     _.extend(@, @options)
 
-    Backbone.QueryCollection::initialize.apply(@, arguments)
+    debugger
+
+    Backbone.QueryCollection.prototype.initialize.apply(@, arguments)
 
     throw "Application.Collection classes must specify a name property" unless @name
 

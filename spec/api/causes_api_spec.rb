@@ -1,38 +1,48 @@
 require "spec_helper"
 
 describe "The Causes Resource API", :type => :api do
+
   before(:all) do
-    create_sample_causes_in(:chicago)
-    create_sample_causes_in(:new_york)
+    Cause.delete_all
+    CauseType.delete_all
+
+    cause_type = create(:cause_type)
+    other_cause_type = create(:cause_type)
+
+    Unite::Development.create_sample_causes_and_locations_in(:chicago, cause_type: cause_type, count: 1)
+    Unite::Development.create_sample_causes_and_locations_in(:new_york, cause_type: cause_type, count: 1)
+    Unite::Development.create_sample_causes_and_locations_in(:san_francisco, cause_type: other_cause_type, count: 1)
   end
+
+  let(:cause_type) { CauseType.first }
+  let(:other_cause_type) { CauseType.last }
+
+  let(:parsed) { JSON.parse(response.body) }
 
   it "should return a list of causes" do
-    get "/api/v1/causes"
+    get "/api/v1/causes/default"
     response.should be_success
+    parsed.length.should == 3
   end
 
-  it "should allow me to query by cause type" do
-    get "/api/v1/causes", :cause_type_id => cause_type.id
-    results = JSON.parse(response.body)
-  end
-
-  it "should allow me to query by zip code" do
-    get "/api/v1/causes", :zip_code => "60010"
-    results = JSON.parse(response.body)
-    results.should_not be_empty
-  end
-
-  it "should allow me to query by latitude and longitude" do
-    get "/api/v1/causes", :near => "60010"
-    results = JSON.parse(response.body)
-    names = results.map {|r| r["name"] }
-    names.should include("The People's Champ")
-  end
-
-  it "should allow me to query by city" do
+  it "should allow me to filter by city" do
     get "/api/v1/causes", :near => "Chicago"
-    results = JSON.parse(response.body)
-    names = results.map {|r| r["name"] }
-    names.should_not include("We gettin Money")
+    parsed.length.should == 1
   end
+
+  it "should allow me to filter by cause type" do
+    get "/api/v1/causes", :cause_type_id => cause_type.id
+    parsed.length.should == 2
+  end
+
+  it "should allow me to filter by cause type and city" do
+    get "/api/v1/causes", :cause_type_id => other_cause_type.id, :near => "New York"
+    parsed.length.should == 0
+  end
+
+  it "should allow me to filter by cause type and city" do
+    get "/api/v1/causes", :cause_type_id => cause_type.id, :near => "New York"
+    parsed.length.should == 1
+  end
+
 end

@@ -1,13 +1,9 @@
 class CausePresenter
 
   def default
-    [
+    base = [
       :id,
       :name,
-      :locations,
-      :cause_types,
-      :location,
-      :active_campaign,
       :twitter_handle,
       :city,
       :state,
@@ -16,8 +12,26 @@ class CausePresenter
       :twitter_handle,
       :facebook_url,
       :description,
-      :mission_statement
+      :mission_statement,
+      :picture_url
     ]
+
+    base << {
+      attribute: :campaign,
+      presenter: :default,
+      method: :active_campaign
+    }
+
+    base << {
+      attribute: :locations,
+      presenter: :default
+    }
+
+    base
+  end
+
+  def complete
+
   end
 
   protected

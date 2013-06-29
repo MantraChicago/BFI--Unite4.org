@@ -25,6 +25,14 @@ class User < ActiveRecord::Base
     $customerio.delete(self.id)
   end
 
+  def self.random limit=1
+    order("random()").limit(1)
+  end
+
+  def self.random_user
+    random(1).first
+  end
+
   def identify_customer_with_customer_io
     $customerio.identify(
       :id => self.id,
@@ -33,7 +41,7 @@ class User < ActiveRecord::Base
       :first_name => self.first_name
     )
 
-    $customerio.track(self.id, "New user")     
+    $customerio.track(self.id, "New user")
   end
 
   def display_name
@@ -73,7 +81,7 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     #logger.info user.to_yaml
     if user
-      
+
       locationArray=auth.info.location.split(',')
       user.update_attributes({:first_name => auth.info.first_name,
                           :last_name => auth.info.last_name,
@@ -90,7 +98,7 @@ class User < ActiveRecord::Base
                            :email => auth.info.email,
                            :password => Devise.friendly_token[0,20]
                            )
-      
+
     end
     user
   end

@@ -7,14 +7,16 @@
 						img src=image_path('logo-unite4good.png')
 
 				li.top-nav-item.top-bordered#cities_nav
-					span CITIES
+					div CITIES<span class="down_arrow">&#x25BC;</span>
+
 				li.top-nav-item.top-bordered.top-bordered-last#causes_nav
-					span CAUSES
+					div CAUSES<span class="down_arrow">&#x25BC;</span>
+						
 					
 				li.top-nav-item.right-nav
 					span.submit-cause
-						== link_to "ADD YOUR CAUSE", new_cause_application_path
+						= link_to "ADD YOUR CAUSE", new_cause_application_path
 					span.manage-users
-						== render "shared/user-manager"
+						= render "profiles/partials/user_upper_bar"
 
 		#mobile-menu
