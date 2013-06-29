@@ -5,6 +5,8 @@ FactoryGirl.define do
   sequence(:email) {|n| "#{ n }#{ Faker::Internet.email }" }
 
   factory :cause do
+    association(:cause_type)
+
     name { FactoryGirl.generate(:company_name) }
     email { FactoryGirl.generate(:email) }
     description { Faker::DizzleIpsum.paragraphs.join "\n" }

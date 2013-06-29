@@ -6,14 +6,13 @@ class CauseType < ActiveRecord::Base
 
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing_cause_type.jpg"
 
-  after_find :add_picture_url
+  #def self.cause_ids_for_cause_type cause_type_id
+  #  connection.execute "SELECT distinct cause_id FROM causes_cause_types WHERE id = '#{ cause_type_id.to_i }'"
+  #  binding.pry
+  #end
 
-  def self.cause_ids_for_cause_type cause_type_id
-    connection.execute "SELECT distinct cause_id FROM causes_cause_types WHERE id = '#{ cause_type_id.to_i }'"
-  end
-
-  def add_picture_url
-    self[:picture_url] = picture.url
+  def picture_url
+    picture.try(:url)
   end
 
   def self.random(count=1)

@@ -5,6 +5,8 @@ class Cause < ActiveRecord::Base
   attr_accessible :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
+  belongs_to :cause_type
+
   has_and_belongs_to_many :cause_types, :join_table => 'causes_cause_types'
 
   has_many :needs, :dependent => :delete_all
@@ -42,7 +44,11 @@ class Cause < ActiveRecord::Base
   end
 
   def active_campaign
-    campaigns.active.limit(1)[0]
+    campaigns.active.limit(1).first
+  end
+
+  def picture_url style=:medium
+    picture.url(style)
   end
 
   def self.query(params={})
@@ -51,16 +57,26 @@ class Cause < ActiveRecord::Base
 
     join_ids = []
 
-    if params[:cause_type_id]
-      Array(params[:cause_type_id]).each do |cause_type_id|
-        join_ids += CauseType.cause_type_ids_for_cause( cause_type_id )
-      end
-    end
+    # NOTE:
+    #
+    # For this iteration we will only support one cause type per cause.  I want to move over
+    # to acts_as_taggable for this because has and belongs to many relationships require way too many
+    # acrobatics to do querying naturally and cleanly
+    #
+    #
+    #    if params[:cause_type_id]
+    #      Array(params[:cause_type_id]).each do |cause_type_id|
+    #        join_ids += CauseType.cause_ids_for_cause_type(cause_type_id)
+    #      end
+    #    end
 
     if params[:near]
-      join_ids += Location.near(params[:near]).collect(&:cause_id)
-      results = results.where(id: join_ids)
+      join_ids += Location.near(params[:near]).flatten.collect(&:cause_id)
     end
+
+    results = results.where(id: join_ids) unless join_ids.empty?
+
+    results = results.where(cause_type_id: params[:cause_type_id]) if params[:cause_type_id]
 
     results
   end

@@ -52,11 +52,11 @@ module Unite
         FactoryGirl.send(:create, *args)
       end
 
-      def create_sample_causes_and_locations_in city=:chicago, count=5
+      def create_sample_causes_and_locations_in city=:chicago, options={}
         load_factories unless @factories_loaded
 
-        count.times.map do
-          cause = create(:cause)
+        (options[:count] || 3).times.map do
+          cause = create(:cause, cause_type: options[:cause_type])
           create(:location, city, cause: cause)
           cause
         end
