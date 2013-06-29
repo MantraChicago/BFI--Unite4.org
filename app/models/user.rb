@@ -25,8 +25,12 @@ class User < ActiveRecord::Base
     $customerio.delete(self.id)
   end
 
-  def self.random
-    order("random()").limit(1).first
+  def self.random limit=1
+    order("random()").limit(1)
+  end
+
+  def self.random_user
+    random(1).first
   end
 
   def identify_customer_with_customer_io
