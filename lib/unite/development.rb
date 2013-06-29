@@ -55,7 +55,14 @@ module Unite
       def create_sample_causes_and_locations_in city=:chicago, options={}
         load_factories unless @factories_loaded
 
-        (options[:count] || 3).times.map do
+        if options.is_a?(Fixnum)
+          options = {}
+        end
+
+        count ||= options[:count] || 3
+
+
+        count.times.map do
           cause = create(:cause, cause_type: options[:cause_type])
           create(:location, city, cause: cause)
           cause
