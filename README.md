@@ -39,9 +39,18 @@ include the database / authentication parameters local to your system.
 
 
 ```
-bundle exec rake db:drop:all db:create:all db:schema:load db:migrate db:seed db:populate_dev_data
+bundle exec rake db:create:all db:schema:load db:seed
 bundle exec rake db:test:prepare
 ```
+
+If you have your SSH key on our deploy box, you can take a snapshot:
+
+```
+bundle exec rake snapshot:all
+```
+
+This will pull down not only the development data, but all of the
+relevant uploaded files as well
 
 ### Running the Development Server
 
