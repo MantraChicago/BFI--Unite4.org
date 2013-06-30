@@ -2,6 +2,11 @@ class Need < ActiveRecord::Base
   attr_accessible :name,  :cause_id, :description, :picture, :address, :start_date, :end_date
   belongs_to :cause
   has_one :campaign
+
+  include Smooth::Presentable
+
+  can_be_queried_by :cause_id
+  can_be_queried_by :type
 end
 
 # == Schema Information

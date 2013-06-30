@@ -1,7 +1,6 @@
 class VolunteerNeed < Need
 	attr_accessible :name, :description, :cause_id, :start_date, :end_date, :address, :picture_file_name, :picture_content_type, :picture_file_size, :picture_updated_at
-  	has_many :volunteers
-  #has_many :needs, :as => :needable
+ 	has_many :volunteers
 end
 
 # == Schema Information

@@ -1,6 +1,7 @@
 class Campaign < ActiveRecord::Base
-  include Smooth::Presentable
+
   include Smooth::Queryable
+  include Smooth::Presentable
 
 	attr_accessible :active,:cause_id, :need_id, :start_date, :end_date, :percent_complete, :desired_state, :current_state
 
