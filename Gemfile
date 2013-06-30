@@ -13,7 +13,11 @@ gem 'customerio','0.5.0'
 
 gem 'activeadmin', '0.6.0'
 
+gem 'capistrano'
+gem 'capistrano-ext'
 gem 'rvm-capistrano'
+gem 'capistrano-recipes'
+gem 'colored'
 
 gem 'pg'
 gem 'annotate'
