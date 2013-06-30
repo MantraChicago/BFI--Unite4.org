@@ -28,18 +28,19 @@ namespace :snapshot do
     print "\n"
   end
   
-  def status_check(args)
-    rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :staging
+  def run_command(args, command)
+    rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :production
     host = host(rails_env)
     Net::SSH.start(host, USERNAME) do |ssh|
       ssh.shell do |zsh|
-
+        zsh.execute(command)
+        zsh.execute("exit")
       end
     end
   end
 
   def remote_archive(args, command, file)
-    rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :staging
+    rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :production
     host = host(rails_env)
 
     Net::SSH.start(host, USERNAME) do |ssh|
@@ -57,6 +58,11 @@ namespace :snapshot do
     end
 
   end
+  
+  desc "Run bundle install. Temporary fix for snapshot bug"
+  task :bundle_fix do |t,args|
+    run_command(args, "cd ~/rails_apps/bfi/current && bundle install")
+  end
 
   desc "Refresh local development environment from snapshots stored on staging"
   task :fetch_latest => :environment do
@@ -66,7 +72,7 @@ namespace :snapshot do
 
   desc "Snapshot everything and store on staging"
   task :all, [:rails_environment] => [:environment] do |t, args|
-    rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :staging
+    rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :production
     puts "Snapshotting #{rails_env}...".magenta
     Rake::Task["snapshot:system_folder:snapshot"].invoke(args[:rails_environment])
     Rake::Task["snapshot:database:snapshot"].invoke(args[:rails_environment])
@@ -114,14 +120,9 @@ namespace :snapshot do
   end
 
   namespace :database do
-    desc "test"
-    task :test do |t,args|
-      status_check(args)
-    end
-
     desc "Takes a snapshot of the database and puts it on the staging server"
     task :snapshot, [:rails_environment] => [:environment] do |t, args|
-      rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :staging
+      rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :production
       puts "Snapshotting #{rails_env} database...".green
       remote_archive(args, "cd #{PROJECT_PATH}/current && RAILS_ENV=#{rails_env} bundle exec rake snapshot:dump", "latest-db-snapshot-postgres.sql.gz")
     end
