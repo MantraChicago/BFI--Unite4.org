@@ -5,7 +5,7 @@ set :default_stage, 'staging'
 set :branch, fetch(:branch, "master")
 
 set :application, 'bfi'
-set :repository,  'git@github.com:MantraChicago/bfi.git'
+set :repository, 'git@github.com:MantraChicago/BFI--Unite4.org.git'
 
 
 before "deploy:restart", "db:migrate"
