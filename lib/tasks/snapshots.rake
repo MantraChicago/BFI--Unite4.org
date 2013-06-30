@@ -1,6 +1,7 @@
 namespace :snapshot do
   require 'net/ssh'
   require 'net/scp'
+  require 'net/ssh/shell'
 
   USERNAME = "deploy"
   PROJECT_PATH = "/home/deploy/rails_apps/bfi"
@@ -26,19 +27,33 @@ namespace :snapshot do
     end
     print "\n"
   end
+  
+  def status_check(args)
+    rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :staging
+    host = host(rails_env)
+    Net::SSH.start(host, USERNAME) do |ssh|
+      ssh.shell do |zsh|
+
+      end
+    end
+  end
 
   def remote_archive(args, command, file)
     rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :staging
     host = host(rails_env)
+
     Net::SSH.start(host, USERNAME) do |ssh|
-      response = ssh.exec!(command)
-      puts response.red if response.present?
-      if host == PRODUCTION_HOST
-        response = ssh.exec! "mv /tmp/#{file} #{SNAPSHOT_PATH}"
-      else
-        response = ssh.exec! "scp /tmp/#{file} #{USERNAME}@#{PRODUCTION_HOST}:#{SNAPSHOT_PATH}"
+      ssh.shell do |zsh|
+        response = zsh.execute(command)
+
+        if host == PRODUCTION_HOST
+          response = zsh.execute "mv /tmp/#{file} #{SNAPSHOT_PATH}"
+        else
+          response = zsh.execute "scp /tmp/#{file} #{USERNAME}@#{PRODUCTION_HOST}:#{SNAPSHOT_PATH}"
+        end
+
+        zsh.execute "exit"
       end
-      puts response.red if response.present?
     end
 
   end
@@ -99,11 +114,16 @@ namespace :snapshot do
   end
 
   namespace :database do
+    desc "test"
+    task :test do |t,args|
+      status_check(args)
+    end
+
     desc "Takes a snapshot of the database and puts it on the staging server"
     task :snapshot, [:rails_environment] => [:environment] do |t, args|
       rails_env = args[:rails_environment] ? args[:rails_environment].to_sym : :staging
       puts "Snapshotting #{rails_env} database...".green
-      remote_archive(args, "cd #{PROJECT_PATH}/current && RAILS_ENV=#{rails_env} bundle exec rake db:dump", "latest-db-snapshot-postgres.sql.gz")
+      remote_archive(args, "cd #{PROJECT_PATH}/current && RAILS_ENV=#{rails_env} bundle exec rake snapshot:dump", "latest-db-snapshot-postgres.sql.gz")
     end
 
     desc "Downloads the latest database snapshot stored on staging"
@@ -126,3 +146,18 @@ namespace :snapshot do
   end
 
 end
+
+namespace :snapshot do
+  desc "Dump the database"
+  task :dump => :environment do |t, args|
+    Unite::DatabaseUtil.dump
+  end
+
+  desc "Load up the database"
+  task :load => :environment do
+    Rake::Task['db:drop'].invoke
+    Rake::Task['db:create'].invoke
+    Unite::DatabaseUtil.load
+  end
+end
+

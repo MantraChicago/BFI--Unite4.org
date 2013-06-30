@@ -18,6 +18,7 @@ gem 'capistrano-ext'
 gem 'rvm-capistrano'
 gem 'capistrano-recipes'
 gem 'colored'
+gem 'net-ssh-shell'
 
 gem 'pg'
 gem 'annotate'
