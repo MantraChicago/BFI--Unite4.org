@@ -8,7 +8,7 @@
 /.bundle
 
 #uploads
-/public/system
+public/system
 
 # Ignore logfiles, databases and tempfiles.
 /db/*.sqlite3
@@ -32,5 +32,5 @@ Icon?
 ehthumbs.db
 Thumbs.db
 coverage
-/nbproject/private/
+nbproject
 config/database.yml
