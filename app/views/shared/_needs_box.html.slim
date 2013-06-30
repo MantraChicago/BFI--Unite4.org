@@ -1,0 +1,8 @@
+div class="needs_holder"
+  div class="needs_title" OTHER WAYS TO HELP
+  div class="needs"
+   -needs.each do |need|
+    div class="need_holder"
+     div class="need_title" #{need.name}
+     a class="need_button" href="#{url_for(need)}" MORE INFO
+      

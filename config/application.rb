@@ -16,12 +16,16 @@ module GiveInspireLove
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/presenters)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
+    #ember
+    config.handlebars.templates_root = "templates/handlebars"
+
+    config.active_record.include_root_in_json = false
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
@@ -60,17 +64,6 @@ module GiveInspireLove
     config.assets.version = '1.0'
 
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')] # for models inside folders
-
-    config.generators do |g|
-      g.test_framework :rspec,
-        :fixtures => true,
-        :view_specs => false,
-        :helper_specs => false,
-        :routing_specs => false,
-        :controller_specs => true,
-        :request_specs => true
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
-    end
 
   end
 end

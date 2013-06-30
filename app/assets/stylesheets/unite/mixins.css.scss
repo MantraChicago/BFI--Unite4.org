@@ -1,0 +1,31 @@
+//http://theint.ro/blogs/outro/4686992-responsive-design-with-sass
+@mixin respond-to($media) {
+  @if $media == small {
+    @media screen and (max-width: 420px) {
+      @content
+    }
+  }
+  @else if $media == medium {
+    @media screen and (max-width: 768px) {
+      @content
+    }
+  }
+  @else if $media == large {
+    @media screen and (min-width: 769px) {
+      @content
+    }
+  }
+}
+
+@mixin darkBorder($color, $width: 1px, $percent: 20%) {
+  background-color: $color;
+  border: $width solid darken($color, $percent);
+}
+
+@mixin unselectable() {
+ -moz-user-select: -moz-none;
+ -khtml-user-select: none;
+ -webkit-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+}

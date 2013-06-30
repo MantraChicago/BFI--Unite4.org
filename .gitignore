@@ -7,6 +7,9 @@
 # Ignore bundler config
 /.bundle
 
+#uploads
+public/system
+
 # Ignore logfiles, databases and tempfiles.
 /db/*.sqlite3
 /log/*.log
@@ -14,6 +17,10 @@
 *.log
 *.sql
 *.sqlite
+
+*.swo
+*.swp
+*.orig
 
 # OS generated files #
 .DS_Store
@@ -24,6 +31,6 @@
 Icon?
 ehthumbs.db
 Thumbs.db
-
 coverage
-/nbproject/private/
+nbproject
+config/database.yml

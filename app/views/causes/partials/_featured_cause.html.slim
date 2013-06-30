@@ -1,0 +1,15 @@
+.featured_need
+ .cause_header style="background-image: url(#{cause.picture.url(:medium)});"
+ .featured_need_cause
+ 	a href="#{url_for(cause)}" #{cause.display_name}
+ -if cause.active_campaign
+	 .featured_need_title
+	  .need_title_upper GOAL
+	  a.need_title_lower href="#{url_for(cause.active_campaign.need)}" #{cause.active_campaign.need.name}
+	 .goal_progress_holder
+	  .goal_progress style='width: #{percent ||=0 }%'
+	 .goal_stats
+	  -stats.each do |stat|
+	   .goal_stat
+	    .goal_upper #{stat[:upper]}
+	    .goal_lower #{stat[:lower]}

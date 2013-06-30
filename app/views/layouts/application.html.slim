@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    title #{ render_title }
+    meta name="viewport" content="initial-scale=1.0, user-scalable=no"
+
+    meta name="breakpoint" content="small" media="only screen and (max-width: 420px)"
+    meta name="breakpoint" content="medium" media="only screen and (max-width: 768px)"
+    meta name="breakpoint" content="large" media="only screen and (min-width: 769px)"
+    meta name="breakpoint" content="retina" media="only screen and (-webkit-min-device-pixel-ratio : 2)"
+    meta name="breakpoint" content="landscape" media="only screen and (orientation: landscape)"
+    meta name="breakpoint" content="portrait" media="only screen and (orientation: portrait)"
+
+    == csrf_meta_tags
+
+    == stylesheet_link_tag 'application', media: 'all'
+
+    == javascript_include_tag 'modernizr', 'metaquery'
+
+    javascript:
+      window.Application = {
+        data: {},
+        views: {},
+        models: {},
+        collections: {},
+        util: {}
+      };
+
+    javascript:
+      Modernizr.load([{
+        test: ( !!window.matchMedia ),
+        nope: ["#{ asset_path('match-media-polyfill') }"]
+      }]);
+
+    == yield(:head)
+
+  body id=body_id class=body_class data-controller=controller_name data-action=action_name
+    == render :partial => "shared/facebook"
+
+    == render 'shared/mainheader'
+    == render "shared/flash", :flash => flash
+    .ismobileflag
+
+    == yield
+    == render 'shared/mainfooter'
+
+    == render :partial => "shared/javascripts"

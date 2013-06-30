@@ -4,3 +4,17 @@ class Donation < ActiveRecord::Base
   belongs_to :user
 
 end
+
+# == Schema Information
+#
+# Table name: donations
+#
+#  id                :integer          not null, primary key
+#  amount            :float
+#  tip               :float
+#  tracking          :string(255)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  donations_need_id :integer
+#
+

@@ -1,0 +1,24 @@
+== javascript_include_tag 'dependencies', 'application'
+
+
+javascript:
+  Application.data.cities = #{ City.all.to_json.html_safe };
+  Application.data.cause_types=     #{ CauseType.all.to_json.html_safe };
+  Application.data.locations=     #{ Location.all.to_json.html_safe };
+  Application.data.causes=     #{ Cause.all.to_json.html_safe };
+  Application.data.needs=     #{ Need.all.to_json.html_safe };
+
+javascript:
+  var _cio = _cio || [];
+  (function() {
+  var a,b,c;a=function(f){return function(){_cio.push([f].
+        concat(Array.prototype.slice.call(arguments,0)))}};b=["identify",
+      "sidentify","track"];for(c=0;c<b.length;c++){_cio[b[c]]=a(b[c])};
+  var t = document.createElement('script'),
+  s = document.getElementsByTagName('script')[0];
+  t.async = true;
+  t.id    = 'cio-tracker';
+  t.setAttribute('data-site-id', 'ada058e0651fd45712ee');
+  t.src = 'https://assets.customer.io/assets/track.js';
+  s.parentNode.insertBefore(t, s);
+  })();

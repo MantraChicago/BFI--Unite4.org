@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130524154555) do
+ActiveRecord::Schema.define(:version => 20130629153742) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -60,6 +60,19 @@ ActiveRecord::Schema.define(:version => 20130524154555) do
     t.integer "badge_id"
   end
 
+  create_table "campaigns", :force => true do |t|
+    t.integer  "cause_id"
+    t.integer  "need_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "percent_complete"
+    t.string   "desired_state"
+    t.string   "current_state"
+    t.boolean  "active",           :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
   create_table "cause_applications", :force => true do |t|
     t.string "name"
     t.string "org_name"
@@ -71,9 +84,13 @@ ActiveRecord::Schema.define(:version => 20130524154555) do
   end
 
   create_table "cause_types", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "name"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "causes", :force => true do |t|
@@ -88,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20130524154555) do
     t.string   "website"
     t.integer  "cause_type_id"
     t.string   "city"
-    t.string   "state"
+    t.string   "region"
     t.string   "video_link"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
@@ -97,11 +114,28 @@ ActiveRecord::Schema.define(:version => 20130524154555) do
     t.boolean  "is_featured",          :default => false
     t.string   "twitter_handle"
     t.string   "facebook_url"
+    t.integer  "city_id"
+    t.boolean  "active"
+    t.string   "display_name"
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "postal_code"
+    t.string   "country"
+  end
+
+  create_table "causes_cause_types", :force => true do |t|
+    t.integer "cause_id"
+    t.integer "cause_type_id"
   end
 
   create_table "causes_causeneeds", :id => false, :force => true do |t|
     t.integer "cause_id"
     t.integer "cause_need_id"
+  end
+
+  create_table "causes_causetypes", :force => true do |t|
+    t.integer "cause_id"
+    t.integer "cause_type_id"
   end
 
   create_table "donations", :force => true do |t|
@@ -113,6 +147,11 @@ ActiveRecord::Schema.define(:version => 20130524154555) do
     t.integer  "donations_need_id"
   end
 
+  create_table "featured_causes", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "games", :force => true do |t|
     t.integer  "level"
     t.datetime "created_at",                          :null => false
@@ -122,12 +161,18 @@ ActiveRecord::Schema.define(:version => 20130524154555) do
   end
 
   create_table "locations", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.integer  "cause_id"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "name"
+    t.string   "address_line_one"
+    t.string   "address_line_two"
+    t.string   "city"
+    t.string   "region"
+    t.string   "postal_code"
+    t.string   "country"
   end
 
   create_table "locations_causes", :id => false, :force => true do |t|
@@ -158,6 +203,7 @@ ActiveRecord::Schema.define(:version => 20130524154555) do
     t.datetime "picture_updated_at"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.integer  "campaign_id"
   end
 
   create_table "permissions", :force => true do |t|
@@ -206,6 +252,8 @@ ActiveRecord::Schema.define(:version => 20130524154555) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "game_id"
+    t.string   "role"
+    t.text     "fb_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

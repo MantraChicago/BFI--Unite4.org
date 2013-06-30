@@ -1,0 +1,24 @@
+.login.signup
+	.centered.title First you need to sign in...
+
+	.centered
+	.left
+
+	 	= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| 
+	  		.errors
+	   			=devise_error_messages!
+	  		.input_row 
+	   			=f.email_field :email, :autofocus => true, :placeholder=>"username"
+	  		.input_row
+	  		    =f.password_field :password,:placeholder => "password"
+	  		-if devise_mapping.rememberable?
+	  			.remember_me 
+	  			 |Remember me 
+	  		     =f.check_box :remember_me	
+	  				
+	  		.input_row.signup_row
+	   			=f.submit "Sign In"		
+	     .middle_spacer
+
+	.right
+		= render "devise/shared/links"

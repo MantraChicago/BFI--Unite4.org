@@ -1,0 +1,51 @@
+@import  "unite/colors";
+textarea, input[type=text], input[type=password], input[type=email] {
+  padding: 12px 12px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: rgb(223,219,219);
+  border: none;
+  width:290px;
+  box-shadow: 0px 1px 1px 1px rgb(123,123,123) inset;
+}
+
+.input_row{
+    padding-top:20px;
+    text-align:center;
+  }
+
+input[type=submit]{
+  padding: 25px;
+
+  background-color: $darkPurple ;
+  border:none;
+  color:$white;
+  font-size:20px; 
+}
+  
+
+/*  Guess we're not using checkboxes (right now...) so leaving this here.
+
+input[type=checkbox] {
+  visibility: none;
+}
+input[type=checkbox]:after {
+  visibility: visible;
+  width: 20px;
+  height: 20px;
+  content: "";
+  display: block;
+  background-image: url();
+}
+
+input[type=checkbox]:checked:after {
+  visibility: visible;
+  width: 20px;
+  height: 20px;
+  content: "";
+  display: block;
+  background-image: url();
+
+}
+
+ */

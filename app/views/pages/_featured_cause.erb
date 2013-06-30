@@ -1,0 +1,7 @@
+<div class="black-bg-tp m-padding header-label">
+    <div class="arrow-left transition-quick"></div>
+    <h3 class="s-limit no-limit-top"><%= cause.display_name %></h3>
+    <p><%= truncate(cause.description, :length => 150) %></p>
+    <%= link_to '<div class="blue-bg inline-inline small-button">MORE</div>'.html_safe, cause%>
+    
+</div>

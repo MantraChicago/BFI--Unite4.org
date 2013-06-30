@@ -1,0 +1,35 @@
+.login.signin
+	.centered.title First you need to sign up...
+
+	.centered
+	.left
+
+	 	= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| 
+	  		.errors
+	   			=devise_error_messages!
+	  		.input_row 
+	   			=f.text_field :first_name, :autofocus => true,:placeholder => "first name"
+	  		.input_row
+	  		    =f.text_field :last_name, :placeholder => "last name" 
+	  		.input_row
+	    		=f.email_field :email,:placeholder => "email adress"
+	  		.input_row
+	   			=f.password_field :password,:placeholder => "password"
+	  		.input_row
+	   			=f.password_field :password_confirmation, :placeholder => "confirm password"
+	  		.input_row.signup_row
+	   			=f.submit "Sign up"		
+	     .middle_spacer
+
+	.right
+		a.fb_login href="#{user_omniauth_authorize_path(:facebook)}"
+			img src="/assets/signupwfb.png"
+		.fb_login_text We will never post to your<br/>Facebook unless you want us to
+		    
+		
+	    
+
+
+
+
+

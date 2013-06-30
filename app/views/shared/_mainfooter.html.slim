@@ -1,0 +1,48 @@
+.smoke-bg
+	.row.mlimit
+		.large-3.columns
+			h4.tertiary Programs
+			ul.plain-list.small-inline-list
+				-CauseType.all.each do |type|
+					li
+						== link_to type.name, "/causes/?cause_type_id=#{type.id}"
+
+		.large-3.columns
+			h4.tertiary Get Involved
+			ul.plain-list.small-inline-list
+				li 
+					== link_to "Add your charity", new_cause_application_path
+				li 
+					== link_to "Create an account", new_user_registration_path
+				li 
+					== link_to "Jobs / Internships", '/page/internship'
+				li 
+					== link_to "Add link to page", '/page/add_link'
+				li 
+					== link_to "Newsletter signup", '/page/newsletter'
+		.large-3.columns
+			h4.tertiary About Us
+			ul.plain-list.small-inline-list
+				li 
+					== link_to "Team", '/page/team'
+				li 
+					== link_to "Press", '/page/press'
+				li 
+					== link_to "Acceptance criteria", '/page/criteria'
+				li 
+					== link_to "Stats on usage", '/page/stats'
+				li 
+					== link_to "Partners", '/page/partners'
+		.large-3.columns
+			h4.tertiary Contact
+			ul.plain-list.small-inline-list
+				li 
+					== link_to "Facebook", '#'
+				li 
+					== link_to "Twitter", '#'
+				li 
+					== link_to "Get in touch", '#'
+
+	.row
+		.large-12.columns.text-right.slimit.slimit-top.tertiary
+			|&copy; Unit4:good, Inc.

@@ -1,0 +1,13 @@
+if [ -f "/Users/jonathan/Developer/.rvm/scripts/rvm" ]; then
+ 
+  source "/Users/jonathan/Developer/.rvm/scripts/rvm"
+ 
+  if [ -f ".rvmrc" ]; then
+    source ".rvmrc"
+  elif [ -f ".ruby-version" ] && [ -f ".ruby-gemset" ]; then
+    rvm use `cat .ruby-version`@`cat .ruby-gemset`
+  elif [ -f ".ruby-version"  ]; then
+    rvm use `cat .ruby-version`
+  fi
+ 
+fi

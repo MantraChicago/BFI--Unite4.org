@@ -38,11 +38,11 @@ class ProfilesController < ApplicationController
 			user=User.find(current_user.id)
 			cause = Cause.find(params[:id])
 
-			message = "You are already following "+cause.name
+			message = "You are already following "+cause.display_name
 			unless user.causes.include? cause
 				user.causes << cause
 				user.save
-				message = "You are now following "+cause.name
+				message = "You are now following "+cause.display_name
 			end
 			redirect_to cause, :notice =>  message
 		end

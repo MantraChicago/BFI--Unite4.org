@@ -1,0 +1,29 @@
+@import  "unite/colors";
+
+// Modals start here
+.inner-modal {
+  text-align: center;
+  background-color: $creame;
+  padding: 80px 80px;
+  .well {
+    margin-top:30px;
+    padding: 15px 15px;
+    background-color: white;
+    border: 1px solid rgb(221,221,221);
+    .muted {
+      font-size: 0.75em;
+      text-align: left;
+      font-weight: bold;
+      color: $mutedGray;
+    }
+    &.headline {
+      font-size: 2em;
+    }
+    &.padded {
+      padding: 20px 20px;
+    }
+  }
+  .byline {
+    margin-top: 30px;
+  }
+}

@@ -1,13 +1,67 @@
+<<<<<<< HEAD
 set :application, "set your application name here"
 set :repository,  "set your repository location here"
+=======
+require 'capistrano/ext/multistage'
+
+set :stages, ['production', 'staging']
+set :default_stage, 'staging'
+set :branch, fetch(:branch, "master")
+
+set :application, 'bfi'
+set :repository, 'git@github.com:MantraChicago/BFI--Unite4.org.git'
+
+
+before "deploy:restart", "db:migrate"
+
+before 'deploy:assets:precompile', 'sym_link:database'
+before 'deploy:assets:precompile', 'sym_link:logs'
+before 'deploy:assets:precompile', 'sym_link:settings'
+
+after "deploy:update_code", "bundle:install"
+
+namespace :bundle do
+  desc 'bundle install'
+  task :install do
+    run "cd #{current_release} && bundle install"
+  end
+end
+
+namespace :db do
+  desc 'rake db:migrate'
+  task :migrate do
+    run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=#{stage}"
+  end
+end
+
+namespace :sym_link do
+  desc 'sym link database.yml'
+  task :database do
+    run "cd #{current_release}/config && ln -s #{deploy_to}/shared/private/config/database.yml database.yml"
+  end
+
+  desc 'sym link production logs'
+  task :logs do
+    run "cd #{current_release} && rm -rf log && ln -s #{deploy_to}/shared/logs log"
+  end
+
+  desc 'sym link settings file'
+  task :settings do
+    run "cd #{current_release}/config && ln -s #{deploy_to}/shared/private/config/settings.yml settings.yml"
+  end
+end
+>>>>>>> 59268f21e16139a1b520490245819735a14156fe
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
+<<<<<<< HEAD
 role :web, "your web-server here"                          # Your HTTP server, Apache/etc
 role :app, "your app-server here"                          # This may be the same as your `Web` server
 role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
 role :db,  "your slave db-server here"
+=======
+>>>>>>> 59268f21e16139a1b520490245819735a14156fe
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
@@ -16,6 +70,7 @@ role :db,  "your slave db-server here"
 # these http://github.com/rails/irs_process_scripts
 
 # If you are using Passenger mod_rails uncomment this:
+<<<<<<< HEAD
 # namespace :deploy do
 #   task :start do ; end
 #   task :stop do ; end
@@ -23,3 +78,13 @@ role :db,  "your slave db-server here"
 #     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
+=======
+namespace :deploy do
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+end
+
+>>>>>>> 59268f21e16139a1b520490245819735a14156fe
