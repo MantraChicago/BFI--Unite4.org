@@ -16,7 +16,8 @@ module Unite
           lng: response.lng,
           country: response.country_code || response.country,
           region: response.state || response.province,
-          postal_code: response.zip
+          postal_code: response.zip,
+          city: response.city
         }
       end
     end

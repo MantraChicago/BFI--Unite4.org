@@ -1,3 +1,6 @@
+@import "unite/colors";
+@import "unite/buttons";
+
 .m-padding {
     padding: 40px;
 }
@@ -18,6 +21,11 @@
 .blue-bg {
     background-color: #009dd1;
     color: #fff; 
+}
+
+.pink-bg {
+    background-color: #9e0253;
+    color: #fff
 }
 
 .centered-text {
@@ -89,8 +97,11 @@
 .slimit-right {
     margin-right: 10px;
 }
+
 .mlimit-right {
     margin-right: 20px;
+    max-width: 80px;
+    height: auto;
 }
 .cboth {
     clear:both;
@@ -144,14 +155,18 @@
     font-size: 150%;
     line-height: 150%;
 }
+
+.button2 {
+  display: inline-block;
+  padding: 9px 7px;
+  color: white;
+}
+
 .button * {
     margin: 0;
 }
-.small-button {
-    padding: 2px 11px 2px 11px;
-    font-size:70%;
-    text-align: center;
-}
+
+
 
 .label {
     padding: 20px;
@@ -211,266 +226,23 @@
 
 }
 
-
-/* HEADER */
-
-#topbar {
-  height: 52px;
-  line-height: 52px;
-  background: url(topbar-bg.jpg) repeat-x center;
-  box-shadow: 0 0 5px #000;
-  position: relative;
-  z-index: 14;
+.map_title_holder{
+  background-color: $veryAlmostWhite;
+  h2{
+    margin:30px;
+    font-weight:100;
+  }
+  .btn{
+    margin:20px;
+  }
 }
 
-#topbar nav li {
-  display: inline-block;
+#mapHolder{
+  background-image: url('/assets/map_placeholder.jpg');
+  background-size:100%;
+  background-repeat:no-repeat;
 }
 
-#top-logo {
-  margin-right: 20px;
-}
-
-#topbar nav li.top-nav-item {
-  padding: 0 40px 0 40px;
-  font-size: 90%;
-  color: #333;
-}
-
-#topbar nav ul {
-    padding-left: 20px;
-}
-
-.down_arrow{
-  padding-left:5px;
-  font-size:10px;
-}
-
-#mobile-menu {
-  height: 52px;
-  width: 52px;
-  background: url(mobile-menu.png) center no-repeat;
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: none;
-  cursor: pointer;
-}
-
-
-#header {
- position: relative;
-}
-
-.header-slide {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  top: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  left: -20px;
-  z-index: 10;
-}
-
-.header-slide.active {
-  opacity: 1;
-  z-index: 12;
-  left: 0;
-}
-
-.header-slide.last {
-}
-
-.header-nav {
-  position: relative;
-  z-index:13;
-}
-
-.header-label {
-    position: relative;
-    width: 250px;
-    border-bottom: 1px solid #4a4a4a;
-}
-.header-label .arrow-left {
-    position: absolute;
-    left:0px;
-    top:40%;
-}
-.header-label.active .arrow-left {
-    left:-10px;
-}
-.header-slogan {
-    position: absolute;
-    max-width: 70%;
-    bottom: 20px;
-    background: url(header-slogan.png) no-repeat bottom left;
-    background-position-x: 10px;
-    background-size: contain;
-    width:601px;
-    height: 163px;
-}
-
-.map-infobox {
-    position: fixed !important;
-    background: #fff !important;
-    overflow: auto;
-    padding: 20px !important;
-    z-index: 999;
-    width: 70% !important;
-    left: 15% !important;
-    right: 15% !important;
-    top: 10% !important;
-    box-shadow: 0 0 50px;
-}
-.map-infobox > div {
-    background: none !important;
-    border: none !important;
-    padding: 20px !important;
-
-}
-
-
-
-
-.group-header {
-    background-color: #fafafa;
-    border: 1px solid #dadada;
-    padding: 20px;
-    font-size: 160%;
-}
-
-
-
-#companies {
-    overflow: hidden;
-}
-
-
-#sub-header {
-    background-color: #f4f4f4;
-    padding:40px;
-    padding-bottom: 20px;
-
-}
-
-.cause-single {
-    background-color: #fafafa;
-    border: 1px solid #e3e3e3;
-    margin-bottom: 20px;
-}
-
-.cause-header {
-    background-size: cover;
-    min-height: 130px;
-    position: relative;
-}
-
-.cause-title {
-    background: #000;
-    color: #fff;
-    display: inline;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    width: 80%;
-}
-
-.bar-cont {
-    background: #c2c2c2;
-    border-radius: 4px;
-    height: 10px;
-}
-
-.bar-cont .bar {
-    border-radius: 4px;
-    background: #2ab200;
-    height: 10px;
-    transition: width 1s ease-in-out;
-    -moz-transition: width 1s ease-in-out;    /* FF3.7+ */
-    -o-transition: width 1s ease-in-out;      /* Opera 10.5 */
-    -webkit-transition: width 1s ease-in-out; /* Saf3.2+, Chrome */
-}
-.bar.reset {
-    width: 10px !important;
-}
-
-#mapHolder {
-    min-height: 400px;
-}
-
-#map-canvas { height: 100% }
-
-
-@media only screen and (max-width: 48em) {
-
-    .map-infobox {
-    width: 90% !important;
-    left: 5% !important;
-    right: 5% !important;
-    top: 5% !important;
-    bottom: 5% !important;
-    padding: 10px 10px 30px 10px !important;
-    }
-    .map-infobox > div {
-    padding: 5px !important;
-    }
-    .map-corner-logo {
-    top: auto;
-    bottom: 20px;
-    }
-    .home-tiles-group {
-    margin-bottom: 80px;
-    }
-    .cause-header {
-    min-height: 240px;
-    }
-    .cause-title {
-    font-size: 160%;
-    line-height: 160%;
-    }
-
-    #topbar nav li.top-nav-item {
-    display: none;
-    }
-    
-    #mobile-menu {
-    display: inherit;
-    }
-
-}
-
-.top-bordered:hover{
-  background-color: #999;
-  cursor: pointer;
-}
-.top-bordered:hover span {
-  color:#eee;
-}
-
-
-.top-bordered{
-  /*height:51px;*/
-  border-left:2px solid #e3e3e3;
-}
-.top-bordered-last{
-  border-right:2px solid #e3e3e3;
-}
-
-.submit-cause{
-  display:inline-block;
-  padding-right: 40px;
-}
-
-.top-nav-item a{
-  color: #666;
-}
-
-.right-nav{
-  float:right;
-  padding-right: 0px !important;
-}
 
 .gray_border{
   border:1px solid #e3e3e3;
@@ -481,98 +253,6 @@
   margin-right: auto;
 }
 
-.fs-bg{
-    z-index: 13;
-    width:300px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    position: relative;
-
-}
-
-.fs-message{
-    width:300px;
-    padding:15px;
-    position: absolute;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.fs-notice{
-    background-color: yellow;
-}
-
-.fs-alert{
-    background-color: pink;
-}
-
-.fs-error{
-    background-color: red;
-}
-.header_popover_holder{
-    position: relative;
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    .drop_down_title{
-      text-align: center;
-      font-size: 30px;
-      margin-top: 20px;
-    }
-    .header_popover{
-      width: 820px;
-      position: absolute;
-      margin-left: auto;
-      margin-right: auto;
-      background-color:white;
-      top:-300px;
-      z-index: 13;
-    }
-   .popover_box{
-      background-color:black;
-      float: left !important;
-   }
-
-   .popover_box:hover{
-      background-color: rgb(57,196,242);
-      cursor: pointer;
-      text-decoration: none;
-   }
-
-   .popover_box_background{
-      text-align:center;
-      margin:20px;
-      height: 195px;
-      color:white;
-      font-weight: bold;
-      font-size: 25px;
-      line-height: 1.5;
-      padding-top: 30px; 
-   }
-
-   .popover_box{
-      height: 245px;
-    }
-
-   .row_holder{
-      width: 100%; 
-     position: absolute;
-     bottom: 0px;
-    }
-
-   .causes{
-      height: 550px;
-      .popover_box_background{
-        font-size: 20px;
-      }
-   }
-
-   .cities{
-      height: 300px;
-   
-  }
-}
 
 
 

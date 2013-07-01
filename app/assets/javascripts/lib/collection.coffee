@@ -2,7 +2,28 @@ Application.Collection = Backbone.QueryCollection.extend
   model: Application.Model
 
   url: ()->
-    "/api/v1/#{ @name }"
+    baseUrl = @resourceUrl()
+
+    unless _.isEmpty(@filterParams)
+      parts = []
+
+      for key, value of @filterParams
+        parts.push "#{key}=#{value}"
+
+      baseUrl = baseUrl + "?#{ parts.join('&') }"
+
+    baseUrl
+
+  resourceUrl: ()->
+    "/api/v1/#{ @name }/details"
+
+  clearFilter: (options={})->
+    @filterParams = {}
+
+
+  remoteFilter: (@filterParams={}, options={})->
+    @fetch(options)
+    @
 
   initialize: (initialModels, @options={})->
     _.extend(@, @options)

@@ -17,6 +17,10 @@ class CampaignPresenter
     ]
   end
 
+  def self.cause_profile
+    base
+  end
+
   def self.default
     base
   end

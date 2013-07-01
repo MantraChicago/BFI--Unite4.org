@@ -19,7 +19,7 @@
 
 @mixin darkBorder($color, $width: 1px, $percent: 20%) {
   background-color: $color;
-  border: $width solid darken($color, $percent);
+  /*border: $width solid darken($color, $percent);*/
 }
 
 @mixin unselectable() {

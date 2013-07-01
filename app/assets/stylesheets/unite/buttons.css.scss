@@ -4,7 +4,7 @@
 a.btn {
   display: inline-block;
   padding: 9px 7px;
-  color: white;
+  color: $veryAlmostWhite;
   &.large {
     font-size: 1.5em;
     padding: 20px 20px;
@@ -12,7 +12,32 @@ a.btn {
   &.purple {
     @include darkBorder($darkPurple);
   }
+  &.pink {
+    @include darkBorder($pink);
+  }
   &.blue {
     @include darkBorder($lightBlue);
   }
+  &.btn-medium{
+      padding: 10px 20px 10px 20px;
+      display:inline;
+  }
+  &.btn-small{
+    padding: 5px ;
+    display:inline;
+    font-size: 0.8em;
+  }
+
+  &:hover{
+    background-color:$lightBlue;
+    text-decoration:none;
+    color:white;
+  }
+
+
+
 }
+
+
+
+
