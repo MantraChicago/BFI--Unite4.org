@@ -12,6 +12,9 @@ a.btn {
   &.purple {
     @include darkBorder($darkPurple);
   }
+  &.pink {
+    @include darkBorder($pink);
+  }
   &.blue {
     @include darkBorder($lightBlue);
   }

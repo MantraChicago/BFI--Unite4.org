@@ -1,3 +1,6 @@
+@import "unite/colors";
+@import "unite/buttons";
+
 .m-padding {
     padding: 40px;
 }
@@ -18,6 +21,11 @@
 .blue-bg {
     background-color: #009dd1;
     color: #fff; 
+}
+
+.pink-bg {
+    background-color: #9e0253;
+    color: #fff
 }
 
 .centered-text {
@@ -89,8 +97,11 @@
 .slimit-right {
     margin-right: 10px;
 }
+
 .mlimit-right {
     margin-right: 20px;
+    max-width: 125px;
+    height: auto;
 }
 .cboth {
     clear:both;
@@ -144,9 +155,17 @@
     font-size: 150%;
     line-height: 150%;
 }
+
+.button2 {
+  display: inline-block;
+  padding: 9px 7px;
+  color: white;
+}
+
 .button * {
     margin: 0;
 }
+
 .small-button {
     padding: 2px 11px 2px 11px;
     font-size:70%;
@@ -349,7 +368,6 @@
 
 
 #sub-header {
-    background-color: #f4f4f4;
     padding:40px;
     padding-bottom: 20px;
 
@@ -462,6 +480,11 @@
   display:inline-block;
   padding-right: 40px;
 }
+
+.submit-cause a{
+  color: $white;
+}
+
 
 .top-nav-item a{
   color: #666;
