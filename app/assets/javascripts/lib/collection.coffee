@@ -15,11 +15,11 @@ Application.Collection = Backbone.QueryCollection.extend
     baseUrl
 
   resourceUrl: ()->
-    "/api/v1/#{ @name }"
+    "/api/v1/#{ @name }/details"
 
   clearFilter: (options={})->
     @filterParams = {}
-    @
+
 
   remoteFilter: (@filterParams={}, options={})->
     @fetch(options)
