@@ -25,6 +25,13 @@ describe "The Causes Resource API", :type => :api do
     parsed.length.should == 3
   end
 
+  it "should present the causes using the details presenter" do
+    get "/api/v1/causes/details"
+    response.should be_success
+    parsed.first.keys.should include("locations_details")
+    parsed.first.keys.should include("campaign_details")
+  end
+
   it "should allow me to filter by city" do
     get "/api/v1/causes", :near => "Chicago"
     parsed.length.should == 1
