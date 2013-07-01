@@ -10,7 +10,7 @@ Application.Model = Backbone.Model.extend
 
     Backbone.Model::initialize.apply(@, arguments)
 
-    throw "Unite Models must specify a singular name property"
+    throw "Unite Models must specify a singular name property" unless @name
 
 
 # We want to intercept the call to Application.Model.extend and do a few

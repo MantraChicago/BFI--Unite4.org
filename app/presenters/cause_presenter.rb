@@ -1,6 +1,5 @@
 class CausePresenter
-
-  def default
+  def details
     base = [
       :id,
       :name,
@@ -28,10 +27,6 @@ class CausePresenter
     }
 
     base
-  end
-
-  def complete
-
   end
 
   protected
