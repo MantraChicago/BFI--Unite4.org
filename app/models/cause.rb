@@ -2,6 +2,10 @@ class Cause < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
+
   # THESE API are WIP
   can_be_queried_by :cause_type_id, :type => :reference, :resource => "CauseType"
   can_be_queried_by :city, :type => :string, :allowed => ['Chicago','New York','San Fancisco']
@@ -31,7 +35,7 @@ class Cause < ActiveRecord::Base
       locations.create location_attributes.merge(name:"Main Office")
     end
   end
-
+  
   def location_attributes
     loc = {}
 
