@@ -71,7 +71,7 @@ class Cause < ActiveRecord::Base
   # TEMP
   # Until the presenter nesting works better in smooth
   def campaign_details
-    active_campaign || active_campaign.present_as(:cause_profile)
+    active_campaign && active_campaign.present_as(:cause_profile)
   end
 
   def create_default_campaign need=nil
