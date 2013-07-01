@@ -103,6 +103,18 @@ namespace :snapshot do
       puts "Archiving system folder...".green
       remote_archive(args, "cd #{PROJECT_PATH}/shared/system && tar -czf /tmp/system.tar.gz .", "system.tar.gz")
     end
+  
+    desc "Imports the system folder contents from the snapshots folder"
+    task :import => :environment do
+      file = "snapshots/system.tar.gz"
+      
+      puts "Removing existing system folder...".green
+      system "rm -rf #{Rails.root}/public/system"
+      system "mkdir -p #{Rails.root}/public/system"
+
+      puts "Extracting system folder archive...".green
+      system "cd #{Rails.root}/public/system && tar -xzf ../../#{file}"
+    end
 
     desc "Downloads latest system folder snapshot stored on staging"
     task :fetch_latest => :environment do
@@ -143,6 +155,23 @@ namespace :snapshot do
       puts "Loading database archive...".green
       system "psql -U #{db['username']} -d #{db['database']} -f tmp/latest-db-snapshot-postgres.sql"
       system "rm #{Rails.root}/tmp/latest-db-snapshot-postgres.sql"
+    end
+
+    desc "Imports the snapshot stored in the repository"
+    task :import => :environment do
+      db = YAML::load(ERB.new(IO.read(File.join('config', 'database.yml'))).result)[Rails.env]
+      file = File.join(Rails.root, 'snapshots', "latest-db-snapshot-postgres.sql.gz")
+
+      puts "Extracting database archive...".green
+      system "gunzip -f #{file}"
+
+      puts "Dropping database #{ db['database']}...".green
+      Rake::Task['db:drop'].invoke
+      puts "Creating database #{db['database']}...".green
+      Rake::Task['db:create'].invoke
+      puts "Loading database archive...".green
+      
+      system "psql -U #{db['username']} -d #{db['database']} -f snapshots/latest-db-snapshot-postgres.sql"
     end
   end
 
