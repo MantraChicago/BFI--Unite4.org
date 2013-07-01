@@ -1,5 +1,6 @@
 GiveInspireLove::Application.configure do
   config.assets.append_path config.root + '/spec/javascripts'
+
   #ember configuration
 
   # Settings specified here will take precedence over those in config/application.rb

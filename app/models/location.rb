@@ -17,15 +17,40 @@ class Location < ActiveRecord::Base
   end
 
   def lookup_geo_coordinates
-    address_details = Unite::Util.lookup_address_details(address) || {}
+    apply_geokit_response(Unite::Util.lookup_address_details(address) || {})
 
+    unless self.lat && self.lng
+      fallback_geolookup(:postal_code) if self.postal_code
+    end
+
+    unless self.lat && self.lng
+      fallback_geolookup(:city) if self.city && self.region
+    end
+  end
+
+  def apply_geokit_response address_details={}
     self.lat            = address_details[:lat]
     self.lng            = address_details[:lng]
     self.region       ||= address_details[:region]
+    self.city         ||= address_details[:region]
     self.country      ||= address_details[:country]
     self.postal_code  ||= address_details[:postal_code]
 
     self
+  end
+
+  def fallback_geolookup strategy=:postal_code
+    if strategy == :postal_code
+      address_details = Unite::Util.lookup_address_details(self.postal_code)
+    end
+
+    if strategy == :city
+      address_details = Unite::Util.lookup_address_details("#{ self.city }, #{ self.region }")
+    end
+
+    if address_details.present?
+      apply_geokit_response(address_details || {})
+    end
   end
 
   def should_geocode?

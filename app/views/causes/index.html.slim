@@ -7,9 +7,7 @@
 
     Application.data = Application.data || {};
 
-    Application.data.causes=     #{ @causes.to_json.html_safe };
-    Application.data.locations=  #{ @locations.to_json.html_safe };
-    Application.data.needs=      #{ @needs.to_json(:methods => :type).html_safe }
+    Application.data.causes=     #{ Cause.present({}).as(:details).to_a.to_json.html_safe };
 
 #causenav
 #mapcontainer
