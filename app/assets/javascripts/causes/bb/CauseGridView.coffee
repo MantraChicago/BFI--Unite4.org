@@ -1,4 +1,4 @@
-BFI.CauseListView = Backbone.View.extend
+BFI.CauseGridView = Backbone.View.extend
  
   initialize: (options) ->
     #view setup boilerplate
@@ -9,10 +9,11 @@ BFI.CauseListView = Backbone.View.extend
     @collection = new Backbone.Collection Application.data.causes
 
   render: () ->
-    @collection.each( ((cause) ->
-      causeItem = new BFI.CauseItemView
+    listHTML = @collection.map( ((cause) ->
+      return causeItem = new BFI.CauseGridItemView
         model: cause.toJSON()
         container: @container
-      @$el.append causeItem.render().$el
+      #@$el.append causeItem.render().$el
     ), @)
+    
     return @

@@ -1,0 +1,22 @@
+.featured_need
+  header.cause_header
+  .cause_title
+    .need_title_upper
+      GOAL
+    .need_title_lower
+     
+  .featured_need_cause
+    a href="#" #{name}
+
+  .goal_progress_holder
+    .goal_progress style="#{}"
+
+  .goal_stats
+    .goal_stat goal_upper #{percentGoal()}
+    .goal_stat goal_lower Goal Met 
+
+    .goal_stat goal_upper #{followers}
+    .goal_stat goal_lower Followers 
+
+    .goal_stat goal_upper #{daysToGo()}
+    .goal_stat goal_lower Days To Go

@@ -12,8 +12,8 @@ window.BFI = {}
 Application.causes ||= {}
 
 Application.causes.index = ()->
-  #create a bacon event bus.  change notice events will
-  #be pushed onto this from various sources
+  #create a bacon event bus.  change notice events 
+  #will be pushed onto this from various sources
   filterBus = new Bacon.Bus()
 
   #render the cause navigation header
@@ -21,15 +21,18 @@ Application.causes.index = ()->
     $el: $ '#causenav'
     filterBus: filterBus
 
-  #create child views for map
+  #create child views for container at any given time, the 
+  #container will determine which child views should be rendered
   BFI.map = new BFI.MapView()
   BFI.causelist = new BFI.CauseListView()
+  BFI.causegrid = new BFI.CauseGridView()
 
   #create map container view and pass in children
   BFI.mapContainer = new BFI.MapContainerView
     $el: $ '#mapcontainer'
     map: BFI.map
     causelist: BFI.causelist
+    causegrid: BFI.causegrid
     filterBus: filterBus
 
   #render nav and container
