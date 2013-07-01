@@ -11,5 +11,4 @@
 #= require backbone-min
 #= require backbone-query.min
 #= require bacon
-#= require handlebars
-#= require ember
+
