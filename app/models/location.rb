@@ -2,11 +2,11 @@ class Location < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
-  attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country, :address
+  attr_accessible :name, :latitude, :longitude, :cause_id, :lng, :lat, :address_line_one, :address_line_two, :city, :state, :postal_code, :country, :address, :region
 
   attr_accessor :skip_geocoding
 
-  belongs_to :cause
+  belongs_to :cause, :counter_cache => true
 
   before_save :lookup_geo_coordinates, :if => :should_geocode?
 

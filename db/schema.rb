@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629153742) do
+ActiveRecord::Schema.define(:version => 20130701081651) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -73,6 +73,11 @@ ActiveRecord::Schema.define(:version => 20130629153742) do
     t.datetime "updated_at",                          :null => false
   end
 
+  add_index "campaigns", ["active"], :name => "index_campaigns_on_active"
+  add_index "campaigns", ["cause_id"], :name => "index_campaigns_on_cause_id"
+  add_index "campaigns", ["id"], :name => "index_campaigns_on_id", :unique => true
+  add_index "campaigns", ["need_id"], :name => "index_campaigns_on_need_id"
+
   create_table "cause_applications", :force => true do |t|
     t.string "name"
     t.string "org_name"
@@ -121,6 +126,11 @@ ActiveRecord::Schema.define(:version => 20130629153742) do
     t.string   "address_line_two"
     t.string   "postal_code"
     t.string   "country"
+    t.integer  "locations_count",      :default => 0
+    t.integer  "needs_count",          :default => 0
+    t.integer  "donations_count",      :default => 0
+    t.integer  "volunteers_count",     :default => 0
+    t.integer  "followers_count",      :default => 0
   end
 
   create_table "causes_cause_types", :force => true do |t|
@@ -252,8 +262,8 @@ ActiveRecord::Schema.define(:version => 20130629153742) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "game_id"
-    t.string   "role"
     t.text     "fb_token"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

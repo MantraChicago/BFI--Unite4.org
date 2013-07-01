@@ -6,7 +6,9 @@ class Cause < ActiveRecord::Base
   can_be_queried_by :cause_type_id, :type => :reference, :resource => "CauseType"
   can_be_queried_by :city, :type => :string, :allowed => ['Chicago','New York','San Fancisco']
 
-  attr_accessible :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url
+  attr_accessor :skip_default_location
+  attr_accessible :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
+
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
 
   belongs_to :cause_type
@@ -25,12 +27,25 @@ class Cause < ActiveRecord::Base
   after_create :create_default_records
 
   def create_default_location
-    existing = locations.where(name:'Main Office')
-
-    if existing.count == 0
-      location_attributes = attributes.slice(:address_line_one,:address_line_two,:city,:region,:postal_code,:country)
+    if locations.count == 0 and !skip_default_location
       locations.create location_attributes.merge(name:"Main Office")
     end
+  end
+
+  def location_attributes
+    loc = {}
+
+    # this is temporary
+    loc.merge! :address_line_one => self.address_line_one || Unite::Development.random_address_in(:chicago),
+                       :postal_code => self.postal_code || "60610",
+                       :country => self.country || "US",
+                       :region => self.region || "IL",
+                       :city => self.city || "Chicago"
+
+    loc[:city] = "Chicago" if self.city.length == 0
+    loc[:region] = "IL" if self.region.length == 0
+
+    loc
   end
 
   def create_default_records
@@ -54,6 +69,23 @@ class Cause < ActiveRecord::Base
   def picture_url style=:medium
     picture.url(style)
   end
+
+  def state= value
+    self.region = value
+  end
+
+  def state
+    region
+  end
+
+  def zip= value
+    self.postal_code = value
+  end
+
+  def zip
+    postal_code
+  end
+
 
   def self.query(params={})
     results = scoped
