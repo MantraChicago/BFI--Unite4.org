@@ -2,7 +2,7 @@ require 'capistrano/ext/multistage'
 
 set :stages, ['production', 'staging']
 set :default_stage, 'staging'
-set :branch, fetch(:branch, "master")
+set :branch, fetch(:branch, "release_candidate")
 
 set :application, 'bfi'
 set :repository, 'git@github.com:MantraChicago/BFI--Unite4.org.git'
