@@ -59,4 +59,8 @@ setupHeader=function(){
 	$('#causes_nav').click(function(){
 		Application.header.toggle_nav(causes_html, 'causes')
 	});
+
+	$('.popover_tigger').click(function(){
+		$('.profile_drop_down ul').toggleClass('hide')
+	})
 }

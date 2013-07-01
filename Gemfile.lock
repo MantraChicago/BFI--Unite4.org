@@ -173,6 +173,7 @@ GEM
     formatador (0.2.4)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    friendly_id (4.0.9)
     fssm (0.2.10)
     geokit (1.6.5)
       multi_json
@@ -398,6 +399,7 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   font-awesome-rails
+  friendly_id (~> 4.0.9)
   geokit
   guard
   guard-rspec
