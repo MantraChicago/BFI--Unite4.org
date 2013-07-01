@@ -10,7 +10,7 @@ class Application.App extends Backbone.Events
   # ensure you're getting access to the authoritative client side
   # collection for that resource.
   collection: (name, models, options)->
-    Application.collection(name, models, options)
+    Application.collection(name)
 
   setupViewport: ()->
     metaQuery.onBreakpointChange 'small', ()=>

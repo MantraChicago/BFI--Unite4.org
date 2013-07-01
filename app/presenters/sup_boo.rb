@@ -1,0 +1,3 @@
+class SupBoo
+
+end
