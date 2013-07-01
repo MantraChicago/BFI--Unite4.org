@@ -1,5 +1,5 @@
 class CauseTypePresenter
-  def default
+  def self.default
     [:id, :name, :picture_url]
   end
 end
