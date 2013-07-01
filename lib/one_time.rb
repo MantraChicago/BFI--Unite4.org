@@ -7,4 +7,8 @@ module OneTime
   def self.fix_locations
     Unite::Development.create_missing_locations
   end
+
+  def self.fix_missing_campaigns
+    Cause.all.each(&:create_default_campaign)
+  end
 end

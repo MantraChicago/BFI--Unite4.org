@@ -59,7 +59,11 @@ class Cause < ActiveRecord::Base
 
   # every cause by default has a social need ( for followers )
   def create_default_need
-    SocialNeed.create(cause_id: self.id) if needs.count == 0
+    if needs.count == 0
+      SocialNeed.create(cause_id: self.id)
+    else
+      needs.first
+    end
   end
 
   # TEMP
@@ -76,6 +80,8 @@ class Cause < ActiveRecord::Base
 
   def create_default_campaign need=nil
     campaigns.create(need_id: need.id, active: true, start_date: Time.now, end_date: 30.days.from_now)  if campaigns.count == 0
+    campaigns.update_all(active:true)
+    self
   end
 
   def active_campaign
