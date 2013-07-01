@@ -1,0 +1,63 @@
+.header_popover_holder{
+    position: relative;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    .drop_down_title{
+      text-align: center;
+      font-size: 30px;
+      margin-top: 20px;
+    }
+    .header_popover{
+      width: 820px;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      background-color:white;
+      top:-300px;
+      z-index: 13;
+    }
+   .popover_box{
+      background-color:black;
+      float: left !important;
+   }
+
+   .popover_box:hover{
+      background-color: rgb(57,196,242);
+      cursor: pointer;
+      text-decoration: none;
+   }
+
+   .popover_box_background{
+      text-align:center;
+      margin:20px;
+      height: 195px;
+      color:white;
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 1.5;
+      padding-top: 30px; 
+   }
+
+   .popover_box{
+      height: 245px;
+    }
+
+   .row_holder{
+      width: 100%; 
+     position: absolute;
+     bottom: 0px;
+    }
+
+   .causes{
+      height: 550px;
+      .popover_box_background{
+        font-size: 20px;
+      }
+   }
+
+   .cities{
+      height: 300px;
+   
+  }
+}

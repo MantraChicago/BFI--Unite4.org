@@ -14,8 +14,7 @@
 						
 					
 				li.right-nav
-					.submit-cause.pink-bg.small-button
-						= link_to "ADD YOUR CAUSE", new_cause_application_path
+					= link_to "ADD YOUR CAUSE", new_cause_application_path, :class=>'btn pink btn-medium'
 					.manage-users
 						= render "profiles/partials/user_upper_bar"
 

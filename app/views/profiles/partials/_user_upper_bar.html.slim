@@ -1,6 +1,6 @@
 -if user_signed_in? and current_user	
 	.profile_drop_down
-		=image_tag current_user.avatar.url(:thumb), :size =>"30x30"
+		=image_tag current_user.avatar.url(:thumb), :size =>"40x40"
 		a.popover_tigger
 			| #{current_user.display_name}
 		span.down_arrow &#x25BC;

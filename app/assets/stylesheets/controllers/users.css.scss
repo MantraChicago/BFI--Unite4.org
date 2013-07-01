@@ -88,16 +88,22 @@
 .manage-users{
 	display:inline-block;
 	vertical-align:top;
+	padding-left:50px;
 	img{
 		vertical-align:top;
-		margin-top:13px;
+		margin-top:7px;
 		margin-right:5px;
 	}
+}
+
+.popover_tigger{
+	color: $darkGrey;
 }
 
 .profile_drop_down{
 	position:relative;
 	display:inline-block;
+	
 	a{
 
 	}
@@ -106,6 +112,8 @@
 		width:150px;
 		background-color:white;
 		position:absolute;
+		top:52px;
+		left:0px;
 		li{
 			display:block !important;
 			text-align:center;
