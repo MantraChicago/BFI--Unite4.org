@@ -1,10 +1,9 @@
 class Cause < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
-=begin
+
   extend FriendlyId
   friendly_id :name, use: :slugged
-=end
 
 
   # THESE API are WIP
@@ -36,11 +35,7 @@ class Cause < ActiveRecord::Base
       locations.create location_attributes.merge(name:"Main Office")
     end
   end
-
-  def to_param
-    "#{id} #{name}".parameterize
-  end
-
+  
   def location_attributes
     loc = {}
 
