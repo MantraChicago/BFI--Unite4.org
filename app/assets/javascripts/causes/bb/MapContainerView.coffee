@@ -24,7 +24,7 @@ BFI.MapContainerView = Backbone.View.extend
 
     #configure the default state which determines child views
     # (default is grid) alternative is "map"
-    @activeState = "grid"
+    @activeState = "map"
 
     #configure our response to events on the filterBus
     @configureFilterBus()
@@ -41,31 +41,18 @@ BFI.MapContainerView = Backbone.View.extend
   configureFilterBus: ->
     @filterBus.onValue @applyFilter
 
-  #hash used to determine which render method should be called
-  renderHash:
-    map: @renderMap
-    grid: @renderGrid
-
-  render:
-    #render ourselves
-    @$el.html(JST['causes/bb/templates/causecontainer'](@))
-    #call the appropriate render method based on state
-    @renderHash[@activeState]()
+  render: ->
+    switch @activeState
+      when "map" then @renderMap()
+      when "grid" then @renderGrid()
 
   #called by render when map is active
   renderMap: ->
-    #render our children and re-establish bindings
-    @causelist.setElement(@$('#childnode')).render()
-    @map.setElement(@$('#map')).render()
-
-    #TODO: place markers once causes have lat/long available
-    @map.placeMarkers @causelist.collection.models.map(
-      (model) -> model.toJSON()
-    )
+    @$el.append @causelist.render().$el
+    @$el.append @map.render().$el
     return @
     
   #called by render when grid is active
   renderGrid: ->
-    #render our children and re-establish bindings
-    @causegrid.setElement(@$('#childnode')).render()
+    @$el.append @causegrid.render().$el
     return @

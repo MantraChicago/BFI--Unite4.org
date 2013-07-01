@@ -12,6 +12,7 @@ BFI.CauseListView = Backbone.View.extend
     @collection.each( ((cause) ->
       causeItem = new BFI.CauseItemView
         model: cause.toJSON()
+        className: "cause"
         container: @container
       @$el.append causeItem.render().$el
     ), @)

@@ -162,9 +162,6 @@ namespace :snapshot do
       db = YAML::load(ERB.new(IO.read(File.join('config', 'database.yml'))).result)[Rails.env]
       file = File.join(Rails.root, 'snapshots', "latest-db-snapshot-postgres.sql.gz")
 
-      puts "Extracting database archive...".green
-      system "gunzip -f #{file}"
-
       puts "Dropping database #{ db['database']}...".green
       Rake::Task['db:drop'].invoke
       puts "Creating database #{db['database']}...".green

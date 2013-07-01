@@ -29,6 +29,23 @@ module Unite
         @factories_loaded = true
       end
 
+      def update_geolocation_data_for_locations
+        records = Location.all
+
+        puts "Updating the geolocation data of #{ records.count } records".green
+
+        records.each do |loc|
+          loc.lookup_geo_coordinates
+          loc.save
+        end
+      end
+
+      def create_missing_locations
+        Cause.all.each do |cause|
+          cause.create_default_location unless cause.locations.count == 0
+        end
+      end
+
       def random_address_in city
         list = (SampleAddresses[city] || SampleAddresses[:chicago])
         index = (list.length * rand()).to_i
@@ -61,9 +78,8 @@ module Unite
 
         count ||= options[:count] || 3
 
-
         count.times.map do
-          cause = create(:cause, cause_type: options[:cause_type])
+          cause = create(:cause, cause_type: options[:cause_type], :skip_default_location => true)
           create(:location, city, cause: cause)
           cause
         end

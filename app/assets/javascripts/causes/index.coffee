@@ -4,6 +4,7 @@
 #= require ./bb/CauseNavView
 #= require ./bb/CauseItemView
 #= require ./bb/CauseListView
+#= require ./bb/CauseGridView
 #= require ./bb/MapView
 #= require ./bb/MapContainerView
 
@@ -17,24 +18,26 @@ Application.causes.index = ()->
   filterBus = new Bacon.Bus()
 
   #render the cause navigation header
-  BFI.causenav = new BFI.CauseNavView
-    $el: $ '#causenav'
+  causenav = new BFI.CauseNavView
     filterBus: filterBus
 
   #create child views for container at any given time, the 
   #container will determine which child views should be rendered
-  BFI.map = new BFI.MapView()
-  BFI.causelist = new BFI.CauseListView()
-  BFI.causegrid = new BFI.CauseGridView()
+  map = new BFI.MapView
+    id: "map"
+  causelist = new BFI.CauseListView
+    className: "causelist"
+  causegrid = new BFI.CauseGridView
+    className: "causegrid"
 
   #create map container view and pass in children
-  BFI.mapContainer = new BFI.MapContainerView
-    $el: $ '#mapcontainer'
-    map: BFI.map
-    causelist: BFI.causelist
-    causegrid: BFI.causegrid
+  mapcontainer = new BFI.MapContainerView
+    className: "container"
+    map: map
+    grid: causegrid
+    causelist: causelist
     filterBus: filterBus
 
-  #render nav and container
-  BFI.causenav.render()
-  BFI.mapContainer.render()
+  $('#mapcontainer').html mapcontainer.render().$el
+  $('#causenav').html causenav.render().$el
+  map.createMap(map.$el)

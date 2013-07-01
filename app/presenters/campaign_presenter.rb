@@ -1,5 +1,5 @@
 class CampaignPresenter
-  def base
+  def self.base
     [
       :id,
       :cause_id,
@@ -17,7 +17,7 @@ class CampaignPresenter
     ]
   end
 
-  def default
+  def self.default
     base
   end
 end

@@ -1,5 +1,7 @@
 GiveInspireLove::Application.routes.draw do
 
+  match "/specs/javascripts", :to => "test_runner#index"
+
   match "/profiles/edit" => "profiles#edit"
   match "/profiles/follow_cause/:id" => "profiles#follow_cause"
 

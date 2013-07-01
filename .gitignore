@@ -15,7 +15,6 @@ public/system
 /log/*.log
 /tmp
 *.log
-*.sql
 *.sqlite
 /config/database.yml
 *.swo
@@ -33,4 +32,3 @@ ehthumbs.db
 Thumbs.db
 coverage
 nbproject
-config/database.yml

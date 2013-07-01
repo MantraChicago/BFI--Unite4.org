@@ -8,15 +8,15 @@ Application.Model = Backbone.Model.extend
   initialize: (@attributes={}, @options={})->
     _.extend(@, @options)
 
-    Backbone.Model::initialize.apply(@, arguments)
+    Backbone.Model.prototype.initialize.call(@, @attribtues, @options)
 
-    throw "Unite Models must specify a singular name property"
+    throw "Unite Models must specify a singular name property" unless @name
 
 
 # We want to intercept the call to Application.Model.extend and do a few
 # meta-programming tasks to automatically create methods for has many
 # and belongs to relationship
-Application.Model.extend = _(Application.Model.extend).wrap (original, payload={})->
+Application.Model._extend = (payload)->
 
   # Coerce string into array.
   for property in ["hasMany","belongsTo"]

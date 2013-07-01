@@ -4,22 +4,16 @@ Application.Collection = Backbone.QueryCollection.extend
   url: ()->
     "/api/v1/#{ @name }"
 
-  initialize: (initialModels=[], @options={})->
+  initialize: (initialModels, @options={})->
     _.extend(@, @options)
-
-    debugger
-
-    Backbone.QueryCollection.prototype.initialize.apply(@, arguments)
 
     throw "Application.Collection classes must specify a name property" unless @name
 
-    @populateWithSeedData()
+    initialModels = @seedData()
+    Backbone.QueryCollection.prototype.initialize.call(@, initialModels, @options)
 
-  # If data exists in the in memory Application.data object
-  # matching the name of this collection, we should silently
-  # load the collection with that data upon initialization
-  populateWithSeedData: ()->
-   seedData = Application.data[@name]
+  loadFromPage: ()->
+    @reset(@seedData())
 
-   if seedData?.length > 0
-     @reset(seedData, silent: true)
+  seedData: ()->
+    Application.data[@name] || []

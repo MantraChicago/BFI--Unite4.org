@@ -7,7 +7,6 @@ BFI.MapView = Backbone.View.extend
     @map.setView([41.85, -87.70], 13)
 
   render: () ->
-    @createMap()
     return @
 
   #create the map data w/ initial settings
@@ -26,6 +25,7 @@ BFI.MapView = Backbone.View.extend
 
   #create our map object and attach it to node id='map'
   createMap: (domNode) ->
+    console.log domNode
     @map = new L.map('map')
       .setView([41.87, -87.65], 13)
       .addLayer(@createMapData())

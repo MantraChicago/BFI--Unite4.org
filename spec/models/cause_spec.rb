@@ -19,7 +19,6 @@ describe Cause do
 
   let(:cause_type) { CauseType.first }
   let(:other_cause_type) { CauseType.last }
-
   let(:cause) { Cause.first || create(:cause)}
 
 
@@ -35,19 +34,17 @@ describe Cause do
     cause.needs.first.should be_a(SocialNeed)
   end
 
-  describe "Querying Causes" do
-    it "should allow me to filter by city" do
-      Cause.query(near:'Chicago').count.should == 1
-    end
+  it "should allow me to filter by city" do
+    Cause.query(near:'Chicago').count.should == 1
+  end
 
-    it "should allow me to filter by cause type" do
-      Cause.query(cause_type_id: cause_type.id).count.should == 2
-    end
+  it "should allow me to filter by cause type" do
+    Cause.query(cause_type_id: cause_type.id).count.should == 2
+  end
 
-    it "should allow me to filter by cause type and city" do
-      Cause.query(near:"New York",cause_type_id: other_cause_type.id).count.should == 0
-      Cause.query(near:"San Francisco",cause_type_id: other_cause_type.id).count.should == 1
-    end
+  it "should allow me to filter by cause type and city" do
+    Cause.query(near:"New York",cause_type_id: other_cause_type.id).count.should == 0
+    Cause.query(near:"San Francisco",cause_type_id: other_cause_type.id).count.should == 1
   end
 
 end

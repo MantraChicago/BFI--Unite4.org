@@ -1,3 +1,2 @@
-div.cause
-  img src="/assets/#{this.picture_file_name}"
-  div #{this.name} 
+img src="/assets/#{this.picture_file_name}"
+div #{this.name} 

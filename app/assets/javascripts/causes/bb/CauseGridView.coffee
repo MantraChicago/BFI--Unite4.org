@@ -13,7 +13,7 @@ BFI.CauseGridView = Backbone.View.extend
       return causeItem = new BFI.CauseGridItemView
         model: cause.toJSON()
         container: @container
-      #@$el.append causeItem.render().$el
+      @$el.append causeItem.render().$el
     ), @)
     
     return @
