@@ -4,5 +4,5 @@ div class="needs_holder"
    -needs.each do |need|
     div class="need_holder"
      div class="need_title" #{need.name}
-     a class="need_button" href="#{url_for(need)}" MORE INFO
+     =link_to 'MORE INFO', need, :class=>'btn btn-medium blue'
       
