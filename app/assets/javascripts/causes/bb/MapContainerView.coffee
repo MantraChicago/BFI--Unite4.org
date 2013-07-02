@@ -1,9 +1,11 @@
-#MAKE SURE RENDER RETURNS THIS
-#The container view responds to events that change
-#which child views are rendered at any given time
-#MapView and List
-#or
-#GridView
+###
+MAKE SURE RENDER RETURNS THIS
+The container view responds to events that change
+which child views are rendered at any given time
+MapView and List
+or
+GridView
+###
 
 BFI.MapContainerView = Backbone.View.extend
 
@@ -21,30 +23,21 @@ BFI.MapContainerView = Backbone.View.extend
     @causelist.container = @
     @map.container = @
     @grid.container = @
-
     #configure the default state which determines child views
-    # (default is grid) alternative is "map"
+    #(default is grid) alternative is "map"
     @activeState = "map"
 
-    #configure our response to events on the filterBus
-    @configureFilterBus()
+    @collection.on "filtered", @render, @
 
   #broadcast up to the container from clicks on the list
   changeActive: (model) ->
     @map.focusMap model.lat, model.long
     
-  #wire up responses to events on the filter bus
-  #for this object, we will respond by triggering a change
-  #in our data by filtering the local store with the values
-  #in the recieved event object
-  #TODO: wire up the bus to filter the collection
-  configureFilterBus: ->
-    @filterBus.onValue @applyFilter
-
   render: ->
     switch @activeState
       when "map" then @renderMap()
       when "grid" then @renderGrid()
+      else throw new Error 'active State is invalid!'
 
   #called by render when map is active
   renderMap: ->
