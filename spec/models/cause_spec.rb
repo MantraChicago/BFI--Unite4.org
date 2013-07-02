@@ -31,7 +31,7 @@ describe Cause do
   end
 
   it "should have a default social need" do
-    cause.needs.first.should be_a(SocialNeed)
+    cause.needs.first.should be_social
   end
 
   it "should allow me to filter by city" do
@@ -49,7 +49,6 @@ describe Cause do
 
 end
 
-
 # == Schema Information
 #
 # Table name: causes
@@ -66,7 +65,7 @@ end
 #  website              :string(255)
 #  cause_type_id        :integer
 #  city                 :string(255)
-#  state                :string(255)
+#  region               :string(255)
 #  video_link           :string(255)
 #  picture_file_name    :string(255)
 #  picture_content_type :string(255)
@@ -78,5 +77,15 @@ end
 #  city_id              :integer
 #  active               :boolean
 #  display_name         :string(255)
+#  address_line_one     :string(255)
+#  address_line_two     :string(255)
+#  postal_code          :string(255)
+#  country              :string(255)
+#  locations_count      :integer          default(0)
+#  needs_count          :integer          default(0)
+#  donations_count      :integer          default(0)
+#  volunteers_count     :integer          default(0)
+#  followers_count      :integer          default(0)
+#  slug                 :string(255)
 #
 

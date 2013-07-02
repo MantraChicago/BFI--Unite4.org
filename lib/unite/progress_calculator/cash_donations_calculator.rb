@@ -1,6 +1,6 @@
 module Unite
   class ProgressCalculator
-    class CashDonationCalculator
+    class CashDonationsCalculator
       def self.calculate_for(campaign)
       end
     end

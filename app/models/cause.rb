@@ -60,7 +60,7 @@ class Cause < ActiveRecord::Base
   # every cause by default has a social need ( for followers )
   def create_default_need
     if needs.count == 0
-      SocialNeed.create(cause_id: self.id)
+      needs.create(type_of_need:"followers")
     else
       needs.first
     end
@@ -156,7 +156,7 @@ end
 #  website              :string(255)
 #  cause_type_id        :integer
 #  city                 :string(255)
-#  state                :string(255)
+#  region               :string(255)
 #  video_link           :string(255)
 #  picture_file_name    :string(255)
 #  picture_content_type :string(255)
@@ -168,5 +168,15 @@ end
 #  city_id              :integer
 #  active               :boolean
 #  display_name         :string(255)
+#  address_line_one     :string(255)
+#  address_line_two     :string(255)
+#  postal_code          :string(255)
+#  country              :string(255)
+#  locations_count      :integer          default(0)
+#  needs_count          :integer          default(0)
+#  donations_count      :integer          default(0)
+#  volunteers_count     :integer          default(0)
+#  followers_count      :integer          default(0)
+#  slug                 :string(255)
 #
 

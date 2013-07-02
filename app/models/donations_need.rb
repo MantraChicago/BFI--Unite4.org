@@ -10,7 +10,7 @@ end
 #
 #  id                   :integer          not null, primary key
 #  name                 :string(255)
-#  type                 :string(255)
+#  type_of_need         :string(255)
 #  cause_id             :integer
 #  description          :text
 #  start_date           :datetime
