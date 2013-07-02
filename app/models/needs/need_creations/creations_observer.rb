@@ -1,6 +1,6 @@
 class CreationsObserver < ActiveRecord::Observer
-	observe :donation,:volunteer,:follow
-
+	observe :donation,:volunteer
+	
 	def after_create(record)
 		amount_to_add= record.amount_added_to_campaign_goal ||=1
 		self.increase_campaign record.id, amount_to_add

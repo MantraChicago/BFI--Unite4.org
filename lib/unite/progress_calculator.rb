@@ -1,0 +1,3 @@
+module Unite
+	class NeedsProgressCalculator
+	

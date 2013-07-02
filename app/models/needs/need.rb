@@ -7,6 +7,8 @@ class Need < ActiveRecord::Base
 
   can_be_queried_by :cause_id
   can_be_queried_by :type
+
+  
 end
 
 # == Schema Information
