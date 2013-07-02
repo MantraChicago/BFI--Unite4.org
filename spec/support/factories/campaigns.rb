@@ -5,6 +5,9 @@ FactoryGirl.define do
     association(:cause)
     association(:need)
 
+    desired_state "100"
+    current_state "0"
+
     trait :social do
       association(:need,:social)
     end
