@@ -15,6 +15,7 @@ class Campaign < ActiveRecord::Base
 
   def percent_complete
     ret_val=(current_state.to_f/desired_state.to_f)*100
+
     if ret_val>100
       ret_val=100
     end
