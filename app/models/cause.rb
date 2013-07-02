@@ -8,7 +8,7 @@ class Cause < ActiveRecord::Base
 
   # THESE API are WIP
   can_be_queried_by :cause_type_id, :type => :reference, :resource => "CauseType"
-  can_be_queried_by :city, :type => :string, :allowed => ['Chicago','New York','San Fancisco']
+  can_be_queried_by :near, :type => :string, :allowed => ['Chicago','New York','San Fancisco']
 
   attr_accessor :skip_default_location
   attr_accessible :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
@@ -35,7 +35,7 @@ class Cause < ActiveRecord::Base
       locations.create location_attributes.merge(name:"Main Office")
     end
   end
-  
+
   def location_attributes
     loc = {}
 
