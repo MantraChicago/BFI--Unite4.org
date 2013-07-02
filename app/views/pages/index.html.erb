@@ -7,8 +7,13 @@
 
     </div>
     <div style="background-image: url(assets/h1.jpg);"class="header-slide transition">
-	<div class="row">
-	    <div class="header-slogan"></div>
+	<div class="slogan">
+	    <div class="header-slogan">
+		    <span>Support</span>
+		    <a class="button purple">GET STARTED</a>
+		    <span>Local Causes</span>
+		    
+	    </div>
 	</div>
     </div>
     <div style="background-image: url(assets/h2.jpg);"class="header-slide transition"></div>
@@ -16,8 +21,8 @@
     <div class="cboth"></div>
 
 </div>
-<div id="sub-header" class="mlimit">
-    <div class="row">
+<div id="sub-header" class="mlimit sub-header">
+    <div class="row final">
 	<div class="large-4 columns mlimit">
 	    <img class="left mlimit-right" src="assets/left_pointer.png" height="40px"/>
 	    <h3 class="oxygen no-margin">Find quality causes in your area that you can support</h3>
@@ -35,7 +40,10 @@
     </div>
 </div>
 
-<div id="causes" class="mlimit">
+<div id="causes" class="mlimit causes">
+		<div class="row">
+			<h3 class="areatitle">Featured Causes in <span>San Francisco</span></h3>
+		</div>
     <div class="row">
 
 	<% @campaigns.each do |campaign| %>
@@ -43,21 +51,40 @@
 	<% end %>
 
     </div>
+    <div class="row final">
+    	<div class="large-4 columns push-8">
+    		<a href="#" class="purplelink">View all causes in San Francisco</a>
+    	</div>
+    </div>
 </div>
 
 <div class="row blimit">
-    <div class="large-12 columns">
-	<div class="gray_border map_title_holder"><h2 class="inline">Find quality causes in your area</h2> 
-		<%= link_to 'SEE CAUSES NEAR YOU', '/causes', :class=>'btn blue right btn-medium' %>
-		</div>
-	<div id="mapHolder" class="gray_border"></div>
-    </div>
-    <div class="large-12 columns text-right purple-text slimit-top">View all causes in your area</div>
+    <div class="large-9 columns">
+			<div class="gray_border map_title_holder"><h2 class="inline">Find quality causes in your area</h2> 
+				<%= link_to 'SEE CAUSES NEAR YOU', '/causes', :class=>'btn blue right btn-medium' %>
+				</div>
+			<div id="mapHolder" class="gray_border"></div>
+		 </div>
+		 <div class="large-3 columns yourcause">
+		 	<h3>Tell us about your cause </h3>
+		 	<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+		 	<a class="purple button">Submit your cause</a>
+		 </div>
+    
     <div class="cboth"></div>
 </div>
 
 <div class="row blimit text-center" id="companies">
-    
+    <div class="large-2 columns wired">
+    </div>
+    <div class="large-2 columns tc">
+    </div>
+    <div class="large-3 columns techcrunch">
+    </div>
+    <div class="large-2 columns forbes">
+    </div>
+    <div class="large-3 columns sf7x7">
+    </div>
 </div>
 
 

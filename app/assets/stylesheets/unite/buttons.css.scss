@@ -2,6 +2,7 @@
 @import "unite/mixins";
 
 a.btn {
+  white-space: nowrap;
   display: inline-block;
   padding: 9px 7px;
   color: $veryAlmostWhite;
@@ -19,8 +20,9 @@ a.btn {
     @include darkBorder($lightBlue);
   }
   &.btn-medium{
-      padding: 10px 20px 10px 20px;
+      padding: 8px 20px;
       display:inline;
+      font-size: 0.8em;
   }
   &.btn-small{
     padding: 5px ;

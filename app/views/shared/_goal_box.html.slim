@@ -3,7 +3,7 @@ div class="goal_box"
   div class="goal_title" GOAL
   div class="goal_subtitle" #{goal[:title]}
  div class="goal_progress_holder"
-  div class="goal_progress" data-percent="#{goal[:percent]}" style="width:10%"
+  div class="goal_progress" data-percent="#{goal[:percent]}" style="width:#{goal[:percent]}%"
  div class="goal_stats"
   -goal[:stats].each do |stat|
    div class="goal_stat"
