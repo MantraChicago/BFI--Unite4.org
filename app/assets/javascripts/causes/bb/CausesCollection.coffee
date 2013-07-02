@@ -18,6 +18,8 @@ BFI.CausesCollection = Backbone.Collection.extend
     @currentFilters = filter
     @fetch()
 
+  #fetch a subset of models from our cache and assign the
+  #result to models.  fire "filtered" event
   fetch: ->
     @models = @cache.query
       city: @currentFilters.city

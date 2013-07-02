@@ -5,19 +5,17 @@ BFI.CauseListView = Backbone.View.extend
     _.extend(@, options)
     Backbone.View.prototype.initialize.apply @, arguments
     
+  #TODO: this could be done more efficiently with less writes directly
+  #into the DOM!  Use a staging view
   render: ->
-    #create a "staging" jquery element to avoid 
-    #repeated dom re-renders
-    $prep = $('<div></div>')
-  
+    #clear the current HTML
+    @$el.html ""
+
     @collection.each( ((cause) ->
       causeItem = new BFI.CauseItemView
         model: cause.toJSON()
         className: "cause"
         container: @container
-      $prep.append causeItem.render().$el
+      @$el.append causeItem.render().$el
     ), @)
-
-    #load the prepared jquery tree into the dom
-    @$el.html $prep
     return @

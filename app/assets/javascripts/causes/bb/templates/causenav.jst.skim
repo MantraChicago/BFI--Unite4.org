@@ -6,3 +6,7 @@ div id="causenav"
   select id="causeselect"
     - for cause in this.causes
       option = cause
+
+  .displaychoice id="showmap" href="#" Map
+  .displaychoice id="showgrid" href="#" Grid
+  

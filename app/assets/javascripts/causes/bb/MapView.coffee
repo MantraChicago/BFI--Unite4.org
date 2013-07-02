@@ -3,8 +3,7 @@ BFI.MapView = Backbone.View.extend
   markers: []
 
   focusMap: (lat, long) ->
-    #TODO: THIS IS HARDCODED UNTIL LAT/LONG AVAILABLE ON CAUSE
-    @map.setView([41.85, -87.70], 13)
+    @map.setView([lat, long], 14)
 
   render: () ->
     return @
@@ -24,10 +23,18 @@ BFI.MapView = Backbone.View.extend
     )
 
   #create our map object and attach it to node id='map'
-  createMap: (domNode) ->
-    @map = new L.map('map')
-      .setView([41.87, -87.65], 13)
-      .addLayer(@createMapData())
+  createMap: ->
+    if not @map
+      @map = new L.map('map')
+        .setView([41.87, -87.65], 13)
+        .addLayer(@createMapData())
+
+  #if map is in the dom, place Markers
+  render: ->
+    if @map
+      @removeMarkers()
+      @placeMarkers()
+    return @
 
   #create a marker given lat/long/name
   createMarker: (lat, long, name) ->
@@ -40,19 +47,24 @@ BFI.MapView = Backbone.View.extend
       }
     )
 
-  #observer that re-creates markers whenever causes change
-  placeMarkers: (causes) ->
-    #wipe out old markers
+  #remove all markers from the map
+  removeMarkers: ->
     for marker in @markers
       @map.removeLayer marker
-
-    ##flush the markers
     @markers = []
 
-    #create new markers
-    for cause in causes
-      marker = @createMarker(cause.lat, cause.long, cause.name)
-      @map.addLayer marker
+  #observer that re-creates markers whenever causes change
+  placeMarkers: ->
+    for cause in @collection.models
+      for location in cause.attributes.locations_details
+        if location.lat and location.lng
+          marker = @createMarker(
+            location.lat,
+            location.lng,
+            cause.attributes.name
+          )
+          @map.addLayer marker
+
+          #add new marker to array for tracking/removal
+          @markers.push marker
       
-      #add new marker to array for tracking/removal
-      @markers.push marker

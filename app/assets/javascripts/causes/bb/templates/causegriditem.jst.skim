@@ -12,11 +12,11 @@
     .goal_progress style="#{}"
 
   .goal_stats
-    .goal_stat goal_upper #{percentGoal()}
+    .goal_stat goal_upper #{}
     .goal_stat goal_lower Goal Met 
 
-    .goal_stat goal_upper #{followers}
+    .goal_stat goal_upper #{}
     .goal_stat goal_lower Followers 
 
-    .goal_stat goal_upper #{daysToGo()}
+    .goal_stat goal_upper #{}
     .goal_stat goal_lower Days To Go

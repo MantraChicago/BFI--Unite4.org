@@ -5,15 +5,14 @@ BFI.CauseGridView = Backbone.View.extend
     _.extend(@, options)
     Backbone.View.prototype.initialize.apply @, arguments
 
-    #set our list of causes syncronously from local cache
-    @collection = new Backbone.Collection Application.data.causes
-
   render: () ->
-    listHTML = @collection.map( ((cause) ->
-      return causeItem = new BFI.CauseGridItemView
+    @$el.html ""
+
+    @collection.each( ((cause) ->
+      causeItem = new BFI.CauseGridItemView
         model: cause.toJSON()
+        className: "causegriditem"
         container: @container
       @$el.append causeItem.render().$el
     ), @)
-    
     return @
