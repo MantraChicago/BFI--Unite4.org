@@ -1,3 +1,4 @@
+@import "foundation"
 @import "unite/colors"
 @import "unite/mixins"
 
@@ -26,12 +27,13 @@
       color: $white
 
 #mapcontainer
-  height: 654px
   background-color: $white
+  position: relative
 
   .container
-    height: 600px
     position: relative
+    min-height: 600px
+
     #map
       position: absolute
       left: 250px
@@ -45,7 +47,10 @@
       left: 0px
       list-style-type: none
       background-color: $white
+      height: 600px
       width: 250px
+      overflow-y: auto
+      overflow-x: hidden
       .cause
         position: relative
         height: 60px

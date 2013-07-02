@@ -43,7 +43,8 @@ Application.causes.index = ()->
     collection: collection
 
   grid = new BFI.CauseGridView
-    className: "causegrid"
+    tagName: 'ul'
+    className: "causegrid large-block-grid-4"
     collection: collection
 
   #create map container view and pass in children

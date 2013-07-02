@@ -25,14 +25,13 @@ BFI.MapContainerView = Backbone.View.extend
     @grid.container = @
     #configure the default state which determines child views
     #(default is grid) alternative is "map"
-    @activeState = "map"
+    @activeState = "grid"
 
     #event listener to change the activeState
     @displayBus.onValue @, "changeState"
   
-    #call render on filtered and statechanged events
+    #call render on filtered events on the collection
     @collection.on "filtered", @render, @
-    @on "statechanged", @render, @
 
   #TODO: does not currently point to actul model data correctly
   #when our active model changes, perform these actions
@@ -42,10 +41,8 @@ BFI.MapContainerView = Backbone.View.extend
 
   changeState: (state) ->
     @activeState = state
-    @trigger "statechanged"
+    @render()
     
-  #TODO: could probably be cleaner...two switches is ugly but
-  #we need the domnodes to be rendered in order to attach the map
   render: ->
     #empty the container's current content
     @$el.empty()
@@ -61,7 +58,8 @@ BFI.MapContainerView = Backbone.View.extend
     
     #if we are showing the map, we must draw it after the domnode
     #is inserted into the dom...unfortunate
-    if @activeState is "map" then @map.createMap()
+    if @activeState is "map" then @map.afterRender()
+      
     return @
 
   #called by render when map is active

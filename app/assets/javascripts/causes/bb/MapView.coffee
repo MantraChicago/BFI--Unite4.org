@@ -5,9 +5,6 @@ BFI.MapView = Backbone.View.extend
   focusMap: (lat, long) ->
     @map.setView([lat, long], 14)
 
-  render: () ->
-    return @
-
   #create the map data w/ initial settings
   createMapData: () ->
     new L.tileLayer(
@@ -29,22 +26,33 @@ BFI.MapView = Backbone.View.extend
         .setView([41.87, -87.65], 13)
         .addLayer(@createMapData())
 
-  #if map is in the dom, place Markers
-  render: ->
-    if @map
-      @removeMarkers()
-      @placeMarkers()
-    return @
+  #called by parent container after elements are in DOM
+  afterRender: ->
+    @createMap()
+    @removeMarkers()
+    @placeMarkers()
 
   #create a marker given lat/long/name
-  createMarker: (lat, long, name) ->
-    new L.Marker(
+  createMarker: (lat, long, cause) ->
+    marker = new L.Marker(
       [lat, long],
       {
-        title: name
+        title: cause.attributes.name
         zIndexOffset: 5
         riseOnHover: true
       }
+    )
+    marker.cause = cause
+
+    #define an onclick behavior here
+    #a cause attribute is injected onto each marker and
+    #is accessible in markers.target.cause within the event
+    #handler
+    marker.on('click', (marker) ->
+      alert """#{marker.target.cause.attributes.name}\n
+               this is a fake placeholder for a modal popup \n
+               You can create a real implementation of this modal
+               By looking in the createMarker method of MapView."""
     )
 
   #remove all markers from the map
@@ -61,10 +69,9 @@ BFI.MapView = Backbone.View.extend
           marker = @createMarker(
             location.lat,
             location.lng,
-            cause.attributes.name
+            cause,
           )
           @map.addLayer marker
 
           #add new marker to array for tracking/removal
           @markers.push marker
-      

@@ -34,12 +34,13 @@
   }
 
   .goal_progress_holder{
+    padding: 0px;
     height: 15px;
     background-color:#c2c2c2;
     .goal_progress{
       display:inline-block;
       background-color:#00af43;
-      height:100%;
+      height:80%;
     }
   }
 
