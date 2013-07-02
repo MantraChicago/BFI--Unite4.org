@@ -4,15 +4,17 @@
   margin: 10px;
   width:210px;
   display:inline-block;
-  background-color: #fafafa;
+  background-color: #fcfcfc;
   .cause_header{
     margin:10px;
     height: 175px;
   }
 
   .featured_need_cause{
-    margin-left:10px;
-    padding-bottom:20px;
+    padding-left:10px;
+    padding-bottom:10px;
+    border-bottom: solid 1px #dfdfdf;
+    margin-bottom: 10px;
     a{
       font-weight:bold;
       color:black;
@@ -36,6 +38,8 @@
   .goal_progress_holder{
     height: 15px;
     background-color:#c2c2c2;
+    width: 90%;
+    margin: auto;
     .goal_progress{
       display:inline-block;
       background-color:#00af43;

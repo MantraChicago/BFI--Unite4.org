@@ -34,7 +34,7 @@
 
 #topbar {
   height: 52px;
-  line-height: 52px;
+  line-height: 50px;
   background: url(/assets/topbar-bg.jpg) repeat-x center;
   box-shadow: 0 0 5px #000;
   position: relative;
@@ -46,13 +46,14 @@
 }
 
 #top-logo {
-  margin-right: 20px;
+  padding-right: 20px;
+  border-right:1px solid #d0d0d0;
 }
 
 #topbar nav li.top-nav-item {
-  padding: 0 40px 0 40px;
-  font-size: 90%;
-  color: #333;
+  padding: 0 40px;
+  color: #888;
+  font-size: 0.8em;
 }
 
 #topbar nav ul {
@@ -128,6 +129,17 @@
     background-size: contain;
     width:601px;
     height: 163px;
+    
+    span {
+	    font-size: 6em; 
+	    height: 80px;
+	    font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	    color: #fff;
+	    float: left;
+	    margin: 5px 15px 5px 45px;
+	    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+	    text-transform: uppercase;
+    }
 }
 
 .map-infobox {
@@ -160,7 +172,7 @@
 
 #sub-header {
     padding:40px;
-    padding-bottom: 20px;
+    padding-bottom: 0;
 
 }
 
@@ -261,10 +273,12 @@
 
 .top-bordered{
   margin-bottom:1px;
-  border-left:2px solid #e3e3e3;
+  border-left:1px solid #f0f0f0;
+  border-right:1px solid #d0d0d0;
 }
 .top-bordered-last{
-  border-right:2px solid #e3e3e3;
+  border-right:1px solid #f0f0f0;
+  border-right:1px solid #d0d0d0;
 }
 
 .submit-cause{
