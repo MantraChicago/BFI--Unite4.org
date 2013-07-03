@@ -16,6 +16,5 @@
 
 .wide_side_container.right.gray_border
 	.profile_title #{@user.display_name.upcase}'S CAUSES
-	- @user.usercauses.each do |usercause|
-		-if usercause.cause
-			=render 'causes/partials/featured_cause', :cause => usercause.cause, :stats =>[]
+	- @user.causes.each do |cause|
+		=render 'causes/partials/featured_cause', :cause => cause, :stats =>[]

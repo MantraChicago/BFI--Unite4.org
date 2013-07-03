@@ -40,10 +40,7 @@ class ProfilesController < ApplicationController
 
 			message = "You are already following "+cause.display_name
 			unless user.causes.include? cause
-				social_need=cause.needs.find_by_type 'SocialNeed'
-				if social_need
-					CreationsObserver.increase_campaign(social_need.id,1)
-				end
+				
 				user.causes << cause
 				user.save
 				message = "You are now following "+cause.display_name
