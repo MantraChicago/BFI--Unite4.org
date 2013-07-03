@@ -24,15 +24,19 @@ class Cause < ActiveRecord::Base
   has_many :campaigns, :dependent => :delete_all
 
   has_many :followers, :dependent => :delete_all
+
   has_many :cash_donations
   has_many :goods_donations
   has_many :volunteers
 
-  has_many :users, :through => :followers
 
   validates :name, :uniqueness => true
 
   after_create :create_default_records
+
+  def following_users
+    User.where(id: followers.map(&:user_id))
+  end
 
   def create_default_location
     if locations.count == 0 and !skip_default_location

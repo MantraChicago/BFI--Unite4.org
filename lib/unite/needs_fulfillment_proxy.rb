@@ -6,20 +6,24 @@ module Unite
   class NeedsFulfillmentProxy
     attr_accessor :need, :user, :params
 
-    def initialize(need, user,params={})
+    def initialize(user, need,params={})
       @need     = need
       @user     = user
       @params   = params
     end
 
     def fulfill!
-      meth = "fulfill_#{ need.type_of_need }_need"
+      meth = "fulfill_#{ }_need"
       send(meth) if respond_to?(meth)
     end
 
     protected
+      def type_of_need
+        params[:type] || params[:type_of_need] || (need && need.type_of_need)
+      end
+
       def cause
-        @cause ||= need.cause
+        @cause ||= need.present? ? need.cause : Cause.find(params[:cause_id])
       end
 
       def fulfill_cash_donations_need
