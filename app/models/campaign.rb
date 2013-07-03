@@ -14,7 +14,7 @@ class Campaign < ActiveRecord::Base
   before_save :set_defaults
 
   def percent_complete
-    (current_state.to_f/desired_state.to_f)*100
+    20
   end
 
   def set_defaults
