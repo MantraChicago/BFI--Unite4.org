@@ -3,15 +3,18 @@ require "spec_helper"
 describe Unite::NeedsFulfillmentProxy do
   describe "fulfilling various types of needs" do
     let(:user) { create(:user) }
-    let(:cause) { create(:cause) }
+    let(:cause) { create(:cause, skip_default_location: true) }
 
     let(:proxy) { Unite::NeedsFulfillmentProxy }
 
     it "should create a follower for a social need" do
       need = create(:need, :social, cause: cause)
       proxy.new(need, user).fulfill!
+      follower = Follower.last
 
-      Follower.last.need.should == need
+      follower.user.should == user
+      follower.need.should == need
+      follower.cause.should == cause
     end
 
     it "should creater a donation for a cash need" do

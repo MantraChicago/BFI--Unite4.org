@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702201748) do
+ActiveRecord::Schema.define(:version => 20130703050024) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -78,6 +78,20 @@ ActiveRecord::Schema.define(:version => 20130702201748) do
   add_index "campaigns", ["id"], :name => "index_campaigns_on_id", :unique => true
   add_index "campaigns", ["need_id"], :name => "index_campaigns_on_need_id"
 
+  create_table "cash_donations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "need_id"
+    t.integer  "cause_id"
+    t.integer  "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "cash_donations", ["cause_id"], :name => "index_cash_donations_on_cause_id"
+  add_index "cash_donations", ["id"], :name => "index_cash_donations_on_id", :unique => true
+  add_index "cash_donations", ["need_id"], :name => "index_cash_donations_on_need_id"
+  add_index "cash_donations", ["user_id"], :name => "index_cash_donations_on_user_id"
+
   create_table "cause_applications", :force => true do |t|
     t.string "name"
     t.string "org_name"
@@ -99,8 +113,8 @@ ActiveRecord::Schema.define(:version => 20130702201748) do
   end
 
   create_table "causes", :force => true do |t|
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "name"
     t.text     "description"
     t.text     "mission_statement"
@@ -116,7 +130,7 @@ ActiveRecord::Schema.define(:version => 20130702201748) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.boolean  "is_featured",          :default => false
+    t.boolean  "is_featured",           :default => false
     t.string   "twitter_handle"
     t.string   "facebook_url"
     t.integer  "city_id"
@@ -126,12 +140,14 @@ ActiveRecord::Schema.define(:version => 20130702201748) do
     t.string   "address_line_two"
     t.string   "postal_code"
     t.string   "country"
-    t.integer  "locations_count",      :default => 0
-    t.integer  "needs_count",          :default => 0
-    t.integer  "donations_count",      :default => 0
-    t.integer  "volunteers_count",     :default => 0
-    t.integer  "followers_count",      :default => 0
+    t.integer  "locations_count",       :default => 0
+    t.integer  "needs_count",           :default => 0
+    t.integer  "donations_count",       :default => 0
+    t.integer  "volunteers_count",      :default => 0
+    t.integer  "followers_count",       :default => 0
     t.string   "slug"
+    t.integer  "cash_donations_count",  :default => 0
+    t.integer  "goods_donations_count", :default => 0
   end
 
   add_index "causes", ["slug"], :name => "index_causes_on_slug", :unique => true
@@ -165,6 +181,19 @@ ActiveRecord::Schema.define(:version => 20130702201748) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "followers", :force => true do |t|
+    t.integer  "cause_id"
+    t.integer  "user_id"
+    t.integer  "need_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "followers", ["cause_id"], :name => "index_followers_on_cause_id"
+  add_index "followers", ["id"], :name => "index_followers_on_id", :unique => true
+  add_index "followers", ["need_id"], :name => "index_followers_on_need_id"
+  add_index "followers", ["user_id"], :name => "index_followers_on_user_id"
+
   create_table "games", :force => true do |t|
     t.integer  "level"
     t.datetime "created_at",                          :null => false
@@ -172,6 +201,22 @@ ActiveRecord::Schema.define(:version => 20130702201748) do
     t.integer  "user_id"
     t.boolean  "show_instructions", :default => true
   end
+
+  create_table "goods_donations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "need_id"
+    t.integer  "cause_id"
+    t.string   "description"
+    t.integer  "quantity"
+    t.integer  "cash_value"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "goods_donations", ["cause_id"], :name => "index_goods_donations_on_cause_id"
+  add_index "goods_donations", ["id"], :name => "index_goods_donations_on_id", :unique => true
+  add_index "goods_donations", ["need_id"], :name => "index_goods_donations_on_need_id"
+  add_index "goods_donations", ["user_id"], :name => "index_goods_donations_on_user_id"
 
   create_table "locations", :force => true do |t|
     t.datetime "created_at",       :null => false
@@ -267,6 +312,10 @@ ActiveRecord::Schema.define(:version => 20130702201748) do
     t.integer  "game_id"
     t.text     "fb_token"
     t.string   "role"
+    t.integer  "followers_count",        :default => 0
+    t.integer  "cash_donations_count",   :default => 0
+    t.integer  "goods_donations_count",  :default => 0
+    t.integer  "volunteers_count",       :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -278,13 +327,20 @@ ActiveRecord::Schema.define(:version => 20130702201748) do
   end
 
   create_table "volunteers", :force => true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "phone_number"
-    t.integer  "volunteer_need_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.string   "email"
+    t.integer  "cause_id"
+    t.integer  "user_id"
+    t.integer  "need_id"
+    t.integer  "location_id"
+    t.string   "description"
+    t.boolean  "user_showed_up", :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
+
+  add_index "volunteers", ["cause_id"], :name => "index_volunteers_on_cause_id"
+  add_index "volunteers", ["id"], :name => "index_volunteers_on_id", :unique => true
+  add_index "volunteers", ["location_id"], :name => "index_volunteers_on_location_id"
+  add_index "volunteers", ["need_id"], :name => "index_volunteers_on_need_id"
+  add_index "volunteers", ["user_id"], :name => "index_volunteers_on_user_id"
 
 end
