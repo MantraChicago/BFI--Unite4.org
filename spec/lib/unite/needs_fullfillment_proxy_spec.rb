@@ -39,7 +39,7 @@ describe Unite::NeedsFulfillmentProxy do
 
     it "should create a volunteer for a volunteers need" do
       need = create(:need, :volunteers, cause: cause)
-      proxy.new(need, user, location: cause.locations.first)
+      proxy.new(need, user, location: cause.locations.first).fulfill!
       volunteer = Volunteer.last
       volunteer.need.should == need
       volunteer.user.should == user

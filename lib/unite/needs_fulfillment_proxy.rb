@@ -13,8 +13,30 @@ module Unite
     end
 
     def fulfill!
-
+      meth = "fulfill_#{ need.type_of_need }_need"
+      send(meth) if respond_to?(meth)
     end
+
+    protected
+      def cause
+        @cause ||= need.cause
+      end
+
+      def fulfill_cash_donations_need
+        cause.cash_donations.create(need_id: need.try(:id), user_id: user.try(:id), amount: params[:amount])
+      end
+
+      def fulfill_volunteers_need
+        cause.volunteers.create(need_id: need.try(:id), user_id: user.try(:id))
+      end
+
+      def fulfill_goods_donations_need
+        cause.goods_donations.create(need_id: need.try(:id), user_id: user.try(:id),description: params[:description])
+      end
+
+      def fulfill_followers_need
+        cause.followers.create(need_id: need.try(:id), user_id: user.try(:id))
+      end
 
   end
 end
