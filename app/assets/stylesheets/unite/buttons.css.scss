@@ -23,11 +23,21 @@ a.btn {
       padding: 8px 20px;
       display:inline;
       font-size: 0.8em;
+      transition: background-color 300ms ease-out;
+
   }
   &.btn-small{
     padding: 5px ;
     display:inline;
     font-size: 0.8em;
+  }
+  &.btn-large{
+    padding: 10px 20px;
+		text-transform: uppercase;
+		font-size: 1em;
+		display: block;
+		transition: background-color 300ms ease-out;
+
   }
 
   &:hover{
@@ -38,6 +48,21 @@ a.btn {
 
 
 
+}
+
+.purple { 
+	background: #990055;
+	color: #fff;
+	border: 0;
+}
+ .purplelink { 
+	 color: #990055;
+ }
+
+.yourcause {	
+	p { 
+		padding-bottom: 40px;
+	}
 }
 
 
