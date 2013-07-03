@@ -1,15 +1,16 @@
 -if need
-	.featured_need
-	 .cause_header style="background-image: url(#{need.cause.picture.url(:medium)});"
-	 .featured_need_cause
-	 	a href="#{url_for(need.cause)}" #{need.cause.display_name}
-	 .featured_need_title
-	  .need_title_upper GOAL
-	  a.need_title_lower href="#{url_for(need)}" #{need.name}
-	 .goal_progress_holder
-	  .goal_progress style='width: #{percent ||=0 }%'
-	 .goal_stats
-	  -stats.each do |stat|
-	   .goal_stat
-	    .goal_upper #{stat[:upper]}
-	    .goal_lower #{stat[:lower]}
+	.large-3.columns
+		.featured_need.xspadding
+		 .cause_header style="background-image: url(#{need.cause.picture.url(:medium)});"
+		 .featured_need_cause
+		 	a href="#{url_for(need.cause)}" #{need.cause.display_name} 
+		 .featured_need_title
+		  .need_title_upper GOAL
+		  a.need_title_lower.slimit.slimit-top href="#{url_for(need)}" #{need.name}
+		 .goal_progress_holder
+		  .goal_progress style='width: #{percent ||=0 }%'
+		 .goal_stats
+		  -stats.each do |stat|
+		   .goal_stat
+		    .goal_upper #{stat[:upper]}
+		    .goal_lower #{stat[:lower]}

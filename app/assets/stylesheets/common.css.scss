@@ -35,22 +35,22 @@
     margin-top: 0 !important;
 }
 .slimit {
-    margin-bottom: 1em !important;
+    margin-bottom: 10px !important;
 }
 .mlimit{
-    margin-bottom: 2em !important;
+    margin-bottom: 20px !important;
 }
 .blimit{
-    margin-bottom: 4em !important;
+    margin-bottom: 40px !important;
 }
 .slimit-top {
-    margin-top: 1em !important;
+    margin-top: 10px !important;
 }
 .mlimit-top{
-    margin-top: 2em !important;
+    margin-top: 20px !important;
 }
 .blimit-top{
-    margin-top: 4em !important;
+    margin-top: 40px !important;
 }
 
 
@@ -72,7 +72,14 @@
     padding: 0 !important;
 }
 
-.m-padding {
+.xspadding {
+  padding: 5px;
+}
+.spadding {
+  padding: 10px;
+}
+
+.m-padding, .mpadding {
     padding:20px;
 }
 
