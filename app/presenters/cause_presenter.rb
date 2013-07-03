@@ -3,6 +3,7 @@ class CausePresenter
     [
       :id,
       :name,
+      :cause_type_id,
       :twitter_handle,
       :city,
       :state,

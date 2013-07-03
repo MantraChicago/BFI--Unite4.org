@@ -1,16 +1,22 @@
 BFI.CauseNavView = Backbone.View.extend
   
   #list of possible causes/cities for filters
-  causes: [ 'Arts', 'Education',
-            'Environment', 'Health & Wellness'
-            'Youth', 'Religion',
-            'Global Outreach', 'Social Equality']
+  causes: [ 'Arts',
+            'Education',
+            'Environment',
+            'Health & Wellness'
+            'Youth',
+            'Religion',
+            'Global Outreach',
+            'Social Equality']
 
   cities: ['Chicago', 'New York', 'San Francisco']
   
   events:
     "change #cityselect": "pushToFilterBus"
     "change #causeselect": "pushToFilterBus"
+    "click #showgrid": "showGrid"
+    "click #showmap": "showMap"
     
   initialize: (options) ->
     #view setup boilerplate
@@ -24,6 +30,12 @@ BFI.CauseNavView = Backbone.View.extend
       city: @$('#cityselect').val()
       cause: @$('#causeselect').val()
 
+  showGrid: (event) ->
+    @displayBus.push "grid"
+
+  showMap: (event) ->
+    @displayBus.push "map"
+       
   render: ->
     @$el.html(JST['causes/bb/templates/causenav'](@))
     #push our initial filtration setup to the filterBus

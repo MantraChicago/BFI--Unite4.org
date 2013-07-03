@@ -1,23 +1,8 @@
 class Volunteer < ActiveRecord::Base
-   attr_accessible :email,:first_name, :last_name, :volunteer_need_id, :phone_number
-   has_one :volunteer_need
+  attr_accessible :need_id, :location_id, :cause_id, :user_id
 
-   validates :first_name, :last_name, :presence => true
-
-    
+  belongs_to :need
+  belongs_to :location
+  belongs_to :cause, :counter_cache => true
+  belongs_to :user, :counter_cache => true
 end
-
-# == Schema Information
-#
-# Table name: volunteers
-#
-#  id                :integer          not null, primary key
-#  first_name        :string(255)
-#  last_name         :string(255)
-#  phone_number      :string(255)
-#  volunteer_need_id :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  email             :string(255)
-#
-

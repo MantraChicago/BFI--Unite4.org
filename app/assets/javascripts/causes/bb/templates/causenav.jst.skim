@@ -1,8 +1,10 @@
-div id="causenav"
-  select id="cityselect"
-    - for city in this.cities
-      option = city 
+select id="cityselect"
+  - for city in this.cities
+    option = city 
 
-  select id="causeselect"
-    - for cause in this.causes
-      option = cause
+select id="causeselect"
+  - for cause in this.causes
+    option = cause
+
+.displaychoice id="showmap" href="#" Map
+.displaychoice id="showgrid" href="#" Grid

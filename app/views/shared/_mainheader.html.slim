@@ -13,10 +13,9 @@
 					div CAUSES<span class="down_arrow">&#x25BC;</span>
 						
 					
-				li.top-nav-item.right-nav
-					span.submit-cause
-						= link_to "ADD YOUR CAUSE", new_cause_application_path
-					span.manage-users
+				li.right-nav
+					= link_to "ADD YOUR CAUSE", new_cause_application_path, :class=>'btn pink btn-medium'
+					.manage-users
 						= render "profiles/partials/user_upper_bar"
 
 		#mobile-menu

@@ -2,4 +2,4 @@ div
 	-if current_user && current_user.causes.include?(cause) 
 		|You are already following this cause
 	-else
-		= link_to "FOLLOW THIS CAUSE", "/profiles/follow_cause/#{cause.id}"
+		= link_to "FOLLOW THIS CAUSE", "/profiles/follow_cause/#{cause.id}", :class => 'btn btn-medium blue'

@@ -2,9 +2,13 @@ class Cause < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
+
   # THESE API are WIP
   can_be_queried_by :cause_type_id, :type => :reference, :resource => "CauseType"
-  can_be_queried_by :city, :type => :string, :allowed => ['Chicago','New York','San Fancisco']
+  can_be_queried_by :near, :type => :string, :allowed => ['Chicago','New York','San Fancisco']
 
   attr_accessor :skip_default_location
   attr_accessible :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
@@ -19,8 +23,12 @@ class Cause < ActiveRecord::Base
   has_many :locations, :dependent => :delete_all
   has_many :campaigns, :dependent => :delete_all
 
-  has_many :usercauses
-  has_many :users, :through => :usercauses
+  has_many :followers, :dependent => :delete_all
+  has_many :cash_donations
+  has_many :goods_donations
+  has_many :volunteers
+
+  has_many :users, :through => :followers
 
   validates :name, :uniqueness => true
 
@@ -55,7 +63,11 @@ class Cause < ActiveRecord::Base
 
   # every cause by default has a social need ( for followers )
   def create_default_need
-    SocialNeed.create(cause_id: self.id) if needs.count == 0
+    if needs.count == 0
+      needs.create(type_of_need:"followers")
+    else
+      needs.first
+    end
   end
 
   # TEMP
@@ -67,11 +79,13 @@ class Cause < ActiveRecord::Base
   # TEMP
   # Until the presenter nesting works better in smooth
   def campaign_details
-    active_campaign || active_campaign.present_as(:cause_profile)
+    active_campaign && active_campaign.present_as(:cause_profile)
   end
 
   def create_default_campaign need=nil
     campaigns.create(need_id: need.id, active: true, start_date: Time.now, end_date: 30.days.from_now)  if campaigns.count == 0
+    campaigns.update_all(active:true)
+    self
   end
 
   def active_campaign
@@ -146,7 +160,7 @@ end
 #  website              :string(255)
 #  cause_type_id        :integer
 #  city                 :string(255)
-#  state                :string(255)
+#  region               :string(255)
 #  video_link           :string(255)
 #  picture_file_name    :string(255)
 #  picture_content_type :string(255)
@@ -158,5 +172,15 @@ end
 #  city_id              :integer
 #  active               :boolean
 #  display_name         :string(255)
+#  address_line_one     :string(255)
+#  address_line_two     :string(255)
+#  postal_code          :string(255)
+#  country              :string(255)
+#  locations_count      :integer          default(0)
+#  needs_count          :integer          default(0)
+#  donations_count      :integer          default(0)
+#  volunteers_count     :integer          default(0)
+#  followers_count      :integer          default(0)
+#  slug                 :string(255)
 #
 

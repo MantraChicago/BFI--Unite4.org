@@ -2,7 +2,7 @@ require 'rvm/capistrano'
 
 # $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
-server '198.199.65.75', :app, :web, :db, :primary => true
+server '192.34.61.72', :app, :web, :db, :primary => true
 set :user, 'deploy'
 set :deploy_to, '/home/deploy/rails_apps/bfi'
 set :use_sudo, false

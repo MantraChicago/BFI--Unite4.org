@@ -1,0 +1,22 @@
+.featured_need
+  header.cause_header
+  .cause_title
+    .need_title_upper
+      GOAL
+    .need_title_lower
+     
+  .featured_need_cause
+    a href="#" #{this.name}
+
+  .goal_progress_holder
+    .goal_progress style="width: #{Math.round(Math.random() * 100)}px;"
+
+  .goal_stats
+    .goal_stat goal_upper #{Math.floor(Math.random() * 100)}%
+    .goal_stat goal_lower Goal Met 
+
+    .goal_stat goal_upper #{Math.floor(Math.random() * 900)}
+    .goal_stat goal_lower Followers 
+
+    .goal_stat goal_upper #{Math.floor(Math.random() * 100)}
+    .goal_stat goal_lower Days To Go

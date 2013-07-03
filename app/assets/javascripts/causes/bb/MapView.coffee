@@ -3,12 +3,7 @@ BFI.MapView = Backbone.View.extend
   markers: []
 
   focusMap: (lat, long) ->
-    #TODO: THIS IS HARDCODED UNTIL LAT/LONG AVAILABLE ON CAUSE
-    @map.setView([41.85, -87.70], 13)
-
-  render: () ->
-    @createMap()
-    return @
+    @map.setView([lat, long], 14)
 
   #create the map data w/ initial settings
   createMapData: () ->
@@ -25,35 +20,58 @@ BFI.MapView = Backbone.View.extend
     )
 
   #create our map object and attach it to node id='map'
-  createMap: (domNode) ->
-    @map = new L.map('map')
-      .setView([41.87, -87.65], 13)
-      .addLayer(@createMapData())
+  createMap: ->
+    if not @map
+      @map = new L.map('map')
+        .setView([41.87, -87.65], 13)
+        .addLayer(@createMapData())
+
+  #called by parent container after elements are in DOM
+  afterRender: ->
+    @createMap()
+    @removeMarkers()
+    @placeMarkers()
 
   #create a marker given lat/long/name
-  createMarker: (lat, long, name) ->
-    new L.Marker(
+  createMarker: (lat, long, cause) ->
+    marker = new L.Marker(
       [lat, long],
       {
-        title: name
+        title: cause.attributes.name
         zIndexOffset: 5
         riseOnHover: true
       }
     )
+    marker.cause = cause
 
-  #observer that re-creates markers whenever causes change
-  placeMarkers: (causes) ->
-    #wipe out old markers
+    #define an onclick behavior here
+    #a cause attribute is injected onto each marker and
+    #is accessible in markers.target.cause within the event
+    #handler
+    marker.on('click', (marker) ->
+      alert """#{marker.target.cause.attributes.name}\n
+               this is a fake placeholder for a modal popup \n
+               You can create a real implementation of this modal
+               By looking in the createMarker method of MapView."""
+    )
+
+  #remove all markers from the map
+  removeMarkers: ->
     for marker in @markers
       @map.removeLayer marker
-
-    ##flush the markers
     @markers = []
 
-    #create new markers
-    for cause in causes
-      marker = @createMarker(cause.lat, cause.long, cause.name)
-      @map.addLayer marker
-      
-      #add new marker to array for tracking/removal
-      @markers.push marker
+  #observer that re-creates markers whenever causes change
+  placeMarkers: ->
+    for cause in @collection.models
+      for location in cause.attributes.locations_details
+        if location.lat and location.lng
+          marker = @createMarker(
+            location.lat,
+            location.lng,
+            cause,
+          )
+          @map.addLayer marker
+
+          #add new marker to array for tracking/removal
+          @markers.push marker

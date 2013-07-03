@@ -8,10 +8,10 @@ BFI.CauseItemView = Backbone.View.extend
   events:
     "click": "makeActive"
 
-  #alert the container that active model has changed
+  #active model has changed, call changeActive on container
   makeActive: ->
-    @container.changeActive @model
+    @container.changeActive @model.locations_details[0]
 
-  render: () ->
+  render: ->
     @$el.html(JST['causes/bb/templates/causeitem'](@model))
     return @

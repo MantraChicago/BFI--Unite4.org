@@ -1,40 +1,9 @@
 /*
- *= require normalize
- *= require maps
- *= require leaflet
+ *= require ./lib/normalize
  *= require ./common
+ *= require ./lib/foundation
  *= require_tree ./unite
  *= require_tree ./controllers
+ *= require lib/leaflet
 */
-
-body {
-  min-width: 420px;
-  background-color: #fff;
-  color: #494949;
-  font-family: 'Oxygen', sans-serif;
-  font-size: 15px;
-  line-height: 18px;
-  margin: 0;
-}
-a {
-    color: #009dd1;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-a.nocolor {
-    color: inherit !important;
-}
-b,strong,h2,h1,.strong {
-  font-weight:700;
-}
-h2,.h2{
-  font-size: 17.25pt;
-}
-h3,.h3 {
-  font-size: 14.85pt;
-  line-height: 1.3em;
-}
-
 

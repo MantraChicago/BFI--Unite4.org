@@ -1,0 +1,75 @@
+@import "unite/colors"
+@import "unite/mixins"
+
+#causenav
+  height: 50px
+  padding-top: 5px
+  
+  .displaychoice
+    display: inline-block
+    height: 30px
+    width: 80px
+    background-color: $mutedGray
+    color: $white
+    border-radius: 4px
+    text-align: center
+    
+  select
+    display: inline-block
+    height: 30px
+    width: 120px
+    background-color: $darkPurple 
+    color: $white
+    border-radius: 4px
+    option
+      background-color: $mutedGray
+      color: $white
+
+#mapcontainer
+  background-color: $white
+  position: relative
+
+  .container
+    position: relative
+    min-height: 600px
+
+    #map
+      position: absolute
+      left: 250px
+      width: 800px
+      height: 600px
+
+    .causelist
+      margin: 0
+      position: absolute 
+      top: 0px
+      left: 0px
+      list-style-type: none
+      background-color: $white
+      height: 600px
+      width: 250px
+      overflow-y: auto
+      overflow-x: hidden
+      .cause
+        position: relative
+        height: 60px
+        margin: 1px 0px
+        background-color: $white
+        border-top: 1px solid $mutedGray
+        border-right: 1px solid $mutedGray
+        border-bottom: 1px solid $mutedGray
+        border-radius: 4px
+        img
+          position: absolute
+          border-radius: 4px
+          left: 0px 
+          width: 55px 
+          height: 55px 
+          margin: 1px
+        div 
+          position: absolute
+          left: 60px
+          padding: 20px 5px 20px 5px
+          width: 80%
+          font-size: 1.2em
+          font-family: "Lura", sans-serif

@@ -1,14 +1,16 @@
--if user_signed_in? and current_user
-	=image_tag current_user.avatar.url(:thumb), :size =>"30x30"
-	a.popover_tigger
-		| #{current_user.display_name}
-		ul.profile_drop_down
+-if user_signed_in? and current_user	
+	.profile_drop_down
+		=image_tag current_user.avatar.url(:thumb), :size =>"40x40"
+		a.popover_tigger
+			| #{current_user.display_name}
+		span.down_arrow &#x25BC;
+		ul.hide
 			li 
 				=link_to 'Profile', profiles_path
 			li
 				=link_to 'Settings', profiles_edit_path 
 			li
-				=link_to 'Logout', destroy_user_session_path, :method=>'delete' 
+				=link_to 'Log Out', destroy_user_session_path, :method=>'delete' 
 -else
     = link_to('SIGN UP', new_user_registration_path) +' | '+link_to('LOGIN', new_user_session_path)
 

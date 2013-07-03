@@ -16,18 +16,20 @@ module GiveInspireLove
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/presenters)
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W(#{config.root}/app/presenters)
+
+    model_directories = Dir.glob("#{ config.root }/app/models/**/**/*")
+    model_directories.select! { |entry| File.directory?(entry) }
+
+    config.autoload_paths += model_directories
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
-    #ember
-    config.handlebars.templates_root = "templates/handlebars"
 
     config.active_record.include_root_in_json = false
-    # Activate observers that should always be running.
-    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -62,8 +64,5 @@ module GiveInspireLove
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')] # for models inside folders
-
   end
 end

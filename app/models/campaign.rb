@@ -13,6 +13,10 @@ class Campaign < ActiveRecord::Base
 
   before_save :set_defaults
 
+  def percent_complete
+    20
+  end
+
   def set_defaults
     self.start_date = Time.now
     self.end_date = 30.days.from_now
