@@ -120,7 +120,7 @@
 
 .header-label {
     position: relative;
-    width: 250px;
+    width: 350px;
     border-bottom: 1px solid #4a4a4a;
 }
 .header-label .arrow-left {
@@ -288,7 +288,8 @@
 
 
 .top-bordered{
-  margin-bottom:1px;
+  height:52px;
+  vertical-align:top;
   border-left:1px solid #f0f0f0;
   border-right:1px solid #d0d0d0;
 }
