@@ -1,0 +1,62 @@
+@import "unite/colors";
+@import "unite/buttons";
+
+
+.row.final {
+	border-bottom: solid 1px #dfdfdf;
+	margin-bottom: 40px;
+
+}
+
+#causes .row.final {
+		padding: 30px 0 40px;
+}
+
+h3.oxygen {
+  font-weight: 300;
+  font-size: 1.25em;
+}
+
+
+h3.areatitle {
+	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 1.4em;
+	span {
+		color: #990055;
+	}
+}
+
+
+.purplelink { 
+	 color: #990055;
+ }
+
+.yourcause {
+	p { 
+		padding-bottom: 40px;
+	}
+}
+
+
+#companies .tc { 
+	background: url('/assets/logo-tc.jpg') no-repeat center center; 
+	height: 61px;
+}
+#companies .wired { 
+	background: url('/assets/logo-wired.jpg') no-repeat center center; 
+	height: 61px;
+}
+#companies .forbes { 
+	background: url('/assets/logo-forbes.jpg') no-repeat center center; 
+	height: 61px;
+}
+#companies .techcrunch { 
+	background: url('/assets/logo-techcrunch.jpg') no-repeat center center; 
+	height: 61px;
+}
+#companies .sf7x7 { 
+	background: url('/assets/logo-7x7sf.jpg') no-repeat center center; 
+	height: 61px;
+}
+
+

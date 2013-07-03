@@ -57,6 +57,11 @@
   font-size: 0.8em;
 }
 
+#topbar nav li.top-nav-item:hover{
+  color: #fff;
+
+}
+
 #topbar nav ul {
     padding-left: 20px;
 }
@@ -96,6 +101,7 @@
 
 #header h3 {
 	color: #fff;
+	font-size: 1.3em;
 }
 
 .header-slide.active {
@@ -136,7 +142,7 @@
     height: 163px;
     
     span {
-	    font-size: 6em; 
+	    font-size: 5.5em; 
 	    height: 80px;
 	    font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	    color: #fff;
@@ -146,8 +152,8 @@
 	    text-transform: uppercase;
     }
     
-    .button.purple {
-	    margin: -15px 0 0 5px;
+    .btn.purple {
+	    margin: 30px 0 0 5px;
 	    line-height: 100%;
     }
 }
