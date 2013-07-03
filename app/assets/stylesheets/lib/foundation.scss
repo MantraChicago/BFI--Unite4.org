@@ -1,0 +1,46 @@
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// This includes all of the foundation global elements that are needed to work with any of the other files.
+@import "lib/foundation/variables";
+
+// Foundation Components
+@import
+  "lib/foundation/components/global",
+  "lib/foundation/components/grid",
+  "lib/foundation/components/visibility",
+  "lib/foundation/components/block-grid",
+  "lib/foundation/components/type",
+  "lib/foundation/components/buttons",
+  "lib/foundation/components/forms",
+  "lib/foundation/components/custom-forms",
+  "lib/foundation/components/button-groups",
+  "lib/foundation/components/dropdown-buttons",
+  "lib/foundation/components/split-buttons",
+  "lib/foundation/components/flex-video",
+  "lib/foundation/components/section",
+  "lib/foundation/components/top-bar",
+  "lib/foundation/components/orbit",
+  "lib/foundation/components/reveal",
+  "lib/foundation/components/joyride",
+  "lib/foundation/components/clearing",
+  "lib/foundation/components/alert-boxes",
+  "lib/foundation/components/breadcrumbs",
+  "lib/foundation/components/keystrokes",
+  "lib/foundation/components/labels",
+  "lib/foundation/components/inline-lists",
+  "lib/foundation/components/pagination",
+  "lib/foundation/components/panels",
+  "lib/foundation/components/pricing-tables",
+  "lib/foundation/components/progress-bars",
+  "lib/foundation/components/side-nav",
+  "lib/foundation/components/sub-nav",
+  "lib/foundation/components/switch",
+  "lib/foundation/components/magellan",
+  "lib/foundation/components/tables",
+  "lib/foundation/components/thumbs",
+  "lib/foundation/components/tooltips",
+  "lib/foundation/components/dropdown";
+
+
+
