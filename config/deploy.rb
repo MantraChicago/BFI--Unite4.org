@@ -20,7 +20,7 @@ after "deploy:update_code", "bundle:install"
 namespace :bundle do
   desc 'bundle install'
   task :install do
-    run "cd #{current_release} && bundle install"
+    run "cd #{current_release} && bundle install RAILS_ENV=#{stage}"
   end
 end
 
