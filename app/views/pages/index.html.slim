@@ -1,21 +1,34 @@
 #header
-  .right.header-nav
-    - @featured_causes.each do |cause|
-      = render 'featured_cause', :cause => cause
   .header-slide.transition style="background-image: url(assets/h1.jpg);"
-    .slogan
-      .header-slogan
-        span 
-          Support
-        a.btn.btn-large.purple 
-          GET STARTED
-        span 
-          Local Causes
-  .header-slide.transition style="background-image: url(assets/h2.jpg);"
+    .row.white.blimit.bigslogan
+      .large-8.columns.left
+        h1.oxygen.white.text-shadow
+          | Do good where you live
+        h3.oxygen.white.text-shadow
+          | By solving global issues at local level - where it matters the most
+        hr
+        .row
+          .large-2.columns
+            | Take action
+          .large-4.columns.small-6
+            h3 What can you give?
+            select
+              option
+              option
+              option
+          .large-4.columns.small-6
+            h3 What are you passionate about?
+            select
+              option
+              option
+              option                          
+          .large-2.columns
+            button Search
+
   .header-slide.transition style="background-image: url(assets/h1.jpg);"
   .cboth
-#sub-header.mlimit.sub-header
-  .row.final
+#sub-header.mlimit.sub-header.bordered
+  .row.mlimit
     .large-4.columns.mlimit
       img.left.mlimit-right height="40px" src="assets/left_pointer.png"
       h3.oxygen.no-margin Find quality causes in your area that you can support
@@ -24,11 +37,10 @@
       h3.oxygen.no-margin Sign up and make small steps TODAY to make a difference
     .large-4.columns.mlimit
       img.left.mlimit-right height="40px" src="assets/right_circle.png"
-      h3.oxygen.no-margin
-        Earn badges for your support and get recognized
+      h3.oxygen.no-margin Earn badges for your support and get recognized
 #causes.mlimit.causes
   .row
-    .large-12.columns    
+    .large-12.columns
       h3.areatitle
         | Some text 
           span
@@ -37,22 +49,24 @@
     - @campaigns.each do |campaign|
       = render 'shared/featured_need', :need => campaign.need, :stats=> [{:upper=> 'donate', :lower=>'$20'}], :percent=>campaign.percent_complete
   .row.final
-    .large-4.columns.push-8
-      a href="#".purplelink View all causes in San Francisco
+    .large-4.columns.push-8.text-right
+      a.purplelink href="#" View all causes in San Francisco
 .row.blimit
   .large-9.columns
-    .gray_border.map_title_holder
-      h2.inline Find quality causes in your area
-      = link_to 'SEE CAUSES NEAR YOU', '/causes', :class=>'btn blue right btn-medium'
+    div.row
+      .large-8.columns.small-8
+        h3.bold.oxygen Find quality causes in your area
+      .large-4.columns.small-4.text-right
+        = link_to 'SEE CAUSES NEAR YOU', '/causes', :class=>'btn blue btn-medium block'
     #mapHolder.gray_border
-  .large-3.columns.yourcause
+  .large-3.columns
     h3 Tell us about your cause
-    p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    = link_to 'Submit your causes', '/causes', :class=>'btn pink btn-large'
+    p.oxygen Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    = link_to 'Submit your causes', '/causes', :class=>'btn pink btn-large oxygen h2 bold right'
   .cboth
 #companies.row.blimit.text-center
-  .large-2.columns.wired
-  .large-2.columns.tc
-  .large-3.columns.techcrunch
-  .large-2.columns.forbes
-  .large-3.columns.sf7x7
+  .large-2.columns.small-4.bg-size-medium.wired
+  .large-2.columns.small-4.bg-size-medium.tc
+  .large-3.columns.small-4.bg-size-medium.techcrunch
+  .large-2.columns.small-4.bg-size-medium.forbes
+  .large-3.columns.small-4.bg-size-medium.sf7x7.left

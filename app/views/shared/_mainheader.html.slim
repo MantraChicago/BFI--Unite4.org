@@ -7,14 +7,14 @@
 						img src=image_path('logo-unite4good.png')
 
 				li.top-nav-item.top-bordered#cities_nav
-					div CITIES<span class="down_arrow">&#x25BC;</span>
+					div.oxygen.bold CITIES<span class="down_arrow">&#x25BC;</span>
 
 				li.top-nav-item.top-bordered.top-bordered-last#causes_nav
-					div CAUSES<span class="down_arrow">&#x25BC;</span>
+					div.oxygen.bold CAUSES<span class="down_arrow">&#x25BC;</span>
 						
 					
 				li.right-nav
-					= link_to "ADD YOUR CAUSE", new_cause_application_path, :class=>'btn pink btn-medium'
+					= link_to "ADD YOUR CAUSE", new_cause_application_path, :class=>'btn pink btn-medium bold'
 					.manage-users
 						= render "profiles/partials/user_upper_bar"
 

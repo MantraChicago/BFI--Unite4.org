@@ -3,7 +3,7 @@
 
 body {
   min-width: 420px;
-  background-color: #fff;
+  background-color: #f3f3f3;
   color: #494949;
   font-family: 'Oxygen', sans-serif;
   font-size: 15px;
@@ -30,10 +30,25 @@ h3,.h3 {
   font-size: 14.85pt;
   line-height: 1.3em;
 }
+h4,.h4, h4 *, .h4 * {
+  font-size: 12pt !important;
+  line-height: 1.1em;
+}
+h5,.h5 {
+  font-size: 9pt !important;
 
+}
 
+.block {
+  display: block;  
+}
 
-
+.bg-cover {
+  background-position: cover;
+}
+.bg-size-medium {
+  background-size: 70% !important;
+}
 
 .m-padding {
     padding: 40px;
@@ -126,7 +141,7 @@ h3,.h3 {
 }
 
 .bold {
-    font-weight: 700;
+    font-weight: 700 !important;
 }
 .large-mlimit-left {
     padding-left: 35px !important;
@@ -202,12 +217,22 @@ h3,.h3 {
   padding: 9px 7px;
   color: white;
 }
+.white {
+  color: #fff !important;
+}
+
+.text-shadow {
+  text-shadow: 0 0 5px rgba(0,0,0,0.3);
+
+}
 
 .button * {
     margin: 0;
 }
 
-
+.oxygen {
+  font-family: 'Oxygen', sans-serif !important;
+}
 
 .label {
     padding: 20px;
