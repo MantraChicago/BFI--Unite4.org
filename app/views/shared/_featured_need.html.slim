@@ -6,12 +6,14 @@
 		 	h4.oxygen.bold.slimit-top
 		 		a href="#{url_for(need.cause)}" #{need.cause.display_name} 
 		 .featured_need_title
+		 hr.secondary
 		  h5.need_title_upper GOAL
+
 		  a.need_title_lower.slimit.slimit-top href="#{url_for(need)}" #{need.name}
-		 .goal_progress_holder
+		 .goal_progress_holder.slimit.slimit-top
 		  .goal_progress style='width: #{percent ||=0 }%'
-		 .goal_stats
+		 .goal_stats.row
 		  -stats.each do |stat|
-		   .goal_stat
-		    .goal_upper #{stat[:upper]}
+		   .goal_stat.large-3.small-3.columns		    
 		    .goal_lower #{stat[:lower]}
+		    h5.goal_upper #{stat[:upper]}

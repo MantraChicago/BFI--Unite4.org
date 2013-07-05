@@ -195,7 +195,9 @@ h5,.h5 {
 .blue-text{
     color: #009dd1;
 }
-
+.row {
+  max-width: 1200px !important;
+}
 
 .no-min-width {
     min-width: 0px !important;
@@ -224,6 +226,10 @@ h5,.h5 {
 .text-shadow {
   text-shadow: 0 0 5px rgba(0,0,0,0.3);
 
+}
+
+.rounded {
+  border-radius: 10px;
 }
 
 .button * {

@@ -2,28 +2,28 @@
   .header-slide.transition style="background-image: url(assets/h1.jpg);"
     .row.white.blimit.bigslogan
       .large-8.columns.left
-        h1.oxygen.white.text-shadow
+        h1.oxygen.white.text-shadow.no-margin
           | Do good where you live
         h3.oxygen.white.text-shadow
           | By solving global issues at local level - where it matters the most
-        hr
+        hr.tertiary
         .row
           .large-2.columns
-            | Take action
+            h3.blimit-top Take action
           .large-4.columns.small-6
-            h3 What can you give?
-            select
+            h3 What can you give lorem ips?
+            select.rounded
               option
               option
               option
           .large-4.columns.small-6
             h3 What are you passionate about?
-            select
+            select.rounded
               option
               option
               option                          
           .large-2.columns
-            button Search
+            button.rounded Search
 
   .header-slide.transition style="background-image: url(assets/h1.jpg);"
   .cboth
@@ -52,17 +52,20 @@
     .large-4.columns.push-8.text-right
       a.purplelink href="#" View all causes in San Francisco
 .row.blimit
-  .large-9.columns
+  .large-8.columns
     div.row
-      .large-8.columns.small-8
+      .large-8.columns
         h3.bold.oxygen Find quality causes in your area
-      .large-4.columns.small-4.text-right
-        = link_to 'SEE CAUSES NEAR YOU', '/causes', :class=>'btn blue btn-medium block'
+      .large-4.columns.text-right
+        div.btn.blue.btn-medium.text-center
+          = link_to 'SEE CAUSES NEAR YOU', '/causes'
     #mapHolder.gray_border
-  .large-3.columns
+  .large-4.columns
     h3 Tell us about your cause
-    p.oxygen Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-    = link_to 'Submit your causes', '/causes', :class=>'btn pink btn-large oxygen h2 bold right'
+    p.oxygen 
+      | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+    .h3
+      = link_to 'Submit your causes', '/causes', :class=>'btn pink btn-large oxygen h2 bold right'
   .cboth
 #companies.row.blimit.text-center
   .large-2.columns.small-4.bg-size-medium.wired

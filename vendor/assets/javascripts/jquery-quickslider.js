@@ -3,79 +3,140 @@
 (function($) {
     
     //this handles class changing with support of next/prev and nav buttons. All animation are supposed to be handled with css3, not js.
-    $.fn.quickSlider = function(options) {
-	var t = $(this).css('overflow','hidden');
-	var defaults = {
-	    slides: "quick-slider-single",
-	    next: "quick-slider-next",
-	    prev: "quick-slider-prev",
-	    nav: "quick-slider-nav",
-	    autoplay: 5000,
-	    hoverpause : true
-	};
-	options = $.extend({}, defaults, options);
+    	$.isOnScreen = function(elem,entire)
+	{
+		var entire = entire === undefined ? true : entire;
+		var docViewTop = $(window).scrollTop();
+		var docViewBottom = docViewTop + $(window).height();
+
+		var elemTop = $(elem).offset().top;
+		var elemBottom = elemTop + $(elem).height();
+		if (entire) {
+			return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+		} else {
+			return ( ( elemTop >= docViewTop || elemBottom >= docViewTop ) && ( elemTop <= docViewBottom || elemBottom <= docViewBottom ) )
+		}
+		
+	}
 	
-	var slides = $('.' + options.slides,t),
-	    prev = $('.' + options.prev,t),
-	    next = $('.' + options.next,t),
-	    nav = $('.' + options.nav,t),
-	    interval = 0;
 	
-	slides.removeClass('active').eq(0).addClass('active');
-	nav.removeClass('active').eq(0).addClass('active');
+	//this handles class changing with support of next/prev and nav buttons. All animation are supposed to be handled with css3, not js.
+	$.fn.quickSlider = function(options) {
 	
-	var slide = function(elem) {
-	    var index = slides.index(elem);
-	    $('.last.' + options.slides,t).removeClass('last');
-	    $('.active.' + options.slides,t).addClass('last').removeClass('active');	    
+		var defaults = {
+			slides: "quick-slider-single",			//class of single slides
+			next: "quick-slider-next",				//next btn class
+			prev: "quick-slider-prev",				//prev btn class
+			nav: "quick-slider-nav",				//navigation (circles for example) class
+			pauseButton: "quick-slider-pause",		//class of pause button (todo)
+			autoplay: 5000,							
+			hoverpause : true,						//pause sliding on hover
+			pauseInvisible : true,					//pause when slider is not visable on screen
+			callback : {				
+				slide : function(slide,slider) {}	//callback after each slide
+			},
+			cascade : {								//it will add initClass to each .className element inside active slide and then it will remove initClass from one element after another with .delay time between. It allows to some cascade aniamtion of content of each slide
+				enable : true,
+				className : "quick-slider-cascade",
+				delay : 100,
+				initDelay: 400,
+				initClass : "cascade-init"
+			}
+		};
+		options = $.extend({}, defaults, options);	
+	
+		return $(this).each(function(){
+	
+			var t = $(this).css('overflow','hidden');
+			var keyPressedFlag = false;						//used to ignore pause of slider when keyboard navigating
+			var slides = $('.' + options.slides,t),
+			prev = $('.' + options.prev,t),
+			next = $('.' + options.next,t),
+			nav = $('.' + options.nav,t),
+			interval = 0;
+	
+
+	
+			var slide = function(elem) {
+				if ( ( t.hasClass('paused') && !keyPressedFlag ) || ( options.pauseInvisible && !$.isOnScreen(t,false) ) ) {					
+					return;
+				}				
+				var index = slides.index(elem);
+				$('.last.' + options.slides,t).removeClass('last');
+				$('.active.' + options.slides,t).addClass('last').removeClass('active');	    
 	    
-	    $('.active.' + options.nav,t).removeClass('active')
-	    $('.' + options.nav,t).eq(index).addClass('active');	    
+				$('.active.' + options.nav,t).removeClass('active')
+				$('.' + options.nav,t).eq(index).addClass('active');	    
 	    	    
-	    elem.addClass('active');
+				elem.addClass('active');
+				
+				if ( options.cascade.enable ) {
+					
+					$("." + options.cascade.className, elem).addClass(options.cascade.initClass).each(function(i){
+						$(this).stop().delay(options.cascade.initDelay + i*options.cascade.delay).promise().done(function(){
+							$(this).removeClass(options.cascade.initClass);
+						})
+					})
+				}
 	    
-	    clearInterval(interval);
-	    autoPlay();	    
-	};
+				clearInterval(interval);
+				autoPlay();
+				
+				options.callback.slide(elem,t);
+			};
+
+			
+			
+			prev.click(function(){
+				slide($('.active.' + options.slides,t).prevOrLast('.' + options.slides));
+			});
+			next.click(function(){
+				slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));	    
+			});
+			nav.click(function(){
+				if ( $(this).hasClass('active') ) {
+					return;
+				}
+				var index = nav.index(this);
+				slide($('.' + options.slides,t).eq(index));
+			});
 	
-	prev.click(function(){
-	    slide($('.active.' + options.slides,t).prevOrLast('.' + options.slides));
-	});
-	next.click(function(){
-	    slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));	    
-	});
+			$(document).keydown(function(e){
+				if (e.keyCode == 37) {
+					keyPressedFlag = true;
+					slide($('.active.' + options.slides,t).prevOrLast('.' + options.slides));
+				}
+				if (e.keyCode == 39) { 
+					keyPressedFlag = true;
+					slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
+				}  
+				keyPressedFlag = false;
+			});
 	
-	nav.click(function(){
-	    var index = nav.index(this);
-	    slide($('.' + options.slides,t).eq(index));
-	});
-	
-	$(document).keydown(function(e){
-	    if (e.keyCode == 37) {
-		slide($('.active.' + options.slides,t).prevOrLast('.' + options.slides));
-	    }
-	    if (e.keyCode == 39) { 
-		slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
-	    }    
-	});
-	
-	var autoPlay = function() {
-	    interval = setInterval(function(){
-		slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
-	    },options.autoplay)
+			var autoPlay = function() {
+				interval = setInterval(function(){
+					slide($('.active.' + options.slides,t).nextOrFirst('.' + options.slides));
+				},options.autoplay)
+			}
+	    
+			if ( options.autoplay ) {
+				autoPlay();
+			}
+	    
+			if ( options.hoverpause ) {
+				slides.mouseenter(function(){		    
+					t.addClass('paused');
+				});
+				slides.mouseleave(function(){		    
+					t.removeClass('paused');
+				})
+			}
+			
+			slide(slides.removeClass('active').eq(0));
+			nav.removeClass('active').eq(0).addClass('active');
+			
+		});
 	}
-	if ( options.autoplay ) {
-	    autoPlay();
-	}
-	if ( options.hoverpause ) {
-	    slides.mouseenter(function(){
-		clearInterval(interval);
-	    });
-	    slides.mouseleave(function(){
-		autoPlay();
-	    })
-	}
-    }
     
     
     //custom functions

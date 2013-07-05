@@ -96,13 +96,28 @@
   font-size: 40pt;
 }
 
+#header * {
+  text-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+#header select {
+  height: 55px;
+  border: 2px solid #e2e2e2;
+  background: url(images/ui/select.gif) no-repeat right center;
+  background-color: #f1f1f1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: 0 0 5px rgba(0,0,0,0.8)
+}
+
+
 .header-slide {
   position: absolute;
   width: 100%;
   bottom: 0;
   top: 0;
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   opacity: 0;
   left: -20px;
   z-index: 10;
