@@ -58,14 +58,16 @@ class Application.App extends Backbone.Events
   #
   # Application.causes = ()->
   initializePage: ()->
-    setupHeader()
+    @setupGlobalElements()
     controllerSpecific = Application?[@controller]
     actionSpecific = Application[@controller]?[@action]
 
     controllerSpecific?.call?(window)
     actionSpecific?.call?(window)
 
-    
+  setupGlobalElements: ()->
+    # ADAM
+    # You can do your global initializers in here
 
   # Viewport Sizing Change Events
   #

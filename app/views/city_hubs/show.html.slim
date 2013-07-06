@@ -4,38 +4,15 @@ header
       .large-12.columns.text-center.blimit-top
         .h0.oxygen.bold.white#cityname == @city[:name]
       .large-12.columns.text-center.blimit
-        .tag-block 
-          .tag-block-detail Soccer
-          .tag-block-detail.tertiary 5
-        .tag-block 
-          .tag-block-detail Food Donation
-          .tag-block-detail.tertiary 4
-        .tag-block 
-          .tag-block-detail Soccer Coaching
-          .tag-block-detail.tertiary 5
-        .tag-block 
-          .tag-block-detail Food Donation
-          .tag-block-detail.tertiary 7
-        .tag-block 
-          .tag-block-detail Tutoring Math
-          .tag-block-detail.tertiary 1
-        .tag-block 
-          .tag-block-detail Volonteering
-          .tag-block-detail.tertiary 1
-        .tag-block 
-          .tag-block-detail Money needed
-          .tag-block-detail.tertiary 5
-        .tag-block 
-          .tag-block-detail Paiting walls
-          .tag-block-detail.tertiary 5
+        - cache( cache_key_for_cause_types_grouped_by_city(@city[:slug]) ) do 
+          - CauseType.grouped_by_city(@city[:slug]).each do |pair|
+            - key, value = pair
+            .tag-block 
+              .tag-block-detail 
+                == key
+              .tag-block-detail.tertiary
+                == value
 
-
-
-
-
-
-
-  //.header-slide.transition style="background-image: url(assets/h1.jpg);"
   .cboth
 #sub-header.blimit.sub-header.bordered
   .row.mlimit
