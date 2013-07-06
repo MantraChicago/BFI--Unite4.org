@@ -19,16 +19,14 @@ class Cause < ActiveRecord::Base
 
   has_and_belongs_to_many :cause_types, :join_table => 'causes_cause_types'
 
-  has_many :needs, :dependent => :delete_all
+  has_many :needs,     :dependent => :delete_all
   has_many :locations, :dependent => :delete_all
   has_many :campaigns, :dependent => :delete_all
-
   has_many :followers, :dependent => :delete_all
 
   has_many :cash_donations
   has_many :goods_donations
   has_many :volunteers
-
 
   validates :name, :uniqueness => true
 
@@ -54,8 +52,9 @@ class Cause < ActiveRecord::Base
                        :region => self.region || "IL",
                        :city => self.city || "Chicago"
 
-    loc[:city] = "Chicago" if self.city.length == 0
-    loc[:region] = "IL" if self.region.length == 0
+    # any
+    loc[:city]    = "Chicago" if self.city.length == 0
+    loc[:region]  = "IL" if self.region.length == 0
 
     loc
   end
@@ -116,6 +115,10 @@ class Cause < ActiveRecord::Base
     postal_code
   end
 
+  def self.featured count=4
+    cause_ids = FeaturedCause.cause_ids
+    where(id: cause_ids ).limit(4)
+  end
 
   def self.query(params={})
     results = scoped

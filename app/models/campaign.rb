@@ -13,6 +13,11 @@ class Campaign < ActiveRecord::Base
 
   before_save :set_defaults
 
+  def self.featured count=4
+    cause_ids = Cause.featured(count).select(&:id)
+    where(:cause_id => cause_ids).limit(count)
+  end
+
   def percent_complete
     20
   end
