@@ -5,7 +5,7 @@
         h1.oxygen.white.text-shadow.no-margin
           == @city[:name] 
 
-        - cache( cache_key_for_cause_types_by_city(@city[:slug]) ) do 
+        - cache( cache_key_for_cause_types_grouped_by_city(@city[:slug]) ) do 
           - CauseType.grouped_by_city(@city[:slug]).each do |pair|
             - key, value = pair
             .subfilter-selector data-city=@city[:slug] data-cause-type-slug=key data-causes-count=value
@@ -14,7 +14,6 @@
               .cause-type-count
                 == value
             
-
   .cboth
 
 #causes.mlimit.causes
@@ -25,6 +24,7 @@
         span
           == @city[:name] 
   .row
-    - cache(cache_key_for_featured_campaigns) do
-      - Cause.by_city_slug(@city[:slug]).each do |cause| 
-        = render 'shared/featured_need', :need => cause.active_campaign.need, :stats=> [{:upper=> 'donate', :lower=>'$20'}], :percent=>cause.active_campaign.percent_complete
+    - cache(cache_key_for_causes_by_city(@city[:slug])) do
+      - Cause.by_city_slug(@city[:slug]).each_cons(4) do |causes| 
+        - causes.each do |cause|
+          = render 'shared/featured_need', :need => cause.active_campaign.need, :stats=> [{:upper=> 'donate', :lower=>'$20'}], :percent=>cause.active_campaign.percent_complete
