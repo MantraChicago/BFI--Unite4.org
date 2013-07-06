@@ -211,6 +211,12 @@ h5,.h5 {
 .no-min-height {
     min-height: 0px !important;
 }
+.nowrap {
+  white-space: nowrap;  
+}
+.wrap {
+  white-space: normal;  
+}
 
 .button {
     text-align: center;
@@ -299,7 +305,7 @@ h5,.h5 {
 	border-right-color: rgba(0,0,0,0.9);
 }
 
-.bubble {
+.tag-block {
   border-radius: 3px;
   height: 45px;
   margin: 5px;
@@ -315,7 +321,7 @@ h5,.h5 {
   background-image:      -o-linear-gradient(top, #f0f0f0, #cdcdcd); /* Opera 11.10-12.00 */
   background-image:         linear-gradient(to bottom, #f0f0f0, #cdcdcd); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
 
-  .buble-part {
+  .tag-block-detail {
     display: inline-block;
     border-right: 1px solid #bdbdbd;
     padding: 0 20px 0 20px;
@@ -329,11 +335,17 @@ h5,.h5 {
   }
 }
 
+.circle {
+  border-radius: 1000px;
+}
 
 
 
 @media only screen and (max-width: 48em) {
 
+  ho,.h0 {
+    font-size: 40pt;
+  }
   .small-static {
     position: static !important;    
   }
