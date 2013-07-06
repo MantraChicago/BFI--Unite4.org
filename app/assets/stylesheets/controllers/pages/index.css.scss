@@ -66,15 +66,21 @@ h3.areatitle {
 
 
 
-#selectcity {
+#selectcity,#selectcause {
 	height: 490px;
 	opacity: 0;
 	width: 100%;
 	z-index: 100;
 	cursor: pointer;
 	.city {
-		height: 550px;
+		height: 490px;
 		text-align: center;
+	}
+	.cause {
+		height: 245px;
+		&:hover img {
+			zoom: 1.04;
+		}		
 	}
 	#chicago {
 		background-image: url(/assets/dropdown/ca.jpg);
@@ -94,6 +100,7 @@ h3.areatitle {
 			zoom: 1.04;
 		}
 	}
+
 
 	&.active {
 		opacity: 1;
