@@ -23,6 +23,9 @@ a.nocolor {
 b,strong,h2,h1,.strong {
   font-weight:700;
 }
+h0,.h0 {
+  font-size: 70pt;
+}
 h2,.h2{
   font-size: 17.25pt;
 }
@@ -269,6 +272,9 @@ h5,.h5 {
 .pos-rel {
     position: relative;
 }
+.pos-abs {
+  position: absolute !important;  
+}
 
 .transition {
   -webkit-transition: all 0.8s ease-out;  /* Chrome 1-25, Safari 3.2+ */
@@ -293,16 +299,47 @@ h5,.h5 {
 	border-right-color: rgba(0,0,0,0.9);
 }
 
+.bubble {
+  border-radius: 3px;
+  height: 45px;
+  line-height: 45px;
+  display: inline-block;
+  padding: 0 20px 0 20px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.9);
+  background-color: #f0f0f0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f0f0f0), to(#cdcdcd)); /* Chrome, Safari 4+ */
+  background-image: -webkit-linear-gradient(top, #f0f0f0, #cdcdcd); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
+  background-image:    -moz-linear-gradient(top, #f0f0f0, #cdcdcd); /* Firefox 3.6-15 */
+  background-image:      -o-linear-gradient(top, #f0f0f0, #cdcdcd); /* Opera 11.10-12.00 */
+  background-image:         linear-gradient(to bottom, #f0f0f0, #cdcdcd); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
 
 
 @media only screen and (max-width: 48em) {
+
+  .small-static {
+    position: static !important;    
+  }
+
+
     .small-inline-list li{
 	display: inline-block;
 	margin-right: 30px;
 	margin-bottom: 10px;
     }
 
+    .row {
+      max-width: 90% !important;
+    }
+    .row .row {
+      max-width: none !important;
+    }
+
 }
+
+
 
 .map_title_holder{
   background-color: $veryAlmostWhite;
@@ -318,7 +355,7 @@ h5,.h5 {
 
 #mapHolder{
   background-image: url('/assets/map_placeholder.jpg');
-  background-size:100%;
+  background-size:cover;
   background-repeat:no-repeat;
 }
 
