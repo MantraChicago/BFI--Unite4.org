@@ -124,20 +124,12 @@ class Cause < ActiveRecord::Base
     results = scoped
     results = results.includes(:locations, :needs, :campaigns)
 
-    join_ids = []
+    if params[:has_need]
+      results = results.joins(:needs)
+      results.where("needs.type_of_need = ?", params[:has_need])
+    end
 
-    # NOTE:
-    #
-    # For this iteration we will only support one cause type per cause.  I want to move over
-    # to acts_as_taggable for this because has and belongs to many relationships require way too many
-    # acrobatics to do querying naturally and cleanly
-    #
-    #
-    #    if params[:cause_type_id]
-    #      Array(params[:cause_type_id]).each do |cause_type_id|
-    #        join_ids += CauseType.cause_ids_for_cause_type(cause_type_id)
-    #      end
-    #    end
+    join_ids = []
 
     if params[:near]
       join_ids += Location.near(params[:near]).flatten.collect(&:cause_id)
