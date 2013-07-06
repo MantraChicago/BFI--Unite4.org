@@ -1,5 +1,5 @@
 #header
-  .header-slide.transition style="background-image: url(assets/h1.jpg);"
+  .header-slide.transition style="background-image: url(#{ asset_path('h1.jpg') })" 
     .row.white.blimit.bigslogan
       .large-8.columns.left
         h1.oxygen.white.text-shadow.no-margin
@@ -7,50 +7,27 @@
         h3.oxygen.white.text-shadow
           | By solving global issues at local level - where it matters the most
         hr.tertiary
-        .row
-          .large-2.columns
-            h3.blimit-top Take action
-          .large-4.columns.small-6
-            h3 What can you give lorem ips?
-            select.rounded
-              option
-              option
-              option
-          .large-4.columns.small-6
-            h3 What are you passionate about?
-            select.rounded
-              option
-              option
-              option                          
-          .large-2.columns
-            button.rounded Search
+        == render :partial => "pages/partials/take_action_form"
 
-  .header-slide.transition style="background-image: url(assets/h1.jpg);"
+  .header-slide.transition style="background-image: url(#{ asset_path('h1.jpg') })" 
   .cboth
+
 #sub-header.mlimit.sub-header.bordered
   .row.mlimit
     .large-4.columns.mlimit
-      img.left.mlimit-right height="40px" src="assets/left_pointer.png"
+      img.left.mlimit-right height="40px" src=asset_path('left_pointer.png')
       h3.oxygen.no-margin Find quality causes in your area that you can support
     .large-4.columns.mlimit
-      img.left.mlimit-right height="40px" src="assets/middle_steps.png"
+      img.left.mlimit-right height="40px" src=asset_path('middle_steps.png')
       h3.oxygen.no-margin Sign up and make small steps TODAY to make a difference
     .large-4.columns.mlimit
-      img.left.mlimit-right height="40px" src="assets/right_circle.png"
+      img.left.mlimit-right height="40px" src=asset_path('right_circle.png')
       h3.oxygen.no-margin Earn badges for your support and get recognized
-#causes.mlimit.causes
-  .row
-    .large-12.columns
-      h3.areatitle
-        | Some text 
-          span
-            San Francisco
-  .row
-    - @campaigns.each do |campaign|
-      = render 'shared/featured_need', :need => campaign.need, :stats=> [{:upper=> 'donate', :lower=>'$20'}], :percent=>campaign.percent_complete
-  .row.final
-    .large-4.columns.push-8.text-right
-      a.purplelink href="#" View all causes in San Francisco
+
+
+== render :partial => "pages/partials/featured_campaigns"
+
+
 .row.blimit
   .large-8.columns
     div.row
@@ -67,6 +44,7 @@
     .h3
       = link_to 'Submit your causes', '/causes', :class=>'btn pink btn-large oxygen h2 bold right'
   .cboth
+
 #companies.row.blimit.text-center
   .large-2.columns.small-4.bg-size-medium.wired
   .large-2.columns.small-4.bg-size-medium.tc
