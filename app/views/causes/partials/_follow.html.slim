@@ -1,5 +1,7 @@
 div 
 	-if current_user && current_user.causes.include?(cause) 
-		|You are already following this cause
+		h4.tertiary You are already following this cause
 	-else
-		= link_to "FOLLOW THIS CAUSE", "/profiles/follow_cause/#{cause.id}", :class => 'btn btn-medium blue'
+	    .h3
+			= link_to "FOLLOW THIS CAUSE", "/profiles/follow_cause/#{cause.id}", :class => 'btn pink btn-large oxygen h2 bold mlimit wrap text-center'
+
