@@ -120,14 +120,30 @@ class Cause < ActiveRecord::Base
     where(id: cause_ids ).limit(4)
   end
 
+
+  QueryableScopes = %w{by_type_of_need by_cause_type by_city_slug}
+
+  scope :by_type_of_need, lambda {|type_of_need| joins(:needs).where("needs.type_of_need = ?", type_of_need) }
+  scope :by_cause_type, lambda {|cause_type_slug| joins(:cause_type).where("cause_types.slug = ?", cause_type_slug) }
+  scope :by_city_slug, lambda {|city_slug| where(:city_slug => city_slug) }
+
   def self.query(params={})
     results = scoped
     results = results.includes(:locations, :needs, :campaigns)
 
-    if params[:has_need]
-      results = results.joins(:needs)
-      results.where("needs.type_of_need = ?", params[:has_need])
+    if params[:scope].is_a?(Array)
+      base, value = params[:scope]
+
+      if QueryableScopes.include?(base.to_s)
+        results = results.send(base.to_s,value)
+      end
     end
+
+    if params[:scope].is_a?(String) and QueryableScopes.include?(params[:scope])
+      results = results.send(params[:scope])
+    end
+
+    QueryableScopes.each {|base| results = results.send(base) if params[base] }
 
     join_ids = []
 
@@ -186,5 +202,6 @@ end
 #  slug                  :string(255)
 #  cash_donations_count  :integer          default(0)
 #  goods_donations_count :integer          default(0)
+#  city_slug             :string(255)
 #
 

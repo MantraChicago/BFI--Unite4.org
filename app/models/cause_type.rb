@@ -1,4 +1,7 @@
 class CauseType < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   attr_accessible :name, :picture_url
   has_and_belongs_to_many :causes, :join_table => 'causes_cause_types'
 
@@ -33,5 +36,6 @@ end
 #  picture_content_type :string(255)
 #  picture_file_size    :integer
 #  picture_updated_at   :datetime
+#  slug                 :string(255)
 #
 

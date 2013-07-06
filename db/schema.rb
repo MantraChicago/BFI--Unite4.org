@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706032626) do
+ActiveRecord::Schema.define(:version => 20130706064312) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -109,9 +109,11 @@ ActiveRecord::Schema.define(:version => 20130706032626) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "slug"
   end
 
   add_index "cause_types", ["id"], :name => "index_cause_types_on_id", :unique => true
+  add_index "cause_types", ["slug"], :name => "index_cause_types_on_slug"
 
   create_table "causes", :force => true do |t|
     t.datetime "created_at",                               :null => false
@@ -134,7 +136,6 @@ ActiveRecord::Schema.define(:version => 20130706032626) do
     t.boolean  "is_featured",           :default => false
     t.string   "twitter_handle"
     t.string   "facebook_url"
-    t.integer  "city_id"
     t.boolean  "active"
     t.string   "display_name"
     t.string   "address_line_one"
@@ -149,11 +150,12 @@ ActiveRecord::Schema.define(:version => 20130706032626) do
     t.string   "slug"
     t.integer  "cash_donations_count",  :default => 0
     t.integer  "goods_donations_count", :default => 0
+    t.string   "city_slug"
   end
 
   add_index "causes", ["cause_type_id"], :name => "index_causes_on_cause_type_id"
   add_index "causes", ["city"], :name => "index_causes_on_city"
-  add_index "causes", ["city_id"], :name => "index_causes_on_city_id"
+  add_index "causes", ["city_slug"], :name => "index_causes_on_city_slug"
   add_index "causes", ["id"], :name => "index_causes_on_id", :unique => true
   add_index "causes", ["name"], :name => "index_causes_on_name"
   add_index "causes", ["postal_code"], :name => "index_causes_on_postal_code"
