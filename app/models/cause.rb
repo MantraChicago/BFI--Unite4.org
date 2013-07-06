@@ -13,7 +13,7 @@ class Cause < ActiveRecord::Base
   attr_accessor :skip_default_location
   attr_accessible :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
 
-  has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
+  has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>", :cause_tile => "81x81" }, :default_url => "/assets/missing.jpeg"
 
   belongs_to :cause_type
 
@@ -93,6 +93,14 @@ class Cause < ActiveRecord::Base
 
   def active_campaign
     campaigns.active.limit(1).first
+  end
+
+  def cause_tile_picture_url
+    picture.url(:cause_tile)
+  end
+
+  def short_description
+    read_attribute(:short_description) || "Enter short cause description"
   end
 
   def picture_url style=:medium

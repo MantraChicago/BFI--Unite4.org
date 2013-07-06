@@ -2,9 +2,11 @@
   .city-need.oxygen      
     .row.name.no-margin
       .large-4.columns
-        img.pos-abs.circle.thumb.slimit-top src=asset_path('sa1.jpg')
+        img.pos-abs.circle.thumb.slimit-top src=cause.cause_tile_picture_url
       .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
-        p SALVATION ARMY
+        p.uppercase 
+          == cause.display_name 
+
         p.h6 Hurricane Sandy Restoration
     .row.goal.no-margin
       .large-4.columns
