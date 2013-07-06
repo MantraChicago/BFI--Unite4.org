@@ -1,0 +1,30 @@
+#header
+  .header-slide.transition style="background-image: url(#{ asset_path("cities/#{ @city[:slug] }.jpeg") })" 
+    .row.white.blimit.bigslogan
+      .large-8.columns.left
+        h1.oxygen.white.text-shadow.no-margin
+          == @city[:name] 
+
+        - cache( cache_key_for_cause_types_by_city(@city[:slug]) ) do 
+          - CauseType.grouped_by_city(@city[:slug]).each do |pair|
+            - key, value = pair
+            .subfilter-selector data-city=@city[:slug] data-cause-type-slug=key data-causes-count=value
+              .cause-type-label 
+                == key
+              .cause-type-count
+                == value
+            
+
+  .cboth
+
+#causes.mlimit.causes
+  .row
+    .large-12.columns
+      h3.areatitle
+        | Browse causes in  
+        span
+          == @city[:name] 
+  .row
+    - cache(cache_key_for_featured_campaigns) do
+      - Cause.by_city_slug(@city[:slug]).each do |cause| 
+        = render 'shared/featured_need', :need => cause.active_campaign.need, :stats=> [{:upper=> 'donate', :lower=>'$20'}], :percent=>cause.active_campaign.percent_complete

@@ -10,10 +10,10 @@ class CauseType < ActiveRecord::Base
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing_cause_type.jpg"
 
   scope :by_name, lambda { order("name asc") }
-  #def self.cause_ids_for_cause_type cause_type_id
-  #  connection.execute "SELECT distinct cause_id FROM causes_cause_types WHERE id = '#{ cause_type_id.to_i }'"
-  #  binding.pry
-  #end
+
+  def self.grouped_by_city(city_slug)
+    joins(:causes).where("causes.city_slug = ?", city_slug).group("cause_types.name").count
+  end
 
   def picture_url
     picture.try(:url)
