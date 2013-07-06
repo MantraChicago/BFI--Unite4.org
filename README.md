@@ -15,7 +15,7 @@ You can deploy `release_candidate` to staging as long as it is stable.
 
 The app depends on the following external services or libraries:
   - rvm with ruby 1.9.3-p392 ( requires XCode 4.6.2 with developer tools )
-  - postgresql 9.2
+  - postgresql 9.2 ( should be installed via brew where possible )
   - ImageMagick ( for image upload processing )
 
 Please consult documentation for your platform for getting these
@@ -78,3 +78,29 @@ to release_candidate:
 bundle exec rspec spec/
 ```
 
+### PostGIS
+
+This section assumes you install postgres via brew.  If you didn't there's a very good chance this will not work.
+
+You can install PostGIS via brew:
+
+```
+brew install postgis
+```
+Post Install Notes:
+To create a spatially-enabled database, see the documentation:
+http://postgis.refractions.net/documentation/manual-2.0/postgis_installation.html#create_new_db_extensions
+and to upgrade your existing spatial databases, see here:
+http://postgis.refractions.net/documentation/manual-2.0/postgis_installation.html#upgrading
+
+PostGIS SQL scripts installed to:
+  /usr/local/share/postgis
+PostGIS plugin libraries installed to:
+  /usr/local/opt/postgresql/lib
+PostGIS extension modules installed to:
+  /usr/local/opt/postgresql/share/postgresql/extension
+
+The TLDR; version is open up a psql console and:
+```
+create extension postgis;
+```
