@@ -10,10 +10,11 @@ module Unite
       @need     = need
       @user     = user
       @params   = params
+
     end
 
     def fulfill!
-      meth = "fulfill_#{ }_need"
+      meth = "fulfill_#{ type_of_need }_need"
       send(meth) if respond_to?(meth)
     end
 

@@ -1,7 +1,8 @@
 require "spec_helper"
 
 describe Location do
-  let(:location) { create(:location) }
+  let(:cause) { create(:cause,:skip_default_location=>true) }
+  let(:location) { create(:location, cause: cause) }
 
   describe "Performing GeoQueries" do
     it "should convert degrees 2 radians" do
