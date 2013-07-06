@@ -33,6 +33,6 @@
       
   .narrow_side_container.right.gray_border
     h2 Followers
-    -@cause.users.each do |user|
+    -@cause.followers.each do |user|
        =render 'profiles/partials/follow_thumbnail', :user => user
 
