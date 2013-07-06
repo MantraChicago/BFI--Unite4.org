@@ -87,6 +87,7 @@ You can install PostGIS via brew:
 ```
 brew install postgis
 ```
+
 Post Install Notes:
 To create a spatially-enabled database, see the documentation:
 http://postgis.refractions.net/documentation/manual-2.0/postgis_installation.html#create_new_db_extensions
@@ -101,6 +102,41 @@ PostGIS extension modules installed to:
   /usr/local/opt/postgresql/share/postgresql/extension
 
 The TLDR; version is open up a psql console and:
+
 ```
 create extension postgis;
 ```
+
+### PostGIS (Ubuntu 12.04 Install)
+
+
+```
+sudo apt-get install postgresql-contrib-9.2
+```
+
+Install GEOS (just use latest, I used 3.3.8)
+
+```
+wget http://download.osgeo.org/geos/geos-3.3.8.tar.bz2
+tar -xvf geos-3.3.8.tar.bz2
+cd geos-3.3.8/
+./configure
+make
+sudo make install
+```
+
+Install PostGIS
+
+```
+wget http://download.osgeo.org/postgis/source/postgis-2.0.3.tar.gz
+tar xfvz postgis-2.0.3.tar.gz
+cd postgis-2.0.3
+
+./configure
+make
+sudo make install
+sudo ldconfig
+sudo make comments-install
+```
+
+Again you have to run `create extension postgis` for each database.
