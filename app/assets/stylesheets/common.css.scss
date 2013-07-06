@@ -302,6 +302,7 @@ h5,.h5 {
 .bubble {
   border-radius: 3px;
   height: 45px;
+  margin: 5px;
   line-height: 45px;
   display: inline-block;
   padding: 0 20px 0 20px;
@@ -313,7 +314,21 @@ h5,.h5 {
   background-image:    -moz-linear-gradient(top, #f0f0f0, #cdcdcd); /* Firefox 3.6-15 */
   background-image:      -o-linear-gradient(top, #f0f0f0, #cdcdcd); /* Opera 11.10-12.00 */
   background-image:         linear-gradient(to bottom, #f0f0f0, #cdcdcd); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+
+  .buble-part {
+    display: inline-block;
+    border-right: 1px solid #bdbdbd;
+    padding: 0 20px 0 20px;
+    &:last-child {
+      border: none;
+      padding: 0 0 0 20px;
+    }
+    &:first-child {
+      padding: 0 20px 0 0;
+    }
+  }
 }
+
 
 
 
