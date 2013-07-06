@@ -47,6 +47,20 @@ describe Cause do
     Cause.query(near:"San Francisco",cause_type_id: other_cause_type.id).count.should == 1
   end
 
+  it "should allow me to filter by cause type slug" do
+    results = Cause.by_cause_type(cause_type.slug)
+    results.count.should == 2
+  end
+
+  it "should allow me to filter by city slug" do
+    Cause.by_city_slug('chicago').count.should == 3
+  end
+
+  it "should allow me to filter by scope" do
+    results = Cause.query(scope:['by_cause_type', cause_type.slug])
+    results.count.should == 2
+  end
+
 end
 
 # == Schema Information
@@ -89,5 +103,6 @@ end
 #  slug                  :string(255)
 #  cash_donations_count  :integer          default(0)
 #  goods_donations_count :integer          default(0)
+#  city_slug             :string(255)
 #
 

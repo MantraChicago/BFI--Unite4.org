@@ -16,6 +16,7 @@ FactoryGirl.define do
 
     address_line_one { Unite::Development.random_address_in(:chicago) }
     city "Chicago"
+    city_slug "chicago"
     region "IL"
     country "US"
     postal_code "60010"
@@ -25,6 +26,7 @@ FactoryGirl.define do
       city "New York"
       country "US"
       postal_code "10004"
+      city_slug "new-york"
       region "NY"
     end
   end
