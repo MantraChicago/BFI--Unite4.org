@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703050024) do
+ActiveRecord::Schema.define(:version => 20130706032626) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -55,10 +55,7 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
     t.datetime "updated_at",     :null => false
   end
 
-  create_table "badges_users", :force => true do |t|
-    t.integer "user_id"
-    t.integer "badge_id"
-  end
+  add_index "badges", ["id"], :name => "index_badges_on_id", :unique => true
 
   create_table "campaigns", :force => true do |t|
     t.integer  "cause_id"
@@ -102,6 +99,8 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
     t.text   "how_hear"
   end
 
+  add_index "cause_applications", ["id"], :name => "index_cause_applications_on_id", :unique => true
+
   create_table "cause_types", :force => true do |t|
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
@@ -111,6 +110,8 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
   end
+
+  add_index "cause_types", ["id"], :name => "index_cause_types_on_id", :unique => true
 
   create_table "causes", :force => true do |t|
     t.datetime "created_at",                               :null => false
@@ -150,6 +151,12 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
     t.integer  "goods_donations_count", :default => 0
   end
 
+  add_index "causes", ["cause_type_id"], :name => "index_causes_on_cause_type_id"
+  add_index "causes", ["city"], :name => "index_causes_on_city"
+  add_index "causes", ["city_id"], :name => "index_causes_on_city_id"
+  add_index "causes", ["id"], :name => "index_causes_on_id", :unique => true
+  add_index "causes", ["name"], :name => "index_causes_on_name"
+  add_index "causes", ["postal_code"], :name => "index_causes_on_postal_code"
   add_index "causes", ["slug"], :name => "index_causes_on_slug", :unique => true
 
   create_table "causes_cause_types", :force => true do |t|
@@ -157,29 +164,18 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
     t.integer "cause_type_id"
   end
 
-  create_table "causes_causeneeds", :id => false, :force => true do |t|
-    t.integer "cause_id"
-    t.integer "cause_need_id"
-  end
-
-  create_table "causes_causetypes", :force => true do |t|
-    t.integer "cause_id"
-    t.integer "cause_type_id"
-  end
-
-  create_table "donations", :force => true do |t|
-    t.float    "amount"
-    t.float    "tip"
-    t.string   "tracking"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.integer  "donations_need_id"
-  end
+  add_index "causes_cause_types", ["cause_id"], :name => "index_causes_cause_types_on_cause_id"
+  add_index "causes_cause_types", ["cause_type_id"], :name => "index_causes_cause_types_on_cause_type_id"
+  add_index "causes_cause_types", ["id"], :name => "index_causes_cause_types_on_id", :unique => true
 
   create_table "featured_causes", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "cause_id"
   end
+
+  add_index "featured_causes", ["cause_id"], :name => "index_featured_causes_on_cause_id"
+  add_index "featured_causes", ["id"], :name => "index_featured_causes_on_id", :unique => true
 
   create_table "followers", :force => true do |t|
     t.integer  "cause_id"
@@ -193,14 +189,6 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
   add_index "followers", ["id"], :name => "index_followers_on_id", :unique => true
   add_index "followers", ["need_id"], :name => "index_followers_on_need_id"
   add_index "followers", ["user_id"], :name => "index_followers_on_user_id"
-
-  create_table "games", :force => true do |t|
-    t.integer  "level"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.integer  "user_id"
-    t.boolean  "show_instructions", :default => true
-  end
 
   create_table "goods_donations", :force => true do |t|
     t.integer  "user_id"
@@ -233,19 +221,12 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
     t.string   "country"
   end
 
-  create_table "locations_causes", :id => false, :force => true do |t|
-    t.integer "location_id"
-    t.integer "cause_id"
-  end
-
-  create_table "name", :force => true do |t|
-    t.string   "name"
-    t.integer  "needable_id"
-    t.string   "needable_type"
-    t.integer  "cause_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
+  add_index "locations", ["cause_id"], :name => "index_locations_on_cause_id"
+  add_index "locations", ["city"], :name => "index_locations_on_city"
+  add_index "locations", ["country"], :name => "index_locations_on_country"
+  add_index "locations", ["id"], :name => "index_locations_on_id", :unique => true
+  add_index "locations", ["latitude", "longitude"], :name => "index_locations_on_latitude_and_longitude"
+  add_index "locations", ["postal_code"], :name => "index_locations_on_postal_code"
 
   create_table "needs", :force => true do |t|
     t.string   "name"
@@ -264,10 +245,10 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
     t.integer  "campaign_id"
   end
 
-  create_table "permissions", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+  add_index "needs", ["campaign_id"], :name => "index_needs_on_campaign_id"
+  add_index "needs", ["cause_id"], :name => "index_needs_on_cause_id"
+  add_index "needs", ["id"], :name => "index_needs_on_id", :unique => true
+  add_index "needs", ["type_of_need"], :name => "index_needs_on_type_of_need"
 
   create_table "subscribes", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -277,12 +258,8 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
     t.string   "email"
   end
 
-  create_table "usercauses", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "cause_id"
-    t.integer  "user_id"
-  end
+  add_index "subscribes", ["email"], :name => "index_subscribes_on_email"
+  add_index "subscribes", ["id"], :name => "index_subscribes_on_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -319,12 +296,16 @@ ActiveRecord::Schema.define(:version => 20130703050024) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["id"], :name => "index_users_on_id", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "users_badges", :force => true do |t|
     t.integer "user_id"
     t.integer "badge_id"
   end
+
+  add_index "users_badges", ["id"], :name => "index_users_badges_on_id", :unique => true
+  add_index "users_badges", ["user_id"], :name => "index_users_badges_on_user_id"
 
   create_table "volunteers", :force => true do |t|
     t.integer  "cause_id"

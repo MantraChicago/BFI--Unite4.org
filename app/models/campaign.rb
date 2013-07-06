@@ -29,3 +29,21 @@ class Campaign < ActiveRecord::Base
     self.active = true
   end
 end
+
+# == Schema Information
+#
+# Table name: campaigns
+#
+#  id               :integer          not null, primary key
+#  cause_id         :integer
+#  need_id          :integer
+#  start_date       :datetime
+#  end_date         :datetime
+#  percent_complete :integer
+#  desired_state    :string(255)
+#  current_state    :string(255)
+#  active           :boolean          default(FALSE)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
