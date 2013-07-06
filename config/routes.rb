@@ -7,7 +7,7 @@ GiveInspireLove::Application.routes.draw do
 
   match '/page/:action' => 'StaticPages'
 
-  match '/city/:action' => 'City'
+
 
   resources :profiles
 
