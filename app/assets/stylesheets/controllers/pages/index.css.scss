@@ -65,3 +65,37 @@ h3.areatitle {
 }
 
 
+
+#selectcity {
+	height: 490px;
+	opacity: 0;
+	width: 100%;
+	z-index: 100;
+	cursor: pointer;
+	.city {
+		height: 550px;
+		text-align: center;
+	}
+	#chicago {
+		background-image: url(/assets/dropdown/ca.jpg);
+	}
+	#sanfrancisco {
+		background-image: url(/assets/dropdown/sf.jpg);
+	}
+	#newyork {
+		background-image: url(/assets/dropdown/ny.jpg);
+	}
+	#chicago,#sanfrancisco,#newyork {
+		height: 490px;
+		background-size: cover;
+		background-position: center bottom;
+
+		&:hover img {
+			zoom: 1.04;
+		}
+	}
+
+	&.active {
+		opacity: 1;
+	}
+}
