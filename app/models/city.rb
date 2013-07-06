@@ -24,6 +24,10 @@ class City
 	]
   end
 
+  def self.grouped_by_cause_type cause_type_slug
+    Cause.joins(:cause_type).where("cause_types.slug = ?", cause_type_slug).group(:city_slug).count
+  end
+
   def self.find_by_slug slug
     all.detect do |city|
       city[:slug] == slug.downcase
