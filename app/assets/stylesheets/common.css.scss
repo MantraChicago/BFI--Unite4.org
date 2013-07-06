@@ -143,6 +143,9 @@ h5,.h5 {
 .bold {
     font-weight: 700 !important;
 }
+.slim {
+  font-weight: 200 !important;
+}
 .large-mlimit-left {
     padding-left: 35px !important;
 }
@@ -211,7 +214,7 @@ h5,.h5 {
     padding: 20px;
     margin: 10px 0 10px 0;
     font-size: 150%;
-    line-height: 150%;
+    line-height: 150%;    
 }
 
 .button2 {
@@ -226,6 +229,9 @@ h5,.h5 {
 .text-shadow {
   text-shadow: 0 0 5px rgba(0,0,0,0.3);
 
+}
+.shadow {
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 .rounded {

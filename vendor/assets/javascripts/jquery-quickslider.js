@@ -55,7 +55,10 @@
 			nav = $('.' + options.nav,t),
 			interval = 0;
 	
-
+			if ( slides.length < 2 ) {
+				slides.eq(0).addClass('active');
+				return;
+			}
 	
 			var slide = function(elem) {
 				if ( ( t.hasClass('paused') && !keyPressedFlag ) || ( options.pauseInvisible && !$.isOnScreen(t,false) ) ) {					
