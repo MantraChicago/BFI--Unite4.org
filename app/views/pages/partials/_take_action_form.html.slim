@@ -1,27 +1,29 @@
 .row
   .large-2.columns
-    h3.blimit-top Take action
-  .large-4.columns
-    // can we use label tags? more semantic 
-    h3 What can you give?
-    select.rounded name="has_need"
-      option value="" 
-      option value="followers" I can promote a cause
-      option value="volunteers" I can volunteer my time
-      option value="cash_donations" I can donate cash
-      option value="goods_donations" I can donate goods
+    h4.blimit-top.white Take action
+  .large-10.columns
+    .row
+      .large-4.columns
+        // can we use label tags? more semantic 
+        h4.slim.white What can you give?
+        select.rounded name="has_need"
+          option value="" 
+          option value="followers" I can promote a cause
+          option value="volunteers" I can volunteer my time
+          option value="cash_donations" I can donate cash
+          option value="goods_donations" I can donate goods
 
-  .large-4.columns
-    // can we use label tags? more semantic 
-    - cache(cache_key_for_cause_types) do
-      h3 What is your passion?
-      select.rounded name="cause_type_id"
-        option value=""
-        - CauseType.order("name asc").each do |cause_type|
-          option value=cause_type.id
-            == cause_type.name
+      .large-4.columns
+        // can we use label tags? more semantic 
+        - cache(cache_key_for_cause_types) do
+          h4.slim.white What is your passion?
+          select.rounded name="cause_type_id"
+            option value=""
+            - CauseType.order("name asc").each do |cause_type|
+              option value=cause_type.id
+                == cause_type.name
 
-  .large-2.columns
-    h3 &nbsp;
-    button.rounded Search
+      .large-4.columns
+        h4 &nbsp;
+        button.rounded Search
 
