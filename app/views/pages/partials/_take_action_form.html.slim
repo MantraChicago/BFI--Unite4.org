@@ -1,7 +1,7 @@
 .row
   .large-2.columns
     h3.blimit-top Take action
-  .large-4.columns.small-6
+  .large-4.columns
     // can we use label tags? more semantic 
     h3 What can you give?
     select.rounded name="has_need"
@@ -11,7 +11,7 @@
       option value="cash_donations" I can donate cash
       option value="goods_donations" I can donate goods
 
-  .large-4.columns.small-6
+  .large-4.columns
     // can we use label tags? more semantic 
     - cache(cache_key_for_cause_types) do
       h3 What is your passion?

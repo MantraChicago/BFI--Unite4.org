@@ -1,15 +1,15 @@
 #header
-  .header-slide.transition style="background-image: url(#{ asset_path('h1.jpg') })" 
-    .row.white.blimit.bigslogan
-      .large-8.columns.left
-        h1.oxygen.white.text-shadow.no-margin
+  .header-slide.small-static.transition style="background-image: url(#{ asset_path('h1.jpg') })" 
+    .row.white.blimit.bigslogan.small-static.pos-rel
+      .large-8.columns.left.small-static.pos-abs.bottom.blimit
+        h1.oxygen.white.text-shadow.slimit.blimit-top
           | Do good where you live
         h3.oxygen.white.text-shadow
           | By solving global issues at local level - where it matters the most
         hr.tertiary
         == render :partial => "pages/partials/take_action_form"
 
-  .header-slide.transition style="background-image: url(#{ asset_path('h1.jpg') })" 
+  
   .cboth
 
 #sub-header.mlimit.sub-header.bordered
