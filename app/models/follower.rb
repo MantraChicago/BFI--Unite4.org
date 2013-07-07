@@ -5,6 +5,12 @@ class Follower < ActiveRecord::Base
   belongs_to :cause, counter_cache: true
 
   belongs_to :need
+
+  validates_uniqueness_of :cause_id, :scope => [:user_id]
+
+  validates_presence_of :user_id, :cause_id
+
+  delegate :avatar, :to => :user
 end
 
 # == Schema Information

@@ -1,11 +1,12 @@
 require "open-uri"
 
 class User < ActiveRecord::Base
+  include Smooth::Presentable
   #validates :first_name, :last_name, :presence => true
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :token_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
@@ -21,6 +22,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :badges, :join_table=>:badges_users
 
   after_create :identify_customer_with_customer_io
+
+  after_create :reset_authentication_token!
 
   after_destroy do
     $customerio.delete(self.id)
@@ -72,6 +75,14 @@ class User < ActiveRecord::Base
     end
 
     location
+  end
+
+  def unfollow cause
+    followers.where(cause_id: cause.id).delete_all
+  end
+
+  def followed_causes_ids
+    followers.select("distinct cause_id").map(&:cause_id)
   end
 
   def picture_from_url(url)
@@ -141,5 +152,6 @@ end
 #  cash_donations_count   :integer          default(0)
 #  goods_donations_count  :integer          default(0)
 #  volunteers_count       :integer          default(0)
+#  authentication_token   :string(255)
 #
 

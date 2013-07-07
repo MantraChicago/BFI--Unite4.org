@@ -180,7 +180,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  # config.token_authentication_key = :auth_token
+  config.token_authentication_key = :auth_token
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
@@ -241,5 +241,5 @@ Devise.setup do |config|
   #https://github.com/plataformatec/devise/wiki/OmniAuth%3a-Overview
   require "omniauth-facebook"
   config.omniauth :facebook, "145343622317172", "bd6476438158a450568b75e82b7a4304",
-    {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
+    {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 end

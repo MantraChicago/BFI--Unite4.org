@@ -3,15 +3,12 @@ GiveInspireLove::Application.routes.draw do
   match "/specs/javascripts", :to => "test_runner#index"
 
   match "/profiles/edit" => "profiles#edit"
-  match "/profiles/follow_cause/:id" => "profiles#follow_cause"
 
   match '/page/:action' => 'StaticPages'
 
 
 
   resources :profiles
-
-  match "/causes/need/:id" => "causes#need"
 
   # Look, SEO / Human Readable URLs
   get "/charities-in-:city_slug", :to => "city_hubs#show"
@@ -22,6 +19,9 @@ GiveInspireLove::Application.routes.draw do
   resources :volunteers
   resources :cause_applications
   resources :needs
+
+  post "/causes/:cause_slug/followers", :to => "followers#create"
+  delete "/causes/:cause_slug/followers", :to => "followers#destroy"
 
   root :to => "pages#index"
 
@@ -35,4 +35,6 @@ GiveInspireLove::Application.routes.draw do
 
   get "/api/v1/:resource", :to => "presentables#index", :format => :json, :presenter_format => :default
   get "/api/v1/:resource/:presenter_format", :to => "presentables#index", :format => :json
+
+  get "/users/me.json", :to => "users#show", :format => :json
 end

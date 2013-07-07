@@ -5,8 +5,9 @@
 # The lib directory contains base classes that our models, views, collections extend from.
 # As well as any other utility classes, etc
 
-#= require_tree ./lib
 #= require ./global
+#
+#= require_tree ./lib
 
 # The components folder should be used to store re-usable view elements
 
@@ -29,9 +30,7 @@ Application.onReady = ->
   controller  = body.attr 'data-controller'
   action      = body.attr 'data-action'
 
-  _.delay ()->
-    $(".bar").removeClass('reset')
-  , 500
+  console.log "Adam, do we need this still?"
 
   $('#header').quickSlider
     slides: 'header-slide'

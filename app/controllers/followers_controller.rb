@@ -4,9 +4,13 @@ class FollowersController < ApplicationController
   respond_to :js, :json, :html
 
   def create
-    @follower = fulfillment.new(current_user, need, type_of_need: "followers", cause_id: params[:cause_id]).fulfill!
+    @follower = fulfillment.new(current_user, need, type_of_need: "followers", cause_id: cause_id).fulfill!
 
     respond_to do |format|
+      format.js do
+        render
+      end
+
       format.html do
         if @follower.valid?
           redirect_to(@follower.cause, success:"You are now following #{ @follower.cause.name }")
@@ -18,16 +22,32 @@ class FollowersController < ApplicationController
   end
 
   def destroy
+    current_user.unfollow(cause)
 
+    respond_to do |format|
+      format.json do
+        head :ok
+      end
+    end
   end
 
   protected
+    def cause_id
+      params[:cause_id] || cause.try(:id)
+    end
+
     def fulfillment
       Unite::NeedsFulfillmentProxy
     end
 
     def cause
-      params[:cause_id] && Cause.find(params[:cause_id])
+      if params[:cause_id]
+        return Cause.find(params[:cause_id])
+      end
+
+      if params[:cause_slug]
+        return Cause.find_by_slug(params[:cause_slug])
+      end
     end
 
     def need

@@ -6,9 +6,15 @@
 #= require jquery.mousewheel.min
 #= require jquery-quickslider
 #= require underscore-min
-#= require leaflet.js
 #= require underscore-string.min
 #= require backbone-min
 #= require backbone-query.min
-#= require bacon
 
+#= require_self
+
+$.ajaxSetup
+  headers:
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+
+$("*").on "ajax:beforeSend", (e, xhr, settings)->
+  xhr.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'))

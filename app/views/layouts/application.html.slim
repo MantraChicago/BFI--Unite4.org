@@ -13,7 +13,7 @@ html
 
     link href="http://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet" type="text/css"
     
-    == csrf_meta_tags
+    == csrf_meta_tag
 
     == stylesheet_link_tag 'application', media: 'all'
 
@@ -35,6 +35,7 @@ html
       }]);
 
     == yield(:head)
+
 
   body id=body_id class=body_class data-controller=controller_name data-action=action_name
     == render :partial => "shared/facebook"

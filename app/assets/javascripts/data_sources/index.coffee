@@ -1,3 +1,4 @@
+#= require ./user
 #= require ./campaigns
 #= require ./causes
 #= require ./locations
