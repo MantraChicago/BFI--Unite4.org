@@ -14,7 +14,8 @@
 #cause-content.oxygen.mlimit
   .row
     .large-9.columns
-      #cause-gallery
+      #cause-gallery.mlimit
+        iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src="http://www.youtube.com/embed/nwAYpLVyeFU" type="text/html" width="100%"
       #cause-info
         .gridded.row.no-margin#cause-tabs-nav
           .large-3.columns.text-center.mpadding.bold.secondary About cause
@@ -23,12 +24,49 @@
           .large-3.columns.text-center.mpadding.bold.secondary Community
         .row.collapse.blimit-top      
           .large-12.columns
+            
             = @cause.description
 
 
-    .large-3.columns
-      div
-        p.h3 = @cause.description
+    .large-3.columns      
+      .cause-listing-container.row.mlimit
+        .columns.mlimit.left
+          .cause-listing.oxygen      
+            .row.name.no-margin
+              .large-4.columns
+                img.pos-abs.circle.thumb.slimit-top src=asset_path('sa1.jpg')
+              .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
+                p SALVATION ARMY
+                p.h6 Hurricane Sandy Restoration
+            .row.goal.no-margin
+              .large-4.columns
+              .large-8.small-8.text-right.columns.slimit.slimit-top.right
+                p GOAL
+                p.h6 $12,000 in 2 weeks
+            .row.no-margin
+              .large-12.columns
+                .bar-holder.slimit
+                  .bar.oxygen style="width:30%;" 40%
+            .row.no-margin
+              .large-6.small-6.columns
+                .button.nowrap
+                  .icon.heart.circle.inline
+                  .h5.inline GIVE
+              .large-6.small-6.columns
+                .button.nowrap
+                  .icon.add.circle.inline
+                  .h5.inline FOLLOW
+            .row.stats.no-margin
+              .large-4.small-4.columns.text-center.slimit.slimit-top
+                .bold.secondary.slimit 75%
+                .h6.tertiary GOAL MET
+              .large-4.small-4.columns.text-center.slimit.slimit-top
+                .bold.secondary.slimit 86
+                .h6.tertiary FOLLOWERS
+              .large-4.small-4.columns.text-center.slimit.slimit-top
+                .bold.secondary.slimit 35
+                .h6.tertiary DAYS TO GO
+      p.h3 = @cause.description
       div
         .h3.mlimit.secondary FOLLOWERS
         .followers.mlimit
@@ -47,17 +85,113 @@
     .large-12.columns
       h2 Our specific needs
 
-.cause_content
-  .wide_side_container.left
-    #needs_content.bar_content.show
-      -if @cause.active_campaign
-        .middle_content.spaced_content
-          -percent_complete =@cause.active_campaign.percent_complete
-          == render "shared/goal_box", :goal=> {:button_text => button_text_for_need(@cause.active_campaign.need),:title=>@cause.active_campaign.need.name, :percent=>percent_complete, :more_link => url_for(@cause.active_campaign.need), :give_link=> '#', :stats=>[{:upper => '10%', :lower => 'Goal'}]}
-      .middle_content.spaced_content
-        ==render 'shared/needs_box', :needs => @cause.needs
-    #about_content.bar_content.hide
-       .middle_content.spaced_content #{@cause.mission_statement}
-        
 
-
+  .cause-listing-container.row.mlimit
+    .columns.mlimit.left.large-3
+      .cause-listing.oxygen      
+        .row.name.no-margin
+          .large-4.columns
+            img.pos-abs.circle.thumb.slimit-top src=asset_path('sa1.jpg')
+          .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
+            p SALVATION ARMY
+            p.h6 Hurricane Sandy Restoration
+        .row.goal.no-margin
+          .large-4.columns
+          .large-8.small-8.text-right.columns.slimit.slimit-top.right
+            p GOAL
+            p.h6 $12,000 in 2 weeks
+        .row.no-margin
+          .large-12.columns
+            .bar-holder.slimit
+              .bar.oxygen style="width:30%;" 40%
+        .row.no-margin
+          .large-6.small-6.columns
+            .button.nowrap
+              .icon.heart.circle.inline
+              .h5.inline GIVE
+          .large-6.small-6.columns
+            .button.nowrap
+              .icon.add.circle.inline
+              .h5.inline FOLLOW
+        .row.stats.no-margin
+          .large-4.small-4.columns.text-center.slimit.slimit-top
+            .bold.secondary.slimit 75%
+            .h6.tertiary GOAL MET
+          .large-4.small-4.columns.text-center.slimit.slimit-top
+            .bold.secondary.slimit 86
+            .h6.tertiary FOLLOWERS
+          .large-4.small-4.columns.text-center.slimit.slimit-top
+            .bold.secondary.slimit 35
+            .h6.tertiary DAYS TO GO
+    .columns.mlimit.left.large-3
+      .cause-listing.oxygen      
+        .row.name.no-margin
+          .large-4.columns
+            img.pos-abs.circle.thumb.slimit-top src=asset_path('sa1.jpg')
+          .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
+            p SALVATION ARMY
+            p.h6 Hurricane Sandy Restoration
+        .row.goal.no-margin
+          .large-4.columns
+          .large-8.small-8.text-right.columns.slimit.slimit-top.right
+            p GOAL
+            p.h6 $12,000 in 2 weeks
+        .row.no-margin
+          .large-12.columns
+            .bar-holder.slimit
+              .bar.oxygen style="width:30%;" 40%
+        .row.no-margin
+          .large-6.small-6.columns
+            .button.nowrap
+              .icon.heart.circle.inline
+              .h5.inline GIVE
+          .large-6.small-6.columns
+            .button.nowrap
+              .icon.add.circle.inline
+              .h5.inline FOLLOW
+        .row.stats.no-margin
+          .large-4.small-4.columns.text-center.slimit.slimit-top
+            .bold.secondary.slimit 75%
+            .h6.tertiary GOAL MET
+          .large-4.small-4.columns.text-center.slimit.slimit-top
+            .bold.secondary.slimit 86
+            .h6.tertiary FOLLOWERS
+          .large-4.small-4.columns.text-center.slimit.slimit-top
+            .bold.secondary.slimit 35
+            .h6.tertiary DAYS TO GO
+    .columns.mlimit.left.large-3
+      .cause-listing.oxygen      
+        .row.name.no-margin
+          .large-4.columns
+            img.pos-abs.circle.thumb.slimit-top src=asset_path('sa1.jpg')
+          .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
+            p SALVATION ARMY
+            p.h6 Hurricane Sandy Restoration
+        .row.goal.no-margin
+          .large-4.columns
+          .large-8.small-8.text-right.columns.slimit.slimit-top.right
+            p GOAL
+            p.h6 $12,000 in 2 weeks
+        .row.no-margin
+          .large-12.columns
+            .bar-holder.slimit
+              .bar.oxygen style="width:30%;" 40%
+        .row.no-margin
+          .large-6.small-6.columns
+            .button.nowrap
+              .icon.heart.circle.inline
+              .h5.inline GIVE
+          .large-6.small-6.columns
+            .button.nowrap
+              .icon.add.circle.inline
+              .h5.inline FOLLOW
+        .row.stats.no-margin
+          .large-4.small-4.columns.text-center.slimit.slimit-top
+            .bold.secondary.slimit 75%
+            .h6.tertiary GOAL MET
+          .large-4.small-4.columns.text-center.slimit.slimit-top
+            .bold.secondary.slimit 86
+            .h6.tertiary FOLLOWERS
+          .large-4.small-4.columns.text-center.slimit.slimit-top
+            .bold.secondary.slimit 35
+            .h6.tertiary DAYS TO GO
