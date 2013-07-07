@@ -12,18 +12,3 @@
 #= require foundation
 
 #= require_self
-
-$.ajaxSetup
-  headers:
-    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-
-$("*").on "ajax:beforeSend", (e, xhr, settings)->
-  xhr.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'))
-
-$.fn.sameHeight = ->
-  $(@).each ->
-    t = $(@)
-    height = t.height()
-    siblings = t.siblings()
-    siblings.each ->
-      $(@).height(height) if $(@).height < height
