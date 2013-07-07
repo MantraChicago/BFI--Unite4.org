@@ -355,7 +355,9 @@ h5,.h5 {
   .small-static {
     position: static !important;    
   }
-
+  .small-height-auto {
+    height: auto !important;
+  }
 
     .small-inline-list li{
 	display: inline-block;

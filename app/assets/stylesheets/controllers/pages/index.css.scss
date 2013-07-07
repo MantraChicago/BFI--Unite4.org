@@ -116,3 +116,49 @@ h3.areatitle {
   }
 }
 
+
+
+@media only screen and (max-width: 48em) {
+
+#selectcity,#selectcause {
+	& img {
+		max-width: 50px;
+		height: auto;
+	}
+	.city {
+		height: auto;
+		text-align: center;
+	}
+	.cause {
+		height: 245px;
+		&:hover img {
+			zoom: 1.04;
+		}		
+	}
+	#chicago {
+		background-image: url(/assets/cities/small/chicago-small.jpg/);
+	}
+	#san-francisco {
+		background-image: url(/assets/cities/small/san-francisco-small.jpg);
+	}
+	#new-york {
+		background-image: url(/assets/cities/small/new-york-small.jpg);
+	}
+	#chicago,#san-francisco,#new-york {
+		height: 490px;
+		background-size: cover;
+		background-position: center bottom;
+
+		&:hover img {
+			zoom: 1.04;
+		}
+	}
+
+
+	&.active {
+		opacity: 1;
+		visibility: inherit;
+	}
+}	
+
+}
