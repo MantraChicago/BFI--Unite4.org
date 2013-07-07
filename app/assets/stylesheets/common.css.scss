@@ -207,6 +207,9 @@ h5,.h5 {
 .row.fullwidth {
   max-width: none !important;
 }
+.row.narrow {
+  width: 800px !important;
+}
 .fnone {
   float: none !important;
 }
@@ -251,6 +254,9 @@ h5,.h5 {
 
 .rounded {
   border-radius: 10px;
+}
+.s-rounded {
+  border-radius: 3px;
 }
 
 .button * {
@@ -307,6 +313,11 @@ h5,.h5 {
   }
 }
 
+
+input.bubble {
+  border-radius: 5px !important;
+  height: 40px !important;
+}
 
 .transition {
   -webkit-transition: all 0.8s cubic-bezier(.15,.98,.35,.99);  /* Chrome 1-25, Safari 3.2+ */
