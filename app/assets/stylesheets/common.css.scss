@@ -287,6 +287,16 @@ h5,.h5 {
 .bottom {
   bottom: 0;
 }
+.gridded {
+  border: 1px solid;
+  & > * {
+    border-right: 1px solid;
+  }
+  & > *:last-child {
+    border: none;
+  }
+}
+
 
 .transition {
   -webkit-transition: all 0.8s cubic-bezier(.15,.98,.35,.99);  /* Chrome 1-25, Safari 3.2+ */
@@ -370,6 +380,14 @@ h5,.h5 {
     }
     .row .row {
       max-width: none !important;
+    }
+
+    .gridded {
+      
+      & > * {
+        border-right: none;
+        border-bottom: 1px solid;
+      }      
     }
 
 }

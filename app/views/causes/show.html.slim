@@ -1,54 +1,52 @@
 - @title =  @cause.display_name
 
 
-.row.fullwidth.oxygen
-  .large-9.columns
-    iframe src="#{@cause.video_link}" width="100%" height="100%" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen
-  .large-3.columns
-    .h3.mlimit-top.mlimit.secondary DESCRIPTION
-    p
-     = @cause.description
-    div
-     = render 'causes/partials/follow', cause:@cause
-     -if !@cause.twitter_handle.empty?
-      =render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
-    .cboth
+
+#cause-head.oxygen.smoke-bg.blimit
+  .row
+    .large-12.columns.mlimit.mlimit-top
+      h2.inline CAUSE NAME
+      .tag-block.inline
+        .tag-block-detail Tutoring
+        .tag-block-detail 
+          .tertiary 13
+
+#cause-content.oxygen.mlimit
+  .row
+    .large-9.columns
+      #cause-gallery
+      #cause-info
+        .gridded.row.no-margin#cause-tabs-nav
+          .large-3.columns.text-center.mpadding.bold.secondary About cause
+          .large-3.columns.text-center.mpadding.bold.secondary Needs
+          .large-3.columns.text-center.mpadding.bold.secondary Events
+          .large-3.columns.text-center.mpadding.bold.secondary Community
+        .row.collapse.blimit-top      
+          .large-12.columns
+            = @cause.description
 
 
-#tabnav
-  .row.fullwidth.oxygen
-    .large-7.columns.push-2
-      ul.inline-list.bold
-        li OUR NEEDS
-        li ABOUT US
-    .large-3.columns    
-#content
-  .row.fullwidth.oxygen
-    .large-7.columns.push-2
-     = @cause.description
     .large-3.columns
-      .h3.mlimit.secondary FOLLOWERS
-      .followers
-        img.follower src="http://placehold.it/80x80"
-        img.follower src="http://placehold.it/80x80"
-        img.follower src="http://placehold.it/80x80"
-        img.follower src="http://placehold.it/80x80"
-        img.follower src="http://placehold.it/80x80"
-        img.follower src="http://placehold.it/80x80"
-
       div
-       = render 'causes/partials/follow', cause:@cause
-       -if !@cause.twitter_handle.empty?
-        =render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
+        p.h3 = @cause.description
+      div
+        .h3.mlimit.secondary FOLLOWERS
+        .followers.mlimit
+          img.follower src="http://placehold.it/80x80"
+          img.follower src="http://placehold.it/80x80"
+          img.follower src="http://placehold.it/80x80"
+          img.follower src="http://placehold.it/80x80"
+          img.follower src="http://placehold.it/80x80"
+          img.follower src="http://placehold.it/80x80"
+        div
+         = render 'causes/partials/follow', cause:@cause
+         -if !@cause.twitter_handle.empty?
+          =render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
+#cause-needs.oxygen.mlimit
+  .row
+    .large-12.columns
+      h2 Our specific needs
 
-
-
-.middle_bar
- .middle_bar_holder
-  .middle_content
-   ul class="no-margin"
-    li.active data-show_id="needs_content" OUR NEEDS
-    li data-show_id="about_content" ABOUT US
 .cause_content
   .wide_side_container.left
     #needs_content.bar_content.show
@@ -61,9 +59,5 @@
     #about_content.bar_content.hide
        .middle_content.spaced_content #{@cause.mission_statement}
         
-      
-  .narrow_side_container.right.gray_border
-    h2 Followers
-    -@cause.followers.each do |user|
-       =render 'profiles/partials/follow_thumbnail', :user => user
+
 
