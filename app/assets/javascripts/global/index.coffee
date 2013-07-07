@@ -1,7 +1,6 @@
 #= require_tree .
 
-
-$(document).ready ->
+Application.setupSuperNavElements = ->
   $("#cities_nav").click (e) ->
     $("#selectcity").addClass "active"
     $("#selectcause").removeClass "active"

@@ -66,8 +66,7 @@ class Application.App extends Backbone.Events
     actionSpecific?.call?(window)
 
   setupGlobalElements: ()->
-    # ADAM
-    # You can do your global initializers in here
+    Application.setupSuperNavElements()
 
   # Viewport Sizing Change Events
   #
