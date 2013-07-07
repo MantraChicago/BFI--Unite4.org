@@ -267,6 +267,13 @@ h5,.h5 {
     background-color:#eee;
 }
 
+.no-outline {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
 .equal-col-cont {
    overflow: hidden;
    clear:    both;

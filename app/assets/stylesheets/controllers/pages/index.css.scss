@@ -161,3 +161,25 @@ h3.areatitle {
 }	
 
 }
+
+
+#mapholder {
+	#mapsettings {
+		background: #0081bb;		
+		margin: 20px;
+		position: absolute;
+		right: 20px;
+		top: 0;
+		bottom: 0;
+		min-width: 210px;
+		button {
+			border: none;
+			background: #012a3e;
+			width: 100%;
+		}
+		select {
+			height: 30px;
+			background: url(/assets/ui/select-small.gif) no-repeat right center white;
+		}
+	}
+}
