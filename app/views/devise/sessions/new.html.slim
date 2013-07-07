@@ -1,24 +1,31 @@
-.login.signup
-	.centered.title First you need to sign in...
 
-	.centered
-	.left
 
-	 	= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| 
-	  		.errors
-	   			=devise_error_messages!
-	  		.input_row 
-	   			=f.email_field :email, :autofocus => true, :placeholder=>"username"
-	  		.input_row
-	  		    =f.password_field :password,:placeholder => "password"
-	  		-if devise_mapping.rememberable?
-	  			.remember_me 
-	  			 |Remember me 
-	  		     =f.check_box :remember_me	
-	  				
-	  		.input_row.signup_row
-	   			=f.submit "Sign In"		
-	     .middle_spacer
 
-	.right
-		= render "devise/shared/links"
+.row.oxygen.blimit.blimit-top
+	.large-12.columns.text-center
+		h2	First you need to sign in...
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| 
+	.row.oxygen.narrow.blimit
+		.large-12.columns.errors
+			=devise_error_messages!	
+		.large-6.columns.text-right
+				#register-fields
+					div
+						=f.email_field :email, :autofocus => true, :placeholder=>"username", :class => "bubble bg-smoke"
+
+
+
+		.large-6.columns.text-right
+			div
+				=f.password_field :password,:placeholder => "password", :class => "bubble bg-smoke"	
+			
+
+			-if devise_mapping.rememberable?
+				.remember_me 
+					|Remember me 
+					=f.check_box :remember_me	
+			div			
+			    .h3
+					= link_to 'Sign in', '/causes', :class=>'btn pink btn-large oxygen h2 bold right'      
+
+				
