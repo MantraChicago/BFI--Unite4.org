@@ -20,7 +20,8 @@ header
     .large-4.columns.mlimit
       | &nbsp;
 
-#city-needs.row.mlimit
-  - cache( cache_key_for_causes_by_city(@city[:slug]) ) do    
+.cause-listing-container.row.mlimit
+  - cache( cache_key_for_causes_by_city(@city[:slug]), by_cause_type: params[:cause_type_slug] ) do    
     - Cause.by_city_slug(@city[:slug]).each do |cause|
-      == render :partial => "shared/cause_tile", locals: {cause: cause}
+      .large-3.columns.mlimit
+        == render :partial => "shared/cause_tile", locals: {cause: cause}

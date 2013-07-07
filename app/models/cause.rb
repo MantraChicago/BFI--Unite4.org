@@ -32,6 +32,9 @@ class Cause < ActiveRecord::Base
 
   after_create :create_default_records
 
+
+  delegate :type_of_need, :days_to_go, :desired_state, :current_state, :goal_unit, :percent_complete, :goal_summary, :to => :active_campaign, :allow_nil => true, :prefix => true
+
   def following_users
     User.where(id: followers.map(&:user_id))
   end
@@ -201,7 +204,6 @@ end
 #  is_featured           :boolean          default(FALSE)
 #  twitter_handle        :string(255)
 #  facebook_url          :string(255)
-#  city_id               :integer
 #  active                :boolean
 #  display_name          :string(255)
 #  address_line_one      :string(255)
@@ -217,5 +219,6 @@ end
 #  cash_donations_count  :integer          default(0)
 #  goods_donations_count :integer          default(0)
 #  city_slug             :string(255)
+#  short_description     :string(255)
 #
 

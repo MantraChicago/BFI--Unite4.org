@@ -18,7 +18,6 @@
         - cache(cache_key_for_cause_types) do
           h4.slim.white What is your passion?
           select.rounded name="cause_type_id"
-            option value=""
             - CauseType.order("name asc").each do |cause_type|
               option value=cause_type.id
                 == cause_type.name

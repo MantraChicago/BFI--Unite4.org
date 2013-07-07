@@ -11,10 +11,14 @@ module CacheKeyHelper
     "products/by-name-#{ count }-#{ maximum_updated_at }"
   end
 
-  def cache_key_for_causes_by_city city_slug
+  def cache_key_for_causes_by_city city_slug, filters={}
     count = Cause.by_city_slug(city_slug)
     maximum_updated_at = Cause.by_city_slug(city_slug).maximum(:updated_at).try(:utc).try(:to_s,:number)
-    "causes/by_city_slug-#{ count }-#{ maximum_updated_at }"
+    base = "causes/by_city_slug-#{ count }-#{ maximum_updated_at }"
+
+    return base if filters.empty?
+
+    base + "/" + cache_key_from_params(filters)
   end
 
   def cache_key_for_causes_by_cause_type cause_type_slug
@@ -40,6 +44,15 @@ module CacheKeyHelper
     count = Cause.by_city_slug(city_slug).count
     maximum_updated_at = CauseType.joins(:causes).where("causes.city_slug = ?", city_slug).maximum(:updated_at).try(:utc).try(:to_s, :number)
     "cause_types/grouped-by-city/#{ city_slug }-#{ count }-#{ maximum_updated_at }"
+  end
+
+  def cache_key_from_params(hash={})
+    cache_key = hash.inject([]) do |memo,pair|
+      key, value = pair
+      memo += "#{key}:#{ value }"
+    end
+
+    cache_key.join ':::'
   end
 
 end

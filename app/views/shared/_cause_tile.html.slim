@@ -1,39 +1,49 @@
-.large-3.columns.mlimit
-  .city-need.oxygen      
-    .row.name.no-margin
-      .large-4.columns
-        img.pos-abs.circle.thumb.slimit-top src=cause.cause_tile_picture_url
-      .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
-        p.uppercase 
-          == cause.display_name 
+.cause-listing.oxygen data-cause-id=cause.id data-cause-slug=cause.slug data-type-of-need=cause.active_campaign_type_of_need
+  .row.name.no-margin
+    .large-4.columns
+      img.pos-abs.circle.thumb.slimit-top src=cause.cause_tile_picture_url
+    .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
+      p.uppercase 
+        == limit_to_three_words(cause.display_name)
 
-        p.h6 Hurricane Sandy Restoration
-    .row.goal.no-margin
-      .large-4.columns
-      .large-8.small-8.text-right.columns.slimit.slimit-top.right
-        p GOAL
-        p.h6 $12,000 in 2 weeks
-    .row.no-margin
-      .large-12.columns
-        .bar-holder.slimit
-          .bar.oxygen style="width:30%;" 40%
-    .row.no-margin
-      .large-6.small-6.columns
-        .button.nowrap
-          .icon.heart.circle.inline
-          .h5.inline GIVE
-      .large-6.small-6.columns
-        .button.nowrap
-          .icon.add.circle.inline
-          .h5.inline FOLLOW
-    .row.stats.no-margin
-      .large-4.small-4.columns.text-center.slimit.slimit-top
-        .bold.secondary.slimit 75%
-        .h6.tertiary GOAL MET
-      .large-4.small-4.columns.text-center.slimit.slimit-top
-        .bold.secondary.slimit 86
-        .h6.tertiary FOLLOWERS
-      .large-4.small-4.columns.text-center.slimit.slimit-top
-        .bold.secondary.slimit 35
-        .h6.tertiary DAYS TO GO
+      p.h6 
+        == cause.short_description
+  .row.goal.no-margin
+    .large-4.columns
+    .large-8.small-8.text-right.columns.slimit.slimit-top.right
+      p GOAL
+      p.h6 
+        == cause.active_campaign_goal_summary
+  .row.no-margin
+    .large-12.columns
+      .bar-holder.slimit
+        .bar.oxygen style="width:#{ cause.active_campaign_percent_complete }%;" 
+          == cause.active_campaign_percent_complete.to_s + "%"
+
+  .row.no-margin
+    .large-6.small-6.columns
+      .button.nowrap.fulfillment-button
+        .icon.heart.circle.inline
+        .h5.inline.uppercase
+          == button_text_for_need(cause.active_campaign_type_of_need)  
+    .large-6.small-6.columns
+      .button.nowrap.follow-button
+        .icon.add.circle.inline
+        a.h5.inline.uppercase href=cause_path(cause)
+          | Details
+
+  .row.stats.no-margin
+    .large-4.small-4.columns.text-center.slimit.slimit-top
+      .bold.secondary.slimit
+         == cause.active_campaign_percent_complete.to_s + "%"
+      .h6.tertiary GOAL MET
+    .large-4.small-4.columns.text-center.slimit.slimit-top
+      .bold.secondary.slimit
+        == cause.active_campaign_current_state 
+      .h6.tertiary.uppercase
+        == cause.active_campaign_goal_unit
+    .large-4.small-4.columns.text-center.slimit.slimit-top
+      .bold.secondary.slimit
+        == cause.active_campaign_days_to_go
+      .h6.tertiary DAYS TO GO
 

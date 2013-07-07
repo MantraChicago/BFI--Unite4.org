@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706064312) do
+ActiveRecord::Schema.define(:version => 20130707015954) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -65,15 +65,19 @@ ActiveRecord::Schema.define(:version => 20130706064312) do
     t.integer  "percent_complete"
     t.string   "desired_state"
     t.string   "current_state"
-    t.boolean  "active",           :default => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.boolean  "active",               :default => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.string   "type_of_need"
+    t.string   "goal_summary"
+    t.string   "timefame_description"
   end
 
   add_index "campaigns", ["active"], :name => "index_campaigns_on_active"
   add_index "campaigns", ["cause_id"], :name => "index_campaigns_on_cause_id"
   add_index "campaigns", ["id"], :name => "index_campaigns_on_id", :unique => true
   add_index "campaigns", ["need_id"], :name => "index_campaigns_on_need_id"
+  add_index "campaigns", ["type_of_need"], :name => "index_campaigns_on_type_of_need"
 
   create_table "cash_donations", :force => true do |t|
     t.integer  "user_id"
@@ -151,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20130706064312) do
     t.integer  "cash_donations_count",  :default => 0
     t.integer  "goods_donations_count", :default => 0
     t.string   "city_slug"
+    t.string   "short_description"
   end
 
   add_index "causes", ["cause_type_id"], :name => "index_causes_on_cause_type_id"

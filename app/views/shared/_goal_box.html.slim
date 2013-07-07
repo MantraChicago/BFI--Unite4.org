@@ -1,0 +1,16 @@
+div class="goal_box"
+ div class="goal_title_holder"
+  div class="goal_title" GOAL
+  div class="goal_subtitle" #{goal[:title]}
+ div class="goal_progress_holder"
+  div class="goal_progress" data-percent="#{goal[:percent]}" style="width:#{goal[:percent]}%"
+ div class="goal_stats"
+  -goal[:stats].each do |stat|
+   div class="goal_stat"
+    div class="goal_upper" #{stat[:upper]}
+    div class="goal_lower" #{stat[:lower]}
+ div class="goal_right_holder"
+  a class="goal_more_link" href="#{goal[:more_link]}" MORE INFO
+  a class="goal_give_link" href="#{goal[:more_link]}" #{goal[:button_text]}
+
+

@@ -9,8 +9,8 @@
 	}
 }
 
-#city-needs {
-	.city-need {
+.cause-listing-container {
+	.cause-listing {
 		background: #f6f6f6;
 		border: 1px solid #e0e0e0;
 		color: #4d4d4d;
@@ -46,6 +46,9 @@
 			border-bottom: 3px solid #008ebd;
 			color: #fff;
 			width: 100%;
+      a {
+        color: #fff;
+      }
 			.icon {
 				height: 20px;
 				width: 20px;

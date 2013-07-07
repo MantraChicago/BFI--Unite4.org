@@ -88,7 +88,6 @@ end
 #  is_featured           :boolean          default(FALSE)
 #  twitter_handle        :string(255)
 #  facebook_url          :string(255)
-#  city_id               :integer
 #  active                :boolean
 #  display_name          :string(255)
 #  address_line_one      :string(255)
@@ -104,5 +103,6 @@ end
 #  cash_donations_count  :integer          default(0)
 #  goods_donations_count :integer          default(0)
 #  city_slug             :string(255)
+#  short_description     :string(255)
 #
 
