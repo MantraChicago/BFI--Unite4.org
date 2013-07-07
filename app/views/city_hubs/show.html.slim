@@ -10,9 +10,9 @@ header
             - key, value = pair
             .tag-block 
               .tag-block-detail 
-                == key
+                == link_to key, "/charities-in-#{ @city[:slug] }/supporting-#{ key.parameterize }", remote: true
               .tag-block-detail.tertiary
-                == value
+                == link_to value, "/charities-in-#{ @city[:slug] }/supporting-#{ key.parameterize }", remote: true
 
   .cboth
 #sub-header.blimit.sub-header.bordered.oxygen

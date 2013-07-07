@@ -12,7 +12,9 @@ GiveInspireLove::Application.routes.draw do
 
   # Look, SEO / Human Readable URLs
   get "/charities-in-:city_slug", :to => "city_hubs#show"
-  get "/charities-supporting-:cause_type_slug", :to => "category_hubs#show"
+  get "/charities-in-:city_slug/supporting-:by_cause_type", :to => "city_hubs#show"
+  get "/charities-supporting-:by_cause_type", :to => "category_hubs#show"
+  get "/charities-supporting-:cause_type_slug/in-:city_slug", :to => "category_hubs#show"
 
   resources :causes
   resources :donations
