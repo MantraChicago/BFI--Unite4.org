@@ -7,3 +7,61 @@
  *= require lib/leaflet
 */
 
+.cause-listing-container {
+	.cause-listing {
+		background: #f6f6f6;
+		border: 1px solid #e0e0e0;
+		color: #4d4d4d;
+		img.thumb {			
+			border: 3px solid #fff;
+		}
+		.name {
+			background: #656565;
+			color: #fff;
+		}
+		.goal {
+
+		}
+		.bar-holder {
+			height: 20px;
+			background: #d7d7d7;
+			.bar {
+				background: #9dd100;
+				border-radius: 0 10px 10px 0;
+				height: 20px;
+				color: #fff;
+				text-align: right;
+				line-height: 20px;
+				font-size: 70%;
+				padding-right: 10px;
+				min-width: 40px;
+			}
+		}
+		position: relative;
+		.button {
+			padding: 10px;
+			background: #009dd1;
+			border-bottom: 3px solid #008ebd;
+			color: #fff;
+			width: 100%;
+      a {
+        color: #fff;
+      }
+			.icon {
+				height: 20px;
+				width: 20px;
+				background: #008ebd;
+				margin-right: 10px;
+			}
+		}
+		.stats {
+			background: #ececec;
+		}
+		.h6 {
+				font-size: 7pt !important;
+		}
+		p {
+			margin: 0;
+		}
+	}	
+}
