@@ -68,6 +68,7 @@ h3.areatitle {
 #selectcity,#selectcause {
 	height: 490px;
 	opacity: 0;
+	visibility:hidden;
 	width: 100%;
 	z-index: 100;
 	cursor: pointer;
@@ -103,6 +104,7 @@ h3.areatitle {
 
 	&.active {
 		opacity: 1;
+		visibility: inherit;
 	}
 }
 
