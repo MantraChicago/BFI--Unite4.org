@@ -11,21 +11,41 @@
         .tag-block-detail 
           .tertiary 13
 
+
+
 #cause-content.oxygen.mlimit
   .row
     .large-9.columns
       #cause-gallery.mlimit
         iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src="http://www.youtube.com/embed/nwAYpLVyeFU" type="text/html" width="100%"
       #cause-info
-        .gridded.row.no-margin#cause-tabs-nav
-          .large-3.columns.text-center.mpadding.bold.secondary About cause
-          .large-3.columns.text-center.mpadding.bold.secondary Needs
-          .large-3.columns.text-center.mpadding.bold.secondary Events
-          .large-3.columns.text-center.mpadding.bold.secondary Community
-        .row.collapse.blimit-top      
-          .large-12.columns
+
+        .section-container.auto data-section=""
+            section
+              p.title data-section-title=""
+                a.bold href="#panel1" About cause
+              .content data-section-content=""
+                p = @cause.description
+            section
+              p.title data-section-title=""
+                a.bold href="#panel2" Needs
+              .content data-section-content=""
+                p Content of section 2.
+            section
+              p.title data-section-title=""
+                a.bold href="#panel2" Events
+              .content data-section-content=""
+                p Content of section 2.
+            section
+              p.title data-section-title=""
+                a.bold href="#panel2" Community
+              .content data-section-content=""
+                p Content of section 2.
+
+
+
             
-            = @cause.description
+            
 
 
     .large-3.columns      

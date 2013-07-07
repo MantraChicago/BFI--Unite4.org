@@ -15,3 +15,5 @@ Application.setupSuperNavElements = ->
     $target = $(e.currentTarget)
 
     $("#selectcity,#selectcause").hide().removeClass "active"
+
+  $(document).foundation();
