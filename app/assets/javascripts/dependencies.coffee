@@ -10,5 +10,4 @@
 #= require backbone-min
 #= require backbone-query.min
 #= require foundation
-
-#= require_self
+#= require jquery-hacks
