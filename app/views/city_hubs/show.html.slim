@@ -2,8 +2,9 @@ header
   .bg-cover style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
     .row
       .large-12.columns.text-center.blimit-top
-        .h0.oxygen.bold.white#cityname == @city[:name]
+        .h0.oxygen.bold.white.text-shadow#cityname == @city[:name]
       .large-12.columns.text-center.blimit
+        h3.white.text-shadow There are 74 ways for you to help causes in #{ @city[:name] }
         - cache( cache_key_for_cause_types_grouped_by_city(@city[:slug]) ) do 
           - CauseType.grouped_by_city(@city[:slug]).each do |pair|
             - key, value = pair
