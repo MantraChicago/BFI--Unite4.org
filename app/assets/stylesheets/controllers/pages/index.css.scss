@@ -165,12 +165,11 @@ h3.areatitle {
 
 #mapholder {
 	#mapsettings {
-		background: #0081bb;		
-		margin: 20px;
+		background: #0081bb;
 		position: absolute;
-		right: 20px;
-		top: 0;
-		bottom: 0;
+		right: 40px;
+		top: 20px;
+		bottom: 20px;
 		min-width: 210px;
 		button {
 			border: none;
@@ -180,6 +179,11 @@ h3.areatitle {
 		select {
 			height: 30px;
 			background: url(/assets/ui/select-small.gif) no-repeat right center white;
+			color: #202020 !important;
+			border: none;
+			option {
+				color: #202020;
+			}
 		}
 	}
 }
