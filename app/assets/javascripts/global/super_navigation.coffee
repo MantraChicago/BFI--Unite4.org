@@ -1,15 +1,17 @@
 Application.setupSuperNavElements = ->
+  $('#selectcity,#selectcause').hide()
+
   $("#cities_nav").click (e) ->
-    $("#selectcity").addClass "active"
-    $("#selectcause").removeClass "active"
+    $("#selectcity").show().addClass "active"
+    $("#selectcause").hide().removeClass "active"
     e.stopPropagation()
 
   $("#causes_nav").click (e) ->
-    $("#selectcause").addClass "active"
-    $("#selectcity").removeClass "active"
+    $("#selectcause").show().addClass "active"
+    $("#selectcity").hide().removeClass "active"
     e.stopPropagation()
 
   $("body").click (e)->
     $target = $(e.currentTarget)
 
-    $("#selectcity,#selectcause").removeClass "active"
+    $("#selectcity,#selectcause").hide().removeClass "active"

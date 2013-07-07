@@ -160,7 +160,7 @@ class Cause < ActiveRecord::Base
       results = results.send(params[:scope])
     end
 
-    QueryableScopes.each {|base| results = results.send(base) if params[base] }
+    QueryableScopes.each {|base| results = results.send(base, params[base]) if params[base] }
 
     join_ids = []
 
