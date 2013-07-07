@@ -9,6 +9,7 @@
 #= require underscore-string.min
 #= require backbone-min
 #= require backbone-query.min
+#= require foundation
 
 #= require_self
 
