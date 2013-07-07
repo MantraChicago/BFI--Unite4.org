@@ -1,7 +1,6 @@
 @import "unite/colors";
 @import "unite/buttons";
 
-
 .row.final {
 	border-bottom: solid 1px #dfdfdf;
 	margin-bottom: 40px;
@@ -83,15 +82,15 @@ h3.areatitle {
 		}		
 	}
 	#chicago {
-		background-image: url(/assets/dropdown/ca.jpg);
+		background-image: url(/assets/cities/small/chicago-small.jpg/);
 	}
-	#sanfrancisco {
-		background-image: url(/assets/dropdown/sf.jpg);
+	#san-francisco {
+		background-image: url(/assets/cities/small/san-francisco-small.jpg);
 	}
-	#newyork {
-		background-image: url(/assets/dropdown/ny.jpg);
+	#new-york {
+		background-image: url(/assets/cities/small/new-york-small.jpg);
 	}
-	#chicago,#sanfrancisco,#newyork {
+	#chicago,#san-francisco,#new-york {
 		height: 490px;
 		background-size: cover;
 		background-position: center bottom;
@@ -106,3 +105,12 @@ h3.areatitle {
 		opacity: 1;
 	}
 }
+
+
+#take-action-form-container {
+  background: rgba(30,30,30,0.2);
+  select {
+    color: rgba(30,30,30,1.0);
+  }
+}
+

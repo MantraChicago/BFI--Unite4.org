@@ -4,7 +4,7 @@
       img.pos-abs.circle.thumb.slimit-top src=cause.cause_tile_picture_url
     .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
       p.uppercase 
-        == limit_to_three_words(cause.display_name)
+        == link_to(limit_to_three_words(cause.display_name), cause_path(cause))
 
       p.h6 
         == cause.short_description

@@ -2,13 +2,12 @@
   .row
     .large-12.columns
       h3.areatitle
-        | Some text 
-          span
-            San Francisco
-  .row
+        | Featured Campaigns
+  .row.cause-listing-container
     - cache(cache_key_for_featured_campaigns) do
       - Campaign.featured.each do |campaign|
-        = render 'shared/featured_need', :need => campaign.need, :stats=> [{:upper=> 'donate', :lower=>'$20'}], :percent=>campaign.percent_complete
+        .large-3.columns.mlimit
+          == render :partial => 'shared/cause_tile', :locals => {cause: campaign.cause} 
   .row.final
     .large-4.columns.push-8.text-right
       a.purplelink href="#" View all causes in San Francisco
