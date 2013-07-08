@@ -99,7 +99,7 @@ class Cause < ActiveRecord::Base
   end
 
   def cause_tile_picture_url
-    url = picture.url(:cause_tile)
+    url = picture.url(:medium)
 
     if url.match(/missing/)
       url = "/assets/missing-square.jpg"
