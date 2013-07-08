@@ -1,29 +1,29 @@
 Application.setupSuperNavElements = ->
+  selectCity = $('#selectcity')
+  selectCause = $('#selectcause')
+
   $('#selectcity,#selectcause').hide()
 
   $("#cities_nav").click (e) ->
-    $("#selectcity").show().addClass "active"
-    $("#selectcause").hide().removeClass "active"
     e.stopPropagation()
 
+    if selectCity.is('.active')
+      selectCity.hide().removeClass "active"
+    else
+      selectCity.show().addClass "active"
+
+    selectCause.hide().removeClass "active"
+
   $("#causes_nav").click (e) ->
-    $("#selectcause").show().addClass "active"
-    $("#selectcity").hide().removeClass "active"
     e.stopPropagation()
+
+    if selectCause.is('.active')
+      selectCause.hide().removeClass "active"
+    else
+      selectCause.show().addClass "active"
+
+    selectCity.hide().removeClass "active"
 
   $("body").click (e)->
     $target = $(e.currentTarget)
-
     $("#selectcity,#selectcause").hide().removeClass "active"
-
-  $(document).foundation();
-
-
-causeBoxHeight = 0
-jQuery(document).ready ->
-  jQuery(".sameheight").each(->
-    t = jQuery(this)
-    height = t.height()
-    causeBoxHeight = Math.max(causeBoxHeight, height)
-  ).height causeBoxHeight
-  

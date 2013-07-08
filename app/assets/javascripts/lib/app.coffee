@@ -76,6 +76,8 @@ class Application.App extends Backbone.Events
     actionSpecific?.call?(window)
     setupHeader()
 
+    $(document).foundation()
+
   # We will gradully enhance the DOM with any user-specific
   # or session-specific modifications.  This is because, in an ideal
   # scenario the entire page that is getting served to us is highly cached / static
