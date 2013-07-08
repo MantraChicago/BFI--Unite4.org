@@ -5,28 +5,29 @@
 #cause-head.oxygen.smoke-bg.blimit
   .row
     .large-12.columns.mlimit.mlimit-top
-      h2.inline.slimit-right CAUSE NAME
+      h2.inline.slimit-right
+        == @cause.display_name
       .tag-block.inline#title-tag
-        .tag-block-detail Tutoring
         .tag-block-detail 
-          .tertiary 13
-
-
+          == @cause.cause_type && @cause.cause_type.name 
+        .tag-block-detail 
+          .tertiary
+            == @cause.followers_count
 
 #cause-content.oxygen.mlimit
   .row
     .large-9.columns
       #cause-gallery.mlimit
-        iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src="http://www.youtube.com/embed/nwAYpLVyeFU" type="text/html" width="100%"
+        iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src=@cause.video_link type="text/html" width="100%"
       #cause-info
 
         .section-container.auto data-section=""
-            section
+            section#about-cause-section
               p.title data-section-title=""
                 a.bold href="#panel1" About cause
               .content data-section-content=""
                 p = @cause.description
-            section
+            section#cause-needs-section
               p.title data-section-title=""
                 a.bold href="#panel2" Needs
               .content data-section-content=""
@@ -34,188 +35,40 @@
                   .row
                     .large-12.columns
                       h2 Our specific needs
+                      
+                      .needs-listing-container
+                        ul
+                          - @cause.needs.each do |need|
+                            li 
+                              | We need
+                              a
+                                == " #{ need.type_of_need.humanize }"
 
-
-                  .cause-listing-container.row.mlimit
-                    .columns.mlimit.left.large-4
-                      .cause-listing.oxygen      
-                        .row.name.no-margin
-                          .large-4.columns
-                            img.pos-abs.circle.thumb.slimit-top src=asset_path('sa1.jpg')
-                          .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
-                            p SALVATION ARMY
-                            p.h6 Hurricane Sandy Restoration
-                        .row.goal.no-margin
-                          .large-4.columns
-                          .large-8.small-8.text-right.columns.slimit.slimit-top.right
-                            p GOAL
-                            p.h6 $12,000 in 2 weeks
-                        .row.no-margin
-                          .large-12.columns
-                            .bar-holder.slimit
-                              .bar.oxygen style="width:30%;" 40%
-                        .row.no-margin
-                          .large-6.small-6.columns
-                            .button.nowrap
-                              .icon.heart.circle.inline
-                              .h5.inline GIVE
-                          .large-6.small-6.columns
-                            .button.nowrap
-                              .icon.add.circle.inline
-                              .h5.inline FOLLOW
-                        .row.stats.no-margin
-                          .large-4.small-4.columns.text-center.slimit.slimit-top
-                            .bold.secondary.slimit 75%
-                            .h6.tertiary GOAL MET
-                          .large-4.small-4.columns.text-center.slimit.slimit-top
-                            .bold.secondary.slimit 86
-                            .h6.tertiary FOLLOWERS
-                          .large-4.small-4.columns.text-center.slimit.slimit-top
-                            .bold.secondary.slimit 35
-                            .h6.tertiary DAYS TO GO
-                    .columns.mlimit.left.large-4
-                      .cause-listing.oxygen      
-                        .row.name.no-margin
-                          .large-4.columns
-                            img.pos-abs.circle.thumb.slimit-top src=asset_path('sa1.jpg')
-                          .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
-                            p SALVATION ARMY
-                            p.h6 Hurricane Sandy Restoration
-                        .row.goal.no-margin
-                          .large-4.columns
-                          .large-8.small-8.text-right.columns.slimit.slimit-top.right
-                            p GOAL
-                            p.h6 $12,000 in 2 weeks
-                        .row.no-margin
-                          .large-12.columns
-                            .bar-holder.slimit
-                              .bar.oxygen style="width:30%;" 40%
-                        .row.no-margin
-                          .large-6.small-6.columns
-                            .button.nowrap
-                              .icon.heart.circle.inline
-                              .h5.inline GIVE
-                          .large-6.small-6.columns
-                            .button.nowrap
-                              .icon.add.circle.inline
-                              .h5.inline FOLLOW
-                        .row.stats.no-margin
-                          .large-4.small-4.columns.text-center.slimit.slimit-top
-                            .bold.secondary.slimit 75%
-                            .h6.tertiary GOAL MET
-                          .large-4.small-4.columns.text-center.slimit.slimit-top
-                            .bold.secondary.slimit 86
-                            .h6.tertiary FOLLOWERS
-                          .large-4.small-4.columns.text-center.slimit.slimit-top
-                            .bold.secondary.slimit 35
-                            .h6.tertiary DAYS TO GO
-                    .columns.mlimit.left.large-4
-                      .cause-listing.oxygen      
-                        .row.name.no-margin
-                          .large-4.columns
-                            img.pos-abs.circle.thumb.slimit-top src=asset_path('sa1.jpg')
-                          .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
-                            p SALVATION ARMY
-                            p.h6 Hurricane Sandy Restoration
-                        .row.goal.no-margin
-                          .large-4.columns
-                          .large-8.small-8.text-right.columns.slimit.slimit-top.right
-                            p GOAL
-                            p.h6 $12,000 in 2 weeks
-                        .row.no-margin
-                          .large-12.columns
-                            .bar-holder.slimit
-                              .bar.oxygen style="width:30%;" 40%
-                        .row.no-margin
-                          .large-6.small-6.columns
-                            .button.nowrap
-                              .icon.heart.circle.inline
-                              .h5.inline GIVE
-                          .large-6.small-6.columns
-                            .button.nowrap
-                              .icon.add.circle.inline
-                              .h5.inline FOLLOW
-                        .row.stats.no-margin
-                          .large-4.small-4.columns.text-center.slimit.slimit-top
-                            .bold.secondary.slimit 75%
-                            .h6.tertiary GOAL MET
-                          .large-4.small-4.columns.text-center.slimit.slimit-top
-                            .bold.secondary.slimit 86
-                            .h6.tertiary FOLLOWERS
-                          .large-4.small-4.columns.text-center.slimit.slimit-top
-                            .bold.secondary.slimit 35
-                            .h6.tertiary DAYS TO GO
-
-
-
-
-
-
-
-            section
+            section#cause-events-section
               p.title data-section-title=""
                 a.bold href="#panel2" Events
               .content data-section-content=""
                 p No events posted
-            section
+            section#cause-community-section
               p.title data-section-title=""
                 a.bold href="#panel2" Community
               .content data-section-content=""
                 p Discussion Thread coming soon.
 
-
-            
-            
-
-
     .large-3.columns      
       .cause-listing-container.row.mlimit
         .columns.mlimit.left
-          .cause-listing.oxygen      
-            .row.name.no-margin
-              .large-4.columns
-                img.pos-abs.circle.thumb.slimit-top src=asset_path('sa1.jpg')
-              .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
-                p SALVATION ARMY
-                p.h6 Hurricane Sandy Restoration
-            .row.goal.no-margin
-              .large-4.columns
-              .large-8.small-8.text-right.columns.slimit.slimit-top.right
-                p GOAL
-                p.h6 $12,000 in 2 weeks
-            .row.no-margin
-              .large-12.columns
-                .bar-holder.slimit
-                  .bar.oxygen style="width:30%;" 40%
-            .row.no-margin
-              .large-6.small-6.columns
-                .button.nowrap
-                  .icon.heart.circle.inline
-                  .h5.inline GIVE
-              .large-6.small-6.columns
-                .button.nowrap
-                  .icon.add.circle.inline
-                  .h5.inline FOLLOW
-            .row.stats.no-margin
-              .large-4.small-4.columns.text-center.slimit.slimit-top
-                .bold.secondary.slimit 75%
-                .h6.tertiary GOAL MET
-              .large-4.small-4.columns.text-center.slimit.slimit-top
-                .bold.secondary.slimit 86
-                .h6.tertiary FOLLOWERS
-              .large-4.small-4.columns.text-center.slimit.slimit-top
-                .bold.secondary.slimit 35
-                .h6.tertiary DAYS TO GO
+          == render :partial => "campaigns/listing", :locals => {cause: @cause, campaign: @cause.active_campaign}
       p.h4 = @cause.description
       div
         .h3.mlimit.secondary FOLLOWERS
         .followers.mlimit
-          img.follower src="http://placehold.it/80x80"
-          img.follower src="http://placehold.it/80x80"
-          img.follower src="http://placehold.it/80x80"
-          img.follower src="http://placehold.it/80x80"
-          img.follower src="http://placehold.it/80x80"
-          img.follower src="http://placehold.it/80x80"
+          - users = @cause.following_users
+          - if users.empty?
+            p.empty-text Take the first step. Be the first to follow.
+          - else
+            - @cause.following_users.each do |user|
+              img src=user.avatar.url(:thumb) height=80 width=80
         div
          = render 'causes/partials/follow', cause:@cause
          -if !@cause.twitter_handle.empty?

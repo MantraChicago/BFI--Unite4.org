@@ -19,3 +19,6 @@ Application.updateFollowButtonsFor = (causeIds,options={})->
     if options.disable
       button.addClass('disabled')
 
+    # generalize this better
+    $('a.cause-follow-button').html('Following')
+
