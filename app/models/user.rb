@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   has_one :game
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
 
   has_and_belongs_to_many :badges, :join_table=>:badges_users
 
