@@ -9,9 +9,11 @@ gem 'omniauth-facebook'
 
 gem "paperclip", "~> 2.7"
 
-gem 'daemons'
-gem 'delayed_job'
-gem 'delayed_job_active_record'
+#gem 'daemons'
+#gem 'delayed_job'
+#gem 'delayed_job_active_record'
+
+gem 'turbo-sprockets-rails3'
 
 gem 'customerio','0.5.0'
 
