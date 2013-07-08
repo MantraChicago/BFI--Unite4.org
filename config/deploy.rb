@@ -1,5 +1,6 @@
 require 'capistrano/ext/multistage'
 require 'rvm/capistrano'
+require 'delayed/recipes'
 
 set :stages, ['production', 'staging']
 set :default_stage, 'staging'
@@ -16,6 +17,9 @@ before 'deploy:assets:precompile', 'sym_link:logs'
 before 'deploy:assets:precompile', 'sym_link:settings'
 
 after "deploy:update_code", "bundle:install"
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
 
 namespace :bundle do
   desc 'bundle install'

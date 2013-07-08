@@ -8,6 +8,7 @@ gem 'omniauth','1.1.4'
 gem 'omniauth-facebook'
 
 gem "paperclip", "~> 2.7"
+gem 'delayed_job_active_record'
 
 gem 'customerio','0.5.0'
 
