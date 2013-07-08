@@ -32,7 +32,6 @@ class Cause < ActiveRecord::Base
 
   after_create :create_default_records
 
-
   delegate :need_id, :type_of_need, :days_to_go, :desired_state, :current_state, :goal_unit, :percent_complete, :goal_summary, :to => :active_campaign, :allow_nil => true, :prefix => true
 
   def following_users
@@ -174,6 +173,7 @@ class Cause < ActiveRecord::Base
       results = results.where(cause_type_id: params[:cause_type_id])
     end
 
+    results = results.reorder("name asc")
     results
   end
 

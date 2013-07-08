@@ -3,9 +3,22 @@ class CityHubsController < ApplicationController
 
   def show
     @city = City.find_by_slug(params[:city_slug])
-    @causes = Cause.by_city_slug(params[:city_slug]).query(params)
 
-    respond_with(@causes)
+    @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
+
+    Rails.logger.info "Rendering #{ @causes.length } causes"
+
+    if params[:partial] and html?
+      render :partial => "city_hubs/partials/cause_listings"
+    else
+      respond_with(@causes)
+    end
   end
+
+  protected
+
+    def html?
+      params[:format] == "html"
+    end
 
 end
