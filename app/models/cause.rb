@@ -145,7 +145,7 @@ class Cause < ActiveRecord::Base
 
   def self.query(params={})
     results = scoped
-    results = results.includes(:locations, :needs, :campaigns)
+    results = results.joins(:locations,:campaigns,:needs)
 
     if params[:scope].is_a?(Array)
       base, value = params[:scope]
