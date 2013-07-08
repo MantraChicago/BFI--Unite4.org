@@ -22,6 +22,8 @@ class CauseType < ActiveRecord::Base
   def self.random(count=1)
     order("random()").limit(1).first
   end
+
+
 end
 
 # == Schema Information

@@ -3,11 +3,19 @@
   script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"
 
   javascript:
-    window.Application = window.Application || {};
+    var causesObj=#{ @causes.to_json.html_safe }
+    var locationsObj= #{@locations.to_json.html_safe }
+    var needsObj= #{@needs.to_json(:methods => :type).html_safe }
 
-    Application.data = Application.data || {};
+//#causenav
+//#mapcontainer
 
-    Application.data.causes=     #{ Cause.present({}).as(:details).to_a.to_json.html_safe };
 
-#causenav
-#mapcontainer
+div style="height:100%"
+  .row.fullwidth style="height:100%"
+    .large-3.nopadding.push-9.columns.map-bar.map-menu.position-animation style="height: 100%;"
+      #accordian-holder style="height: 100%;"
+    .large-9.nopadding.pull-3.columns style="height: 100%;"
+      #map-canvas style="width: 100%; height: 100%: "
+  .toggle-map= image_tag("ui/cog.png", :alt =>  "Rails")
+  .popoverHolder
