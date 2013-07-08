@@ -1,9 +1,12 @@
-  
-  var needsCollection=parseObjIntoModels(needsObj, Backbone.Model.extend({
+if(!Application.causes){
+  Application.causes={}
+}
+Application.causes.index=function(){
+  needsCollection=parseObjIntoModels(needsObj, Backbone.Model.extend({
     name:'needs'
     }))
-  var causesCollection=parseObjIntoModels(causesObj, Cause)
-    var locationsCollection=parseObjIntoModels(locationsObj, Location)
+  causesCollection=parseObjIntoModels(causesObj, Cause)
+  locationsCollection=parseObjIntoModels(locationsObj, Location)
 
     var map =createGoogleMap($('#map-canvas')[0])
 
@@ -32,7 +35,8 @@
   }
   */
 
-    var filterView = new FilterView({
-      el: $('#accordian-holder'), 
-      locationsCollection:locationsCollection,
-      filterOptions:filterOptions })
+var filterView = new FilterView({
+  el: $('#accordian-holder'), 
+  locationsCollection:locationsCollection,
+  filterOptions:filterOptions })
+}
