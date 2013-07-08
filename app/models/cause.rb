@@ -61,6 +61,7 @@ class Cause < ActiveRecord::Base
     loc
   end
 
+ 
   def create_default_records
     create_default_location
     create_default_campaign(create_default_need)
