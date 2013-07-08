@@ -13,7 +13,7 @@ set :repository, 'git@github.com:MantraChicago/BFI--Unite4.org.git'
 
 set :assets_role, :app
 
-load 'deploy/assets'
+#load 'deploy/assets'
 
 before "deploy:restart", "db:migrate"
 
