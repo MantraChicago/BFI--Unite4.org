@@ -9,6 +9,7 @@ Application.views.GoogleMapsPanel = Backbone.View.extend
       center: new google.maps.LatLng(41.85, -87.65)
       zoom: 6
       mapTypeId: google.maps.MapTypeId.ROADMAP
+      disableDefaultUI:true
 
     MapTypeControlOptions =
       position: BOTTOM_LEFT
