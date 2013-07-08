@@ -8,6 +8,7 @@
 #= require ./global
 #
 #= require_tree ./lib
+#= require_tree ./pages
 
 # The components folder should be used to store re-usable view elements
 

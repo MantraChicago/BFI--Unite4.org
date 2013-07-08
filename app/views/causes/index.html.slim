@@ -2,13 +2,6 @@
   script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5nbu6QghhMZ7nUg8KppPc--tPG1QFWkA&sensor=true"
   script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"
 
-  javascript:
-    var causesObj=#{ @causes.to_json.html_safe }
-    var locationsObj= #{@locations.to_json.html_safe }
-    var needsObj= #{@needs.to_json(:methods => :type).html_safe }
-
-//#causenav
-//#mapcontainer
 
 
 div style="height:100%"
