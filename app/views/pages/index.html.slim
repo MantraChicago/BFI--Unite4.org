@@ -59,16 +59,12 @@ javascript:
     window.map = m;
     return m;
   }
-  function addMarker(lat,lng,title,marker,map) {
-    marker = typeof marker == 'undefined' ? "/assets/ui/map/marker-1.png" : marker;
-    map = typeof map == 'undefined' ? window.map : map;
-
-    ll = new google.maps.LatLng(lat,lng);
-    markerIcons= { darkblue:"/assets/ui/map/marker-dblue.png",
-      one:"/assets/ui/map/marker-1.png",
-      another:"/assets/ui/map/marker-dblue.png"
-    }
-    m = new google.maps.Marker({position: ll, map: map, title: title, icon:marker})
+  function addMarker(options) {
+    options['marker'] = options['marker'] || "/assets/ui/map/marker-1.png";
+    options['map'] = options['map'] || window.map
+    
+    ll = new google.maps.LatLng(options['lat'],options['lng']);
+    m = new google.maps.Marker({position: ll, map: options['map'], title: options['title'], icon:options['marker']})
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 
