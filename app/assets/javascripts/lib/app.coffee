@@ -74,6 +74,7 @@ class Application.App extends Backbone.Events
 
     controllerSpecific?.call?(window)
     actionSpecific?.call?(window)
+    setupHeader()
 
   # We will gradully enhance the DOM with any user-specific
   # or session-specific modifications.  This is because, in an ideal

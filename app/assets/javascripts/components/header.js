@@ -46,6 +46,7 @@ Application.header={
 
 }
 setupHeader=function(){
+	/*
 	var cities_html=JST['templates/header_cities_dropdown']({cities:Application.data.cities})
 	
 	var causes_html=JST['templates/header_causes_dropdown']( {cause_types:Application.data.cause_types} )
@@ -59,7 +60,7 @@ setupHeader=function(){
 	$('#causes_nav').click(function(){
 		Application.header.toggle_nav(causes_html, 'causes')
 	});
-
+	*/
 	$('.popover_tigger').click(function(){
 		$('.profile_drop_down ul').toggleClass('hide')
 	})
