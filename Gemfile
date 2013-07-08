@@ -9,6 +9,7 @@ gem 'omniauth-facebook'
 
 gem "paperclip", "~> 2.7"
 
+gem 'daemons'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 
