@@ -10,6 +10,9 @@ Application.views.GoogleMapsPanel = Backbone.View.extend
       zoom: 6
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
+    MapTypeControlOptions =
+      position: BOTTOM_LEFT
+
     @map = new google.maps.Map(@$el[0], mapOptions);
 
   render: ()->
