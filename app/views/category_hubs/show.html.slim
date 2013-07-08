@@ -7,13 +7,7 @@
       .large-12.columns.text-center.blimit
         - City.grouped_by_cause_type(@cause_type[:slug]).each do |pair|
           - key, value = pair
-          .tag-block 
-            a href="/charities-in-#{ @cause_type[:slug] }/supporting-#{ key.parameterize }.html?partial=true" data-update=true data-target="#city-hub-cause-listings"
-              .tag-block-detail 
-                == key
-              .tag-block-detail.tertiary
-                == value
-            
+   
   .cboth
 
 #causes.mlimit.causes
