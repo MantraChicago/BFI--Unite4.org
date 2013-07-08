@@ -22,4 +22,11 @@
 
       .large-4.columns
         h4 &nbsp;
-        button.rounded Search
+        button.rounded.search-btn Search
+
+javascript:
+  window.addEventListener('load',function() {
+    $($('.search-btn')[0]).bind('click', function(e) {
+      window.location = '/charities-in-chicago';
+    });
+  });
