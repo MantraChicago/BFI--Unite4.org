@@ -41,7 +41,7 @@
                           - @cause.needs.each do |need|
                             li 
                               | We need
-                              a
+                              a.link.open-fulfillment-modal data-need-id=need.id data-type-of-need=need.type_of_need data-cause-slug=@cause.slug data-cause-id=@cause.id
                                 == " #{ need.type_of_need.humanize }"
 
             section#cause-events-section
@@ -75,5 +75,7 @@
          -if !@cause.twitter_handle.empty?
           =render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
 
+
+    #modalWrapper.reveal-modal.large
 
 

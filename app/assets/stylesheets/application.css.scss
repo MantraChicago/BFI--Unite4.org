@@ -43,17 +43,27 @@
 		position: relative;
 		.button {
 			padding: 10px;
-			background: #009dd1;
+			background-color: #009dd1;
+			background-position: center;
+			background-repeat: no-repeat;
 			border-bottom: 3px solid #008ebd;
 			color: #fff;
 			width: 100%;
+			.heart {
+				background-image: url(/assets/ui/little-heart.png);
+			}
+		    .add {
+		      background-image: url(/assets/ui/little-add.png);
+		    }			
       a {
         color: #fff;
       }
 			.icon {
 				height: 20px;
 				width: 20px;
-				background: #008ebd;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-color: #008ebd;
 				margin-right: 10px;
 			}
 		}
