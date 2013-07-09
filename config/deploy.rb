@@ -2,6 +2,7 @@ require 'capistrano/ext/multistage'
 require 'rvm/capistrano'
 require 'hipchat/capistrano'
 require 'bundler/capistrano'
+#require 'delayed/recipes'
 
 set :hipchat_token, "0e2c10e049c422f2345f2736ca7166"
 set :hipchat_room_name, "bfi"
@@ -22,10 +23,14 @@ before 'deploy:assets:precompile', 'sym_link:database'
 before 'deploy:assets:precompile', 'sym_link:logs'
 before 'deploy:assets:precompile', 'sym_link:settings'
 
+#after "deploy:stop",    "delayed_job:stop"
+#after "deploy:start",   "delayed_job:start"
+#after "deploy:restart", "delayed_job:restart"
+
 namespace :db do
   desc 'rake db:migrate'
   task :migrate do
-    run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=#{stage}"
+    run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=#{rails_env}"
   end
 end
 

@@ -350,6 +350,9 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    turbo-sprockets-rails3 (0.3.6)
+      railties (> 3.2.8, < 4.0.0)
+      sprockets (>= 2.0.0)
     typhoeus (0.6.3)
       ethon (~> 0.5.11)
     tzinfo (0.3.37)
@@ -416,5 +419,6 @@ DEPENDENCIES
   skim (= 0.8.6)
   slim (= 1.2.2)
   smooth!
+  turbo-sprockets-rails3 (>= 0.3.6)
   uglifier (>= 1.0.3)
   zurb-foundation
