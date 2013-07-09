@@ -32,9 +32,9 @@ gem 'annotate'
 gem 'json'
 
 # background tasks
-gem 'delayed_job'
-gem 'delayed_job_active_record'
-gem 'daemons'
+#gem 'delayed_job'
+#gem 'delayed_job_active_record'
+#gem 'daemons'
 
 # location gems
 gem 'carmen'
