@@ -72,6 +72,7 @@ h3.areatitle {
 	width: 100%;
 	z-index: 100;
 	cursor: pointer;
+
 	.city {
 		height: 490px;
 		text-align: center;
@@ -81,6 +82,10 @@ h3.areatitle {
 		&:hover img {
 			zoom: 1.04;
 		}		
+		h1 {
+		font-size:2.5em;
+		 text-shadow: 0 0 5px rgba(0,0,0,0.5);
+		}
 	}
 	#chicago {
 		background-image: url(/assets/cities/small/chicago-small.jpg/);
