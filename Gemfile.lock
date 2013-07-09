@@ -106,6 +106,7 @@ GEM
     cookiejar (0.3.0)
     customerio (0.5.0)
       httparty (>= 0.5, < 1.0)
+    daemons (1.1.9)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
     delayed_job (3.0.5)
@@ -394,6 +395,7 @@ DEPENDENCIES
   colored
   compass
   customerio (= 0.5.0)
+  daemons
   database_cleaner
   delayed_job
   delayed_job_active_record
