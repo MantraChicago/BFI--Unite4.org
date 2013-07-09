@@ -15,7 +15,8 @@ class CausePresenter
       :mission_statement,
       :picture_url,
       :campaign_details,
-      :locations_details
+      :locations_details,
+      :urls
     ]
   end
 
