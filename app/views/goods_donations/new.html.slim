@@ -1,6 +1,9 @@
-h1 Goods Donations
-p I can be found in app/views/goods_donations/new.html.slim
-
-.steps-container data-active-step="step-one"
-  section role="step-one"
+.goods-donations.wizard data-active-role="step_one"
+  .steps-wrapper
+    .step.active data-step="step_one"
+    .step data-step="step_two"
+    .step data-step="step_three"
+  .wizard-navigation
+    a.button.button-next
+      | Next
 
