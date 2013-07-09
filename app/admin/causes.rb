@@ -1,9 +1,10 @@
 ActiveAdmin.register Cause do
 	form :html => { :enctype => "multipart/form-data" } do |f|
 	   f.inputs "Details" do
-	    
+
 	    f.input :name
 	    f.input :display_name
+      f.input :short_description
 	    f.input :description
 	    f.input :mission_statement
 	    f.input :how_hear
@@ -11,16 +12,17 @@ ActiveAdmin.register Cause do
 	    f.input :email
 	    f.input :website
 	    f.input :city
+      f.input :city_slug
 	    f.input :state
 	    f.input :video_link
 	    f.input :twitter_handle
 	    f.input :facebook_url
 	    f.input :is_featured
-	    
-	    f.input :cause_types, as: :check_boxes, collection: CauseType.all 
+
+	    f.input :cause_types, as: :check_boxes, collection: CauseType.all
 	    f.input :picture, :as => :file, :hint => f.template.image_tag(f.object.picture.url(:medium))
-	    
+
 	  end
 	  f.buttons
-	 end  
+	 end
 end
