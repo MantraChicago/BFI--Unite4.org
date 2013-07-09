@@ -9,28 +9,31 @@ var MapView=Backbone.View.extend({
     this.render()
   },render: function(){
     var html=$(JST['templates/map/map_template'])
-    console.log(html.find('#mapholder')[0])
-   
-    this.map = this.createGoogleMap(html.find('#mapholder')[0])
-    $(this.el).html(html)
-    
-  },
-  createGoogleMap:function(element){
-    var mapOptions = {
-      center: new google.maps.LatLng(41.85, -87.65),
-      zoom: 10,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-    this.map = new google.maps.Map(element,mapOptions);
-
+   //console.log(this.el)
+    if(!this.map){
+      this.map = this.createGoogleMap(html.find('#mapholder')[0])
+    }
     var locations=_(this.options.causes).reduce(function(array,cause){
       array.push(cause.locations_details)
       _.zip(array,cause.locations_details)
       return array
     },[])
     locations=_(locations).flatten(true)
-    console.log(locations)
+
     this.populateMapMarkers(locations)
+    //$(this.el).html(html)
+    
+  },
+  createGoogleMap:function(element){
+    var mapOptions = {
+      center: new google.maps.LatLng(41.85, -87.65),
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeControl: false 
+        };
+    this.map = new google.maps.Map(element,mapOptions);
+
+    
     return this.map
   },
   clearMapOverlays:function() {
@@ -63,3 +66,38 @@ var MapView=Backbone.View.extend({
 
   }
 })
+
+var MapFilterView=Backbone.View.extend({
+  initialize:function(){
+    this.render()
+  },
+  events:{
+    'change select':'change'
+  },
+  render: function(){
+    var html=$(JST['templates/map/map_filter_template']({cause_types:this.options.cause_types,
+                                                         cities:this.options.cities}))
+    $(this.el).html(html)
+    
+  },
+  change:function(event){
+    var self=this
+    var queryString=''
+
+    $(this.el).find('select').each(function(index,element){
+      var val = $(element).val()
+      var name = $(element).attr('name')
+      if(val !='all'){
+        queryString+='&'+name+'='+val
+      }
+    })
+    var url='/api/v1/causes/details/?'+queryString
+
+    $.get(url,function(data){
+      self.options.map_view.options.causes=data
+      self.options.map_view.render()
+    })
+    
+  }
+})
+
