@@ -1,8 +1,13 @@
 require 'capistrano/ext/multistage'
 require 'rvm/capistrano'
+require 'hipchat/capistrano'
 
 
 #require 'delayed/recipes'
+
+set :hipchat_token, "0e2c10e049c422f2345f2736ca7166"
+set :hipchat_room_name, "bfi"
+set :hipchat_announce, true
 
 set :stages, ['production', 'staging']
 set :default_stage, 'staging'

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'hipchat', '~> 0.10.0'
 gem 'rails', '3.2.13'
 
 gem 'devise', '2.2.3'

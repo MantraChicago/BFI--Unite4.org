@@ -175,6 +175,8 @@ GEM
     hashie (2.0.5)
     highline (1.6.19)
     hike (1.2.3)
+    hipchat (0.10.0)
+      httparty
     http_parser.rb (0.6.0.beta.2)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -394,6 +396,7 @@ DEPENDENCIES
   geokit
   guard
   guard-rspec
+  hipchat (~> 0.10.0)
   jquery-rails
   json
   net-ssh-shell
