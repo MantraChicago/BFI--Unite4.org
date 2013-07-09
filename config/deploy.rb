@@ -1,8 +1,11 @@
 require 'capistrano/ext/multistage'
 require 'rvm/capistrano'
+require 'hipchat/capistrano'
+require 'bundler/capistrano'
 
-
-#require 'delayed/recipes'
+set :hipchat_token, "0e2c10e049c422f2345f2736ca7166"
+set :hipchat_room_name, "bfi"
+set :hipchat_announce, true
 
 set :stages, ['production', 'staging']
 set :default_stage, 'staging'
@@ -13,22 +16,11 @@ set :repository, 'git@github.com:MantraChicago/BFI--Unite4.org.git'
 
 set :assets_role, :app
 
-#load 'deploy/assets'
-
 before "deploy:restart", "db:migrate"
 
 before 'deploy:assets:precompile', 'sym_link:database'
 before 'deploy:assets:precompile', 'sym_link:logs'
 before 'deploy:assets:precompile', 'sym_link:settings'
-
-after "deploy:update_code", "bundle:install"
-
-namespace :bundle do
-  desc 'bundle install'
-  task :install do
-    run "cd #{current_release} && bundle install"
-  end
-end
 
 namespace :db do
   desc 'rake db:migrate'

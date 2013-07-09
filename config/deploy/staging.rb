@@ -6,6 +6,8 @@ server '192.34.61.72', :app, :web, :db, :primary => true
 set :user, 'deploy'
 set :deploy_to, '/home/deploy/rails_apps/bfi'
 set :use_sudo, false
+set :rails_env, :production
+
 #set :shell, '/bin/zsh'
 #set :default_shell, '/bin/zsh'
 
