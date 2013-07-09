@@ -1,19 +1,13 @@
+
 #header
   .header-slide.transition style="background-image: url(#{ asset_path("cause_types/large/large-#{ @cause_type.slug }.jpg") })" 
-    .row.white.blimit.bigslogan
-      .large-8.columns.left
-        h1.oxygen.white.text-shadow.no-margin
-          == @cause_type.name 
-
-        - cache( cache_key_for_cities_grouped_by_cause_type(@cause_type.slug) ) do 
-          - City.grouped_by_cause_type(@cause_type.slug).each do |pair|
-            - key, value = pair
-            .subfilter-selector data-city=key data-cause-type-slug=@cause_type.slug data-causes-count=value
-              .city-label 
-                == key
-              .city-count
-                == value
-            
+    .row
+      .large-12.columns.text-center.blimit-top
+        .h0.oxygen.bold.white#causetype == @cause_type[:name]
+      .large-12.columns.text-center.blimit
+        - City.grouped_by_cause_type(@cause_type[:slug]).each do |pair|
+          - key, value = pair
+   
   .cboth
 
 #causes.mlimit.causes
@@ -23,9 +17,6 @@
         | Browse charities supporting  
         span
           == @cause_type.name 
-  .row
-    - cache(cache_key_for_causes_by_cause_type(@cause_type.slug)) do
-      - Cause.by_cause_type(@cause_type.slug).each_cons(4) do |causes| 
-        .row
-          - causes.each do |cause|
-            = render 'shared/featured_need', :need => cause.active_campaign.need, :stats=> [{:upper=> 'donate', :lower=>'$20'}], :percent=>cause.active_campaign.percent_complete
+#city-hub-cause-listings
+  == render :partial => "city_hubs/partials/cause_listings"
+

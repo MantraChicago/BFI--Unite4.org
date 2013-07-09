@@ -34,6 +34,13 @@ class Cause < ActiveRecord::Base
 
   delegate :need_id, :type_of_need, :days_to_go, :desired_state, :current_state, :goal_unit, :percent_complete, :goal_summary, :to => :active_campaign, :allow_nil => true, :prefix => true
 
+  def urls
+    {
+      :follow_url => "/causes/#{ slug }/followers",
+      :profile_url => "/causes/#{ slug }"
+    }
+  end
+
   def following_users
     User.where(id: followers.map(&:user_id))
   end
@@ -60,6 +67,7 @@ class Cause < ActiveRecord::Base
 
     loc
   end
+
 
   def create_default_records
     create_default_location
