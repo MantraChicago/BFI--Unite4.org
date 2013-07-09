@@ -26,7 +26,7 @@
               p.title data-section-title=""
                 a.bold href="#panel1" About cause
               .content data-section-content=""
-                p = @cause.description
+                p = @cause.description.html_safe
             section#cause-needs-section
               p.title data-section-title=""
                 a.bold href="#panel2" Needs
