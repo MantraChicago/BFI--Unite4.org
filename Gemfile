@@ -31,6 +31,10 @@ gem 'pg'
 gem 'annotate'
 gem 'json'
 
+# background tasks
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+
 # location gems
 gem 'carmen'
 gem 'geokit'
@@ -43,6 +47,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'turbo-sprockets-rails3', '>= 0.3.6'
 end
 
 gem 'ejs'

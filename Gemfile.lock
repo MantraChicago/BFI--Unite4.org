@@ -108,6 +108,11 @@ GEM
       httparty (>= 0.5, < 1.0)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
+    delayed_job (3.0.5)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.4.4)
+      activerecord (>= 2.1.0, < 4)
+      delayed_job (~> 3.0)
     descendants_tracker (0.0.1)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
@@ -350,6 +355,9 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    turbo-sprockets-rails3 (0.3.6)
+      railties (> 3.2.8, < 4.0.0)
+      sprockets (>= 2.0.0)
     typhoeus (0.6.3)
       ethon (~> 0.5.11)
     tzinfo (0.3.37)
@@ -387,6 +395,8 @@ DEPENDENCIES
   compass
   customerio (= 0.5.0)
   database_cleaner
+  delayed_job
+  delayed_job_active_record
   devise (= 2.2.3)
   ejs
   factory_girl_rails
@@ -416,5 +426,6 @@ DEPENDENCIES
   skim (= 0.8.6)
   slim (= 1.2.2)
   smooth!
+  turbo-sprockets-rails3 (>= 0.3.6)
   uglifier (>= 1.0.3)
   zurb-foundation
