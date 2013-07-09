@@ -16,10 +16,10 @@ GiveInspireLove::Application.routes.draw do
   get "/charities-supporting-:by_cause_type", :to => "category_hubs#show"
   get "/charities-supporting-:cause_type_slug/in-:city_slug", :to => "category_hubs#show"
 
-
   resources :causes
   resources :cause_applications
 
+  get "/causes/:cause_slug/:type_of_need/new", :to => "needs#new"
 
   get "/causes/:cause_slug/:need_id/new", :to => "needs#new"
 
