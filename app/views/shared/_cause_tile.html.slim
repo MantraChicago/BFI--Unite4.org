@@ -3,16 +3,7 @@
     .large-12.columns.text-center.white.text-shadow
       h4.blimit-top.uppercase == link_to(limit_to_three_words(cause.display_name), cause_path(cause))
       p.h6.blimit == cause.short_description
-  / old version with circle photo
-  / .row.name.no-margin    
-  /   .large-4.columns
-  /     img.pos-abs.circle.thumb.slimit-top src=cause.cause_tile_picture_url
-  /   .large-8.small-8.text-right.columns.slimit.slimit-top.bold.right
-  /     p.uppercase 
-  /       == link_to(limit_to_three_words(cause.display_name), cause_path(cause))
-
-  /     p.h6 
-  /       == cause.short_description
+  rt_description
   .row.goal.no-margin
     .large-4.columns
     .large-6.small-6.columns.slimit.slimit-top

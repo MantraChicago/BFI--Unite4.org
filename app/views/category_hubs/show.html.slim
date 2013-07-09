@@ -18,5 +18,5 @@
         span
           == @cause_type.name 
 #city-hub-cause-listings
-  == render :partial => "city_hubs/partials/cause_listings"
+    == render "shared/causes_4_columns", causes:@causes
 

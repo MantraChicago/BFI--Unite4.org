@@ -15,10 +15,15 @@ header
 
   .cboth
 
-#sub-header.blimit.sub-header.bordered
-  .row.mlimit
-    .large-4.columns.mlimit
-      | &nbsp;
+#causes.mlimit.causes
+  .row
+    .large-12.columns
+      h3.areatitle.mlimit-top
+        | Browse charities in  
+        span
+          == @city[:name] 
 
 #city-hub-cause-listings
-  == render :partial => "city_hubs/partials/cause_listings"
+  .cause-listing-container.row.mlimit
+    - @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
+    == render "shared/causes_4_columns", causes:@causes

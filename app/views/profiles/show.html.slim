@@ -17,5 +17,4 @@
 
 	.wide_side_container.right.gray_border
 		.profile_title #{@user.display_name.upcase}'S CAUSES
-		- @user.causes.each do |cause|
-			=render 'causes/partials/featured_cause', :cause => cause, :stats =>[]
+		== render 'shared/causes_4_columns',causes: @user.causes

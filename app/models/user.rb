@@ -62,17 +62,20 @@ class User < ActiveRecord::Base
 
   def location
     location = ""
-    if city
+
+    if !city.empty? and !state.empty?
+      location = "#{city}, #{state}"
+    end
+
+    if !city.empty?
       location = city
     end
 
-    if state
+    if  !state.empty?
       location = state
     end
 
-    if city and state
-      location = "#{city}, #{state}"
-    end
+    
 
     location
   end
