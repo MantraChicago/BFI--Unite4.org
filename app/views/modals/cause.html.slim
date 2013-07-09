@@ -1,0 +1,16 @@
+div
+  div.modal_header
+    h2 #{@cause.name}
+    a.close-reveal-modal &#215;
+  .row.cause-listing-container
+    .large-8.columns
+      iframe src="#{@cause.video_link}"
+    .large-4.columns
+      == render :partial => 'shared/cause_tile', :locals => {cause: @cause} 
+  .row
+    .large-8.columns
+      p #{@cause.description}
+    .large-4.columns
+      a.btn.blue VIEW COMPLETE CAUSE PROFILE
+
+

@@ -6,6 +6,8 @@ GiveInspireLove::Application.routes.draw do
 
   match '/page/:action' => 'StaticPages'
 
+   match '/modals/:action/:id' => 'Modals'
+
 
 
   resources :profiles

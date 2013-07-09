@@ -52,14 +52,17 @@ var MapView=Backbone.View.extend({
           position: myLatlng,
           map: this.map,
           title: location.name,
-          icon: markerIcons.darkblue,
+          icon: this.markerIcons.darkblue,
           user_cause_id: location.cause_id
       });
       this.markers.push(marker)
 
       google.maps.event.addListener(marker, 'click', function() {
         var self=this;
-        alert('cause: '+this.user_cause_id)
+
+        $('#myModal').foundation('reveal', 'open', {
+            url: 'modals/cause/'+this.user_cause_id
+        });
       })
     }
       
