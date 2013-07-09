@@ -30,7 +30,7 @@ after "deploy:restart", "delayed_job:restart"
 namespace :db do
   desc 'rake db:migrate'
   task :migrate do
-    run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=#{stage}"
+    run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=#{rails_env}"
   end
 end
 
