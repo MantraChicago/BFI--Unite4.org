@@ -16,6 +16,10 @@ module ApplicationHelper
     phrase.split(' ').slice(0,3).join(' ')
   end
 
+  def replace_newlines_with_linebreaks text=""
+    "#{ text }".gsub(/\n/,'<br/>').html_safe
+  end
+
   def button_text_for_need need
     type_of_need = need.is_a?(Need) ? need.type_of_need : need
 

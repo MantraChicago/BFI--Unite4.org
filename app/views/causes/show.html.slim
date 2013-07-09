@@ -59,7 +59,8 @@
       .cause-listing-container.row.mlimit
         .columns.mlimit.left
           == render :partial => "campaigns/listing", :locals => {cause: @cause, campaign: @cause.active_campaign}
-      p.h4 = @cause.how_hear
+      p.h4 
+        == replace_newlines_with_linebreaks(@cause.how_hear)
       div
         .h3.mlimit.secondary FOLLOWERS
         .followers.mlimit
