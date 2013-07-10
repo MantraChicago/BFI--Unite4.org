@@ -49,6 +49,9 @@ h5,.h5 {
 .bg-cover {
   background-size: cover;
 }
+.bg-bottom {
+  background-position: bottom;
+}
 .bg-size-medium {
   background-size: 70% !important;
 }
@@ -303,6 +306,9 @@ h5,.h5 {
 }
 .pos-abs {
   position: absolute !important;  
+}
+.pos-fix {
+  position: fixed;  
 }
 .bottom {
   bottom: 0;
