@@ -15,4 +15,3 @@ $('a[data-update]').on "click", (e)->
   $.get $link.attr('href'), (response)->
     update.html(response)
 
-

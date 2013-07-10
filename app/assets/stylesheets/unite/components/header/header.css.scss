@@ -39,32 +39,27 @@
   box-shadow: 0 0 5px #000;
   position: relative;
   z-index: 14;
-}
-
-#topbar nav li {
-  display: inline-block;
-  line-height: 52px;
-  vertical-align: top;
-}
-
-#top-logo {
-  padding-right: 20px;
-  border-right:1px solid #d0d0d0;
-}
-
-#topbar nav li.top-nav-item {
-  padding: 0 40px;
-  color: rgb(88, 88, 88);;
-  font-size: 0.8em;
-}
-
-#topbar nav li.top-nav-item:hover{
-  
-
-}
-
-#topbar nav ul {
-    padding-left: 20px;
+  width: 100%;
+  position: fixed;
+  nav{
+    li {
+      display: inline-block;
+      line-height: 52px;
+      vertical-align: top;
+      &.top-nav-item {
+        padding: 0 40px;
+        color: rgb(88, 88, 88);;
+        font-size: 0.8em;
+      }
+    }
+    ul {
+      padding-left: 20px;
+    }
+  }
+  #top-logo {
+    padding-right: 20px;
+    border-right:1px solid #d0d0d0;
+  }
 }
 
 .down_arrow{
@@ -93,6 +88,7 @@
  width:100%;
  min-height: 490px;
  color: #fff;
+
 }
 #header h1 {
   font-size: 40pt;
@@ -112,7 +108,7 @@
   appearance: none;
   outline: none;
   box-shadow: 0 0 5px rgba(0,0,0,0.8);
-  padding-left: 15px;
+  padding-left: 15px;padding-right: 35px;
   &:focus, &:active {
       background-image: url(/assets/ui/select-active.gif) no-repeat right center;
   }
@@ -355,3 +351,11 @@
   float:right;
   padding-right: 0px !important;
 }
+
+
+ header.docked {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top:50px;
+ }

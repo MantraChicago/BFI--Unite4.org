@@ -1,5 +1,5 @@
 - cause ||= campaign.present? && campaign.cause
-.cause-listing.oxygen.sameheight data-need-id=cause.active_campaign_need_id data-cause-id=cause.id data-cause-slug=cause.slug data-type-of-need=cause.active_campaign_type_of_need
+.cause-listing.oxygen.mlimit.sameheight data-need-id=cause.active_campaign_need_id data-cause-id=cause.id data-cause-slug=cause.slug data-type-of-need=cause.active_campaign_type_of_need
   .row.cause-tile-header.no-margin.bg-cover style="background-image: url(#{ cause.cause_tile_picture_url });"
     .large-12.columns.text-center.white.text-shadow
       h4.blimit-top.uppercase == link_to(limit_to_three_words(cause.display_name), cause_path(cause))

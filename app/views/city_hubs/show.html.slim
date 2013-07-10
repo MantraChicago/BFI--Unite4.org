@@ -1,8 +1,8 @@
-header
-  .bg-cover style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
+header.docked.small-static
+  .bg-cover.bg-bottom style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
     .row
-      .large-12.columns.text-center.blimit-top
-        .h0.oxygen.bold.white#cityname == @city[:name]
+      .large-12.columns.text-center
+        .h0.oxygen.bold.white.blimit-top.docked-item.transition#cityname == @city[:name]
       .large-12.columns.text-center.blimit
         - CauseType.grouped_by_city(@city[:slug]).each do |pair|
           - key, value = pair

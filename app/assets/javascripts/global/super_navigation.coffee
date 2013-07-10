@@ -27,3 +27,20 @@ Application.setupSuperNavElements = ->
   $("body").click (e)->
     $target = $(e.currentTarget)
     $("#selectcity,#selectcause").hide().removeClass "active"
+
+
+$(document).ready ->
+  if $(".docked").length
+    orgFont = parseInt($(".docked .docked-item").css("font-size"))
+    orgMargin = parseInt($(".docked .docked-item").css("margin-bottom"))
+    $(window).scroll ->
+      scrollTop = $(this).scrollTop()
+      scrollTop = (if scrollTop > 400 then 400 else scrollTop)
+      scrollTop = scrollTop / 400
+      modify = 1 - scrollTop
+      newFont = orgFont * modify + 25
+      newFont = (if newFont > 70 then 70 else newFont)
+      newMarg = orgMargin * modify
+      newMarg = (if newMarg < 20 then 20 else newMarg)
+      $(".docked .docked-item").css("margin-bottom", newMarg + "px").css "font-size", newFont + "pt"
+
