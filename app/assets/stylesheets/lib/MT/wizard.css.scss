@@ -1,0 +1,14 @@
+.wizard{
+  .step{
+    display: none;
+    &.active{
+      display: block;
+    }
+  }
+  .wizard-navigation{
+    a.button-previous{
+      margin-right:20px;
+    }
+  }
+  
+}

@@ -2,6 +2,7 @@
  *= require ./lib/normalize
  *= require ./common
  *= require ./lib/foundation
+ *= require_tree ./lib/MT
  *= require_tree ./unite
  *= require_tree ./controllers
  *= require lib/leaflet
