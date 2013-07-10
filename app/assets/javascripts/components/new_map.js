@@ -10,14 +10,10 @@ var MapView=Backbone.View.extend({
   },render: function(){
     var html=$(JST['templates/map/map_template']())
     $(this.el).html(html)
-    if(!this.map){
-      this.map = this.createGoogleMap(html.find('#mapholder')[0])
-    }
+    this.map = this.createGoogleMap(html.find('#mapholder')[0])
     locations=this.getLocations()
-    console.log(locations)
+    //console.log(locations)
     this.populateMapMarkers(locations)
-    //
-    
   },
   getLocations:function(){
     var locations
@@ -110,7 +106,8 @@ var MapFilterView=Backbone.View.extend({
 
     $.get(url,function(data){
       self.options.map_view.options.causes=data
-      self.options.map_view.render()
+      var locations = self.options.map_view.getLocations()
+      self.options.map_view.populateMapMarkers(locations)
     })
     
   }
