@@ -1,13 +1,13 @@
-h1 New Good Donation
+h1 #{@need.name}
 a.close-reveal-modal &#215;
 .wizard 
   .steps-wrapper
     .step.active 
-      |one
+      =render 'goods_donations/partials/first_wizard_tab', :need => @need
     .step 
-      |two
+      =render 'goods_donations/partials/second_wizard_tab', :need => @need
     .step 
-      |three
+      =render 'goods_donations/partials/third_wizard_tab', :need => @need
   .wizard-navigation
     a.button.button-previous style="display:none"
       | Previous

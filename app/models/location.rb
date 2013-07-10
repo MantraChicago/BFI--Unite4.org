@@ -12,6 +12,7 @@ class Location < ActiveRecord::Base
 
   validates_presence_of :city, :state, :address_line_one
 
+
   def address
     [address_line_one, address_line_two, "#{ city },#{ region }", postal_code].compact.join(" ")
   end

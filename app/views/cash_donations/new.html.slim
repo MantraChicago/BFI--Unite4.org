@@ -1,13 +1,13 @@
-h1 New Cash Donation
+h1 #{@need.name}
 a.close-reveal-modal &#215;
 .wizard 
   .steps-wrapper
     .step.active 
-      |one
+      = render 'cash_donations/partials/first_wizard_tab'
     .step 
-      |two
+      = render 'cash_donations/partials/second_wizard_tab'
     .step 
-      |three
+      = render 'cash_donations/partials/third_wizard_tab'
   .wizard-navigation
     a.button.button-previous style="display:none"
       | Previous

@@ -24,7 +24,7 @@ module CacheKeyHelper
   def cache_key_for_causes_by_cause_type cause_type_slug
     count = Cause.by_cause_type(cause_type_slug)
     maximum_updated_at = Cause.by_cause_type(cause_type_slug).maximum(:updated_at).try(:utc).try(:to_s,:number)
-    "causes/by_cause_type-#{ count }-#{ maximum_updated_at }"
+    "causes/by_cause_type-#{ cause_type_slug }-#{ count }-#{ maximum_updated_at }"
   end
 
   def cache_key_for_causes_by_city_and_cause_type city_slug, cause_type_slug
