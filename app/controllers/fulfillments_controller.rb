@@ -12,7 +12,7 @@ class FulfillmentsController < ApplicationController
 
     respond_to do |format|
       format.js do
-        render
+        render "#{ type_of_need }/create", :layout => include_layout?
       end
 
       format.html do
