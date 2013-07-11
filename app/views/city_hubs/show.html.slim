@@ -3,7 +3,7 @@ header.docked.small-static
     .row
       .large-12.columns.text-center
         .h0.oxygen.bold.white.blimit-top.docked-item.transition#cityname == @city[:name]
-      .large-12.columns.text-center.blimit
+      .large-12.columns.text-center.mlimit
         - CauseType.grouped_by_city(@city[:slug]).each do |pair|
           - key, value = pair
           .tag-block 
@@ -23,7 +23,7 @@ header.docked.small-static
         span
           == @city[:name] 
 
-#city-hub-cause-listings
+#city-hub-cause-listings.docked-under
   .cause-listing-container.row.mlimit
     - @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
     == render "shared/causes_4_columns", causes:@causes
