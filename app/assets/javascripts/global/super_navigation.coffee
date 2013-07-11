@@ -38,9 +38,8 @@ $(document).ready ->
       scrollTop = (if scrollTop > 400 then 400 else scrollTop)
       scrollTop = scrollTop / 400
       modify = 1 - scrollTop
-      newFont = orgFont * modify + 25
-      newFont = (if newFont > 70 then 70 else newFont)
+      newZoom = (if modify < 0.1 then 0.1 else 1)
       newMarg = orgMargin * modify
       newMarg = (if newMarg < 20 then 20 else newMarg)
-      $(".docked .docked-item").css("margin-bottom", newMarg + "px").css "font-size", newFont + "pt"
+      $(".docked .docked-item").css("margin-bottom", newMarg + "px").css("opacity", newZoom).css "zoom", newZoom
 
