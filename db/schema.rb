@@ -334,3 +334,4 @@ ActiveRecord::Schema.define(:version => 20130707063142) do
   add_index "volunteers", ["user_id"], :name => "index_volunteers_on_user_id"
 
 end
+

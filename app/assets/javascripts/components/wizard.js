@@ -1,20 +1,20 @@
 !function ($) {
     $.fn.MT_wizard = function(direction) {
       var parentWizard=$(this).closest('.wizard')
-      console.log(direction)
+      //console.log(direction)
       var nextActive
-      if(direction == 'next'){
-        nextActive = parentWizard.find('.active').removeClass('active').next().addClass('active')
-      }else{
-        nextActive = parentWizard.find('.active').removeClass('active').prev().addClass('active')
-      }
+
+      nextActive = parentWizard.find('.active').removeClass('active')[direction]().addClass('active')
+
+      parentWizard.find('.button-next,.button-previous').show()
+
       if(nextActive.prev().size()==0){
         parentWizard.find('.button-previous').hide()
-      }else if(nextActive.next().size()==0){
-        parentWizard.find('.button-next').hide()
-      }else{
-        parentWizard.find('.button-next,.button-previous').show()
       }
+      if(nextActive.next().size()==0){
+        parentWizard.find('.button-next').hide()
+      }
+
         
     }
 
@@ -24,7 +24,7 @@
     if(element.hasClass('button-next')){
       element.MT_wizard('next')
     }else{
-      element.MT_wizard('previous')
+      element.MT_wizard('prev')
     }
     
   })

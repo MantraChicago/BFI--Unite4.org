@@ -1,7 +1,13 @@
 class Need < ActiveRecord::Base
-  attr_accessible :name,  :cause_id, :description, :picture, :address, :start_date, :end_date, :type_of_need
+  attr_accessible :name, :settings, :cause_id, :description, :picture, :address, :start_date, :end_date, :type_of_need, :location_id
   belongs_to :cause
   has_one :campaign
+  belongs_to :location
+
+  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
+
+
+  serialize :settings, JSON
 
   include Smooth::Presentable
 
@@ -52,5 +58,6 @@ end
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  campaign_id          :integer
+#  settings             :text
 #
 

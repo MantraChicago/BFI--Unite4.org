@@ -8,21 +8,26 @@ var MapView=Backbone.View.extend({
     this.markers=[]
     this.render()
   },render: function(){
-    var html=$(JST['templates/map/map_template'])
-   //console.log(this.el)
-    if(!this.map){
-      this.map = this.createGoogleMap(html.find('#mapholder')[0])
-    }
-    var locations=_(this.options.causes).reduce(function(array,cause){
-      array.push(cause.locations_details)
-      _.zip(array,cause.locations_details)
-      return array
-    },[])
-    locations=_(locations).flatten(true)
-
+    var html=$(JST['templates/map/map_template']())
+    $(this.el).html(html)
+    this.map = this.createGoogleMap(html.find('#mapholder')[0])
+    locations=this.getLocations()
+    //console.log(locations)
     this.populateMapMarkers(locations)
-    //$(this.el).html(html)
-    
+  },
+  getLocations:function(){
+    var locations
+    if(!this.options.locations){
+      var locations=_(this.options.causes).reduce(function(array,cause){
+        array.push(cause.locations_details)
+        _.zip(array,cause.locations_details)
+        return array
+      },[])
+      locations=_(locations).flatten(true)
+    }else{
+      locations=this.options.locations
+    }
+    return locations
   },
   createGoogleMap:function(element){
     var mapOptions = {
@@ -43,10 +48,11 @@ var MapView=Backbone.View.extend({
     this.markers= [];
   },
   populateMapMarkers:function(locations){
+
     this.clearMapOverlays();
     for(var j in locations){
       var location = locations[j]
-      var myLatlng = new google.maps.LatLng(location.lat,location.lng)
+      var myLatlng = new google.maps.LatLng(location.latitude,location.longitude)
       //var cause=causesCollection.get(location.cause_id)
       var marker = new google.maps.Marker({
           position: myLatlng,
@@ -56,14 +62,16 @@ var MapView=Backbone.View.extend({
           user_cause_id: location.cause_id
       });
       this.markers.push(marker)
+      if(!this.options.disable_marker_clicks){
+        google.maps.event.addListener(marker, 'click', function() {
+          var self=this;
 
-      google.maps.event.addListener(marker, 'click', function() {
-        var self=this;
-
-        $('#myModal').foundation('reveal', 'open', {
-            url: 'modals/cause/'+this.user_cause_id
-        });
-      })
+          $('#myModal').foundation('reveal', 'open', {
+              url: '/modals/cause/'+this.user_cause_id
+          });
+        })
+      }
+      
     }
       
 
@@ -98,7 +106,8 @@ var MapFilterView=Backbone.View.extend({
 
     $.get(url,function(data){
       self.options.map_view.options.causes=data
-      self.options.map_view.render()
+      var locations = self.options.map_view.getLocations()
+      self.options.map_view.populateMapMarkers(locations)
     })
     
   }

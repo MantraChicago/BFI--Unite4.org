@@ -1,5 +1,6 @@
 class NeedsController <ApplicationController
   def new
+    @need=need
     render "#{ type_of_need }/new", :layout => include_layout?
   end
 
