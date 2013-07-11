@@ -35,8 +35,8 @@ $(document).ready ->
     orgMargin = parseInt($(".docked .docked-item").css("margin-bottom"))
     $(window).scroll ->
       scrollTop = $(this).scrollTop()
-      scrollTop = (if scrollTop > 400 then 400 else scrollTop)
-      scrollTop = scrollTop / 400
+      scrollTop = (if scrollTop > 700 then 700 else scrollTop)
+      scrollTop = scrollTop / 700
       modify = 1 - scrollTop
       newZoom = (if modify < 0.1 then 0.1 else 1)
       newMarg = orgMargin * modify

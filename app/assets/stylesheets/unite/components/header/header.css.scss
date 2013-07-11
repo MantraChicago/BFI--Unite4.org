@@ -364,3 +364,16 @@
   z-index: 10;
   top:50px;
  }
+ .docked-under {
+  margin-top: 700px;
+ }
+
+
+
+ @media only screen and (max-width: 48em) {
+    .docked-item {
+      margin-bottom: 40px !important;
+    }
+
+
+ }
