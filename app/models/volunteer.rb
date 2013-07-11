@@ -5,6 +5,16 @@ class Volunteer < ActiveRecord::Base
   belongs_to :location
   belongs_to :cause, :counter_cache => true
   belongs_to :user, :counter_cache => true
+
+   def related_campaign
+    cause.campaigns.where(:need_id => self.need_id).first
+  end
+
+  def update_campaign
+    return unless related_campaign.present?
+
+    # do whatever here
+  end 
 end
 
 # == Schema Information

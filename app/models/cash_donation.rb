@@ -5,6 +5,25 @@ class CashDonation < ActiveRecord::Base
   belongs_to :need
   belongs_to :user, :counter_cache => true
 
+  def related_campaign
+    @related_campaign ||= cause.campaigns.where(:need_id => self.need_id).first
+  end
+
+  def update_campaign
+    return unless related_campaign.present?
+
+    # do whatever here
+
+    current_amount = related_campaign.current_state.to_i
+
+    current_amount += self.amount
+
+    related_campaign.current_state = "#{ current_amount }"
+  end
+
+  def amount
+    read_attribute(:amount) || 0
+  end
 end
 
 # == Schema Information

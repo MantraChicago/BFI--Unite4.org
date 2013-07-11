@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="large-6 column">
+    <form action="" method="POST" id="payment-form">
+      <span class="payment-errors"></span>
+
+
+          <span>Card Number</span>
+          <input type="text" size="20" data-stripe="number"/>
+
+
+
+          <span>CVC</span>
+          <input type="text" size="4" data-stripe="cvc" style="width:100px;"/>
+
+
+       
+          <span>Expiration (MM/YYYY)</span>
+          <input type="text" size="2" data-stripe="exp-month" style="width:100px; display:inline-block"/>
+     
+        <span> / </span>
+        <input type="text" size="4" data-stripe="exp-year" style="width:100px; display:inline-block"/>
+    
+
+      <button type="submit">Submit Payment</button>
+      <a class="fulfill" data-amount="20" data-needId="#{need.id}">test donation</a>
+    </form>
+  </div>
+</div>
+
+<script>
+  $('.fulfill').click(function(){
+    $(this).html('donated')
+    $.post('/causes/<%= need.cause.slug %>/<%= need.type_of_need %>/<%= need.id %>/fulfillments',{amount:'20'})
+    
+  })
+</script>

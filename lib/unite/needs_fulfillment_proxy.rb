@@ -15,7 +15,11 @@ module Unite
 
     def fulfill!
       meth = "fulfill_#{ type_of_need }_need"
-      send(meth) if respond_to?(meth)
+      object = send(meth) if respond_to?(meth)
+      
+      object.update_campaign if object.valid? && object.respond_to?(:update_campaign)
+
+      object
     end
 
     protected

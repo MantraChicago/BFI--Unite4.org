@@ -6,4 +6,15 @@ Application.causes = ->
     slug = $target.data('cause-slug')
     url = "/causes/#{ slug }/#{ type_of_need }/new?partial=true&need_id=#{ need_id }"
 
-    $('#modalWrapper').foundation('reveal', 'open', url: url)
+    $('#modalWrapper').foundation(
+      'reveal', 
+      'open',
+      {
+        url: url,
+        css:{
+          open:{
+            'background-color':'rgb(249,249,249)'
+          }
+        }
+      }
+    )

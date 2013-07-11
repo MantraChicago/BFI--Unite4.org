@@ -1,17 +1,14 @@
-h1 New Followers Donation
-a.close-reveal-modal &#215; 
-.wizard 
-  .steps-wrapper
-    .step.active 
-      |one
-    .step 
-      |two
-    .step 
-      |three
-  .wizard-navigation
-    a.button.button-previous style="display:none"
-      | Previous
-    a.button.button-next
-      | Next
-    
+.need_modal.followers_modal
+  a.close-reveal-modal &#215;
+  .wizard 
+    .steps-wrapper
+      .step.active 
+        = render 'followers/partials/first_wizard_tab', :need => @need
+      .step 
+        = render 'followers/partials/second_wizard_tab', :need => @need
       
+    .wizard-navigation.centered
+      a.button.button-previous style="display:none"
+        | Previous
+      a.button.button-next
+        | Next

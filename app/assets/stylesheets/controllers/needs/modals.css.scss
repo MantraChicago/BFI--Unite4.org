@@ -1,0 +1,148 @@
+.need_modal{
+  height: 500px;
+  position: relative;
+  color:#444;
+    
+  .well{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width:600px;
+  }
+
+  .good_how_wells{
+    display: inline-block;
+    vertical-align: top;
+    height: 300px;
+    width:400px;
+  }
+
+  .wizard-navigation{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    a{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .form_holder{
+    background-color: inherit;
+    border: none;
+  }
+}
+
+.cash_donations_modal{
+  select{
+    width: 100px;
+  }
+  .subheadline{
+    margin-left: auto;
+    margin-right: auto;
+    width:600px;
+  }
+
+  .money_input{
+    width:70px;
+    display: inline-block;
+  }
+
+  .divide{
+    height: 70px;
+    position: relative;
+  }
+
+  
+  .right_money{
+    width: 430px;
+    position: absolute;
+    right: 0px;
+    top:0px;
+    vertical-align: top;
+    h4{
+      margin-top: 0px;
+    }
+  }
+
+  .first_name{
+    display: inline-block;
+    width: 49%;
+  }
+  .last_name{
+    display: inline-block;
+    width: 49%;
+    float:right;
+  }
+  .cc_number{
+    display: inline-block;
+    width: 49%;
+  }
+  .month{
+    display: inline-block;
+    width: 15%;
+     margin-left: 10px;
+  }
+  .year{
+    display: inline-block;
+    width: 15%;
+     margin-left: 10px;
+  }
+  .cvc{
+    display: inline-block;
+     width: 15%;
+      margin-left: 10px;
+  }
+  .email{
+    width: 49%;
+    display: inline-block;
+    float: left;
+  }
+  .cash_submit{
+    margin-left: 10px;
+    display: inline-block;
+  }
+}
+
+
+.volunteer_donations_modal{
+  .first_name{
+    display: inline-block;
+    width: 49%;
+  }
+  .last_name{
+    display: inline-block;
+    width: 49%;
+    float:right;
+  }
+  .email{
+    display: inline-block;
+    width: 60%;
+  }
+  .zip{
+    display: inline-block;
+    width: 38%;
+    float:right;
+
+  }
+}
+
+.followers_modal{
+  .support_boxes{
+    padding-top: 50px;
+  }
+  .support_box{
+    width:150px;
+    height: 40px;
+    display: inline-block;
+    margin: 10px;
+    background-color: red;
+  }
+  .social_holder{
+    width:400px;
+    textarea{
+      height: 150px;
+    }
+  }
+
+
+}

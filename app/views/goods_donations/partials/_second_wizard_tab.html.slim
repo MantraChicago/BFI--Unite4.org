@@ -1,13 +1,5 @@
-.row
-  #need_location
-script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5nbu6QghhMZ7nUg8KppPc--tPG1QFWkA&sensor=true&callback=initializeMap"
-javascript:
-
-  function initializeMap(){
-    var map_view=new MapView({el:$('#need_location'),
-                              disable_marker_clicks:true,
-                              locations: [#{need.location.to_json.html_safe}]})
-    google.maps.event.trigger(map_view.map, 'resize'); //hack
-  }
-
-  
+.centered
+  h3 Everything you need to know about donating
+  h4.mlimit #{need.name}
+  .well.mlimit #{need.description}
+    

@@ -1,9 +1,15 @@
-.row
-  .large-6
-    span First Name
-    input type="text" name="first_name"
-    span Last Name
-    input type="text" name="last_name"
-    span Email address
-    input type="text" name="email"
-  .large-6
+.centered
+  h3 Please provide us with your payment information
+  h4.subheadline.mlimit Online giving is a safe and easy way to invest in the cause you support. Your information will remain private and never be given away to third parties.
+  .well.form_holder
+    div
+      input type="text" placeholder="First Name" class="first_name"
+      input type="text" placeholder="Last Name" class="last_name"
+    div 
+      input type="text" placeholder="Card Number" class="cc_number"
+      input type="text" placeholder="Month" class="month"
+      input type="text" placeholder="Year" class="year"
+      input type="text" placeholder="CVC" class="cvc"
+    div
+      input type="text" placeholder="Email Address" class="email"
+      input type="submit" class="purple cash_submit btn"

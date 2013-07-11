@@ -1,11 +1,12 @@
 @import "unite/colors";
 @import "unite/mixins";
 
-a.btn {
+.btn {
   white-space: nowrap;
   display: inline-block;
   padding: 9px 7px;
   color: $veryAlmostWhite;
+  border: none;
   &.large {
     font-size: 1.5em;
     padding: 20px 20px;
@@ -18,6 +19,9 @@ a.btn {
   }
   &.blue {
     @include darkBorder($lightBlue);
+  }
+  &.verylightblue{
+    @include darkBorder($verylightblue)
   }
   &.btn-medium{
       padding: 8px 20px;
@@ -41,7 +45,8 @@ a.btn {
   
 
   &:hover{
-    background-color:$darkPurple;
+    cursor: pointer;
+    background-color:$verylightblue;
     text-decoration:none;
     color:white;
   }

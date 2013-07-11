@@ -1,22 +1,24 @@
 - money_amount={'$5' => '5','$10'=>'10'}
-.row.blimit-top.blimit.cascade
-  .large-12.columns.cascade-single
-    h4.slimit Tell us how much you would like to donate.
-    h5 100% of your donation will go directly to the Chicago African Education Foundation.
-    h5.slimit GiveInspireLove is a 501(c)3 organization, which means that your donations are tax deductable.
-  .large-9.columns.left.cboth
-    div
-      .large-3= select(:donation, :amount, money_amount,:class => "animation-color cascade-single right" )
-  .large-9.columns.left.cboth
-    div
-      h4 Give an optional tip for Give Inspire Love.
-      h5.slimit Help our organization grow. Your donation will directly help us support many more causes in the future.
-      .large-3= select(:donation, :tip, money_amount,:class => "animation-color cascade-single right")
-    div
-      h3
-        | Total:
-        span#total
+div.centered
+  h3.mlimit Thank you for your interest in donating your money to #{need.cause.name}!
+
+  .well
+    .divide
+      |$&nbsp;
+      input.money_input#donation_amount type="text" value="0"
+      .right_money
+        h4 How much you would like to donate.
+        h5 Unit4Good is a 501(c)3 organization, which means that your donations are text deductable. 
+    .divide
+      = select(:donation, :tip, money_amount)
+      .right_money
+        h4 Give a tip to Unite4Good (optional)
+        h5 Help us grow. Your donation will directly help us support many more causes in the future.
+    .divide
+      h3 Total: <span id="total"></span>
       h5 We currently only accept payments using Credit Cards with a US billing address
+
+
 javascript:
   var calculateTotal=function(){
     var total = parseInt($('#donation_tip').val(),10) + parseInt($('#donation_amount').val(),10)
@@ -26,3 +28,10 @@ javascript:
   $('#donation_amount,#donation_tip').on("change",function(){
     calculateTotal()
   }).change()
+
+
+
+
+
+
+

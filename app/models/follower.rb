@@ -11,6 +11,16 @@ class Follower < ActiveRecord::Base
   validates_presence_of :user_id, :cause_id
 
   delegate :avatar, :to => :user
+
+  def related_campaign
+    cause.campaigns.where(:need_id => self.need_id).first
+  end
+
+  def update_campaign
+    return unless related_campaign.present?
+
+    # do whatever here
+  end
 end
 
 # == Schema Information

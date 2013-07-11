@@ -25,7 +25,7 @@ GiveInspireLove::Application.routes.draw do
 
   get "/causes/:cause_slug/:need_id/new", :to => "needs#new"
 
-  post "/causes/:cause_slug/:type_of_need/:need_id/fulfillments", :to => "fullfilments#create"
+  post "/causes/:cause_slug/:type_of_need/:need_id/fulfillments", :to => "Fulfillments#create"
 
   post "/causes/:cause_slug/followers", :to => "followers#create"
   delete "/causes/:cause_slug/followers", :to => "followers#destroy"
