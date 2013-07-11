@@ -39,7 +39,11 @@ $(document).ready ->
       scrollTop = scrollTop / 700
       modify = 1 - scrollTop
       newZoom = (if modify < 0.1 then 0.1 else 1)
+      mediumZoom = (if modify < 0.1 then 0.7 else 1)
+
       newMarg = orgMargin * modify
       newMarg = (if newMarg < 20 then 20 else newMarg)
       $(".docked .docked-item").css("margin-bottom", newMarg + "px").css("opacity", newZoom).css "zoom", newZoom
+      $(".docked-medium").css "zoom", mediumZoom
+
 
