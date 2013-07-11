@@ -6,7 +6,7 @@ header.docked.small-static
       .large-12.columns.text-center.mlimit
         - CauseType.grouped_by_city(@city[:slug]).each do |pair|
           - key, value = pair
-          .tag-block 
+          .tag-block.docked-medium.transition
             a href="/charities-in-#{ @city[:slug] }/supporting-#{ key.parameterize }.html?partial=true" data-update=true data-target="#city-hub-cause-listings"
               .tag-block-detail 
                 == key
