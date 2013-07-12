@@ -1,5 +1,5 @@
+a.close-reveal-modal &#215;
 .need_modal.good_donations_modal
-  a.close-reveal-modal &#215;
   .wizard 
     .steps-wrapper
       .step.active 
@@ -13,3 +13,5 @@
         | Previous
       a.button.button-next
         | Next
+  .success.hide
+    = render 'goods_donations/partials/success', :need => @need

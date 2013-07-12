@@ -8,7 +8,7 @@ class CategoryHubsController < ApplicationController
     end
     
     @causes ||= Cause.by_cause_type(@cause_type[:slug]).query(params)
-Rails.logger.info "Rendering #{ @causes.length } causes"
+#Rails.logger.info "Rendering #{ @causes.length } causes"
     if params[:partial] and html?
       render :partial => "category_hubs/partials/cause_listings"
     else

@@ -2,16 +2,25 @@
   h3 Thank you for your interest in volunteering with #{need.cause.name}
   h4.mlimit Please tell us about yourself:
   .well.form_holder
-    div
-      input type="text" placeholder="First Name" class="first_name"
-      input type="text" placeholder="Last Name" class="last_name"
-    div 
-      input type="text" placeholder="Email" class="email"
-      input type="text" placeholder="Zip Code" class="zip"
-    div
-      textarea placeholder="Tell us how you'd like to help and when you're available"
-    .centered
-      label
-        |Are you over 18?
-        input type="checkbox"
-      
+    form.volunteer_form
+      div
+        input type="text" placeholder="First Name" class="first_name"
+        input type="text" placeholder="Last Name" class="last_name"
+      div 
+        input type="text" placeholder="Email" class="email"
+        input type="text" placeholder="Zip Code" class="zip"
+      div
+        textarea placeholder="Tell us how you'd like to help and when you're available"
+      .centered
+        label
+          |Are you over 18?
+          input type="checkbox"
+        .btn.purple.volunteer_submit Submit
+javascript:
+  $('.volunteer_submit').click(function(){
+    var form_data=$('.volunteer_form').serializeObject()
+    $.post('/causes/#{need.cause.slug}/#{need.type_of_need}/#{need.id}/fulfillments',form_data, function(data){
+
+    })
+    
+  })

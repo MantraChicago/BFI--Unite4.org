@@ -1,12 +1,14 @@
+a.close-reveal-modal &#215;
 .need_modal.volunteer_donations_modal
-  a.close-reveal-modal &#215;
   .wizard 
     .steps-wrapper
       .step.active 
         =render 'volunteers/partials/first_wizard_tab', :need => @need
       
-    .wizard-navigation.centered
+    //.wizard-navigation.centered
       a.button.button-previous style="display:none"
         | Previous
       a.button.button-next
         | Next
+  .success.hide
+    = render 'volunteers/partials/success', :need => @need
