@@ -4,4 +4,8 @@ class ModalsController <ApplicationController
     @cause= Cause.find_by_id(params[:id])
   end
 
+  def login
+
+  end
+
 end

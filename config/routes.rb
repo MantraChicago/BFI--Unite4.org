@@ -6,7 +6,7 @@ GiveInspireLove::Application.routes.draw do
 
   match '/page/:action' => 'StaticPages'
 
-   match '/modals/:action/:id' => 'Modals'
+   match '/modals/:action(/:id)' => 'Modals'
 
 
 

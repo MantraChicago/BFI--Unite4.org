@@ -150,3 +150,40 @@
 .modal_middle{
   padding-top: 100px;
 }
+
+#login_modal{
+  padding: 0px;
+  .login_buttons_holder{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .login_submit_buttons{
+    height: 40px;
+    .login_button{
+      float: left;
+    }
+    .remember_me{
+      float: right;
+    }
+  }
+
+  .login_header{
+    h4{ 
+      color: #555;
+    }
+    
+    padding-top: 10px;
+    height: 50px;
+    background: #fefefe; /* Old browsers */
+    background: -moz-linear-gradient(top,  #fefefe 0%, #e4e4e4 100%, #7db9e8 100%, #2989d8 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(100%,#e4e4e4), color-stop(100%,#7db9e8), color-stop(100%,#2989d8)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fefefe 0%,#e4e4e4 100%,#7db9e8 100%,#2989d8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fefefe 0%,#e4e4e4 100%,#7db9e8 100%,#2989d8 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fefefe 0%,#e4e4e4 100%,#7db9e8 100%,#2989d8 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #fefefe 0%,#e4e4e4 100%,#7db9e8 100%,#2989d8 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#2989d8',GradientType=0 ); /* IE6-9 */
+
+  }
+}

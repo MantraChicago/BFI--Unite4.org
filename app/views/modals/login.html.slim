@@ -1,0 +1,22 @@
+.login_modal.centered
+  .login_header.mlimit 
+    h4 Login to your account
+  .login_buttons_holder
+    a.login_facebook href="#{user_omniauth_authorize_path(:facebook)}"
+      img src="/assets/login_with_facebook.jpg"
+    .or_holder.mlimit.mlimit-top or
+    = form_for(resource, :as => resource_name, :class =>'mlimit', :url => session_path(resource_name)) do |f|
+      =devise_error_messages! 
+      =f.email_field :email, :autofocus => true, :placeholder=>"username", :class => "bubble bg-smoke"
+      =f.password_field :password,:placeholder => "password", :class => "bubble bg-smoke"
+      .login_submit_buttons
+        input.btn.login_button type="submit"
+        .remember_me 
+          =link_to 'Forgot your password?', new_password_path('user')
+    .mlimit Don't have an account yet? #{link_to 'Sign Up',new_user_registration_path }
+
+  
+
+
+
+
