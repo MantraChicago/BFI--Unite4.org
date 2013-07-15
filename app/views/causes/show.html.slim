@@ -52,7 +52,7 @@
     .large-3.columns      
       .cause-listing-container.row.mlimit
         .columns.mlimit.left
-          == render :partial => "campaigns/listing", :locals => {cause: @cause, campaign: @cause.active_campaign}
+          == render :partial => 'shared/cause_tile', :locals => {cause: @cause} 
       p.h4 
         == replace_newlines_with_linebreaks(@cause.how_hear)
       div
