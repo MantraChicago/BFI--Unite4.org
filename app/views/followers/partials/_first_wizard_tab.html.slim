@@ -2,9 +2,14 @@
   h3 Show your support!
   h4.mlimit First, support us by liking and following.
   .support_boxes
-    .support_box.fb_support
-      |Facebook image 
+    -if not need.cause.facebook_url.empty?
+      .support_box.fb_support
+          a href="#{need.cause.facebook_url}"
+            img src="/assets/follow_facebook_button.jpg"
     .support_box.u4g_support
-      |U4G image
-    .support_box.twitter_support
-      |Twitter image
+      a
+        img src="/assets/follow_u4g_button.jpg"
+    -if not need.cause.twitter_handle.empty?
+      .support_box.twitter_support
+        a href="http://twitter.com/#{need.cause.twitter_handle}"
+          img src="/assets/follow_twitter_button.jpg"

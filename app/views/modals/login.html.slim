@@ -6,7 +6,7 @@
       img src="/assets/login_with_facebook.jpg"
     .or_holder.mlimit.mlimit-top <span class="or_bar"></span>&nbsp;or&nbsp;<span class="or_bar"></span>
     = form_for(resource, :as => resource_name, :class =>'mlimit', :url => session_path(resource_name)) do |f|
-      =devise_error_messages! 
+      /=devise_error_messages!
       =f.email_field :email, :autofocus => true, :placeholder=>"username", :class => "bubble bg-smoke"
       =f.password_field :password,:placeholder => "password", :class => "bubble bg-smoke"
       .login_submit_buttons
