@@ -1,4 +1,4 @@
-class Api::ProfilesController < Api::ApiController
+class Api::ProfilesController < DeviseController
   #include Devise::Controllers::InternalHelpers
 
   def login

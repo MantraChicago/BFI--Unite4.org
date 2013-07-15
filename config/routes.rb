@@ -6,9 +6,9 @@ GiveInspireLove::Application.routes.draw do
 
   match '/page/:action' => 'StaticPages'
 
-   match '/modals/:action(/:id)' => 'Modals'
+  match '/modals/:action(/:id)' => 'Modals'
 
-
+  #match '/api/profiles/:action' => 'Api::Profiles#:action'
 
   resources :profiles
 
@@ -44,4 +44,5 @@ GiveInspireLove::Application.routes.draw do
   get "/api/v1/:resource/:presenter_format", :to => "presentables#index", :format => :json
 
   get "/users/me.json", :to => "users#show", :format => :json
+
 end

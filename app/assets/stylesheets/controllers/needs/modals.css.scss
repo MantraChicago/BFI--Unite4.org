@@ -1,3 +1,5 @@
+@import "unite/gradient";
+
 .need_modal{
   height: 500px;
   position: relative;
@@ -163,10 +165,21 @@
     height: 40px;
     .login_button{
       float: left;
+      width: 130px;
     }
     .remember_me{
       float: right;
+      font-size: 12px;
+      padding-top: 13px;
     }
+  }
+
+  .or_bar{
+    width: 40%;
+    height: 1px;
+    margin-bottom: 3px;
+    background-color: #ccc;
+    display: inline-block;
   }
 
   .login_header{
@@ -176,14 +189,7 @@
     
     padding-top: 10px;
     height: 50px;
-    background: #fefefe; /* Old browsers */
-    background: -moz-linear-gradient(top,  #fefefe 0%, #e4e4e4 100%, #7db9e8 100%, #2989d8 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(100%,#e4e4e4), color-stop(100%,#7db9e8), color-stop(100%,#2989d8)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #fefefe 0%,#e4e4e4 100%,#7db9e8 100%,#2989d8 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #fefefe 0%,#e4e4e4 100%,#7db9e8 100%,#2989d8 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #fefefe 0%,#e4e4e4 100%,#7db9e8 100%,#2989d8 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #fefefe 0%,#e4e4e4 100%,#7db9e8 100%,#2989d8 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#2989d8',GradientType=0 ); /* IE6-9 */
+    @include vertical_gradient();
 
   }
 }

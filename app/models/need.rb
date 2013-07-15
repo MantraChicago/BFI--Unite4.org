@@ -15,8 +15,8 @@ class Need < ActiveRecord::Base
 
   validates_inclusion_of :type_of_need, :in => ValidTypes
 
-  can_be_queried_by :cause_id
-  can_be_queried_by :type
+  #can_be_queried_by :cause_id
+  #can_be_queried_by :type
 
   def need
     self

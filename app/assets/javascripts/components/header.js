@@ -61,6 +61,10 @@ setupHeader=function(){
 		Application.header.toggle_nav(causes_html, 'causes')
 	});
 	*/
+	$('#login_button').click(function(event){
+		event.preventDefault();
+		Application.show_login_modal()
+	})
 	$('.popover_tigger').click(function(){
 		$('.profile_drop_down ul').toggleClass('hide')
 	})
