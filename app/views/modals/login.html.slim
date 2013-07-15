@@ -7,13 +7,32 @@
     .or_holder.mlimit.mlimit-top <span class="or_bar"></span>&nbsp;or&nbsp;<span class="or_bar"></span>
     = form_for(resource, :as => resource_name, :class =>'mlimit', :url => session_path(resource_name)) do |f|
       /=devise_error_messages!
-      =f.email_field :email, :autofocus => true, :placeholder=>"username", :class => "bubble bg-smoke"
-      =f.password_field :password,:placeholder => "password", :class => "bubble bg-smoke"
-      .login_submit_buttons
-        input.btn.login_button type="submit" value="Login"
-        .remember_me 
-          =link_to 'Forgot your password?', new_password_path('user')
+
+      .row.login_input
+        .large-12.columns
+          .row.collapse
+            .small-3.columns
+              span.prefix
+                img src="/assets/login_username.png"
+            .small-9.columns
+              =f.email_field :email, :autofocus => true, :placeholder=>"email"
+        .large-12.columns
+          .row.collapse
+            .small-3.columns
+              span.prefix
+                img src="/assets/login_password.png"
+            .small-9.columns
+              =f.password_field :password,:placeholder => "password"
+      .row
+        .columns.large-6
+          input.btn.login_button type="submit" value="Login"
+        .columns.large-6
+          .remember_me 
+            =link_to 'Forgot your password?', new_password_path('user')
+        
     .mlimit Don't have an account yet? #{link_to 'Sign Up',new_user_registration_path }
+
+
 
   
 
