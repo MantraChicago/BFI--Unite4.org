@@ -6,8 +6,8 @@ namespace :snapshot do
   USERNAME = "deploy"
   PROJECT_PATH = "/home/deploy/rails_apps/bfi"
 
-  STAGING_HOST = "198.199.88.212"
-  PRODUCTION_HOST = "198.199.88.212"
+  STAGING_HOST = "192.34.61.72"
+  PRODUCTION_HOST = "192.34.61.72"
   SNAPSHOT_PATH = "/opt/snapshots/"
 
   def host(rails_env)

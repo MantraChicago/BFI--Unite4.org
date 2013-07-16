@@ -240,6 +240,6 @@ Devise.setup do |config|
 
   #https://github.com/plataformatec/devise/wiki/OmniAuth%3a-Overview
   require "omniauth-facebook"
-  config.omniauth :facebook, "145343622317172", "bd6476438158a450568b75e82b7a4304",
+  config.omniauth :facebook, SimpleSettings.config[:facebook][:app_id], SimpleSettings.config[:facebook][:app_secret],
     {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 end

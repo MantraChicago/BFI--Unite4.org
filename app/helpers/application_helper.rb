@@ -13,7 +13,9 @@ module ApplicationHelper
   end
 
   def limit_to_three_words(phrase="")
-    phrase.split(' ').slice(0,3).join(' ')
+    unless phrase.nil?
+      phrase.split(' ').slice(0,3).join(' ')
+    end
   end
 
   def replace_newlines_with_linebreaks text=""
@@ -44,6 +46,6 @@ module ApplicationHelper
 
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
-  end  
+  end
 
 end
