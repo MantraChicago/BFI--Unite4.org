@@ -75,7 +75,7 @@ class User < ActiveRecord::Base
       location = state
     end
 
-    
+
 
     location
   end
@@ -92,27 +92,36 @@ class User < ActiveRecord::Base
     self.avatar = open(url)
   end
 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+  def self.find_or_create_from_facebook(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    #logger.info user.to_yaml
+    # try finding by email
+    if user.nil?
+      user = User.find_by_email(auth.info.email)
+    end
+    locationArray=auth.try(:info).try(:location).try(:split, ',')
     if user
 
-      locationArray=auth.info.location.split(',')
       user.update_attributes({:first_name => auth.info.first_name,
                           :last_name => auth.info.last_name,
-                          :city => locationArray[0] ||='',
-                          :state => locationArray[1] ||='',
+                          :city => locationArray.try(:[], 0) || '',
+                          :state => locationArray.try(:[], 1) || '',
                           :fb_token => auth.credentials.token
                           })
 
       #user.picture_from_url "https://graph.facebook.com/#{auth.info.id}/picture"
-      #user.save
+      user.save
     else
-      user = User.create(  :provider => auth.provider,
-                           :uid => auth.uid,
-                           :email => auth.info.email,
-                           :password => Devise.friendly_token[0,20]
-                           )
+
+      user = User.create!( provider: auth.provider,
+                          uid:  auth.uid,
+                          email: auth.info.email,
+                          password: Devise.friendly_token[0,20],
+                          first_name: auth.info.first_name,
+                          last_name: auth.info.last_name,
+                          city: locationArray.try(:[], 0) || '',
+                          state: locationArray.try(:[], 1) || '',
+                          fb_token: auth.credentials.token
+                        )
 
     end
     user

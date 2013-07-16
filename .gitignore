@@ -32,3 +32,4 @@ ehthumbs.db
 Thumbs.db
 coverage
 nbproject
+config/settings.yml
