@@ -2,9 +2,9 @@
   h3 Show your support!
   h4.mlimit First, support us by liking and following.
   .support_boxes
-    -if not need.cause.facebook_url.empty?
+    -if not need.cause.facebook_url.try(:empty?)
       .support_box.fb_support
-          a href="#{need.cause.facebook_url}"
+          a.facebook_post_to_wall_link href="#{need.cause.facebook_url}"
             img src="/assets/follow_facebook_button.jpg"
     .support_box.u4g_support
       a
@@ -13,3 +13,22 @@
       .support_box.twitter_support
         a href="http://twitter.com/#{need.cause.twitter_handle}"
           img src="/assets/follow_twitter_button.jpg"
+  javascript:
+    $(function() {
+      $($('.facebook_post_to_wall_link')[0]).on('click', function(event) {
+        FB.ui({
+          method: 'feed',
+          name: 'Facebook Dialogs',
+          link: 'https://developers.facebook.com/docs/reference/dialogs/',
+          picture: 'http://fbrell.com/f8.jpg',
+          caption: 'Reference Documentation',
+          description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+        }, function(response) {
+          if (response && response.post_id) {
+            console.log("Posted: " + response.post_id);
+          } else {
+            console.log("Not Posted")
+          }
+        });
+      });
+    });
