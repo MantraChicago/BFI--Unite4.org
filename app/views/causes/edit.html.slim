@@ -29,6 +29,8 @@ div style="margin-top:60px;"
   = text_field(:cause, :display_name,:placeholder => "display name")
   label short description
   = text_field(:cause, :short_description,:placeholder => "short description")
+  contact email
+  = text_field(:cause, :contact_email,:placeholder => "contact_email")
   label picture
   = image_tag(@cause.picture.url(:medium))
   = file_field(:cause, :picture)

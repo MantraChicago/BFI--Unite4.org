@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716160606) do
+ActiveRecord::Schema.define(:version => 20130716192144) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20130716160606) do
     t.integer  "goods_donations_count", :default => 0
     t.string   "city_slug"
     t.string   "short_description"
+    t.string   "contact_email"
   end
 
   add_index "causes", ["cause_type_id"], :name => "index_causes_on_cause_type_id"
@@ -305,6 +306,7 @@ ActiveRecord::Schema.define(:version => 20130716160606) do
     t.integer  "volunteers_count",       :default => 0
     t.string   "authentication_token"
     t.boolean  "cause_admin"
+    t.integer  "cause_admin_id"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token"
