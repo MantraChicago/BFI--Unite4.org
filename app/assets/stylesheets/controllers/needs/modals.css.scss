@@ -76,7 +76,7 @@
   .last_name{
     display: inline-block;
     width: 49%;
-    float:right;
+    margin-left: 10px;
   }
   .cc_number{
     display: inline-block;
@@ -103,8 +103,7 @@
     float: left;
   }
   .cash_submit{
-    margin-left: 10px;
-    display: inline-block;
+
   }
 }
 
