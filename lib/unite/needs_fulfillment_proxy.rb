@@ -32,15 +32,21 @@ module Unite
       end
 
       def fulfill_cash_donations_need
-        cause.cash_donations.create(need_id: need.try(:id), user_id: user.try(:id), amount: params[:amount])
+        cash_donation=cause.cash_donations.create(need_id: need.try(:id), user_id: user.try(:id), amount: params[:amount])
+        CauseMailer.new_cash_donation(cause, cash_donation).deliver
+        cash_donation
       end
 
       def fulfill_volunteers_need
-        cause.volunteers.create(need_id: need.try(:id), user_id: user.try(:id))
+        volunteer = cause.volunteers.create(need_id: need.try(:id), user_id: user.try(:id))
+        CauseMailer.new_volunteer(cause, volunteer).deliver
+        volunteer
       end
 
       def fulfill_goods_donations_need
-        cause.goods_donations.create(need_id: need.try(:id), user_id: user.try(:id),description: params[:description])
+        good_donation=cause.goods_donations.create(need_id: need.try(:id), user_id: user.try(:id),description: params[:description])
+        CauseMailer.new_good_donation(cause, good_donation).deliver
+        good_donation
       end
 
       def fulfill_followers_need

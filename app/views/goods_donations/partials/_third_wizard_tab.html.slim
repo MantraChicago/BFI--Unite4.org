@@ -1,11 +1,20 @@
 .centered
-  h3.mlimit  Thank you for donating your goods to our cause!
-  .row.mlimit 
-      .well.good_how_wells
-        h3 Our Address:
-        h4 #{need.address}
-      |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      .well.good_how_wells
-        h3 You have two options:
+  h3.mlimit What will you be donating?
+  .well.form_holder
+    h4.mlimit.centered Give us a description of your donation including what it is, quanity, conditions, etc.
+    textarea.mlimit name="about_donation" placeholder="Tell us here..."
+    
+  a.btn.blue.good_donation_submit Submit
+
+javascript:
+  $('.good_donation_submit').click(function(){
+    var form_data=$('.good_donation_form').serializeObject()
+    $.post('/causes/#{need.cause.slug}/#{need.type_of_need}/#{need.id}/fulfillments',form_data, function(data){
+
+    })
+    
+  })
+
+
         
     

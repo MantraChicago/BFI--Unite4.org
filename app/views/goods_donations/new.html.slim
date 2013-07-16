@@ -1,17 +1,18 @@
 a.close-reveal-modal &#215;
 .need_modal.good_donations_modal
-  .wizard 
-    .steps-wrapper
-      .step.active 
-        =render 'goods_donations/partials/first_wizard_tab', :need => @need
-      .step 
-        =render 'goods_donations/partials/second_wizard_tab', :need => @need
-      .step 
-        =render 'goods_donations/partials/third_wizard_tab', :need => @need
-    .wizard-navigation.centered
-      a.button.button-previous style="display:none"
-        | Previous
-      a.button.button-next
-        | Next
+  .wizard
+    form.good_donation_form
+      .steps-wrapper
+        .step.active 
+          =render 'goods_donations/partials/first_wizard_tab', :need => @need
+        .step 
+          =render 'goods_donations/partials/second_wizard_tab', :need => @need
+        .step 
+          =render 'goods_donations/partials/third_wizard_tab', :need => @need
+      .wizard-navigation.centered
+        a.button.button-previous style="display:none"
+          | Previous
+        a.button.button-next
+          | Next
   .success.hide
     = render 'goods_donations/partials/success', :need => @need

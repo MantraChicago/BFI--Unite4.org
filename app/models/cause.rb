@@ -11,7 +11,7 @@ class Cause < ActiveRecord::Base
   can_be_queried_by :near, :type => :string, :allowed => ['Chicago','New York','San Fancisco']
 
   attr_accessor :skip_default_location
-  attr_accessible :short_description, :city_slug, :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
+  attr_accessible :contact_email,:short_description, :city_slug, :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
 
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>", :cause_tile => "81x81#" }, :default_url => "/assets/missing.jpeg"
 
@@ -56,6 +56,7 @@ class Cause < ActiveRecord::Base
 
     # this is temporary
     loc.merge! :address_line_one => self.address_line_one || Unite::Development.random_address_in(:chicago),
+               :address_line_two =>self.address_line_two || '',
                        :postal_code => self.postal_code || "60610",
                        :country => self.country || "US",
                        :region => self.region || "IL",
@@ -68,6 +69,10 @@ class Cause < ActiveRecord::Base
     loc
   end
 
+  def address
+    location_hash= location_attributes
+    "#{name}, #{location_hash[:address_line_one]} #{location_hash[:address_line_two]}, #{location_hash[:city]}, #{location_hash[:state]}, #{location_hash[:postal_code]}"
+  end
 
   def create_default_records
     create_default_location

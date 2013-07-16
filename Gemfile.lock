@@ -71,6 +71,7 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.0.4)
+    cancan (1.6.10)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -370,6 +371,7 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
+  cancan
   capistrano
   capistrano-ext
   capistrano-recipes

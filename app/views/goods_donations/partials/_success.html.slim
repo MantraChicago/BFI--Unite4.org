@@ -1,5 +1,10 @@
 .centered
   .modal_middle
-    h3 Success!
-    h4.mlimit Thank you for your donation to #{need.cause.name} <br/> A receipt will be emailed to you.
+    h3 Thank you!
+    h4.mlimit We will send you an e-mail very soon with our drop-off times, locations, and any additional information you'll need to donate your items
+    .well.mlimit
+      .centered
+        img src="/assets/donations_modal/marker_large.jpg"
+        img src="/assets/donations_modal/car_large.jpg"
+        h4 #{need.cause.address}
     .btn.purple onclick="$('#myModal').foundation('reveal', 'close');" Close
