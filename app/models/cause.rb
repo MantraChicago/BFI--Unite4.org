@@ -56,6 +56,7 @@ class Cause < ActiveRecord::Base
 
     # this is temporary
     loc.merge! :address_line_one => self.address_line_one || Unite::Development.random_address_in(:chicago),
+               :address_line_two =>self.address_line_two || '',
                        :postal_code => self.postal_code || "60610",
                        :country => self.country || "US",
                        :region => self.region || "IL",
@@ -68,6 +69,10 @@ class Cause < ActiveRecord::Base
     loc
   end
 
+  def address
+    location_hash= location_attributes
+    "#{name}, #{location_hash[:address_line_one]} #{location_hash[:address_line_two]}, #{location_hash[:city]}, #{location_hash[:state]}, #{location_hash[:postal_code]}"
+  end
 
   def create_default_records
     create_default_location
