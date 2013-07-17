@@ -26,7 +26,8 @@ handlers =
         if response.status is 401
           window.location.href = "/users/sign_in?return_to=#{ window.location.href }"
         else
-          window.location=window.location # just refresh the page 
+          window.location=window.location # just refresh the page
+  
 
 
 

@@ -30,8 +30,6 @@ Application.onReady = ->
 
   controller  = body.attr 'data-controller'
   action      = body.attr 'data-action'
-  
-  console.log "Adam, do we need this still?"
 
   $('#header').quickSlider
     slides: 'header-slide'

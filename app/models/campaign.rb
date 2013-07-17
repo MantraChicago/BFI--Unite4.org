@@ -3,20 +3,20 @@ class Campaign < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
-	attr_accessible :active,:cause_id, :need_id, :start_date, :end_date, :percent_complete, :desired_state, :current_state
+	attr_accessible :type_of_need, :goal_summary, :timefame_description, :active,:cause_id, :need_id, :start_date, :end_date, :percent_complete, :desired_state, :current_state
 
 	belongs_to :cause
 	belongs_to :need
 
-	scope :active, lambda { where(active:true) }
+  scope :active, lambda { where(active:true) }
 	scope :inactive, lambda { where(active:false) }
 
   before_save :set_defaults
 
-  def self.featured count=4
-    cause_ids = Cause.featured(count).select(&:id)
-    where(:cause_id => cause_ids).limit(count)
-  end
+#  def self.featured count=4
+#    cause_ids = Cause.featured(count).select(&:id)
+#    where(:cause_id => cause_ids).limit(count)
+#  end
 
   def percent_complete
     return 0 if desired_state.nil? || desired_state.to_i == 0
