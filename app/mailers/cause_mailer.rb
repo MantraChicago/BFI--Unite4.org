@@ -15,7 +15,7 @@ class CauseMailer < ActionMailer::Base
          :to      => to_email
   end
 
-  def new_good_donation(cause, good_donation)
+  def new_goods_donation(cause, good_donation)
     @cause=cause
     @good_donation=good_donation
     mail :subject => "You have a new good donation",

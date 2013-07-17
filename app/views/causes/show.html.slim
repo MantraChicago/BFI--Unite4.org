@@ -66,7 +66,7 @@
               img src=user.avatar.url(:thumb) height=80 width=80
         div
          = render 'causes/partials/follow', cause:@cause
-         -if !@cause.twitter_handle.empty?
+         /-if !@cause.twitter_handle.empty?
           =render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
 
 

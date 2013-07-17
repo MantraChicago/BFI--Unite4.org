@@ -12,8 +12,6 @@ class CashDonation < ActiveRecord::Base
   def update_campaign
     return unless related_campaign.present?
 
-    # do whatever here
-
     current_amount = related_campaign.current_state.to_i
 
     current_amount += self.amount
@@ -21,8 +19,16 @@ class CashDonation < ActiveRecord::Base
     related_campaign.current_state = "#{ current_amount }"
   end
 
+  def total_amount
+    amount+tip_amount
+  end
+
   def amount
     read_attribute(:amount) || 0
+  end
+
+  def tip_amount
+    read_attribute(:tip_amount) || 0
   end
 end
 

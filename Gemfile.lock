@@ -12,6 +12,14 @@ GIT
       typhoeus
       virtus
 
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: fd09e677311d7d78a02af9b6c7f61b3a2c3b752d
+  specs:
+    stripe (1.8.4)
+      multi_json (>= 1.0.4, < 2)
+      rest-client (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -290,6 +298,8 @@ GEM
     redis (3.0.4)
     responders (0.9.3)
       railties (~> 3.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -411,6 +421,7 @@ DEPENDENCIES
   skim (= 0.8.6)
   slim (= 1.2.2)
   smooth!
+  stripe!
   turbo-sprockets-rails3 (>= 0.3.6)
   uglifier (>= 1.0.3)
   zurb-foundation

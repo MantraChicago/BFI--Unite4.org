@@ -4,9 +4,13 @@ class FulfillmentsController < ApplicationController
   respond_to :js, :json, :html
 
   def create
-    @fulfillment = fulfillment.new(current_user, need, type_of_need: type_of_need, cause_id: cause_id).fulfill!
+    properties={type_of_need: type_of_need,
+                cause_id: cause_id}.merge!(params)
+    
+    @fulfillment = fulfillment.new(current_user, need, properties).fulfill!
 
     if @fulfillment.valid?
+      
       # background the progress calculation task
     end
 

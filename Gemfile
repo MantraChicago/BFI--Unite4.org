@@ -13,6 +13,7 @@ gem 'omniauth-facebook'
 
 gem "paperclip", "~> 2.7"
 
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 #gem 'daemons'
 #gem 'delayed_job'
 #gem 'delayed_job_active_record'
