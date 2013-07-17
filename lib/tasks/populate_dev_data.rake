@@ -25,4 +25,11 @@ namespace :db do
 	  Rake::Task['db:migrate'].invoke
 	  puts "Teat data loaded"
 	end
+
+	task :make_campaigns_active => [:environment] do
+		Campaign.all.each do |campaign|
+			campaign.active=true
+			campaign.save
+		end
+	end
 end

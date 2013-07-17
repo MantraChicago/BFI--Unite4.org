@@ -1,6 +1,5 @@
 #= require ./cause_listings
 #= require ./super_navigation
-#= require ./apply_contribution_history
 #= require_self
 
 $('a[data-update]').on "click", (e)->

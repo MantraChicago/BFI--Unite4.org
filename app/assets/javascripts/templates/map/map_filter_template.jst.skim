@@ -1,13 +1,14 @@
-#mapsettings.mpadding.white.large-1.small-static.small-height-auto.h5 style="z-index:10"
-  form
-    h5 Cause type
+#mapsettings.mpadding.large-1.small-static.small-height-auto.h5 style="z-index:10"
+  form.custom
+    h5.white Cause type
     select name="by_cause_type"
       option value="all" All
       -for cause_type in this.cause_types
         option value="#{cause_type['slug']}" #{cause_type['name']}
-    h5 City
+    h5.white City
     select name="by_city_slug"
       option value="all" All
       -for city in this.cities
         option value="#{city['slug']}" #{city['name']}
+
 

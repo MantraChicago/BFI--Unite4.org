@@ -82,7 +82,7 @@ class Application.App extends Backbone.Events
   # or session-specific modifications.  This is because, in an ideal
   # scenario the entire page that is getting served to us is highly cached / static
   applySessionCustomizations: ()->
-    Application.applyContributionHistory()
+    #Application.applyContributionHistory()
 
   setupGlobalElements: ()->
     Application.setupSuperNavElements()

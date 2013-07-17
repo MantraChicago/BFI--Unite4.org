@@ -7,7 +7,7 @@
           a.facebook_post_to_wall_link href="#{need.cause.facebook_url}"
             img src="/assets/follow_facebook_button.jpg"
     .support_box.u4g_support
-      a
+      a href="/causes/#{need.cause.slug}/followers" data-method="post"
         img src="/assets/follow_u4g_button.jpg"
     -if not need.cause.twitter_handle.empty?
       .support_box.twitter_support

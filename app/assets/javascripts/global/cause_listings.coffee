@@ -1,11 +1,6 @@
 Application.setupCauseListingEvents = _.once ->
   $('.cause-listing .fulfillment-button').click(handleFulfillmentClick)
 
-  $('.cause-follow-button').click (e)->
-    e.preventDefault()
-    $target   = $(e.currentTarget)
-    handlers.followers(url: $target.attr('href'))
-
 
 handleFulfillmentClick = (e)->
   $target   = $(e.currentTarget)

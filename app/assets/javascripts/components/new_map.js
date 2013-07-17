@@ -89,6 +89,7 @@ var MapFilterView=Backbone.View.extend({
     var html=$(JST['templates/map/map_filter_template']({cause_types:this.options.cause_types,
                                                          cities:this.options.cities}))
     $(this.el).html(html)
+    $(document).foundation() // for dropdowns
     
   },
   change:function(event){
