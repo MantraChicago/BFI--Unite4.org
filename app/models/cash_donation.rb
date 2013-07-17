@@ -1,5 +1,5 @@
 class CashDonation < ActiveRecord::Base
-  attr_accessible :need_id, :user_id, :amount
+  attr_accessible :need_id, :user_id, :amount, :tip_amount, :stripe_id
 
   belongs_to :cause, :counter_cache => true
   belongs_to :need

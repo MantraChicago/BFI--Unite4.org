@@ -32,7 +32,8 @@ module Unite
       end
 
       def fulfill_cash_donations_need
-        cash_donation=cause.cash_donations.create(need_id: need.try(:id), user_id: user.try(:id), amount: params[:amount])
+
+        cash_donation=cause.cash_donations.create(need_id: need.try(:id), user_id: user.try(:id),stripe_id: params[:stripeToken], tip_amount: params[:donation], amount: params[:donation_amount])
         CauseMailer.new_cash_donation(cause, cash_donation).deliver
         cash_donation
       end
