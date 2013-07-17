@@ -1,22 +1,24 @@
 - money_amount={'$5' => '5','$10'=>'10'}
-div.centered
-  h3.mlimit Thank you for your interest in donating your money to #{need.cause.name}!
-
-  .well.form_holder
-    .divide
-      |$&nbsp;
-      input.money_input#donation_amount type="text" value="0" name="donation_amount"
-      .right_money
-        h4 How much you would like to donate.
-        h5 Unit4Good is a 501(c)3 organization, which means that your donations are text deductable. 
-    .divide
-      = select(:donation, :tip, money_amount)
-      .right_money
-        h4 Give a tip to Unite4Good (optional)
-        h5 Help us grow. Your donation will directly help us support many more causes in the future.
-    .divide
-      h3 Total: <span id="total"></span>
-      h5 We currently only accept payments using Credit Cards with a US billing address
+div
+  h3.mlimit.centered Thank you for your interest in donating your money to #{need.cause.name}!
+  .row
+    .large-10.columns.large-centered.mlimit
+      .row.mlimit  
+        .large-2.columns
+          input.money_input#donation_amount type="text" value="0" name="donation_amount"
+        .large-8.large-offset-2.columns
+          h4 How much you would like to donate.
+          h5 Unit4Good is a 501(c)3 organization, which means that your donations are text deductable. 
+      .row.mlimit
+        .large-2.columns
+          = select(:donation, :tip, money_amount)
+        .large-8.large-offset-2.columns
+          h4 Give a tip to Unite4Good (optional)
+          h5 Help us grow. Your donation will directly help us support many more causes in the future.
+      .row.mlimit
+        .large-12.columns
+          h3 Total: <span id="total"></span>
+          h5 We currently only accept payments using Credit Cards with a US billing address
 
 
 javascript:

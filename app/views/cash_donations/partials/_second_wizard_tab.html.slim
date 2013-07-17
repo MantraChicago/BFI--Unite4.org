@@ -1,21 +1,30 @@
 .centered
   h3 Please provide us with your payment information
   h4.subheadline.mlimit Online giving is a safe and easy way to invest in the cause you support. Your information will remain private and never be given away to third parties.
-  .well.form_holder
-    div
-      input type="text" placeholder="First name on card" class="first_name"
-      input type="text" placeholder="Last name on card" class="last_name"
-    div 
-      input type="text" placeholder="Card Number" class="cc_number"
-      input type="text" placeholder="Month" class="month"
-      input type="text" placeholder="Year" class="year"
-      input type="text" placeholder="CVC" class="cvc"
-    div
-      /input type="text" placeholder="Email Address" class="email"
-      /input type="submit" class="purple cash_submit btn submit_button"
-      a.btn.purple.cash_submit Submit
+  .row
+    .large-10.columns.large-centered.mlimit
+      .row.mlimit
+        .columns.large-12 
+          .payment-errors
+      .row
+        .columns.large-6
+          input type="text" placeholder="First name on card" class="first_name"
+        .columns.large-6
+          input type="text" placeholder="Last name on card" class="last_name"
+      .row
+        .columns.large-6
+          input type="text" placeholder="Card Number" class="cc_number"
+        .columns.large-2
+          =select_tag :month, options_for_select(['Month'].push((1..12).to_a).flatten), :class="month"
+        .columns.large-2
+          =select_tag :year, options_for_select(['Year'].push((Time.now.year..Time.now.year+10).to_a).flatten), :class="year"
+        .columns.large-2
+          input type="text" placeholder="CVC" class="cvc"
+      .row
+        .large-12.columns
+          a.btn.purple.cash_submit Submit
 javascript:
-
+  $(document).foundation();
   $.getScript('https://js.stripe.com/v2/',function(){
   
     Stripe.setPublishableKey('#{SimpleSettings.config[:stripe][:public_key]}');

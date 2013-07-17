@@ -41,69 +41,15 @@
   select{
     width: 100px;
   }
-  .subheadline{
-    margin-left: auto;
-    margin-right: auto;
-    width:600px;
-  }
 
   .money_input{
     width:70px;
     display: inline-block;
   }
 
-  .divide{
-    height: 70px;
-    position: relative;
-  }
-
-  
-  .right_money{
-    width: 430px;
-    position: absolute;
-    right: 0px;
-    top:0px;
-    vertical-align: top;
-    h4{
-      margin-top: 0px;
-    }
-  }
-
-  .first_name{
-    display: inline-block;
-    width: 49%;
-  }
-  .last_name{
-    display: inline-block;
-    width: 49%;
-    margin-left: 10px;
-  }
-  .cc_number{
-    display: inline-block;
-    width: 49%;
-  }
-  .month{
-    display: inline-block;
-    width: 15%;
-     margin-left: 10px;
-  }
-  .year{
-    display: inline-block;
-    width: 15%;
-     margin-left: 10px;
-  }
-  .cvc{
-    display: inline-block;
-     width: 15%;
-      margin-left: 10px;
-  }
-  .email{
-    width: 49%;
-    display: inline-block;
-    float: left;
-  }
-  .cash_submit{
-
+  .payment-errors{
+    color: red;
+    font-weight: bold;
   }
 }
 
