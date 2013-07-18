@@ -45,7 +45,6 @@ gem 'carmen'
 gem 'geokit'
 
 gem "friendly_id", "~> 4.0.9"
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -75,6 +74,7 @@ gem 'pry-nav'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem "quiet_assets"
 end
 
 group :test, :development do
