@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
     name
   end
 
+  def is_following_cause(cause)
+    causes.all.include? cause
+  end
+
   def location
     location = ""
 
