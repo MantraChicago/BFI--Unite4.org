@@ -13,6 +13,8 @@ class GoodsDonation < ActiveRecord::Base
 
     # do whatever here
   end
+
+
 end
 
 # == Schema Information

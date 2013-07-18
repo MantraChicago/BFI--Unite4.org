@@ -29,7 +29,7 @@ javascript:
   
     Stripe.setPublishableKey('#{SimpleSettings.config[:stripe][:public_key]}');
       $('.cash_submit').click(function(){
-
+        $('.cash_submit').attr('disabled','true')
         Stripe.card.createToken({
             number: $('.cc_number').val(),
             cvc: $('.cvc').val(),
@@ -46,9 +46,10 @@ javascript:
         
             // show the errors on the form
             $(".payment-errors").text(response.error.message);
+            $('.cash_submit').removeAttr('disabled')
         } else {
             var form$ = $(".need_form");
-            console.log( form$)
+            
             // token contains id, last4, and card type
             var token = response['id'];
             // insert the token into the form so it gets submitted to the server

@@ -25,7 +25,7 @@ class CauseMailer < ActionMailer::Base
 
   protected
     def to_email
-      if not @cause.contact_email || @cause.contact_email.empty?
+      if @cause.contact_email && @cause.contact_email.empty?
         @cause.contact_email
       else
         'eddie@meetmantra.com' # will need to change in future

@@ -4,6 +4,7 @@ class CashDonation < ActiveRecord::Base
   belongs_to :cause, :counter_cache => true
   belongs_to :need
   belongs_to :user, :counter_cache => true
+  after_create :charge_credit_card  # I really really don't think this should be in a model, but where else? 
 
   def related_campaign
     @related_campaign ||= cause.campaigns.where(:need_id => self.need_id).first
@@ -29,6 +30,14 @@ class CashDonation < ActiveRecord::Base
 
   def tip_amount
     read_attribute(:tip_amount) || 0
+  end
+
+  def charge_credit_card
+    if valid?
+      message = "Charge for #{need.cause.name}"
+      puts 'xxxxxx'+stripe_id.inspect
+      Unite::PaymentGatewayService.charge stripe_id, total_amount, message
+    end
   end
 end
 

@@ -1,7 +1,12 @@
 class Unite::PaymentGatewayService
   def self.charge(stripe_token, amount, message)
     Stripe.api_key = SimpleSettings.config[:stripe][:private_key]
-    # Create the charge on Stripe's servers - this will charge the user's card
+
+    #sometimes we get an array from Stripe    
+    if stripe_token.kind_of?(Array)
+      stripe_token=stripe_token.pop
+    end
+
     begin
       charge = Stripe::Charge.create(
         :amount => amount, # amount in cents, again
