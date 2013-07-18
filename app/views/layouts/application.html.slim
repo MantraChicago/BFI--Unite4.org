@@ -38,10 +38,11 @@ html
 
 
   body id=body_id class=body_class data-controller=controller_name data-action=action_name
-    == render :partial => "shared/facebook"
-
+    /== render :partial => "shared/facebook"
+    
     == render 'shared/mainheader'
     == render "shared/flash", :flash => flash
+    
     .ismobileflag
 
     == yield

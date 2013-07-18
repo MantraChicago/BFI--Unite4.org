@@ -88,3 +88,16 @@
     }
   } 
 }
+
+#causes-sort 
+{
+  max-width: 350px;
+  & * {
+    border-color: #dc4081;
+    & > *:hover {
+      color: #fff;
+      background: #dc4081;
+    }
+  }
+  
+}
