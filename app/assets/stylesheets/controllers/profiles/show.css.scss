@@ -188,6 +188,14 @@
   background-color: #fff;
   padding-top: 1em;
 }
+.avatar-scoped {
+  height: 190px;
+  margin-bottom: 1em;
+  overflow: hidden;
+}
+.avatar-scoped img {
+  width: 100%;
+}
 #user-basics h2 {
   font-size: 2.1em;
   margin: 0.5em 0 0 0;
@@ -204,8 +212,47 @@
   overflow: hidden;
 }
 #user-stats {
+  border-width: 1px;
+  border-style: solid solid solid none;
+  border-color: #E6E6E6;
 }
-
+#user-stats h3 {
+  padding: .56em 1em;
+  margin: 0 -1em;
+  font-size: 1em;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  background-color: #ededed;
+}
+#user-stats ul {
+  margin: 0 -0.9375em;
+}
+#user-stats li {
+  background-color: #f7f7f7;
+  border-color: #d9d9d9;
+  border-style: solid solid none none;
+  border-width: 1px;
+  padding: 1.25em 0.625em;
+}
+#user-stats small,
+#user-stats strong,
+#user-stats em {
+  display: block;
+  text-align: center;
+  line-height: 1.2;
+}
+#user-stats small {
+  font-size: .8em;
+}
+#user-stats strong {
+  font-size: 1.8em;
+  color: #d51679;
+}
+#user-stats em {
+  font-size: 1em;
+  font-style: normal;
+}
 
 
 

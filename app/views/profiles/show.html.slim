@@ -2,7 +2,7 @@ section#user-hero
   .row
     .large-9.column#user-basics
       .row
-        .large-3.column
+        .large-3.column.avatar-scoped
           = image_tag @user.avatar.url
         .large-9.column
           h2= @user.display_name
