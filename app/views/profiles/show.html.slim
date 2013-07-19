@@ -1,20 +1,124 @@
-.profile_container
-	.narrow_side_container.left
-		.profile_picture style="background-image: url(#{@user.avatar.url})"
-		.profile_containter
-			.profile_name #{@user.display_name}
-			.profile_location #{@user.location}
-			
-			-if @allow_edit
-				.profile_title
-		    		=link_to "Edit Profile".html_safe, profiles_edit_path
-		    
-			.profile_title BIO
-			.profile_content #{@user.bio}
-			/.profile_interests #{@user.display_name}
-			.profile_title STATS
+section#user-hero
+  .row
+    .large-9.column
+      .row
+        .large-3.column
+          = image_tag @user.avatar.url
+        .large-9.column
+          h2= @user.display_name
+          small= @user.location
+          p= @user.bio
+      .row
+        .large-6.column
+          a{href='#'} About Me
+        .large-6.column
+          a{href='#'} My Badges
+
+    .large-3.column#giving-stats
+      h3 My Giving Stats
+      ul.large-block-grid-2
+        li
+          small Earned
+          strong 12
+          em Badges
+        li
+          small Volunteered
+          strong 17
+          em Hours
+        li
+          small Following
+          strong 24
+          em Causes
+        li
+          small Given
+          strong 22
+          em Donations
+
+section#user-data
+  .row
+    .large-6.column
+      .panel
+        h3 About Me
+        h4 About:
+        p (character limit) My name is Samantha Abernathy, and I love pancakes a whole lot. In fact, I love them so much that I once built a bike with two pancakes for wheels. Speaking of loving pancakes, love is a funny thing. Some people see it as an uphill bike ride, but I see it more as breakfast on the go. Don’t get me wrong.. I do believe in love. But there’s really just no time for chitchat when there are two hot banana pancakes to be eaten. 
+        h4 Interests:
+        p (If user selects all categories) Animal Welfare, Health and Wellness, Education,  Social Equality, Religious, Global Outreach, Environmental, Youth
+
+      .panel
+        h3 Causes I Contribute To
+        .row
+          .large-4.column
+            = image_tag "http://placehold.it/73x73"
+            = image_tag "http://placehold.it/73x73"
+          .large-8.column
+            h4 Pencils and Pancakes and More Pancakes
+            strong I Volunteered
+            time January 24, 2013
+        .row
+          .large-4.column
+            = image_tag "http://placehold.it/73x73"
+            = image_tag "http://placehold.it/73x73"
+          .large-8.column
+            h4 Pencils and Pancakes and More Pancakes
+            strong I Volunteered
+            time January 24, 2013
+        .row
+          .large-4.column
+            = image_tag "http://placehold.it/73x73"
+            = image_tag "http://placehold.it/73x73"
+          .large-8.column
+            h4 Pencils and Pancakes and More Pancakes
+            strong I Volunteered
+            time January 24, 2013
+
+      .panel
+        h3 Causes I Follow
+        ul.large-block-grid-4
+          li
+            = image_tag "http://placehold.it/100x100"
+          li
+            = image_tag "http://placehold.it/100x100"
+          li
+            = image_tag "http://placehold.it/100x100"
+          li
+            = image_tag "http://placehold.it/100x100"
+          li
+            = image_tag "http://placehold.it/100x100"
+          li
+            = image_tag "http://placehold.it/100x100"
+          li
+            = image_tag "http://placehold.it/100x100"
+          li
+            = image_tag "http://placehold.it/100x100"
+        a{href='#'} See More
+
+    .large-6.column
+      .panel
+        h3 My Giving Map
+        p Map content
+
+      .panel
+        h3 Photos and Videos
+        = image_tag "http://placehold.it/460x415"
+        p A quick brown fox jumps over the lazy dog. Quest judge wizard bonks foxy chimp love. Boxers had zap of gay jock love, quit women. Joaquin Phoenix was gazed by MTV for luck. (3 line character max)
+
+        .section-container.vertical-tabs{data-section="vertical-tabs"}
+          section
+            p.title{data-section-title}
+              a{href='#'} Photos
+            .content{data-section-content}
+              = image_tag "http://placehold.it/80x80"
+              = image_tag "http://placehold.it/80x80"
+              = image_tag "http://placehold.it/80x80"
+          section
+            p.title{data-section-title}
+              a{href='#'} Videos
+            .content{data-section-content}
+              = image_tag "http://placehold.it/80x80"
+              = image_tag "http://placehold.it/80x80"
+              = image_tag "http://placehold.it/80x80"
 
 
-	.wide_side_container.right.gray_border
-		.profile_title #{@user.display_name.upcase}'S CAUSES
-		== render 'shared/causes_4_columns',causes: @user.causes
+
+section#user-badges
+  / create content

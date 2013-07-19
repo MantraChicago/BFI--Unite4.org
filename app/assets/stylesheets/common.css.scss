@@ -431,10 +431,6 @@ input.bubble {
 
 }
 
-
-
-
-
 .gray_border{
   border:1px solid #e3e3e3;
 }
@@ -444,5 +440,8 @@ input.bubble {
   margin-right: auto;
 }
 
+#topbar + .ismobileflag + section {
+  margin-top: 52px;
+}
 
 
