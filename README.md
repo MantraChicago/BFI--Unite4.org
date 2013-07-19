@@ -28,7 +28,8 @@ linux use `apt-get`
 git clone git@github.com:MantraChicago/BFI--Unite4.org.git unite4
 cd unite4
 git checkout release_candidate
-cp config/database.yml.example config/database.yml
+cp config/database.yml{.example,}
+cp config/settings{.example,}.yml
 bundle install
 ```
 
