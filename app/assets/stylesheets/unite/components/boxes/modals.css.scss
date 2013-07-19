@@ -1,0 +1,37 @@
+@import "unite/gradient";
+
+.need_modal{
+  min-height: 550px;
+  position: relative;
+  color:#444;
+  .modal-max-width{
+    max-width: 500px;
+  }
+
+  .mlimit-small{
+    margin-top: 10px;
+  }
+
+  .well{
+    text-align: left;
+  }
+
+  textarea{
+    height: 150px;
+  }
+
+  .modal_middle{
+    padding-top: 100px;
+  }
+
+  .wizard-navigation{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+ 
+  }
+  .form_holder{
+    background-color: inherit;
+    border: none;
+  }
+}

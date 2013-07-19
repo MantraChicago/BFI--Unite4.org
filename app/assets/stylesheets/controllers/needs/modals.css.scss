@@ -1,44 +1,6 @@
 @import "unite/gradient";
 
-.need_modal{
-  height: 500px;
-  position: relative;
-  color:#444;
-    
-  textarea{
-    height: 150px;
-  }
-  .well{
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    width:80%;
-  }
-
-  .good_how_wells{
-    display: inline-block;
-    vertical-align: top;
-    height: 300px;
-    width:400px;
-  }
-
-  .wizard-navigation{
-    position: absolute;
-    width: 100%;
-    bottom: 0px;
- 
-  }
-  .form_holder{
-    background-color: inherit;
-    border: none;
-  }
-}
-
 .cash_donations_modal{
-  select{
-    width: 100px;
-  }
-
   .money_input{
     width:70px;
     display: inline-block;
@@ -51,20 +13,6 @@
 }
 
 
-.volunteer_donations_modal{
-  textarea{
-    height: 150px;
-  }
-  .zip_code{
-    width: 49%;
-    display: inline-block;
-    margin-left: 11px;
-  }
-  .phone_number{
-    width: 49%;
-    display: inline-block;
-  }
-}
 
 .followers_modal{
   .support_boxes{
@@ -86,6 +34,3 @@
 
 }
 
-.modal_middle{
-  padding-top: 100px;
-}

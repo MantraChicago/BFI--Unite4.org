@@ -1,19 +1,25 @@
-.centered
-  h3 Thank you for your interest in volunteering with #{need.cause.name}
-  h4.mlimit Please tell us about yourself:
-  .well.form_holder
-    form.volunteer_form
-     
-      div
-        textarea placeholder="Tell us how you'd like to help and when you're available"
-      div
-        input type="text" placeholder="Phone number" class="phone_number"
-        input type="text" placeholder="Zip code" class="zip_code"
-      .centered
-        label
-          |Are you over 18?
-          input type="checkbox"
-        .btn.purple.volunteer_submit Submit
+.row
+  .large-10.columns.large-centered.centered
+    h3 Thank you for your interest in volunteering with #{need.cause.name}
+    h4.mlimit Please tell us about yourself:
+    form.volunteer_form.custom
+      .row
+        .large-10.mlimit.large-centered.modal-max-width.centered
+          .row
+            .column.large-12
+              textarea placeholder="Tell us how you'd like to help and when you're available"
+          .row
+            .column.large-6
+              input type="text" placeholder="Phone number" class="phone_number"
+            .column.large-6
+              input type="text" placeholder="Zip code" class="zip_code"
+          .row
+            .column.large-12.large-centered
+              div
+                label
+                  |Are you over 18?
+                  input type="checkbox"
+                .btn.purple.volunteer_submit Submit
 javascript:
   $('.volunteer_submit').click(function(){
     var form_data=$('.volunteer_form').serializeObject()
@@ -22,3 +28,4 @@ javascript:
     })
     
   })
+
