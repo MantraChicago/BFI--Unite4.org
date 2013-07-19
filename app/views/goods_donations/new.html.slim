@@ -14,5 +14,16 @@ a.close-reveal-modal &#215;
           | Back
         a.button.button-next
           | Next
+        a.button.button-submit.pink.hide
+          | Submit
   .success.hide
     = render 'goods_donations/partials/success', :need => @need
+
+
+javascript:
+
+  $('.button-submit').click(function(){
+    var form_data=$('.good_donation_form').serializeObject()
+    $.post('/causes/#{@need.cause.slug}/#{@need.type_of_need}/#{@need.id}/fulfillments',form_data,function(){})
+  })
+

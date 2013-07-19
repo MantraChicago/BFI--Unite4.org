@@ -25,44 +25,5 @@
           =select_tag :year, options_for_select(['Year'].push((Time.now.year..Time.now.year+10).to_a).flatten), :class=>"year"
         .columns.large-2
           input type="text" placeholder="CVC" class="cvc"
-      .row
-        .large-12.columns
-          a.btn.purple.cash_submit Submit
-javascript:
-  $(document).foundation();
-  $.getScript('https://js.stripe.com/v2/',function(){
-  
-    Stripe.setPublishableKey('#{SimpleSettings.config[:stripe][:public_key]}');
-      $('.cash_submit').click(function(){
-        $('.cash_submit').attr('disabled','true')
-        Stripe.card.createToken({
-            number: $('.cc_number').val(),
-            cvc: $('.cvc').val(),
-            exp_month: $('.month').val(),
-            exp_year: $('.year').val()
-        }, stripeResponseHandler);
-        
-      })
 
-    })
 
-    var stripeResponseHandler = function (status, response) {
-        if (response.error) {
-        
-            // show the errors on the form
-            $(".payment-errors").text(response.error.message);
-            $('.cash_submit').removeAttr('disabled')
-        } else {
-            var form$ = $(".need_form");
-            
-            // token contains id, last4, and card type
-            var token = response['id'];
-            // insert the token into the form so it gets submitted to the server
-            form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
-
-            var form_data=$('.need_form').serializeObject()
-            $.post('/causes/#{need.cause.slug}/#{need.type_of_need}/#{need.id}/fulfillments',form_data, function(data){
-
-            })
-        }
-      }

@@ -12,14 +12,6 @@
         .large-12.column.large-centered
           a.btn.blue.good_donation_submit Submit
 
-javascript:
-  $('.good_donation_submit').click(function(){
-    var form_data=$('.good_donation_form').serializeObject()
-    $.post('/causes/#{need.cause.slug}/#{need.type_of_need}/#{need.id}/fulfillments',form_data, function(data){
-
-    })
-    
-  })
 
 
         

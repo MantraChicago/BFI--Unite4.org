@@ -19,13 +19,6 @@
                 label
                   |Are you over 18?
                   input type="checkbox"
-                .btn.purple.volunteer_submit Submit
-javascript:
-  $('.volunteer_submit').click(function(){
-    var form_data=$('.volunteer_form').serializeObject()
-    $.post('/causes/#{need.cause.slug}/#{need.type_of_need}/#{need.id}/fulfillments',form_data, function(data){
 
-    })
-    
-  })
+
 

@@ -5,10 +5,17 @@ a.close-reveal-modal &#215;
       .step.active 
         =render 'volunteers/partials/first_wizard_tab', :need => @need
       
-    //.wizard-navigation.centered
-      a.button.button-previous style="display:none"
-        | Back
-      a.button.button-next
-        | Next
+    .wizard-navigation.centered
+      a.button.button-submit.pink
+        | Submit
   .success.hide
     = render 'volunteers/partials/success', :need => @need
+
+javascript:
+
+  $('.button-submit').click(function(){
+    var form_data=$('.volunteer_form').serializeObject()
+    $.post('/causes/#{@need.cause.slug}/#{@need.type_of_need}/#{@need.id}/fulfillments',form_data, function(data){
+
+    })
+  })
