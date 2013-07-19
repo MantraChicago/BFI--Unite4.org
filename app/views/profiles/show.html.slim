@@ -8,11 +8,15 @@ section#user-hero
           h2= @user.display_name
           small= @user.location
           p= @user.bio
-      .row
+      .row.horizontal-tabs
         .large-6.column
-          a{href='#'} About Me
+          a{href='#' class='active'}
+            span{class='user-icon'}
+              | About Me
         .large-6.column
-          a{href='#'} My Badges
+          a{href='#'}
+            span{class='badge-icon'}
+              | My Badges
 
     .large-3.column#user-stats
       h3 My Giving Stats
