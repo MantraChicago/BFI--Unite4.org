@@ -8,11 +8,14 @@
 
       parentWizard.find('.button-next,.button-previous').show()
 
+      parentWizard.find('.button-submit').hide()
       if(nextActive.prev().size()==0){
         parentWizard.find('.button-previous').hide()
       }
       if(nextActive.next().size()==0){
         parentWizard.find('.button-next').hide()
+        parentWizard.find('.button-submit').show()
+      
       }
 
         
