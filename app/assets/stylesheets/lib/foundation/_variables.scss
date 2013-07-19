@@ -852,19 +852,19 @@ $default-float: left;
 
 // Background and border styles
 
-// $panel-bg: darken(#fff, 5%);
-// $panel-border-style: solid;
-// $panel-border-size: 1px;
+   $panel-bg: #fff;
+   $panel-border-style: solid;
+   $panel-border-size: 1px;
 
 // Control how much we darken things on hover
 
-// $panel-function-factor: 10%;
-// $panel-border-color: darken($panel-bg, $panel-function-factor);
+   $panel-function-factor: 10%;
+   $panel-border-color: #d9d9d9;
 
 // Inner padding and bottom margin
 
-// $panel-margin-bottom: emCalc(20px);
-// $panel-padding: emCalc(20px);
+   $panel-margin-bottom: emCalc(32px);
+   $panel-padding: emCalc(18px);
 
 // Font colors
 
