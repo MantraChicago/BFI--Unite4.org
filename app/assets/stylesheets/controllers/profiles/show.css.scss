@@ -176,3 +176,39 @@
 
   }
 }
+
+#user-hero {
+  padding-bottom: 1.7em;
+}
+#user-hero > .row:first-child {
+  padding: 0 0.9375em;
+}
+#user-basics {
+  border: 1px solid #E6E6E6;
+  background-color: #fff;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+#user-basics h2 {
+  font-size: 2.1em;
+  margin: 0.5em 0 0 0;
+}
+#user-basics small {
+  font-size: 1em;
+  font-style: italic;
+}
+#user-basics p {
+  font-size: 1.1em;
+  margin: 1em 0;
+  line-height: 1.3;
+  max-height: 2.8em;
+  overflow: hidden;
+}
+#user-stats {
+}
+
+
+
+
+#user-badges {
+}

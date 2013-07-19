@@ -1,6 +1,6 @@
 section#user-hero
   .row
-    .large-9.column
+    .large-9.column#user-basics
       .row
         .large-3.column
           = image_tag @user.avatar.url
@@ -14,7 +14,7 @@ section#user-hero
         .large-6.column
           a{href='#'} My Badges
 
-    .large-3.column#giving-stats
+    .large-3.column#user-stats
       h3 My Giving Stats
       ul.large-block-grid-2
         li
