@@ -48,53 +48,42 @@ section#user-data
         h4 Interests:
         p (If user selects all categories) Animal Welfare, Health and Wellness, Education,  Social Equality, Religious, Global Outreach, Environmental, Youth
 
-      .panel
+      .panel#contribute
         h3 Causes I Contribute To
         .row
           .large-4.column
-            = image_tag "http://placehold.it/73x73"
-            = image_tag "http://placehold.it/73x73"
+            = image_tag "ui/contribute/time.png"
+            = image_tag "http://placehold.it/78x78"
           .large-8.column
             h4 Pencils and Pancakes and More Pancakes
-            strong I Volunteered
+            strong I volunteered
             time January 24, 2013
         .row
           .large-4.column
-            = image_tag "http://placehold.it/73x73"
-            = image_tag "http://placehold.it/73x73"
+            = image_tag "ui/contribute/money.png"
+            = image_tag "http://placehold.it/78x78"
           .large-8.column
-            h4 Pencils and Pancakes and More Pancakes
-            strong I Volunteered
-            time January 24, 2013
+            h4 Make a Dog Wish Foundation
+            strong I donated money
+            time January 18, 2013
         .row
           .large-4.column
-            = image_tag "http://placehold.it/73x73"
-            = image_tag "http://placehold.it/73x73"
+            = image_tag "ui/contribute/promotion.png"
+            = image_tag "http://placehold.it/78x78"
           .large-8.column
-            h4 Pencils and Pancakes and More Pancakes
-            strong I Volunteered
-            time January 24, 2013
+            h4 Samantha’s Sweater Dances
+            strong I promoted on Facebook
+            time January 9, 2013
+        a{href='#' class='panel-cta'} See More
+
 
       .panel
         h3 Causes I Follow
         ul.large-block-grid-4
-          li
-            = image_tag "http://placehold.it/100x100"
-          li
-            = image_tag "http://placehold.it/100x100"
-          li
-            = image_tag "http://placehold.it/100x100"
-          li
-            = image_tag "http://placehold.it/100x100"
-          li
-            = image_tag "http://placehold.it/100x100"
-          li
-            = image_tag "http://placehold.it/100x100"
-          li
-            = image_tag "http://placehold.it/100x100"
-          li
-            = image_tag "http://placehold.it/100x100"
-        a{href='#'} See More
+          - 8.times do
+            li
+              = image_tag "http://placehold.it/118x118"
+        a{href='#' class='panel-cta'} See More
 
     .large-6.column
       .panel
