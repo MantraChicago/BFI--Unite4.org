@@ -254,7 +254,42 @@
   font-style: normal;
 }
 
-
-
 #user-badges {
+}
+#badges-list {
+}
+#badges-list li {
+}
+#badges-list h3 {
+  margin: 0;
+  font-size: 1.1em;
+  line-height: 2.2;
+  font-weight: normal;
+  text-align: center;
+  background-color: #009bd2;
+  color: #fff;
+}
+#badges-list .title a {
+}
+#badges-list .content {
+  min-height: 13.7em;
+}
+.badge-shrine {
+}
+.badge-shrine .title a {
+}
+.badge-shrine .content img {
+  display: block;
+  margin: 1em auto !important;
+}
+.badge-details {
+}
+.badge-details .title a {
+}
+.badge-details .content p {
+  font-size: .8em;
+}
+.badge-details .content p img:first-child {
+  float: left;
+  margin: .9em 1em 0 0;
 }
