@@ -996,15 +996,15 @@ $default-float: left;
 
 // Padding and hover factor
 
-// $section-title-padding: emCalc(15px);
+   $section-title-padding: emCalc(30px);
 // $section-content-padding: emCalc(15px);
 // $section-function-factor: 10%;
 
 // Titles
 
 // $section-title-color: #333;
-// $section-title-bg: #efefef;
-// $section-title-bg-active: darken($section-title-bg, $section-function-factor);
+   $section-title-bg: #ededed;
+   $section-title-bg-active: #fff;
 // $section-title-bg-active-tabs: #fff;
 // $section-title-bg-hover: darken($section-title-bg, $section-function-factor/2);
 
@@ -1022,7 +1022,7 @@ $default-float: left;
 
 // $section-content-bg: #fff;
 // $section-vertical-nav-min-width: emCalc(200px);
-// $section-vertical-tabs-title-width: emCalc(200px);
+   $section-vertical-tabs-title-width: emCalc(120px);
 // $section-bottom-margin: emCalc(20px);
 
 // $title-selector: ".title";

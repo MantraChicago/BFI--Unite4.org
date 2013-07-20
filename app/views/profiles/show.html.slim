@@ -10,12 +10,12 @@ section#user-hero
           p= @user.bio
       .row.horizontal-tabs
         .large-6.column
-          a{href='#' class='active'}
-            span{class='user-icon'}
+          a.active{href='#'}
+            span.user-icon
               | About Me
         .large-6.column
           a{href='#'}
-            span{class='badge-icon'}
+            span.badge-icon
               | My Badges
 
     .large-3.column#user-stats
@@ -74,7 +74,7 @@ section#user-data
             h4 Samantha’s Sweater Dances
             strong I promoted on Facebook
             time January 9, 2013
-        a{href='#' class='panel-cta'} See More
+        a.panel-cta{href='#'} See More
 
 
       .panel
@@ -83,7 +83,7 @@ section#user-data
           - 8.times do
             li
               = image_tag "http://placehold.it/118x118"
-        a{href='#' class='panel-cta'} See More
+        a.panel-cta{href='#'} See More
 
     .large-6.column
       .panel
@@ -92,20 +92,20 @@ section#user-data
 
       .panel
         h3 Photos and Videos
-        = image_tag "http://placehold.it/460x415"
+        = image_tag "http://placehold.it/532x400"
         p A quick brown fox jumps over the lazy dog. Quest judge wizard bonks foxy chimp love. Boxers had zap of gay jock love, quit women. Joaquin Phoenix was gazed by MTV for luck. (3 line character max)
 
-        .section-container.vertical-tabs{data-section="vertical-tabs"}
+        .section-container.vertical-tabs#media-slider{data-section="vertical-tabs"}
           section
             p.title{data-section-title}
-              a{href='#'} Photos
+              a.photos{href='#'} Photos
             .content{data-section-content}
               = image_tag "http://placehold.it/80x80"
               = image_tag "http://placehold.it/80x80"
               = image_tag "http://placehold.it/80x80"
           section
             p.title{data-section-title}
-              a{href='#'} Videos
+              a.videos{href='#'} Videos
             .content{data-section-content}
               = image_tag "http://placehold.it/80x80"
               = image_tag "http://placehold.it/80x80"

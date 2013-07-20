@@ -76,3 +76,31 @@
   font-size: .9em;
   font-style: italic;
 }
+
+#media-slider {
+  width: auto;
+  border-style: solid none none none;
+}
+.panel #media-slider {
+  margin: 1.125em -1.125em -1.125em -1.125em ;
+}
+#media-slider {
+}
+#media-slider {
+}
+#media-slider {
+}
+#media-slider .photos,
+#media-slider .videos {
+  background-repeat: no-repeat;
+  background-position: 1em 50%;
+  padding-left: 3.8em;
+}
+#media-slider .photos {
+  background-image: image-url('ui/photo-icon.png');
+}
+#media-slider .videos {
+  background-image: image-url('ui/video-icon.png');
+}
+
+
