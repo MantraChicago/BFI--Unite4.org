@@ -4,7 +4,15 @@ class CashDonation < ActiveRecord::Base
   belongs_to :cause, :counter_cache => true
   belongs_to :need
   belongs_to :user, :counter_cache => true
-  after_create :charge_credit_card  # I really really don't think this should be in a model, but where else? 
+
+  # You're right this doesn't belong in the model.  The CashDonation model itself
+  # isn't concerned with where the money comes from, it is just meant to record the
+  # giving of money to a cause.
+  #
+  # The NeedsFullfillmentProxy is where we should encapsulate the request from the
+  # end user. Forget callback chains, they are trouble.
+  #
+  after_create :charge_credit_card  # I really really don't think this should be in a model, but where else?
 
   def related_campaign
     @related_campaign ||= cause.campaigns.where(:need_id => self.need_id).first

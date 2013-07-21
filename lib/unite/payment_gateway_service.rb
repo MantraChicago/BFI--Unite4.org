@@ -1,4 +1,11 @@
 class Unite::PaymentGatewayService
+  def self.authorize_card(params={},&blk)
+    # TODO
+    # Implement the logic which authorizes a card and if it is successful
+    # then yield the transaction id or response object or something to a block
+    yield if block_given?
+  end
+
   def self.charge(stripe_token, amount, message)
     # This should be better
     return nil if Rails.env.test?

@@ -38,11 +38,17 @@ module Unite
         tip_amount = (params[:donation] && params[:donation][:tip])
         donation_amount, stripe = params.values_at(:donation_amount,:stripeToken)
 
-        cause.cash_donations.create(need_id: need.try(:id),
-                                    user_id: user.try(:id),
-                                    stripe_id: stripe,
-                                    tip_amount: tip_amount,
-                                    amount: donation_amount)
+        # This will authorize the card and only run the block
+        # if the authorization is true. The CashDonation model
+        # should only capture the successful donation, not the entire
+        # transaction itself.
+        Unite::PaymentGatewayService.authorize_card(params) do
+          cause.cash_donations.create(need_id: need.try(:id),
+                                      user_id: user.try(:id),
+                                      stripe_id: stripe,
+                                      tip_amount: tip_amount,
+                                      amount: donation_amount)
+        end
       end
 
       def fulfill_volunteers_need
