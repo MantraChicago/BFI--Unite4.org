@@ -52,7 +52,6 @@ end
 #  game_id                :integer
 #  fb_token               :text
 #  role                   :string(255)
-#  slug                   :string(255)
 #  followers_count        :integer          default(0)
 #  cash_donations_count   :integer          default(0)
 #  goods_donations_count  :integer          default(0)
