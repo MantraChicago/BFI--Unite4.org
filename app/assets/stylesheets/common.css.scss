@@ -470,6 +470,88 @@ body > section {
 }
 
 
+/**
+ * SPACINGS - DONT CHANGE THOSE CLASSES
+ */
+
+.s-margin-bottom, .s-margin-b {
+  margin-bottom: 10px;
+}
+.m-margin-bottom, .m-margin-b {
+  margin-bottom: 20px;
+}
+.l-margin-bottom, .l-margin-b {
+  margin-bottom: 40px;
+}
+.xl-margin-bottom, .xl-margin-b {
+  margin-bottom: 80px;
+}
+.xxl-margin-bottom, .xxl-margin-b {
+  margin-bottom: 160px;
+}
+
+.s-margin-top, .s-margin-t {
+  margin-top: 10px;
+}
+.m-margin-top, .m-margin-t {
+  margin-top: 20px;
+}
+.l-margin-top, .l-margin-t {
+  margin-top: 40px;
+}
+.xl-margin-top, .xl-margin-t {
+  margin-top: 80px;
+}
+.xxl-margin-top, .xxl-margin-t {
+  margin-top: 160px;
+}
+
+.s-margin-left, .s-margin-l {
+  margin-left: 10px;
+}
+.m-margin-left, .m-margin-l {
+  margin-left: 20px;
+}
+.l-margin-left, .l-margin-l {
+  margin-left: 40px;
+}
+
+.s-margin-right, .s-margin-r {
+  margin-right: 10px;
+}
+.m-margin-right, .m-margin-r {
+  margin-right: 20px;
+}
+.l-margin-right, .l-margin-r {
+  margin-right: 40px;
+}
+
+.s-padding {
+  padding: 10px;
+}
+.m-padding {
+  padding: 20px;
+}
+.l-padding {
+  padding: 40px;
+}
+.xl-padding {
+  padding: 80px;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+.no-margin {
+  margin: 0 !important;
+}
+
+
+/**
+ * END
+ */
+
+
 @media only screen and (min-width: 48em) {
   body {
     margin-top: 52px !important;
