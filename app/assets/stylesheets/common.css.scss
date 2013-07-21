@@ -41,7 +41,9 @@ h5,.h5 {
   font-size: 9pt !important;
 
 }
-
+.fullwidth {
+  width: 100%;
+}
 .block {
   display: block;  
 }
@@ -63,13 +65,21 @@ h5,.h5 {
     padding: 10px;
 
 }
-
+.gray-bg {
+  background-color: #404040;
+  color: #fff;
+}
 .purple-bg {
     background-color: #9e0253;
     color: #fff; 
 }
 .purple-text {
     color: #9e0253;
+}
+
+.green-bg {
+  background-color: #9bd400;
+  color: #fff;
 }
 
 
@@ -79,8 +89,11 @@ h5,.h5 {
 }
 
 .pink-bg {
-    background-color: #9e0253;
+    background-color: #d51679;
     color: #fff
+}
+.ping-text {
+  color: #d51679;
 }
 
 .centered-text {
@@ -345,7 +358,15 @@ input.bubble {
        -o-transition: all 0.3s cubic-bezier(.15,.98,.35,.99);  /* Opera 10.50–12.00 */
           transition: all 0.3s cubic-bezier(.15,.98,.35,.99);  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
 }
+.transition-i {
+  & {
+    -webkit-transition: all 0.8s cubic-bezier(.15,.98,.35,.99) !important;  /* Chrome 1-25, Safari 3.2+ */
+       -moz-transition: all 0.8s cubic-bezier(.15,.98,.35,.99) !important;  /* Firefox 4-15 */
+         -o-transition: all 0.8s cubic-bezier(.15,.98,.35,.99) !important;  /* Opera 10.50–12.00 */
+            transition: all 0.8s cubic-bezier(.15,.98,.35,.99) !important;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */    
+  }
 
+}
 
 .arrow-left {
 	width: 0; 
@@ -449,3 +470,25 @@ body > section {
 }
 
 
+@media only screen and (min-width: 48em) {
+  body {
+    margin-top: 52px !important;
+  }
+  .vertical-center-parent {
+    display: table !important;
+    &>* {
+        display: table-cell !important;
+        vertical-align: middle; 
+        float: none !important;
+    }
+  }
+  .vertical-bottom-parent {
+    display: table !important;
+    &>* {
+        display: table-cell !important;
+        vertical-align: bottom; 
+        float: none !important;
+    }
+  }
+
+}

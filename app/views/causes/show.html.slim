@@ -1,73 +1,149 @@
 - @title =  @cause.display_name
 
-
+.notice.green-bg
+  .row
+    .large-12.columns.mlimit.mlimit-top
+      | Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 
 #cause-head.oxygen.smoke-bg.blimit
   .row
     .large-12.columns.mlimit.mlimit-top
       h2.inline.slimit-right
-        == @cause.display_name
+        == @title
+      h4.slim Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 
 #cause-content.oxygen.mlimit
   .row
     .large-9.columns
-      #cause-gallery.mlimit
-        iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src=@cause.video_link type="text/html" width="100%"
       #cause-info
+        .slideshow-wrapper
+          .preloader
+          ul data-orbit="" data-options="orbit_transition_class: transition-i; animation: fade; slide_number: false; timer: false; bullets: false;"
+            li
+              iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src=@cause.video_link type="text/html" width="100%"
+            li style="background-image:url(http://lorempixel.com/1000/701/); height: 100%;"              
+              .orbit-caption Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 
-        .section-container.auto data-section=""
-            section#about-cause-section
-              p.title data-section-title=""
-                a.bold href="#panel1" About cause
-              .content data-section-content=""
-                p = @cause.description.html_safe
-            section#cause-needs-section
-              p.title data-section-title=""
-                a.bold href="#panel2" Needs
-              .content data-section-content=""
-                #cause-needs.oxygen.mlimit
-                  .row
-                    .large-12.columns
-                      h2 Our specific needs
+        h2 About us
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+        a.pink-text Learn more
+
+        h2.blimit-top Ways to Help
+        .row.way-to-help.vertical-center-parent.blimit
+          .large-1.columns.text-center
+            img.slimit-right src=asset_path('causes/ui/donate-money.png')
+          .large-8.columns
+            h3.no-margin Donate money
+            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            a.bold.slimit.block Details
+          .large-3.columns
+            a.block.green-bg.s-padding.text-center Donate
+
+        .row.way-to-help.vertical-center-parent.blimit
+          .large-1.columns.text-center
+            img.slimit-right src=asset_path('causes/ui/volunteer.png')
+          .large-8.columns
+            h3.no-margin Volunteer
+            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            a.bold.slimit.block Details
+          .large-3.columns
+            a.block.blue-bg.s-padding.text-center Volunteer
+
+        .row.way-to-help.vertical-center-parent.blimit
+          .large-1.columns.text-center
+            img.slimit-right src=asset_path('causes/ui/promote.png')
+          .large-8.columns
+            h3.no-margin Promote
+            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            a.bold.slimit.block Details
+          .large-3.columns
+            a.block.gray-bg.s-padding.text-center Promote
+
+        .row.way-to-help.vertical-center-parent.blimit
+          .large-1.columns.text-center
+            img.slimit-right src=asset_path('causes/ui/donate-goods.png')
+          .large-8.columns
+            h3.no-margin Donate goods
+            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            a.bold.slimit.block Details
+          .large-3.columns
+            a.block.pink-bg.s-padding.text-center Donate
+        .row.way-to-help.vertical-center-parent.blimit
+          .large-1.columns.text-center
+            img.slimit-right src=asset_path('causes/ui/donate-goods.png')
+          .large-8.columns
+            h3.no-margin Donate goods
+            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            a.bold.slimit.block Details
+          .large-3.columns
+            a.block.pink-bg.s-padding.text-center Donate
+
+        h2.blimit-top Ways to help
+
+
+
+
+
+
+
+
+
+
+
+    /     .section-container.auto data-section=""
+    /         section#about-cause-section
+    /           p.title data-section-title=""
+    /             a.bold href="#panel1" About cause
+    /           .content data-section-content=""
+    /             p = @cause.description.html_safe
+    /         section#cause-needs-section
+    /           p.title data-section-title=""
+    /             a.bold href="#panel2" Needs
+    /           .content data-section-content=""
+    /             #cause-needs.oxygen.mlimit
+    /               .row
+    /                 .large-12.columns
+    /                   h2 Our specific needs
                       
-                      .needs-listing-container
-                        ul
-                          - @cause.needs.each do |need|
-                            li 
-                              | We need
-                              a.link.open-fulfillment-modal data-need-id=need.id data-type-of-need=need.type_of_need data-cause-slug=@cause.slug data-cause-id=@cause.id
-                                == " #{ need.type_of_need.humanize }"
+    /                   .needs-listing-container
+    /                     ul
+    /                       - @cause.needs.each do |need|
+    /                         li 
+    /                           | We need
+    /                           a.link.open-fulfillment-modal data-need-id=need.id data-type-of-need=need.type_of_need data-cause-slug=@cause.slug data-cause-id=@cause.id
+    /                             == " #{ need.type_of_need.humanize }"
 
-            section#cause-events-section
-              p.title data-section-title=""
-                a.bold href="#panel2" Events
-              .content data-section-content=""
-                p No events posted
-            section#cause-community-section
-              p.title data-section-title=""
-                a.bold href="#panel2" Community
-              .content data-section-content=""
-                p Discussion Thread coming soon.
+    /         section#cause-events-section
+    /           p.title data-section-title=""
+    /             a.bold href="#panel2" Events
+    /           .content data-section-content=""
+    /             p No events posted
+    /         section#cause-community-section
+    /           p.title data-section-title=""
+    /             a.bold href="#panel2" Community
+    /           .content data-section-content=""
+    /             p Discussion Thread coming soon.
 
-    .large-3.columns      
-      .cause-listing-container.row.mlimit
-        .columns.mlimit.left
-          == render :partial => 'shared/cause_tile', :locals => {cause: @cause} 
-      p.h4 
-        == replace_newlines_with_linebreaks(@cause.how_hear)
-      div
-        .h3.mlimit.secondary FOLLOWERS
-        .followers.mlimit
-          - users = @cause.following_users
-          - if users.empty?
-            p.empty-text Take the first step. Be the first to follow.
-          - else
-            - @cause.following_users.each do |user|
-              img src=user.avatar.url(:thumb) height=80 width=80
-        div
-         = render 'causes/partials/follow', cause:@cause
-         /-if !@cause.twitter_handle.empty?
-          =render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
+    / .large-3.columns      
+    /   .cause-listing-container.row.mlimit
+    /     .columns.mlimit.left
+    /       == render :partial => 'shared/cause_tile', :locals => {cause: @cause} 
+    /   p.h4 
+    /     == replace_newlines_with_linebreaks(@cause.how_hear)
+    /   div
+    /     .h3.mlimit.secondary FOLLOWERS
+    /     .followers.mlimit
+    /       - users = @cause.following_users
+    /       - if users.empty?
+    /         p.empty-text Take the first step. Be the first to follow.
+    /       - else
+    /         - @cause.following_users.each do |user|
+    /           img src=user.avatar.url(:thumb) height=80 width=80
+    /     div
+    /      = render 'causes/partials/follow', cause:@cause
+    /      /-if !@cause.twitter_handle.empty?
+    /       =render "social/twitter_handle", :twitter_handle=>@cause.twitter_handle
 
 
     
