@@ -571,7 +571,23 @@ body > section {
     min-width: 40px;
   }
 }
+.add {
+  background-image: url(/assets/ui/little-add.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  width: 15px;
+  height: 15px;
+}
 
+.smart-border-h {  
+  & > * {
+    border-right-width: 1px;
+  }
+  & > *:last-child {
+    border-left-width: 0;
+  }
+}
 
 @media only screen and (min-width: 48em) {
   body {
