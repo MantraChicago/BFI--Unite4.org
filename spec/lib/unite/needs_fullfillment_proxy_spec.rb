@@ -22,7 +22,7 @@ describe Unite::NeedsFulfillmentProxy do
 
     it "should creater a donation for a cash need" do
       need = create(:need, :cash, cause: cause)
-      proxy.new(user, need, amount: 2500).fulfill!
+      proxy.new(user, need, amount: 2500, donation_amount: 2500, tip_amount: 2500).fulfill!
       cash_donation = CashDonation.last
 
       cash_donation.need.should == need

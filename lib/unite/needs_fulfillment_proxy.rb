@@ -9,7 +9,7 @@ module Unite
     def initialize(user, need,params={})
       @need     = need
       @user     = user
-      @params   = params
+      @params   = params.symbolize_keys
 
     end
 
@@ -19,7 +19,7 @@ module Unite
 
       mail_meth="new_#{type_of_need.singularize}"
       CauseMailer.send(mail_meth, cause, object).deliver if CauseMailer.respond_to?(mail_meth)
-      
+
       object.update_campaign if object.valid? && object.respond_to?(:update_campaign)
 
       object
@@ -35,7 +35,14 @@ module Unite
       end
 
       def fulfill_cash_donations_need
-        cause.cash_donations.create(need_id: need.try(:id), user_id: user.try(:id),stripe_id: @params['stripeToken'], tip_amount: @params['donation']['tip'], amount: @params['donation_amount'])
+        tip_amount = (params[:donation] && params[:donation][:tip])
+        donation_amount, stripe = params.values_at(:donation_amount,:stripeToken)
+
+        cause.cash_donations.create(need_id: need.try(:id),
+                                    user_id: user.try(:id),
+                                    stripe_id: stripe,
+                                    tip_amount: tip_amount,
+                                    amount: donation_amount)
       end
 
       def fulfill_volunteers_need
