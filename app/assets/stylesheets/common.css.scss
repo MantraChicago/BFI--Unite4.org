@@ -67,7 +67,9 @@ h5,.h5 {
 }
 .gray-bg {
   background-color: #404040;
-  color: #fff;
+  &,& * {
+    color: #fff;
+  }
 }
 .purple-bg {
     background-color: #9e0253;
@@ -85,14 +87,16 @@ h5,.h5 {
 
 .blue-bg {
     background-color: #009dd1;
-    color: #fff; 
+    &,& * {
+      color: #fff; 
+    }
 }
 
 .pink-bg {
     background-color: #d51679;
     color: #fff
 }
-.ping-text {
+.pink-text {
   color: #d51679;
 }
 
@@ -550,6 +554,23 @@ body > section {
 /**
  * END
  */
+
+
+.bar-holder {
+  height: 20px;
+  background: #d7d7d7;
+  .bar {
+    background: #9dd100;
+    border-radius: 0 10px 10px 0;
+    height: 20px;
+    color: #fff;
+    text-align: right;
+    line-height: 20px;
+    font-size: 70%;
+    padding-right: 10px;
+    min-width: 40px;
+  }
+}
 
 
 @media only screen and (min-width: 48em) {
