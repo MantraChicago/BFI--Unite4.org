@@ -10,11 +10,11 @@ section#user-hero
           p= @user.bio
       .row.horizontal-tabs
         .large-6.column
-          a#a-basics{href='#'}
+          a#a-basics.active{href='#'}
             span.user-icon
               | About Me
         .large-6.column
-          a#a-stats.active{href='#'}
+          a#a-stats{href='#'}
             span.badge-icon
               | My Badges
 
@@ -38,7 +38,7 @@ section#user-hero
           strong 22
           em Donations
 
-section#user-data.hide
+section#user-data
   .row
     .large-6.column
       .panel
@@ -113,7 +113,7 @@ section#user-data.hide
 
 
 
-section#user-badges
+section#user-badges.hide
   .row
     p
       | Samantha has earned
@@ -144,4 +144,3 @@ section#user-badges
                 p
                   = image_tag('badges/default-small.png')
                   | This will be a short descrip tion of what the user did to earn the badge. It will not be customized to each scenario. It will more or less be a generic  description of the individual badges.  This will be a short description of what the user did to earn the badge. None of the descriptions will be long enough to exceed this bounding box. This is actually inforced by the CSS. Lorem ipsum dolor sit amet was a nice guy.
-

@@ -65,6 +65,12 @@ h5,.h5 {
     padding: 10px;
 
 }
+.whitesmoke-bg {
+  background-color: $veryAlmostWhite;
+}
+.smoke-bg {
+  background-color: $almostWhite;
+}
 .gray-bg {
   background-color: $darkGrey;
   &,& * {

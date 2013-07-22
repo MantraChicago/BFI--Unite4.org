@@ -29,7 +29,15 @@
       h3.oxygen.no-margin Earn badges for your support and get recognized
 
 
-== render :partial => "pages/partials/featured_campaigns"
+== render :partial => "pages/partials/featured_cause"
+
+.whitesmoke-bg  
+  == render :partial => "pages/partials/featured_campaigns"
+
+.smoke-bg.companies.mlimit
+  == render :partial => "pages/partials/companies"
+
+  
 .row.oxygen
   .large-12.columns.h2.bold.mlimit Search the map
 .row.oxygen#mapholder.pos-rel.blimit
