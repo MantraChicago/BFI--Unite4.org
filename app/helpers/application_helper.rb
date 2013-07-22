@@ -24,15 +24,7 @@ module ApplicationHelper
 
   def button_text_for_need need
     type_of_need = need.is_a?(Need) ? need.type_of_need : need
-
-    case type_of_need
-    when "followers"
-      "Follow"
-    when "volunteers"
-      "Volunteer"
-    else
-      "Give"
-    end
+    Need::GivingActions[type_of_need]
   end
 
   #for devise login

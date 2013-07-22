@@ -6,14 +6,19 @@ class Need < ActiveRecord::Base
 
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
 
-
   serialize :settings, JSON
 
   include Smooth::Presentable
 
-  ValidTypes = %w{cash_donations goods_donations followers volunteers}
 
-  validates_inclusion_of :type_of_need, :in => ValidTypes
+  GivingActions = {
+    "followers" => "Promote",
+    "volunteers" => "Volunteer",
+    "cash_donations" => "Donate",
+    "goods_donations" => "Give"
+  }
+
+  validates_inclusion_of :type_of_need, :in => GivingActions.keys
 
   #can_be_queried_by :cause_id
   #can_be_queried_by :type
