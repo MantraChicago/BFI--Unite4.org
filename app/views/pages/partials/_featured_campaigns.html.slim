@@ -1,13 +1,13 @@
-#causes.mlimit.causes
+#causes.causes
   .row
     .large-12.columns
-      h3.areatitle
+      h3.areatitle.mlimit-top.mlimit
         | Featured Campaigns
   .row.cause-listing-container
     - Cause.featured.each do |cause|        
       .columns.large-3
         == render :partial => 'shared/cause_tile', :locals => {cause: cause} 
-  .row.final
-    .large-4.columns.push-8.text-right
+  / .row.final
+  /   .large-4.columns.push-8.text-right
       
 
