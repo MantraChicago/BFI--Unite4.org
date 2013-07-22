@@ -20,6 +20,7 @@ public/system
 *.swo
 *.swp
 *.orig
+.sass-cache/
 
 # OS generated files #
 .DS_Store

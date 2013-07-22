@@ -66,38 +66,38 @@ h5,.h5 {
 
 }
 .gray-bg {
-  background-color: #404040;
+  background-color: $darkGrey;
   &,& * {
     color: #fff;
   }
 }
 .purple-bg {
-    background-color: #9e0253;
+    background-color: $darkPurple;
     color: #fff; 
 }
 .purple-text {
-    color: #9e0253;
+    color: $darkPurple;
 }
 
 .green-bg {
-  background-color: #9bd400;
+  background-color: $badassGreen;
   color: #fff;
 }
 
 
 .blue-bg {
-    background-color: #009dd1;
+    background-color: $blue;
     &,& * {
       color: #fff; 
     }
 }
 
 .pink-bg {
-    background-color: #d51679;
+    background-color: $pink;
     color: #fff
 }
 .pink-text {
-  color: #d51679;
+  color: $pink;
 }
 
 .centered-text {
@@ -197,17 +197,17 @@ h5,.h5 {
 }
 
 .cyan-text {
-    color: #399a98;
+    color: $cyan;
 }
 .cyan-bg {
-    background-color: #399a98;
+    background-color: $cyan;
     color: #fff;
 }
 .yellow-text {
-    color: #f49234;
+    color: $yellow;
 }
 .yellow-bg {
-    background-color: #f6d332;
+    background-color: $yellow;
     color: #373737;
 }
 .black-bg {
@@ -220,7 +220,7 @@ h5,.h5 {
     color: #fff;
 }
 .blue-text{
-    color: #009dd1;
+    color: $blue;
 }
 .row {
   max-width: 1200px !important;
@@ -586,6 +586,15 @@ body > section {
   }
   & > *:last-child {
     border-left-width: 0;
+  }
+}
+.smart-border-h-inner {
+  & > * {
+    border-width: 0;
+    border-right-width: 1px
+  }
+  & > *:last-child {
+    border-width: 0;
   }
 }
 

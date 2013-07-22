@@ -24,15 +24,7 @@ module ApplicationHelper
 
   def button_text_for_need need
     type_of_need = need.is_a?(Need) ? need.type_of_need : need
-
-    case type_of_need
-    when "followers"
-      "Follow"
-    when "volunteers"
-      "Volunteer"
-    else
-      "Give"
-    end
+    Need::GivingActions[type_of_need]
   end
 
   #for devise login
@@ -46,6 +38,22 @@ module ApplicationHelper
 
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
+  end
+
+   def need_type_properties need_model
+    need_properties_map={goods_donations: {
+                          call_to_action:'Donate goods'
+                        },
+                       followers: {
+                          call_to_action:'Promote'
+                        },
+                       cash_donations: {
+                          call_to_action:'Donate money'
+                        },
+                       volunteers: {
+                          call_to_action:'Volunteer'
+                        }}
+    need_properties_map[need_model.type_of_need.to_sym]
   end
 
 end
