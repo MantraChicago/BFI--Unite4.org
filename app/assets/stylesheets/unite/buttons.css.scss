@@ -20,6 +20,12 @@
   &.blue {
     @include darkBorder($lightBlue);
   }
+  &.green {
+    @include darkBorder($green);
+  }
+  &.black {
+    @include darkBorder($black);
+  }
   &.verylightblue{
     @include darkBorder($verylightblue)
   }
