@@ -269,8 +269,23 @@
   background-color: #009bd2;
   color: #fff;
 }
+
+/* TODO: The .section-container elements from foundation have been forcefully
+ * changed to comply with the current design. This will break on smaller
+ * viewports. Possible fixes are: Leave as foundation (tabs on top) for quick
+ * solution, keep on CSSing for smaller viewports (more time consuming
+ * solution) */
+
+#badges-list .section-container > section.active {
+  padding-top: 0 !important;
+  padding-bottom: 53px;
+}
+
 #badges-list .title {
   width: 50%;
+  top: auto;
+  bottom: 0;
+  border-bottom: 1px solid #ccc;
 }
 #badges-list .title a {
   padding: 1em;
@@ -287,7 +302,7 @@
   background-position: 0 4px;
 }
 #badges-list .content {
-  min-height: 13.7em;
+  height: 14.5em;
 }
 
 .badge-shrine {
@@ -297,7 +312,7 @@
 }
 .badge-shrine .content img {
   display: block;
-  margin: 1em auto !important;
+  margin: 1.8em auto 0 !important;
 }
 .badge-details {
 }
@@ -305,7 +320,11 @@
   background-image: image-url('ui/info-icon-small.png');
 }
 .badge-details .content p {
+  height: 100%;
   font-size: .8em;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .badge-details .content p img:first-child {
   float: left;
