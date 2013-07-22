@@ -37,6 +37,8 @@ class Need < ActiveRecord::Base
   def volunteers?
     type_of_need == "volunteers"
   end
+
+ 
 end
 
 # == Schema Information

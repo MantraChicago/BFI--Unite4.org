@@ -1,16 +1,11 @@
 - @title =  @cause.display_name
-
-.notice.green-bg
-  .row
-    .large-12.columns.mlimit.mlimit-top
-      | Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-
 #cause-head.oxygen.smoke-bg.blimit
   .row
     .large-12.columns.mlimit.mlimit-top
       h2.inline.slimit-right
-        == @title
-      h4.slim Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+        == @cause.display_name
+      h4.slim 
+        == @cause.short_description
 
 #cause-content.oxygen.mlimit
   .row
@@ -25,8 +20,8 @@
               .orbit-caption Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 
         h2 About us
-        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+        p #{@cause.description}
+
         a.pink-text Learn more
         .cboth.blimit
         h2.inline.s-margin-r Ways to Help
@@ -37,124 +32,34 @@
             option This is another option
             option This is another option too
             option Look, a third option        
-        .row.way-to-help.vertical-center-parent.blimit
-          .large-1.columns.text-center
-            img.slimit-right src=asset_path('causes/ui/donate-money.png')
-          .large-8.columns
-            h3.no-margin Donate money
-            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            a.bold.slimit.block Details
-          .large-3.columns
-            a.block.green-bg.s-padding.text-center Donate
+          - @cause.needs.each do |need|
+            = render 'causes/partials/cause_need', :need=> need
 
-        .row.way-to-help.vertical-center-parent.blimit
-          .large-1.columns.text-center
-            img.slimit-right src=asset_path('causes/ui/volunteer.png')
-          .large-8.columns
-            h3.no-margin Volunteer
-            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            a.bold.slimit.block Details
-          .large-3.columns
-            a.block.blue-bg.s-padding.text-center Volunteer
+        /.cause_events
+          h2.inline.s-margin-r Upcoming events
+          form.custom.inline.mlimit-top
+            label for="customDropdown"
+            select#customDropdown
+              option Arrange by
+              option This is another option
+              option This is another option too
+              option Look, a third option     
 
-        .row.way-to-help.vertical-center-parent.blimit
-          .large-1.columns.text-center
-            img.slimit-right src=asset_path('causes/ui/promote.png')
-          .large-8.columns
-            h3.no-margin Promote
-            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            a.bold.slimit.block Details
-          .large-3.columns
-            a.block.gray-bg.s-padding.text-center Promote
+          .row.upcoming-event.blimit
+            .large-2.columns.slimit
+              img src=asset_path('http://placehold.it/150x150')
+            .large-10.columns
+              .row
+                .large-8.small-8.columns.slimit
+                  h3.no-margin.inline 
+                    | Donate goods 
+                    em.h5.tertiary  Kenya
+                  a.inline.gray-bg.s-padding.s-margin-left RSVP
+                .large-4.small-4.columns.text-right
+                  .green-bg.s-padding.inline.bold 27 JUN
+              p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+              a.bold.slimit.block Details
 
-        .row.way-to-help.vertical-center-parent.blimit
-          .large-1.columns.text-center
-            img.slimit-right src=asset_path('causes/ui/donate-goods.png')
-          .large-8.columns
-            h3.no-margin Donate goods
-            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            a.bold.slimit.block Details
-          .large-3.columns
-            a.block.pink-bg.s-padding.text-center Donate
-        .row.way-to-help.vertical-center-parent.blimit
-          .large-1.columns.text-center
-            img.slimit-right src=asset_path('causes/ui/donate-goods.png')
-          .large-8.columns
-            h3.no-margin Donate goods
-            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            a.bold.slimit.block Details
-          .large-3.columns
-            a.block.pink-bg.s-padding.text-center Donate
-
-        h2.inline.s-margin-r Upcoming events
-        form.custom.inline.mlimit-top
-          label for="customDropdown"
-          select#customDropdown
-            option Arrange by
-            option This is another option
-            option This is another option too
-            option Look, a third option     
-
-        .row.upcoming-event.blimit
-          .large-2.columns.slimit
-            img src=asset_path('http://placehold.it/150x150')
-          .large-10.columns
-            .row
-              .large-8.small-8.columns.slimit
-                h3.no-margin.inline 
-                  | Donate goods 
-                  em.h5.tertiary  Kenya
-                a.inline.gray-bg.s-padding.s-margin-left RSVP
-              .large-4.small-4.columns.text-right
-                .green-bg.s-padding.inline.bold 27 JUN
-            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            a.bold.slimit.block Details
-        .row.upcoming-event.blimit
-          .large-2.columns.slimit
-            img src=asset_path('http://placehold.it/150x150')
-          .large-10.columns
-            .row
-              .large-8.small-8.columns.slimit
-                h3.no-margin.inline 
-                  | Donate goods 
-                  em.h5.tertiary  Kenya
-                a.inline.gray-bg.s-padding.s-margin-left RSVP
-              .large-4.small-4.columns.text-right
-                .green-bg.s-padding.inline.bold 27 JUN
-            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            a.bold.slimit.block Details
-
-
-        .row.upcoming-event.blimit
-          .large-2.columns.slimit
-            img src=asset_path('http://placehold.it/150x150')
-          .large-10.columns
-            .row
-              .large-8.small-8.columns.slimit
-                h3.no-margin.inline 
-                  | Donate goods 
-                  em.h5.tertiary  Kenya
-                a.inline.gray-bg.s-padding.s-margin-left RSVP
-              .large-4.small-4.columns.text-right
-                .green-bg.s-padding.inline.bold 27 JUN
-            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            a.bold.slimit.block Details
-
-
-        .row.upcoming-event.blimit
-          .large-2.columns.slimit
-            img src=asset_path('http://placehold.it/150x150')
-          .large-10.columns
-            .row
-              .large-8.small-8.columns.slimit
-                h3.no-margin.inline 
-                  | Donate goods 
-                  em.h5.tertiary  Kenya
-                a.inline.gray-bg.s-padding.s-margin-left RSVP
-              .large-4.small-4.columns.text-right
-                .green-bg.s-padding.inline.bold 27 JUN
-            p.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            a.bold.slimit.block Details
 
     .large-3.columns 
       .row.mlimit.smart-border-h.no-margin
@@ -168,73 +73,12 @@
           span.slimit Other Causes
 
       .single-cause-tile.gray_border.mlimit-top.mlimit
-        .text-center.gray-bg.s-padding
-          h2 OUR CAMPING
-        .spadding.smoke-bg
-          span.bold GOAL:
-          span.secondary Raise $300
-        .row.no-margin
-          .large-6.small-6.columns.text-center.m-padding
-            h2.blue-text 75%
-            .bold achieved
-          .large-6.small-6.columns.text-center.m-padding
-            h2.blue-text 13
-            .bold days to go
-          hr.gray_border.block
-          .large-6.small-6.columns.text-center.m-padding
-            h2.blue-text $205
-            .bold raised
-          .large-6.small-6.columns.text-center.m-padding
-            h2.blue-text $300
-            .bold goal
-          .large-12.columns
-            .bar-holder.slimit
-              .bar.oxygen style="width:30%;" 30%
-          .large-12.columns
-            a.slimit.blue-bg.block.text-center.s-padding
-              h2 I WANT TO HELP
-        .row.h5.no-margin.smoke-bg
-          .large-12.columns
-            .slimit-top.slimit.bold Camping Peroid:
-            .secondary 30 Days
-            .slimit.tertiary July 14th, 2013 - August 13th, 2013
+        = render 'causes/partials/cause_campaign', :cause => @cause
       .gray_border.smoke-bg.s-padding.mlimit
         span SHARE
         input.s-margin-left.s-padding(placeholder="write a note...")
       .mlimit
-        h3.inline FOLLOWERS
-        .inline.right.s-padding.blue-bg 
-          .icon.add.circle.inline
-          span FOLLOW
-        .row.collapse
-          a.large-4.columns.block
-            .s-padding
-              img(src="http://placehold.it/150x150")
-          a.large-4.columns.block
-            .s-padding
-              img(src="http://placehold.it/150x150")
-          a.large-4.columns.block
-            .s-padding
-              img(src="http://placehold.it/150x150")
-          a.large-4.columns.block
-            .s-padding
-              img(src="http://placehold.it/150x150")
-          a.large-4.columns.block
-            .s-padding
-              img(src="http://placehold.it/150x150")
-          a.large-4.columns.block
-            .s-padding
-              img(src="http://placehold.it/150x150")
-
-          
-                
-
-
-
-
-
-
-
+        = render 'causes/partials/cause_followers', :cause => @cause
 
 
 
