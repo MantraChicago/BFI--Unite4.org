@@ -22,18 +22,12 @@
 	              span.h5.slimit.block goal met
 
 		.large-3.columns
-			.h5.slimit
+			/.h5.slimit
 				span See all
 				span.bold 1939
 				span Arts causes
 			ul.plain-list.small-inline-list
-				li Animal Welfare
-				li 
-					a.bold Arts
-				li Education
-				li Environment
-				li Global Outreach
-				li Health & Wellness
-				li Hunger
-				li Social Equality
-				li Youth
+				- CauseType.all.each do |type|
+					li 
+						=link_to(type.name,"charities-supporting-#{type.slug}")
+	

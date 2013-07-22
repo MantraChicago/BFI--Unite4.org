@@ -187,11 +187,15 @@ class Cause < ActiveRecord::Base
 
     results = results.where(id: join_ids) unless join_ids.empty?
 
+    if params[:has_need]
+      results = results.where("needs.type_of_need = ?", params[:has_need])
+    end
+
     if params[:cause_type_id]
       results = results.where(cause_type_id: params[:cause_type_id])
     end
 
-    results = results.reorder("name asc")
+    results = results.reorder("causes.name asc")
     results
   end
 
