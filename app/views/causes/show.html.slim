@@ -1,4 +1,12 @@
 - @title =  @cause.display_name
+
+.notice.green-bg
+  .row
+    .large-12.columns.mlimit.mlimit-top
+      .icon.add.circle.inline
+      em You've taken an action in this cause
+
+
 #cause-head.oxygen.smoke-bg.blimit
   .row
     .large-12.columns.mlimit.mlimit-top
@@ -27,6 +35,7 @@
         h2.inline.s-margin-r Ways to Help
         form.custom.inline.mlimit-top
           label for="customDropdown"
+
            ==select_tag :need_types, options_for_select(Need.need_types), :class=>"need_types_select"       
           - @cause.needs.each do |need|
             = render 'causes/partials/cause_need', :need=> need
@@ -44,26 +53,29 @@
           =render 'causes/partials/cause_event'
 
 
+
     .large-3.columns 
       .row.mlimit.smart-border-h.no-margin
-        .large-6.small-6.columns.text-center.gray_border.s-padding
-          span.slimit-top Followed by
-          h2.pink-text #{@cause.followers.count}
-          span.slimit Active users
-        .large-6.small-6.columns.text-center.gray_border.s-padding
-          span.slimit-top Supporting
-          h2.pink-text TODO
-          span.slimit Other Causes
+
+        .large-12.columns
+          .row.vertical-center-parent
+            .large-6.small-6.columns.text-center.gray_border.s-padding
+              span.bold.slimit-top Followed by
+              h2.pink-text  #{@cause.followers.count}
+              span.bold.slimit Active users
+            .large-6.small-6.columns.text-center.gray_border.s-padding
+              span.bold.slimit-top Supporting
+              h2.pink-text TODO
+              span.bold.slimit Other Causes
+
 
       .single-cause-tile.gray_border.mlimit-top.mlimit
         = render 'causes/partials/cause_campaign', :cause => @cause
       .gray_border.smoke-bg.s-padding.mlimit
-        span SHARE
-        input.s-margin-left.s-padding(placeholder="write a note...")
+        span.s-margin-right SHARE
+        input.s-padding(placeholder="write a note...")
       .mlimit
         = render 'causes/partials/cause_followers', :cause => @cause
 
-
-    
 
 

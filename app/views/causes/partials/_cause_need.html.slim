@@ -1,9 +1,11 @@
 .row.way-to-help.vertical-center-parent.blimit
-  .large-1.columns.text-center
+  .large-1.small-2.columns.text-center
     img.slimit-right src=asset_path("causes/ui/need_icons/#{need.type_of_need}.png")
-  .large-8.columns
+  .large-8.small-7.columns
     h3.no-margin #{need.type_of_need.humanize}
     p.slimit #{need.description}
     a.bold.slimit.block Details
+
   .large-3.columns
     =render 'causes/partials/cause_modal_button', :need => need
+
