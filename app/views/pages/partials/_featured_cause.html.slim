@@ -4,11 +4,11 @@
 			h2 Featured cause
 	.row
 		.large-4.columns
-			img.slimit.fullwidth(src="http://placehold.it/400x300")
+			img.slimit.fullwidth(src="#{cause.picture.url}")
 		.large-5.columns
-			a.h2.block.bold.slimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-			em.secondary.inline.slimit Chicago, IL
-			p.mlimit Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+			=link_to(cause.name, cause, :class=>'h2 block bold slimit')
+			em.secondary.inline.slimit #{cause.location}
+			p.mlimit #{cause.short_description}
 			.bold.h4.slimit GOAL:
 			.slimit Lorem ipsum dolor sit amet
 			.row.no-margin

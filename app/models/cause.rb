@@ -120,6 +120,11 @@ class Cause < ActiveRecord::Base
     url
   end
 
+  def location
+    location = "#{city}, #{region}"
+    location
+  end
+
   def short_description
     read_attribute(:short_description) || "Enter short cause description"
   end
