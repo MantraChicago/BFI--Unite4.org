@@ -79,6 +79,28 @@ to release_candidate:
 bundle exec rspec spec/
 ```
 
+### Deploying
+
+To deploy release_candidate to staging you can run:
+
+```
+bundle exec cap deploy
+```
+
+Other options can be configured via -S:
+
+```
+bundle exec cap deploy -S branch=my_branch
+```
+
+This deploy depends upon ssh-agent forwarding, you'll need the following somewhere in you ssh_config (normally found in ~/.ssh/config)
+
+```
+Host staging.unite4.org
+  User deploy
+  ForwardAgent yes
+```
+
 ### PostGIS
 
 This section assumes you install postgres via brew.  If you didn't there's a very good chance this will not work.
