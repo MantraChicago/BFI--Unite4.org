@@ -269,14 +269,31 @@
   background-color: #009bd2;
   color: #fff;
 }
+#badges-list .title {
+  width: 50%;
+}
 #badges-list .title a {
+  padding: 1em;
+  text-align: center;
+}
+#badges-list .title span {
+  background-position: 0 -46px;
+  background-repeat: no-repeat;
+  padding: 0 0 0 1.8em;
+  display: inline-block;
+  line-height: 1.8;
+}
+#badges-list .active .title span {
+  background-position: 0 4px;
 }
 #badges-list .content {
   min-height: 13.7em;
 }
+
 .badge-shrine {
 }
-.badge-shrine .title a {
+.badge-shrine .title span {
+  background-image: image-url('ui/badge-icon-small.png');
 }
 .badge-shrine .content img {
   display: block;
@@ -284,7 +301,8 @@
 }
 .badge-details {
 }
-.badge-details .title a {
+.badge-details .title span {
+  background-image: image-url('ui/info-icon-small.png');
 }
 .badge-details .content p {
   font-size: .8em;
