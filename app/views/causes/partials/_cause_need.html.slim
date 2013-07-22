@@ -6,4 +6,4 @@
     p.slimit #{need.description}
     a.bold.slimit.block Details
   .large-3.columns
-    a.btn.block.s-padding.text-center.pink #{need.type_of_need.humanize}
+    =render 'causes/partials/cause_modal_button', :need => need

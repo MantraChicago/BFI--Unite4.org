@@ -42,16 +42,20 @@ module ApplicationHelper
 
    def need_type_properties need_model
     need_properties_map={goods_donations: {
-                          call_to_action:'Donate goods'
+                          call_to_action:'Donate goods',
+                          color:'pink'
                         },
                        followers: {
-                          call_to_action:'Promote'
+                          call_to_action:'Promote',
+                          color:'blue'
                         },
                        cash_donations: {
-                          call_to_action:'Donate money'
+                          call_to_action:'Donate money',
+                          color:'green'
                         },
                        volunteers: {
-                          call_to_action:'Volunteer'
+                          call_to_action:'Volunteer',
+                          color:'black'
                         }}
     need_properties_map[need_model.type_of_need.to_sym]
   end

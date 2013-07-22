@@ -253,7 +253,7 @@ h5,.h5 {
 .button {
     text-align: center;
     padding: 20px;
-    margin: 10px 0 10px 0;
+    margin: 10px 0px 10px 0px;
     font-size: 150%;
     line-height: 150%;    
 }
@@ -555,6 +555,9 @@ body > section {
  * END
  */
 
+.hide{
+  display: none;
+}
 
 .bar-holder {
   height: 20px;

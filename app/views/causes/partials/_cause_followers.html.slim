@@ -1,23 +1,7 @@
-h3.inline FOLLOWERS
-.inline.right.s-padding.blue-bg 
-  .icon.add.circle.inline
-  span FOLLOW
+=render "causes/partials/follow", :cause=> cause
 .row.collapse
-  a.large-4.columns.block
-    .s-padding
-      img(src="http://placehold.it/150x150")
-  a.large-4.columns.block
-    .s-padding
-      img(src="http://placehold.it/150x150")
-  a.large-4.columns.block
-    .s-padding
-      img(src="http://placehold.it/150x150")
-  a.large-4.columns.block
-    .s-padding
-      img(src="http://placehold.it/150x150")
-  a.large-4.columns.block
-    .s-padding
-      img(src="http://placehold.it/150x150")
-  a.large-4.columns.block
-    .s-padding
-      img(src="http://placehold.it/150x150")
+  -cause.following_users.each do |follower|
+    a.large-4.columns.block href=url_for(follower)
+      .s-padding
+        img src=follower.avatar.url(:thumb)
+ 

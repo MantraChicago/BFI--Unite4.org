@@ -23,6 +23,10 @@ class Need < ActiveRecord::Base
   #can_be_queried_by :cause_id
   #can_be_queried_by :type
 
+  def self.need_types
+    ['followers','goods_donations', 'cash_donations', 'volunteers']
+  end
+
   def need
     self
   end
@@ -43,7 +47,7 @@ class Need < ActiveRecord::Base
     type_of_need == "volunteers"
   end
 
- 
+  
 end
 
 # == Schema Information
