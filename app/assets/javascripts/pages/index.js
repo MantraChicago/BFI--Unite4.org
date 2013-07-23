@@ -16,7 +16,7 @@ Application.pages.index=function(){
 
   $('.index-seach').submit(function(event){
     event.preventDefault();
-    var url="/charities-supporting-"+$(this).find('[name="cause_type_slug"]').val()+'?has_need='+$(this).find('[name="has_need"]').val()
+    var url="/charities-supporting-"+$(this).find('#cause_type_cause').val()+'?has_need='+$(this).find('[name="has_need"]').val()
     window.location=url
   })
 }
