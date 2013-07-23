@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :followers
   has_many :causes, :through => :followers
 
-  has_one :game
+  has_many :contributions
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
 
@@ -38,14 +38,18 @@ class User < ActiveRecord::Base
   end
 
   def identify_customer_with_customer_io
-    $customerio.identify(
-      :id => self.id,
-      :email => self.email,
-      :created_at => self.created_at.to_i,
-      :first_name => self.first_name
-    )
+    begin
+      $customerio.identify(
+        :id => self.id,
+        :email => self.email,
+        :created_at => self.created_at.to_i,
+        :first_name => self.first_name
+      )
 
-    $customerio.track(self.id, "New user")
+      $customerio.track(self.id, "New user")
+    rescue
+      #what should we do?
+    end
   end
 
   def display_name
