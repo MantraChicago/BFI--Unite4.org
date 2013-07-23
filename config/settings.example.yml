@@ -1,18 +1,15 @@
 defaults: &defaults
-  google:
-    maps_key: "AIzaSyCR-mruRiXKCWnEVNWyxWt0So5YTNrlYOE"
-  facebook:
-    app_id: "150757598452774"
-    app_secret: "80688b8bfef4e5c881dd5b635d54eca9"
-
-development:
-  <<: *defaults
-
-test:
-  <<: *defaults
-
+  facebook:
+    app_id: "145343622317172"
+    app_secret: "bd6476438158a450568b75e82b7a4304"
+  stripe:
+    public_key: "pk_test_B86VL4gz8MTalpfcaRc4paiP"
+    private_key: "sk_test_1XLNZlt83RDDPqRIO7EiWoCm"
+  google:
+    maps_key: "AIzaSyC5nbu6QghhMZ7nUg8KppPc--tPG1QFWkA"
+production:
+  <<: *defaults
 staging:
-  <<: *defaults
-  facebook:
-    app_id: "145343622317172"
-    app_secret: "bd6476438158a450568b75e82b7a4304"
+  <<: *defaults
+test:
+  <<: *defaults
