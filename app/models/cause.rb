@@ -253,5 +253,6 @@ end
 #  goods_donations_count :integer          default(0)
 #  city_slug             :string(255)
 #  short_description     :string(255)
+#  contact_email         :string(255)
 #
 

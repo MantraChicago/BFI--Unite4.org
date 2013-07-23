@@ -52,5 +52,7 @@ end
 #  amount     :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  stripe_id  :string(255)
+#  tip_amount :integer
 #
 

@@ -1,24 +1,46 @@
 class Contribution < ActiveRecord::Base
-  attr_accessible :need_id, :need_type, :fulfilment_type, :fulfilment_id, :user_id, :cause_id
+  include Smooth::Resource
+
+  attr_accessible :need_id,
+                  :need_type,
+                  :fulfillment_type,
+                  :fulfillment_id,
+                  :user_id,
+                  :cause_id
 
   belongs_to :user
   belongs_to :cause
+  belongs_to :need, :polymorphic => true
+  belongs_to :fulfillment, :polymorphic => true
 
-  def fullfilment
-    fulfilment_model.find(need_id)
+  validates_presence_of :user_id, :cause_id, :need_id
+
+  def self.for_user user
+    where(user_id: user.id)
   end
 
-  def need
-    if need_id
-      need_model.find(need_id)
-    end
-  end
+  def self.query params={}
+    results = scoped
+    results = where(user_id: params[:user_id])
 
-  def fulfilment_model
-    fulfilment_type.camelize.constantize
-  end
-
-  def need_model
-    need_type.camelize.singularize.constantize
+    results
   end
 end
+
+# == Schema Information
+#
+# Table name: contributions
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  cause_id         :integer
+#  fulfilment_id    :integer
+#  fulfilment_type  :string(255)
+#  need_id          :integer
+#  need_type        :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  fulfillment_type :string(255)
+#  fulfillment_id   :integer
+#
+
