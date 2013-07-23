@@ -1,7 +1,8 @@
 .panel
   h3 Causes I Follow
   ul.large-block-grid-4
-    - 8.times do
+    - user.causes.each do |cause|
       li
-        = image_tag "http://placehold.it/118x118"
-  a.panel-cta{href='#'} See More
+        a href="#{url_for(cause)}"
+          = image_tag cause.picture.url
+  /a.panel-cta{href='#'} See More
