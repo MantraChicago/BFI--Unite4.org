@@ -55,15 +55,21 @@ section#edit-profile
 
           .large-12.column
             label{for='user_bio'} Tell us about yourself
-            = text_area(:user, :bio, :placeholder => "About yourself")
+            = text_area(:user, :bio, :placeholder => 'About yourself')
         .row
           h3 Avatar
 
           .large-12.column
-            = image_tag @user.avatar.url
-            = f.file_field :avatar, :class => "slimit"
+            = image_tag @user.avatar.url, id: 'user-avatar'
+
+            label{for='fake-upload'} Upload your Avatar
+            .row
+              .large-10.columns
+                input#fake-upload{type='text'}
+              .large-2.columns
+                button#fake-trigger.small.button Browse
+            = f.file_field :avatar, class: 'hide'
 
         .row
           .large-12.column
-            = f.submit "Save changes", class: 'small button expand'
-
+            = f.submit 'Save Profile Changes', class: 'small button expand'
