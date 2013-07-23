@@ -1,4 +1,6 @@
 class Volunteer < ActiveRecord::Base
+  include Unite::Fulfillment
+
   attr_accessible :need_id, :location_id, :cause_id, :user_id
 
   belongs_to :need
@@ -6,15 +8,6 @@ class Volunteer < ActiveRecord::Base
   belongs_to :cause, :counter_cache => true
   belongs_to :user, :counter_cache => true
 
-   def related_campaign
-    cause.campaigns.where(:need_id => self.need_id).first
-  end
-
-  def update_campaign
-    return unless related_campaign.present?
-
-    # do whatever here
-  end 
 end
 
 # == Schema Information

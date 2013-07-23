@@ -1,4 +1,5 @@
 class Follower < ActiveRecord::Base
+  include Unite::Fulfillment
   attr_accessible :cause_id, :need_id, :user_id
 
   belongs_to :user, counter_cache: true
@@ -12,15 +13,6 @@ class Follower < ActiveRecord::Base
 
   delegate :avatar, :to => :user
 
-  def related_campaign
-    cause.campaigns.where(:need_id => self.need_id).first
-  end
-
-  def update_campaign
-    return unless related_campaign.present?
-
-    # do whatever here
-  end
 end
 
 # == Schema Information

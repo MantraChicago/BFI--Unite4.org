@@ -1,5 +1,4 @@
 class Campaign < ActiveRecord::Base
-
   include Smooth::Queryable
   include Smooth::Presentable
 
@@ -17,6 +16,9 @@ class Campaign < ActiveRecord::Base
 #    cause_ids = Cause.featured(count).select(&:id)
 #    where(:cause_id => cause_ids).limit(count)
 #  end
+
+  def progress_calculator
+  end
 
   def percent_complete
     return 0 if desired_state.nil? || desired_state.to_i == 0
