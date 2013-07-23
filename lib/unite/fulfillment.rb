@@ -4,9 +4,17 @@ module Unite
 
     included do
       class_attribute :update_campaign_method
-      after_commit :update_campaign_progress, :unless => :progress_updated?
     end
 
+    def create_contribution_record
+      Contribution.create(need_type: self.need.class.to_s,
+                          need_id: self.need_id,
+                          cause_id: self.cause_id,
+                          user_id: self.user_id,
+                          fulfillment_type: self.class.to_s,
+                          fulfillment_id: self.id
+                         )
+    end
 
     def related_campaign
       @related_campaign ||= cause.campaigns.active.where(:need_id => self.need_id).first

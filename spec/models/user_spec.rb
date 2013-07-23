@@ -57,5 +57,7 @@ end
 #  goods_donations_count  :integer          default(0)
 #  volunteers_count       :integer          default(0)
 #  authentication_token   :string(255)
+#  cause_admin            :boolean
+#  cause_admin_id         :integer
 #
 

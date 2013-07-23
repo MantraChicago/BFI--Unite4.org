@@ -10,7 +10,6 @@ module Unite
       @need     = need
       @user     = user
       @params   = params.symbolize_keys
-
     end
 
     def fulfill!
@@ -18,30 +17,14 @@ module Unite
       object = send(meth) if respond_to?(meth)
 
       if object.valid?
-        update_campaign object
+        object.create_contribution_record
+        object.update_campaign_progress
       end
 
       object
     end
 
     protected
-
-      def update_campaign object
-        object.update_campaign if object.respond_to?(:update_campaign)
-        mail_meth="new_#{type_of_need.singularize}"
-        begin
-          CauseMailer.send(mail_meth, cause, object).deliver if CauseMailer.respond_to?(mail_meth)
-        rescue
-          puts "ERROR - email failed"
-        end
-        Contribution.create({user_id: @user.id,
-                             cause_id: object.cause_id,
-                             fulfilment_type: type_of_need.singularize,
-                             fulfilment_id: object.id,
-                             need_id: @need.try(:id),
-                             need_type:type_of_need  })
-        
-      end
 
       def type_of_need
         params[:type] || params[:type_of_need] || (need && need.type_of_need)
