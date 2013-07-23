@@ -99,9 +99,9 @@
 #header * {
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.72);
 }
+/*
 #header select {
   height: 55px;
-  
   border: 2px solid #e2e2e2;
   background: url(/assets/ui/select.gif) no-repeat right center;
   background-color: #f1f1f1;
@@ -118,6 +118,18 @@
     color: #222 !important;
   }
 }
+*/
+#header .dropdown,
+#header .dropdown * {
+  color: #333 !important;
+  text-shadow: none;
+}
+#header .dropdown,
+#header .current,
+#header .selector {
+  height: 55px;
+  line-height: 55px;
+}
 
 #header button {
   border: 2px solid #fff;
@@ -126,8 +138,9 @@
   max-width: 250px;
 }
 
-#headerslogan {  
+#headerslogan {
   max-width: 900px;
+  margin-top: 8px;
 }
 
 .header-slide {
