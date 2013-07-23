@@ -6,7 +6,15 @@
   display: inline-block;
   padding: 9px 7px;
   color: $veryAlmostWhite;
+  background-color: $blue;
   border: none;
+  &:hover{
+    cursor: pointer;
+    background-color: $verylightblue;
+    text-decoration: none;
+    color: white;
+  }
+
   &.large {
     font-size: 1.5em;
     padding: 20px 20px;
@@ -29,12 +37,12 @@
   &.verylightblue{
     @include darkBorder($verylightblue)
   }
-  &.btn-medium{
-      padding: 8px 20px;
-      display:inline;
-      font-size: 0.8em;
-      transition: background-color 300ms ease-out;
 
+  &.btn-medium{
+    padding: 8px 20px;
+    display:inline;
+    font-size: 0.8em;
+    transition: background-color 300ms ease-out;
   }
   &.btn-small{
     padding: 5px ;
@@ -43,23 +51,8 @@
   }
   &.btn-large{
     padding: 10px 20px;
-		text-transform: uppercase;
-		font-size: 1em;
-		transition: background-color 300ms ease-out;
+    text-transform: uppercase;
+    font-size: 1em;
+    transition: background-color 300ms ease-out;
   }
-  
-  &:hover{
-    cursor: pointer;
-    background-color:$verylightblue;
-    text-decoration:none;
-    color:white;
-  }
-
-
-
 }
-
-
-
-
-
