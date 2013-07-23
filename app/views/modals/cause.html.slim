@@ -1,17 +1,12 @@
-div.cause_modal
-  div.modal_header
-    h2 #{@cause.name}
-    a.close-reveal-modal &#215;
-  .row.cause-listing-container.blimit
-    .large-8.columns
-      iframe class="bordered" allowfullscreen="" frameborder="0" height="340" width="700" src=@cause.video_link type="text/html" 
-    .large-4.columns
-      == render :partial => 'shared/cause_tile', :locals => {cause: @cause} 
+div.cause-modal
+  .row
+    .large-12.columns
+      h2 #{@cause.name}
   .row
     .large-8.columns
-      p #{@cause.description}
-    .large-4.columns
-      == link_to 'VIEW COMPLETE CAUSE PROFILE', @cause, :class => 'btn blue'
-
-
-
+      iframe class="bordered" allowfullscreen="" frameborder="0" height="340" width="700" src=@cause.video_link type="text/html" 
+      p.cause-description #{@cause.description}
+      = link_to 'see more', @cause
+    .large-4.columns.cause-listing-container
+      = render :partial => 'shared/cause_tile_modal', :locals => {cause: @cause}
+  a.close-reveal-modal &#215;
