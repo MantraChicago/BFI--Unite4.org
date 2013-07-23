@@ -5,9 +5,11 @@
     .row
       .large-4.column
         = image_tag "causes/ui/need_icons/#{contribution.need_type.pluralize}.png"
-        /= image_tag "http://placehold.it/78x78"
+        a href="#{url_for(cause)}"
+          = image_tag cause.picture.url(:thumb), :width =>80
       .large-8.column
-        h4 #{cause.name}
+        a href="#{url_for(cause)}"
+          h4 #{cause.name}
         strong #{need_type_properties(contribution.need_type)[:past_personal_action] }
         time #{contribution.created_at.strftime("%Y-%m-%d")}
 

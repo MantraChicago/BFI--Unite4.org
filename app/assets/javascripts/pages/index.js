@@ -21,10 +21,13 @@ Application.pages.index=function(){
   })
 
   $('.featured_cause_switcher').click(function(event){
+    $('.featured_cause_switcher').removeClass('bold')
+    $(this).addClass('bold')
     var cause_name= $(this).attr('data-type-name')
     $('.featured_cause_holder').hide()
     $('.featured_cause_holder[data-type-name="'+cause_name+'"]').show()
+
   })
-  $('.featured_cause_holder:first-child').show()
+  $('.featured_cause_switcher:first-child').click()
 
 }
