@@ -86,11 +86,10 @@
   min-height: 490px;
 }
 #header {
- position: relative;
- width:100%;
- min-height: 490px;
- color: #fff;
-
+  position: relative;
+  width: 100%;
+  min-height: 36em;
+  color: #fff;
 }
 #header h1 {
   font-size: 40pt;
@@ -99,50 +98,58 @@
 #header * {
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.72);
 }
-/*
-#header select {
-  height: 55px;
-  border: 2px solid #e2e2e2;
-  background: url(/assets/ui/select.gif) no-repeat right center;
-  background-color: #f1f1f1;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  box-shadow: 0 0 5px rgba(0,0,0,0.8);
-  padding-left: 15px;padding-right: 35px;
-  &:focus, &:active {
-      background-image: url(/assets/ui/select-active.gif) no-repeat right center;
-  }
-  &,& option {
-    color: #222 !important;
-  }
-}
-*/
-#header .dropdown,
-#header .dropdown * {
+#home-select-group .dropdown,
+#home-select-group .dropdown * {
   color: #333 !important;
   text-shadow: none;
 }
-#header .dropdown,
-#header .current,
-#header .selector {
-  height: 55px;
-  line-height: 55px;
-}
 
-#header button {
-  border: 2px solid #fff;
-  height: 55px;
+#home-select-group {
+  background-color: rgba(0, 0, 0, .5);
+  padding: .7em;
+  margin-top: .7em;
+}
+#home-select-group .column,
+#home-select-group .columns {
+  padding-right: .5em;
+  padding-left: .5em;
+}
+#home-select-group .dropdown,
+#home-select-group .current,
+#home-select-group .selector,
+#home-select-group button,
+#home-select-group .button {
+  height: 50px;
+  margin-bottom: 0;
+}
+#home-select-group .dropdown,
+#home-select-group .current,
+#home-select-group .selector {
+  line-height: 50px;
+}
+#home-select-group .custom.dropdown .current {
+  font-size: 1.6em;
+  font-weight: 200;
+}
+#home-select-group button,
+#home-select-group .button {
   width: 100%;
-  max-width: 250px;
+  padding: 0;
+  background-color: #d51679;
+  font-size: 1.2em;
+  font-weight: 200;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+#home-select-group button i,
+#home-select-group .button i {
+  margin-right: .4em;
 }
 
 #headerslogan {
-  max-width: 900px;
-  margin-top: 8px;
+  max-width: 67em;
+  margin-top: 7em;
 }
-
 .header-slide {
   position: absolute;
   width: 100%;
