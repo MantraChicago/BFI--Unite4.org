@@ -64,7 +64,7 @@ module Unite
                                       user_id: user.try(:id),
                                       stripe_id: stripe,
                                       tip_amount: tip_amount,
-                                      amount: donation_amount)
+                                      amount: donation_amount) #in cents
         end
       end
 

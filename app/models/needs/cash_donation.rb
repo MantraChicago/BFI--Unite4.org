@@ -23,7 +23,7 @@ class CashDonation < ActiveRecord::Base
   end
 
   def total_amount
-    amount+tip_amount
+    (amount+tip_amount) *100
   end
 
   def amount
