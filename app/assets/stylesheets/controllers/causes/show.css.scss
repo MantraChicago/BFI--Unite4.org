@@ -6,7 +6,7 @@
   }
 }
 #title-tag {
-	vertical-align: 10%;
+  vertical-align: 10%;
 }
 .content{
   white-space: pre-wrap;
@@ -14,10 +14,12 @@
 
 .cause-listing-container {
   .cause-listing {
+    position: relative;
     background: #f6f6f6;
     border: 1px solid #e0e0e0;
     color: #4d4d4d;
-    img.thumb {     
+
+    img.thumb {
       border: 3px solid #fff;
     }
     .name {
@@ -25,35 +27,30 @@
       color: #fff;
     }
     .goal {
-
     }
-
     .grey-mask{
       height: 146px;
       width: 100%;
       background-color: rgba(100,100,100,.5);
-      
     }
     .grey-mask:hover{
        background-color:rgba(100,100,100,0);
     }
-
-
-    position: relative;
     .button {
-      padding: 10px;
+      padding: 5px 0 0 0;
       background-color: #009dd1;
       background-position: center;
       background-repeat: no-repeat;
       border-bottom: 3px solid #008ebd;
       color: #fff;
       width: 100%;
+
       .heart {
         background-image: url(/assets/ui/little-heart.png);
       }
-        .add {
-          background-image: url(/assets/ui/little-add.png);
-        }     
+      .add {
+        background-image: url(/assets/ui/little-add.png);
+      }
       a {
         color: #fff;
       }
@@ -63,19 +60,19 @@
         background-position: center;
         background-repeat: no-repeat;
         background-color: #008ebd;
-        margin-right: 10px;
+        margin-right: 6px;
       }
     }
     .stats {
       background: #ececec;
     }
     .h6 {
-        font-size: 7pt !important;
+      font-size: 7pt !important;
     }
     p {
       margin: 0;
     }
-  } 
+  }
 }
 
 .way-to-help{
@@ -85,7 +82,7 @@
   }
 }
 
-#causes-sort 
+#causes-sort
 {
   max-width: 350px;
   & * {
@@ -95,5 +92,4 @@
       background: #dc4081;
     }
   }
-  
 }
