@@ -1,29 +1,43 @@
-.row.oxygen.blimit.blimit-top
-	.large-12.columns.text-center
-		h2	First you need to sign up...
-.row.oxygen.narrow.blimit
-	.large-6.columns.text.center
-	 	= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| 
-			.errors
-				=devise_error_messages!	
-			#register-fields
-				div
-					=f.text_field :first_name, :autofocus => true,:placeholder => "first name", :class => "bubble bg-smoke"
-				div
-					=f.text_field :last_name, :placeholder => "last name" , :class => "bubble bg-smoke"
-				div
-					=f.email_field :email,:placeholder => "email adress", :class => "bubble bg-smoke"
-				div
-					=f.password_field :password,:placeholder => "password", :class => "bubble bg-smoke"
-				div
-					=f.password_field :password_confirmation, :placeholder => "confirm password", :class => "bubble bg-smoke"
-				div
-				    .h3
-      					input type="submit"  
-				
-					
-	.large-6.columns.text-center
-		.blimit-top
-		a.fb_login href="#{user_omniauth_authorize_path(:facebook)}"
-			img src="/assets/signupwfb.png"
-		.mlimit-top.h5.tertiary We will never post to your<br/>Facebook unless you want us to		
+section#user-sign-up
+  .row.oxygen.blimit.blimit-top
+    .large-12.columns.text-center
+      h1 First you need to sign up...
+  .row.oxygen.narrow.blimit
+    .large-6.columns.text.center
+       = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+        .errors
+          -for msg in @user.errors.full_messages.each
+            .alert-box.alert{data-alert}
+              = msg
+              a.close &times;
+        #register-fields
+          .row
+            .large-12.column
+              label{for="user_first_name"} First Name
+              =f.text_field :first_name, :autofocus => true, :placeholder => "John"
+          .row
+            .large-12.column
+              label{for="user_last_name"} Last Name
+              =f.text_field :last_name, :placeholder => "Doe"
+          .row
+            .large-12.column
+              label{for="user_email"} Email Address
+              =f.email_field :email, :placeholder => "john@doe.com", :type => "email"
+          .row
+            .large-12.column
+              label{for="user_password"} Password
+              =f.password_field :password
+          .row
+            .large-12.column
+              label{for="user_password_confirmation"} Confirm Password
+              =f.password_field :password_confirmation
+          .row
+            .large-12.column
+              .h3
+                input{type="submit" value="Sign Up" class="small button"}
+
+    .large-6.columns.text-center
+      .blimit-top
+      a.fb_login href="#{user_omniauth_authorize_path(:facebook)}"
+        img src="/assets/signupwfb.png"
+      .mlimit-top.h5.tertiary We will never post to your<br/>Facebook unless you want us to    
