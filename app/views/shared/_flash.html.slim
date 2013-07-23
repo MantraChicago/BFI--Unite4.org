@@ -1,14 +1,14 @@
 -if flash[:notice]
   .notice.green-bg
     .row
-      .large-12.columns.mlimit.mlimit-top flash[:notice]
+      .large-12.columns.mlimit.mlimit-top #{flash[:notice]}
 
 -if flash[:alert]
   .notice.pink-bg
     .row
-      .large-12.columns.mlimit.mlimit-top flash[:alert]
+      .large-12.columns.mlimit.mlimit-top #{flash[:alert]}
 
 -if flash[:error]
   .notice.red-bg
     .row
-      .large-12.columns.mlimit.mlimit-top flash[:error]
+      .large-12.columns.mlimit.mlimit-top #{flash[:error]}

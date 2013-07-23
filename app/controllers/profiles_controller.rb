@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
 	end
 
 	def show
-		@featured_causes=Cause.find_all_by_is_featured(true);
+		#@featured_causes=Cause.find_all_by_is_featured(true);
 		@user=User.find(params[:id])
 	end
 =begin
