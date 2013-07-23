@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722185337) do
+ActiveRecord::Schema.define(:version => 20130723185142) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -178,6 +178,17 @@ ActiveRecord::Schema.define(:version => 20130722185337) do
   add_index "causes_cause_types", ["cause_type_id"], :name => "index_causes_cause_types_on_cause_type_id"
   add_index "causes_cause_types", ["id"], :name => "index_causes_cause_types_on_id", :unique => true
 
+  create_table "contributions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "cause_id"
+    t.integer  "fulfilment_id"
+    t.string   "fulfilment_type"
+    t.integer  "need_id"
+    t.string   "need_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "featured_causes", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -301,6 +312,7 @@ ActiveRecord::Schema.define(:version => 20130722185337) do
     t.integer  "game_id"
     t.text     "fb_token"
     t.string   "role"
+    t.string   "slug"
     t.integer  "followers_count",        :default => 0
     t.integer  "cash_donations_count",   :default => 0
     t.integer  "goods_donations_count",  :default => 0
@@ -314,6 +326,7 @@ ActiveRecord::Schema.define(:version => 20130722185337) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "users_badges", :force => true do |t|
     t.integer "user_id"
