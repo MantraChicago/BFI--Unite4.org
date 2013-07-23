@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723185142) do
+ActiveRecord::Schema.define(:version => 20130723214341) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -185,8 +185,10 @@ ActiveRecord::Schema.define(:version => 20130723185142) do
     t.string   "fulfilment_type"
     t.integer  "need_id"
     t.string   "need_type"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "fulfillment_type"
+    t.integer  "fulfillment_id"
   end
 
   create_table "featured_causes", :force => true do |t|

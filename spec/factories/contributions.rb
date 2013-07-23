@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :contribution do
-    user_id 1
-    need_type "MyString"
-    need_id 1
+    association(:user)
+    association(:cause, :skip_default_location=>true)
+    association(:need, :volunteers)
   end
 end
