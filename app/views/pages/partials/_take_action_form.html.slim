@@ -1,23 +1,22 @@
-.row
-  .large-2.columns
-    h4.blimit-top.white Take action
-  .large-10.columns
-    form.index-seach.custom
-      .row
-        .large-4.columns
-          h4.slim.white What can you give?
-          select.rounded name="has_need"
-            option value="followers" I can promote a cause
-            option value="volunteers" I can volunteer my time
-            option value="cash_donations" I can donate cash
-            option value="goods_donations" I can donate goods
-
-        .large-4.columns
-          / can we use label tags? more semantic 
-          /- cache(cache_key_for_cause_types) do
-          h4.slim.white What is your passion?
-          =select 'cause_type', "cause", CauseType.all.shuffle.collect {|p| [ p.name, p.slug ] },{}, :class =>'rounded'
-        .large-4.columns
-          h4 &nbsp;
-          button.rounded.search-btn  type="submit" Search
+form.index-seach.custom.row
+  .row#home-select-group
+    .large-3.columns
+      select
+        option value="san_francisco" San Francisco
+        option value="san_francisco" San Francisco
+        option value="san_francisco" San Francisco
+        option value="san_francisco" San Francisco
+    .large-3.columns
+      select name="has_need"
+        option value="default" What can you give?
+        option value="followers" I can promote a cause
+        option value="volunteers" I can volunteer my time
+        option value="cash_donations" I can donate cash
+        option value="goods_donations" I can donate goods
+    .large-4.columns
+      =select 'cause_type', 'cause', CauseType.all.shuffle.collect {|p| [ p.name, p.slug ] }, {}
+    .large-2.columns
+      button.search-btn type="submit"
+        i.icon-search
+        | Search
 
