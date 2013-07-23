@@ -959,7 +959,8 @@ COPY admin_users (id, email, encrypted_password, reset_password_token, reset_pas
 3	jonathan@meetmantra.com	$2a$10$d5FB0JAyVzD4sYEZwmMKEuxWpsimJwm69paHZZSblws8lAcMbVtzq	\N	\N	\N	0	\N	\N	\N	\N	2013-06-26 19:55:26.319327	2013-06-26 19:55:26.319327
 4	colleen@meetmantra.com	$2a$10$5jdv9bdlK9QXSdhR0kPW/e/NHEfA7XyGInbjBFYf0Zio8wEmQh.TG	\N	\N	\N	0	\N	\N	\N	\N	2013-06-26 19:57:51.396734	2013-06-26 19:57:51.396734
 1	tim@meetmantra.com	$2a$10$rOoXYpn5I.OIvoM8YmprluvutqB6AtWBopxH.nyIf8lvk3Xbdc17u	\N	\N	\N	20	2013-07-18 15:08:03.926385	2013-07-08 02:22:09.867567	108.240.30.245	24.136.18.37	2013-06-18 18:24:23.196345	2013-07-18 15:08:03.929548
-5	eddie@meetmantra.com	$2a$10$9Ve81Ra0UuXnX.zAKUGbOuCqMACMqIlCwTo0KUw.m5Gy7WiEh1sJS	\N	\N	2013-07-18 16:35:43.804701	1	2013-07-18 16:35:43.820245	2013-07-18 16:35:43.820245	38.106.196.126	38.106.196.126	2013-07-18 16:33:02.442016	2013-07-18 16:35:43.821385
+5	eddie@meetmantra.com	$2a$10$9Ve81Ra0UuXnX.zAKUGbOuCqMACMqIlCwTo0KUw.m5Gy7WiEh1sJS	\N	\N	2013-07-18 16:35:43.804701	2	2013-07-23 15:52:42.44331	2013-07-18 16:35:43.820245	38.106.196.126	38.106.196.126	2013-07-18 16:33:02.442016	2013-07-23 15:52:42.447703
+6	frank@meetmantra.com	$2a$10$FAQagorfLvOUfpwrTKgo4uwjjhmru8f.NbcTSMMOCUxUdO29sBnf6	\N	\N	\N	0	\N	\N	\N	\N	2013-07-23 15:53:30.12156	2013-07-23 15:53:30.12156
 \.
 
 
@@ -967,7 +968,7 @@ COPY admin_users (id, email, encrypted_password, reset_password_token, reset_pas
 -- Name: admin_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bfi_production
 --
 
-SELECT pg_catalog.setval('admin_users_id_seq', 5, true);
+SELECT pg_catalog.setval('admin_users_id_seq', 6, true);
 
 
 --
