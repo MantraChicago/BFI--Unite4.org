@@ -108,33 +108,38 @@
   .popover_tigger {
     display: block;
     color: #333;
+    transition: all 200ms ease-in-out;
     &:hover {
       color: #009DD1;
     }
   }
 
-  ul{ 
-    padding-left:0px !important;
-    width:150px;
-    background-color:white;
-    position:absolute;
-    li{
+  ul {
+    width: 11.55em;
+    padding-left: 0px !important;
+    margin: 0;
+    background-color: white;
+    position: absolute;
+    li {
       display:block !important;
-      text-align:center;
       border-bottom:1px solid #e3e3e3;
     }
     li:last-child{
       border-bottom: none;
     }
-    a{
+    a {
       display:inline-block;
       width:100%;
       height:100%;
-    }
-    a:hover{
-      text-decoration:none;
-      background-color:$mutedGray;
-      color:white;
+      padding-left: 3.2em;
+      color: #444;
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+        background-color: $mutedGray;
+      }
     }
   }
 }
