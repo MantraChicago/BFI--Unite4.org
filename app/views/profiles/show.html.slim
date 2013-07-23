@@ -1,3 +1,7 @@
+- content_for(:head) do
+  script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=#{SimpleSettings.config[:google][:maps_key]}&sensor=true"
+
+
 section#user-hero
   .row
     .large-9.column#user-basics
@@ -23,19 +27,19 @@ section#user-hero
       ul.large-block-grid-2
         li
           small Earned
-          strong 12
+          strong TODO
           em Badges
         li
           small Volunteered
-          strong 17
+          strong TODO
           em Hours
         li
           small Following
-          strong 24
+          strong #{@user.causes.count}
           em Causes
         li
           small Given
-          strong 22
+          strong TODO
           em Donations
 
 section#user-data
@@ -44,11 +48,12 @@ section#user-data
       
       =render 'profiles/partials/user_about_me', :user => @user
       =render 'profiles/partials/user_cause_contributions', :user => @user
-      =render 'profiles/partials/user_cause_follows', :user => @user
+      
 
     .large-6.column
       =render 'profiles/partials/user_cause_map', :user => @user
-      =render 'profiles/partials/user_photos', :user => @user
+      =render 'profiles/partials/user_cause_follows', :user => @user
+      /=render 'profiles/partials/user_photos', :user => @user
 
 section#user-badges.hide
   .row

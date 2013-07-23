@@ -1,6 +1,5 @@
 - content_for(:head) do
-  script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5nbu6QghhMZ7nUg8KppPc--tPG1QFWkA&sensor=true"
-
+  script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=#{SimpleSettings.config[:google][:maps_key]}&sensor=true"
 
 #header
   .header-slide.small-static.transition style="background-image: url(#{ asset_path('h1_alt2.jpg') })" 
