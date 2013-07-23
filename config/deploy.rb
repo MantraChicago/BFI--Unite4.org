@@ -4,6 +4,8 @@ require 'hipchat/capistrano'
 require 'bundler/capistrano'
 require 'delayed/recipes'
 
+Dir.glob("#{ File.join(File.dirname(__FILE__),'..','lib','recipes') }/*.rb").each {|f| require(f) }
+
 set :hipchat_token, "0e2c10e049c422f2345f2736ca7166"
 set :hipchat_room_name, "bfi"
 set :hipchat_announce, true
