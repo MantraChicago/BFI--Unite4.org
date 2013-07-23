@@ -4,6 +4,8 @@ defaults: &defaults
   facebook:
     app_id: "150757598452774"
     app_secret: "80688b8bfef4e5c881dd5b635d54eca9"
+  google:
+    maps_key: "AIzaSyC5nbu6QghhMZ7nUg8KppPc--tPG1QFWkA"
 
 development:
   <<: *defaults

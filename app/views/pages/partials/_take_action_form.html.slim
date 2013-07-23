@@ -13,14 +13,10 @@
             option value="goods_donations" I can donate goods
 
         .large-4.columns
-          // can we use label tags? more semantic 
-          - cache(cache_key_for_cause_types) do
-            h4.slim.white What is your passion?
-            select.rounded name="cause_type_slug"
-              - CauseType.order("name asc").each do |cause_type|
-                option value=cause_type.slug
-                  == cause_type.name
-
+          / can we use label tags? more semantic 
+          /- cache(cache_key_for_cause_types) do
+          h4.slim.white What is your passion?
+          =select 'cause_type', "cause", CauseType.all.shuffle.collect {|p| [ p.name, p.slug ] },{}, :class =>'rounded'
         .large-4.columns
           h4 &nbsp;
           button.rounded.search-btn  type="submit" Search
