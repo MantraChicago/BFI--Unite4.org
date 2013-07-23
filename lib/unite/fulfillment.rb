@@ -6,9 +6,9 @@ module Unite
       class_attribute :update_campaign_method
     end
 
-    def create_contribution_record
-      Contribution.create(need_type: self.need.class.to_s,
-                          need_id: self.need_id,
+    def create_contribution_record(need)
+      Contribution.create(need_type: need.type_of_need,
+                          need_id: need.try(:id),
                           cause_id: self.cause_id,
                           user_id: self.user_id,
                           fulfillment_type: self.class.to_s,
@@ -39,7 +39,9 @@ module Unite
 
     def contribution_increment
       custom_method = self.class.update_campaign_method
-      return 1 unless respond_to?(custom_method)
+      if !custom_method || respond_to?(custom_method)
+        return 1 
+      end
       send(custom_method).to_i
     end
 

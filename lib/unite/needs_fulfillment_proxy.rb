@@ -17,7 +17,8 @@ module Unite
       object = send(meth) if respond_to?(meth)
 
       if object.valid?
-        object.create_contribution_record
+        object.create_contribution_record(@need)
+
         object.update_campaign_progress
       end
 
