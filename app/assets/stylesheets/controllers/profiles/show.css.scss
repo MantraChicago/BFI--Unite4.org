@@ -101,7 +101,7 @@
   }
 }
 
-.profile_drop_down{
+.profile_drop_down {
   position:relative;
   display:inline-block;
 
@@ -120,6 +120,7 @@
     margin: 0;
     background-color: white;
     position: absolute;
+    right: 0;
     li {
       display:block !important;
       border-bottom:1px solid #e3e3e3;
