@@ -1,9 +1,9 @@
 -if user_signed_in? and current_user	
 	.profile_drop_down
-		=image_tag current_user.avatar.url(:thumb), :size =>"40x40"
 		a.popover_tigger
+			=image_tag current_user.avatar.url(:thumb)
 			| #{current_user.display_name}
-		span.down_arrow &#x25BC;
+			span.down_arrow &#x25BC;
 		ul.hide
 			li.bold 
 				=link_to 'Profile', profiles_path
@@ -13,5 +13,5 @@
 				=link_to 'Log Out', destroy_user_session_path, :method=>'delete' 
 -else
 	.oxygen.bold.h5
-    	= link_to('SIGN UP', new_user_registration_path) +' | '+link_to('LOGIN', new_user_session_path, :id => "login_button")
+			= link_to('SIGN UP', new_user_registration_path) +' | '+link_to('LOGIN', new_user_session_path, :id => "login_button")
 

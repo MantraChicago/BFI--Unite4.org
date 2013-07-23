@@ -94,19 +94,25 @@
 .manage-users{
   display:inline-block;
   vertical-align:top;
-  img{
-    vertical-align:top;
-    margin-top:13px;
-    margin-right:5px;
+  img {
+    float: left;
+    max-height: 40px;
+    margin: 7px 10px 0 0;
   }
 }
 
 .profile_drop_down{
   position:relative;
   display:inline-block;
-  a{
 
+  .popover_tigger {
+    display: block;
+    color: #333;
+    &:hover {
+      color: #009DD1;
+    }
   }
+
   ul{ 
     padding-left:0px !important;
     width:150px;
