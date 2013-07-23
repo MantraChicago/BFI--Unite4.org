@@ -1,4 +1,6 @@
 defaults: &defaults
+  google:
+    maps_key: "AIzaSyCR-mruRiXKCWnEVNWyxWt0So5YTNrlYOE"
   facebook:
     app_id: "150757598452774"
     app_secret: "80688b8bfef4e5c881dd5b635d54eca9"

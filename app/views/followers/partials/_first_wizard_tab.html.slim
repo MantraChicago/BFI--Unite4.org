@@ -12,7 +12,7 @@
         img src="/assets/#{follow_img}"
     -if not need.cause.twitter_handle.empty?
       .support_box.twitter_support
-        a href="https://twitter.com/share" class="twitter-share-button" data-text="#{"set this to a variable, app/views/followers/partials/_first_wizard_tab.html.slim"}" data-via="via_user" data-related="rec_username" data-hashtags="hashtag"
+        a href="https://twitter.com/share" class="twitter-share-button" data-text="#{"set this to a variable, app/views/followers/partials/_first_wizard_tab.html.slim"}" data-size="large" data-via="via_user" data-related="rec_username" data-hashtags="hashtag"
           img src="/assets/follow_twitter_button.jpg"
 
   javascript: 
@@ -30,6 +30,12 @@
         }, function(response) {
           if (response && response.post_id) {
             console.log("Posted: " + response.post_id);
+            $.ajax({
+              type: 'POST',
+              url: '/user/did/facebook_post',
+              dataType: 'json',
+              data: { post_id: response.post_id }
+            })
           } else {
             console.log("Not Posted")
           }
