@@ -959,8 +959,8 @@ COPY admin_users (id, email, encrypted_password, reset_password_token, reset_pas
 3	jonathan@meetmantra.com	$2a$10$d5FB0JAyVzD4sYEZwmMKEuxWpsimJwm69paHZZSblws8lAcMbVtzq	\N	\N	\N	0	\N	\N	\N	\N	2013-06-26 19:55:26.319327	2013-06-26 19:55:26.319327
 4	colleen@meetmantra.com	$2a$10$5jdv9bdlK9QXSdhR0kPW/e/NHEfA7XyGInbjBFYf0Zio8wEmQh.TG	\N	\N	\N	0	\N	\N	\N	\N	2013-06-26 19:57:51.396734	2013-06-26 19:57:51.396734
 1	tim@meetmantra.com	$2a$10$rOoXYpn5I.OIvoM8YmprluvutqB6AtWBopxH.nyIf8lvk3Xbdc17u	\N	\N	\N	20	2013-07-18 15:08:03.926385	2013-07-08 02:22:09.867567	108.240.30.245	24.136.18.37	2013-06-18 18:24:23.196345	2013-07-18 15:08:03.929548
-5	eddie@meetmantra.com	$2a$10$9Ve81Ra0UuXnX.zAKUGbOuCqMACMqIlCwTo0KUw.m5Gy7WiEh1sJS	\N	\N	2013-07-18 16:35:43.804701	2	2013-07-23 15:52:42.44331	2013-07-18 16:35:43.820245	38.106.196.126	38.106.196.126	2013-07-18 16:33:02.442016	2013-07-23 15:52:42.447703
 6	frank@meetmantra.com	$2a$10$FAQagorfLvOUfpwrTKgo4uwjjhmru8f.NbcTSMMOCUxUdO29sBnf6	\N	\N	\N	0	\N	\N	\N	\N	2013-07-23 15:53:30.12156	2013-07-23 15:53:30.12156
+5	eddie@meetmantra.com	$2a$10$9Ve81Ra0UuXnX.zAKUGbOuCqMACMqIlCwTo0KUw.m5Gy7WiEh1sJS	\N	\N	\N	2	2013-07-23 15:52:42.44331	2013-07-18 16:35:43.820245	38.106.196.126	38.106.196.126	2013-07-18 16:33:02.442016	2013-07-23 17:48:04.701931
 \.
 
 
@@ -1690,7 +1690,10 @@ COPY users (id, email, encrypted_password, reset_password_token, reset_password_
 13	lainie+mish@meetmantra.com	$2a$10$TJaToaRaKzLXZxA1zTuS5OEckwNbwJJG2eN3KonbK/ADZEK6fDUIS	\N	\N	\N	1	2013-07-08 05:33:46.436005	2013-07-08 05:33:46.436005	24.136.18.37	24.136.18.37	2013-07-08 05:33:46.141709	2013-07-08 05:35:22.288912	Reyna	Mish	reyna.jpg	image/jpeg	29843	2013-07-08 05:35:22.097278	Hello, my name is Reyna and I am very eager to be connected with the Bright Promises Fund, Dreams for Kids and Chicago Hopes nonprofits! 	Chicago	Illinois	0	\N	\N	\N	\N	\N	25	0	0	0	Cy53Wrj847efWZGXRx7b	\N	\N
 14	lainie+ghiehge@meetmantra.com	$2a$10$agBp1FFG7A1pmNZkrhXCTu9UQYkNGa0/gfUzHOvFaEtBBSk6xsYra	\N	\N	\N	1	2013-07-08 05:36:11.610281	2013-07-08 05:36:11.610281	24.136.18.37	24.136.18.37	2013-07-08 05:36:11.272467	2013-07-08 05:37:50.160796	Jerry	Gorden	profile-2.jpg	image/jpeg	183006	2013-07-08 05:37:49.985611	Hi Everyone! Signed up for this site because my wife Beth and I are interested in giving back to the community. Hoping to find some great organizations!	Chicago	Illinois	0	\N	\N	\N	\N	\N	25	0	0	0	Geb1PiUzJn7TgpoDjNMR	\N	\N
 21	amy@meetmantra.com	$2a$10$mW16gcD9Guidw2PK.EJCY.o9BWb/Q0ZoE7GSLMrC21DwtIXiTk0cK	\N	\N	\N	1	2013-07-18 14:22:55.64635	2013-07-18 14:22:55.64635	38.106.196.126	38.106.196.126	2013-07-18 14:22:55.381927	2013-07-18 14:22:55.647579	Amy	Johnson	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	\N	\N	\N	1	0	0	0	KNWAbTs46pFAqDpDQzFb	\N	\N
+25	ejandersons4@gmail.com	$2a$10$m8BVbxfxowLyu..vDJE2W.M.alzHfDYpBCZpvJ/q7kjf4MPrHF2P.	\N	\N	\N	1	2013-07-23 17:42:34.71162	2013-07-23 17:42:34.71162	38.106.196.126	38.106.196.126	2013-07-23 17:42:34.324147	2013-07-23 17:42:34.712723	eddie	Anderson	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	\N	\N	\N	0	0	0	0	ZhghbxxHhE6zkM3PWc27	\N	\N
 16	frangucc5@gmail.com	$2a$10$eZjo/ocDDZfnyBMds.3xsuu8JgfpWlC62G1OX8OcnHJo50mY2P1c2	\N	\N	\N	1	2013-07-08 08:33:56.440797	2013-07-08 08:33:56.440797	108.240.30.245	108.240.30.245	2013-07-08 08:33:56.134864	2013-07-09 02:59:10.432561	Francesco	Pinto	frank.jpg	image/jpeg	18961	2013-07-09 02:59:10.149812				0	\N	\N	\N	\N	\N	4	0	0	0	dnbkcoiPqFpssU6ypGxA	\N	\N
+26	test@test.com	$2a$10$hUQN1sbeNBESzguUydfCw.26EvOAvMkfopdhhkuBIUpXTlgb4bRam	\N	\N	\N	1	2013-07-23 17:48:29.516027	2013-07-23 17:48:29.516027	38.106.196.126	38.106.196.126	2013-07-23 17:48:28.940587	2013-07-23 17:48:29.517339	blabla	bla	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	\N	\N	\N	0	0	0	0	eP25xVaKRfVsdnZgqzdP	\N	\N
+27	testtest@test.coms	$2a$10$MGl6QGKUlzb2SffAiQHLVu.lDVLs1w6vr28rbK3tjZ.01af9EjeUC	\N	\N	\N	1	2013-07-23 17:49:40.14395	2013-07-23 17:49:40.14395	38.106.196.126	38.106.196.126	2013-07-23 17:49:39.861278	2013-07-23 17:49:40.144881	babab	abababa	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	\N	\N	\N	0	0	0	0	FQ9xppWVnxzydi4rjgQB	\N	\N
 17	samantha@meetmantra.com	$2a$10$dOTAp981E7eb85WYNWeGGuDQBPPevt2wwgn8E8XkHbQNXSPMILNNS	\N	\N	2013-07-18 17:01:59.85049	3	2013-07-18 20:07:09.233245	2013-07-18 17:01:59.856828	38.106.196.126	38.106.196.126	2013-07-09 14:35:37.687596	2013-07-18 20:07:09.234734	Samantha	Abernathy	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	\N	\N	\N	0	0	1	5	pBxPgy1VLn277CLK8qPB	\N	\N
 19	alex@meetmantra.com	$2a$10$ujdVF0sgcdHUqzTE2NNRo.B1NaLikoJrc1N6zTzzWSbMP33z29PQq	\N	\N	\N	1	2013-07-16 17:08:47.656938	2013-07-16 17:08:47.656938	38.106.196.126	38.106.196.126	2013-07-16 17:08:47.143845	2013-07-16 17:08:47.658035	Alex	Smith	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	\N	\N	\N	0	0	0	0	NBZWGh7WAoUpQzXFZD1Y	\N	\N
 20	jsmith@test.com	$2a$10$s/lLxVYz3yWUVowltbPVfe65YwuKp8uUL6aywxFTjGalWD2Hy9vYu	\N	\N	\N	1	2013-07-16 20:33:50.316057	2013-07-16 20:33:50.316057	173.58.231.149	173.58.231.149	2013-07-16 20:33:49.914636	2013-07-16 20:33:50.317245	John	Smith	\N	\N	\N	\N	\N	\N	\N	0	\N	\N	\N	\N	\N	0	0	0	0	UhMiGyMJTrCMRGdFVxF6	\N	\N
@@ -1720,7 +1723,7 @@ SELECT pg_catalog.setval('users_badges_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bfi_production
 --
 
-SELECT pg_catalog.setval('users_id_seq', 24, true);
+SELECT pg_catalog.setval('users_id_seq', 28, true);
 
 
 --
