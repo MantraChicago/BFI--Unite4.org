@@ -29,7 +29,11 @@ module Unite
       def update_campaign object
         object.update_campaign if object.respond_to?(:update_campaign)
         mail_meth="new_#{type_of_need.singularize}"
-        CauseMailer.send(mail_meth, cause, object).deliver if CauseMailer.respond_to?(mail_meth)
+        begin
+          CauseMailer.send(mail_meth, cause, object).deliver if CauseMailer.respond_to?(mail_meth)
+        rescue
+          puts "ERROR - email failed"
+        end
         Contribution.create({user_id: @user.id,
                              cause_id: object.cause_id,
                              fulfilment_type: type_of_need.singularize,
