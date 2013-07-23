@@ -1,4 +1,6 @@
 class CashDonation < ActiveRecord::Base
+  include Unite::Fulfillment
+
   attr_accessible :need_id, :user_id, :amount, :tip_amount, :stripe_id
 
   belongs_to :cause, :counter_cache => true
@@ -14,18 +16,10 @@ class CashDonation < ActiveRecord::Base
   #
   after_create :charge_credit_card  # I really really don't think this should be in a model, but where else?
 
-  def related_campaign
-    @related_campaign ||= cause.campaigns.where(:need_id => self.need_id).first
-  end
+  updates_campaign_with :total_amount
 
-  def update_campaign
-    return unless related_campaign.present?
-
-    current_amount = related_campaign.current_state.to_i
-
-    current_amount += self.amount
-
-    related_campaign.current_state = "#{ current_amount }"
+  def message
+    "Cash Donation to #{ cause.name }"
   end
 
   def total_amount
@@ -42,8 +36,6 @@ class CashDonation < ActiveRecord::Base
 
   def charge_credit_card
     if valid?
-      message = "Charge for #{need.cause.name}"
-      puts 'xxxxxx'+stripe_id.inspect
       Unite::PaymentGatewayService.charge stripe_id, total_amount, message
     end
   end
