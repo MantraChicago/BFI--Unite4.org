@@ -27,20 +27,20 @@ section#user-hero
       ul.large-block-grid-2
         li
           small Earned
-          strong TODO
+          strong 0
           em Badges
         li
           small Volunteered
-          strong TODO
-          em Hours
+          strong #{@user.contributions.where('need_type' => 'volunteers').count}
+          em Times
         li
           small Following
           strong #{@user.causes.count}
           em Causes
         li
           small Given
-          strong TODO
-          em Donations
+          strong #{@user.contributions.where('need_type' => 'cash_donations').count}
+          em Times
 
 section#user-data
   .row

@@ -54,8 +54,20 @@ javascript:
             form$.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
 
             var form_data=$('.need_form').serializeObject()
-            $.post('/causes/#{@need.cause.slug}/#{@need.type_of_need}/#{@need.id}/fulfillments',form_data, function(data){
 
-            })
+            $.ajax({
+              type: "POST",
+              url: '/causes/#{@need.cause.slug}/#{@need.type_of_need}/#{@need.id}/fulfillments',
+              data: form_data,
+              success: function(){
+
+              },
+              error :function(){
+                $(".payment-errors").html('There has been an error')
+                $('.cash_submit').removeAttr('disabled')
+              }
+            });
+
+           
         }
       }

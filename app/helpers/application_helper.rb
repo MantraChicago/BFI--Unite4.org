@@ -52,11 +52,13 @@ module ApplicationHelper
                           color:'blue'
                         },
                        cash_donations: {
-                          call_to_action:'I donated money',
+                          call_to_action:'Donate',
+                          past_personal_action:'I donated money',
                           color:'green'
                         },
                        volunteers: {
-                          call_to_action:'I volunteered',
+                          call_to_action:'Volunteer',
+                          past_personal_action:'I volunteered',
                           color:'black'
                         }}
     need_properties_map[need_type.to_sym]

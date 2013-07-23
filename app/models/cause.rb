@@ -27,6 +27,7 @@ class Cause < ActiveRecord::Base
   has_many :cash_donations
   has_many :goods_donations
   has_many :volunteers
+  has_many :cause_images
 
   validates :name, :uniqueness => true
 
