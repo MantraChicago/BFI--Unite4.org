@@ -1,44 +1,69 @@
 - @title = "Edit profile"
-= form_for(@user, :url => '', :html => { :multipart => true } ) do |f|
-  .row
-      .large-12
-          h2 Edit your profile
-          h3 Tell us about you
+
+section#edit-profile
+  = form_for(@user, :url => '', :html => { :multipart => true, :class => 'custom'} ) do |f|
+    .row
+      .large-12.column
+        h1 Edit your profile
 
       - if @user.errors.any?
-          .large-12.columns
-            h3 "#{pluralize(@user.errors.count, "error")}"  prohibited this user from being saved:
-            ul
-              -  for msg in @user.errors.full_messages.each
-                  li msg
+        .row
+          .large-12.column
+            -for msg in @user.errors.full_messages.each
+              .alert-box.alert{data-alert}
+                = msg
+                a.close &times;
+
+    .row
+      .large-6.columns
+        .row
+          h3 Basic Info
+
+          .large-12.column
+            label{for='user_first_name'} Name
+            = text_field(:user, :first_name, :placeholder => "John")
+        .row
+          .large-12.column
+            label{for='user_last_name'} Last Name
+            = text_field(:user, :last_name, :placeholder => "Doe")
+        .row
+          .large-12.column
+            label{for='user_email'} Email
+            = text_field(:user, :email, :placeholder => "john@doe.com", :type => "email")
+        .row
+          .large-12.column
+            label{for='user_city'} City
+            = text_field(:user, :city, :placeholder => "Chicago")
+        .row
+          .large-12.column
+            label{for='user_state'} State
+            = text_field(:user, :state, :placeholder => "Illinois")
+        .row
+          h3 Followed Causes
+          .large-12.column
+            - for cause in Cause.all
+              .large-12.cboxrow
+                label{for='#{cause.id}_cause'}
+                  = check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) , :id => "#{cause.id}_cause", :class => 'hide'
+                  span.custom.checkbox
+                  | #{cause.display_name}
+
 
       .large-6.columns
-          .input_row
-            = text_field(:user, :first_name,:placeholder => "name")
-          .input_row
-            = text_field(:user, :last_name,:placeholder => "last name")
-          .input_row
-            = text_field(:user, :email,:placeholder => "email")
-          .input_row
-            = text_field(:user, :city,:placeholder => "city")
-          .input_row
-            = text_field(:user, :state,:placeholder => "state")
-          .input_row
-            h2 Followed Causes
-            div style="padding-left:50px; text-align:left"
-              - for cause in Cause.all
-                .large-6
-                  label #{cause.display_name}
-                  = check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) , :id => "#{cause.id}_cause"
+        .row
+          h3 Biography
 
+          .large-12.column
+            label{for='user_bio'} Tell us about yourself
+            = text_area(:user, :bio, :placeholder => "About yourself")
+        .row
+          h3 Avatar
 
-      .large-6.columns
-          .input_row
-              = text_area(:user, :bio, :placeholder => "bio")
-          .input_row
-              = image_tag @user.avatar.url
-              = f.file_field :avatar, :class => "slimit"
+          .large-12.column
+            = image_tag @user.avatar.url
+            = f.file_field :avatar, :class => "slimit"
 
-          .input_row
-              = f.submit "Save changes"
+        .row
+          .large-12.column
+            = f.submit "Save changes", class: 'small button expand'
 
