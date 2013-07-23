@@ -2,7 +2,7 @@
   .large-2.columns
     h4.blimit-top.white Take action
   .large-10.columns
-    form.index-seach action="/causes" method="get"
+    form.index-seach
       .row
         .large-4.columns
           h4.slim.white What can you give?
@@ -16,9 +16,9 @@
           // can we use label tags? more semantic 
           - cache(cache_key_for_cause_types) do
             h4.slim.white What is your passion?
-            select.rounded name="cause_type_id"
+            select.rounded name="cause_type_slug"
               - CauseType.order("name asc").each do |cause_type|
-                option value=cause_type.id
+                option value=cause_type.slug
                   == cause_type.name
 
         .large-4.columns

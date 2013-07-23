@@ -13,4 +13,10 @@ Application.pages.index=function(){
 									cities:Application.data.cities})
 	
   })
+
+  $('.index-seach').submit(function(event){
+    event.preventDefault();
+    var url="/charities-supporting-"+$(this).find('[name="cause_type_slug"]').val()+'?has_need='+$(this).find('[name="has_need"]').val()
+    window.location=url
+  })
 }

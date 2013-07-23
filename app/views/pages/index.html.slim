@@ -1,6 +1,5 @@
 - content_for(:head) do
-  script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5nbu6QghhMZ7nUg8KppPc--tPG1QFWkA&sensor=true"
-
+  script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=#{SimpleSettings.config[:google][:maps_key]}&sensor=true"
 
 #header
   .header-slide.small-static.transition style="background-image: url(#{ asset_path('h1_alt2.jpg') })" 
@@ -29,13 +28,13 @@
       h3.oxygen.no-margin Earn badges for your support and get recognized
 
 
-== render :partial => "pages/partials/featured_cause"
+== render "pages/partials/featured_cause", cause: @featured_cause
 
 .whitesmoke-bg  
-  == render :partial => "pages/partials/featured_campaigns"
+  == render  "pages/partials/featured_campaigns"
 
 .smoke-bg.companies.mlimit
-  == render :partial => "pages/partials/companies"
+  == render "pages/partials/companies"
 
 
 .row.oxygen

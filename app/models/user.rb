@@ -78,9 +78,6 @@ class User < ActiveRecord::Base
     if state && !state.empty?
       location = state
     end
-
-
-
     location
   end
 
