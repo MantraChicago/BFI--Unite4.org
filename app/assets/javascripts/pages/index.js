@@ -19,4 +19,12 @@ Application.pages.index=function(){
     var url="/charities-supporting-"+$(this).find('#cause_type_cause').val()+'?has_need='+$(this).find('[name="has_need"]').val()
     window.location=url
   })
+
+  $('.featured_cause_switcher').click(function(event){
+    var cause_name= $(this).attr('data-type-name')
+    $('.featured_cause_holder').hide()
+    $('.featured_cause_holder[data-type-name="'+cause_name+'"]').show()
+  })
+  $('.featured_cause_holder:first-child').show()
+
 }

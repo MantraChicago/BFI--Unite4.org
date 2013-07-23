@@ -149,6 +149,17 @@ class Cause < ActiveRecord::Base
     postal_code
   end
 
+  def self.featured_causes
+    featured_causes={}
+    CauseType.all.each do |cause_type|
+      featured_cause = Cause.by_cause_type(cause_type.slug).where('is_featured',true).order("RANDOM()").first
+      if featured_cause
+        featured_causes[cause_type.name]= featured_cause
+      end
+    end
+    featured_causes
+  end
+
   def self.featured count=4
     cause_ids = FeaturedCause.cause_ids
     where(id: cause_ids ).limit(4)
