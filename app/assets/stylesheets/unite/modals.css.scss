@@ -53,22 +53,24 @@
   background-color: #5E5E5E;
   text-align: center;
 }
+.modal-cause-title h2,
+.modal-cause-goal p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .modal-cause-title h2 {
   height: 2em;
   margin: 0 0 .2em;
   font-size: 1.7em;
   line-height: 2;
   color: #fff;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 .modal-cause-goal {
   background-color: #F5F5F5;
 }
 .modal-cause-goal p {
   margin: .5em 0;
-  overflow: hidden;
 }
 .modal-cause-stats ul {
   margin-right: -0.9375em;
