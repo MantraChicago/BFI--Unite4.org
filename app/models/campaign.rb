@@ -28,9 +28,13 @@ class Campaign < ActiveRecord::Base
 
   end
 
-  def percent_complete
+  def percent_complete calculate=false
+    value = read_attribute(:percent_complete)
+    return value if value and !calculate
+
     return 0 if desired_state.nil? || desired_state.to_i == 0
-    ((current_state.to_f / desired_state.to_f) * 100).to_i
+
+    self.percent_complete = ((current_state.to_f / desired_state.to_f) * 100).to_i
   end
 
   def goal_summary
@@ -92,12 +96,13 @@ class Campaign < ActiveRecord::Base
   end
 
   def set_defaults
-    self.type_of_need = (need && need.type_of_need || "followers")
-    self.start_date = Time.now
-    self.end_date = 30.days.from_now
-    self.current_state = "0"
-    self.percent_complete = 0
-    self.active = true
+    self.type_of_need ||= (need && need.type_of_need || "followers")
+    self.start_date ||= Time.now
+    self.end_date ||= 30.days.from_now
+    self.current_state ||= 0
+    self.percent_complete ||= 0
+    self.desired_state ||= default_desired_state
+    self.active ||= true
   end
 end
 

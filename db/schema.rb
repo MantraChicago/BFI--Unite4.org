@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130724212147) do
+ActiveRecord::Schema.define(:version => 20130724231220) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -63,14 +63,14 @@ ActiveRecord::Schema.define(:version => 20130724212147) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "percent_complete"
-    t.string   "desired_state"
-    t.string   "current_state"
     t.boolean  "active",               :default => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.string   "type_of_need"
     t.string   "goal_summary"
     t.string   "timefame_description"
+    t.integer  "desired_state",        :default => 0
+    t.integer  "current_state",        :default => 0
   end
 
   add_index "campaigns", ["active"], :name => "index_campaigns_on_active"
