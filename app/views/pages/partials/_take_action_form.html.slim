@@ -5,13 +5,13 @@ form.index-seach.custom.row
         option value="chicago" Chicago
         option value="san-francisco" San Francisco
         option value="new-york" New York City
-    .large-3.columns
+    .large-4.columns
       select name="has_need"
         option value="followers" I can promote a cause
         option value="volunteers" I can volunteer my time
         option value="cash_donations" I can donate cash
         option value="goods_donations" I can donate goods
-    .large-4.columns
+    .large-3.columns
       =select 'cause_type', 'cause', CauseType.all.shuffle.collect {|p| [ p.name, p.id ] }, {}
     .large-2.columns
       button.search-btn type="submit"
