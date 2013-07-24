@@ -18,6 +18,7 @@ class Campaign < ActiveRecord::Base
 #  end
 
   def progress_calculator
+
   end
 
   def percent_complete
@@ -59,8 +60,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def days_to_go
-    seconds = (end_date - start_date).to_i
-    (seconds / 60 / 60 / 24)
+    (-1 * ((Time.zone.now - self.end_date) / 1.day).to_i) + 1
   end
 
   def goal_unit
