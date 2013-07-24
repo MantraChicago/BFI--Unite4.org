@@ -13,11 +13,6 @@ class Follower < ActiveRecord::Base
 
   delegate :avatar, :to => :user
 
-  after_create :after_create
-
-  def after_create
-    $customerio_user.track(need.cause.id, "new_follower", attributes)
-  end
 end
 
 # == Schema Information
