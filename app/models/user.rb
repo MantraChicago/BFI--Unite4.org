@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
 
   after_destroy do
-    $customerio.delete(self.id)
+    $customerio_user.delete(self.id)
   end
 
   def self.random limit=1
@@ -40,14 +40,14 @@ class User < ActiveRecord::Base
 
   def identify_customer_with_customer_io
     begin
-      $customerio.identify(
+      $customerio_user.identify(
         :id => self.id,
         :email => self.email,
         :created_at => self.created_at.to_i,
         :first_name => self.first_name
       )
 
-      $customerio.track(self.id, "New user")
+      $customerio_user.track(self.id, "New user")
     rescue
       #what should we do?
     end
