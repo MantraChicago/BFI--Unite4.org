@@ -19,10 +19,10 @@
           strong= cause.active_campaign_days_to_go
           em days to go
         li
-          strong $205
+          strong= "$#{cause.cash_donations_count}"
           em raised
         li
-          strong $300
+          strong= "$#{cause.active_campaign.desired_state}"
           em goal
 
   .row.modal-cause-state
@@ -36,5 +36,5 @@
   .row.modal-cause-period
     .large-12.column
       h4 Campaign Period:
-      p 30 Days
-      small July 14th, 2013 - August 13th, 2013
+      p= cause.active_campaign.timefame_description
+      small= "#{cause.active_campaign.start_date} - #{cause.active_campaign.end_date}"
