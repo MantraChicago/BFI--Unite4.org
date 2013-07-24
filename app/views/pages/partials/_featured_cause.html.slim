@@ -1,39 +1,39 @@
 .mlimit.home-featured-cause
-	.row
-		.large-12.columns
-			h2 Featured cause
-	
-		.row
-			.large-9.columns.gray_border.border-right-only
-				-featured_causes_hash.each do |key,cause|
-					.row.hide.featured_cause_holder data-type-name=key
-						.large-5.columns
-							a href="#{url_for cause}"
-								img.slimit.fullwidth(src="#{cause.picture.url}")
-						.large-7.columns
-							=link_to(cause.name, cause, :class=>'h2 block bold slimit')
-							em.secondary.inline.slimit #{cause.location}
-							p.mlimit #{cause.short_description}
-							.bold.h4.slimit GOAL:
-							.slimit Lorem ipsum dolor sit amet
-							a href="#{url_for cause}"
-								.row.no-margin
-						        .large-6.columns.left
-						          .row.vertical-center-parent.mlimit
-						            .large-6.small-6.columns.text-center.gray_border	              
-						              h2.blue-text.no-margin  14
-						              span.h5.slimit.block days to go
-						            .large-6.small-6.columns.text-center.gray_border             
-						              h2.blue-text.no-margin 55%
-						              span.h5.slimit.block goal met
+  .row
+    .large-12.columns
+      h2 Featured cause
 
-			.large-3.columns
-				/.h5.slimit
-					span See all
-					span.bold 1939
-					span Arts causes
-				ul.plain-list.small-inline-list
-					- CauseType.all.each do |type|
-						-if featured_causes_hash[type.name]
-							li 
-								a.featured_cause_switcher data-type-name=type.name #{type.name}	
+    .row
+      .large-9.columns.gray_border.border-right-only
+        -featured_causes_hash.each do |key,cause|
+          .row.hide.featured_cause_holder data-type-name=key
+            .large-5.columns
+              a href="#{url_for cause}"
+                img.slimit.fullwidth(src="#{cause.picture.url}")
+            .large-7.columns
+              =link_to(cause.name, cause, :class=>'h2 block bold slimit')
+              em.secondary.inline.slimit #{cause.location}
+              p.mlimit #{cause.short_description}
+              .bold.h4.slimit GOAL:
+              .slimit= cause.active_campaign_goal_summary
+              a href="#{url_for cause}"
+                .row.no-margin
+                    .large-6.columns.left
+                      .row.vertical-center-parent.mlimit
+                        .large-6.small-6.columns.text-center.gray_border
+                          h2.blue-text.no-margin= cause.active_campaign.days_to_go
+                          span.h5.slimit.block days to go
+                        .large-6.small-6.columns.text-center.gray_border
+                          h2.blue-text.no-margin= cause.active_campaign_percent_complete.to_s + "%"
+                          span.h5.slimit.block goal met
+
+      .large-3.columns
+        /.h5.slimit
+          span See all
+          span.bold 1939
+          span Arts causes
+        ul.plain-list.small-inline-list
+          - CauseType.all.each do |type|
+            -if featured_causes_hash[type.name]
+              li 
+                a.featured_cause_switcher data-type-name=type.name #{type.name}
