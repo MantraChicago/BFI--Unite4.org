@@ -35,7 +35,8 @@ var MapView=Backbone.View.extend({
       center: new google.maps.LatLng(41.85, -87.65),
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false 
+      mapTypeControl: false ,
+      scrollwheel: false
         };
     this.map = new google.maps.Map(element,mapOptions);
 
