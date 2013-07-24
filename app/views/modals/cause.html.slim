@@ -4,7 +4,7 @@ div.cause-modal
       h2 #{@cause.name}
   .row
     .large-8.columns
-      iframe class="bordered" allowfullscreen="" frameborder="0" height="340" width="700" src=@cause.video_link type="text/html" 
+      iframe class="bordered" allowfullscreen="" frameborder="0" height="340" src=@cause.video_link type="text/html" 
       p.cause-description #{@cause.description}
       = link_to 'see more', @cause
     .large-4.columns.cause-listing-container
