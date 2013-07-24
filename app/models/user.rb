@@ -19,11 +19,13 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
 
-  has_and_belongs_to_many :badges, :join_table=>:badges_users
+  has_and_belongs_to_many :badges, :join_table=>:users_badges
 
   after_create :identify_customer_with_customer_io
 
   after_create :reset_authentication_token!
+
+  after_create :award_default_badge
 
 
   after_destroy do
@@ -38,6 +40,15 @@ class User < ActiveRecord::Base
 
   def self.random_user
     random(1).first
+  end
+
+  def award_badge accomplishment
+    badge = Badge.find_by_name(accomplishment)
+    self.badges << badge if badge
+  end
+  
+  def award_default_badge
+    award_badge("Signed Up")
   end
 
   def identify_customer_with_customer_io

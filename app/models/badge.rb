@@ -3,7 +3,7 @@ class Badge < ActiveRecord::Base
   include Smooth::Presentable
 
   attr_accessible :name, :description, :file_name, :accomplishment
-  has_and_belongs_to_many :users, :join_table=>:badges_users
+  has_and_belongs_to_many :users, :join_table=>:users_badges
 
   can_be_queried_by :user_id
 
