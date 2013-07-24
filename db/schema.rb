@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723220556) do
+ActiveRecord::Schema.define(:version => 20130724175225) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20130723220556) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.text     "caption"
   end
 
   create_table "cause_types", :force => true do |t|
@@ -324,6 +325,7 @@ ActiveRecord::Schema.define(:version => 20130723220556) do
     t.integer  "game_id"
     t.text     "fb_token"
     t.string   "role"
+    t.string   "slug"
     t.integer  "followers_count",        :default => 0
     t.integer  "cash_donations_count",   :default => 0
     t.integer  "goods_donations_count",  :default => 0
@@ -337,6 +339,7 @@ ActiveRecord::Schema.define(:version => 20130723220556) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "users_badges", :force => true do |t|
     t.integer "user_id"

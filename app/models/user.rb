@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
                           :fb_token => auth.credentials.token
                           })
 
-      #user.picture_from_url "https://graph.facebook.com/#{auth.info.id}/picture"
+      user.picture_from_url "https://graph.facebook.com/#{auth.extra.raw_info.id}/picture"
       user.save
     else
 
