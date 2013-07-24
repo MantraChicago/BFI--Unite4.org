@@ -18,6 +18,8 @@ ActiveAdmin.register Cause do
 	    f.input :twitter_handle
 	    f.input :facebook_url
 	    f.input :is_featured
+	    f.input :user
+
 
 	    f.input :cause_types, as: :check_boxes, collection: CauseType.all
 	    f.input :picture, :as => :file, :hint => f.template.image_tag(f.object.picture.url(:medium))

@@ -7,7 +7,11 @@ class Volunteer < ActiveRecord::Base
   belongs_to :location
   belongs_to :cause, :counter_cache => true
   belongs_to :user, :counter_cache => true
+  after_create :after_create
 
+  def after_create
+    $customerio_user.track(need.cause.id, "new_volunteer")
+  end
 end
 
 # == Schema Information

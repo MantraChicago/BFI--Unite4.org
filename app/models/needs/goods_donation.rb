@@ -6,7 +6,11 @@ class GoodsDonation < ActiveRecord::Base
   belongs_to :need
   belongs_to :user, :counter_cache => true
 
+  after_create :after_create
 
+  def after_create
+    $customerio_user.track(need.cause.id, "new_good_donation")
+  end
 end
 
 # == Schema Information
