@@ -20,12 +20,13 @@ describe Campaign do
   end
 
   describe "Incrementing Progress" do
-    it "should attempt to update the campaign progress upon creation of a fulfillment" do
+    it "should be accessible from the fulfillment object" do
+      follower.related_campaign.should be_present
     end
 
     it "should increment the campaign progress" do
       follower.should be_valid
-      campaign.percent_complete.should == 5
+      campaign.current_state.should == "1"
     end
   end
 end
