@@ -18,6 +18,7 @@ var MapView=Backbone.View.extend({
   getLocations:function(){
     var locations
     if(!this.options.locations){
+
       var locations=_(this.options.causes).reduce(function(array,cause){
         array.push(cause.locations_details)
         _.zip(array,cause.locations_details)

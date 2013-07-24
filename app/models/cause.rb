@@ -169,6 +169,7 @@ class Cause < ActiveRecord::Base
 
   QueryableScopes = %w{by_type_of_need by_cause_type by_city_slug}
 
+
   scope :by_type_of_need, lambda {|type_of_need| joins(:needs).where("needs.type_of_need = ?", type_of_need) }
   scope :by_cause_type, lambda {|cause_type_slug| joins(:cause_type).where("cause_types.slug = ?", cause_type_slug) }
   scope :by_city_slug, lambda {|city_slug| where(:city_slug => city_slug) }

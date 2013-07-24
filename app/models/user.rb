@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
   after_create :reset_authentication_token!
 
+
   after_destroy do
     $customerio.delete(self.id)
   end
@@ -50,6 +51,16 @@ class User < ActiveRecord::Base
     rescue
       #what should we do?
     end
+  end
+
+  def followed_causes_locations
+    causes_array=[]
+    causes.each do |cause| #because I can't igure out the join
+      cause_hash=cause.as_json
+      cause_hash[:locations_details]=cause.locations
+      causes_array << cause_hash
+    end
+    causes_array
   end
 
   def display_name
