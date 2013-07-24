@@ -1,12 +1,12 @@
-.cause-listing
+.modal-cause
   .row.modal-cause-title
     .large-12.column
-      h2= limit_to_three_words(cause.display_name)
+      h2= cause.display_name
 
   .row.modal-cause-goal
     .large-12.column
       p
-        strong GOAL:
+        strong GOAL: 
         span= cause.active_campaign_goal_summary
 
   .row.modal-cause-stats
@@ -30,7 +30,7 @@
       .bar-holder.slimit
         .bar.oxygen style="width:#{ cause.active_campaign_percent_complete }%;"
           = cause.active_campaign_percent_complete.to_s + "%"
-      a.button
+      a.button.expand
         | I WANT TO HELP
 
   .row.modal-cause-period
