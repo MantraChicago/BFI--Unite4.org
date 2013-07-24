@@ -36,5 +36,5 @@
   .row.modal-cause-period
     .large-12.column
       h4 Campaign Period:
-      p= cause.active_campaign.timefame_description
+      p= "#{cause.active_campaign.days_to_go} days to go"
       small= time_tag(cause.active_campaign.start_date) + " - " + time_tag(cause.active_campaign.end_date)
