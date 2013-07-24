@@ -37,4 +37,4 @@
     .large-12.column
       h4 Campaign Period:
       p= cause.active_campaign.timefame_description
-      small= "#{cause.active_campaign.start_date} - #{cause.active_campaign.end_date}"
+      small= time_tag(cause.active_campaign.start_date) + " - " + time_tag(cause.active_campaign.end_date)
