@@ -10,6 +10,7 @@ class CampaignPresenter
       :desired_state,
       :current_state,
       :percent_complete,
+      :days_to_go,
       {
         attribute: :need,
         presenter: :default
