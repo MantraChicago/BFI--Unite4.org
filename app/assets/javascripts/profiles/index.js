@@ -1,5 +1,13 @@
 Application.profiles={}
 Application.profiles.index=function(){
+  load_profile_map()
+}
+
+Application.profiles.show = function(){
+  load_profile_map()
+}
+
+var load_profile_map=function(){
   $.get('/api/v1/users/followed_causes_locations',function(data){
     causes=[]
     _(data).each(function(row){
