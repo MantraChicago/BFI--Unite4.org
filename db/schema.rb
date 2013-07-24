@@ -325,7 +325,6 @@ ActiveRecord::Schema.define(:version => 20130724175225) do
     t.integer  "game_id"
     t.text     "fb_token"
     t.string   "role"
-    t.string   "slug"
     t.integer  "followers_count",        :default => 0
     t.integer  "cash_donations_count",   :default => 0
     t.integer  "goods_donations_count",  :default => 0
@@ -339,7 +338,6 @@ ActiveRecord::Schema.define(:version => 20130724175225) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "users_badges", :force => true do |t|
     t.integer "user_id"

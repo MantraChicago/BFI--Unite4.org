@@ -19,10 +19,10 @@
           strong= cause.active_campaign_days_to_go
           em days to go
         li
-          strong $205
+          strong= "$#{cause.cash_donations_count}"
           em raised
         li
-          strong $300
+          strong= "$#{cause.active_campaign.desired_state}"
           em goal
 
   .row.modal-cause-state
