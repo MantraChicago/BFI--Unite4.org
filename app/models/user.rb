@@ -104,41 +104,53 @@ class User < ActiveRecord::Base
     followers.select("distinct cause_id").map(&:cause_id)
   end
 
-  def picture_from_url(url)
-    self.avatar = open(url)
+  class DummyPaperclip < String
+    def url(size=nil)
+      if size == :thumb
+        self + "?width=100&height=100"
+      elsif size == :medium
+        self + "?width=300&height=300"
+      else
+        self + "?type=large"
+      end
+    end
+  end
+
+  def avatar
+    if self.avatar_file_name.nil? && self.uid
+      DummyPaperclip.new("https://graph.facebook.com/#{self.uid}/picture")
+    else
+      super
+    end
   end
 
   def self.find_or_create_from_facebook(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     # try finding by email
-    if user.nil?
-      user = User.find_by_email(auth.info.email)
-    end
+    user = User.find_by_email(auth.info.email) if user.nil?
     locationArray=auth.try(:info).try(:location).try(:split, ',')
     if user
-
-      user.update_attributes({:first_name => auth.info.first_name,
-                          :last_name => auth.info.last_name,
-                          :city => locationArray.try(:[], 0) || '',
-                          :state => locationArray.try(:[], 1) || '',
-                          :fb_token => auth.credentials.token
-                          })
-
-      user.picture_from_url "https://graph.facebook.com/#{auth.extra.raw_info.id}/picture"
-      user.save
+      user.update_attributes({
+        :first_name => auth.info.first_name,
+        :last_name => auth.info.last_name,
+        :city => locationArray.try(:[], 0) || '',
+        :state => locationArray.try(:[], 1) || '',
+        :fb_token => auth.credentials.token
+      })
+      # Update attributes should save
+      # user.save
     else
-
-      user = User.create!( provider: auth.provider,
-                          uid:  auth.uid,
-                          email: auth.info.email,
-                          password: Devise.friendly_token[0,20],
-                          first_name: auth.info.first_name,
-                          last_name: auth.info.last_name,
-                          city: locationArray.try(:[], 0) || '',
-                          state: locationArray.try(:[], 1) || '',
-                          fb_token: auth.credentials.token
-                        )
-
+      user = User.create(
+        provider: auth.provider,
+        uid:  auth.uid,
+        email: auth.info.email,
+        password: Devise.friendly_token[0,20],
+        first_name: auth.info.first_name,
+        last_name: auth.info.last_name,
+        city: locationArray.try(:[], 0) || '',
+        state: locationArray.try(:[], 1) || '',
+        fb_token: auth.credentials.token
+      )
     end
     user
   end
