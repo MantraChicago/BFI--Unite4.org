@@ -29,7 +29,7 @@ class Cause < ActiveRecord::Base
   has_many :volunteers
   has_many :cause_images
 
-  has_one :user
+  belongs_to :user
 
   validates :name, :uniqueness => true
 
