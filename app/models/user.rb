@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
 
   after_destroy do
-    $customerio_user.delete(self.id)
+    $customerio.delete(self.customer_io_id)
   end
 
   alias_method :avatar_old, :avatar
@@ -46,21 +46,25 @@ class User < ActiveRecord::Base
     badge = Badge.find_by_name(accomplishment)
     self.badges << badge if badge
   end
-  
+
   def award_default_badge
     award_badge("Signed Up")
+  end
+
+  def customer_io_id
+    "#{ Rails.env }-#{ self.id }"
   end
 
   def identify_customer_with_customer_io
     begin
       $customerio_user.identify(
-        :id => self.id,
+        :id => customer_io_id,
         :email => self.email,
         :created_at => self.created_at.to_i,
         :first_name => self.first_name
       )
 
-      $customerio_user.track(self.id, "New user")
+      $customerio.track(customer_io_id, "New user")
     rescue
       #what should we do?
     end
