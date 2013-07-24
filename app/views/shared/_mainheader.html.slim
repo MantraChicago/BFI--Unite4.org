@@ -19,23 +19,24 @@
 	#mobile-menu
     #selectcity.pos-abs.transition-quick.shadow
       .row.fullwidth.pos-abs.oxygen.white
-        .large-4.columns.city.small-height-auto#chicago
-          a href="/charities-in-chicago"
+        a href="/charities-in-chicago"
+          .large-4.columns.city.small-height-auto#chicago
             h1.blimit-top.mlimit Chicago
             img.transition-quick.mlimit src=asset_path('dropdown/cities/chicago-icon.png')
-        .large-4.columns.city.small-height-auto#new-york
-          a href="/charities-in-new-york"
+        a href="/charities-in-new-york"
+          .large-4.columns.city.small-height-auto#new-york
             h1.blimit-top.mlimit New York
             img.transition-quick.mlimit src=asset_path('dropdown/cities/new-york-icon.png')
-        .large-4.columns.city.small-height-auto#san-francisco
-          a href="/charities-in-san-francisco"
+        a href="/charities-in-san-francisco"
+          .large-4.columns.city.small-height-auto#san-francisco
             h1.blimit-top.mlimit San Francisco
             img.transition-quick.mlimit src=asset_path('dropdown/cities/san-francisco-icon.png')
 
     #selectcause.pos-abs.transition-quick
       .row.fullwidth.pos-abs.oxygen.white
         - CauseType.limit(8).each do |cause_type|
-          .large-3.small-6.columns.cause.text-center.bg-cover style="background-image: url(#{ cause_type.picture_url });"
-            a href='/charities-supporting-#{cause_type.slug}'
+          a href='/charities-supporting-#{cause_type.slug}'
+            .large-3.small-6.columns.cause.text-center.bg-cover style="background-image: url(#{ cause_type.picture_url });"
+            
               h1.blimit-top.mlimit #{cause_type.name}
               img.transition-quick.mlimit src=asset_path("dropdown/causes/#{ cause_type.slug}-icon.png")
