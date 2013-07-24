@@ -14,7 +14,7 @@ class CashDonation < ActiveRecord::Base
   # The NeedsFullfillmentProxy is where we should encapsulate the request from the
   # end user. Forget callback chains, they are trouble.
   #
-  after_create :after_create  # I really really don't think this should be in a model, but where else?
+  after_create :charge_credit_card, :track_donation  # I really really don't think this should be in a model, but where else?
 
   updates_campaign_with :total_amount
 
@@ -34,11 +34,12 @@ class CashDonation < ActiveRecord::Base
     read_attribute(:tip_amount) || 0
   end
 
-  def 
-
-  def after_create
-    charge_credit_card
+  def track_donation
     $customerio_user.track(need.cause.id, "new_cash_donation")
+  end
+
+  def contribution_increment
+    amount * 100
   end
 
   def charge_credit_card

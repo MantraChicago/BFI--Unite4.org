@@ -58,9 +58,9 @@ section#user-data
 section#user-badges.hide
   .row
     p
-      | Samantha has earned
-      strong 12 badges!
-      select.large-2
+      | #{@user.first_name} has earned&nbsp;
+      strong#{@user.badges.count} badges!
+      /select.large-2
         option arrange by
         option alpha
         option bravo
@@ -68,5 +68,5 @@ section#user-badges.hide
         option delta
   .row
     ul#badges-list.large-block-grid-4
-      - 12.times do
-        =render 'profiles/partials/user_badge', :user => @user
+      - @user.badges.each do |badge|
+        =render 'profiles/partials/user_badge', :user => @user, :badge => badge

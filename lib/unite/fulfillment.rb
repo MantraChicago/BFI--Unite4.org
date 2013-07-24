@@ -17,7 +17,7 @@ module Unite
     end
 
     def related_campaign
-      @related_campaign ||= cause.campaigns.active.where(:need_id => self.need_id).first
+      @related_campaign ||= cause.campaigns.active.related_for_need(self.need)
     end
 
     # TODO
@@ -40,7 +40,7 @@ module Unite
     def contribution_increment
       custom_method = self.class.update_campaign_method
       if !custom_method || respond_to?(custom_method)
-        return 1 
+        return 1
       end
       send(custom_method).to_i
     end

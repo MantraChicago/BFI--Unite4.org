@@ -18,7 +18,6 @@ module Unite
 
       if object.valid?
         object.create_contribution_record(@need)
-
         object.update_campaign_progress
       end
 

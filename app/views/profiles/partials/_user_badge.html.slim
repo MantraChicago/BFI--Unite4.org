@@ -1,17 +1,17 @@
 li
-  h3 Title of the Badge
+  h3 #{badge.name}
   .section-container.auto{data-section}
     section.badge-shrine
       p.title{data-section-title}
         a{href='#'}
           span Badge
       .content{data-section-content}
-        = image_tag('badges/default.png')
+        = image_tag('badges/new_user.png', :size => '150x150')
     section.badge-details
       p.title{data-section-title}
         a{href='#'}
           span Info
       .content{data-section-content}
         p
-          = image_tag('badges/default-small.png')
-          | This will be a short descrip tion of what the user did to earn the badge. It will not be customized to each scenario. It will more or less be a generic  description of the individual badges.  This will be a short description of what the user did to earn the badge. None of the descriptions will be long enough to exceed this bounding box. This is actually inforced by the CSS. Lorem ipsum dolor sit amet was a nice guy.
+          = image_tag('badges/new_user.png', :size => '50x50')
+          |#{badge.description}

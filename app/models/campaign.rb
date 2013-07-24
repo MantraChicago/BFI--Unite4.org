@@ -17,6 +17,13 @@ class Campaign < ActiveRecord::Base
 #    where(:cause_id => cause_ids).limit(count)
 #  end
 
+  def self.related_for_need(need_object)
+    found = active.joins(:need).where(need_id: need_object.id).first
+    return found if found
+
+    active.joins(:need).where("needs.type_of_need" => need_object.type_of_need).first
+  end
+
   def progress_calculator
 
   end
