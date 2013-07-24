@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
     $customerio.delete(self.id)
   end
 
-  alias_method :avatar_with_facebook, :avatar
+  alias_method :avatar_old, :avatar
 
   def self.random limit=1
     order("random()").limit(1)
@@ -121,7 +121,7 @@ class User < ActiveRecord::Base
     if self.avatar_file_name.nil? && self.uid
       DummyPaperclip.new("https://graph.facebook.com/#{self.uid}/picture")
     else
-      avatar_with_facebook
+      avatar_old
     end
   end
 
