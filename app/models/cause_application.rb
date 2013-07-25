@@ -1,5 +1,5 @@
 class CauseApplication < ActiveRecord::Base
-  attr_accessible :name, :org_name, :website, :email, :phone_number, :mission, :how_hear
+  attr_accessible :name, :org_name, :website, :email, :phone_number, :mission, :how_hear, :facebook, :twitter, :mailing_address
 
   validates :name, :org_name, :website, :phone_number, :mission,   :presence => true
   validates :email, :presence => true

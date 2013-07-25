@@ -10,7 +10,7 @@ class CauseApplicationsController < ApplicationController
     
     if @cause_application.save
       
-      redirect_to root_path, :notice => "You have successfully applied to be cause" 
+      redirect_to root_path, :notice => "Thank you for your interest in Unite4:Good! One of our Cause Representatives will call you to gather a few more pieces of information in the coming days" 
     else
       render :action => "new" 
     end
