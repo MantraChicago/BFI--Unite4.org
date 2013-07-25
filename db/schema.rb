@@ -11,9 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20130725040714) do
-
+ActiveRecord::Schema.define(:version => 20130725181333) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -59,14 +57,11 @@ ActiveRecord::Schema.define(:version => 20130725040714) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-<<<<<<< HEAD
     t.text     "description_after"
     t.text     "description_before"
     t.string   "category"
     t.string   "type"
     t.string   "sub_text"
-=======
->>>>>>> e31031edcfb94919e9f66c15100d70553c335f9c
   end
 
   add_index "badges", ["id"], :name => "index_badges_on_id", :unique => true
@@ -343,7 +338,6 @@ ActiveRecord::Schema.define(:version => 20130725040714) do
     t.integer  "game_id"
     t.text     "fb_token"
     t.string   "role"
-    t.string   "slug"
     t.integer  "followers_count",        :default => 0
     t.integer  "cash_donations_count",   :default => 0
     t.integer  "goods_donations_count",  :default => 0
@@ -357,7 +351,6 @@ ActiveRecord::Schema.define(:version => 20130725040714) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "users_badges", :force => true do |t|
     t.integer "user_id"
