@@ -33,10 +33,14 @@ class Cause < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
+  before_save :set_defaults
   after_create :create_default_records
 
   delegate :need_id, :type_of_need, :days_to_go, :desired_state, :current_state, :goal_unit, :percent_complete, :goal_summary, :to => :active_campaign, :allow_nil => true, :prefix => true
 
+  def set_defaults
+    self.city_slug ||= "chicago"
+  end
 
   def urls
     {
