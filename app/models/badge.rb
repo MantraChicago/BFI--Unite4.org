@@ -12,6 +12,8 @@ class Badge < ActiveRecord::Base
 
   can_be_queried_by :user_id
 
+  has_attached_file  :image, :styles => { :medium => "300x300>", :thumb => "150x150>", :cause_tile => "81x81#" }, :default_url => "/assets/badges/new_user.png"
+
   def set_defaults
     self.file_name ||= "#{ self.name.parameterize }.png"
   end
