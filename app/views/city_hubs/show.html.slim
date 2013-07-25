@@ -28,3 +28,18 @@ header.small-static
       == render "shared/causes_4_columns", causes:@causes
     -else
       h2.polite-message There are no causes for this city at the moment
+
+- content_for :specific_scripts do
+  javascript:
+    jQuery(function($) {
+      $(window).scroll(function(){
+        var scrollTop = $(this).scrollTop();
+        if(scrollTop >= 507){
+          $('header').addClass('stay-menu');
+        }
+        else {
+          $('header').removeClass('stay-menu');
+        }
+      });
+    });
+    /* TODO: Script on page as requested, move to proper external file */
