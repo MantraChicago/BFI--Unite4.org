@@ -12,11 +12,6 @@ class Campaign < ActiveRecord::Base
 
   before_save :set_defaults
 
-#  def self.featured count=4
-#    cause_ids = Cause.featured(count).select(&:id)
-#    where(:cause_id => cause_ids).limit(count)
-#  end
-
   def self.related_for_need(need_object)
     found = active.joins(:need).where(need_id: need_object.id).first
     return found if found
@@ -42,15 +37,11 @@ class Campaign < ActiveRecord::Base
   end
 
   def current_state calculate=false
-    if calculate
-
-    end
-
-    read_attribute(:current_state) || "0"
+    (read_attribute(:current_state) || 0).to_i
   end
 
   def desired_state
-    read_attribute(:desired_state) || default_desired_state
+    (read_attribute(:desired_state) || default_desired_state).to_i
   end
 
   def timeframe_description

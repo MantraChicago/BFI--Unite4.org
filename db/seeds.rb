@@ -14,18 +14,6 @@ unless Rails.env.production?
     CauseType.find_or_create_by_name(type)
   end
 
-  gameBadges=
-        [
-          {name: 'Signed Up', file_name:'', accomplishment: "level_0"},
-          {name: 'Complete Profile', file_name:'', accomplishment: "level_1"},
-          {name: 'Watch Video', file_name:'', accomplishment: "level_2"},
-          {name: 'Share with friends', file_name:'',accomplishment: "level_3"}
-        ]
-
-  gameBadges.each do |badgeObj|
-    badge=Badge.find_or_create_by_accomplishment badgeObj[:accomplishment]
-    badge.update_attributes badgeObj
-  end
-
+  Badge.create_defaults(true)
 
 end

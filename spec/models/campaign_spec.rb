@@ -6,11 +6,12 @@ describe Campaign do
   let(:need) { create(:need, :social, cause: cause) }
   let(:user) { create(:user) }
   let(:follower) { proxy.new(user,need).fulfill! }
+  let(:more_followers) { 3.times { proxy.new(create(:user),need).fulfill! }}
 
 
   let(:campaign) do
     campaign = cause.active_campaign
-    campaign.update_attributes(:desired_state=>"20")
+    campaign.update_attributes(:desired_state=>20)
     campaign
   end
 
@@ -25,8 +26,9 @@ describe Campaign do
     end
 
     it "should increment the campaign progress" do
-      follower.should be_valid
-      campaign.current_state.should == "1"
+      more_followers
+      binding.pry
+      follower.related_campaign.current_state.should == 4
     end
   end
 end

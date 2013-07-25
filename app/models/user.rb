@@ -43,12 +43,12 @@ class User < ActiveRecord::Base
   end
 
   def award_badge accomplishment
-    badge = Badge.find_by_name(accomplishment)
+    badge = Badge.find_by_accomplishment(accomplishment)
     self.badges << badge if badge
   end
 
   def award_default_badge
-    award_badge("Signed Up")
+    award_badge("user_signed_up")
   end
 
   def customer_io_id

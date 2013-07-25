@@ -5,13 +5,37 @@ class Badge < ActiveRecord::Base
   attr_accessible :name, :description, :file_name, :accomplishment
   has_and_belongs_to_many :users, :join_table=>:users_badges
 
+  validates_presence_of :name, :accomplishment
+  validates_uniqueness_of :accomplishment, :name
+
+  before_save :set_defaults
+
   can_be_queried_by :user_id
+
+  def set_defaults
+    self.file_name ||= "#{ self.name.parameterize }.png"
+  end
 
   def self.query(params={})
     results = scoped
     results = results.where(user_id: params[:user_id]) if params[:user_id]
 
     results
+  end
+
+  DefaultBadges = [
+    {name: 'Signed Up', accomplishment: "user_signed_up"},
+    {name: 'Complete Profile', accomplishment: "completed_profile"},
+    {name: 'Watch Video', accomplishment: "watched_video"},
+    {name: 'Share with friends', accomplishment: "shared_with_friends"}
+  ]
+
+  def self.create_defaults should_delete=false
+    delete_all if should_delete
+
+    DefaultBadges.each do |badge_attributes|
+      Badge.create(badge_attributes)
+    end
   end
 end
 
