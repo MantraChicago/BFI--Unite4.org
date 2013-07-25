@@ -1,34 +1,45 @@
-.centered
-	=form_for(@cause_application) do |f|
-		.row
-			.large-12.columns.cascade-single
-				h2 New Cause Application
-				h3 Tell us about the cause you’d like to add
-			-if @cause_application.errors.any?
-				.large-12.columns
-					h3 #{ pluralize(@cause_application.errors.count, "error")} prohibited this cause_application from being saved:
-					ul
-						-@cause_application.errors.full_messages.each do |msg|
-							li #{msg}
-			.large-6.columns
-				.input_row
-					= text_field(:cause_application, :name,:placeholder => "name")
-				.input_row
-					= text_field(:cause_application, :email,:placeholder => "email")
-				.input_row
-					= text_field(:cause_application, :phone_number,:placeholder => "phone number - not displayed to public")
-				.input_row
-					= text_field(:cause_application, :facebook, :placeholder => "Facebook URL")
-				.input_row
-					= text_field(:cause_application, :twitter, :placeholder => "Twitter handle")
-			.large-6.columns
-				.input_row
-					= text_field(:cause_application, :org_name,:placeholder => "organization name")
-				.input_row
-					= text_field(:cause_application, :website,:placeholder => "website")
-				.input_row
-					= text_area(:cause_application, :mission,:placeholder => "your mission", :rows=>5)
-				.input_row
-					= text_area(:cause_application, :mailing_address, :placeholder => "mailing address", :rows=>5) 
-				.input_row
-					=f.submit "Submit Application"
+section#new-cause-application
+  =form_for(@cause_application) do |f|
+    .row
+      .large-12.columns.cascade-single
+        h1 New Cause Application
+        h2 Tell us about the cause you’d like to add
+      -if @cause_application.errors.any?
+        .row
+          .large-12.column
+            -for msg in @cause_application.errors.full_messages.each
+              .alert-box.alert{data-alert}
+                = msg
+                a.close &times;
+      .large-6.columns
+        .input_row
+          label{for='cause_application_name'} Name
+          = text_field(:cause_application, :name)
+        .input_row
+          label{for='cause_application_email'} Email
+          = text_field(:cause_application, :email, :type => "email")
+        .input_row
+          label{for='cause_application_phone_number'} Phone number
+          = text_field(:cause_application, :phone_number, :placeholder => "Not displayed to public")
+        .input_row
+          label{for='cause_application_facebook'} Facebook Profile
+          = text_field(:cause_application, :facebook, :type => "url", :value => 'http://')
+        .input_row
+          label{for='cause_application_twitter'} Twitter handle
+          = text_field(:cause_application, :twitter, :value => '@')
+      .large-6.columns
+        .input_row
+          label{for='cause_application_org_name'} Organization name
+          = text_field(:cause_application, :org_name)
+        .input_row
+          label{for='cause_application_website'} Website
+          = text_field(:cause_application, :website, :type => "url", :value => 'http://')
+        .input_row
+          label{for='cause_application_mission'} Your mission
+          = text_area(:cause_application, :mission, :rows => 5)
+        .input_row
+          label{for='cause_application_mailing_address'} Mailing address
+          = text_area(:cause_application, :mailing_address, :rows => 5)
+
+        .input_row
+          =f.submit "Submit Application", class: 'small button'

@@ -90,7 +90,8 @@ class Cause < ActiveRecord::Base
   # every cause by default has a social need ( for followers )
   def create_default_need
     if needs.count == 0
-      needs.create(type_of_need:"followers")
+      needs.create({type_of_need:"followers",
+                    name:"Help promote #{name}"})
     else
       needs.first
     end
@@ -129,7 +130,7 @@ class Cause < ActiveRecord::Base
   end
 
   def location
-    location = "#{city}, #{region}"
+    location = [city," #{region}"].join(',')
     location
   end
 

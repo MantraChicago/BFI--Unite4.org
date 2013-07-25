@@ -42,13 +42,14 @@ class User < ActiveRecord::Base
     random(1).first
   end
 
-  def award_badge accomplishment
-    badge = Badge.find_by_accomplishment(accomplishment)
+  def award_badge name, options={}
+    badge = Badge.find_by_name(name)
     self.badges << badge if badge
+    self.save
   end
 
   def award_default_badge
-    award_badge("user_signed_up")
+    award_badge('Sign Up')
   end
 
   def customer_io_id
