@@ -79,6 +79,9 @@ group :development do
   gem "quiet_assets"
 end
 
+# Deploy with Capistrano
+gem 'capistrano'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'database_cleaner'
@@ -88,7 +91,6 @@ group :test, :development do
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
 end
-
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
