@@ -11,7 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725181333) do
+
+ActiveRecord::Schema.define(:version => 20130725040714) do
+
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -57,11 +59,14 @@ ActiveRecord::Schema.define(:version => 20130725181333) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+<<<<<<< HEAD
     t.text     "description_after"
     t.text     "description_before"
     t.string   "category"
     t.string   "type"
     t.string   "sub_text"
+=======
+>>>>>>> e31031edcfb94919e9f66c15100d70553c335f9c
   end
 
   add_index "badges", ["id"], :name => "index_badges_on_id", :unique => true
