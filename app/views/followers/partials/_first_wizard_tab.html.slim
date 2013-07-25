@@ -4,7 +4,7 @@
   .support_boxes
     -if not need.cause.facebook_url.try(:empty?)
       .support_box.fb_support
-          a.facebook_post_to_wall_link href="#{need.cause.facebook_url}"
+          a.facebook_post_to_wall_link 
             img src="/assets/follow_facebook_button.jpg"
     .support_box.u4g_support
       - follow_img= current_user.is_following_cause(need.cause) ? 'u4g-following.jpg' : 'follow_u4g_button.jpg'
