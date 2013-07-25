@@ -1,4 +1,4 @@
-header.docked.small-static
+header.small-static
   .bg-cover.bg-bottom style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
     .row
       .large-12.columns.text-center
@@ -21,7 +21,7 @@ header.docked.small-static
         span
           == @city[:name] 
 
-#city-hub-cause-listings.docked-under
+#city-hub-cause-listings
   .cause-listing-container.row.mlimit
     - @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
     -if @causes.any?
