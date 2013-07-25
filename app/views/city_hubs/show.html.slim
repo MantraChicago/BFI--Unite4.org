@@ -13,8 +13,6 @@ header.docked.small-static
               .tag-block-detail.tertiary
                 == value
 
-  .cboth
-
 #causes.mlimit.causes
   .row
     .large-12.columns
@@ -26,4 +24,7 @@ header.docked.small-static
 #city-hub-cause-listings.docked-under
   .cause-listing-container.row.mlimit
     - @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
-    == render "shared/causes_4_columns", causes:@causes
+    -if @causes.any?
+      == render "shared/causes_4_columns", causes:@causes
+    -else
+      h2.polite-message There are no causes for this city at the moment
