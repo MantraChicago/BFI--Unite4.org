@@ -1,7 +1,5 @@
 unless Rails.env.production?
 
-  Unite::Development.clear_database
-
   causeTypes=[
     "Arts",
     'Education' ,
@@ -16,17 +14,6 @@ unless Rails.env.production?
     CauseType.find_or_create_by_name(type)
   end
 
-  gameBadges=[{name: 'Complete profile', file_name:'', accomplishment: "level_0"},
-        {name: 'Watch Video', file_name:'', accomplishment: "level_1"},
-        {name: 'Share with friends', file_name:'',accomplishment: "level_2"}
-        ]
-
-  gameBadges.each do |badgeObj|
-    badge=Badge.find_or_create_by_accomplishment badgeObj[:accomplishment]
-    badge.update_attributes badgeObj
-  end
-
-  Unite::Development.create_sample_causes_and_locations_in(:chicago, 5)
-  Unite::Development.create_sample_causes_and_locations_in(:new_york, 5)
+  Badge.create_defaults(true)
 
 end

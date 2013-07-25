@@ -6,7 +6,6 @@ class GoodsDonation < ActiveRecord::Base
   belongs_to :need
   belongs_to :user, :counter_cache => true
 
-
 end
 
 # == Schema Information

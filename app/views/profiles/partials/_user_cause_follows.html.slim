@@ -4,5 +4,5 @@
     - user.causes.each do |cause|
       li
         a href="#{url_for(cause)}"
-          = image_tag cause.picture.url
+          = image_tag cause.picture.url, alt: cause.name
   /a.panel-cta{href='#'} See More

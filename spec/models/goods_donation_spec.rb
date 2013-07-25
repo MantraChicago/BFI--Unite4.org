@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe GoodsDonation do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should increment the campaign by 1" do
+    GoodsDonation.new.contribution_increment.should == 1
+  end
 end
 
 # == Schema Information

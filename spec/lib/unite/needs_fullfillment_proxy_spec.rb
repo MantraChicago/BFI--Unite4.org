@@ -12,8 +12,7 @@ describe Unite::NeedsFulfillmentProxy do
 
     it "should create a follower for a social need" do
       need = create(:need, :social, cause: cause)
-      proxy.new(user, need).fulfill!
-      follower = Follower.last
+      follower = proxy.new(user, need).fulfill!
 
       follower.user.should == user
       follower.need.should == need

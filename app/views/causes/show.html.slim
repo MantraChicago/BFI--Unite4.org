@@ -64,7 +64,7 @@
 
 
       .single-cause-tile.gray_border.mlimit-top.mlimit
-        = render 'causes/partials/cause_campaign', :cause => @cause
+        = render :partial => 'shared/cause_tile_modal', :locals => {cause: @cause}
       .gray_border.smoke-bg.s-padding.mlimit
         span.s-margin-right SHARE
         input.s-padding(placeholder="write a note...")
