@@ -2,7 +2,7 @@ class Badge < ActiveRecord::Base
   include Smooth::Queryable
   include Smooth::Presentable
 
-  attr_accessible :name, :description, :file_name, :accomplishment
+  attr_accessible :name, :description, :file_name, :accomplishment, :description_after, :description_before, :category, :type, :sub_text
   has_and_belongs_to_many :users, :join_table=>:users_badges
 
   validates_presence_of :name, :accomplishment
@@ -27,7 +27,7 @@ class Badge < ActiveRecord::Base
 
 
   DefaultBadges = [
-      {name: 'Checking It Out', file_name: 'checking_it_out.png',description_after: "You visited your first cause page on $DATE. Why don't you check back in with $CAUSE and see if there's anything you can do for them now.", description_before: "Earn this badge by visiting one cause. Why not try one of the causes below?",category: 'Learning', type: 'one_time', sub_text: 'Get to know your first cause'},
+     {name: 'Checking It Out', file_name: 'checking_it_out.png',description_after: "You visited your first cause page on $DATE. Why don't you check back in with $CAUSE and see if there's anything you can do for them now.", description_before: "Earn this badge by visiting one cause. Why not try one of the causes below?",category: 'Learning', type: 'one_time', sub_text: 'Get to know your first cause'},
       {name: 'Keeping Tabs', file_name: 'keeping_tabs.png',description_after: "You followed your first cause page on $DATE. Have you kept tabs on them through your follow page?", description_before: "Earn this badge by following one cause. Following causes let's you keep tabs on their new projects and donation drives. Why not check out one of the causes below?",category: 'Learning', type: 'one_time', sub_text: 'Follow one cause'},
       {name: 'Goodie Goodie', file_name: 'goodie_goodie.png',description_after: "You followed your first cause page on $DATE. Have you kept tabs on them through your follow page?", description_before: "Earn this badge by following one cause. Following causes let's you keep tabs on their new projects and donation drives. Why not check out one of the causes below?",category: 'Giving', type: 'one_time', sub_text: 'Donate to your first cause'},
       {name: 'Chatty Cathy', file_name: 'chatty_cathy.png',description_after: "You chatted up an awesome cause to your friends.", description_before: "Earn this badge by sharing causes through the social media/email links on each cause page. Letting more people know what they can do to help is awesome! Need some ideas of causes to share?",category: 'Sharing', type: 'one_time', sub_text: 'Tell your friends about your new favorite cause'},
@@ -50,7 +50,7 @@ class Badge < ActiveRecord::Base
       {name: 'Gotta Earn Them All', file_name: 'gotta_earn_them_all.png',description_after: "You're nerdy, generous and curious - what more could anyone ask for?", description_before: "You think you've got what it takes to get all of the badges? Prove it and collect them all! Check out these individual badge pages to find out what you have to do.",category: 'none', type: 'one_time', sub_text: 'Nerdy, generous and curious.'},  
       {name: 'Nerdy Supporter', file_name: 'nerdy_supporter.png',description_after: "Now everyone knows that you're awfully bright!", description_before: "We know you're clever,but how will anyone else know it if you don't have a nerdy supporter badge to show off?",category: 'learning', type: 'one_time', sub_text: 'Get educated: Earn one of each of the other learning badges!'}, 
       {name: 'Generous Supporter', file_name: 'generous_supporter.png',description_after: "Your generosity knows no bounds and now you've got proof!", description_before: "It's time to really explore what it means to give. Check out what kinds of giving you can do with unite4good by earning these two badges.",category: 'giving', type: 'one_time', sub_text: 'A variety of gifts: Earn one of each of the giving badges!'}, 
-      {name: 'Curiouser and Curiouser', file_name: 'curiouser_and_curiouser.png',description_after: 'You know how to get heard, and how to bring attention to causes that deeply matter to you.', description_before: 'You have one powerful tool for helping causes out no matter your income level or amount of time - your voice!',category: 'sharing', type: 'one_time', sub_text: 'Make sure all your friends know about your causes: Earn 5 megaphone badges!'},
+      {name: 'Curiouser and Curiouser', file_name: 'curiouser_and_curiouser.png',description_after: 'You know how to get heard, and how to bring attention to causes that deeply matter to you.', description_before: 'You have one powerful tool for helping causes out no matter your income level or amount of time - your voice!',category: 'sharing', type: 'one_time', sub_text: 'Make sure all your friends know about your causes: Earn 5 megaphone badges!'}, 
   ]
 
   def self.create_defaults should_delete=false
