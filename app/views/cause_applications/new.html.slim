@@ -16,14 +16,19 @@
 				.input_row
 					= text_field(:cause_application, :email,:placeholder => "email")
 				.input_row
-					= text_field(:cause_application, :phone_number,:placeholder => "phone number")
+					= text_field(:cause_application, :phone_number,:placeholder => "phone number - not displayed to public")
+				.input_row
+					= text_field(:cause_application, :facebook, :placeholder => "Facebook URL")
+				.input_row
+					= text_field(:cause_application, :twitter, :placeholder => "Twitter handle")
 			.large-6.columns
 				.input_row
 					= text_field(:cause_application, :org_name,:placeholder => "organization name")
 				.input_row
 					= text_field(:cause_application, :website,:placeholder => "website")
 				.input_row
-					= text_area(:cause_application, :mission,:placeholder => "your mission", :rows=>5) 
+					= text_area(:cause_application, :mission,:placeholder => "your mission", :rows=>5)
+				.input_row
+					= text_area(:cause_application, :mailing_address, :placeholder => "mailing address", :rows=>5) 
 				.input_row
 					=f.submit "Submit Application"
-				    
