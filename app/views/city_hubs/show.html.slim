@@ -1,30 +1,42 @@
-header.docked.small-static
-  .bg-cover.bg-bottom style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
+- @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
+
+-if @causes.any?
+  header.docked.small-static
+    .bg-cover.bg-bottom style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
+      .row
+        .large-12.columns.text-center
+          .h0.oxygen.bold.white.blimit-top.docked-item.transition#cityname == @city[:name]
+        .large-12.columns.text-center.mlimit
+          - CauseType.grouped_by_city(@city[:slug]).each do |pair|
+            - key, value = pair
+            .tag-block.docked-medium.transition
+              a href="/charities-in-#{ @city[:slug] }/supporting-#{ key.parameterize }.html?partial=true" data-update=true data-target="#city-hub-cause-listings"
+                .tag-block-detail 
+                  == key
+                .tag-block-detail.tertiary
+                  == value
+-else
+  header.small-static#no-cause-found
+    .bg-cover.bg-bottom style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
+      .row
+        .large-12.columns.text-center
+          h1= @city[:name]
+          h2 Coming Soon
+          p We are excited to announce that we will soon have thousands of causes for you to explore and contribute to in #{@city[:name]}! Check back with us in the near future to find out how YOU can make an impact.
+          p In the mean time, continue exploring
+          .row
+            .large-9.large-centered.columns
+              = render :partial => "pages/partials/take_action_form"
+
+-if @causes.any?
+  #causes.mlimit.causes
     .row
-      .large-12.columns.text-center
-        .h0.oxygen.bold.white.blimit-top.docked-item.transition#cityname == @city[:name]
-      .large-12.columns.text-center.mlimit
-        - CauseType.grouped_by_city(@city[:slug]).each do |pair|
-          - key, value = pair
-          .tag-block.docked-medium.transition
-            a href="/charities-in-#{ @city[:slug] }/supporting-#{ key.parameterize }.html?partial=true" data-update=true data-target="#city-hub-cause-listings"
-              .tag-block-detail 
-                == key
-              .tag-block-detail.tertiary
-                == value
+      .large-12.columns
+        h3.areatitle.mlimit-top
+          | Browse charities in  
+          span
+            == @city[:name] 
 
-#causes.mlimit.causes
-  .row
-    .large-12.columns
-      h3.areatitle.mlimit-top
-        | Browse charities in  
-        span
-          == @city[:name] 
-
-#city-hub-cause-listings.docked-under
-  .cause-listing-container.row.mlimit
-    - @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
-    -if @causes.any?
-      == render "shared/causes_4_columns", causes:@causes
-    -else
-      h2.polite-message There are no causes for this city at the moment
+  #city-hub-cause-listings.docked-under
+    .cause-listing-container.row.mlimit
+      = render "shared/causes_4_columns", causes:@causes

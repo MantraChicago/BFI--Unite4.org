@@ -16,7 +16,7 @@
         .slideshow-wrapper.mlimit
           .preloader
           ul data-orbit="" data-options="orbit_transition_class: transition-i; animation: fade; slide_number: false; timer: false; bullets: false;"
-            -if !@cause.video_link.empty?
+            - if !@cause.video_link.empty?
               li
                 iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src=@cause.video_link type="text/html" width="100%"
             -@cause.cause_images.each do |image|

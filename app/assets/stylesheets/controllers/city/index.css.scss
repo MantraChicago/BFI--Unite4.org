@@ -2,6 +2,59 @@
 	margin-bottom: 400px;
 }
 
+
+
+
+#no-cause-found {
+}
+#no-cause-found .bg-cover {
+  position: relative;
+  z-index: 10;
+  &:after {
+    content: '';
+    background-color: rgba(0, 0, 0, .6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+  }
+}
+#no-cause-found .bg-cover > .row {
+  position: relative;
+  padding: 3em 0;
+  color: #fff;
+  z-index: 30;
+}
+#no-cause-found h1,
+#no-cause-found h2,
+#no-cause-found p {
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+}
+#no-cause-found h1 {
+  font-size: 6.2em;
+  line-height: 1em;
+  margin: 0 0 .6em;
+  font-weight: bold;
+}
+#no-cause-found h2 {
+  font-size: 2.7em;
+  margin: 0 0 .4em;
+  line-height: 1em;
+  font-weight: 100;
+}
+#no-cause-found p {
+  font-size: 1.4em;
+  line-height: 1.2em;
+  font-weight: 100;
+  &:last-of-type {
+    font-weight: bold;
+  }
+}
+
+
 @media only screen and (max-width: 48em) {
 	#cityname {
 		margin-bottom: 100px;
