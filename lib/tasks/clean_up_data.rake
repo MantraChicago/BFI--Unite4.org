@@ -16,4 +16,19 @@ namespace :clean_up do
       user.save
     end
   end
+
+  task :save_cause_images => [:environment] do
+    Cause.all.each do |cause|
+      dir="/home/deploy/cause_images/#{cause.slug}/*.jpg"
+      #dir = "/Users/Eddie/Downloads/cause_images/#{cause.slug}/*.jpg"
+      files=Dir.glob(dir) 
+      files.each do |file|
+
+        picture_file=File.new(file, "r")
+        cause_image = CauseImage.create({:cause_id => cause.id,
+                                         :picture => picture_file })
+        
+      end
+    end
+  end
 end
