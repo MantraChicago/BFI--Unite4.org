@@ -6,12 +6,12 @@ li
         a{href='#'}
           span Badge
       .content{data-section-content}
-        = image_tag('badges/new_user.png', :size => '150x150')
+        = image_tag("badges/#{badge.file_name}", :size => '150x150')
     section.badge-details
       p.title{data-section-title}
         a{href='#'}
           span Info
       .content{data-section-content}
         p
-          = image_tag('badges/new_user.png', :size => '50x50')
-          |#{badge.description}
+          = image_tag("badges/#{badge.file_name}", :size => '50x50')
+          |#{badge.description_after}
