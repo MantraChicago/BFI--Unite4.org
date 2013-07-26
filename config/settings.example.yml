@@ -6,6 +6,9 @@ defaults: &defaults
     app_secret: "80688b8bfef4e5c881dd5b635d54eca9"
   google:
     maps_key: "AIzaSyC5nbu6QghhMZ7nUg8KppPc--tPG1QFWkA"
+  stripe:
+    private_key: 'sk_test_1XLNZlt83RDDPqRIO7EiWoCm'
+    public_key: 'pk_test_B86VL4gz8MTalpfcaRc4paiP'
 
 development:
   <<: *defaults
