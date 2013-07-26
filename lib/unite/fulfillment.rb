@@ -38,12 +38,14 @@ module Unite
     # potential race state.
     def update_campaign_progress
       return if progress_updated?
-
+      update_campaign_progress_safely!
+=begin
       if Rails.env.test? || Rails.env.development?
         update_campaign_progress_safely!
       else
         delay.update_campaign_progress_safely!
       end
+=end
     end
 
     def progress_updated?
