@@ -65,12 +65,17 @@ end
 #
 # Table name: badges
 #
-#  id             :integer          not null, primary key
-#  name           :string(255)
-#  file_name      :string(255)
-#  accomplishment :string(255)
-#  description    :text
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  file_name          :string(255)
+#  accomplishment     :string(255)
+#  description        :text
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  description_after  :text
+#  description_before :text
+#  category           :string(255)
+#  badge_type         :string(255)
+#  sub_text           :string(255)
 #
 

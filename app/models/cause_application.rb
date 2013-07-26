@@ -11,13 +11,16 @@ end
 #
 # Table name: cause_applications
 #
-#  id           :integer          not null, primary key
-#  name         :string(255)
-#  org_name     :string(255)
-#  website      :string(255)
-#  email        :string(255)
-#  phone_number :string(255)
-#  mission      :text
-#  how_hear     :text
+#  id              :integer          not null, primary key
+#  name            :string(255)
+#  org_name        :string(255)
+#  website         :string(255)
+#  email           :string(255)
+#  phone_number    :string(255)
+#  mission         :text
+#  how_hear        :text
+#  facebook        :string(255)
+#  twitter         :string(255)
+#  mailing_address :text
 #
 

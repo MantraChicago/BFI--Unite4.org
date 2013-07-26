@@ -10,7 +10,7 @@ class Campaign < ActiveRecord::Base
   scope :active, lambda { where(active:true) }
 	scope :inactive, lambda { where(active:false) }
 
-  before_save :set_defaults
+  before_save :set_defaults, :on => :create
 
   def self.related_for_need(need_object)
     return unless need_object
@@ -63,7 +63,7 @@ class Campaign < ActiveRecord::Base
     when "goods_donations"
       500
     when "cash_donations"
-      5000
+      5000 * 100
     end
   end
 
@@ -82,24 +82,31 @@ class Campaign < ActiveRecord::Base
   def default_goal_summary
     case type_of_need
     when "followers"
-      "#{ desired_state } Followers in #{ timeframe_description }"
+      "#{ desired_state } Followers in 4 weeks"
     when "volunteers"
-      "#{ desired_state } Volunteers in #{ timeframe_description }"
+      "#{ desired_state } Volunteers in 4 weeks"
     when "goods_donations"
-      "#{ desired_state } Cans of food in #{ timeframe_description }"
+      "#{ desired_state } Cans of food in 4 weeks"
     when "cash_donations"
-      "#{ desired_state } Dollars in #{ timeframe_description }"
+      "#{ desired_state / 100 } Dollars in 4 weeks"
     end
+  end
+
+  def adjust_start_date_and_end_date_forward
+    self.start_date = Time.now
+    self.end_date = 4.weeks.from_now
+    self.goal_summary = default_goal_summary
   end
 
   def set_defaults
     self.type_of_need ||= (need && need.type_of_need || "followers")
-    self.start_date ||= Time.now
-    self.end_date ||= 30.days.from_now
-    self.current_state ||= 0
-    self.percent_complete ||= 0
-    self.desired_state ||= default_desired_state
-    self.active ||= true
+
+    adjust_start_date_and_end_date_forward
+
+    self.current_state = 0
+    self.percent_complete = 0
+    self.desired_state = default_desired_state
+    self.active = true
   end
 end
 
@@ -107,19 +114,19 @@ end
 #
 # Table name: campaigns
 #
-#  id                   :integer          not null, primary key
-#  cause_id             :integer
-#  need_id              :integer
-#  start_date           :datetime
-#  end_date             :datetime
-#  percent_complete     :integer
-#  desired_state        :string(255)
-#  current_state        :string(255)
-#  active               :boolean          default(FALSE)
-#  created_at           :datetime         not null
-#  updated_at           :datetime         not null
-#  type_of_need         :string(255)
-#  goal_summary         :string(255)
-#  timefame_description :string(255)
+#  id                    :integer          not null, primary key
+#  cause_id              :integer
+#  need_id               :integer
+#  start_date            :datetime
+#  end_date              :datetime
+#  percent_complete      :integer
+#  desired_state         :string(255)
+#  current_state         :string(255)
+#  active                :boolean          default(FALSE)
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  type_of_need          :string(255)
+#  goal_summary          :string(255)
+#  timeframe_description :string(255)
 #
 

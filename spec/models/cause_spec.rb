@@ -105,5 +105,6 @@ end
 #  city_slug             :string(255)
 #  short_description     :string(255)
 #  contact_email         :string(255)
+#  user_id               :integer
 #
 
