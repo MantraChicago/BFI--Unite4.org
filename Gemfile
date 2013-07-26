@@ -84,6 +84,9 @@ gem 'capistrano'
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'poltergeist'
   gem 'database_cleaner'
   gem 'guard'
   gem 'guard-rspec'

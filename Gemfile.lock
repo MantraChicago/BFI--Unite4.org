@@ -92,8 +92,17 @@ GEM
     capistrano-recipes (0.8.0)
       capistrano (>= 2.5.9)
       capistrano-ext (>= 1.2.1)
+    capybara (1.1.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (~> 2.0)
+      xpath (~> 0.1.4)
     carmen (1.0.0)
       unicode_utils (~> 1.4.0)
+    childprocess (0.3.9)
+      ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.2.8)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -139,6 +148,9 @@ GEM
       http_parser.rb (>= 0.6.0.beta.2)
     em-socksify (0.3.0)
       eventmachine (>= 1.0.0.beta.4)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
     erubis (2.7.0)
     ethon (0.5.12)
       ffi (>= 1.3.0)
@@ -211,6 +223,8 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    launchy (2.3.0)
+      addressable (~> 2.3)
     listen (1.2.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -226,6 +240,7 @@ GEM
       polyamorous (~> 0.5.0)
     method_source (0.8.1)
     mime-types (1.23)
+    mini_portile (0.5.1)
     multi_json (1.7.7)
     multi_xml (0.5.4)
     multipart-post (1.2.0)
@@ -238,6 +253,10 @@ GEM
       net-ssh (>= 1.99.1)
     net-ssh-shell (0.2.0)
       net-ssh (~> 2.1.0)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
+    nokogiri (1.6.0-x86-mingw32)
+      mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -260,6 +279,11 @@ GEM
       mime-types
     pg (0.15.1)
     pg (0.15.1-x86-mingw32)
+    poltergeist (0.2.0)
+      capybara (~> 1.0)
+      em-websocket (~> 0.3.1)
+      json (~> 1.6)
+      sfl (~> 2.0)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -332,6 +356,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    rubyzip (0.9.9)
     rvm-capistrano (1.4.1)
       capistrano (>= 2.0.0)
     sass (3.2.9)
@@ -339,6 +364,12 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    selenium-webdriver (2.33.0)
+      childprocess (>= 0.2.5)
+      multi_json (~> 1.0)
+      rubyzip
+      websocket (~> 1.0.4)
+    sfl (2.2)
     simple-settings (0.0.5)
     sinatra (1.4.3)
       rack (~> 1.4)
@@ -385,8 +416,11 @@ GEM
       descendants_tracker (~> 0.0.1)
     warden (1.2.3)
       rack (>= 1.0)
+    websocket (1.0.7)
     websocket-driver (0.2.1)
     win32console (1.3.2-x86-mingw32)
+    xpath (0.1.4)
+      nokogiri (~> 1.3)
     yajl-ruby (1.1.0)
     yajl-ruby (1.1.0-x86-mingw32)
     zurb-foundation (4.2.3)
@@ -405,6 +439,7 @@ DEPENDENCIES
   capistrano
   capistrano-ext
   capistrano-recipes
+  capybara
   carmen
   coffee-rails (~> 3.2.1)
   colored
@@ -426,11 +461,13 @@ DEPENDENCIES
   hipchat (~> 0.10.0)
   jquery-rails
   json
+  launchy
   net-ssh-shell
   omniauth (= 1.1.4)
   omniauth-facebook
   paperclip (~> 2.7)
   pg
+  poltergeist
   pry-nav
   pry-rails
   quiet_assets
