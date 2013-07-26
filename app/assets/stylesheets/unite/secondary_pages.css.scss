@@ -62,9 +62,18 @@
   line-height: 1.8;
   margin-bottom: 2em;
 }
+.sp-description ul {
+  padding: 0 0 0 1.2em;
+}
+.sp-description li {
+  margin: .75em 0;
+}
 .sp-description .large-7,
 .sp-description .large-5 {
   padding-top: 1.8em;
+}
+.sp-description .large-12 {
+  padding-top: 1.2em;
 }
 .sp-description .large-7 {
 }
