@@ -27,6 +27,7 @@ class Campaign < ActiveRecord::Base
 
   def recalculate_progress!
     self.current_state = fulfillment_class.where(cause_id: self.cause_id).collect(&:contribution_increment).sum rescue self.current_state
+    self.percent_complete(true)
   end
 
   def percent_complete calculate=false
