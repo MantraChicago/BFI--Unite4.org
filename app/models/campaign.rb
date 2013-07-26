@@ -21,8 +21,12 @@ class Campaign < ActiveRecord::Base
     active.joins(:need).where("needs.type_of_need" => need_object.type_of_need).first
   end
 
-  def progress_calculator
+  def fulfillment_class
+    type_of_need.singularize.camelize.constantize
+  end
 
+  def recalculate_progress!
+    self.current_state = fulfillment_class.where(cause_id: self.cause_id).collect(&:contribution_increment).sum rescue self.current_state
   end
 
   def percent_complete calculate=false
