@@ -11,6 +11,13 @@ class Need < ActiveRecord::Base
   include Smooth::Presentable
 
 
+  PastTenseActions = {
+    "followers" => "Followers",
+    "volunteers" => "Volunteers",
+    "cash_donations" => "Dollars",
+    "goods_donations" => "Donations"
+  }
+
   GivingActions = {
     "followers" => "Promote",
     "volunteers" => "Volunteer",
@@ -47,7 +54,7 @@ class Need < ActiveRecord::Base
     type_of_need == "volunteers"
   end
 
-  
+
 end
 
 # == Schema Information

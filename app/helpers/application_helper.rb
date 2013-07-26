@@ -27,6 +27,16 @@ module ApplicationHelper
     Need::GivingActions[type_of_need]
   end
 
+  def goal_status_report campaign
+    campaign ||= Campaign.new
+
+    currency = campaign.type_of_need == "cash_donations" ? "$" : ""
+    markup = "<strong>#{ currency } #{ campaign.current_state }</strong>"
+    markup += "<em>#{ Need::PastTenseActions[campaign.type_of_need] }</em>"
+
+    markup.html_safe
+  end
+
   #for devise login
   def resource_name
     :user
