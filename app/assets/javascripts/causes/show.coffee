@@ -7,3 +7,4 @@ Application.causes.show= ->
 		show_element=$('#'+$(this).attr('data-show_id') )
 		$('.bar_content').hide()
 		show_element.show()
+
