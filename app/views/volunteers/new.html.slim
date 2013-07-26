@@ -2,7 +2,7 @@ a.close-reveal-modal &#215;
 .need_modal.volunteer_donations_modal
   .wizard 
     .steps-wrapper
-      .step.active 
+      .step.active style="color:red"
         =render 'volunteers/partials/first_wizard_tab', :need => @need
       
     .wizard-navigation.centered
@@ -14,8 +14,33 @@ a.close-reveal-modal &#215;
 javascript:
 
   $('.button-submit').click(function(){
+    var valid=valid_phone_number($('.phone_number').val()) && isValidUSZip($('.zip_code').val())
+
+    if(!valid_phone_number($('.phone_number').val())){
+      $('.payment-errors').html('Invalid 10 digit phone number')
+      return
+    }
+
+    if(!isValidUSZip($('.zip_code').val())){
+      $('.payment-errors').html('Invalid zip code')
+      return
+    }
+
+
     var form_data=$('.volunteer_form').serializeObject()
     $.post('/causes/#{@need.cause.slug}/#{@need.type_of_need}/#{@need.id}/fulfillments',form_data, function(data){
 
     })
+
+    
   })
+
+  var valid_phone_number=function(p) {
+      var phoneRe = /^[2-9]\d{2}[2-9]\d{2}\d{4}$/;
+      var digits = p.replace(/\D/g, "");
+      return (digits.match(phoneRe) !== null);
+    }
+
+  var isValidUSZip=function(sZip) {
+     return /^\d{5}(-\d{4})?$/.test(sZip);
+  }
