@@ -65,12 +65,18 @@
 
 
       .single-cause-tile.gray_border.mlimit-top.mlimit
-        = render :partial => 'shared/cause_tile_modal', :locals => {cause: @cause}
+        = render :partial => 'shared/cause_tile_modal', :locals => {cause: @cause, :show_modal_on_cause_page => false}
       /.gray_border.smoke-bg.s-padding.mlimit
         span.s-margin-right SHARE
         input.s-padding(placeholder="write a note...")
       .mlimit
         = render 'causes/partials/cause_followers', :cause => @cause
+
+-if params[:show_campaign_modal]
+  javascript:
+    window.addEventListener('load', function() {
+       Application.open_need_modal(#{@cause.active_campaign.need.id}, "#{@cause.active_campaign.need.type_of_need}","#{@cause.slug}" )
+    }, false)
 
 
 

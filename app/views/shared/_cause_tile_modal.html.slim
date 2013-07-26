@@ -30,8 +30,12 @@
       .bar-holder.slimit
         .bar.oxygen style="width:#{ cause.active_campaign_percent_complete }%;"
           = cause.active_campaign_percent_complete.to_s + "%"
-      a.button.expand
-        | I WANT TO HELP
+      -if show_modal_on_cause_page
+         a.button.expand href="#{url_for cause}?show_campaign_modal=true"
+          | I WANT TO HELP
+      -else
+        a.button.expand.open-fulfillment-modal data-need-id=cause.active_campaign.need.id data-type-of-need=cause.active_campaign.need.type_of_need
+          | I WANT TO HELP
 
   .row.modal-cause-period
     .large-12.column

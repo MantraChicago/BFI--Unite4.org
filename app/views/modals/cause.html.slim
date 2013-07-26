@@ -8,5 +8,5 @@ div.cause-modal
       p.cause-description #{@cause.description}
       = link_to 'see more', @cause
     .large-4.columns.cause-listing-container
-      = render :partial => 'shared/cause_tile_modal', :locals => {cause: @cause}
+      = render :partial => 'shared/cause_tile_modal', :locals => {cause: @cause, :show_modal_on_cause_page => true}
   a.close-reveal-modal &#215;
