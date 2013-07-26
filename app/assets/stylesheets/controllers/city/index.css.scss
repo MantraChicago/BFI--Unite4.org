@@ -1,5 +1,17 @@
+.stay-menu {
+  margin-bottom: 660px;
+  position: relative;
+  z-index: 10;
+}
+.stay-menu .bg-cover {
+  position: fixed;
+  top: -455px;
+  width: 100%;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .4);
+}
+
 #cityname {
-	margin-bottom: 400px;
+  margin-bottom: 400px;
 }
 
 
@@ -56,7 +68,7 @@
 
 
 @media only screen and (max-width: 48em) {
-	#cityname {
-		margin-bottom: 100px;
-	}
+  #cityname {
+    margin-bottom: 100px;
+  }
 }

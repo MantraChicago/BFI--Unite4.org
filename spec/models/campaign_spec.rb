@@ -5,6 +5,7 @@ describe Campaign do
   let(:proxy) { Unite::NeedsFulfillmentProxy }
   let(:need) { create(:need, :social, cause: cause) }
   let(:user) { create(:user) }
+
   let(:follower) { proxy.new(user,need).fulfill! }
   let(:more_followers) { 3.times { proxy.new(create(:user),need).fulfill! }}
 
@@ -27,7 +28,6 @@ describe Campaign do
 
     it "should increment the campaign progress" do
       more_followers
-      binding.pry
       follower.related_campaign.current_state.should == 4
     end
   end

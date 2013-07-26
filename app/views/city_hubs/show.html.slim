@@ -1,7 +1,7 @@
 - @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
 
 -if @causes.any?
-  header.docked.small-static
+  header.small-static
     .bg-cover.bg-bottom style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
       .row
         .large-12.columns.text-center
@@ -37,6 +37,21 @@
           span
             == @city[:name] 
 
-  #city-hub-cause-listings.docked-under
+  #city-hub-cause-listings
     .cause-listing-container.row.mlimit
       = render "shared/causes_4_columns", causes:@causes
+
+- content_for :specific_scripts do
+  javascript:
+    jQuery(function($) {
+      $(window).scroll(function(){
+        var scrollTop = $(this).scrollTop();
+        if(scrollTop >= 507){
+          $('header').addClass('stay-menu');
+        }
+        else {
+          $('header').removeClass('stay-menu');
+        }
+      });
+    });
+    /* TODO: Script on page as requested, move to proper external file */

@@ -16,6 +16,16 @@ module Unite
                          )
     end
 
+    def update_campaign_progress_safely!
+      return unless campaign_object = related_campaign
+
+      needs = self.class.where(cause_id: campaign_object.cause_id)
+      needs = needs.where("created_at >= ?", campaign_object.start_date)
+      needs = needs.where("created_at <= ?", campaign_object.end_date)
+
+      campaign_object.current_state = needs.count
+    end
+
     def related_campaign
       @related_campaign ||= cause.campaigns.active.related_for_need(self.need)
     end
@@ -30,7 +40,7 @@ module Unite
     #
     # potential race state.
     def update_campaign_progress
-      update_campaign_progress_unsafe!
+      update_campaign_progress_safely!
     end
 
     def progress_updated?

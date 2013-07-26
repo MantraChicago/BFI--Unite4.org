@@ -40,6 +40,9 @@ class Cause < ActiveRecord::Base
 
   def set_defaults
     self.city_slug ||= "chicago"
+    if self.cause_type_id.nil? && !cause_types.empty?
+      self.cause_type_id = cause_types.first.try(:id)
+    end
   end
 
   def urls
