@@ -4,9 +4,16 @@ module Unite
 
     included do
       class_attribute :update_campaign_method
+
+      after_create :create_contribution_record
+      after_create :update_campaign_progress
     end
 
-    def create_contribution_record(need)
+    def create_contribution_record(need=nil)
+      need ||= self.need
+
+      return unless need.present?
+
       Contribution.create(need_type: need.type_of_need,
                           need_id: need.try(:id),
                           cause_id: self.cause_id,
@@ -14,16 +21,6 @@ module Unite
                           fulfillment_type: self.class.to_s,
                           fulfillment_id: self.id
                          )
-    end
-
-    def update_campaign_progress_safely!
-      return unless campaign_object = related_campaign
-
-      needs = self.class.where(cause_id: campaign_object.cause_id)
-      needs = needs.where("created_at >= ?", campaign_object.start_date)
-      needs = needs.where("created_at <= ?", campaign_object.end_date)
-
-      campaign_object.current_state = needs.count
     end
 
     def related_campaign
@@ -40,7 +37,13 @@ module Unite
     #
     # potential race state.
     def update_campaign_progress
-      update_campaign_progress_safely!
+      return if progress_updated?
+
+      if Rails.env.test? || Rails.env.development?
+        update_campaign_progress_safely!
+      else
+        delay.update_campaign_progress_safely!
+      end
     end
 
     def progress_updated?
@@ -54,6 +57,16 @@ module Unite
       end
       send(custom_method).to_i
     end
+
+    def update_campaign_progress_safely!
+      return unless campaign_object = related_campaign
+
+      campaign_object = Campaign.find(campaign_object.id)
+
+      campaign_object.recalculate_progress!
+      campaign_object.save
+    end
+
 
     def update_campaign_progress_unsafe!
       return unless related_campaign.try(:active?)

@@ -103,8 +103,8 @@ class Campaign < ActiveRecord::Base
 
     adjust_start_date_and_end_date_forward
 
-    self.current_state = 0
-    self.percent_complete = 0
+    self.current_state ||= 0
+    self.percent_complete ||= 0
     self.desired_state = default_desired_state
     self.active = true
   end
