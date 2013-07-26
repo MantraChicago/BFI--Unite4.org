@@ -19,6 +19,8 @@
             - if !@cause.video_link.try(:empty?)
               li
                 iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src=@cause.video_link type="text/html" width="100%"
+            -if !@cause.picture_file_name.nil? 
+              li style="background-image:url(#{@cause.picture.url}); height: 100%;"
             -@cause.cause_images.each do |image|
               li style="background-image:url(#{image.picture.url}); height: 100%;"              
                 .orbit-caption #{image.caption}
