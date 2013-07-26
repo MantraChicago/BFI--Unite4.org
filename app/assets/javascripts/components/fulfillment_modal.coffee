@@ -3,7 +3,7 @@ $('.open-fulfillment-modal').on "click", (e)->
   need_id = $target.data('need-id')
   type_of_need = $target.data('type-of-need')
   slug = $target.data('cause-slug')
-  open_need_modal(need_id, type_of_need,slug)
+  Application.open_need_modal(need_id, type_of_need,slug)
 
 
 
