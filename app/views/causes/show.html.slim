@@ -14,7 +14,7 @@
     .large-9.columns
       #cause-info
         .slideshow-wrapper.mlimit
-          .preloader
+          /.preloader #removing preloader, which causes issue when no video or images
           ul data-orbit="" data-options="orbit_transition_class: transition-i; animation: fade; slide_number: false; timer: false; bullets: false;"
             - if !@cause.video_link.try(:empty?)
               li
