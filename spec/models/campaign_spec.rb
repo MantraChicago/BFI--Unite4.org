@@ -28,7 +28,7 @@ describe Campaign do
 
     it "should increment the campaign progress" do
       more_followers
-      follower.related_campaign.current_state.should == 4
+      follower.related_campaign.reload.current_state.should == 4
     end
   end
 end
