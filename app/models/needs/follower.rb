@@ -13,6 +13,12 @@ class Follower < ActiveRecord::Base
 
   delegate :avatar, :to => :user
 
+  def self.calculate_campaign_progress_for(campaign_object)
+    needs = where(need_id: campaign_object.need_id)
+    needs = needs.where("created_at >= ?", campaign.start_date)
+    needs = needs.where("created_at <= ?", campaign.end_date)
+    needs.count
+  end
 end
 
 # == Schema Information

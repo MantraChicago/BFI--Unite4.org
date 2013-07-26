@@ -13,6 +13,8 @@ class Campaign < ActiveRecord::Base
   before_save :set_defaults
 
   def self.related_for_need(need_object)
+    return unless need_object
+
     found = active.joins(:need).where(need_id: need_object.id).first
     return found if found
 
