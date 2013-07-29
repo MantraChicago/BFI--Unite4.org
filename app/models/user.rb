@@ -71,6 +71,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def has_contributed_to_need need
+    contributions.where(need_id: need.id, need_type: need.type_of_need).length > 0
+  end
+
   def followed_causes_locations
     causes_array=[]
     causes.each do |cause| #because I can't igure out the join
