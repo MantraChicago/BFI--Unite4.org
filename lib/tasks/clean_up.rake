@@ -17,17 +17,31 @@ namespace :clean_up do
     end
   end
 
-  task :save_cause_images => [:environment] do
+
+  task :save_cause_images, [:cause_images_dir] => [:environment] do |t,args|
     Cause.all.each do |cause|
-      dir="/home/deploy/cause_images/#{cause.slug}/*.jpg"
-      #dir = "/Users/Eddie/Downloads/cause_images/#{cause.slug}/*.jpg"
+      dir="#{args.cause_images_dir}/#{cause.slug}/*.jpg"
+
       files=Dir.glob(dir) 
       files.each do |file|
+        picture_exists=false
+        cause.cause_images.each do |cause_image|
 
-        picture_file=File.new(file, "r")
-        cause_image = CauseImage.create({:cause_id => cause.id,
-                                         :picture => picture_file })
+          if cause_image.picture_file_name == File.basename(file)
+            picture_exists=true
+            break
+          end
+
+        end
+
+        if !picture_exists
+           picture_file=File.new(file, "r")
+            cause_image = CauseImage.create({:cause_id => cause.id,
+                                             :picture => picture_file })
+            puts "Image created for #{cause.name}"
         
+        end
+       
       end
     end
   end
