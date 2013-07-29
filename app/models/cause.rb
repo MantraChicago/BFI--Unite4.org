@@ -11,7 +11,7 @@ class Cause < ActiveRecord::Base
   can_be_queried_by :near, :type => :string, :allowed => ['Chicago','New York','San Fancisco']
 
   attr_accessor :skip_default_location
-  attr_accessible :user_id,:contact_email,:short_description, :city_slug, :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
+  attr_accessible :active,:user_id,:contact_email,:short_description, :city_slug, :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
 
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>", :cause_tile => "81x81#" }, :default_url => "/assets/missing.jpeg"
 
@@ -180,7 +180,9 @@ class Cause < ActiveRecord::Base
 
   QueryableScopes = %w{by_type_of_need by_cause_type by_city_slug}
 
+  default_scope where( :active => true )
 
+  scope :all_causes, lambda{}
   scope :by_type_of_need, lambda {|type_of_need| joins(:needs).where("needs.type_of_need = ?", type_of_need) }
   scope :by_cause_type, lambda {|cause_type_slug| joins(:cause_type).where("cause_types.slug = ?", cause_type_slug) }
   scope :by_city_slug, lambda {|city_slug| where(:city_slug => city_slug) }

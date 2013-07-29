@@ -1,4 +1,12 @@
 ActiveAdmin.register Cause do
+	scope_to do
+    Class.new do
+      def self.causes
+        Cause.unscoped
+      end
+    end
+  end
+
 	form :html => { :enctype => "multipart/form-data" } do |f|
 	   f.inputs "Details" do
 
@@ -19,6 +27,7 @@ ActiveAdmin.register Cause do
 	    f.input :facebook_url
 	    f.input :is_featured
 	    f.input :user
+	    f.input :active
 
 
 	    f.input :cause_types, as: :check_boxes, collection: CauseType.all

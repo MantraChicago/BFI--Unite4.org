@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726171022) do
+ActiveRecord::Schema.define(:version => 20130729185047) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(:version => 20130726171022) do
     t.text     "description"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.text     "description_after"
     t.text     "description_before"
     t.string   "category"
@@ -68,14 +72,14 @@ ActiveRecord::Schema.define(:version => 20130726171022) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "percent_complete"
-    t.string   "desired_state"
-    t.string   "current_state"
     t.boolean  "active",                :default => false
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
     t.string   "type_of_need"
     t.string   "goal_summary"
     t.string   "timeframe_description"
+    t.integer  "desired_state",         :default => 0
+    t.integer  "current_state",         :default => 0
   end
 
   add_index "campaigns", ["active"], :name => "index_campaigns_on_active"
@@ -161,7 +165,7 @@ ActiveRecord::Schema.define(:version => 20130726171022) do
     t.boolean  "is_featured",           :default => false
     t.string   "twitter_handle"
     t.string   "facebook_url"
-    t.boolean  "active"
+    t.boolean  "active",                :default => true
     t.string   "display_name"
     t.string   "address_line_one"
     t.string   "address_line_two"
@@ -334,6 +338,7 @@ ActiveRecord::Schema.define(:version => 20130726171022) do
     t.integer  "game_id"
     t.text     "fb_token"
     t.string   "role"
+    t.string   "slug"
     t.integer  "followers_count",        :default => 0
     t.integer  "cash_donations_count",   :default => 0
     t.integer  "goods_donations_count",  :default => 0
@@ -347,6 +352,7 @@ ActiveRecord::Schema.define(:version => 20130726171022) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
   create_table "users_badges", :force => true do |t|
     t.integer "user_id"

@@ -3,7 +3,7 @@ form :html => { :enctype => "multipart/form-data" } do |f|
      f.inputs "Details" do
 
       f.input :name
-      f.input :type_of_need, :collection => ['goods_donations','money_donation','follow','volunteer']
+      f.input :type_of_need, :collection => Need.need_types
       f.input :cause
       f.input :description
       f.input :location
