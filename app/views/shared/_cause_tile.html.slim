@@ -19,7 +19,7 @@
         .bar.oxygen style="width:#{ active_campaign.percent_complete }%;" 
           == active_campaign.percent_complete.to_s + "%"
 
-  .row.no-margin
+  .row.no-margin.adjacent-small-columns
     .large-6.small-6.columns
 
       a.button.nowrap.open-fulfillment-modal data-need-id=active_campaign.need_id data-type-of-need=active_campaign.type_of_need

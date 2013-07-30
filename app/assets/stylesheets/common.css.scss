@@ -577,6 +577,12 @@ body > section {
   margin: 0 !important;
 }
 
+.adjacent-small-columns .large-6:first-child {
+  padding-right: .3em;
+}
+.adjacent-small-columns .large-6:last-child {
+  padding-left: .3em;
+}
 
 /**
  * END
