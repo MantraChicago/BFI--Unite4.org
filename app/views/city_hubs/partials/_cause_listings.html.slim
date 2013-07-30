@@ -1,6 +1,5 @@
 .cause-listing-container.row.mlimit
   - @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
-
   - while @causes.length > 0
     - row = 4.times.collect { @causes.pop }.compact
     .row

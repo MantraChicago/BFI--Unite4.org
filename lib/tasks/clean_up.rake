@@ -1,7 +1,7 @@
 namespace :clean_up do
   task :give_name_to_empty_follow_cause => [:environment] do
     Need.all.each do |need|
-      if need.type_of_need == 'followers' && need.name.empty?
+      if need.type_of_need == 'followers' && ( !need.name || need.name.empty? )
         need.name = "Help promote #{need.cause.name}"
         need.save
         puts need.name

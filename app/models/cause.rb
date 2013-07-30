@@ -184,7 +184,10 @@ class Cause < ActiveRecord::Base
 
   scope :all_causes, lambda{}
   scope :by_type_of_need, lambda {|type_of_need| joins(:needs).where("needs.type_of_need = ?", type_of_need) }
-  scope :by_cause_type, lambda {|cause_type_slug| joins(:cause_type).where("cause_types.slug = ?", cause_type_slug) }
+  scope :by_cause_type, lambda {|cause_type_slug| 
+                          cause_type_id=CauseType.find_by_slug(cause_type_slug).id
+                          joins(:cause_types).where("causes_cause_types.cause_type_id = ?", cause_type_id) 
+                        }
   scope :by_city_slug, lambda {|city_slug| where(:city_slug => city_slug) }
 
   def self.query(params={})
