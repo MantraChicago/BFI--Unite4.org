@@ -26,12 +26,9 @@ namespace :clean_up do
       files.each do |file|
         picture_exists=false
         cause.cause_images.each do |cause_image|
-
           if cause_image.picture_file_name == File.basename(file)
             picture_exists=true
-            break
           end
-
         end
 
         if !picture_exists
@@ -46,3 +43,4 @@ namespace :clean_up do
     end
   end
 end
+

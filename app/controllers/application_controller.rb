@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper :all
   
   def after_sign_in_path_for(resource)
-    sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
+    sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => request.protocol)
 
     if request.referer == sign_in_url || (request.referer && request.referer.match(/\/users\//) )
       root_path
