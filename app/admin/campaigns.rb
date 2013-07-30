@@ -7,7 +7,7 @@ ActiveAdmin.register Campaign do
       #f.form_buffers.last << content_tag(:li, content_tag(:label, 'Need') + content_tag(:div, '', :class =>'input_holder'))
       f.input :active, :default =>true
       f.input :goal_summary
-      f.input :timefame_description
+      f.input :timeframe_description
       f.input :start_date 
       f.input :end_date
       f.input :percent_complete
