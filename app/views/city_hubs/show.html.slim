@@ -37,8 +37,8 @@
           span
             == @city[:name] 
 
-  #city-hub-cause-listings
-    .cause-listing-container.row.mlimit
+  #city-hub-cause-listings.row
+    .large-12.columns
       = render "shared/causes_4_columns", causes:@causes
 
 - content_for :specific_scripts do
