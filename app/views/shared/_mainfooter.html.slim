@@ -1,68 +1,82 @@
 .smoke-bg
-	.row.mlimit
-		.large-4.columns
-			.footerbox
-				h4 Trust and Safety
-				p "Each nonprofit goes through a comprehensive screening process before its featured on Unite4.org. Causes must be audited, 501c3 compliant and designed to have a lasting, positive impact that aligns with Unite4.org’s core values."
-			
-		.large-4.columns
-			.footerbox
-				h4 Your Donations
-				p "Whether it’s a donation of time, money or expertise, each act of philanthropy is one step closer to reaching a goal. We work alongside organizations to ensure that 100% of your contribution is applied directly to the cause."
-			
-		.large-4.columns
-			.footerbox
-				h4 About Us
-				p "Unite4.org is just one part of the global Unite4:Good initiative. Launched by Bright Future International, this new social platform is aimed to reconstruct the current methods of volunteering and empower local communities to join forces and tackle global issues on a local level."
-		
-	.row.mlimit
-		.large-3.columns
-			h4.tertiary Programs
-			ul.plain-list.small-inline-list
-				-CauseType.all.each do |type|
-					li
-						== link_to type.name, "/charities-supporting-#{type.slug}"
+  .row.mlimit
+    .large-4.columns
+      .footerbox
+        h4 Trust and Safety
+        p "Each nonprofit goes through a comprehensive screening process before its featured on Unite4.org. Causes must be audited, 501c3 compliant and designed to have a lasting, positive impact that aligns with Unite4.org’s core values."
 
-		.large-3.columns
-			h4.tertiary Get Involved
-			ul.plain-list.small-inline-list
-				li 
-					== link_to "Add your charity", new_cause_application_path
-				li 
-					== link_to "Create an account", new_user_registration_path
-				li 
-					== link_to "Jobs / Internships", '/page/jobs_Internships'
-				li 
-					== link_to "Add link to page", '/page/add_link_to_page'
-				li 
-					== link_to "Newsletter signup", '/page/newsletter_signup'
-		.large-3.columns
-			h4.tertiary About Us
-			ul.plain-list.small-inline-list
-				li 
-					== link_to "Team", '/page/our_team'
-				li 
-					== link_to "Press", '/page/press'
-				li 
-					== link_to "Acceptance criteria", '/page/acceptance_criteria'
-				li 
-					== link_to "Stats on usage", '/page/stats_on_usage'
-				li 
-					== link_to "Partners", '/page/partners'
-				li 
-					== link_to "Goals", '/page/goals'
-		.large-3.columns
-			h4.tertiary Contact
-			ul.plain-list.small-inline-list
-				li 
-					== link_to "Social Media", '/page/social_media'
-				li 
-					== link_to "Facebook", 'https://www.facebook.com/BrightFutureInternational'
-				li 
-					== link_to "Twitter", 'https://twitter.com/BrightFutureInt'
-				li 
-					== link_to "Get in touch", '/page/get_in_touch'
+    .large-4.columns
+      .footerbox
+        h4 Your Donations
+        p "Whether it’s a donation of time, money or expertise, each act of philanthropy is one step closer to reaching a goal. We work alongside organizations to ensure that 100% of your contribution is applied directly to the cause."
 
-	.row
-		.large-12.columns.text-right.slimit-top.tertiary.oxygen.h5.mlimit
-			|&copy; Unit4:good, Inc.
+    .large-4.columns
+      .footerbox
+        h4 About Us
+        p "Unite4.org is just one part of the global Unite4:Good initiative. Launched by Bright Future International, this new social platform is aimed to reconstruct the current methods of volunteering and empower local communities to join forces and tackle global issues on a local level."
+
+  .row.mlimit
+    .large-3.columns
+      h4.tertiary Programs
+      ul.plain-list.small-inline-list
+        li
+          = link_to "Education", "/page/education"
+        li
+          = link_to "Social Equality", "/page/social_equality"
+        li
+          = link_to "Global Outreach", "/page/global_outreach"
+        li
+          = link_to "Environmental", "/page/environmental"
+        li
+          = link_to "Health & Wellness", "/page/health_wellness"
+        li
+          = link_to "Youth", "/page/youth"
+        li
+          = link_to "Animal Welfare", "/page/animal_welfare"
+        li
+          = link_to "Arts", "/page/arts"
+
+
+    .large-3.columns
+      h4.tertiary Get Involved
+      ul.plain-list.small-inline-list
+        li
+          = link_to "Add your charity", new_cause_application_path
+        li
+          = link_to "Create an account", new_user_registration_path
+        li
+          = link_to "Jobs / Internships", "/page/jobs_Internships"
+        li
+          = link_to "Add link to page", "/page/add_link_to_page"
+        li
+          = link_to "Newsletter signup", "/page/newsletter_signup"
+    .large-3.columns
+      h4.tertiary About Us
+      ul.plain-list.small-inline-list
+        li
+          = link_to "Team", "/page/our_team"
+        li
+          = link_to "Press", "/page/press"
+        li
+          = link_to "Acceptance criteria", "/page/acceptance_criteria"
+        li
+          = link_to "Stats on usage", "/page/stats_on_usage"
+        li
+          = link_to "Partners", "/page/partners"
+        li
+          = link_to "Goals", "/page/goals"
+    .large-3.columns
+      h4.tertiary Contact
+      ul.plain-list.small-inline-list
+        li
+          = link_to "Social Media", "/page/social_media"
+        li
+          = link_to "Facebook", "https://www.facebook.com/BrightFutureInternational"
+        li
+          = link_to "Twitter", "https://twitter.com/BrightFutureInt"
+        li
+          = link_to "Get in touch", "/page/get_in_touch"
+
+  .row
+    .large-12.columns.text-right.slimit-top.tertiary.oxygen.h5.mlimit
+      |&copy; Unit4:good, Inc.
