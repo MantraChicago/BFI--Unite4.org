@@ -1,4 +1,4 @@
-ul.large-block-grid-4.small-block-grid-1.cause-listing-container
+ul.cause-listing-container.cause-block-grid
   - causes.each do |cause|
     li
       = render :partial => "shared/cause_tile", locals: {cause: cause}
