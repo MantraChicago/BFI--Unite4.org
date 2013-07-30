@@ -13,7 +13,7 @@ Application.pages.index=function(){
 	
   })
 
-  $('.index-seach').submit(function(event){
+  $('.index-search').submit(function(event){
     event.preventDefault();
     var cause_type=$(this).find('#cause_type_cause').val()
     var has_need= $(this).find('[name="has_need"]').val()
