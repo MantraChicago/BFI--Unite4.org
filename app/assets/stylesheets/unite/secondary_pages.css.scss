@@ -58,16 +58,22 @@
   line-height: 1;
   color: #444;
 }
-.sp-description p {
+.sp-description p,
+.sp-description ul {
   font-weight: 200;
   line-height: 1.8;
+}
+.sp-description p {
   margin-bottom: 2em;
+}
+.sp-description .large-12 p {
+  margin-bottom: 1.2em;
 }
 .sp-description ul {
   padding: 0 0 0 1.2em;
 }
 .sp-description li {
-  margin: .75em 0;
+  margin: .2em 0;
 }
 .sp-description .large-7,
 .sp-description .large-5 {
