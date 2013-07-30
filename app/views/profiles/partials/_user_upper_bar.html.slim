@@ -18,6 +18,9 @@
           i.icon-signout
           | &#160;Log Out
 -else
-  .oxygen.bold.h5
-      = link_to('SIGN UP', new_user_registration_path) +' | '+link_to('LOGIN', new_user_session_path, :id => "login_button")
+  ul.inline-list
+    li
+      = link_to('SIGN UP', new_user_registration_path)
+    li
+      =link_to('LOGIN', new_user_session_path, :id => "login_button")
 
