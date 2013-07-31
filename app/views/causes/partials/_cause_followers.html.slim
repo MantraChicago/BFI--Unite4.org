@@ -1,6 +1,7 @@
-=render "causes/partials/follow", :cause=> cause
 .row.collapse
-  -cause.following_users.each do |follower|
-    a.large-4.columns.block href=url_for(follower)
-      .s-padding
-        img src=follower.avatar.url(:thumb)
+  h4 FOLLOWERS
+  ul.large-block-grid-3
+    -cause.following_users.each do |follower|
+      li
+        a href=url_for(follower)
+          img src=follower.avatar.url(:thumb)
