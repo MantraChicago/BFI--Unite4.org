@@ -49,7 +49,7 @@ describe Cause do
 
   it "should allow me to filter by cause type slug" do
     results = Cause.by_cause_type(cause_type.slug)
-    results.count.should == 2
+    results.count.should == cause_type.causes.count
   end
 
   it "should allow me to filter by city slug" do
@@ -58,7 +58,7 @@ describe Cause do
 
   it "should allow me to filter by scope" do
     results = Cause.query(scope:['by_cause_type', cause_type.slug])
-    results.count.should == 2
+    results.count.should == cause_type.causes.count
   end
 
 end
