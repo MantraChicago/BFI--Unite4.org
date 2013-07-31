@@ -44,13 +44,19 @@
 - content_for :specific_scripts do
   javascript:
     jQuery(function($) {
+      var $header = $('header');
+      var fixed = false;
+
       $(window).scroll(function(){
         var scrollTop = $(this).scrollTop();
-        if(scrollTop >= 507){
-          $('header').addClass('stay-menu');
+
+        if(scrollTop >= 507 && !fixed){
+          $header.addClass('stay-menu');
+          fixed = true;
         }
-        else {
-          $('header').removeClass('stay-menu');
+        else if(scrollTop < 507 && fixed) {
+          $header.removeClass('stay-menu');
+          fixed = false;
         }
       });
     });
