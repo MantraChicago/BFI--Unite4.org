@@ -55,16 +55,18 @@ section#user-data
 
 section#user-badges.hide
   .row
-    p
-      | #{@user.first_name} has earned&nbsp;
-      strong#{@user.badges.count} badges!
-      /select.large-2
-        option arrange by
-        option alpha
-        option bravo
-        option charlie
-        option delta
+    .large-12.column
+      p
+        | #{@user.first_name} has earned&nbsp;
+        strong#{@user.badges.count} badges!
+        /select.large-2
+          option arrange by
+          option alpha
+          option bravo
+          option charlie
+          option delta
   .row
-    ul#badges-list.large-block-grid-4
-      - @user.badges.each do |badge|
-        =render 'profiles/partials/user_badge', :user => @user, :badge => badge
+    .large-12.column
+      ul#badges-list.large-block-grid-4
+        - @user.badges.each do |badge|
+          =render 'profiles/partials/user_badge', :user => @user, :badge => badge
