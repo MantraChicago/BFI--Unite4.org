@@ -44,20 +44,24 @@
 - content_for :specific_scripts do
   javascript:
     jQuery(function($) {
+
       var $header = $('header');
       var fixed = false;
 
-      $(window).scroll(function(){
-        var scrollTop = $(this).scrollTop();
+      if($header.attr('id') !== 'no-cause-found'){
+        $(window).scroll(function(){
+          var scrollTop = $(this).scrollTop();
 
-        if(scrollTop >= 507 && !fixed){
-          $header.addClass('stay-menu');
-          fixed = true;
-        }
-        else if(scrollTop < 507 && fixed) {
-          $header.removeClass('stay-menu');
-          fixed = false;
-        }
-      });
+          if(scrollTop >= 507 && !fixed){
+            $header.addClass('stay-menu');
+            fixed = true;
+          }
+          else if(scrollTop < 507 && fixed) {
+            $header.removeClass('stay-menu');
+            fixed = false;
+          }
+        });
+      }
+
     });
     /* TODO: Script on page as requested, move to proper external file */
