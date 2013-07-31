@@ -1,8 +1,8 @@
 div 
-	-if current_user && current_user.causes.include?(cause) 
-		h4.tertiary You are already following this cause
-	-else
-	    .h3
-        a.cause-follow-button.btn.pink.btn-large.oxygen.h2.bold.mlimit.wrap.text-center.uppercase data-method="post" data-cause-slug=cause.slug href="/causes/#{ cause.slug }/followers" 
-          | +&nbsp;Follow
+  -if current_user && current_user.causes.include?(cause) 
+    h4.tertiary You are already following this cause
+  -else
+    .h3
+      a.cause-follow-button.btn.btn-large.oxygen.h2.wrap.text-center.uppercase data-method="post" data-cause-slug=cause.slug href="/causes/#{ cause.slug }/followers" 
+        | Follow
 

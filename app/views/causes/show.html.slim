@@ -3,11 +3,14 @@
 
 #cause-head.oxygen.smoke-bg.blimit
   .row
-    .large-12.columns.mlimit.mlimit-top
-      h2.inline.slimit-right
-        == @cause.display_name
-      h4.slim 
-        == @cause.short_description
+    .large-9.columns
+      h1= @cause.display_name
+      p= @cause.short_description
+    .large-3.columns.follow-cta
+      p
+        strong.pink-text #{@cause.followers.count} 
+        | followers
+      =render "causes/partials/follow", :cause => @cause
 
 #cause-content.oxygen.mlimit
   .row
