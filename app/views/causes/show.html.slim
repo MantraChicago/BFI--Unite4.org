@@ -55,7 +55,7 @@
 
 
     .large-3.small-12.columns
-      .single-cause-tile.gray_border.mlimit-top.mlimit
+      .single-cause-tile.mlimit
         = render :partial => 'shared/cause_tile_modal', :locals => {cause: @cause, :show_modal_on_cause_page => false}
       = render 'causes/partials/cause_followers', :cause => @cause
 

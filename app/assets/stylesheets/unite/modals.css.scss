@@ -44,13 +44,18 @@
 }
 
 .modal-cause {
-  border: 1px solid #ccc;
+  border: 1px solid #d3d2d2;
+  background-color: #f7f7f7;
 }
-.modal-cause .row {
+.modal-cause > .row {
   margin: 0;
+  border-bottom: 1px solid #d3d2d2;
+  &:last-child {
+    border-bottom: none;
+  }
 }
+
 .modal-cause-title {
-  background-color: #5E5E5E;
   text-align: center;
 }
 .modal-cause-title h2,
@@ -66,21 +71,34 @@
   line-height: 2;
   color: #fff;
 }
+
 .modal-cause-goal {
   background-color: #F5F5F5;
 }
 .modal-cause-goal p {
-  margin: .5em 0;
+  font-size: 1.1em;
+  line-height: 1.25;
+  margin: .6em 0;
 }
+.modal-cause-goal p strong,
+.modal-cause-goal p span {
+  display: block;
+}
+
+.modal-cause-progress {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
 .modal-cause-stats ul {
   margin-right: -0.9375em;
   margin-left: -0.9375em;
 }
 .modal-cause-stats li {
-  padding: 1.2em .2em;
-  border-style: none solid solid none;
+  padding: .8em .2em !important;
+  border-style: none solid none none;
   border-width: 1px;
-  border-color: #ccc;
+  border-color: #d3d2d2;
   text-align: center;
 }
 .modal-cause-stats .large-block-grid-2 > li:nth-of-type(2n) {
@@ -89,21 +107,39 @@
 .modal-cause-stats strong,
 .modal-cause-stats em {
   display: block;
-}
-.modal-cause-stats strong {
-  font-size: 1.8em;
-  line-height: 1.4;
-  color: #009BD2;
-}
-.modal-cause-stats em {
+  line-height: 1.2;
+  font-weight: normal;
   font-style: normal;
 }
-.modal-cause-state {
-  padding: 1em 0 .6em;
+.modal-cause-stats strong {
+  font-size: 1.6em;
+  color: #009BD2;
 }
+
+.modal-cause-state {
+  padding: .8em 0;
+}
+.modal-cause-state .open-fulfillment-modal {
+  font-size: 1em;
+  padding: 1em 0 .8em;
+  margin: 0;
+  font-weight: normal;
+}
+
+.modal-cause-social {
+  padding: .8em 0 .3em;
+}
+.modal-cause-social strong {
+  display: block;
+  text-align: center;
+  font-weight: normal;
+}
+.fb-color {
+  background-color: #3b589e;
+}
+
 .modal-cause-period {
   padding: .5em 0;
-  background-color: #F5F5F5;
   font-size: .9em;
 }
 .modal-cause-period p {

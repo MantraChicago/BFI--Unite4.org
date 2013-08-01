@@ -1,42 +1,54 @@
 - active_campaign = cause.active_campaign
 
 .modal-cause
-  .row.modal-cause-title
-    .large-12.column
-      h2= cause.display_name
-
   .row.modal-cause-goal
     .large-12.column
       p
         strong GOAL: 
         span= active_campaign.goal_summary
 
+  .row.modal-cause-progress
+    .large-12.column
+      .bar-holder
+        .bar.oxygen style="width:#{ cause.active_campaign_percent_complete }%;"
+          = cause.active_campaign_percent_complete.to_s + "%"
+
   .row.modal-cause-stats
     .large-12.column
       ul.large-block-grid-2
         li
-          strong= "#{active_campaign.percent_complete.to_s}%"
-          em achieved
+          == goal_status_report(active_campaign)
+        /
+          li
+            strong= "#{active_campaign.percent_complete.to_s}%"
+            em achieved
         li
           strong= active_campaign.days_to_go
           em days to go
-        li
-          == goal_status_report(active_campaign)
-        li
-          strong= "#{cause.active_campaign.desired_state}"
-          em goal
+        /
+          li
+            strong= "#{cause.active_campaign.desired_state}"
+            em goal
 
   .row.modal-cause-state
     .large-12.column
-      .bar-holder.slimit
-        .bar.oxygen style="width:#{ cause.active_campaign_percent_complete }%;"
-          = cause.active_campaign_percent_complete.to_s + "%"
       -if show_modal_on_cause_page
          a.button.expand href="#{url_for cause}?show_campaign_modal=true"
-          | I WANT TO HELP
+          | VOLUNTEER
       -else
         a.button.expand.open-fulfillment-modal data-need-id=cause.active_campaign.need.id data-type-of-need=cause.active_campaign.need.type_of_need
-          | I WANT TO HELP
+          | VOLUNTEER
+
+  .row.modal-cause-social
+    .large-12.column
+      .row
+        .large-12.column
+          strong Spread the word!
+      .row.adjacent-small-columns
+        .large-6.column
+          =link_to "Facebook", "#", class: "small button expand fb-color"
+        .large-6.column
+          =link_to "Twitter", "#", class: "small button expand"
 
   .row.modal-cause-period
     .large-12.column
