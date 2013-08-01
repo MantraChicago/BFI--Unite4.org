@@ -70,3 +70,5 @@ section#user-badges.hide
       ul#badges-list.large-block-grid-4
         - @user.badges.each do |badge|
           =render 'profiles/partials/user_badge', :user => @user, :badge => badge
+javascript:
+  var user_causes = #{@user.followed_causes_locations.to_json.html_safe}

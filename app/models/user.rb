@@ -77,9 +77,9 @@ class User < ActiveRecord::Base
 
   def followed_causes_locations
     causes_array=[]
-    causes.each do |cause| #because I can't igure out the join
-      cause_hash=cause.as_json
-      cause_hash[:locations_details]=cause.locations
+    contributions.each do |contribution| #because I can't figure out the join, could be optimized 
+      cause_hash=contribution.cause.as_json
+      cause_hash[:locations_details]=contribution.cause.locations
       causes_array << cause_hash
     end
     causes_array
