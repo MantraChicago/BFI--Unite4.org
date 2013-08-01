@@ -19,17 +19,9 @@
       ul.large-block-grid-2
         li
           == goal_status_report(active_campaign)
-        /
-          li
-            strong= "#{active_campaign.percent_complete.to_s}%"
-            em achieved
         li
           strong= active_campaign.days_to_go
           em days to go
-        /
-          li
-            strong= "#{cause.active_campaign.desired_state}"
-            em goal
 
   .row.modal-cause-state
     .large-12.column
@@ -47,9 +39,11 @@
           strong Spread the word!
       .row.adjacent-small-columns
         .large-6.column
-          =link_to "Facebook", "#", class: "small button expand fb-color"
+          -if ! cause.facebook_link.empty?
+            =link_to "Facebook", cause.facebook_link, class: "small button expand fb-color"
         .large-6.column
-          =link_to "Twitter", "#", class: "small button expand"
+          -if ! cause.twitter_link.empty?
+            =link_to "Twitter", cause.twitter_link, class: "small button expand"
 
   .row.modal-cause-period.collapse
     .large-3.column.info-icon

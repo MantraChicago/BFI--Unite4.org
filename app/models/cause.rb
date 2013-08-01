@@ -161,6 +161,14 @@ class Cause < ActiveRecord::Base
     postal_code
   end
 
+  def facebook_link
+    facebook_url if ! facebook_url.empty?
+  end
+
+  def twitter_link
+    "https://twitter.com/#{twitter_handle}" if ! twitter_handle.empty?
+  end
+
   def self.featured_causes
     featured_causes={}
     CauseType.all.each do |cause_type|
