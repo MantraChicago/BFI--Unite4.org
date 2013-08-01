@@ -73,16 +73,39 @@
 }
 
 .modal-cause-goal {
-  background-color: #F5F5F5;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
+.modal-cause-goal strong,
 .modal-cause-goal p {
+  display: block;
+  margin: 0;
   font-size: 1.1em;
   line-height: 1.25;
-  margin: .6em 0;
 }
-.modal-cause-goal p strong,
-.modal-cause-goal p span {
-  display: block;
+.modal-cause-goal p {
+}
+.goal-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 0 0 -4px;
+  background-size: 100% auto;
+  background-position: 0 50%;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+.goal-icon.cash_donations {
+  background-image: image-url('causes/ui/need_icons/cash_donations.png');
+}
+.goal-icon.followers {
+  background-image: image-url('causes/ui/need_icons/followers.png');
+}
+.goal-icon.goods_donations {
+  background-image: image-url('causes/ui/need_icons/goods_donations.png');
+}
+.goal-icon.volunteers {
+  background-image: image-url('causes/ui/need_icons/volunteers.png');
 }
 
 .modal-cause-progress {

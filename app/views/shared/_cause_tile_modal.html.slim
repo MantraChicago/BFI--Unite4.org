@@ -3,9 +3,10 @@
 .modal-cause
   .row.modal-cause-goal
     .large-12.column
+      strong GOAL:
       p
-        strong GOAL: 
-        span= active_campaign.goal_summary
+        span class="goal-icon #{active_campaign.type_of_need}"
+        = active_campaign.goal_summary
 
   .row.modal-cause-progress
     .large-12.column
