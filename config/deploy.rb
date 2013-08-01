@@ -25,9 +25,9 @@ before 'deploy:assets:precompile', 'sym_link:database'
 before 'deploy:assets:precompile', 'sym_link:logs'
 before 'deploy:assets:precompile', 'sym_link:settings'
 
-after "deploy:stop",    "delayed_job:stop"
-after "deploy:start",   "delayed_job:start"
-after "deploy:restart", "delayed_job:restart"
+#after "deploy:stop",    "delayed_job:stop"
+#after "deploy:start",   "delayed_job:start"
+#after "deploy:restart", "delayed_job:restart"
 
 namespace :db do
   desc 'rake db:migrate'
