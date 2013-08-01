@@ -50,8 +50,12 @@
         .large-6.column
           =link_to "Twitter", "#", class: "small button expand"
 
-  .row.modal-cause-period
-    .large-12.column
-      h4 Campaign Period:
-      p= "#{cause.active_campaign.days_to_go} days to go"
-      small= active_campaign.start_date.strftime("%m-%d-%Y") + " - " + active_campaign.end_date.strftime("%m-%d-%Y")
+  .row.modal-cause-period.collapse
+    .large-3.column.info-icon
+      = image_tag "ui/info-icon.png", alt: "Information"
+    .large-9.column
+      dl
+        dt Length:
+        dd= cause.active_campaign.timeframe_description
+        dt Ends:
+        dd= active_campaign.end_date.strftime("%m-%d-%Y")
