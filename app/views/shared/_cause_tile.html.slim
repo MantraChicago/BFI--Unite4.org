@@ -23,15 +23,14 @@
     .large-6.small-6.columns
 
       a.button.nowrap.open-fulfillment-modal data-need-id=active_campaign.need_id data-type-of-need=active_campaign.type_of_need
-
         .icon.heart.circle.inline
         .h5.inline.uppercase
           == button_text_for_need(active_campaign.type_of_need)  
 
     .large-6.small-6.columns
-      .button.nowrap.follow-button
+      a.button.nowrap.follow-button href=cause_path(cause)
         .icon.add.circle.inline
-        a.h5.inline.uppercase href=cause_path(cause)
+        .h5.inline.uppercase
           | Details
 
   .row.stats.no-margin
