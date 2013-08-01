@@ -29,5 +29,6 @@ FactoryGirl.define do
       city_slug "new-york"
       region "NY"
     end
+
   end
 end

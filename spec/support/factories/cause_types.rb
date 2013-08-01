@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :cause_type do
-    name { Faker::Product.brand }
+    name { CauseType.DefaultCauseTypes.sample }
   end
 end

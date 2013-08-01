@@ -85,6 +85,9 @@ gem 'capistrano'
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'selenium-webdriver'
+
+  #gem 'capybara-webkit'
   gem 'launchy'
   gem 'poltergeist'
   gem 'database_cleaner'

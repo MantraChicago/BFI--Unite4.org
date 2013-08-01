@@ -7,7 +7,7 @@ class CauseType < ActiveRecord::Base
 
   attr_accessible :picture
 
-  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing_cause_type.jpg"
+  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url =>  "/assets/missing.jpeg"
 
   scope :by_name, lambda { order("name asc") }
 
@@ -21,6 +21,25 @@ class CauseType < ActiveRecord::Base
 
   def self.random(count=1)
     order("random()").limit(1).first
+  end
+
+  def self.DefaultCauseTypes
+    [
+    "Arts",
+    'Education' ,
+    'Environment' ,
+    'Health & Wellness' ,
+    'Youth' ,
+    'Religion' ,
+    'Global Outreach',
+    'Social Equality'
+    ]
+  end
+
+  def self.create_defaults
+    self.DefaultCauseTypes.each do |type|
+      CauseType.find_or_create_by_name(type)
+    end
   end
 
 
