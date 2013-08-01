@@ -593,8 +593,9 @@ body > section {
 }
 
 .bar-holder {
-  height: 20px;
-  background: #d7d7d7;
+  height: 22px;
+  background: #303030;
+  border: 1px solid #303030;
   .bar {
     background: #9dd100;
     border-radius: 0 10px 10px 0;
