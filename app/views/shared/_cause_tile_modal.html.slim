@@ -39,10 +39,10 @@
           strong Spread the word!
       .row.adjacent-small-columns
         .large-6.column
-          -if ! cause.facebook_link.empty?
+          -if cause.facebook_link
             =link_to "Facebook", cause.facebook_link, class: "small button expand fb-color"
         .large-6.column
-          -if ! cause.twitter_link.empty?
+          -if ! cause.twitter_link
             =link_to "Twitter", cause.twitter_link, class: "small button expand"
 
   .row.modal-cause-period.collapse
