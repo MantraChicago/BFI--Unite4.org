@@ -50,7 +50,7 @@ gem "friendly_id", "~> 4.0.9"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails',   '3.2.6'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'turbo-sprockets-rails3', '>= 0.3.6'
@@ -63,9 +63,9 @@ gem 'smooth', :git => "git@github.com:datapimp/smooth.git"
 #gem 'smooth', :path => File.join(ENV['HOME'],'Projects','smooth')
 gem 'jquery-rails'
 
-gem 'compass'
-gem 'zurb-foundation'
-gem 'font-awesome-rails'
+gem 'compass', '0.12.2'
+gem 'zurb-foundation', '4.2.3'
+gem 'font-awesome-rails', '3.2.1.2'
 
 gem 'pry-rails'
 gem 'pry-nav'
@@ -85,9 +85,6 @@ gem 'capistrano'
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'selenium-webdriver'
-
-  #gem 'capybara-webkit'
   gem 'launchy'
   gem 'poltergeist'
   gem 'database_cleaner'
