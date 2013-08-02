@@ -2,13 +2,13 @@
 @import "unite/buttons";
 
 .row.final {
-	border-bottom: solid 1px #dfdfdf;
-	margin-bottom: 40px;
+  border-bottom: solid 1px #dfdfdf;
+  margin-bottom: 40px;
 
 }
 
 #causes .row.final {
-		padding: 30px 0 40px;
+  padding: 30px 0 40px;
 }
 
 h3.oxygen {
@@ -18,103 +18,105 @@ h3.oxygen {
 
 
 h3.areatitle {
-	font-family: "Oxygen", Arial, sans-serif;
-	font-size: 1.4em;
-	span {
-		color: #990055;
-	}
+  font-family: "Oxygen", Arial, sans-serif;
+  font-size: 1.4em;
+  span {
+    color: #990055;
+  }
 }
 
 
-.purplelink { 
-	 color: #990055;
- }
+.purplelink {
+  color: #990055;
+}
 
 .yourcause {
-	p { 
-		padding-bottom: 40px;
-	}
-	
-	h3 {
-		font-family: "Oxygen", Helvetica, Arial, sans-serif;
-		font-size: 1.4em;
-	}
+  p {
+    padding-bottom: 40px;
+  }
+  h3 {
+    font-family: "Oxygen", Helvetica, Arial, sans-serif;
+    font-size: 1.4em;
+  }
 }
 
 
-#companies .tc { 
-	background: url('/assets/logo-tc.jpg') no-repeat center center; 
-	height: 61px;
+#companies .tc {
+  background: url('/assets/logo-tc.jpg') no-repeat center center;
+  height: 61px;
 }
-#companies .wired { 
-	background: url('/assets/logo-wired.jpg') no-repeat center center; 
-	height: 61px;
+#companies .wired {
+  background: url('/assets/logo-wired.jpg') no-repeat center center;
+  height: 61px;
 }
-#companies .forbes { 
-	background: url('/assets/logo-forbes.jpg') no-repeat center center; 
-	height: 61px;
+#companies .forbes {
+  background: url('/assets/logo-forbes.jpg') no-repeat center center;
+  height: 61px;
 }
-#companies .techcrunch { 
-	background: url('/assets/logo-techcrunch.jpg') no-repeat center center; 
-	height: 61px;
+#companies .techcrunch {
+  background: url('/assets/logo-techcrunch.jpg') no-repeat center center;
+  height: 61px;
 }
-#companies .sf7x7 { 
-	background: url('/assets/logo-7x7sf.jpg') no-repeat center center; 
-	height: 61px;
-}
-
-
-
-#selectcity,#selectcause {
-	height: 490px;
-	opacity: 0;
-	visibility:hidden;
-	width: 100%;
-	z-index: 100;
-	cursor: pointer;
-
-	.city {
-		height: 490px;
-		text-align: center;
-	}
-	.cause {
-		height: 245px;
-		&:hover img {
-			zoom: 1.04;
-		}		
-		h1 {
-		font-size:2.3em;
-		 text-shadow: 0 0 5px rgba(0,0,0,0.5);
-		}
-	}
-	#chicago {
-		background-image: url(/assets/cities/small/chicago-small.jpg/);
-	}
-	#san-francisco {
-		background-image: url(/assets/cities/small/san-francisco-small.jpg);
-	}
-	#new-york {
-		background-image: url(/assets/cities/small/new-york-small.jpg);
-	}
-	#chicago,#san-francisco,#new-york {
-		height: 490px;
-		background-size: cover;
-		background-position: center bottom;
-
-		&:hover img {
-			zoom: 1.04;
-		}
-	}
-
-
-	&.active {
-		opacity: 1;
-		visibility: inherit;
-	}
+#companies .sf7x7 {
+  background: url('/assets/logo-7x7sf.jpg') no-repeat center center;
+  height: 61px;
 }
 
 
-#take-action-form-container {  
+
+#selectcity,
+#selectcause {
+  height: 490px;
+  opacity: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: 100;
+  cursor: pointer;
+
+  .city {
+    height: 490px;
+    text-align: center;
+  }
+  .cause {
+    height: 245px;
+    &:hover img {
+      zoom: 1.04;
+    }
+    h1 {
+      font-size: 2.3em;
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+  }
+  #chicago {
+    background-image: url(/assets/cities/small/chicago-small.jpg/);
+  }
+  #san-francisco {
+    background-image: url(/assets/cities/small/san-francisco-small.jpg);
+  }
+  #new-york {
+    background-image: url(/assets/cities/small/new-york-small.jpg);
+  }
+  #chicago,
+  #san-francisco,
+  #new-york {
+    height: 490px;
+    background-size: cover;
+    background-position: center bottom;
+
+    &:hover img {
+      zoom: 1.04;
+    }
+  }
+
+
+  &.active {
+    opacity: 1;
+    visibility: inherit;
+  }
+}
+
+
+#take-action-form-container {
   select {
     color: rgba(30,30,30,1.0);
   }
@@ -124,72 +126,85 @@ h3.areatitle {
 
 @media only screen and (max-width: 48em) {
 
-#selectcity,#selectcause {
-	& img {
-		max-width: 50px;
-		height: auto;
-	}
-	.city {
-		height: auto;
-		text-align: center;
-	}
-	.cause {
-		height: 245px;
-		&:hover img {
-			zoom: 1.04;
-		}		
-	}
-	#chicago {
-		background-image: url(/assets/cities/small/chicago-small.jpg/);
-	}
-	#san-francisco {
-		background-image: url(/assets/cities/small/san-francisco-small.jpg);
-	}
-	#new-york {
-		background-image: url(/assets/cities/small/new-york-small.jpg);
-	}
-	#chicago,#san-francisco,#new-york {
-		height: 490px;
-		background-size: cover;
-		background-position: center bottom;
+  #selectcity,
+  #selectcause {
+    & img {
+      max-width: 50px;
+      height: auto;
+    }
+    .city {
+      height: auto;
+      text-align: center;
+    }
+    .cause {
+      height: 245px;
+      &:hover img {
+        zoom: 1.04;
+      }
+    }
+    #chicago {
+      background-image: url(/assets/cities/small/chicago-small.jpg/);
+    }
+    #san-francisco {
+      background-image: url(/assets/cities/small/san-francisco-small.jpg);
+    }
+    #new-york {
+      background-image: url(/assets/cities/small/new-york-small.jpg);
+    }
+    #chicago,
+    #san-francisco,
+    #new-york {
+      height: 490px;
+      background-size: cover;
+      background-position: center bottom;
 
-		&:hover img {
-			zoom: 1.04;
-		}
-	}
+      &:hover img {
+        zoom: 1.04;
+      }
+    }
 
 
-	&.active {
-		opacity: 1;
-		visibility: inherit;
-	}
-}	
+    &.active {
+      opacity: 1;
+      visibility: inherit;
+    }
+  }
 
 }
 
 
 #mapholder {
-	height:300px;
-	#mapsettings {
-		background: #0081bb;
-		position: absolute;
-		right: 40px;
-		top: 20px;
-		bottom: 20px;
-		min-width: 210px;
-		button {
-			border: none;
-			background: #012a3e;
-			width: 100%;
-		}
-		select {
-			height: 30px;
-			background: url(/assets/ui/select-small.gif) no-repeat right center white;
-			color: #202020 !important;
-			border: none;
-			option {
-				color: #202020;
-			}
-		}
-	}
+  height: 300px;
+  #mapsettings {
+    background: #0081bb;
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    bottom: 20px;
+    min-width: 210px;
+    button {
+      border: none;
+      background: #012a3e;
+      width: 100%;
+    }
+    select {
+      height: 30px;
+      background: url(/assets/ui/select-small.gif) no-repeat right center white;
+      color: #202020 !important;
+      border: none;
+      option {
+        color: #202020;
+      }
+    }
+  }
+}
+
+@media (max-width: 777px){
+  #map-title,
+  #mapholder {
+    display: none;
+  }
+  .companies.mlimit {
+    margin-bottom: 0 !important;
+  }
 }
