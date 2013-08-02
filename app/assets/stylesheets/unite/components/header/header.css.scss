@@ -283,6 +283,15 @@
 }
 
 @media only screen and (max-width: 48em) {
+  #topbar {
+    height: auto;
+    background-position: 0 0;
+    background-repeat: repeat;
+  }
+  #topbar nav li.top-nav-item {
+    padding: 0 1em;
+    text-align: center;
+  }
   .map-infobox {
     width: 90% !important;
     left: 5% !important;
@@ -304,11 +313,17 @@
     font-size: 160%;
     line-height: 160%;
   }
-  #topbar nav li.top-nav-item {
-    display: none;
-  }
   #mobile-menu {
     display: inherit;
+  }
+}
+@media (max-width: 444px){
+  #top-logo {
+    width: 100%;
+    border: none !important;
+  }
+  #cities_nav {
+    border-left: 1px solid #D0D0D0;
   }
 }
 

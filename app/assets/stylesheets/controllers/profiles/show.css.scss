@@ -107,8 +107,8 @@
 }
 
 .profile_drop_down {
-  position:relative;
-  display:inline-block;
+  position: relative;
+  display: inline-block;
 
   .popover_tigger {
     display: block;
@@ -126,6 +126,7 @@
     background-color: white;
     position: absolute;
     right: 0;
+    z-index: 10;
     li {
       display:block !important;
       border-bottom:1px solid #e3e3e3;
