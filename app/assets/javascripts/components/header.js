@@ -61,7 +61,7 @@ setupHeader=function(){
 		Application.header.toggle_nav(causes_html, 'causes')
 	});
 	*/
-	$('#login_button').click(function(event){
+	$('.login_button').click(function(event){
 		event.preventDefault();
 		Application.show_login_modal()
 	})

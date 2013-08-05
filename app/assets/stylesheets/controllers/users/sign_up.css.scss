@@ -1,0 +1,24 @@
+@import "unite/colors";
+
+.signup{
+  background-color: rgba(250,250,250,.9);
+  padding:30px;
+
+}
+
+.login_background{
+  background-image: url(/assets/tunnel.jpg);
+  padding:150px 0px 150px 0px;
+  background-size: cover;
+  background-position: top center;
+
+}
+
+.signup_button{
+  width: 100%;
+}
+
+.login_facebook img{
+  width: 100%;
+  max-width: 400px;
+}

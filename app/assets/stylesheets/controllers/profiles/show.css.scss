@@ -94,6 +94,7 @@
 .manage-users{
   display:inline-block;
   vertical-align:top;
+  height: 52px;
   img {
     float: left;
     max-height: 40px;
@@ -171,13 +172,7 @@
       padding-top: 13px;
     }
   
-  .or_bar{
-    width: 40%;
-    height: 1px;
-    margin-bottom: 3px;
-    background-color: #ccc;
-    display: inline-block;
-  }
+  
 
   .login_input{
     font-size: 25px;
@@ -352,3 +347,11 @@
   float: left;
   margin: .9em 1em 0 0;
 }
+
+.or_bar{
+    width: 40%;
+    height: 2px;
+    margin-bottom: 3px;
+    background-color: #bbb;
+    display: inline-block;
+  }

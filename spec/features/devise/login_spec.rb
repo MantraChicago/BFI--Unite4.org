@@ -10,7 +10,7 @@ describe 'devise', :js =>true do
 
   it 'Login modal should open when click login' do
     visit '/'
-    find('#login_button').click
+    find('.login_button').click
     sleep 2 #waiting for modals to appear 
     page.should have_content 'Login to your account'
   end
@@ -18,7 +18,7 @@ describe 'devise', :js =>true do
   it 'Login through modal should login successfully' do
     visit_path = '/'
     visit visit_path
-    find('#login_button').click
+    find('.login_button').click
 
     page.should have_content 'Login to your account'
 
