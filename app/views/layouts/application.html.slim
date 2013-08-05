@@ -2,7 +2,7 @@ doctype html
 html
   head
     title #{ render_title }
-    meta name="viewport" content="initial-scale=1.0, user-scalable=no"
+    meta name="viewport" content="width=device-width, initial-scale=1"
 
     meta name="breakpoint" content="small" media="only screen and (max-width: 420px)"
     meta name="breakpoint" content="medium" media="only screen and (max-width: 768px)"
@@ -12,7 +12,7 @@ html
     meta name="breakpoint" content="portrait" media="only screen and (orientation: portrait)"
     // Adam -- DO NOT USE URLS THAT INCLUDE PROTOCOL.
     link href="//fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet" type="text/css"
-    
+
     == csrf_meta_tag
 
     == stylesheet_link_tag 'application', media: 'all'
@@ -39,11 +39,9 @@ html
 
   body id=body_id class=body_class data-controller=controller_name data-action=action_name
     = render :partial => "shared/facebook"
-    
+
     == render 'shared/mainheader'
     == render "shared/flash", :flash => flash
-    
-    .ismobileflag
 
     == yield
     == render 'shared/mainfooter'
