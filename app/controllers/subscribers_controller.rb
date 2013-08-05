@@ -1,6 +1,10 @@
-class SubscribesController < ApplicationController
+class SubscribersController < ApplicationController
+  def new
+    @subscribe = Subscriber.new
+  end
+  
 	def create
-    @subscribe = Subscribe.new(params[:subscribe])
+    @subscribe = Subscriber.new(params[:subscribe])
     if @subscribe.save
       redirect_to root_path, :notice => "You have successfully subscribed" 
     else

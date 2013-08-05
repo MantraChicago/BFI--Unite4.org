@@ -20,6 +20,7 @@ GiveInspireLove::Application.routes.draw do
 
   resources :causes
   resources :cause_applications
+  resources :subscribers
 
   match "/causes/:cause_slug/edit" => "causes#edit"
   get "/causes/:cause_slug/:type_of_need/new", :to => "needs#new"

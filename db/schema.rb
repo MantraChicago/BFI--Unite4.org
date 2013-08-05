@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805190155) do
+ActiveRecord::Schema.define(:version => 20130805204934) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -299,7 +299,7 @@ ActiveRecord::Schema.define(:version => 20130805190155) do
   add_index "needs", ["id"], :name => "index_needs_on_id", :unique => true
   add_index "needs", ["type_of_need"], :name => "index_needs_on_type_of_need"
 
-  create_table "subscribes", :force => true do |t|
+  create_table "subscribers", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "first_name"
@@ -307,8 +307,8 @@ ActiveRecord::Schema.define(:version => 20130805190155) do
     t.string   "email"
   end
 
-  add_index "subscribes", ["email"], :name => "index_subscribes_on_email"
-  add_index "subscribes", ["id"], :name => "index_subscribes_on_id", :unique => true
+  add_index "subscribers", ["email"], :name => "index_subscribes_on_email"
+  add_index "subscribers", ["id"], :name => "index_subscribes_on_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
