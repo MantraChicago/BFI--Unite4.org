@@ -92,7 +92,8 @@ bundle exec rake db:test:prepare
 If you have your SSH key on our deploy box, you can take a snapshot:
 
 ```
-bundle exec rake snapshot:all
+bundle exec cap -T |grep snapshot
+bundle exec cap snapshots:all
 ```
 
 This will pull down not only the development data, but all of the

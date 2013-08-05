@@ -728,10 +728,10 @@ CREATE TABLE schema_migrations (
 ALTER TABLE public.schema_migrations OWNER TO bfi_production;
 
 --
--- Name: subscribes; Type: TABLE; Schema: public; Owner: bfi_production; Tablespace: 
+-- Name: subscribers; Type: TABLE; Schema: public; Owner: bfi_production; Tablespace: 
 --
 
-CREATE TABLE subscribes (
+CREATE TABLE subscribers (
     id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -741,13 +741,13 @@ CREATE TABLE subscribes (
 );
 
 
-ALTER TABLE public.subscribes OWNER TO bfi_production;
+ALTER TABLE public.subscribers OWNER TO bfi_production;
 
 --
--- Name: subscribes_id_seq; Type: SEQUENCE; Schema: public; Owner: bfi_production
+-- Name: subscribers_id_seq; Type: SEQUENCE; Schema: public; Owner: bfi_production
 --
 
-CREATE SEQUENCE subscribes_id_seq
+CREATE SEQUENCE subscribers_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -755,13 +755,13 @@ CREATE SEQUENCE subscribes_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.subscribes_id_seq OWNER TO bfi_production;
+ALTER TABLE public.subscribers_id_seq OWNER TO bfi_production;
 
 --
--- Name: subscribes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bfi_production
+-- Name: subscribers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: bfi_production
 --
 
-ALTER SEQUENCE subscribes_id_seq OWNED BY subscribes.id;
+ALTER SEQUENCE subscribers_id_seq OWNED BY subscribers.id;
 
 
 --
@@ -1020,7 +1020,7 @@ ALTER TABLE ONLY needs ALTER COLUMN id SET DEFAULT nextval('needs_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: bfi_production
 --
 
-ALTER TABLE ONLY subscribes ALTER COLUMN id SET DEFAULT nextval('subscribes_id_seq'::regclass);
+ALTER TABLE ONLY subscribers ALTER COLUMN id SET DEFAULT nextval('subscribers_id_seq'::regclass);
 
 
 --
@@ -2172,22 +2172,24 @@ COPY schema_migrations (version) FROM stdin;
 20130726071909
 20130726171022
 20130729185047
+20130805190155
+20130805204934
 \.
 
 
 --
--- Data for Name: subscribes; Type: TABLE DATA; Schema: public; Owner: bfi_production
+-- Data for Name: subscribers; Type: TABLE DATA; Schema: public; Owner: bfi_production
 --
 
-COPY subscribes (id, created_at, updated_at, first_name, last_name, email) FROM stdin;
+COPY subscribers (id, created_at, updated_at, first_name, last_name, email) FROM stdin;
 \.
 
 
 --
--- Name: subscribes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bfi_production
+-- Name: subscribers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: bfi_production
 --
 
-SELECT pg_catalog.setval('subscribes_id_seq', 1, false);
+SELECT pg_catalog.setval('subscribers_id_seq', 1, false);
 
 
 --
@@ -2424,7 +2426,7 @@ ALTER TABLE ONLY needs
 -- Name: subscribes_pkey; Type: CONSTRAINT; Schema: public; Owner: bfi_production; Tablespace: 
 --
 
-ALTER TABLE ONLY subscribes
+ALTER TABLE ONLY subscribers
     ADD CONSTRAINT subscribes_pkey PRIMARY KEY (id);
 
 
@@ -2792,14 +2794,14 @@ CREATE INDEX index_needs_on_type_of_need ON needs USING btree (type_of_need);
 -- Name: index_subscribes_on_email; Type: INDEX; Schema: public; Owner: bfi_production; Tablespace: 
 --
 
-CREATE INDEX index_subscribes_on_email ON subscribes USING btree (email);
+CREATE INDEX index_subscribes_on_email ON subscribers USING btree (email);
 
 
 --
 -- Name: index_subscribes_on_id; Type: INDEX; Schema: public; Owner: bfi_production; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_subscribes_on_id ON subscribes USING btree (id);
+CREATE UNIQUE INDEX index_subscribes_on_id ON subscribers USING btree (id);
 
 
 --
