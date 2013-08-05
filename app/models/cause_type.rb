@@ -7,7 +7,10 @@ class CauseType < ActiveRecord::Base
 
   attr_accessible :picture
 
-  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url =>  "/assets/missing.jpeg"
+  has_attached_file :picture, :styles => { :medium => "200x200>", :thumb => "100x100>" }, 
+                              :default_url =>  "/assets/missing.jpeg",
+                              :convert_options => {
+                                  :thumb => "-quality 75 -strip" }
 
   scope :by_name, lambda { order("name asc") }
 

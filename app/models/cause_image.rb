@@ -1,7 +1,11 @@
 class CauseImage < ActiveRecord::Base
   attr_accessible :cause_id, :picture, :caption
 
-  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/missing.jpeg"
+  has_attached_file :picture, :styles => {:large =>'500x500', :medium => "300x300>", :thumb => "100x100>" }, 
+                              :default_url => "/assets/missing.jpeg",
+                              :convert_options => {
+                                :thumb => "-quality 75 -strip" }
+
   belongs_to :cause
 end
 
