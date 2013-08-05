@@ -10,7 +10,7 @@
         .row.hide.featured_cause_holder data-type-name=key
           .large-5.columns
             a href="#{url_for cause}"
-              img.slimit.fullwidth(src="#{cause.picture.url}")
+              img.slimit.fullwidth(src="#{cause.picture.url :medium}")
           .large-7.columns
             =link_to(cause.name, cause, :class=>'h2 block bold slimit')
             em.secondary.inline.slimit #{cause.location}

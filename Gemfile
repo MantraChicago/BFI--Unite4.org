@@ -65,7 +65,7 @@ gem 'jquery-rails'
 
 gem 'compass', '0.12.2'
 gem 'zurb-foundation', '4.2.3'
-gem 'font-awesome-rails', '3.2.1.2'
+#gem 'font-awesome-rails', '3.2.1.2'
 
 gem 'pry-rails'
 gem 'pry-nav'
