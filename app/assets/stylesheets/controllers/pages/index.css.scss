@@ -64,13 +64,11 @@ h3.areatitle {
 
 
 
-#selectcity,
-#selectcause {
+#selectcityContent,
+#selectcauseContent {
   height: 490px;
-  opacity: 0;
-  visibility: hidden;
   width: 100%;
-  z-index: 100;
+  display: none;
   cursor: pointer;
 
   .city {
