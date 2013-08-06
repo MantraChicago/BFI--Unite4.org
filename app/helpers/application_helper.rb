@@ -3,6 +3,10 @@ module ApplicationHelper
     controller_name + '_' + action_name
   end
 
+  def object_id
+    params[:id]
+  end
+
   def body_class
     controller_name
   end

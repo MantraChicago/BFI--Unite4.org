@@ -4,11 +4,8 @@ class Application.App extends Backbone.Events
 
     @setupViewport()
 
-    @user = new Application.models.User()
+    @user = new Application.models.User(Application.data.current_user)
 
-
-  onUserIdentified: ()->
-    @applySessionCustomizations()
 
   # Allows you to get a reference to a single collection
   # by saying App.collection('causes').  This will route
@@ -64,9 +61,6 @@ class Application.App extends Backbone.Events
   #
   # Application.causes = ()->
   initializePage: ()->
-    @user.identify ()=>
-      @onUserIdentified.apply(@, arguments)
-
     @setupGlobalElements()
 
     controllerSpecific = Application?[@controller]
@@ -76,12 +70,13 @@ class Application.App extends Backbone.Events
     actionSpecific?.call?(window)
     setupHeader()
 
+
     $(document).foundation()
 
   # We will gradully enhance the DOM with any user-specific
   # or session-specific modifications.  This is because, in an ideal
   # scenario the entire page that is getting served to us is highly cached / static
-  applySessionCustomizations: ()->
+  #applySessionCustomizations: ()->
     #Application.applyContributionHistory()
 
   setupGlobalElements: ()->

@@ -19,5 +19,6 @@ class CausesController < ApplicationController
 
 	def show
 		@cause = Cause.find(params[:id])
+		@current_model=@cause #for javascript presenation
 	end
 end

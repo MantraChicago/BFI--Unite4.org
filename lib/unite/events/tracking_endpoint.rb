@@ -5,18 +5,22 @@ module Unite
     class TrackingEndpoint
       attr_accessor :app, :options
 
-      def initialize(app, options={})
+      def initialize(app=nil, options={})
         @app = app
         @options = options.dup
       end
 
       def call(env)
-        # TODO
-        # Figure an elegant way of parsing event params from the request
-        # or rather, a structure for the request params that would fit in
-        # all situations
-        Unite::Events::Tracker.track_event("event_name", {})
-        [200,{},[""]]
+        request= Rack::Request.new(env)
+        variables=request.params
+        if variables['name'] && variables['user_id']
+          variables['url']=request.path
+          Unite::Events::Tracker.track_event(variables['name'],variables['user_id'],variables)
+          [200, {"Content-Type" => "text/html"}, ["Event logged"]]
+        else
+          [500, {"Content-Type" => "text/html"}, ["A name and user_id must be set"]]
+        end
+        
       end
     end
   end

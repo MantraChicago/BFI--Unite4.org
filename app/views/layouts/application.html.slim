@@ -37,7 +37,7 @@ html
     == yield(:head)
 
 
-  body id=body_id class=body_class data-controller=controller_name data-action=action_name
+  body id=body_id class=body_class data-controller=controller_name data-action=action_name data-object_id=object_id
     = render :partial => "shared/facebook"
 
     == render 'shared/mainheader'

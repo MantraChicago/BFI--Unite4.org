@@ -45,4 +45,5 @@ GiveInspireLove::Application.routes.draw do
 
   get "/users/me.json", :to => "users#show", :format => :json
 
+  match "/user_event", :to => Unite::Events::TrackingEndpoint.new
 end
