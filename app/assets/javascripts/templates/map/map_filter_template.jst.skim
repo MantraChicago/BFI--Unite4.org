@@ -5,8 +5,8 @@
       option value="all" All
       -for cause_type in this.cause_types
         option value="#{cause_type['slug']}" #{cause_type['name']}
-    h5.white City
-    select name="by_city_slug"
+    /h5.white City
+    /select name="by_city_slug"
       option value="all" All
       -for city in this.cities
         option value="#{city['slug']}" #{city['name']}
