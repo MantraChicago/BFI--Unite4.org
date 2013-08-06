@@ -3,7 +3,7 @@ module ApplicationHelper
     controller_name + '_' + action_name
   end
 
-  def object_id
+  def params_id
     params[:id]
   end
 
