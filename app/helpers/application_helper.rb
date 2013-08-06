@@ -28,8 +28,10 @@ module ApplicationHelper
 
   def button_text_for_need need
     type_of_need = need.is_a?(Need) ? need.type_of_need : need
-    #Need::GivingActions[type_of_need]
-    need_type_properties(type_of_need)[:call_to_action]
+    properties= need_type_properties(type_of_need)
+    if properties
+      properties[:call_to_action]
+    end
   end
 
   def goal_status_report campaign
