@@ -1,6 +1,8 @@
 .header_popover_holder{
     position: relative;
     width: 100%;
+    position: fixed;
+    z-index: 12;
 
     .header_popover{
       width: 100%;
