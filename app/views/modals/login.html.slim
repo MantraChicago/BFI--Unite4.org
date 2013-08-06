@@ -25,11 +25,12 @@
             .small-9.columns
               =f.password_field :password,:placeholder => "password"
       .row
-        .columns.large-6
-          input.btn.login_button type="submit" value="Login"
+        
         .columns.large-6
           .remember_me 
             =link_to 'Forgot your password?', new_password_path('user')
+        .columns.large-6
+          input.btn.login_button type="submit" value="Login"
         
     .mlimit Don't have an account yet? #{link_to 'Sign Up',new_user_registration_path }
 
