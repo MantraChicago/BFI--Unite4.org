@@ -1,9 +1,0 @@
-div.drop_down_wrapper.cities
-	div.drop_down_title
-		|What city are you closest to?
-	div.row_holder
-		.row
-			- for city in this.cities
-				a.large-4.columns.popover_box href="/charities-in-#{ city.slug }"
-					div.popover_box_background style="background-image: url(#{city.picture})"
-						|#{city.name}
