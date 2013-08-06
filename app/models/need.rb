@@ -18,15 +18,6 @@ class Need < ActiveRecord::Base
     "goods_donations" => "Donations"
   }
 
-  GivingActions = {
-    "followers" => "Promote",
-    "volunteers" => "Volunteer",
-    "cash_donations" => "Donate",
-    "goods_donations" => "Give"
-  }
-
-  validates_inclusion_of :type_of_need, :in => GivingActions.keys
-
   #can_be_queried_by :cause_id
   #can_be_queried_by :type
 

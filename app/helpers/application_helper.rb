@@ -28,7 +28,8 @@ module ApplicationHelper
 
   def button_text_for_need need
     type_of_need = need.is_a?(Need) ? need.type_of_need : need
-    Need::GivingActions[type_of_need]
+    #Need::GivingActions[type_of_need]
+    need_type_properties(type_of_need)[:call_to_action]
   end
 
   def goal_status_report campaign
@@ -61,7 +62,7 @@ module ApplicationHelper
                           color:'pink'
                         },
                        followers: {
-                          call_to_action:'Promote',
+                          call_to_action:'Follow',
                           past_personal_action:'I promoted this cause',
                           color:'blue'
                         },
