@@ -39,7 +39,7 @@ module ApplicationHelper
 
     currency = campaign.type_of_need == "cash_donations" ? "$" : ""
     markup = "<strong>#{ currency } #{ campaign.current_state }</strong>"
-    markup += "<em>#{ Need::PastTenseActions[campaign.type_of_need] }</em>"
+    markup += "<em>#{ need_type_properties(campaign.type_of_need)[:past_action] }</em>"
 
     markup.html_safe
   end
@@ -61,21 +61,25 @@ module ApplicationHelper
     need_properties_map={goods_donations: {
                           call_to_action:'Donate goods',
                           past_personal_action:'I donated goods',
+                          past_action:'Donated',
                           color:'pink'
                         },
                        followers: {
                           call_to_action:'Follow',
                           past_personal_action:'I promoted this cause',
+                          past_action:'Followed',
                           color:'blue'
                         },
                        cash_donations: {
                           call_to_action:'Donate',
                           past_personal_action:'I donated money',
+                          past_action:'Donated',
                           color:'green'
                         },
                        volunteers: {
                           call_to_action:'Volunteer',
                           past_personal_action:'I volunteered',
+                          past_action:'Volunteered',
                           color:'black'
                         }}
     need_properties_map[need_type.to_sym]

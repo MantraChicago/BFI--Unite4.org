@@ -11,12 +11,6 @@ class Need < ActiveRecord::Base
   include Smooth::Presentable
 
 
-  PastTenseActions = {
-    "followers" => "Followers",
-    "volunteers" => "Volunteers",
-    "cash_donations" => "Dollars",
-    "goods_donations" => "Donations"
-  }
 
   #can_be_queried_by :cause_id
   #can_be_queried_by :type

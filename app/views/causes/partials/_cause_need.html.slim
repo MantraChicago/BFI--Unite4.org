@@ -4,7 +4,7 @@
   .large-8.small-7.columns
     h3.no-margin #{need.type_of_need.humanize}
     p.slimit #{need.description}
-    a.bold.slimit.block.open-fulfillment-modal class="#{need_type_properties(need.type_of_need)[:color]}" data-need-id=need.id data-type-of-need=need.type_of_need #{need.type_of_need.humanize} Details
+    a.bold.slimit.block.open-fulfillment-modal class="#{need_type_properties(need.type_of_need)[:color]}" data-need-id=need.id data-type-of-need=need.type_of_need  #{need.type_of_need.humanize} Details
 
   .large-3.small-3.columns.v-align-top
     =render 'causes/partials/cause_modal_button', :need => need
