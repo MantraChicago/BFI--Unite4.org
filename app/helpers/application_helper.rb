@@ -65,9 +65,9 @@ module ApplicationHelper
                           color:'pink'
                         },
                        followers: {
-                          call_to_action:'Follow',
+                          call_to_action:'Promote',
                           past_personal_action:'I promoted this cause',
-                          past_action:'Followed',
+                          past_action:'Promoted',
                           color:'blue'
                         },
                        cash_donations: {
