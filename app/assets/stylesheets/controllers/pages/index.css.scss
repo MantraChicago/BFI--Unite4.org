@@ -74,11 +74,17 @@ h3.areatitle {
   .city {
     height: 490px;
     text-align: center;
+    &:hover h1{
+      color: $verylightblue !important;
+    }
   }
   .cause {
     height: 245px;
     &:hover img {
       zoom: 1.04;
+    }
+    &:hover h1{
+      color: $verylightblue !important;
     }
     h1 {
       font-size: 2.3em;
