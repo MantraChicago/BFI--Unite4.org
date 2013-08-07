@@ -17,7 +17,7 @@ describe 'needs_modal', :js =>true do
     cause.needs << FactoryGirl.create(:need, :social)
     cause.save!
     visit "/causes/#{cause.slug}"
-    first('a.open-fulfillment-modal', :text => 'Followers').click
+    first('[data-type-of-need="followers"]').click
     sleep 1 #waiting for modals to appear 
     page.should have_content 'You need to be logged in'
 
@@ -31,7 +31,7 @@ describe 'needs_modal', :js =>true do
     cause.needs << FactoryGirl.create(:need, :social)
     cause.save!
     visit "/causes/#{cause.slug}"
-    first('a.open-fulfillment-modal', :text => 'Followers').click
+    first('[data-type-of-need="followers"]').click
     modal_title='Show your support'
     sleep 1 #waiting for modals to appear 
     page.should have_content modal_title
@@ -40,5 +40,7 @@ describe 'needs_modal', :js =>true do
     sleep 1 #waiting for modals to appear 
     page.should_not have_content modal_title
   end
+
+  
 
 end

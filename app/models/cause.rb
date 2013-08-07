@@ -162,7 +162,7 @@ class Cause < ActiveRecord::Base
   end
 
   def facebook_link
-    facebook_url if ! facebook_url.empty?
+    facebook_url if !facebook_url.try(:empty?)
   end
 
   def twitter_link

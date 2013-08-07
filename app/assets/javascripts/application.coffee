@@ -20,7 +20,6 @@
 
 #= require ./data_sources
 
-#= require ./causes/index
 #= require ./causes/show
 
 # The On Ready function routes to a function on the Application namespace

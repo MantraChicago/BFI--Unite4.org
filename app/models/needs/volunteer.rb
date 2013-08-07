@@ -8,6 +8,11 @@ class Volunteer < ActiveRecord::Base
   belongs_to :cause, :counter_cache => true
   belongs_to :user, :counter_cache => true
 
+  after_create :record_event
+
+  def record_event
+    Unite::Events::Tracker.track_event('volunteered_for_cause',user_id, :cause_id => cause_id)
+  end
 end
 
 # == Schema Information

@@ -30,5 +30,8 @@ FactoryGirl.define do
       region "NY"
     end
 
+    
   end
+
+
 end
