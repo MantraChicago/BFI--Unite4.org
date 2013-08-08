@@ -65,13 +65,13 @@ module ApplicationHelper
                           color:'pink'
                         },
                        followers: {
-                          call_to_action:'Promote',
+                          call_to_action:'Follow',
                           past_personal_action:'I promoted this cause',
                           past_action:'Promoted',
                           color:'blue'
                         },
                        cash_donations: {
-                          call_to_action:'Donate',
+                          call_to_action:'Donate money',
                           past_personal_action:'I donated money',
                           past_action:'Donated',
                           color:'green'

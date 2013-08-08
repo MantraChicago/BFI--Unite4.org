@@ -26,6 +26,13 @@ bundle install
 At this point you will want to edit the `config/database.yml` file to
 include the database / authentication parameters local to your system.
 
+### Delayed jobs
+We are using the delay_job gem to run async tasks.
+To start the job runner run
+```bash
+script/delayed_job start
+```
+
 ### Setting up Development Data
 
 ```
