@@ -16,7 +16,6 @@ public/system
 /tmp
 *.log
 *.sqlite
-/config/database.yml
 *.swo
 *.swp
 *.orig
