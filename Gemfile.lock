@@ -122,11 +122,11 @@ GEM
     cookiejar (0.3.0)
     customerio (0.5.0)
       httparty (>= 0.5, < 1.0)
-    daemons (1.1.9)
+    daemons (1.0.10)
     database_cleaner (1.1.1)
     debug_inspector (0.0.2)
-    delayed_job (4.0.0)
-      activesupport (>= 3.0, < 4.1)
+    delayed_job (3.0.5)
+      activesupport (~> 3.0)
     delayed_job_active_record (4.0.0)
       activerecord (>= 3.0, < 4.1)
       delayed_job (>= 3.0, < 4.1)
@@ -423,9 +423,9 @@ DEPENDENCIES
   colored
   compass (= 0.12.2)
   customerio (= 0.5.0)
-  daemons
+  daemons (= 1.0.10)
   database_cleaner
-  delayed_job
+  delayed_job (~> 3.0.5)
   delayed_job_active_record
   devise (= 2.2.3)
   ejs

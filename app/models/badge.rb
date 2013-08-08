@@ -16,6 +16,10 @@ class Badge < ActiveRecord::Base
     self.file_name ||= "#{ self.name.parameterize }.png"
   end
 
+  def formatted_description
+
+  end
+
   def generate_badge_calculator_class_name
     "#{slug.camelize}Calculator"
   end
@@ -26,6 +30,7 @@ class Badge < ActiveRecord::Base
 
     results
   end
+
 
 
   DefaultBadges = [

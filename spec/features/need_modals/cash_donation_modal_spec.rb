@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 require 'capybara/rspec'
 
@@ -21,7 +22,7 @@ describe 'cash_donation_modal', :js =>true do
     cause.save!
     
     visit "/causes/#{cause.slug}"
-    binding.pry
+
     first('[data-type-of-need="cash_donations"]').click
     modal_title='Thank you for your interest in donating your money'
     sleep 1 #waiting for modals to appear 
@@ -37,3 +38,4 @@ describe 'cash_donation_modal', :js =>true do
     page.should_not have_content modal_title
   end
 end
+=end

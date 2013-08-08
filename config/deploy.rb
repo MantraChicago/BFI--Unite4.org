@@ -25,8 +25,8 @@ before 'deploy:assets:precompile', 'sym_link:database'
 before 'deploy:assets:precompile', 'sym_link:logs'
 before 'deploy:assets:precompile', 'sym_link:settings'
 
-#after "deploy:stop",    "delayed_job:stop"
-#after "deploy:start",   "delayed_job:start"
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
 #after "deploy:restart", "delayed_job:restart"
 
 namespace :db do
@@ -35,6 +35,16 @@ namespace :db do
     run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=#{rails_env}"
   end
 end
+
+namespace :delayed_job do
+  task :stop do
+    run "#{current_release}/script/delayed_job stop"
+  end
+
+  task :start do 
+    run "#{current_release}/script/delayed_job start"
+  end
+end 
 
 namespace :sym_link do
   desc 'sym link database.yml'

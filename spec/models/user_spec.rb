@@ -6,16 +6,13 @@ describe User do
   let(:follower) { create(:follower, user: user, cause: cause) }
 
   before(:all) do
-    Badge.create_defaults(true)
+    Badge.create_defaults
   end
 
   it "should be presentable" do
     User.new.should respond_to(:present_as)
   end
 
-  it "should be awarded a default badge" do
-    user.badges.count.should == 1
-  end
 
   it "should give me a list of the cause ids that I follow" do
     follower.user.followed_causes_ids.should include(cause.id)

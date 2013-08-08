@@ -21,6 +21,8 @@ module Unite
                           fulfillment_type: self.class.to_s,
                           fulfillment_id: self.id
                          )
+      user=User.find(self.user_id)
+      Unite::Badges::BadgeCalculator.delay.calculate_badges_for_user(user,Badge.all)
     end
 
     def related_campaign
@@ -38,14 +40,7 @@ module Unite
     # potential race state.
     def update_campaign_progress
       return if progress_updated?
-      update_campaign_progress_safely!
-=begin
-      if Rails.env.test? || Rails.env.development?
-        update_campaign_progress_safely!
-      else
-        delay.update_campaign_progress_safely!
-      end
-=end
+      self.delay.update_campaign_progress_safely!
     end
 
     def progress_updated?

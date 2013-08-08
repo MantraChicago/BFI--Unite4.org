@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807195258) do
+ActiveRecord::Schema.define(:version => 20130808194201) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -217,6 +217,22 @@ ActiveRecord::Schema.define(:version => 20130807195258) do
     t.integer  "fulfillment_id"
   end
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0, :null => false
+    t.integer  "attempts",   :default => 0, :null => false
+    t.text     "handler",                   :null => false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
   create_table "featured_causes", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -312,6 +328,18 @@ ActiveRecord::Schema.define(:version => 20130807195258) do
   add_index "subscribers", ["email"], :name => "index_subscribes_on_email"
   add_index "subscribers", ["id"], :name => "index_subscribes_on_id", :unique => true
 
+  create_table "user_badges", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "badge_id"
+    t.datetime "created"
+    t.integer  "cause_id"
+    t.integer  "contribution_id"
+    t.integer  "need_id"
+  end
+
+  add_index "user_badges", ["id"], :name => "index_users_badges_on_id", :unique => true
+  add_index "user_badges", ["user_id"], :name => "index_users_badges_on_user_id"
+
   create_table "user_events", :force => true do |t|
     t.string   "url"
     t.integer  "user_id"
@@ -363,14 +391,6 @@ ActiveRecord::Schema.define(:version => 20130807195258) do
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["id"], :name => "index_users_on_id", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "users_badges", :force => true do |t|
-    t.integer "user_id"
-    t.integer "badge_id"
-  end
-
-  add_index "users_badges", ["id"], :name => "index_users_badges_on_id", :unique => true
-  add_index "users_badges", ["user_id"], :name => "index_users_badges_on_user_id"
 
   create_table "volunteers", :force => true do |t|
     t.integer  "cause_id"

@@ -15,10 +15,6 @@ gem "paperclip", "~> 2.7"
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
-# Is this shit still gonna act a fool?
-gem 'daemons'
-gem 'delayed_job'
-gem 'delayed_job_active_record'
 
 #gem 'turbo-sprockets-rails3'
 
@@ -37,6 +33,9 @@ gem 'pg'
 gem 'annotate'
 gem 'json'
 
+gem 'delayed_job_active_record'
+gem "daemons", "= 1.0.10"
+gem "delayed_job", "~> 3.0.5"
 
 # location gems
 gem 'carmen'

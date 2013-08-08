@@ -19,13 +19,13 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
 
-  has_and_belongs_to_many :badges, :join_table=>:users_badges
+  has_many :user_badges
+  has_many :badges, :through => :user_badges
 
   after_create :identify_customer_with_customer_io
-
   after_create :reset_authentication_token!
+  after_create :calculate_badges
 
-  after_create :award_default_badge
 
 
   after_destroy do
@@ -42,15 +42,11 @@ class User < ActiveRecord::Base
     random(1).first
   end
 
-  def award_badge name, options={}
-    badge = Badge.find_by_name(name)
-    self.badges << badge if badge
-    self.save
-  end
+  def calculate_badges
 
-  def award_default_badge
-    award_badge('Sign Up')
+    Unite::Badges::BadgeCalculator.delay.calculate_badges_for_user(self,Badge.all)
   end
+  #handle_asynchronously :calculate_badges
 
   def customer_io_id
     "#{ Rails.env }-#{ self.id }"

@@ -1,23 +1,16 @@
 class Unite::Badges::BadgeCalculator
-  def self.calculate_all_badges_for_all_users
-    Badge.all.each do |badge|
-      badge_calculator_class_name= "Unite::Badges::BadgeCalculator::#{badge.generate_badge_calculator_class_name}"
-      if class_exists? badge_calculator_class_name    
-        badge_calculator_class = badge_calculator_class_name.constantize
-        User.all.each do |user|
-          self.calculate_badge_for_user(user, badge, badge_calculator_class)
-        end
-      end
+  def self.calculate_all_badges_for_users(badges, users)
+    users.all.each do |user|
+      calculate_badges_for_user(user, badges)
     end
   end
 
-  def self.calculate_badge_for_user(user,badge, badge_calculator_class)  
-    if !user.badges.all.include? badge
-      earned_badge=badge_calculator_class.calculate user
-      if earned_badge
-        puts "Badge #{badge.name} given to #{user.display_name}"
-        user.badges << badge
-        user.save
+  def self.calculate_badges_for_user(user, badges) 
+    badges.each do |badge|
+      badge_calculator_class_name= "Unite::Badges::BadgeCalculator::#{badge.generate_badge_calculator_class_name}" 
+      if !(user.badges.all.include?(badge)) &&  class_exists?(badge_calculator_class_name)
+        badge_calculator_class = badge_calculator_class_name.constantize
+        badge_calculator_class.calculate user, badge   
       end
     end
   end
