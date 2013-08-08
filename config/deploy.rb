@@ -38,11 +38,13 @@ end
 
 namespace :delayed_job do
   task :stop do
-    run "#{current_release}/script/delayed_job stop"
+    puts "Stopping delayed jobs"
+    run "cd #{current_release} && ./script/delayed_job stop"
   end
 
   task :start do 
-    run "#{current_release}/script/delayed_job start"
+    puts "Starting delayed jobs"
+    run "cd #{current_release} && ./script/delayed_job start"
   end
 end 
 
