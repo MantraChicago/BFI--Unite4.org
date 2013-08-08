@@ -25,26 +25,32 @@ before 'deploy:assets:precompile', 'sym_link:database'
 before 'deploy:assets:precompile', 'sym_link:logs'
 before 'deploy:assets:precompile', 'sym_link:settings'
 
-after "deploy:stop",    "delayed_job:stop"
-after "deploy:start",   "delayed_job:start"
-#after "deploy:restart", "delayed_job:restart"
+# after "deploy:stop",    "delayed_job:stop"
+# after "deploy:start",   "delayed_job:start"
+# after "deploy:restart", "delayed_job:restart"
+
+after "sym_link:database", "delayed_job:stop"
+after "delayed_job:stop", "delayed_job:start"
 
 namespace :db do
   desc 'rake db:migrate'
   task :migrate do
-    run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=#{rails_env}"
+    run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=#{stage}"
   end
 end
 
 namespace :delayed_job do
   task :stop do
-    puts "Stopping delayed jobs"
-    run "cd #{current_release} && ./script/delayed_job stop"
+    begin
+      run "cd #{current_release} && RAILS_ENV=#{stage} bundle exec ./script/delayed_job stop"
+    rescue
+      puts "Failed to stop delayed_job (is it running?)"
+    end
   end
 
   task :start do 
     puts "Starting delayed jobs"
-    run "cd #{current_release} && ./script/delayed_job start"
+    run "cd #{current_release} && RAILS_ENV=#{stage} bundle exec ./script/delayed_job start"
   end
 end 
 
