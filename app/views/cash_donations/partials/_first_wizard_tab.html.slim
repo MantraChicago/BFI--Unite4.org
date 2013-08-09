@@ -5,7 +5,7 @@ div
     .large-10.columns.large-centered.mlimit.modal-max-width.mlimit-top
       .row
         .large-2.columns
-          input.money_input#donation_amount type="text" value="0" name="donation_amount"
+          input.money_input#donation_amount type="text" value="0" name="donation_amount" onkeyup="this.value=this.value.replace(/[^\d]/,'')"
         .large-8.large-offset-2.columns
           h4 How much you would like to donate.
           h5 Unite4Good is a 501(c)3 organization, which means that your donations are tax deductible. 
