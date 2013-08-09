@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:datapimp/smooth.git
+  remote: git://github.com/datapimp/smooth.git
   revision: 34fca2b5f3ef1e6a2e77f635186ba378cc06d0a4
   specs:
     smooth (0.0.3)
@@ -13,7 +13,7 @@ GIT
       virtus
 
 GIT
-  remote: https://github.com/stripe/stripe-ruby
+  remote: git://github.com/stripe/stripe-ruby.git
   revision: fd09e677311d7d78a02af9b6c7f61b3a2c3b752d
   specs:
     stripe (1.8.4)
