@@ -36,9 +36,9 @@ module ApplicationHelper
 
   def goal_status_report campaign
     campaign ||= Campaign.new
-
     currency = campaign.type_of_need == "cash_donations" ? "$" : ""
-    markup = "<strong>#{ currency } #{ campaign.current_state }</strong>"
+    number =number_with_delimiter(campaign.current_state, :delimiter => ',')
+    markup = "<strong>#{ currency } #{ number }</strong>"
     markup += "<em>#{ need_type_properties(campaign.type_of_need)[:past_action] }</em>"
 
     markup.html_safe

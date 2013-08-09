@@ -5,13 +5,16 @@ div
     .large-10.columns.large-centered.mlimit.modal-max-width.mlimit-top
       .row
         .large-2.columns
-          input.money_input#donation_amount type="text" value="0" name="donation_amount"
+          |$
+          input.money_input#donation_amount type="text" value="0" name="donation_amount" onkeyup="this.value=this.value.replace(/[^\d]/,'')"
         .large-8.large-offset-2.columns
           h4 How much you would like to donate.
           h5 Unite4Good is a 501(c)3 organization, which means that your donations are tax deductible. 
       .row.mlimit
         .large-2.columns
-          = select(:donation, :tip, money_amount)
+          |$
+          input.money_input#donation_tip type="text" value="0" name="donation_tip" onkeyup="this.value=this.value.replace
+          /= select(:donation, :tip, money_amount)
         .large-8.large-offset-2.columns
           h4 Give a tip to Unite4Good (optional)
           h5 Help us grow. Your donation will help us support many more causes in the future.

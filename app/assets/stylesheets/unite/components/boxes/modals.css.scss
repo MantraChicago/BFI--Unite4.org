@@ -1,6 +1,7 @@
 @import "unite/gradient";
 
 .need_modal{
+
   min-height: 550px;
   position: relative;
   color:#444;
@@ -25,6 +26,7 @@
   }
 
   .wizard-navigation{
+    white-space: nowrap;
     position: absolute;
     width: 100%;
     bottom: 0px;

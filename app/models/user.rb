@@ -25,8 +25,11 @@ class User < ActiveRecord::Base
   after_create :identify_customer_with_customer_io
   after_create :reset_authentication_token!
   after_create :calculate_badges
+  after_create :add_default_image_if_empty
 
-
+  def missing_image_defaults
+    ['green_user.jpg','pink_user.jpg','blue_user.jpg']
+  end
 
   after_destroy do
     $customerio.delete(self.customer_io_id)
@@ -133,9 +136,13 @@ class User < ActiveRecord::Base
       end
     end
   end
+
   def avatar
     if self.avatar_file_name.nil? && self.uid
       DummyPaperclip.new("https://graph.facebook.com/#{self.uid}/picture")
+    elsif self.avatar_file_name.nil?
+      img=self.missing_image_defaults[self.id%3]
+      DummyPaperclip.new("/assets/user_img_defaults/#{img}")
     else
       avatar_old
     end

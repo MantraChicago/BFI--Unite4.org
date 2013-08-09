@@ -13,7 +13,7 @@ gem 'omniauth-facebook'
 
 gem "paperclip", "~> 2.7"
 
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe', :github  => 'stripe/stripe-ruby'
 
 
 #gem 'turbo-sprockets-rails3'
@@ -54,7 +54,8 @@ end
 gem 'ejs'
 gem 'slim', '1.2.2'
 gem 'skim', '0.8.6'
-gem 'smooth', :git => "git@github.com:datapimp/smooth.git" 
+
+gem 'smooth', :github => "datapimp/smooth" 
 #gem 'smooth', :path => File.join(ENV['HOME'],'Projects','smooth')
 gem 'jquery-rails'
 
