@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'simple-settings'
+gem 'simple-settings', '~>0.0.6'
 
 gem 'hipchat', '~> 0.10.0'
 gem 'rails', '3.2.13'
