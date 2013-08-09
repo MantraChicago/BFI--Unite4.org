@@ -38,6 +38,8 @@ namespace :bundle do
   desc 'bundle install'
   task :install do
     run "cd #{current_release} && bundle install"
+  end
+end
 
 namespace :db do
   desc 'rake db:migrate'
