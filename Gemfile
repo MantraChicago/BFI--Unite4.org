@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'simple-settings'
+gem 'simple-settings', '~>0.0.6'
 
 gem 'hipchat', '~> 0.10.0'
 gem 'rails', '3.2.13'
@@ -49,6 +49,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'turbo-sprockets-rails3', '>= 0.3.6'
+  gem 'simple-settings', '~>0.0.6'
 end
 
 gem 'ejs'
