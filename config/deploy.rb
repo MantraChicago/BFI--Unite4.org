@@ -29,8 +29,8 @@ before 'deploy:assets:precompile', 'sym_link:settings'
 # after "deploy:start",   "delayed_job:start"
 # after "deploy:restart", "delayed_job:restart"
 
-after "sym_link", "delayed_job:stop"
-after "delayed_job:stop", "delayed_job:start"
+#after "sym_link", "delayed_job:stop"
+#after "delayed_job:stop", "delayed_job:start"
 
 namespace :db do
   desc 'rake db:migrate'
@@ -42,32 +42,32 @@ end
 namespace :delayed_job do
   task :stop do
     begin
-      run "cd #{release_path}; script/delayed_job stop -- production"
+      run "cd #{current_release}; script/delayed_job stop -- production"
     rescue
       puts "Failed to stop delayed_job (is it running?)"
     end
   end
 
-  task :start do 
+  task :start do
     puts "Starting delayed jobs"
     run "cd #{current_release}; script/delayed_job start -- production"
   end
-end 
+end
 
 namespace :sym_link do
   desc 'sym link database.yml'
   task :database do
-    run "cd #{release_path}/config && ln -s #{deploy_to}/shared/private/config/database.yml ./database.yml"
+    run "cd #{current_release}/config && ln -s #{deploy_to}/shared/private/config/database.yml database.yml"
   end
 
   desc 'sym link production logs'
   task :logs do
-    run "cd #{release_path} && rm -rf log && ln -s #{deploy_to}/shared/logs log"
+    run "cd #{current_release} && rm -rf log && ln -s #{deploy_to}/shared/logs log"
   end
 
   desc 'sym link settings file'
   task :settings do
-    run "cd #{release_path}/config && ln -s #{deploy_to}/shared/private/config/settings.yml settings.yml"
+    run "cd #{current_release}/config && ln -s #{deploy_to}/shared/private/config/settings.yml settings.yml"
   end
 end
 
