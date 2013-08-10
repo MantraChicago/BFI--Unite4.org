@@ -25,7 +25,6 @@ class User < ActiveRecord::Base
   after_create :identify_customer_with_customer_io
   after_create :reset_authentication_token!
   after_create :calculate_badges
-  after_create :add_default_image_if_empty
 
   def missing_image_defaults
     ['green_user.jpg','pink_user.jpg','blue_user.jpg']
