@@ -456,7 +456,7 @@ DEPENDENCIES
   rvm-capistrano
   sass-rails (= 3.2.6)
   selenium-webdriver
-  simple-settings
+  simple-settings (~> 0.0.6)
   skim (= 0.8.6)
   slim (= 1.2.2)
   smooth!

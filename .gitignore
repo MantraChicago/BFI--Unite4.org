@@ -33,3 +33,4 @@ Thumbs.db
 coverage
 nbproject
 config/settings.yml
+config/database.yml
