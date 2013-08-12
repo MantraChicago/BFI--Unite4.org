@@ -1,0 +1,16 @@
+.login_background
+  .centered
+    .row
+      .large-6.column.mlimit-top.signup.large-centered
+        h2 Forgot your password?
+        .message.mlimit.errors
+        
+        = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| 
+          =devise_error_messages!
+
+          .row
+            .large-12.columns
+              =f.email_field :email, :autofocus => true, :placeholder=>"Email address"
+          .row
+            .columns.large-12
+              input.btn.signup_button type="submit" value="Send me reset password instructions"
