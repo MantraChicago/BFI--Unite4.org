@@ -53,11 +53,11 @@ end
 namespace :delayed_job do
   task :restart do
     begin
-      run "cd #{current_release} ** bundle exec script/delayed_job stop -- production RAILS_ENV=#{stage}"
+      run "cd #{current_release} && bundle exec script/delayed_job stop production"
     rescue
       puts "Failed to stop delayed_job (is it running?)"
     end
-    # run "cd #{current_release} && bundle exec script/delayed_job start -- production RAILS_ENV=#{stage}"
+    run "cd #{current_release} && bundle exec script/delayed_job start production"
   end
 end
 
