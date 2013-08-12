@@ -1,47 +1,44 @@
-class City
-  def self.all
-  	[{
-  	  name: "Chicago",
-      picture: "/assets/cities/chicago.jpeg",
-      slug: "chicago",
-      latitude: 41.896432,
-      longitude: -87.643053,
-    },
-    {
-  	  name: "San Francisco",
-      picture: "/assets/cities/san_francisco.jpeg",
-      slug: "san-francisco",
-      latitude: 37.784827,
-      longitude: -122.727802,
-    },
-    {
-  	  name: "New York",
-      slug: "new-york",
-      picture: "/assets/cities/new_york_city.jpeg",
-      longitude: -73.99834,
-      latitude: 40.72596,
-    },
-	]
+class City < ActiveRecord::Base
+  attr_accessible :name, :slug, :picture
+  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url =>  "/assets/missing.jpeg"
+
+  def default_cities
+    [{id: 0, name: 'New York', slug: 'new-york'},
+    {id: 1, name: 'Philadelphia', slug: 'philadelphia'},
+    {id: 2, name: 'Washington', slug: 'washington'},
+    {id: 3, name: 'Pittsburgh', slug: 'pittsburgh'},
+    {id: 4, name: 'Cleveland', slug: 'cleveland'},
+    {id: 5, name: 'Athens', slug: 'athens'},
+    {id: 6, name: 'Detroit', slug: 'detroit'},
+    {id: 7, name: 'Ann Arbor', slug: 'ann-arbor'},
+    {id: 8, name: 'Chicago', slug: 'chicago'},
+    {id: 9, name: 'St. Louis', slug: 'st-louis'},
+    {id: 10, name: 'Nashville', slug: 'nashville'},
+    {id: 11, name: 'Atlanta', slug: 'atlanta'},
+    {id: 12, name: 'Athens', slug: 'athens'},
+    {id: 13, name: 'Orlando', slug: 'orlando'},
+    {id: 14, name: 'Miami', slug: 'miami'},
+    {id: 15, name: 'Tampa', slug: 'tampa'},
+    {id: 16, name: 'New Orleans', slug: 'new-orleans'},
+    {id: 17, name: 'Houston', slug: 'houston'},
+    {id: 18, name: 'Austin', slug: 'austin'},
+    {id: 19, name: 'Oklahoma City', slug: 'oklahoma-city'},
+    {id: 20, name: 'Santa Fe', slug: 'santa-fe'},
+    {id: 21, name: 'Denver', slug: 'denver'},
+    {id: 22, name: 'Salt Lake City', slug: 'salt-lake-city'},
+    {id: 23, name: 'Boise', slug: 'boise'},
+    {id: 24, name: 'Seattle', slug: 'seattle'},
+    {id: 25, name: 'Portland', slug: 'portland'},
+    {id: 26, name: 'San Francisco', slug: 'san-francisco'},
+    {id: 27, name: 'San Jose', slug: 'san-jose'},
+    {id: 28, name: 'Sacramento', slug: 'sacramento'},
+    {id: 29, name: 'Las Vegas', slug: 'las-vegas'},
+    {id: 30, name: 'Phoenix', slug: 'phoenix'},
+    {id: 31, name: 'San Diego', slug: 'san-diego'},
+    {id: 32, name: 'Los Angeles', slug: 'los-angeles'},]
   end
 
-  def self.grouped_by_cause_type cause_type_slug
-    Cause.joins(:cause_type).where("cause_types.slug = ?", cause_type_slug).group(:city_slug).count
-  end
+  def create_default
 
-  def self.find_by_slug slug
-    all.detect do |city|
-      city[:slug] == slug.downcase
-    end
-  end
-
-  def self.[] key
-    all.detect do |city|
-      city[:name].downcase == key.downcase
-    end
-  end
-
-  def self.coordinates_for city
-    hash = City[city]
-    [hash[:latitude], hash[:longitude]]
   end
 end
