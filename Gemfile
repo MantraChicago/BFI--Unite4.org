@@ -16,7 +16,7 @@ gem "paperclip", "~> 2.7"
 gem 'stripe', :github  => 'stripe/stripe-ruby'
 
 
-#gem 'turbo-sprockets-rails3'
+gem 'foreman'
 
 gem 'customerio','0.5.0'
 
