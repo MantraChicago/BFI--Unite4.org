@@ -48,7 +48,6 @@ class User < ActiveRecord::Base
 
     Unite::Badges::BadgeCalculator.delay.calculate_badges_for_user(self,Badge.all)
   end
-  #handle_asynchronously :calculate_badges
 
   def customer_io_id
     "#{ Rails.env }-#{ self.id }"

@@ -7,3 +7,5 @@ class UsersController < ApplicationController
     respond_with(current_user.present_as(:profile))
   end
 end
+
+

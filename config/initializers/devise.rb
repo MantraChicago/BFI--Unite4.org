@@ -8,6 +8,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
+  config.mailer = 'CustomerIoDeviseMailer'
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -239,6 +240,8 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 
   #https://github.com/plataformatec/devise/wiki/OmniAuth%3a-Overview
+
+
   require "omniauth-facebook"
   config.omniauth :facebook, '145343622317172','bd6476438158a450568b75e82b7a4304' , {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/opt/nginx/certs/unite4.org.chained.crt'}}}
 end
