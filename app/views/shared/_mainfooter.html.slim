@@ -19,23 +19,9 @@
     .large-3.columns.mlimit-top
       h4.tertiary Programs
       ul.plain-list.small-inline-list
-        li
-          = link_to "Education", '/charities-supporting-education'
-        li
-          = link_to "Social Equality", "/page/social_equality"
-        li
-          = link_to "Global Outreach", "/page/global_outreach"
-        li
-          = link_to "Environmental", "/page/environmental"
-        li
-          = link_to "Health & Wellness", "/page/health_wellness"
-        li
-          = link_to "Youth", "/page/youth"
-        li
-          = link_to "Animal Welfare", "/page/animal_welfare"
-        li
-          = link_to "Arts", "/page/arts"
-
+        -CauseType.all.each do |cause_type|
+          li
+            = link_to cause_type.name, "/charities-supporting-#{cause_type.slug}"
 
     .large-3.columns.mlimit-top
       h4.tertiary Get Involved
