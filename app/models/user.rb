@@ -138,7 +138,7 @@ class User < ActiveRecord::Base
   def avatar
     if self.avatar_file_name.nil? && self.uid
       DummyPaperclip.new("https://graph.facebook.com/#{self.uid}/picture")
-    elsif self.avatar_file_name.nil?
+    elsif self.avatar_file_name.nil? && self.id
       img=self.missing_image_defaults[self.id%3]
       DummyPaperclip.new("/assets/user_img_defaults/#{img}")
     else
