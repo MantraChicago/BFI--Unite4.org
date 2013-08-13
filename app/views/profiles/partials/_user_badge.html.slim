@@ -1,17 +1,17 @@
 li
-  h3 #{badge.name}
+  h3 #{user_badge.badge.name}
   .section-container.auto{data-section}
     section.badge-shrine
       p.title{data-section-title}
         a{href='#'}
           span Badge
       .content{data-section-content}
-        = image_tag("badges/#{badge.file_name}", :size => '150x150')
+        = image_tag("badges/#{user_badge.badge.file_name}", :size => '150x150')
     section.badge-details
       p.title{data-section-title}
         a{href='#'}
           span Info
       .content{data-section-content}
         p
-          = image_tag("badges/#{badge.file_name}", :size => '50x50')
-          |#{badge.description_after}
+          = image_tag("badges/#{user_badge.badge.file_name}", :size => '50x50')
+          |#{user_badge.formatted_description}

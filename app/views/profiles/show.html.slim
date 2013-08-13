@@ -68,7 +68,7 @@ section#user-badges.hide
   .row
     .large-12.column
       ul#badges-list.large-block-grid-4
-        - @user.badges.each do |badge|
-          =render 'profiles/partials/user_badge', :user => @user, :badge => badge
+        - @user.user_badges.each do |user_badge|
+          =render 'profiles/partials/user_badge', :user_badge=> user_badge
 javascript:
   var user_causes = #{@user.followed_causes_locations.to_json.html_safe}

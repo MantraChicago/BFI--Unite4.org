@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130808194201) do
+ActiveRecord::Schema.define(:version => 20130813174106) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -204,6 +204,24 @@ ActiveRecord::Schema.define(:version => 20130808194201) do
   add_index "causes_cause_types", ["cause_type_id"], :name => "index_causes_cause_types_on_cause_type_id"
   add_index "causes_cause_types", ["id"], :name => "index_causes_cause_types_on_id", :unique => true
 
+  create_table "causes_cities", :id => false, :force => true do |t|
+    t.integer "city_id"
+    t.integer "cause_id"
+  end
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "latitude"
+    t.integer  "longitude"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
   create_table "contributions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "cause_id"
@@ -335,6 +353,8 @@ ActiveRecord::Schema.define(:version => 20130808194201) do
     t.integer  "cause_id"
     t.integer  "contribution_id"
     t.integer  "need_id"
+    t.integer  "number"
+    t.datetime "created_at"
   end
 
   add_index "user_badges", ["id"], :name => "index_users_badges_on_id", :unique => true

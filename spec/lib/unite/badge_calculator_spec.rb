@@ -34,4 +34,15 @@ describe Unite::Badges::BadgeCalculator do
     @user.badges.include? badge
   end
 
+  it 'A user should get the "enthusiast" badge after they follow 5 causes' do
+    badge = Badge.find_by_slug('enthusiast')
+    
+    5.times do 
+      @user.causes << FactoryGirl.create(:cause)
+    end
+
+    Unite::Badges::BadgeCalculator.calculate_badges_for_user(@user,Badge.all)
+    @user.badges.include? badge
+  end
+
 end
