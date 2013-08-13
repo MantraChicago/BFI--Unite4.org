@@ -19,8 +19,7 @@ ActiveAdmin.register Cause do
 	    f.input :phone_number
 	    f.input :email
 	    f.input :website
-	    f.input :city
-      f.input :city_slug
+	    f.input :cities, as: :check_boxes, collection: City.all
 	    f.input :state
 	    f.input :video_link
 	    f.input :twitter_handle

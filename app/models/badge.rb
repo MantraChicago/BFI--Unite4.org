@@ -16,10 +16,6 @@ class Badge < ActiveRecord::Base
     self.file_name ||= "#{ self.name.parameterize }.png"
   end
 
-  def formatted_description
-
-  end
-
   def generate_badge_calculator_class_name
     "#{slug.camelize}Calculator"
   end
@@ -30,8 +26,6 @@ class Badge < ActiveRecord::Base
 
     results
   end
-
-
 
   DefaultBadges = [
       {name: 'Sign Up', slug: 'sign_up', file_name: 'sign_up.png',description_after: "Welcome to unite4good: this was your very first badge! Check out the badge page to learn how you can earn more.", description_before: "Welcome to unite4good: this was your very first badge! Check out the badge page to learn how you can earn more.", category: 'none', badge_type: 'one_time', sub_text: "Let's Get Started!"},

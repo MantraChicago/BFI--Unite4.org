@@ -47,16 +47,17 @@
 
       var $header = $('header');
       var fixed = false;
+      trigger_height=507
 
       if($header.attr('id') !== 'no-cause-found'){
         $(window).scroll(function(){
           var scrollTop = $(this).scrollTop();
-
-          if(scrollTop >= 507 && !fixed){
+          
+          if(scrollTop >= trigger_height && !fixed){
             $header.addClass('stay-menu');
             fixed = true;
           }
-          else if(scrollTop < 507 && fixed) {
+          else if(scrollTop < trigger_height && fixed) {
             $header.removeClass('stay-menu');
             fixed = false;
           }

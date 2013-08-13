@@ -4,4 +4,6 @@ unless Rails.env.production?
 
   Badge.create_defaults(true)
 
+  City.create_defaults
+
 end

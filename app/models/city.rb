@@ -1,8 +1,10 @@
 class City < ActiveRecord::Base
   attr_accessible :name, :slug, :picture
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url =>  "/assets/missing.jpeg"
+  has_and_belongs_to_many :causes
 
-  def default_cities
+
+  def self.default_cities
     [{id: 0, name: 'New York', slug: 'new-york'},
     {id: 1, name: 'Philadelphia', slug: 'philadelphia'},
     {id: 2, name: 'Washington', slug: 'washington'},
@@ -35,10 +37,17 @@ class City < ActiveRecord::Base
     {id: 29, name: 'Las Vegas', slug: 'las-vegas'},
     {id: 30, name: 'Phoenix', slug: 'phoenix'},
     {id: 31, name: 'San Diego', slug: 'san-diego'},
-    {id: 32, name: 'Los Angeles', slug: 'los-angeles'},]
+    {id: 32, name: 'Los Angeles', slug: 'los-angeles'}]
   end
 
-  def create_default
-
+  def self.create_defaults
+    self.delete_all
+    self.default_cities.each do |city_hash|
+      city = City.find_or_create_by_id city_hash[:id]
+      city.slug=city_hash[:slug]
+      city.name=city_hash[:name]
+      city.id=city_hash[:id]
+      city.save
+    end
   end
 end

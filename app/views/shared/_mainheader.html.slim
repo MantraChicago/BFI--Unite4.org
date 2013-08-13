@@ -17,7 +17,10 @@
             = render "profiles/partials/user_upper_bar"
   #selectcity.pos-abs.transition-quick.shadow
     #selectcityContent
-      .row.fullwidth.pos-abs.oxygen.white
+      -City.all.each do |city|
+        =link_to city.name, "/charities-in-#{city.slug}"
+
+      /.row.fullwidth.pos-abs.oxygen.white
         a href="/charities-in-chicago"
           .large-4.columns.city.small-height-auto#chicago
             h1.blimit-top.mlimit Chicago

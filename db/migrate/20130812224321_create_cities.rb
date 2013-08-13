@@ -5,11 +5,18 @@ class CreateCities < ActiveRecord::Migration
       t.string :slug
       t.integer :latitude
       t.integer :longitude
+      t.has_attached_file :picture
 
       t.timestamps
     end
 
-    add_attachment :cities, :picture
-    City.create_default
+
+    create_table :causes_cities, :id => false do |t|
+      t.integer :city_id
+      t.integer :cause_id
+    end
+
   end
+
+
 end
