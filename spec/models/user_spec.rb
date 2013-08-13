@@ -23,6 +23,28 @@ describe User do
     user.unfollow(cause)
     user.followed_causes_ids.should be_empty
   end
+
+  it 'a uses\'s followed causes should be cleared when deleted' do
+    user = FactoryGirl.create :user
+    cause= FactoryGirl.create :cause
+    user.causes << cause
+    user.save
+    cause.followers.count.should == 1
+    user.destroy
+    cause.followers.count.should == 0
+  end
+
+=begin
+  it 'a uses\'s contributions should be cleared when deleted' do
+    user = FactoryGirl.create :user
+    cause =FactoryGirl.create(:cause)
+    Unite::NeedsFulfillmentProxy.new(user, FactoryGirl.create(:need, :cash), type_of_need: "cash_donations", cause_id: cause.id ).fulfill!
+    user.contributions.count.should ==1
+    user.destroy
+    cause.contributions.count.should == 0
+
+  end
+=end
 end
 
 # == Schema Information
