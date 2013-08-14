@@ -26,10 +26,10 @@
       img.left.mlimit-right height="40px" src=asset_path('right_circle.png')
       h3.oxygen.no-margin Earn badges for your support and get recognized
 
--cache :featured_campaigns do
+-cache :featured_campaigns, :expires_in => 10.minutes do
   == render "pages/partials/featured_cause", :featured_causes_hash =>Cause.featured_causes
 
-.whitesmoke-bg  
+.whitesmoke-bg
   == render  "pages/partials/featured_campaigns"
 
 .smoke-bg.companies.mlimit
