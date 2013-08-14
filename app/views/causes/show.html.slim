@@ -31,10 +31,7 @@
 
         .cboth.blimit
         h2.inline.s-margin-r Ways to Help
-        /form.custom.inline.mlimit-top
-          label for="customDropdown"
-           ==select_tag :need_types, options_for_select(Need.need_types), :class=>"need_types_select"
-        
+
         - @cause.needs.each do |need|
           = render 'causes/partials/cause_need', :need=> need
 
