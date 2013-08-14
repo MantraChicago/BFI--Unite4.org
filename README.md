@@ -9,6 +9,7 @@ The app depends on the following external services or libraries:
   - rvm with ruby 1.9.3-p392
   - postgresql 9.2
   - ImageMagick ( for image upload processing )
+  - geoip
 
 Please consult documentation for your platform for getting these
 installed.
@@ -31,6 +32,13 @@ We are using the delay_job gem to run async tasks.
 To start the job runner run
 ```bash
 script/delayed_job start
+```
+
+### GeoIp
+We are using geoip functionality to find user's locations.
+If you a running on mac you will need to install geoip
+```bash
+brew install geoip
 ```
 
 ### Setting up Development Data
