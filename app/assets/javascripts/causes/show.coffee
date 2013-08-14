@@ -2,7 +2,9 @@ Application.causes ||= {}
 
 Application.causes.show= ->
   `
-  
+  $('#cause-info iframe').on('onStateChange', function(){
+    alert('here')
+  })
   `
   EventTracker.track_event('cause_page_view',{cause_id:Application.data.current_model.id}) 
 	$('.middle_bar li').click ->
