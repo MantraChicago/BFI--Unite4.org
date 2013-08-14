@@ -21,7 +21,7 @@
           ul data-orbit="" data-options="orbit_transition_class: transition-i; animation: fade; slide_number: false; timer: false; bullets: false;"
             - if !@cause.video_link.try(:empty?)
               li
-                iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src="#{@cause.video_link}+?enablejsapi=1 type="text/html" width="100%"
+                iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src="#{@cause.video_link}?enablejsapi=1" type="text/html" width="100%"
             -@cause.cause_images.each do |image|
               li style="background-image:url(#{image.picture.url :large}); height: 100%; background-size: cover;"              
                 .orbit-caption #{image.caption}

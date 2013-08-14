@@ -85,4 +85,21 @@ module ApplicationHelper
     need_properties_map[need_type.to_sym]
   end
 
+
+  def cause_type_text cause_type
+    key = cause_type.slug
+    texts={'arts' => "Join together with local artists, museums, and city park districts to organize events and performances that benefit the entire community. Unite4.org brings volunteers, nonprofits, and the art community together in the spirit of kindness and compassion.",
+           'education' => "Help support safe, positive environments where students can learn and grow beyond the classroom. These nonprofits work to overcome learning differences, disabilities, and poverty through mentoring programs and after school activities that foster creativity and teamwork. Contributions provide hope for the future and enhance the entire community.",
+           'environment' => "Make an immediate impact right in your own backyard. These organizations help plant trees, clean littered highways, and build local parks with support from the government and the local corporate community. Their tireless efforts beautify urban areas and make neighborhoods safer and more eco-friendly.",
+           'health-wellness' => "Improve the quality of life and overall well-being of your neighbors. Your act of kindness assists in offering therapy for the mentally and physically disabled and furthers research and development. Help spread awareness and make your community a healthier, more compassionate place.",
+           'youth' => "Make a positive impact that lasts for generations. Your contribution helps provide counseling, guidance, and a variety of programs that build self-esteem and allow children to embrace their full potential. Help create an enduring positive footprint and a brighter future for all of us to look forward to.",
+           'religion' => "",
+           'global-outreach' => "Make a real difference in the lives of people all around the world. Donating to global charities helps bring humanitarian aid and medical assistance to impoverished communities that are in dire need. Just as with donations on the domestic level, Unite4.org lets you see directly how your efforts are being put to use.",
+           'social-equality' => "Make a positive impact that lasts for generations. Your contribution helps provide counseling, guidance, and a variety of programs that build self-esteem and allow children to embrace their full potential. Help create an enduring positive footprint and a brighter future for all of us to look forward to.",
+           'animal-welfare' => "Help spread Unite4.org's mission of compassion and empathy to the four-legged members of the community. Your contribution aids in the preservation of local wildlife and supports shelters and foster home networks whose positive influence creates practical change that benefits not only humanity, but also the animals we share our world with."
+            }
+    texts[key]
+
+
+  end
 end
