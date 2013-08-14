@@ -1,9 +1,9 @@
 == javascript_include_tag 'dependencies', 'application'
 
-
-javascript:
-  Application.data.cities = #{ City.all.to_json.html_safe };
-  Application.data.cause_types=#{ CauseType.all.to_json.html_safe };
+- cache :javascript_data do
+  javascript:
+    Application.data.cities = #{ City.all.to_json.html_safe };
+    Application.data.cause_types=#{ CauseType.all.to_json.html_safe };
     
 -if current_user
   javascript:
