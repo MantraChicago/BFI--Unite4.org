@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all
+  before_filter :determine_nearest_city
   
   def after_sign_in_path_for(resource)
     sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => request.protocol)
@@ -9,5 +10,15 @@ class ApplicationController < ActionController::Base
     else
       stored_location_for(resource) || request.referer || root_path
     end
+  end
+
+  def determine_nearest_city
+    if cookies[:location]
+      @location_city=City.find_by_slug cookies[:location][:slug]
+    else
+
+    end
+
+
   end
 end

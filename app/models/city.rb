@@ -1,11 +1,11 @@
 class City < ActiveRecord::Base
-  attr_accessible :name, :slug, :picture
+  attr_accessible :name, :slug, :picture, :state, :latitude, :longitude
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url =>  "/assets/missing.jpeg"
   has_and_belongs_to_many :causes
 
 
   def self.default_cities
-    [{id: 0, name: 'New York', slug: 'new-york'},
+    [{id: 0, name: 'New York', slug: 'new-york', latitude: '40.7142', longitude: '74.0064', state: 'New York'},
     {id: 1, name: 'Philadelphia', slug: 'philadelphia'},
     {id: 2, name: 'Washington', slug: 'washington'},
     {id: 3, name: 'Pittsburgh', slug: 'pittsburgh'},

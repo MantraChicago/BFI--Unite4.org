@@ -181,6 +181,7 @@ GEM
       actionpack (>= 3.0)
     friendly_id (4.0.9)
     fssm (0.2.10)
+    geoip-c (0.8.2)
     geokit (1.6.5)
       multi_json
     guard (1.8.2)
@@ -437,6 +438,7 @@ DEPENDENCIES
   ffaker
   foreman
   friendly_id (~> 4.0.9)
+  geoip-c
   geokit
   guard
   guard-rspec

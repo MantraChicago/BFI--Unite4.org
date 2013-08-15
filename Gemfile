@@ -15,6 +15,7 @@ gem "paperclip", "~> 2.7"
 
 gem 'stripe', :github  => 'stripe/stripe-ruby'
 
+gem 'geoip-c'
 
 gem 'foreman'
 

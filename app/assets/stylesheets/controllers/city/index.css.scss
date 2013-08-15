@@ -1,6 +1,6 @@
 .stay-menu {
   margin-bottom: 660px;
-  position: absolute;
+  position: relative;
   z-index: 10;
   .bg-cover {
     position: fixed;
@@ -9,6 +9,7 @@
     box-shadow: 0 1px 6px rgba(0, 0, 0, .4);
   }
 }
+
 
 
 #cityname {
