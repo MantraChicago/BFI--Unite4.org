@@ -26,7 +26,7 @@ div
           h4 Give a tip to Unite4Good (optional)
           h5 Help us grow. Your donation will help us support many more causes in the future.
       .row.mlimit
-        .large-3.columns Total: <span id="total"></span>
+        .large-3.columns Total: <span class="cash_total"></span>
           
         .large-8.large-offset-1.columns
           h5 We currently only accept payments using Credit Cards with a US billing address
@@ -39,7 +39,7 @@ javascript:
     if(!_.isNaN(total)){
       message='$'+total
     }
-    $('#total').html(message)
+    $('.cash_total').html(message)
   }
 
 

@@ -4,26 +4,31 @@
   .row
     .large-8.large-centered.column.mlimit
       h4.subheadline Online giving is a safe and easy way to invest in the cause you support. Your information will remain private and never be given away to third parties.
+  .row
+    .large-8.large-centered.column.mlimit
+      h3 Your donation: <span class="cash_total"></span>
   
   .row
-    .large-10.columns.large-centered.mlimit
+    .large-8.columns.large-centered.mlimit
 
+      .row
+        .columns.large-12
+          input type="text" placeholder="First name on card" class="first_name"
+      .row  
+        .columns.large-12
+          input type="text" placeholder="Last name on card" class="last_name"
+      .row
+        .columns.large-12
+          input type="text" placeholder="Card Number" class="cc_number"
+      .row    
+        .columns.large-4
+          =select_tag :month, options_for_select(['Month'].push((1..12).to_a).flatten), :class=>"month"
+        .columns.large-4
+          =select_tag :year, options_for_select(['Year'].push((Time.now.year..Time.now.year+10).to_a).flatten), :class=>"year"
+        .columns.large-4
+          input type="text" placeholder="CVC" class="cvc"
       .row.mlimit
         .columns.large-12 
           .payment-errors
-      .row
-        .columns.large-6
-          input type="text" placeholder="First name on card" class="first_name"
-        .columns.large-6
-          input type="text" placeholder="Last name on card" class="last_name"
-      .row
-        .columns.large-6
-          input type="text" placeholder="Card Number" class="cc_number"
-        .columns.large-2
-          =select_tag :month, options_for_select(['Month'].push((1..12).to_a).flatten), :class=>"month"
-        .columns.large-2
-          =select_tag :year, options_for_select(['Year'].push((Time.now.year..Time.now.year+10).to_a).flatten), :class=>"year"
-        .columns.large-2
-          input type="text" placeholder="CVC" class="cvc"
 
 

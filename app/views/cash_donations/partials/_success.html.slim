@@ -1,5 +1,8 @@
 .centered
   .modal_middle
     h1 Thank you!
-    h3.mlimit Thank you for your donation of <h2 class="donation_amount"></h2> to<br/> <h2 class="bold">#{need.cause.name}</h2> <br/> A receipt will be emailed to you.
+    h3.mlimit Thank you for your donation of <span class="donation_amount bold"></span> to
+
+    h2 #{need.cause.name}</h2> <br/> 
+    h3 A receipt will be emailed to you. <br/>
     .btn.purple onclick="$('#myModal').foundation('reveal', 'close');" Close

@@ -29,8 +29,9 @@ module Unite
       end
 
       def fulfill_cash_donations_need
-        tip_amount = (params[:donation] && params[:donation][:tip])
-        donation_amount, stripe = params.values_at(:donation_amount,:stripeToken)
+        tip_amount = params[:donation_tip] 
+        donation_amount=params[:donation_amount] 
+        stripe =params[:stripeToken] 
 
         # This will authorize the card and only run the block
         # if the authorization is true. The CashDonation model

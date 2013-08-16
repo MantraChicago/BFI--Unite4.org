@@ -28,6 +28,7 @@ class CashDonation < ActiveRecord::Base
     (amount+tip_amount) *100
   end
 
+
   def amount
     read_attribute(:amount) || 0
   end
