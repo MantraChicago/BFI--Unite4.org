@@ -29,7 +29,7 @@ feature "Account creation, useage tests"
 	scenario "Log in"
 	find('.login_button').click
     sleep 2 #waiting for modals to appear 
-    page.should have_content 'Login to your account'
+    page.should have_content 'Sign in to your account'
 	log_in testtest@example.com, meetmantra
 	end
 	
