@@ -1,38 +1,63 @@
 - money_amount={'$5' => '5','$10'=>'10'}
 div
-  h3.mlimit.centered Thank you for your interest in donating your money to #{need.cause.name}!
+  h3.mlimit.centered Thank you for your interest in donating money to <br/><h2 class="centered">#{need.cause.name}!</h2>
   .row.mlimit-top
     .large-10.columns.large-centered.mlimit.modal-max-width.mlimit-top
-      .row
-        .large-2.columns
-          |$
-          input.money_input#donation_amount type="text" value="0" name="donation_amount" onkeyup="this.value=this.value.replace(/[^\d]/,'')"
-        .large-8.large-offset-2.columns
+      .row.mlimit
+        .large-3.columns
+          
+          .money_input_holder
+            |$
+            .money_input#donation_amount contenteditable="true"
+            input type="hidden" name="donation_amount" class="hidden_input"
+            .cash_error
+          
+        .large-8.large-offset-1.columns
           h4 How much you would like to donate.
           h5 Unite4Good is a 501(c)3 organization, which means that your donations are tax deductible. 
       .row.mlimit
-        .large-2.columns
-          |$
-          input.money_input#donation_tip type="text" value="0" name="donation_tip" onkeyup="this.value=this.value.replace
-          /= select(:donation, :tip, money_amount)
-        .large-8.large-offset-2.columns
+        .large-3.columns
+          .money_input_holder
+            |$
+            .money_input#donation_tip contenteditable="true"
+            input type="hidden" name="donation_tip"  class="hidden_input"
+            .cash_error
+        .large-8.large-offset-1.columns
           h4 Give a tip to Unite4Good (optional)
           h5 Help us grow. Your donation will help us support many more causes in the future.
       .row.mlimit
-        .large-12.columns
-          h3 Total: <span id="total"></span>
+        .large-3.columns Total: <span id="total"></span>
+          
+        .large-8.large-offset-1.columns
           h5 We currently only accept payments using Credit Cards with a US billing address
-
 
 javascript:
   var calculateTotal=function(){
-    var total = parseInt($('#donation_tip').val(),10) + parseInt($('#donation_amount').val(),10)
-    $('#total').html('$'+total)
+    var total = (parseFloat($('#donation_tip').text()) || 0) + (parseFloat($('#donation_amount').text()) || 0)
+    message= 'Error'
+    console.log(total)
+    if(!_.isNaN(total)){
+      message='$'+total
+    }
+    $('#total').html(message)
   }
 
-  $('#donation_amount,#donation_tip').on("change",function(){
+
+  $('.money_input').on('keyup',function(){
+    var valid = $(this).text().match(/[\d,]+(\.\d*)?$/) || $(this).text().length==0
+    var element =$(this).parent().find('.cash_error')
+    if(!valid){
+      $(this).parent().addClass('border_error')
+      element.html('Invalid number')
+      $('.button-next').hide()
+    }else{
+      $(this).parent().removeClass('border_error')
+      element.html('')
+      $(this).parent().find('.hidden_input').val($(this).text())
+      $('.button-next').show()
+    }
     calculateTotal()
-  }).change()
+  })
 
 
 
