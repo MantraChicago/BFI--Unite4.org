@@ -627,6 +627,7 @@ body > section {
   height: 22px;
   background: #303030;
   border: 1px solid #303030;
+
   .bar {
     background: #9dd100;
     border-radius: 0 10px 10px 0;
@@ -637,6 +638,7 @@ body > section {
     font-size: 70%;
     padding-right: 10px;
     min-width: 40px;
+    max-width: 100%;
   }
 }
 .add {
