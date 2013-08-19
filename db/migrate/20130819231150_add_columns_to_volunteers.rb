@@ -4,6 +4,5 @@ class AddColumnsToVolunteers < ActiveRecord::Migration
     add_column :volunteers, :email, :string
     add_column :volunteers, :phone_number, :string
     add_column :volunteers, :name, :string
-    add_column :volunteers, :description, :text
   end
 end

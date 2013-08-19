@@ -47,11 +47,11 @@ module Unite
       end
 
       def fulfill_volunteers_need
-        cause.volunteers.create(need_id: need.try(:id), user_id: user.try(:id), name: params[:name], email: params[:email], availability: params[:availability], description: params[:description] )
+        cause.volunteers.create(need_id: need.try(:id), user_id: user.try(:id), name: params.try(:name), email: params.try(:email), availability: params.try(:availability), description: params.try(:description) )
       end
 
       def fulfill_goods_donations_need
-        cause.goods_donations.create(need_id: need.try(:id), user_id: user.try(:id),name: params[:name], phone_number: params[:phone_number], email: params[:email])
+        cause.goods_donations.create(need_id: need.try(:id), user_id: user.try(:id),name: params.try(:name), phone_number: params.try(:phone_number), email: params.try(:email))
       end
 
       def fulfill_followers_need
