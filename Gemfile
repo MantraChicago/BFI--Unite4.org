@@ -15,7 +15,9 @@ gem "paperclip", "~> 2.7"
 
 gem 'stripe', :github  => 'stripe/stripe-ruby'
 
+#geo location
 gem 'geoip-c'
+#gem 'geokit-rails'
 
 gem 'foreman'
 
