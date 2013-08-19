@@ -51,7 +51,7 @@ module Unite
       end
 
       def fulfill_goods_donations_need
-        cause.goods_donations.create(need_id: need.try(:id), user_id: user.try(:id),description: params[:description])
+        cause.goods_donations.create(need_id: need.try(:id), user_id: user.try(:id),name: params[:name], phone_number: params[:phone_number], email: params[:email])
       end
 
       def fulfill_followers_need

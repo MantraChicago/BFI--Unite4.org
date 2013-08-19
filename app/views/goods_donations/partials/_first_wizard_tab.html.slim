@@ -1,30 +1,17 @@
 .centered
-  h3 Thank you for your interest in donating your goods to us!
-  h4.mlimit How it works:
-  .row
-    .large-10.column.large-centered.modal-max-width
-      .well.mlimit
-        .row
-          .large-2.column 
-            img src="/assets/donations_modal/list.jpg"
-          .large-10.column.mlimit-small
-            |Read our notes to make sure your donations are acceptable
+  h2 Pick items to donate to
+  h2.mlimit.bold #{need.cause.name}
+.row
+  .large-10.column.large-centered.modal-max-width
+      .row
+        .large-10.column.large-centered
+          h3 #{need.description}
+      - if need.settings.try :items
+        - need.settings[:items].each do |item|
+          .row
+            .large-4.columns
+              input type="checkbox" name=item
+            .large-8.columns
+              = item
 
-        .row
-          .large-2.column 
-            img src="/assets/donations_modal/question_mark.jpg" 
-          .large-10.column.mlimit-small
-            |Tell us what you're interested in donating and we will contact you with out drop off times.
-
-        .row
-          .large-2.column 
-            img src="/assets/donations_modal/box.jpg" 
-          .large-10.column.mlimit-small
-            |Box it all up
-
-        .row
-          .large-2.column 
-            img src="/assets/donations_modal/mailbox.jpg"
-          .large-10.column.mlimit-small
-            |Drive over and drop it off with us!
-
+         

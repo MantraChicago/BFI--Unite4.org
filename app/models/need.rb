@@ -10,8 +10,6 @@ class Need < ActiveRecord::Base
 
   include Smooth::Presentable
 
-
-
   #can_be_queried_by :cause_id
   #can_be_queried_by :type
 

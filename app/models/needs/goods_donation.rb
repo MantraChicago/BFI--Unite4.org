@@ -1,7 +1,7 @@
 class GoodsDonation < ActiveRecord::Base
   include Unite::Fulfillment
 
-  attr_accessible :need_id, :user_id, :description
+  attr_accessible :need_id, :user_id, :name, :phone_number, :email, :description
   belongs_to :cause, :counter_cache => true
   belongs_to :need
   belongs_to :user, :counter_cache => true

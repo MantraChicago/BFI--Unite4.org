@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130813174106) do
+ActiveRecord::Schema.define(:version => 20130819222618) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -212,14 +212,15 @@ ActiveRecord::Schema.define(:version => 20130813174106) do
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.string   "slug"
-    t.integer  "latitude"
-    t.integer  "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.string   "state"
   end
 
   create_table "contributions", :force => true do |t|
@@ -280,8 +281,11 @@ ActiveRecord::Schema.define(:version => 20130813174106) do
     t.string   "description"
     t.integer  "quantity"
     t.integer  "cash_value"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "name"
+    t.string   "phone_number"
+    t.string   "email"
   end
 
   add_index "goods_donations", ["cause_id"], :name => "index_goods_donations_on_cause_id"
