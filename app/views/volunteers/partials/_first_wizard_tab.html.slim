@@ -1,27 +1,28 @@
 .row
   .large-10.columns.large-centered.centered
-    h3 Thank you for your interest in volunteering with #{need.cause.name}
-    h4.mlimit Please tell us about yourself:
+    h2 Thank you for your interest in volunteering with 
+    h2.mlimit.bold #{need.cause.name}
     form.volunteer_form.custom
-      .row.mlimit
-        .columns.large-12 
-          .payment-errors
       .row
         .large-10.mlimit.large-centered.modal-max-width.centered
           .row
+            .column.large-12.mlimit style="text-align:left; color:black" Tell us about yourself
+          .row
             .column.large-12
-              textarea placeholder="Tell us how you'd like to help and when you're available"
+              input type="text" placeholder="Name" name="name" value=current_user.display_name
           .row
-            .column.large-6
-              input type="text" placeholder="Phone number" class="phone_number"
-            .column.large-6
-              input type="text" placeholder="Zip code" class="zip_code"
+            .column.large-12
+              input type="text" placeholder="Email" name="email" value=current_user.email
           .row
-            .column.large-12.large-centered
-              div
-                label
-                  |Are you over 18?
-                  input type="checkbox"
+            .column.large-12
+              input type="text" placeholder="Phone number" name="phone_number"
+          .row
+            .column.large-12
+              textarea placeholder="Tell us how you'd like to help" name="description"
+          .row
+            .column.large-12
+              input type="text" placeholder="When are you available" name="availability"
+        
 
 
 

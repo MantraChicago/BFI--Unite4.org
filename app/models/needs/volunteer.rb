@@ -1,7 +1,7 @@
 class Volunteer < ActiveRecord::Base
   include Unite::Fulfillment
 
-  attr_accessible :need_id, :location_id, :cause_id, :user_id
+  attr_accessible :need_id, :location_id, :cause_id, :user_id, :availability, :email, :phone_number, :name, :description
 
   belongs_to :need
   belongs_to :location
