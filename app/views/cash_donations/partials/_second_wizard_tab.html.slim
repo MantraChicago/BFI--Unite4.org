@@ -22,9 +22,9 @@
           input type="text" placeholder="Card Number" class="cc_number"
       .row    
         .columns.large-4
-          =select_tag :month, options_for_select(['Month'].push((1..12).to_a).flatten), :class=>"month"
+          =select_tag :month, options_for_select(['Exp. Month'].push((1..12).to_a).flatten), :class=>"month"
         .columns.large-4
-          =select_tag :year, options_for_select(['Year'].push((Time.now.year..Time.now.year+10).to_a).flatten), :class=>"year"
+          =select_tag :year, options_for_select(['Exp. Year'].push((Time.now.year..Time.now.year+10).to_a).flatten), :class=>"year"
         .columns.large-4
           input type="text" placeholder="CVC" class="cvc"
       .row.mlimit
