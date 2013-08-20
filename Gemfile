@@ -15,7 +15,7 @@ gem "paperclip", "~> 2.7"
 
 gem 'stripe', :github  => 'stripe/stripe-ruby'
 
-gem 'exception_notification'
+gem 'exception_notification', :github => 'smartinez87/exception_notification' #we are using master to get hipchat functionality, lets firm this up down the road
 
 gem 'customerio','0.5.0'
 
