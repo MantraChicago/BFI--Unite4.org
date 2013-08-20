@@ -1,7 +1,7 @@
 - content_for(:head) do
   script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=#{SimpleSettings.config[:google][:maps_key]}&sensor=true"
 
-#header
+#header style="overflow:visible !important;"
   .header-slide.small-static.transition style="background-image: url(#{ asset_path('h1_alt2.jpg') })" 
     #take-action-form-container.row.white.blimit.bigslogan.small-static.pos-rel
       .large-12.columns.left.small-static.blimit#headerslogan
@@ -26,10 +26,10 @@
       img.left.mlimit-right height="40px" src=asset_path('right_circle.png')
       h3.oxygen.no-margin Earn badges for your support and get recognized
 
+-cache :featured_campaigns, :expires_in => 10.minutes do
+  == render "pages/partials/featured_cause", :featured_causes_hash =>Cause.featured_causes
 
-== render "pages/partials/featured_cause", :featured_causes_hash =>@featured_causes_hash
-
-.whitesmoke-bg  
+.whitesmoke-bg
   == render  "pages/partials/featured_campaigns"
 
 .smoke-bg.companies.mlimit

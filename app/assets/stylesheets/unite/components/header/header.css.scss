@@ -80,7 +80,7 @@
 #header {
   position: relative;
   width: 100%;
-  min-height: 36em;
+  min-height: 27em;
   color: #fff;
 }
 #header h1 {
@@ -95,58 +95,52 @@
 }
 
 
-#home-select-group .dropdown,
-#home-select-group .dropdown * {
-  color: #333 !important;
-  text-shadow: none;
-}
-
-#home-select-group {
+#home-select-group{
   background-color: rgba(0, 0, 0, .5);
   padding: .7em;
   margin-top: .7em;
-}
-#home-select-group .column,
-#home-select-group .columns {
-  padding-right: .5em;
-  padding-left: .5em;
-}
-#home-select-group .dropdown,
-#home-select-group .current,
-#home-select-group .selector,
-#home-select-group button,
-#home-select-group .button {
-  height: 50px;
-  margin-bottom: 0;
-}
-#home-select-group .dropdown,
-#home-select-group .current,
-#home-select-group .selector {
-  line-height: 50px;
-  text-align: left;
-}
-#home-select-group .custom.dropdown .current {
-  font-size: 1.6em;
-  font-weight: 200;
-}
-#home-select-group button,
-#home-select-group .button {
-  width: 100%;
-  padding: 0;
-  background-color: #d51679;
-  font-size: 1.2em;
-  font-weight: 200;
-  text-transform: uppercase;
-  box-shadow: none;
-}
-#home-select-group button i,
-#home-select-group .button i {
-  margin-right: .4em;
+  .dropdown * {
+    color: #333 !important;
+    text-shadow: none;
+  }
+  h3{
+    padding-top: 6px;
+    text-align: center;
+    color: white;
+  }
+  button,.button {
+    width: 100%;
+    padding: 0;
+    background-color: #d51679;
+    font-size: 1.2em;
+    font-weight: 200;
+    text-transform: uppercase;
+    box-shadow: none;
+  }
+  button i, .button i{
+    margin-right: .4em;
+  }
+  .custom.dropdown .current {
+    font-size: 1.6em;
+    font-weight: 200;
+  }
+  .dropdown,.current,.selector{
+    line-height: 50px;
+    text-align: left;
+  }
+  button,.selector,.current,.dropdown,.button {
+    height: 50px;
+    margin-bottom: 0;
+  }
+  .column, .columns{
+    padding-right: .5em;
+    padding-left: .5em;
+  }
 }
 
 #headerslogan {
   max-width: 67em;
-  margin-top: 7em;
+  margin-top: 10em;
 }
 .header-slide {
   position: absolute;

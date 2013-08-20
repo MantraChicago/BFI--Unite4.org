@@ -15,23 +15,38 @@ class User < ActiveRecord::Base
   has_many :followers
   has_many :causes, :through => :followers
 
-  has_many :contributions
+  has_many :contributions, dependent: :destroy
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
 
   has_many :user_badges
   has_many :badges, :through => :user_badges
+  
+  before_destroy :clear_customer_io
+  before_destroy :clear_user_badges
+  before_destroy :clear_user_causes
+
 
   after_create :identify_customer_with_customer_io
   after_create :reset_authentication_token!
   after_create :calculate_badges
 
+
+
   def missing_image_defaults
     ['green_user.jpg','pink_user.jpg','blue_user.jpg']
   end
 
-  after_destroy do
-    $customerio.delete(self.customer_io_id)
+  def clear_customer_io
+    $customerio_user.delete(self.customer_io_id)
+  end
+
+  def clear_user_badges
+    user_badges.clear
+  end
+
+  def clear_user_causes
+    causes.clear
   end
 
   alias_method :avatar_old, :avatar
@@ -45,10 +60,8 @@ class User < ActiveRecord::Base
   end
 
   def calculate_badges
-
     Unite::Badges::BadgeCalculator.delay.calculate_badges_for_user(self,Badge.all)
   end
-  #handle_asynchronously :calculate_badges
 
   def customer_io_id
     "#{ Rails.env }-#{ self.id }"
@@ -139,7 +152,7 @@ class User < ActiveRecord::Base
   def avatar
     if self.avatar_file_name.nil? && self.uid
       DummyPaperclip.new("https://graph.facebook.com/#{self.uid}/picture")
-    elsif self.avatar_file_name.nil?
+    elsif self.avatar_file_name.nil? && self.id
       img=self.missing_image_defaults[self.id%3]
       DummyPaperclip.new("/assets/user_img_defaults/#{img}")
     else

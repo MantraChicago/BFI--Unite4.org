@@ -16,8 +16,6 @@ class CashDonation < ActiveRecord::Base
   #
   after_create :charge_credit_card, :track_donation  # I really really don't think this should be in a model, but where else?
 
-  after_create :record_event
-
   updates_campaign_with :total_amount
 
   def message
@@ -27,6 +25,7 @@ class CashDonation < ActiveRecord::Base
   def total_amount
     (amount+tip_amount) *100
   end
+
 
   def amount
     read_attribute(:amount) || 0
@@ -48,10 +47,6 @@ class CashDonation < ActiveRecord::Base
     if valid?
       Unite::PaymentGatewayService.charge stripe_id, total_amount, message
     end
-  end
-
-  def record_event
-    Unite::Events::Tracker.track_event('donated_to_cause',user_id, :cause_id => cause_id)
   end
 end
 

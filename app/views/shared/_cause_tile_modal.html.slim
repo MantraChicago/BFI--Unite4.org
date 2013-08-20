@@ -46,12 +46,3 @@ br
           -if cause.twitter_link
             =link_to "Twitter", cause.twitter_link, class: "small button expand"
 
-  /.row.modal-cause-period.collapse
-    .large-3.column.info-icon
-      = image_tag "ui/info-icon.png", alt: "Information"
-    .large-9.column
-      dl
-        dt Length:
-        dd= cause.active_campaign.timeframe_description
-        dt Ends:
-        dd= active_campaign.end_date.strftime("%m-%d-%Y")

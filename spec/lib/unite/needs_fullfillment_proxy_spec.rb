@@ -2,6 +2,10 @@ require "spec_helper"
 
 describe Unite::NeedsFulfillmentProxy do
   describe "fulfilling various types of needs" do
+    before :all do
+      Badge.create_defaults
+    end
+
     let(:user) { create(:user) }
     let(:cause) { create(:cause, skip_default_location: true) }
 
@@ -27,24 +31,45 @@ describe Unite::NeedsFulfillmentProxy do
       cash_donation.need.should == need
       cash_donation.user.should == user
       cash_donation.amount.should == 2500
+
+      user.badges.last.slug.should == 'doler_of_dollars'
     end
 
     it "should create a goods donation for a goods need" do
       need = create(:need, :goods, cause: cause)
-      proxy.new(user, need, description: "Canned Goods").fulfill!
+      
+      test_name= Faker::Name.name
+      test_email= Faker::Internet.email
+      test_phone_number = Faker::PhoneNumber.phone_number
+
+      proxy.new(user, need, description: "Canned Goods", name: test_name, email: test_email, phone_number: test_phone_number).fulfill!
       goods_donation = GoodsDonation.last
 
       goods_donation.need.should == need
       goods_donation.user.should == user
-      goods_donation.description.should == "Canned Goods"
+      goods_donation.name.should == test_name
+      goods_donation.email.should == test_email
+      goods_donation.phone_number.should == test_phone_number
+
     end
 
     it "should create a volunteer for a volunteers need" do
       need = create(:need, :volunteers, cause: cause)
-      proxy.new(user, need, location: cause.locations.first).fulfill!
+      
+      test_name= Faker::Name.name
+      test_email= Faker::Internet.email
+      test_phone_number = Faker::PhoneNumber.phone_number
+
+      proxy.new(user, need, location: cause.locations.first, name: test_name, email: test_email, phone_number: test_phone_number).fulfill!
+      
       volunteer = Volunteer.last
       volunteer.need.should == need
       volunteer.user.should == user
+      volunteer.name.should == test_name
+      volunteer.email.should == test_email
+      volunteer.phone_number.should == test_phone_number
+      
+      user.badges.last.slug.should == 'getting_out_there'
     end
   end
 end

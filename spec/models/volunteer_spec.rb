@@ -4,6 +4,7 @@ describe Volunteer do
   it "should increment the campaign by 1" do
     Volunteer.new.contribution_increment.should == 1
   end
+
 end
 
 # == Schema Information

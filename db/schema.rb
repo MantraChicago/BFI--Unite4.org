@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130808194201) do
+ActiveRecord::Schema.define(:version => 20130820180743) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -204,6 +204,25 @@ ActiveRecord::Schema.define(:version => 20130808194201) do
   add_index "causes_cause_types", ["cause_type_id"], :name => "index_causes_cause_types_on_cause_type_id"
   add_index "causes_cause_types", ["id"], :name => "index_causes_cause_types_on_id", :unique => true
 
+  create_table "causes_cities", :id => false, :force => true do |t|
+    t.integer "city_id"
+    t.integer "cause_id"
+  end
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "state"
+  end
+
   create_table "contributions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "cause_id"
@@ -262,8 +281,11 @@ ActiveRecord::Schema.define(:version => 20130808194201) do
     t.string   "description"
     t.integer  "quantity"
     t.integer  "cash_value"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "name"
+    t.string   "phone_number"
+    t.string   "email"
   end
 
   add_index "goods_donations", ["cause_id"], :name => "index_goods_donations_on_cause_id"
@@ -335,6 +357,8 @@ ActiveRecord::Schema.define(:version => 20130808194201) do
     t.integer  "cause_id"
     t.integer  "contribution_id"
     t.integer  "need_id"
+    t.integer  "number"
+    t.datetime "created_at"
   end
 
   add_index "user_badges", ["id"], :name => "index_users_badges_on_id", :unique => true
@@ -348,6 +372,7 @@ ActiveRecord::Schema.define(:version => 20130808194201) do
     t.string   "name"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "need_id"
   end
 
   create_table "users", :force => true do |t|
@@ -397,10 +422,14 @@ ActiveRecord::Schema.define(:version => 20130808194201) do
     t.integer  "user_id"
     t.integer  "need_id"
     t.integer  "location_id"
-    t.string   "description"
     t.boolean  "user_showed_up", :default => false
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.string   "availability"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "name"
+    t.text     "description"
   end
 
   add_index "volunteers", ["cause_id"], :name => "index_volunteers_on_cause_id"

@@ -1,20 +1,19 @@
-form.index-search.custom
-  .row#home-select-group
-    .large-3.columns
-      select name="city"
-        option value="chicago" Chicago
-        option value="san-francisco" San Francisco
-        option value="new-york" New York City
-    .large-4.columns
-      select name="has_need"
-        option value="followers" I can promote a cause
-        option value="volunteers" I can volunteer my time
-        option value="cash_donations" I can donate cash
-        option value="goods_donations" I can donate goods
-    .large-3.columns
-      =select 'cause_type', 'cause', CauseType.all.shuffle.collect {|p| [ p.name, p.id ] }, {}
-    .large-2.columns
-      button.search-btn type="submit"
-        i.icon-search
-        | Search
+- cache :take_action_form do
+  form.index-search.custom
+    .row#home-select-group
+      .large-2.columns
+        h3 I want to help
+      .large-3.columns
+        =select 'cause_type', 'cause', CauseType.all.collect {|p| [ p.name, p.id ] }, {}
+      .large-2.columns
+        h3 causes near 
+      .large-3.columns
+        select name="city"
+          option value="chicago" Chicago
+          option value="san-francisco" San Francisco
+          option value="new-york" New York City
+      .large-2.columns
+        button.search-btn type="submit"
+          i.icon-search
+          | Search
 

@@ -9,11 +9,11 @@ a.close-reveal-modal &#215;
         .step 
           = render 'cash_donations/partials/second_wizard_tab', :need => @need
       .wizard-navigation.centered
-        a.btn.blue.button-previous style="display:none"
-          | Back
-        a.btn.blue.button-next
+        a.button-previous style="display:none"
+          |&lt;&nbsp;Back
+        a.btn.pink.button-next style="display:none"
           | Next
-        a.btn.blue.button-submit.pink style="display:none"
+        a.btn.pink.button-submit.pink style="display:none"
           | Submit
   .success.hide
     = render 'cash_donations/partials/success', :need => @need
@@ -39,11 +39,27 @@ javascript:
 
     })
 
+    var stripe_formatted_error_message=function(error_obj){
+      var error_message
+      if(error_obj.param=='exp_year'){
+        error_message='Please enter a valid year'
+      }else if(error_obj.param=='exp_month'){
+        error_message='Please enter a valid month'
+      }else if(error_obj.param=='number'){
+        error_message='Card number is not valid'
+      }else if(error_obj.param=='"cvc"'){
+        error_message='Please enter a valid CVC'
+      }else{
+        error_message=error_obj.message
+      }
+      return error_message
+    }
+
     var stripeResponseHandler = function (status, response) {
         if (response.error) {
-        
+            console.log(response)
             // show the errors on the form
-            $(".payment-errors").text(response.error.message);
+            $(".payment-errors").text(stripe_formatted_error_message(response.error))
             $('.cash_submit').removeAttr('disabled')
         } else {
             var form$ = $(".need_form");

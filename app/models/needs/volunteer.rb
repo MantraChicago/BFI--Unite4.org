@@ -1,18 +1,13 @@
 class Volunteer < ActiveRecord::Base
   include Unite::Fulfillment
 
-  attr_accessible :need_id, :location_id, :cause_id, :user_id
+  attr_accessible :need_id, :location_id, :cause_id, :user_id, :availability, :email, :phone_number, :name, :description
 
   belongs_to :need
   belongs_to :location
   belongs_to :cause, :counter_cache => true
   belongs_to :user, :counter_cache => true
 
-  after_create :record_event
-
-  def record_event
-    Unite::Events::Tracker.track_event('volunteered_for_cause',user_id, :cause_id => cause_id)
-  end
 end
 
 # == Schema Information

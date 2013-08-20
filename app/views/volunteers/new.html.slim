@@ -6,7 +6,7 @@ a.close-reveal-modal &#215;
         =render 'volunteers/partials/first_wizard_tab', :need => @need
       
     .wizard-navigation.centered
-      a.btn.blue.button-submit.pink
+      a.btn.pink.button-submit.pink
         | Submit
   .success.hide
     = render 'volunteers/partials/success', :need => @need
@@ -14,6 +14,7 @@ a.close-reveal-modal &#215;
 javascript:
 
   $('.button-submit').click(function(){
+  /*
     var valid=valid_phone_number($('.phone_number').val()) && isValidUSZip($('.zip_code').val())
 
     if(!valid_phone_number($('.phone_number').val())){
@@ -25,7 +26,7 @@ javascript:
       $('.payment-errors').html('Invalid zip code')
       return
     }
-
+    */
 
     var form_data=$('.volunteer_form').serializeObject()
     $.post('/causes/#{@need.cause.slug}/#{@need.type_of_need}/#{@need.id}/fulfillments',form_data, function(data){

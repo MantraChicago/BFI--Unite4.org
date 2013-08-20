@@ -23,6 +23,8 @@ class Cause < ActiveRecord::Base
   has_many :locations, :dependent => :delete_all
   has_many :campaigns, :dependent => :delete_all
   has_many :followers, :dependent => :delete_all
+  has_many :contributions, :dependent => :delete_all
+
 
   has_many :cash_donations
   has_many :goods_donations

@@ -1,16 +1,47 @@
 @import "unite/gradient";
+@import "unite/colors";
 
 .cash_donations_modal{
+  .money_input_holder{
+    background: white;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    padding: 8px;
+    outline: 2px solid #ddd;
+  }
   .money_input{
-    width:50px;
-    margin-left: 3px;
+    outline:none;
+    border: none;
     display: inline-block;
+    width: 70px;
+    border-color: transparent;
+    margin-left: 3px;
+
+  }
+  .money_input:focus{
+    outline: 0 !important;
+    border: none;
   }
 
   .payment-errors{
     color: red;
     font-weight: bold;
+    
   }
+  .cash_error{
+    position: absolute;
+    color: $pink;
+    top: 45px;
+    width: 200px;
+    font-size: 15px;
+    left:5px;
+  }
+
+  .border_error{
+    outline: 2px solid $pink;
+  }
+
 }
 
 .wizard-navigation{

@@ -21,7 +21,7 @@
           ul data-orbit="" data-options="orbit_transition_class: transition-i; animation: fade; slide_number: false; timer: false; bullets: false;"
             - if !@cause.video_link.try(:empty?)
               li
-                iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src=@cause.video_link type="text/html" width="100%"
+                iframe.youtube-player allowfullscreen="" frameborder="0" height="385" src="#{@cause.video_link}?enablejsapi=1" type="text/html" width="100%"
             -@cause.cause_images.each do |image|
               li style="background-image:url(#{image.picture.url :large}); height: 100%; background-size: cover;"              
                 .orbit-caption #{image.caption}
@@ -31,10 +31,7 @@
 
         .cboth.blimit
         h2.inline.s-margin-r Ways to Help
-        /form.custom.inline.mlimit-top
-          label for="customDropdown"
-           ==select_tag :need_types, options_for_select(Need.need_types), :class=>"need_types_select"
-        
+
         - @cause.needs.each do |need|
           = render 'causes/partials/cause_need', :need=> need
 

@@ -1,13 +1,13 @@
 .stay-menu {
-  
-  position: relative;
+  margin-bottom: 608px;
+  position: absolute;
   z-index: 10;
-}
-.stay-menu .bg-cover {
-  position: fixed;
-  top: -455px;
-  width: 100%;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, .4);
+  .bg-cover {
+    position: fixed;
+    top: -455px;
+    width: 100%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .4);
+  }
 }
 
 #cityname {

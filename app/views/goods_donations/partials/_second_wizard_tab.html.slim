@@ -1,5 +1,17 @@
 .centered
-  h3 Everything you need to know about donating
-  h4.mlimit #{need.name}
-  .well.mlimit.modal-max-width.centered #{need.description}
-    
+  h2 Everything you need to know about donating
+  h2.mlimit.bold #{need.cause.name}
+.row
+  .large-10.column.large-centered.modal-max-width
+    .row.mlimit
+      .large-12.column.mlimit
+        |Provide your contact info.
+      .large-12.column
+        input type="text" name="name" placeholder="Name" value=current_user.display_name
+      .large-12.column
+        input type="text" name="email" placeholder="Email" value=current_user.email
+      .large-12.column.mlimit
+        input type="text" name="phone_number" placeholder="Phone number"
+      .large-12.column
+        |We will contact you soon to arrange a time to drop-off your donation.
+  

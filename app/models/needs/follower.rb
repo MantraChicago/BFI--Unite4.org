@@ -13,8 +13,6 @@ class Follower < ActiveRecord::Base
 
   delegate :avatar, :to => :user
 
-  after_create :record_event
-
   def self.calculate_campaign_progress_for(campaign_object)
     needs = where(need_id: campaign_object.need_id)
     needs = needs.where("created_at >= ?", campaign.start_date)
@@ -22,9 +20,6 @@ class Follower < ActiveRecord::Base
     needs.count
   end
 
-  def record_event
-    Unite::Events::Tracker.track_event('followed_cause',user_id, :cause_id => cause_id)
-  end
 end
 
 # == Schema Information

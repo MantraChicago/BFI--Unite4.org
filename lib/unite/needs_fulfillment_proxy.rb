@@ -29,8 +29,9 @@ module Unite
       end
 
       def fulfill_cash_donations_need
-        tip_amount = (params[:donation] && params[:donation][:tip])
-        donation_amount, stripe = params.values_at(:donation_amount,:stripeToken)
+        tip_amount = params[:donation_tip] 
+        donation_amount=params[:donation_amount] 
+        stripe =params[:stripeToken] 
 
         # This will authorize the card and only run the block
         # if the authorization is true. The CashDonation model
@@ -46,11 +47,11 @@ module Unite
       end
 
       def fulfill_volunteers_need
-        cause.volunteers.create(need_id: need.try(:id), user_id: user.try(:id))
+        cause.volunteers.create(need_id: need.try(:id), user_id: user.try(:id), name: params[:name], email: params[:email], availability: params[:availability], phone_number: params[:phone_number], description: params[:description])
       end
 
       def fulfill_goods_donations_need
-        cause.goods_donations.create(need_id: need.try(:id), user_id: user.try(:id),description: params[:description])
+        cause.goods_donations.create(need_id: need.try(:id), user_id: user.try(:id), name: params[:name], phone_number: params[:phone_number], email: params[:email])
       end
 
       def fulfill_followers_need

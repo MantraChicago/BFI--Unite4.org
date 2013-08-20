@@ -1,6 +1,6 @@
 Application.setupSuperNavElements = ->
 
-$(document).ready ->
+
   if $(".docked").length
     orgFont = parseInt($(".docked .docked-item").css("font-size"))
     orgMargin = parseInt($(".docked .docked-item").css("margin-bottom"))

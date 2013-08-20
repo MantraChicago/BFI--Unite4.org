@@ -4,7 +4,13 @@
       h2 Featured cause
 
   .row
-    .large-9.columns.gray_border.border-right-only
+    .large-3.columns.gray_border.border-right-only
+      ul.plain-list.small-inline-list
+        - CauseType.all.each do |type|
+          -if featured_causes_hash[type.name]
+            li 
+              a.featured_cause_switcher data-type-name=type.name #{type.name}
+    .large-9.columns
       -featured_causes_hash.each do |key,cause|
         - active_campaign = cause.active_campaign
         .row.hide.featured_cause_holder data-type-name=key
@@ -28,9 +34,4 @@
                         h2.blue-text.no-margin= active_campaign.percent_complete.to_s + "%"
                         span.h5.slimit.block goal met
 
-    .large-3.columns
-      ul.plain-list.small-inline-list
-        - CauseType.all.each do |type|
-          -if featured_causes_hash[type.name]
-            li 
-              a.featured_cause_switcher data-type-name=type.name #{type.name}
+  

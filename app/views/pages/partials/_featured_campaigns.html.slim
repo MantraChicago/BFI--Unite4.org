@@ -1,9 +1,10 @@
-#causes.causes
-  .row
-    .large-12.columns
-      h3.areatitle.mlimit-top.mlimit
-        | Featured Campaigns
-  .row.cause-listing-container
-    - Cause.featured.each do |cause|        
-      .columns.large-3
-        == render :partial => 'shared/cause_tile', :locals => {cause: cause} 
+-cache :featured_causes, :expires_in => 10.minutes do
+  #causes.causes
+    .row
+      .large-12.columns
+        h3.areatitle.mlimit-top.mlimit
+          | Featured Campaigns
+    .row.cause-listing-container
+      - Cause.featured.each do |cause|        
+        .columns.large-3
+          == render :partial => 'shared/cause_tile', :locals => {cause: cause} 

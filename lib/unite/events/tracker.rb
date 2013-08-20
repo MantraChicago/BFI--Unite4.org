@@ -7,6 +7,7 @@ module Unite
         user_event=UserEvent.new(variables)
         user_event.save
       end
+
     end
   end
 end

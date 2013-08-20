@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'simple-settings', '~>0.0.6'
 
-gem 'hipchat', '~> 0.10.0'
+gem 'hipchat'
 gem 'rails', '3.2.13'
 
 gem 'devise', '2.2.3'
@@ -15,8 +15,7 @@ gem "paperclip", "~> 2.7"
 
 gem 'stripe', :github  => 'stripe/stripe-ruby'
 
-
-gem 'foreman'
+gem 'exception_notification'
 
 gem 'customerio','0.5.0'
 

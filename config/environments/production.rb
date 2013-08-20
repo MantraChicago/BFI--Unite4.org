@@ -1,3 +1,10 @@
+GiveInspireLove::Application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "",
+    :sender_address => %{"notifier" <notifier@example.com>},
+    :exception_recipients => %w{eddie@meetmantra.com}
+  }
+
 GiveInspireLove::Application.configure do
 
 
@@ -62,6 +69,10 @@ GiveInspireLove::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  config.action_mailer.default_url_options = { :host => 'unite4.org' }
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

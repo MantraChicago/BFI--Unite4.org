@@ -176,6 +176,21 @@ h3.areatitle {
 
 }
 
+.home-featured-cause{
+
+  .gray_border{
+    a{
+      display: inline-block;
+      width: 100%;
+      padding-left: 3px;
+    }
+    .bold{
+      color: white;
+      background-color: $verylightblue;
+      
+    }
+  } 
+}
 
 #mapholder {
   height: 300px;
