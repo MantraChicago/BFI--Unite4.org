@@ -1,8 +1,6 @@
 GiveInspireLove::Application.configure do
   config.assets.append_path config.root + '/spec/javascripts'
 
-  #ember configuration
-
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -41,5 +39,8 @@ GiveInspireLove::Application.configure do
   config.assets.logger = nil
 
   config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
 end

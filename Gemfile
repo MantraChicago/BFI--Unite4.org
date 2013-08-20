@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'simple-settings', '~>0.0.6'
 
-gem 'hipchat', '~> 0.10.0'
+gem 'hipchat'
 gem 'rails', '3.2.13'
 
 gem 'devise', '2.2.3'

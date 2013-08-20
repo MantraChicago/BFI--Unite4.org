@@ -439,7 +439,7 @@ DEPENDENCIES
   geokit
   guard
   guard-rspec
-  hipchat (~> 0.10.0)
+  hipchat
   jquery-rails
   json
   launchy

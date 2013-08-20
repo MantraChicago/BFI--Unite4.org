@@ -1,7 +1,8 @@
 GiveInspireLove::Application.config.middleware.use ExceptionNotification::Rack,
-  :hipchat => {
-    :api_token => '0e2c10e049c422f2345f2736ca7166',
-    :room_name => 'BFI'
+  :email => {
+    :email_prefix => "",
+    :sender_address => %{"notifier" <notifier@example.com>},
+    :exception_recipients => %w{eddie@meetmantra.com}
   }
 
 GiveInspireLove::Application.configure do
@@ -69,6 +70,9 @@ GiveInspireLove::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   config.action_mailer.default_url_options = { :host => 'unite4.org' }
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
