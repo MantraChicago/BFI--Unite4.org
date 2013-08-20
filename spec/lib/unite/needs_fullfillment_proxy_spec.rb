@@ -2,6 +2,10 @@ require "spec_helper"
 
 describe Unite::NeedsFulfillmentProxy do
   describe "fulfilling various types of needs" do
+    before :all do
+      Badge.create_defaults
+    end
+
     let(:user) { create(:user) }
     let(:cause) { create(:cause, skip_default_location: true) }
 
@@ -27,6 +31,8 @@ describe Unite::NeedsFulfillmentProxy do
       cash_donation.need.should == need
       cash_donation.user.should == user
       cash_donation.amount.should == 2500
+
+      user.badges.last.slug.should == 'doler_of_dollars'
     end
 
     it "should create a goods donation for a goods need" do
@@ -44,6 +50,7 @@ describe Unite::NeedsFulfillmentProxy do
       goods_donation.name.should == test_name
       goods_donation.email.should == test_email
       goods_donation.phone_number.should == test_phone_number
+
     end
 
     it "should create a volunteer for a volunteers need" do
@@ -61,6 +68,8 @@ describe Unite::NeedsFulfillmentProxy do
       volunteer.name.should == test_name
       volunteer.email.should == test_email
       volunteer.phone_number.should == test_phone_number
+      
+      user.badges.last.slug.should == 'getting_out_there'
     end
   end
 end

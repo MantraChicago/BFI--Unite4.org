@@ -60,7 +60,6 @@ class User < ActiveRecord::Base
   end
 
   def calculate_badges
-
     Unite::Badges::BadgeCalculator.delay.calculate_badges_for_user(self,Badge.all)
   end
 
