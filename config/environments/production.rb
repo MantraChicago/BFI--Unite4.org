@@ -1,3 +1,9 @@
+GiveInspireLove::Application.config.middleware.use ExceptionNotification::Rack,
+  :hipchat => {
+    :api_token => '0e2c10e049c422f2345f2736ca7166',
+    :room_name => 'BFI'
+  }
+
 GiveInspireLove::Application.configure do
 
 

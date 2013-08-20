@@ -15,7 +15,7 @@ gem "paperclip", "~> 2.7"
 
 gem 'stripe', :github  => 'stripe/stripe-ruby'
 
-#gem 'geoip-c'
+gem 'exception_notification'
 
 gem 'customerio','0.5.0'
 
