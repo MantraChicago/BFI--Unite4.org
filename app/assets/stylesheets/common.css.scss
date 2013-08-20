@@ -649,6 +649,10 @@ body > section {
   height: 15px;
 }
 
+.normal-font-weight{
+  font-weight: normal;
+}
+
 .smart-border-h {
   & > * {
     border-right-width: 1px;

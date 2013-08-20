@@ -53,6 +53,7 @@
       .single-cause-tile.mlimit
         = render :partial => 'shared/cause_tile_modal', :locals => {cause: @cause, :show_modal_on_cause_page => false}
       = render 'causes/partials/cause_followers', :cause => @cause
+      = render 'causes/partials/cause_contact', :cause => @cause
 
 -if params[:show_campaign_modal]
   javascript:
