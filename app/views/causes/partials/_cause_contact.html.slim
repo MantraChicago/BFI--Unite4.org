@@ -18,11 +18,11 @@
       h4 ADDRESS
       h3 #{cause.contact_address}
 
-  .large-2.column.mlimit-top
+  .large-3.column.mlimit-top
     -if cause.facebook_link
-      =link_to "<img src='/assets/facebook_small.png'>".html_safe, cause.facebook_link
-  .large-2.column.mlimit-top
+      =link_to image_tag("facebook_small.png", size: "30x30"), cause.facebook_link
+  .large-3.column.mlimit-top
     -if cause.twitter_link
-      =link_to "<img src='/assets/twitter_small.png'>".html_safe, cause.twitter_link
+      =link_to image_tag("twitter_small.png", size: "30x30"), cause.twitter_link
   .large-8.column
 
