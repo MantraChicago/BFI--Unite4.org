@@ -31,6 +31,7 @@ describe 'needs_modal', :js =>true do
     cause.needs << FactoryGirl.create(:need, :social)
     cause.save!
     visit "/causes/#{cause.slug}"
+    pry
     first('[data-type-of-need="followers"]').click
     modal_title='Show your support'
     sleep 1 #waiting for modals to appear 

@@ -35,18 +35,6 @@
         - @cause.needs.each do |need|
           = render 'causes/partials/cause_need', :need=> need
 
-        /.cause_events
-          h2.inline.s-margin-r Upcoming events
-          form.custom.inline.mlimit-top
-            label for="customDropdown"
-            select#customDropdown
-              option Arrange by
-              option This is another option
-              option This is another option too
-              option Look, a third option     
-
-          =render 'causes/partials/cause_event'
-
 
 
     .large-3.small-12.columns

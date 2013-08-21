@@ -1,4 +1,3 @@
-=begin
 require 'spec_helper'
 require 'capybara/rspec'
 
@@ -15,13 +14,9 @@ describe 'cash_donation_modal', :js =>true do
       
     login_as(@user, :scope => :user)
 
-    cause = FactoryGirl.create(:cause)
     cash_donations_need= FactoryGirl.create(:need, :cash)
-    cash_donations_need.cause_id=cause.id
-    cause.needs << cash_donations_need
-    cause.save!
     
-    visit "/causes/#{cause.slug}"
+    visit "/causes/#{cash_donations_need.cause.slug}"
 
     first('[data-type-of-need="cash_donations"]').click
     modal_title='Thank you for your interest in donating your money'
@@ -38,4 +33,3 @@ describe 'cash_donation_modal', :js =>true do
     page.should_not have_content modal_title
   end
 end
-=end
