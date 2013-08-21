@@ -12,7 +12,6 @@ module Unite
     end
 
     def delete_contribution
-      binding.pry
       contribution.try(:destroy)
     end
 
