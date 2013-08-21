@@ -99,7 +99,35 @@ module ApplicationHelper
            'animal-welfare' => "Help spread Unite4.org's mission of compassion and empathy to the four-legged members of the community. Your contribution aids in the preservation of local wildlife and supports shelters and foster home networks whose positive influence creates practical change that benefits not only humanity, but also the animals we share our world with."
             }
     texts[key]
+  end
 
+  def cause_need_button (need, options={})
+    has_contributed= ((current_user) && (current_user.has_contributed_to_need need))
+    show_modal_on_cause_page= options[:show_modal_on_cause_page] || false
+    button_classes = ['btn']
+    button_classes << need_type_properties(need.type_of_need)[:color]
+    
+    if show_modal_on_cause_page
+      href= "#{url_for need.cause}?show_campaign_modal=true"
+    elsif need.type_of_need =='followers'
+      href="/causes/#{ need.cause.slug }/followers"
+      button_classes << 'first-sign-in'
+    else
+      button_classes << 'open-fulfillment-modal'
+      href= ''
+    end
 
+    if options[:class]
+      button_classes= button_classes.concat options[:class]
+    end
+
+    if has_contributed
+      button_classes << 'contributed'
+    end
+    method = need.type_of_need =='followers' && !show_modal_on_cause_page ? 'post' : ''
+
+    text = need_type_properties(need.type_of_need)[:call_to_action]
+
+    link_to text, href, 'class' =>  button_classes.join(' '), 'data-method' => method, 'data-need-id' => need.id, 'data-type-of-need'=>need.type_of_need
   end
 end
