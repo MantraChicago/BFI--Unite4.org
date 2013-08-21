@@ -1,8 +1,10 @@
 div 
   -if current_user && current_user.causes.include?(cause) 
-    h4.tertiary You are already following this cause
+    .h3
+       a.cause-follow-button.btn.btn-large.oxygen.h2.wrap.text-center.uppercase.first-sign-in data-method="delete" data-cause-slug=cause.slug href="/causes/#{ cause.slug }/followers" 
+          | Unfollow
   -else
     .h3
-      a.cause-follow-button.btn.btn-large.oxygen.h2.wrap.text-center.uppercase data-method="post" data-cause-slug=cause.slug href="/causes/#{ cause.slug }/followers" 
+      a.cause-follow-button.btn.btn-large.oxygen.h2.wrap.text-center.uppercase.first-sign-in data-method="post" data-cause-slug=cause.slug href="/causes/#{ cause.slug }/followers" 
         | Follow
 

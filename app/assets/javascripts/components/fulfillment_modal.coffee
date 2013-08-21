@@ -5,6 +5,14 @@ $('.open-fulfillment-modal').on "click", (e)->
   slug = $target.data('cause-slug')
   Application.open_need_modal(need_id, type_of_need,slug)
 
+$('.first-sign-in').on "click", (e)->
+
+  if !App.user.attributes.email
+    e.preventDefault()
+    e.stopPropagation()
+    Application.show_login_modal('You need to be logged in to perform this action.')
+    
+
 
 
 Application.open_need_modal= (need_id, type_of_need,slug )->

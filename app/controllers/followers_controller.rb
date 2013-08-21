@@ -23,13 +23,10 @@ class FollowersController < ApplicationController
   end
 
   def destroy
+    cause=Cause.find(params[:cause_slug])
     current_user.unfollow(cause)
 
-    respond_to do |format|
-      format.json do
-        head :ok
-      end
-    end
+    redirect_to(cause, success:"You unfollowed #{cause.name }")
   end
 
   protected

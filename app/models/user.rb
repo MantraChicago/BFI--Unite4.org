@@ -130,7 +130,7 @@ class User < ActiveRecord::Base
   end
 
   def unfollow cause
-    followers.where(cause_id: cause.id).delete_all
+    followers.where(cause_id: cause.id).destroy_all
   end
 
   def followed_causes_ids

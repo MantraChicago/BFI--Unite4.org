@@ -1,2 +1,5 @@
 - has_contributed_class= ((current_user) && (current_user.has_contributed_to_need need))? 'contributed' : '' 
-a.btn.open-fulfillment-modal class="#{need_type_properties(need.type_of_need)[:color]}" class="#{has_contributed_class}" data-need-id=need.id data-type-of-need=need.type_of_need #{need_type_properties(need.type_of_need)[:call_to_action]}
+-if need.type_of_need =='followers'
+  a.btn.first-sign-in class="#{need_type_properties(need.type_of_need)[:color]}" class="#{has_contributed_class}" data-method="post" data-cause-slug=need.cause.slug href="/causes/#{ need.cause.slug }/followers" #{need_type_properties(need.type_of_need)[:call_to_action]} 
+-else
+  a.btn.open-fulfillment-modal class="#{need_type_properties(need.type_of_need)[:color]}" class="#{has_contributed_class}" data-need-id=need.id data-type-of-need=need.type_of_need #{need_type_properties(need.type_of_need)[:call_to_action]}
