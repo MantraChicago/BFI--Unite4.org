@@ -1,74 +1,64 @@
-- content_for(:head) do
-  script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=#{SimpleSettings.config[:google][:maps_key]}&sensor=true"
-
-
-section#user-hero
+section
   .row
-    .large-9.column#user-basics
-      .row
+    .large-8.column.column
+      .row#user-hero
         .large-3.column.avatar-scoped
           = image_tag @user.avatar.url
         .large-9.column
           h2= @user.display_name
           small= @user.location
           p= @user.bio
-      .row.horizontal-tabs
-        .large-6.column
-          a#a-basics.active{href='#'}
-            span.user-icon
-              | About Me
-        .large-6.column
-          a#a-stats{href='#'}
-            span.badge-icon
-              | My Badges
+      .row
+        .large-12.column
+          .panel.panel-no-bottom
+            h3 My Badges
+          ul#badges-list.large-block-grid-3
+            - @user.user_badges.each do |user_badge|
+              =render 'profiles/partials/user_badge', :user_badge=> user_badge
 
-    .large-3.column#user-stats
-      h3 My Giving Stats
-      ul.large-block-grid-2
-        li
-          small Earned
-          strong #{@user.badges.count}
-          em Badges
-        li
-          small Volunteered
-          strong #{@user.contributions.where('need_type' => 'volunteers').count}
-          em Times
-        li
-          small Following
-          strong #{@user.causes.count}
-          em Causes
-        li
-          small Given
-          strong #{@user.contributions.where('need_type' => 'cash_donations').count}
-          em Times
+    .large-3.column.large-offset-1
+      .row
+        .large-12.column#user-stats
+          h3 My Giving Stats
+          ul.large-block-grid-2
+            li
+              small Earned
+              strong #{@user.badges.count}
+              em Badges
+            li
+              small Volunteered
+              strong #{@user.contributions.where('need_type' => 'volunteers').count}
+              em Times
+            li
+              small Following
+              strong #{@user.causes.count}
+              em Causes
+            li
+              small Given
+              strong #{@user.contributions.where('need_type' => 'cash_donations').count}
+              em Times
+      .row
+        .large-12.column
+          =render 'profiles/partials/user_cause_follows', :user => @user
+      -if @user== current_user #only show if user
+        .row
+          .large-12.column
+            =render 'profiles/partials/user_cause_contributions', :user => @user
+          
 
-section#user-data
-  .row
-    .large-6.column
-      =render 'profiles/partials/user_about_me', :user => @user
-      =render 'profiles/partials/user_cause_contributions', :user => @user
 
-    .large-6.column
-      =render 'profiles/partials/user_cause_map', :user => @user
-      =render 'profiles/partials/user_cause_follows', :user => @user
-      /=render 'profiles/partials/user_photos', :user => @user
+      
 
-section#user-badges.hide
-  .row
-    .large-12.column
-      p
-        | #{@user.first_name} has earned&nbsp;
-        strong#{@user.badges.count} badges!
-        /select.large-2
-          option arrange by
-          option alpha
-          option bravo
-          option charlie
-          option delta
-  .row
-    .large-12.column
-      ul#badges-list.large-block-grid-4
-        - @user.user_badges.each do |user_badge|
-          =render 'profiles/partials/user_badge', :user_badge=> user_badge
-javascript:
-  var user_causes = #{@user.followed_causes_locations.to_json.html_safe}
+  /section#user-data
+    .row
+      .large-6.column
+        =render 'profiles/partials/user_about_me', :user => @user
+        =render 'profiles/partials/user_cause_contributions', :user => @user
+
+      .large-6.column
+        
+        =render 'profiles/partials/user_cause_follows', :user => @user
+
+  section#user-badges
+   
+

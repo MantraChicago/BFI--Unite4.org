@@ -1,4 +1,14 @@
-li
+li.badge
+  .badge_wrapper
+    .badge_title
+      h3 #{user_badge.badge.name}
+    .badge_middle
+      = image_tag("badges/#{user_badge.badge.file_name}", :size => '150x150')
+    .badge_bottom
+      |#{user_badge.formatted_description}
+    
+
+/li
   h3 #{user_badge.badge.name}
   .section-container.auto{data-section}
     section.badge-shrine
@@ -6,7 +16,7 @@ li
         a{href='#'}
           span Badge
       .content{data-section-content}
-        = image_tag("badges/#{user_badge.badge.file_name}", :size => '150x150')
+        
     section.badge-details
       p.title{data-section-title}
         a{href='#'}

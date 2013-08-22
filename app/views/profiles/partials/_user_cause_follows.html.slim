@@ -1,8 +1,6 @@
 .panel
   h3 Causes I Follow
-  ul.large-block-grid-4
+  ul.large-block-grid-1
     - user.causes.each do |cause|
       li
-        a href="#{url_for(cause)}"
-          = image_tag cause.picture.url, alt: cause.name
-  /a.panel-cta{href='#'} See More
+        =link_to cause.name, url_for(cause)
