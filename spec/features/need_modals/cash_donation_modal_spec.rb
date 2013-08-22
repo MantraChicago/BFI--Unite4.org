@@ -23,10 +23,9 @@ describe 'cash_donation_modal', :js =>true do
 
     visit "/causes/#{cash_donations_need.cause.slug}"
     
-    binding.pry
     first('[data-type-of-need="cash_donations"]').click
-    modal_title='Thank you for your interest in donating your money'
-    sleep 1 #waiting for modals to appear 
+    modal_title='ank you for your interest in donating money'
+    sleep 2 #waiting for modals to appear 
     page.should have_content modal_title
 
     fill_in 'donation_amount', :with => '20'
