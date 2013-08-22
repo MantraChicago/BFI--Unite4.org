@@ -13,14 +13,6 @@ GIT
       virtus
 
 GIT
-  remote: git://github.com/smartinez87/exception_notification.git
-  revision: 5d5f035effb8002fe9f3175c184df026b8614044
-  specs:
-    exception_notification (4.0.0)
-      actionmailer (>= 3.0.4)
-      activesupport (>= 3.0.4)
-
-GIT
   remote: git://github.com/stripe/stripe-ruby.git
   revision: fd09e677311d7d78a02af9b6c7f61b3a2c3b752d
   specs:
@@ -71,6 +63,9 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.5)
+    airbrake (3.1.14)
+      builder
+      json
     annotate (2.5.0)
       rake
     arbre (1.0.1)
@@ -418,6 +413,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (= 0.6.0)
+  airbrake
   annotate
   better_errors
   binding_of_caller
@@ -437,7 +433,6 @@ DEPENDENCIES
   delayed_job_active_record
   devise (= 2.2.3)
   ejs
-  exception_notification!
   factory_girl_rails
   ffaker
   friendly_id (~> 4.0.9)

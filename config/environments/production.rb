@@ -1,16 +1,3 @@
-GiveInspireLove::Application.config.middleware.use ExceptionNotification::Rack,
-  :email => {
-    :email_prefix => "",
-    :sender_address => %{"notifier" <notifier@example.com>},
-    :exception_recipients => %w{eddie@meetmantra.com}
-  },
-  :hipchat => {
-    :api_token => '0e2c10e049c422f2345f2736ca7166',
-    :room_name => 'bfi',
-    :announce => true
-  }
-
-
 GiveInspireLove::Application.configure do
 
 
