@@ -23,8 +23,8 @@ end
 
 
 
-feature "Check all links"
-	scenario "Home Page"
+feature "Check all links" do
+	scenario "Home Page" do
 		visit("/")
 		find(:xpath, "//a[@href='/']").click
 		find(:xpath, "//a[@href='/users/sign_up']").click
@@ -49,36 +49,33 @@ feature "Check all links"
 		#Go to footer and come back to main page, go to next footer, repeat
 		checkFooterLinks()
 		end
-	end
-	scenario "Chicago Page"
+	
+	scenario "Chicago Page" do
 	
 	#Code to be inserted
 	checkFooterLinks()
 	end
 	
-	scenario "New York Page while under construction"
+	scenario "New York Page while under construction" do
 	page.should have_content 'Coming Soon'
 	checkFooterLinks()
 	end
 	
-	scenario "San Francisco Page while under construction"
+	scenario "San Francisco Page while under construction" do
 	page.should have_content 'Coming Soon'
 	checkFooterLinks()
 	end
 	
-	scenario "Check all cause pages"
+	scenario "Check all cause pages" do
 	
 	checkCausePages()
 	
 	end
 	
-	scenario "Checks cause pages"
+	scenario "Checks cause pages" do
 	
 		cause= FactoryGirl.create :cause
   		visit(cause)
 	
 	end
-	
-end
-	
 	

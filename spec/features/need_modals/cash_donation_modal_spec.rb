@@ -13,11 +13,26 @@ describe 'cash_donation_modal', :js =>true do
   it 'The cash donation modal should open' do
       
     login_as(@user, :scope => :user)
-
+    cause = FactoryGirl.create(:cause)
     cash_donations_need= FactoryGirl.create(:need, :cash)
-    
-    visit "/causes/#{cash_donations_need.cause.slug}"
+    cash_donations_need.cause_id=cause.id
+    cause.needs << cash_donations_need
+    cause.save!
+    goods_need= FactoryGirl.create(:need, :goods)
+    goods_need.cause_id=cause.id
+    cause.needs << goods_need
+    cause.save!
+    social_need= FactoryGirl.create(:need, :social)
+    social_need.cause_id=cause.id
+    cause.needs << social_need
+    cause.save!
+    volunteers_need= FactoryGirl.create(:need, :volunteers)
+    social_need.cause_id=cause.id
+    cause.needs << social_need
+    cause.save!
 
+    visit "/causes/#{cash_donations_need.cause.slug}"
+    binding.pry
     first('[data-type-of-need="cash_donations"]').click
     modal_title='Thank you for your interest in donating your money'
     sleep 1 #waiting for modals to appear 
@@ -27,6 +42,8 @@ describe 'cash_donation_modal', :js =>true do
     fill_in 'donation_tip', :with => '5'
 
     expect('total').to have_content '$25'
+
+    visit "/causes/#{goods.cause.slug}"
 
     find('#modalWrapper .close-reveal-modal').click
     sleep 1 #waiting for modals to appear 
