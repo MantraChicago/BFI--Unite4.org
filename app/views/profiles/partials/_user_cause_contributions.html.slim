@@ -3,16 +3,17 @@
     h3 Causes I Contribute To
     -user.contributions.each do |contribution| #probably should use a join
       - cause= contribution.cause
-      .row
-        .large-4.column
-          = image_tag "causes/ui/need_icons/#{contribution.need_type}.png"
-          a href="#{url_for(cause)}"
-            = image_tag cause.picture.url(:thumb), :width =>80
-        .large-8.column
-          a href="#{url_for(cause)}"
-            h4 #{cause.name}
-          - properties= need_type_properties(contribution.need_type)
-          -if properties
-            strong #{properties[:past_personal_action] }
-          time #{contribution.created_at.strftime("%Y-%m-%d")}
-    /a.panel-cta{href='#'} See More
+      - if cause
+        .row
+          .large-4.column
+            = image_tag "causes/ui/need_icons/#{contribution.need_type}.png"
+            a href="#{url_for(cause)}"
+              = image_tag cause.picture.url(:thumb), :width =>80
+          .large-8.column
+            a href="#{url_for(cause)}"
+              h4 #{cause.name}
+            - properties= need_type_properties(contribution.need_type)
+            -if properties
+              strong #{properties[:past_personal_action] }
+            time #{contribution.created_at.strftime("%Y-%m-%d")}
+      /a.panel-cta{href='#'} See More
