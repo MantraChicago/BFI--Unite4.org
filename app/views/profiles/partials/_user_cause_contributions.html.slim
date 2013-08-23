@@ -2,7 +2,7 @@
   .panel#contribute
     h3 My Actions
     ul.large-block-grid-1
-      -user.contributions.reverse.each do |contribution| #probably should use a join
+      -user.contributions.reverse.in_groups_of(10).first.each do |contribution| #probably should use a join
         - cause= contribution.cause
         - if cause
           li

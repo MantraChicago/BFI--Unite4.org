@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
     causes_array=[]
     contributions.each do |contribution| #because I can't figure out the join, could be optimized 
       cause_hash=contribution.cause.as_json
-      cause_hash[:locations_details]=contribution.cause.locations
+      cause_hash[:locations_details]=contribution.cause.locations if contribution.cause
       causes_array << cause_hash
     end
     causes_array

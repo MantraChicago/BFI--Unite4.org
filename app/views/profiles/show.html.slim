@@ -1,14 +1,15 @@
 section
-  .row
+  .row.collapse
     .large-8.column.column
-      .row#user-hero
+      .row#user-hero.collapse
         .large-3.column.avatar-scoped
           = image_tag @user.avatar.url
         .large-9.column
-          h2= @user.display_name
-          small= @user.location
-          p= @user.bio
-      .row
+          .user-info
+            h2= @user.display_name
+            small= @user.location
+            p= @user.bio
+      .row.collapse
         .large-12.column
           .panel.panel-no-bottom
             h3 My Badges
