@@ -4,6 +4,8 @@ describe CashDonation do
   it "should have an increment amount equal to the total donation" do
     CashDonation.new(:amount=>50.0,:tip_amount=>25.0).contribution_increment.should == 50 * 100
   end
+
+  
 end
 
 # == Schema Information

@@ -26,7 +26,7 @@ describe 'cash_donation_modal', :js =>true do
     first('[data-type-of-need="cash_donations"]').click
     modal_title='ank you for your interest in donating money'
     sleep 2 #waiting for modals to appear 
-    binding.pry
+
     page.should have_content modal_title
 
     fill_in 'donation_amount', :with => '20'

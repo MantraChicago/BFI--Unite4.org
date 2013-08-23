@@ -2,11 +2,12 @@
   .panel#contribute
     h3 My Actions
     ul.large-block-grid-1
-      -user.contributions.reverse.in_groups_of(10).first.each do |contribution| #probably should use a join
-        - cause= contribution.cause
-        - if cause
-          li
-            - properties= need_type_properties(contribution.need_type)
-            time #{contribution.created_at.strftime("%d %b %Y")}
-            = "#{properties[:past_personal_action] } with #{link_to cause.name, url_for(cause)}".html_safe
+      -user.contributions.reverse.each do |contribution| #probably should use a join
+        -if contribution.cause
+          - cause= contribution.cause
+          - if cause
+            li
+              - properties= need_type_properties(contribution.need_type)
+              time #{contribution.created_at.strftime("%d %b %Y")}
+              = "#{properties[:past_personal_action] } with #{link_to cause.name, url_for(cause)}".html_safe
        

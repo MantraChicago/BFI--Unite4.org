@@ -45,7 +45,7 @@ class CashDonation < ActiveRecord::Base
 
   def charge_credit_card
     if valid?
-      Unite::PaymentGatewayService.charge stripe_id, total_amount, message
+      payment = Unite::PaymentGatewayService.charge stripe_id, total_amount, message
     end
   end
 end
