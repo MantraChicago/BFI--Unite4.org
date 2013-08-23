@@ -31,9 +31,7 @@ Application.onReady = ->
   controller  = body.attr 'data-controller'
   action      = body.attr 'data-action'
 
-  $('#header').quickSlider
-    slides: 'header-slide'
-    nav : 'header-label'
+  
 
   # The instance of the application, all of the view, model, collection instances
   # which get created should get stored here
