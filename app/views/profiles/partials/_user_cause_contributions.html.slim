@@ -7,21 +7,6 @@
         - if cause
           li
             - properties= need_type_properties(contribution.need_type)
-            time #{contribution.created_at.strftime("%Y-%m-%d")}
+            time #{contribution.created_at.strftime("%d %b %Y")}
             = "#{properties[:past_personal_action] } with #{link_to cause.name, url_for(cause)}".html_safe
        
-
-
-        /.row
-          .large-4.column
-            = image_tag "causes/ui/need_icons/#{contribution.need_type}.png"
-            a href="#{url_for(cause)}"
-              = image_tag cause.picture.url(:thumb), :width =>80
-          .large-8.column
-            a href="#{url_for(cause)}"
-              h4 #{cause.name}
-            - properties= need_type_properties(contribution.need_type)
-            -if properties
-              strong #{properties[:past_personal_action] }
-            time #{contribution.created_at.strftime("%Y-%m-%d")}
-      /a.panel-cta{href='#'} See More
