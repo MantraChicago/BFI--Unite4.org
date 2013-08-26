@@ -86,6 +86,17 @@ module ApplicationHelper
     need_properties_map[need_type.to_sym]
   end
 
+  def contribution_info contribution
+    ret_val=nil
+    if contribution.need_type == 'cash_donations'
+     ret_val= "Donated $#{contribution.fulfillment.amount}"
+    elsif contribution.need_type == 'volunteers'
+      ret_val= "Provided their contact information #{contribution.fulfillment.name} #{contribution.fulfillment.phone_number} #{contribution.fulfillment.email}"
+    elsif contribution.need_type == 'goods_donations'
+      ret_val= "Provided their contact information #{contribution.fulfillment.name} #{contribution.fulfillment.phone_number} #{contribution.fulfillment.email}"
+    end
+    ret_val      
+  end
 
   def cause_type_text cause_type
     key = cause_type.slug

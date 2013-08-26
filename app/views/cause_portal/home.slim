@@ -1,0 +1,40 @@
+section.cause-portal
+  .row
+    h1 #{@cause.name}
+  = render 'cause_portal/partials/header', :active => 'home'
+
+  .row
+    .large-12.column
+      br
+      ul.inline-list
+        li
+          .panel.centered
+            h2 #{@cause.followers.count}
+            h4 Followers
+        li
+          .panel.centered
+            h2 $#{@cause.total_cash_donations}
+            h4 Cash Donations
+        li
+          .panel.centered
+            h2 #{@cause.total_goods_donations}
+            h4 Item Donations
+        li
+          .panel.centered
+            h2 #{@cause.total_volunteers}
+            h4 Volunteer Contacts
+  .row
+    .panel
+      h3 Updates feed
+      ul.large-block-grid-1
+        - @cause.contributions.each do |contribution|
+          -if contribution.user
+            li
+              time #{ contribution.created_at.strftime('%d %b %Y') }
+              br
+              =image_tag current_user.avatar.url(:thumb), :style => 'width:50px'
+              = " #{link_to(contribution.user.display_name, url_for(contribution.user))} #{need_type_properties(contribution.need.type_of_need)[:past_action]} to #{link_to(contribution.cause.name, url_for(contribution.cause))}".html_safe
+              -if contribution_info contribution
+                .panel.mlimit-top.contribution-info
+                  =contribution_info contribution
+              hr

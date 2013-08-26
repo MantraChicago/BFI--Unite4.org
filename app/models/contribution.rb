@@ -10,14 +10,17 @@ class Contribution < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :cause
-  belongs_to :need, :polymorphic => true
+  belongs_to :need #, :polymorphic => true
   belongs_to :fulfillment, :polymorphic => true
 
   validates_presence_of :user_id, :cause_id, :need_id
 
+  scope :by_fullfilment_type, lambda {|fulfillment_type| where(:fulfillment_type => fulfillment_type) }
+
   def self.for_user user
     where(user_id: user.id)
   end
+
 
   def self.query params={}
     results = scoped

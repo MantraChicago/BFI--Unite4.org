@@ -103,6 +103,18 @@ class Cause < ActiveRecord::Base
     end
   end
 
+  def total_cash_donations
+    contributions.by_fullfilment_type('CashDonation').all.inject(0) {|total,contribution| total+contribution.fulfillment.amount }
+  end
+
+  def total_goods_donations
+    contributions.by_fullfilment_type('GoodsDonation').count
+  end
+
+  def total_volunteers
+    contributions.by_fullfilment_type('Volunteer').count
+  end
+
   # TEMP
   # Until the presenter nesting works better in smooth
   def locations_details

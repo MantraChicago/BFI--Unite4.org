@@ -22,7 +22,7 @@ GiveInspireLove::Application.routes.draw do
   resources :cause_applications
   resources :subscribers
 
-  match "/causes/:cause_slug/edit" => "causes#edit"
+  match "/causes/:cause_slug/edit/:action" => "CausePortal#:action"
   get "/causes/:cause_slug/:type_of_need/new", :to => "needs#new"
   get "/causes/:cause_slug/:need_id/new", :to => "needs#new"
   post "/causes/:cause_slug/:type_of_need/:need_id/fulfillments", :to => "Fulfillments#create"
