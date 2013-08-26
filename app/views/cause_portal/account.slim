@@ -2,6 +2,28 @@ section.cause-portal
   .row
     h1 #{@cause.name}
   = render 'cause_portal/partials/header', :active => 'account'
+  = form_for(@cause, :url => '', :html => { :class=>"custom"} ) do |f|
+    - if @cause.errors.any?
+        .row
+          .large-12.column
+            -for msg in @cause.errors.full_messages.each
+              .alert-box.alert{data-alert}
+                = msg
+                a.close &times;
+    .row.mlimit-top
+      .large-12.column
+        h3 Bank Account Information
+    .row
+      .large-6.column
+        label Account number
+        =text_field(:cause,:bank_account)
+      .large-6.column
+        label Routing number
+        =text_field(:cause,:bank_routing)
+    
 
-  .row
-    .large-12.column
+
+    .row.mlimit-top
+      .large-12.centered.column
+        = f.submit "Save changes"
+

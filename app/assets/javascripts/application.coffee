@@ -10,6 +10,7 @@
 #= require_tree ./lib
 #= require_tree ./pages
 #= require_tree ./profiles
+#= require_tree ./cause_portal
 
 # The components folder should be used to store re-usable view elements
 

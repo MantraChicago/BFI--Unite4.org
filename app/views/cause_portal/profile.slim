@@ -86,7 +86,8 @@ section.cause-portal
         ul.inline-list
           -@cause.cause_images.all.each do |cause_image|
             li 
-              =image_tag cause_image.picture.url(:thumb)
+              .delete-cause-image data-cause_image_id=cause_image.id data-cause_slug=@cause.slug
+                =image_tag cause_image.picture.url(:thumb)
         label Upload another image         
         =file_field_tag 'picture'
     .row.mlimit-top

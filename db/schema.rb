@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826211218) do
+ActiveRecord::Schema.define(:version => 20130826222353) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -191,6 +191,8 @@ ActiveRecord::Schema.define(:version => 20130826211218) do
     t.string   "address"
     t.string   "state"
     t.integer  "zip_code"
+    t.integer  "bank_account"
+    t.integer  "bank_routing"
   end
 
   add_index "causes", ["cause_type_id"], :name => "index_causes_on_cause_type_id"

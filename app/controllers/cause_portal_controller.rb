@@ -16,7 +16,7 @@ class CausePortalController < ApplicationController
       end
       flash[:notice] ="You have successfully updated your cause" 
     end
-    render :action => "profile" 
+    #render :action => "profile" 
   end
 
   def needs
@@ -24,7 +24,16 @@ class CausePortalController < ApplicationController
   end
 
   def account
+    profile
+  end
 
+  def delete_cause_image
+    cause_image=CauseImage.find(params[:id])
+    if cause_image.cause == @cause
+      cause_image.destroy
+      render :nothing => true, :status => 200, :content_type => 'text/html' #could be better
+    end
+    
   end
 
   protected

@@ -11,3 +11,8 @@
 .alert{
   color:$cyan;
 }
+
+.delete-cause-image:hover{
+  cursor: pointer;
+  border: solid 2px red;
+}
