@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820221516) do
+ActiveRecord::Schema.define(:version => 20130826211218) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -188,6 +188,9 @@ ActiveRecord::Schema.define(:version => 20130820221516) do
     t.string   "contact_name"
     t.string   "contact_phone_number"
     t.text     "contact_address"
+    t.string   "address"
+    t.string   "state"
+    t.integer  "zip_code"
   end
 
   add_index "causes", ["cause_type_id"], :name => "index_causes_on_cause_type_id"
@@ -206,6 +209,25 @@ ActiveRecord::Schema.define(:version => 20130820221516) do
   add_index "causes_cause_types", ["cause_id"], :name => "index_causes_cause_types_on_cause_id"
   add_index "causes_cause_types", ["cause_type_id"], :name => "index_causes_cause_types_on_cause_type_id"
   add_index "causes_cause_types", ["id"], :name => "index_causes_cause_types_on_id", :unique => true
+
+  create_table "causes_cities", :id => false, :force => true do |t|
+    t.integer "city_id"
+    t.integer "cause_id"
+  end
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "state"
+  end
 
   create_table "contributions", :force => true do |t|
     t.integer  "user_id"
@@ -406,7 +428,6 @@ ActiveRecord::Schema.define(:version => 20130820221516) do
     t.integer  "user_id"
     t.integer  "need_id"
     t.integer  "location_id"
-    t.string   "description"
     t.boolean  "user_showed_up", :default => false
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
@@ -414,6 +435,7 @@ ActiveRecord::Schema.define(:version => 20130820221516) do
     t.string   "email"
     t.string   "phone_number"
     t.string   "name"
+    t.text     "description"
   end
 
   add_index "volunteers", ["cause_id"], :name => "index_volunteers_on_cause_id"

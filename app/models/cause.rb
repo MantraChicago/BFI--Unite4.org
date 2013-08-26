@@ -13,7 +13,8 @@ class Cause < ActiveRecord::Base
   attr_accessor :skip_default_location
   attr_accessible :active,:user_id,:contact_email,:short_description, :city_slug, :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
   attr_accessible :contact_email, :contact_name, :contact_phone_number, :contact_address
-  
+  attr_accessible :address, :zip_code
+
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>", :cause_tile => "81x81#" }, :default_url => "/assets/missing.jpeg"
 
   belongs_to :cause_type
