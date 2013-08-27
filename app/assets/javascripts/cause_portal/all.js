@@ -11,6 +11,14 @@ $(document).ready(function(){
       success: function(result) {
           $(self).remove()
       }
-  });
+    });
   })
+  $('.open-create-needs-modal').click(function(){
+    var cause_slug=$(this).attr('data-cause_slug')
+    var need_type=$(this).attr('data-need_type')
+    var url = '/causes/'+cause_slug+'/edit/need_modal?need_type='+need_type
+
+    $('#modalWrapper').foundation('reveal','open',{url:url})
+  })
+  
 })

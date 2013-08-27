@@ -4,29 +4,36 @@ section.cause-portal
   = render 'cause_portal/partials/header', :active => 'home'
 
   .row
-    .large-12.column
-      br
-      ul.inline-list
+    .large-12.column.mlimit-top
+      ul.inline-list.needs-list.centered
         li
-          .panel.centered
+          .panel.centered.smoke-bg
             h2 #{@cause.followers.count}
-            h4 Followers
+            hr
+            img src="/assets/causes/ui/need_icons/followers.png" style="height:30px;"
+            span.bold Followers
         li
-          .panel.centered
+          .panel.centered.smoke-bg
             h2 $#{@cause.total_cash_donations}
-            h4 Cash Donations
+            hr
+            img src="/assets/causes/ui/need_icons/cash_donations.png" style="height:30px;"
+            span.bold Cash Donations
         li
-          .panel.centered
+          .panel.centered.smoke-bg
             h2 #{@cause.total_goods_donations}
-            h4 Item Donations
+            hr
+            img src="/assets/causes/ui/need_icons/goods_donations.png" style="height:30px;"
+            span.bold Item Donations
         li
-          .panel.centered
+          .panel.centered.smoke-bg
             h2 #{@cause.total_volunteers}
-            h4 Volunteer Contacts
+            hr
+            img src="/assets/causes/ui/need_icons/volunteers.png" style="height:30px;"
+            span.bold Volunteer Contacts
   .row
     .panel
       h3 Updates feed
-      ul.large-block-grid-1
+      ul.large-block-grid-1.contributions-feed
         - @cause.contributions.each do |contribution|
           -if contribution.user
             li

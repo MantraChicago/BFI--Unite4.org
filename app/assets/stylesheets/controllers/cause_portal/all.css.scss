@@ -1,18 +1,48 @@
 @import 'unite/colors';
-
-.contribution-info{
-  margin-left: 50px;
-}
-
 .cause-portal{
   background-color: white;
-}
+  .contribution-info{
+    margin-left: 50px;
+  }
 
-.alert{
-  color:$cyan;
-}
+  .needs-list{
+    li{
+      width: 230px;
+    } 
+  }
 
-.delete-cause-image:hover{
-  cursor: pointer;
-  border: solid 2px red;
+  .alert{
+    color:$cyan;
+  }
+
+  .delete-cause-image:hover{
+    cursor: pointer;
+    border: solid 2px red;
+  }
+
+  .create_need{
+    background-color: $lightGrey;
+  }
+
+  .need_panel{
+    background-color: $lightGrey;
+    margin-bottom: 5px;
+    padding: 3px;
+    .panel{
+      margin-bottom: 0px;
+    }
+  }
+
+  .light-grey-bg{
+     background-color: $white;
+  }
+
+  .contributions-feed{
+    li{
+      padding-bottom: 0px;
+    }
+    time{
+      color: $darkGrey;
+    }
+  }
 }

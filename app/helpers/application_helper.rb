@@ -59,7 +59,8 @@ module ApplicationHelper
   end
 
    def need_type_properties need_type
-    need_properties_map={goods_donations: {
+    need_properties_hash={goods_donations: {
+                          singular_name: 'Good Donation',
                           call_to_action:'Donate goods',
                           past_personal_action:'I donated goods',
                           past_action:'Donated',
@@ -67,24 +68,51 @@ module ApplicationHelper
                         },
                        followers: {
                           call_to_action:'Follow',
+                          singular_name: 'Promotion',
                           past_personal_action:'I promoted this cause',
                           past_action:'Promoted',
                           color:'blue'
                         },
                        cash_donations: {
                           call_to_action:'Donate money',
+                          singular_name: 'Cash Donation',
                           past_personal_action:'I donated money',
                           past_action:'Donated',
                           color:'green'
                         },
                        volunteers: {
                           call_to_action:'Volunteer',
+                          singular_name: 'Volunteer',
                           past_personal_action:'I volunteered',
                           past_action:'Volunteered',
                           color:'black'
                         }}
-    need_properties_map[need_type.to_sym]
+    if need_type.class == Symbol 
+      need_properties_hash[need_type]
+    else
+      need_properties_hash[need_type.to_sym]
+    end
   end
+
+  def need_stat_info need
+    case need.type_of_need
+    when 'volunteers'
+      total_volunteers= need.contributions.count
+      "Recived #{total_volunteers} volunteers contact information"
+    when 'cash_donations'
+      total_donations = need.contributions.all.inject(0) {|total,contribution| total+contribution.fulfillment.amount }
+      "Recived $#{total_donations} in cash donations"
+    when 'goods_donations'
+      total_goods_donation = need.contributions.count
+      "Found #{total_goods_donation} people who want to donate"
+    when 'followers'
+
+    end
+
+  end
+
+
+
 
   def contribution_info contribution
     ret_val=nil

@@ -5,7 +5,6 @@ class Cause < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-
   # THESE API are WIP
   can_be_queried_by :cause_type_id, :type => :reference, :resource => "CauseType"
   can_be_queried_by :near, :type => :string, :allowed => ['Chicago','New York','San Fancisco']

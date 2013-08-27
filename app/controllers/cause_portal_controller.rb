@@ -19,6 +19,12 @@ class CausePortalController < ApplicationController
     #render :action => "profile" 
   end
 
+  def need_modal
+
+    need_type= params[:need_type]
+    render "needs/#{need_type}/create_modal.slim",:layout => false
+  end
+
   def needs
 
   end
@@ -33,7 +39,7 @@ class CausePortalController < ApplicationController
       cause_image.destroy
       render :nothing => true, :status => 200, :content_type => 'text/html' #could be better
     end
-    
+    render :nothing => true, :status => 500, :content_type => 'text/html'
   end
 
   protected
