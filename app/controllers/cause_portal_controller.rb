@@ -1,6 +1,14 @@
 class CausePortalController < ApplicationController
-  before_filter :authenticate_user! #TODO need to make this more specific
   before_filter :get_cause
+  before_filter :custom_auth
+  
+
+  def custom_auth
+    authenticate_user!
+    if @cause.user != current_user
+      redirect_to '/', :alert => 'You are not allowed to edit this cause'
+    end
+  end
 
   def home
 
