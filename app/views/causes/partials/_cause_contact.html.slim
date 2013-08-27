@@ -1,19 +1,19 @@
 .row.cause_contact
   .large-12.columns.mlimit
     h2 CONTACT INFO
-  -if cause.contact_name
+  -if !cause.contact_name.empty?
     .large-12.columns
       h4 CAUSE CONTACT
       h3 #{cause.contact_name}
-  -if cause.contact_email
+  -if !cause.contact_email.empty?
     .large-12.columns
       h4 EMAIL
       h3 #{cause.contact_email}
-  -if cause.contact_phone_number
+  -if !cause.contact_phone_number.empty?
     .large-12.columns
       h4 PHONE
       h3 #{cause.contact_phone_number}
-  -if cause.contact_address
+  -if !cause.contact_address.empty?
     .large-12.columns
       h4 ADDRESS
       h3 #{cause.contact_address}
