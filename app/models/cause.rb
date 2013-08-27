@@ -134,7 +134,8 @@ class Cause < ActiveRecord::Base
   end
 
   def active_campaign
-    campaigns.active.limit(1).first
+    needs.find_by_is_primary(true)
+    #campaigns.active.limit(1).first
   end
 
   def cause_tile_picture_url
