@@ -15,8 +15,7 @@ gem "paperclip", "~> 2.7"
 
 gem 'stripe', :github  => 'stripe/stripe-ruby'
 
-gem 'exception_notification'
-
+gem 'airbrake'
 gem 'customerio','0.5.0'
 
 gem 'activeadmin', '0.6.0'

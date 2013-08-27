@@ -7,6 +7,12 @@ module Unite
 
       after_create :create_contribution_record
       after_create :update_campaign_progress
+      
+      after_destroy :delete_contribution
+    end
+
+    def delete_contribution
+      contribution.try(:destroy)
     end
 
     def create_contribution_record(need=nil)
@@ -25,19 +31,19 @@ module Unite
       Unite::Badges::BadgeCalculator.delay.calculate_badges_for_user(user,Badge.all)
     end
 
+    def contribution
+      Contribution.where(:fulfillment_type => type_of_need, :fulfillment_id => self.id).first
+    end
+
+    def type_of_need
+      self.class.name
+    end
+
     def related_campaign
       @related_campaign ||= cause.campaigns.active.related_for_need(self.need)
     end
 
-    # TODO
-    #
-    # This has to change if we're going to scale.
-    #
-    # The reason we need to use a calculator which scans the entire fulfillment
-    # eco system for this amount is because what if two campaigns are updated
-    # at the same time, and they add their contribution_amount to the current_state?
-    #
-    # potential race state.
+
     def update_campaign_progress
       return if progress_updated?
       self.delay.update_campaign_progress_safely!

@@ -34,9 +34,10 @@ class CauseType < ActiveRecord::Base
     'Health & Wellness' ,
     'Youth' ,
     'Religion' ,
-    'Global Outreach',
-    'Social Equality'
+    'Social Equality',
+    'Domestic & Family'
     ]
+
   end
 
   def self.create_defaults

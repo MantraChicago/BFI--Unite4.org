@@ -1,0 +1,28 @@
+.row.cause_contact
+  .large-12.columns.mlimit
+    h2 CONTACT INFO
+  -if !cause.contact_name.blank?
+    .large-12.columns
+      h4 CAUSE CONTACT
+      h3 #{cause.contact_name}
+  -if !cause.contact_email.blank?
+    .large-12.columns
+      h4 EMAIL
+      h3 #{cause.contact_email}
+  -if !cause.contact_phone_number.blank?
+    .large-12.columns
+      h4 PHONE
+      h3 #{cause.contact_phone_number}
+  -if !cause.contact_address.blank?
+    .large-12.columns
+      h4 ADDRESS
+      h3 #{cause.contact_address}
+
+  .large-3.column.mlimit-top
+    -if !cause.facebook_link.blank?
+      =link_to image_tag("facebook_small.png", size: "30x30"), cause.facebook_link
+  .large-3.column.mlimit-top
+    -if !cause.twitter_link.blank?
+      =link_to image_tag("twitter_small.png", size: "30x30"), cause.twitter_link
+  .large-8.column
+

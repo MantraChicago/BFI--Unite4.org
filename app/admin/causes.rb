@@ -29,6 +29,12 @@ ActiveAdmin.register Cause do
 	    f.input :user
 	    f.input :active
 
+      f.input :contact_email
+      f.input :contact_name
+      f.input :contact_phone_number
+      f.input :contact_address
+
+
 
 	    f.input :cause_types, as: :check_boxes, collection: CauseType.all
 	    f.input :picture, :as => :file, :hint => f.template.image_tag(f.object.picture.url(:medium))

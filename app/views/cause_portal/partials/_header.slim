@@ -1,0 +1,5 @@
+.row.horizontal-tabs
+  -['home','profile','needs','account'].each do |page|
+    -active_class = (page==active) ? 'active' : ''
+    .large-3.column
+      a class=[active_class] href="/causes/#{@cause.slug}/edit/#{page}" #{page.capitalize}

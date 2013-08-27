@@ -23,4 +23,6 @@ Application.pages.index=function(){
   })
   $('.featured_cause_switcher:first-child').click()
 
+  $('.header-slide').css('left',0)
+
 }

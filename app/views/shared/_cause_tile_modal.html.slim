@@ -25,24 +25,7 @@
 
   .row.modal-cause-state
     .large-12.column
-      -if show_modal_on_cause_page
-         a.button.expand href="#{url_for cause}?show_campaign_modal=true"
-          = need_type_properties(active_campaign.type_of_need)[:call_to_action]
-      -else
-        a.button.expand.open-fulfillment-modal data-need-id=cause.active_campaign.need.id data-type-of-need=cause.active_campaign.need.type_of_need
-          = need_type_properties(active_campaign.type_of_need)[:call_to_action]
-br
-.modal-cause
-  .row.modal-cause-social
-    .large-12.column
-      .row
-        .large-12.column
-          strong Spread the word!
-      .row.adjacent-small-columns
-        .large-6.column
-          -if cause.facebook_link
-            =link_to "Facebook", cause.facebook_link, class: "small button expand fb-color"
-        .large-6.column
-          -if cause.twitter_link
-            =link_to "Twitter", cause.twitter_link, class: "small button expand"
+      = cause_need_button(cause.active_campaign.need,{:class => ['button','expand'], :show_modal_on_cause_page => show_modal_on_cause_page })
+
+
 

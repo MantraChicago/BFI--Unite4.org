@@ -1,6 +1,7 @@
 require "spec_helper"
 
 describe Unite::NeedsFulfillmentProxy do
+
   describe "fulfilling various types of needs" do
     before :all do
       Badge.create_defaults
@@ -23,7 +24,7 @@ describe Unite::NeedsFulfillmentProxy do
       follower.cause.should == cause
     end
 
-    it "should creater a donation for a cash need" do
+    it "should create a donation for a cash need" do
       need = create(:need, :cash, cause: cause)
       proxy.new(user, need, amount: 2500, donation_amount: 2500, tip_amount: 2500).fulfill!
       cash_donation = CashDonation.last
@@ -33,6 +34,21 @@ describe Unite::NeedsFulfillmentProxy do
       cash_donation.amount.should == 2500
 
       user.badges.last.slug.should == 'doler_of_dollars'
+    end
+
+    it 'should process credit card payments' do 
+      user = FactoryGirl.create(:user)
+
+      cash_donation_need = FactoryGirl.create(:need, :cash)
+      properties= {donation_amount: '12',
+               donation_tip: '2222',
+               month: '2',
+               year: '2015',
+               stripeToken: 'tok_2RK6LqrV6URfA0'}
+      fulfillment = proxy.new(user, cash_donation_need, properties).fulfill!
+      last_cash_donation = CashDonation.last
+      last_cash_donation.tip_amount.should == 2222
+      last_cash_donation.amount.should == 12
     end
 
     it "should create a goods donation for a goods need" do

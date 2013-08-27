@@ -10,6 +10,7 @@
 #= require_tree ./lib
 #= require_tree ./pages
 #= require_tree ./profiles
+#= require_tree ./cause_portal
 
 # The components folder should be used to store re-usable view elements
 
@@ -31,9 +32,7 @@ Application.onReady = ->
   controller  = body.attr 'data-controller'
   action      = body.attr 'data-action'
 
-  $('#header').quickSlider
-    slides: 'header-slide'
-    nav : 'header-label'
+  
 
   # The instance of the application, all of the view, model, collection instances
   # which get created should get stored here

@@ -1,6 +1,6 @@
 - @title = "Edit profile"
 
-section#edit-profile
+section.edit-profile
   = form_for(@user, :url => '', :html => { :multipart => true, :class => 'custom'} ) do |f|
     .row
       .large-12.column
@@ -33,11 +33,11 @@ section#edit-profile
         .row
           .large-12.column
             label{for='user_city'} City
-            = text_field(:user, :city, :placeholder => "Chicago")
+            = text_field(:user, :city)
         .row
           .large-12.column
             label{for='user_state'} State
-            = text_field(:user, :state, :placeholder => "Illinois")
+            = text_field(:user, :state)
         .row
           h3 Followed Causes
           .large-12.column
@@ -60,6 +60,7 @@ section#edit-profile
           h3 Avatar
 
           .large-12.column
+
             = image_tag @user.avatar.url, id: 'user-avatar'
 
             label{for='fake-upload'} Upload your Avatar

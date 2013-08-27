@@ -5,13 +5,14 @@ class Cause < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-
   # THESE API are WIP
   can_be_queried_by :cause_type_id, :type => :reference, :resource => "CauseType"
   can_be_queried_by :near, :type => :string, :allowed => ['Chicago','New York','San Fancisco']
 
   attr_accessor :skip_default_location
   attr_accessible :active,:user_id,:contact_email,:short_description, :city_slug, :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
+  attr_accessible :contact_email, :contact_name, :contact_phone_number, :contact_address
+  attr_accessible :address, :zip_code, :bank_account, :bank_routing
 
   has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>", :cause_tile => "81x81#" }, :default_url => "/assets/missing.jpeg"
 
@@ -100,6 +101,18 @@ class Cause < ActiveRecord::Base
     else
       needs.first
     end
+  end
+
+  def total_cash_donations
+    contributions.by_fullfilment_type('CashDonation').all.inject(0) {|total,contribution| total+contribution.fulfillment.amount }
+  end
+
+  def total_goods_donations
+    contributions.by_fullfilment_type('GoodsDonation').count
+  end
+
+  def total_volunteers
+    contributions.by_fullfilment_type('Volunteer').count
   end
 
   # TEMP
