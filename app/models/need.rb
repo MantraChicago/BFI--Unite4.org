@@ -1,4 +1,5 @@
 class Need < ActiveRecord::Base
+
   attr_accessible :name, :settings, :cause_id, :description, :picture, :address, :start_date, :end_date, :type_of_need, :location_id
   attr_accessible :goal_summary, :timefame_description, :desired_state, :current_state, :is_primary, :is_active
 
@@ -9,7 +10,6 @@ class Need < ActiveRecord::Base
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
 
   serialize :settings, JSON
-
   include Smooth::Presentable
 
   def days_to_go
@@ -18,7 +18,7 @@ class Need < ActiveRecord::Base
   end
 
   def self.need_types
-    ['followers','goods_donations', 'cash_donations', 'volunteers']
+    [FollowerNeed,GoodsDonationNeed, CashDonationNeed, VolunteerNeed]
   end
 
   def percent_complete
@@ -31,6 +31,10 @@ class Need < ActiveRecord::Base
 
   def recalculate_progress!
     
+  end
+
+  def property key
+    properties[key]
   end
 
   def need
@@ -57,10 +61,14 @@ class Need < ActiveRecord::Base
     type_of_need == "volunteers"
   end
 
-  #default_scope where( :active => true )
+  default_scope where( :is_active => true )
 
+  
 
 end
+
+
+
 
 # == Schema Information
 #

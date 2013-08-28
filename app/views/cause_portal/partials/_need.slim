@@ -1,9 +1,9 @@
 .panel.need_panel
   .row
     .large-1.column
-      img src="/assets/causes/ui/need_icons/#{need.type_of_need}.png" style="height:50px;"
+      img src="/assets/#{need.property(:img_path)}" style="height:50px;"
     .large-7.column
       h4 #{need.name}
     .large-4.column
       .panel
-        =need_stat_info(need)
+        =need.stat_info

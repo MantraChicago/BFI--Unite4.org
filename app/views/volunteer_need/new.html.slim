@@ -1,0 +1,24 @@
+a.close-reveal-modal &#215;
+.need_modal.volunteer_donations_modal
+  .wizard 
+    .steps-wrapper
+      .step.active style="color:red"
+        =render 'volunteer_need/partials/first_wizard_tab', :need => @need
+      
+    .wizard-navigation.centered
+      a.btn.pink.button-submit.pink
+        | Submit
+  .success.hide
+    = render 'volunteer_need/partials/success', :need => @need
+
+javascript:
+
+  $('.button-submit').click(function(){
+
+    var form_data=$('.volunteer_form').serializeObject()
+    $.post('/causes/#{@need.id}/fulfillments',form_data, function(data){
+
+    })
+
+    
+  })

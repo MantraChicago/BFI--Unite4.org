@@ -22,10 +22,18 @@ GiveInspireLove::Application.routes.draw do
   resources :cause_applications
   resources :subscribers
 
+  resources :volunteer_needs, :controller => "NeedsManagement"
+  resources :cash_donation_needs, :controller => "NeedsManagement"
+  resources :goods_donation_needs, :controller => "NeedsManagement"
+  resources :followers_needs, :controller => "NeedsManagement"
+  resources :promotion_needs, :controller => "NeedsManagement"
+
   match "/causes/:cause_slug/edit/:action" => "CausePortal#:action"
-  get "/causes/:cause_slug/:type_of_need/new", :to => "needs#new"
-  get "/causes/:cause_slug/:need_id/new", :to => "needs#new"
-  post "/causes/:cause_slug/:type_of_need/:need_id/fulfillments", :to => "Fulfillments#create"
+
+
+  get "/causes/new_fullfilment/:need_id", :to => "needs#new"
+  #get "/causes/:cause_slug/:need_id/new", :to => "needs#new"
+  post "/causes/:need_id/fulfillments", :to => "Fulfillments#create"
   post "/causes/:cause_slug/followers", :to => "followers#create"
   delete "/causes/:cause_slug/followers", :to => "followers#destroy"
 
@@ -37,6 +45,7 @@ GiveInspireLove::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
+
 
   match "/smooth/meta_data" => Smooth::MetaData::Application, :anchor => false
 

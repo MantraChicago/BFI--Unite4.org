@@ -27,21 +27,14 @@ module ApplicationHelper
   end
 
   def button_text_for_need need
-    type_of_need = need.is_a?(Need) ? need.type_of_need : need
-    properties= need_type_properties(type_of_need)
-    if properties
-      properties[:call_to_action]
-    end
+    need.property(:call_to_action)
   end
 
   def goal_status_report campaign
-    campaign ||= Campaign.new
     currency = campaign.type_of_need == "cash_donations" ? "$" : ""
     number =number_with_delimiter(campaign.current_state.to_i, :delimiter => ',')
     markup = "<strong>#{ currency } #{ number }</strong>"
-    if need_type_properties(campaign.type_of_need)
-      markup += "<em>#{ need_type_properties(campaign.type_of_need)[:past_action] }</em>"
-    end
+    markup += "<em>#{ campaign.property(:past_action) }</em>"
     markup.html_safe
   end
 
@@ -57,60 +50,6 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
-
-   def need_type_properties need_type
-    need_properties_hash={goods_donations: {
-                          singular_name: 'Good Donation',
-                          call_to_action:'Donate goods',
-                          past_personal_action:'I donated goods',
-                          past_action:'Donated',
-                          color:'pink'
-                        },
-                       followers: {
-                          call_to_action:'Follow',
-                          singular_name: 'Promotion',
-                          past_personal_action:'I promoted this cause',
-                          past_action:'Promoted',
-                          color:'blue'
-                        },
-                       cash_donations: {
-                          call_to_action:'Donate money',
-                          singular_name: 'Cash Donation',
-                          past_personal_action:'I donated money',
-                          past_action:'Donated',
-                          color:'green'
-                        },
-                       volunteers: {
-                          call_to_action:'Volunteer',
-                          singular_name: 'Volunteer',
-                          past_personal_action:'I volunteered',
-                          past_action:'Volunteered',
-                          color:'black'
-                        }}
-    if need_type.class == Symbol 
-      need_properties_hash[need_type]
-    else
-      need_properties_hash[need_type.to_sym]
-    end
-  end
-
-  def need_stat_info need
-    case need.type_of_need
-    when 'volunteers'
-      total_volunteers= need.contributions.count
-      "Recived #{total_volunteers} volunteers contact information"
-    when 'cash_donations'
-      total_donations = need.contributions.all.inject(0) {|total,contribution| total+contribution.fulfillment.amount }
-      "Recived $#{total_donations} in cash donations"
-    when 'goods_donations'
-      total_goods_donation = need.contributions.count
-      "Found #{total_goods_donation} people who want to donate"
-    when 'followers'
-
-    end
-
-  end
-
 
 
 
@@ -145,7 +84,7 @@ module ApplicationHelper
     has_contributed= ((current_user) && (current_user.has_contributed_to_need need))
     show_modal_on_cause_page= options[:show_modal_on_cause_page] || false
     button_classes = ['btn']
-    button_classes << need_type_properties(need.type_of_need)[:color]
+    button_classes << need.property(:color)
     
     if show_modal_on_cause_page
       href= "#{url_for need.cause}?show_campaign_modal=true"
@@ -166,9 +105,9 @@ module ApplicationHelper
     end
     method = need.type_of_need =='followers' && !show_modal_on_cause_page ? 'post' : ''
 
-    text = need_type_properties(need.type_of_need)[:call_to_action]
+    text = need.property(:call_to_action)
 
-    link_to text, href, 'class' =>  button_classes.join(' '), 'data-method' => method, 'data-need-id' => need.id, 'data-type-of-need'=>need.type_of_need
+    link_to text, href, 'class' =>  button_classes.join(' '), 'data-method' => method, 'data-need-id' => need.id
   end
 
   def us_states
@@ -226,5 +165,5 @@ module ApplicationHelper
       ['Wisconsin', 'WI'],
       ['Wyoming', 'WY']
     ]
-end
+  end
 end

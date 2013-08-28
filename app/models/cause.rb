@@ -22,7 +22,6 @@ class Cause < ActiveRecord::Base
 
   has_many :needs,     :dependent => :delete_all
   has_many :locations, :dependent => :delete_all
-  has_many :campaigns, :dependent => :delete_all
   has_many :followers, :dependent => :delete_all
   has_many :contributions, :dependent => :delete_all
 
@@ -36,17 +35,10 @@ class Cause < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
-  before_save :set_defaults
-  after_create :create_default_records
+
 
   delegate :need_id, :type_of_need, :days_to_go, :desired_state, :current_state, :goal_unit, :percent_complete, :goal_summary, :to => :active_campaign, :allow_nil => true, :prefix => true
 
-  def set_defaults
-    self.city_slug ||= "chicago"
-    if self.cause_type_id.nil? && !cause_types.empty?
-      self.cause_type_id = cause_types.first.try(:id)
-    end
-  end
 
   def urls
     {
@@ -90,7 +82,6 @@ class Cause < ActiveRecord::Base
 
   def create_default_records
     create_default_location
-    create_default_campaign(create_default_need)
   end
 
   # every cause by default has a social need ( for followers )
@@ -119,18 +110,6 @@ class Cause < ActiveRecord::Base
   # Until the presenter nesting works better in smooth
   def locations_details
     locations.map {|l| l.present_as(:default) }
-  end
-
-  # TEMP
-  # Until the presenter nesting works better in smooth
-  def campaign_details
-    active_campaign && active_campaign.present_as(:cause_profile)
-  end
-
-  def create_default_campaign need=nil
-    campaigns.create(need_id: need.id, active: true, start_date: Time.now, end_date: 30.days.from_now)  if campaigns.count == 0
-    campaigns.update_all(active:true)
-    self
   end
 
   def active_campaign

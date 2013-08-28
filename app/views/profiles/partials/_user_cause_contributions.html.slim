@@ -7,7 +7,7 @@
           - cause= contribution.cause
           - if cause
             li
-              - properties= need_type_properties(contribution.need_type)
+
               time #{contribution.created_at.strftime("%d %b %Y")}
-              = "#{properties[:past_personal_action] } with #{link_to cause.name, url_for(cause)}".html_safe
+              = "#{contribution.need.property(:past_personal_action)  } with #{link_to cause.name, url_for(cause)}".html_safe
        

@@ -19,7 +19,7 @@ $('.first-sign-in').on "click", (e)->
 Application.open_need_modal= (need_id, type_of_need,slug )->
   if App.user.attributes.email
     
-    url = "/causes/#{ slug }/#{ type_of_need }/new?partial=true&need_id=#{ need_id }"
+    url = "/causes/new_fullfilment/#{ need_id }"
 
     $('#modalWrapper').foundation(
       'reveal', 

@@ -1,8 +1,8 @@
 .row.way-to-help.vertical-center-parent.blimit
   .large-1.small-2.columns.text-center
-    img.slimit-right src=asset_path("causes/ui/need_icons/#{need.type_of_need}.png")
+    img.slimit-right src="/assets/#{need.property(:img_path)}"
   .large-8.small-7.columns
-    h3.no-margin #{need.type_of_need.humanize}
+    h3.no-margin #{need.property(:singular_name)}
     p.slimit #{need.description}
    
 

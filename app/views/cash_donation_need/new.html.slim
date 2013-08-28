@@ -73,7 +73,7 @@ javascript:
 
             $.ajax({
               type: "POST",
-              url: '/causes/#{@need.cause.slug}/#{@need.type_of_need}/#{@need.id}/fulfillments',
+              url: '/causes/#{@need.id}/fulfillments',
               data: form_data,
               success: function(){
 
