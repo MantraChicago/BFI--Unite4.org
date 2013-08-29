@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'capybara/rspec'
 
-describe 'cash_donation_modal', :js =>true do
+describe 'goods_donation_modal', :js =>true do
   include Warden::Test::Helpers
   Warden.test_mode!
 
@@ -14,7 +14,7 @@ describe 'cash_donation_modal', :js =>true do
 
   let(:goods_need) { create(:need, :goods, cause: cause)}
 
-  it 'The cash donation modal should open' do
+  it 'The goods donation modal should open' do
 
     login_as(@user, :scope => :user)
     goods_need= create(:need, :goods, cause: cause)
@@ -31,10 +31,9 @@ describe 'cash_donation_modal', :js =>true do
     test_phone_number = "555-555-5555"
     fill_in 'phone_number', with: test_phone_number
     find("[class='btn pink button-submit pink']").click
-
-    find('#modalWrapper .close-reveal-modal').click
-    sleep 1 #waiting for modals to appear
-    page.should_not have_content modal_title
-
+    sleep 2
+    last_goods_donation = GoodsDonation.last
+    last_goods_donation.name.should == test_name
+    last_goods_donation.phone_number.should == test_phone_number
   end
 end
