@@ -16,7 +16,7 @@ describe Unite::NeedsFulfillmentProxy do
     end
 
     it "should create a follower for a social need" do
-      need = create(:need, :social, cause: cause)
+      need = FactoryGirl.create(:cash_donation_need, cause: cause)
       follower = proxy.new(user, need).fulfill!
 
       follower.user.should == user
@@ -25,7 +25,7 @@ describe Unite::NeedsFulfillmentProxy do
     end
 
     it "should create a donation for a cash need" do
-      need = create(:need, :cash, cause: cause)
+      need = FactoryGirl.create(:cash_donation_need, cause: cause)
       proxy.new(user, need, amount: 2500, donation_amount: 2500, tip_amount: 2500).fulfill!
       cash_donation = CashDonation.last
 
@@ -39,7 +39,7 @@ describe Unite::NeedsFulfillmentProxy do
     it 'should process credit card payments' do 
       user = FactoryGirl.create(:user)
 
-      cash_donation_need = FactoryGirl.create(:need, :cash)
+      cash_donation_need = FactoryGirl.create(:cash_donation_need)
       properties= {donation_amount: '12',
                donation_tip: '2222',
                month: '2',
@@ -52,7 +52,7 @@ describe Unite::NeedsFulfillmentProxy do
     end
 
     it "should create a goods donation for a goods need" do
-      need = create(:need, :goods, cause: cause)
+      need = FactoryGirl.create(:goods_donation_need, cause: cause)
       
       test_name= Faker::Name.name
       test_email= Faker::Internet.email
@@ -70,7 +70,7 @@ describe Unite::NeedsFulfillmentProxy do
     end
 
     it "should create a volunteer for a volunteers need" do
-      need = create(:need, :volunteers, cause: cause)
+      need = create(:volunteer_need, cause: cause)
       
       test_name= Faker::Name.name
       test_email= Faker::Internet.email

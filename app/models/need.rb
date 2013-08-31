@@ -1,14 +1,14 @@
 class Need < ActiveRecord::Base
 
   attr_accessible :name, :settings, :cause_id, :description, :picture, :address, :start_date, :end_date, :type_of_need, :location_id
-  attr_accessible :goal_summary, :timefame_description, :desired_state, :current_state, :is_primary, :is_active
+  attr_accessible :goal_summary, :timefame_description, :desired_state, :current_state, :is_primary, :is_active, :settings
 
   belongs_to :cause
   belongs_to :location
   has_many :contributions
 
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
-
+  before_save :default_values
   serialize :settings, JSON
   include Smooth::Presentable
 
@@ -18,7 +18,12 @@ class Need < ActiveRecord::Base
   end
 
   def self.need_types
-    [FollowerNeed,GoodsDonationNeed, CashDonationNeed, VolunteerNeed]
+    [FollowerNeed, GoodsDonationNeed, CashDonationNeed, VolunteerNeed]
+  end
+
+
+  def default_values
+    self.active ||= true
   end
 
   def percent_complete
@@ -61,7 +66,7 @@ class Need < ActiveRecord::Base
     type_of_need == "volunteers"
   end
 
-  default_scope where( :is_active => true )
+  scope :active, lambda { where( :is_active => true ) }
 
   
 

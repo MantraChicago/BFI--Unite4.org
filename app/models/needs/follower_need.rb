@@ -2,9 +2,9 @@ class FollowerNeed < Need
   def properties
     {
       call_to_action:'Follow',
-      singular_name: 'Promotion',
-      past_personal_action:'I promoted this cause',
-      past_action:'Promoted',
+      singular_name: 'Follower',
+      past_personal_action:'I followed this cause',
+      past_action:'Followed',
       color:'blue',
       img_path: '/causes/ui/need_icons/followers.png'
     }

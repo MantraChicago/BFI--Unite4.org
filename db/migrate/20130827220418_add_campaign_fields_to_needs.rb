@@ -6,6 +6,11 @@ class AddCampaignFieldsToNeeds < ActiveRecord::Migration
     add_column :needs, :desired_state, :float
     add_column :needs, :current_state, :float
     add_column :needs, :is_primary, :boolean
-    add_column :needs, :is_active, :boolean
+    add_column :needs, :is_active, :boolean, :default => true
+
+    Need.all.each do |need|
+      need.is_active = true
+      need.save
+    end
   end
 end

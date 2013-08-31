@@ -6,8 +6,23 @@
     a.close-reveal-modal &#215;
 hr
 
-form
+=form_for @need do |f|
+  =hidden_field_tag :cause_slug, @cause.slug
+  =hidden_field_tag :need_type, @need_type
   .row
     .large-12.column
+      label Need title
+      =text_field(@need_type, :name)
+  .row
+    .large-4.column
+      label How much money do you want to raise
+      =text_field(@need_type, :desired_state)
+  .row
+    .large-12.column
+      label Tell us what your are planning to do with the raised money?
+      =text_area(@need_type, :description, :rows => 5)
+  .row
+    .large-12.column
+      = submit_tag 'Create Need', class: 'small button expand'
 
   

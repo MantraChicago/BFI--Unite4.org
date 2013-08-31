@@ -14,7 +14,6 @@ module Unite
 
     def fulfill!
       @need.create_fullfilment(@user,@params)
-
     end
 
   end

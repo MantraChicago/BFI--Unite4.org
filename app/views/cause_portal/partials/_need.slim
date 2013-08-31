@@ -1,9 +1,20 @@
-.panel.need_panel
-  .row
-    .large-1.column
-      img src="/assets/#{need.property(:img_path)}" style="height:50px;"
-    .large-7.column
-      h4 #{need.name}
-    .large-4.column
-      .panel
-        =need.stat_info
+-if need
+  .panel.need_panel
+    .row
+      .large-1.column
+        img src="/assets/#{need.property(:img_path)}" style="height:50px;"
+      .large-3.column
+        h4 #{need.name}
+      .large-4.column
+        .panel
+          =need.stat_info
+      .large-3.columns
+        -if need.is_active 
+          .btn.pink.deactivate_need data-need_id=need.id style="margin-right:5px;" Deactivate
+        -if need.is_active && !need.is_primary
+          .btn.blue.promote_need data-need_id=need.id Make primary
+
+      
+
+      
+   

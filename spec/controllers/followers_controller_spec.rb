@@ -14,7 +14,7 @@ describe FollowersController do
   it "should allow a user to a follow a cause" do
     sign_in(user)
 
-    post :create, :cause_id => cause.id, :type_of_need => "followers"
+    post :create, :cause_id => cause.id, :type_of_need => "FollowerNeed"
 
     cause.following_users.should include(user)
 

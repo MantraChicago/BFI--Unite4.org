@@ -5,7 +5,7 @@ class FollowersController < ApplicationController
 
   def create
     #pry
-    @follower = fulfillment.new(current_user, need, type_of_need: "followers", cause_id: cause_id).fulfill!
+    @follower = fulfillment.new(current_user, need).fulfill!
 
     respond_to do |format|
       format.js do
@@ -49,8 +49,7 @@ class FollowersController < ApplicationController
     end
 
     def need
-      Need.where('cause_id' => cause.id).where('type_of_need' => 'followers').first
-      #Need.find(params[:need_id])
+      Need.where('cause_id' => cause.id).where('type' => 'FollowerNeed').first
     end
 
 end

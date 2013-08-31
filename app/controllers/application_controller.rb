@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def cause_edit_auth
-     @cause= Cause.find(params[:cause_slug])
+     @cause= (params[:cause_slug] && Cause.find(params[:cause_slug]) ) || Need.find(params[:id]).cause
      authenticate_user!
      if @cause.user != current_user
        redirect_to '/', :alert => 'You are not allowed to edit this cause'

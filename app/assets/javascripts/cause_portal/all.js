@@ -19,7 +19,47 @@ $(document).ready(function(){
     //var url = '/causes/'+cause_slug+'/edit/need_modal?need_type='+need_type
     var url = '/'+need_type+'/new?cause_slug='+cause_slug+'&need_type='+need_type
 
-    $('#modalWrapper').foundation('reveal','open',{url:url})
+    $('#modalWrapper').foundation('reveal','open',{url:url,
+                                                   css : {
+                                                      open : {
+                                                        'background-color':'rgb(249,249,249)',
+                                                        //'padding' :0
+                                                      }
+                                                    }
+                                                  })
+  })
+
+  $('.promote_need').click(function(){
+    var url='/volunteer_needs/'+$(this).attr('data-need_id')
+
+    var data={ 
+                need:{is_primary: true }
+              }
+    $.ajax({
+       url: url,
+       type: 'PUT',
+       data: data,
+       success: function(response) {
+         window.location=window.location
+       }
+    });
+
+  })
+
+  $('.deactivate_need').click(function(){
+    var url='/volunteer_needs/'+$(this).attr('data-need_id')
+    var data={ 
+                need:{is_active:false}
+              }
+    $.ajax({
+       url: url,
+       type: 'PUT',
+       data: data,
+       success: function(response) {
+         window.location=window.location
+       }
+    });
+
   })
   
 })

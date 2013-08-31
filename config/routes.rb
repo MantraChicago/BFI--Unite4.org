@@ -25,7 +25,7 @@ GiveInspireLove::Application.routes.draw do
   resources :volunteer_needs, :controller => "NeedsManagement"
   resources :cash_donation_needs, :controller => "NeedsManagement"
   resources :goods_donation_needs, :controller => "NeedsManagement"
-  resources :followers_needs, :controller => "NeedsManagement"
+  resources :follower_needs, :controller => "NeedsManagement"
   resources :promotion_needs, :controller => "NeedsManagement"
 
   match "/causes/:cause_slug/edit/:action" => "CausePortal#:action"

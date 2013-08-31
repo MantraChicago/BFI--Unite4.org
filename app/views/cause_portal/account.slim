@@ -1,6 +1,7 @@
 section.cause-portal
   .row
     h1 #{@cause.name}
+    h3 Cause admin portal
   = render 'cause_portal/partials/header', :active => 'account'
   = form_for(@cause, :url => '', :html => { :class=>"custom"} ) do |f|
     - if @cause.errors.any?

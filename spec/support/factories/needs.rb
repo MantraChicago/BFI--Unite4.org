@@ -1,24 +1,17 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
-  factory :need do
+  factory :cash_donation_need do
     association :cause
-    type_of_need "followers"
+  end
 
-    trait :cash do
-      type_of_need "cash_donations"
-    end
+  factory :goods_donation_need do
+    association :cause
+  end
 
-    trait :goods do
-      type_of_need "goods_donations"
-    end
+  factory :volunteer_need do
+    association :cause
+  end
 
-    trait :social do
-      type_of_need "followers"
-    end
-
-    trait :volunteers do
-      type_of_need "volunteers"
-    end
+  factory :follower_need do
+    association :cause
   end
 end

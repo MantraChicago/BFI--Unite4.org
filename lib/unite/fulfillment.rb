@@ -20,7 +20,7 @@ module Unite
 
       return unless need.present?
 
-      Contribution.create(need_type: need.type_of_need,
+      Contribution.create(need_type: need.type,
                           need_id: need.try(:id),
                           cause_id: self.cause_id,
                           user_id: self.user_id,
@@ -46,7 +46,7 @@ module Unite
 
     def update_current_need_state
       #TODO add delay
-      self.update_need_current_state(need_id) if need.is_primary
+      self.update_need_current_state(need_id) if (self.need && self.need.is_primary)
     end
 
     def update_need_current_state(need_id)

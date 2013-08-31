@@ -1,3 +1,4 @@
+=begin
 require "spec_helper"
 
 describe Campaign do
@@ -32,6 +33,7 @@ describe Campaign do
     end
   end
 end
+=end
 
 # == Schema Information
 #

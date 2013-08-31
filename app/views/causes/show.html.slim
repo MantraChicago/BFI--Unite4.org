@@ -6,6 +6,9 @@
     .large-9.columns
       h1= @cause.display_name
       p= @cause.short_description
+      -if current_user==@cause.user
+        =link_to 'Admin Interface', "/causes/#{@cause.slug}/edit/home"
+
     .large-3.columns.follow-cta
       p
         strong.pink-text #{@cause.followers.count} 
@@ -32,7 +35,7 @@
         .cboth.blimit
         h2.inline.s-margin-r Ways to Help
 
-        - @cause.needs.each do |need|
+        - @cause.needs.active.each do |need|
           = render 'causes/partials/cause_need', :need=> need
 
 

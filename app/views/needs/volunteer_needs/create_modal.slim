@@ -10,13 +10,14 @@ hr
   =hidden_field_tag :cause_slug, @cause.slug
   =hidden_field_tag :need_type, @need_type
   .row
-    .large-4.column
-      label Number of volunteers
-      =text_field(@need_type, :desired_state)
-  .row
     .large-12.column
       label Need title
       =text_field(@need_type, :name)
+  .row
+    .large-4.column
+      label Number of volunteers
+      =text_field(@need_type, :desired_state)
+  
   .row
     .large-12.column
       label Tell us what your volunteers do. Are you looking for particular skills?

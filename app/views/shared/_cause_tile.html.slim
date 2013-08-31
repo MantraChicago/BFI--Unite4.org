@@ -1,7 +1,7 @@
 - active_campaign = cause.active_campaign
 .cause-listing.oxygen.mlimit.sameheight data-need-id=active_campaign.id data-cause-id=cause.id data-cause-slug=cause.slug data-type-of-need=active_campaign.type_of_need
   a href="#{cause_path(cause)}"
-    .row.cause-tile-header.no-margin.bg-cover style="background-image: url(#{ cause.cause_tile_picture_url });"
+    .row.cause-tile-header.no-margin.bg-cover style="background-image: url(#{ cause.picture(:medium) });"
       .grey-mask.transition
         .large-12.columns.text-center.white.text-shadow
           h4.blimit-top.uppercase =limit_to_three_words(cause.display_name)
