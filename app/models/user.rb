@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
   end
 
   def has_contributed_to_need need
-    contributions.where(need_id: need.id, need_type: need.type_of_need).length > 0
+    contributions.where(need_id: need.id, need_type: need.type).length > 0
   end
 
   def followed_causes_locations

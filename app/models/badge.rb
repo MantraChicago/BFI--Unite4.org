@@ -31,7 +31,7 @@ class Badge < ActiveRecord::Base
     results
   end
 
-
+  scope :active, lambda { where( :is_active => true ) } 
 
   DefaultBadges = [
       {name: 'Sign Up', slug: 'sign_up', file_name: 'sign_up.png',description_after: "Welcome to unite4good: this was your very first badge! Check out the badge page to learn how you can earn more.", description_before: "Welcome to unite4good: this was your very first badge! Check out the badge page to learn how you can earn more.", category: 'none', badge_type: 'one_time', sub_text: "Let's Get Started!"},

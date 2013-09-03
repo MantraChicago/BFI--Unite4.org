@@ -1,3 +1,4 @@
+=begin We are not using the api functionality yet
 require "spec_helper"
 
 describe "The Contributions API", :type => :api do
@@ -18,3 +19,4 @@ describe "The Contributions API", :type => :api do
     response.should be_success
   end
 end
+=end

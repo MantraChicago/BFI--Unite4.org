@@ -1,0 +1,8 @@
+li.badge
+  .badge_wrapper
+    .badge_title
+      h3 #{badge.name}
+    .badge_middle
+      = image_tag("badges/#{badge.file_name}", :size => '150x150')
+    .badge_bottom
+      |#{badge.description_before}

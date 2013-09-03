@@ -11,6 +11,9 @@ class FulfillmentsController < ApplicationController
     @fulfillment = fulfillment.new(current_user, need, properties).fulfill!
 
     respond_to do |format|
+       format.js do
+        render "#{ need.type.underscore }/create", :layout => false#include_layout?
+      end
 
       format.html do
         if @fulfillment.valid?

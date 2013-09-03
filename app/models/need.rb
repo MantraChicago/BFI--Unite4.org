@@ -24,6 +24,8 @@ class Need < ActiveRecord::Base
 
   def default_values
     self.is_active ||= true
+    self.is_primary ||= false
+    true
   end
 
   def percent_complete

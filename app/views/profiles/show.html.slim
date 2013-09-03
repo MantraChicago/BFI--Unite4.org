@@ -14,8 +14,11 @@ section
           .panel.panel-no-bottom
             h3 My Badges
           ul#badges-list.large-block-grid-3
-            - @user.user_badges.each do |user_badge|
-              =render 'profiles/partials/user_badge', :user_badge=> user_badge
+            - get_array_of_badges(@user).each do |badge|
+              - if badge.is_a? UserBadge
+                =render 'profiles/partials/user_badge', :user_badge=> badge
+              - if badge.is_a? Badge
+                =render 'profiles/partials/badge', :badge=> badge
 
     .large-3.column.large-offset-1
       .row

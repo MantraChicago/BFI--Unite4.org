@@ -13,7 +13,6 @@ class NeedsManagementController < ApplicationController
   end
 
   def new
-    
     #@submit_url ="/causes/#{params[:cause_slug]}/edit/need_modal"
     @need = @need_type.classify.constantize.new()
     render "needs/#{@need_type}/create_modal",:layout => false
@@ -22,14 +21,16 @@ class NeedsManagementController < ApplicationController
   def update
     @need= Need.find(params[:id])
     need_key = (params[@need_type.underscore]) ? @need_type.underscore : 'need' #kinda a hack
-    if params[need_key][:is_primary]=='true' #temp
+
+    if params[need_key][:is_primary]=='true'
       demote_all_needs
       @need.end_date = Time.zone.now + 1.month
       @need.save
 
     end
-    
+    params[need_key][:cause_id]=@cause.id
     @need.update_attributes(params[need_key])
+
     respond_to do |format|
       format.json { render :json => @need, :status => 200 }
       format.html { redirect_to "/causes/#{@cause.slug}/edit/needs", :notice => 'Need updated'}
@@ -41,7 +42,8 @@ class NeedsManagementController < ApplicationController
     @need.cause_id =@cause.id
     @need.is_active=true
     @need.type=@need.class.to_s
-    @need.update_attributes(params[@need_type.underscore])
+    @need.update_attributes(params[@need_type.underscore.singularize])
+
     redirect_back_to_cause_portal
   end
 
@@ -52,7 +54,7 @@ class NeedsManagementController < ApplicationController
   end
 
   def demote_all_needs
-    @cause.needs.each do |need|
+    @cause.needs.all.each do |need|
       need.is_primary=false
       need.save
     end

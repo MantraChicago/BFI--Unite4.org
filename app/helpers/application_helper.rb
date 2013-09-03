@@ -168,13 +168,16 @@ module ApplicationHelper
   end
 
 
-  def render_badges user
-    earned_badges=user.badges.all
+  def get_array_of_badges user
+    ret_array=[]
+    earned_badges=user.user_badges.sort_by(&:id)
     unearned_badges=[]
-    Badge.all.each do |badge|
-      unearned_badges << badge if earned_badges.include?(badge)
+    Badge.active.all.each do |badge|
+      unearned_badges << badge if ! user.badges.include?(badge)
     end
-    binding.pry
+
+    earned_badges.concat unearned_badges
+
   end
 
 end
