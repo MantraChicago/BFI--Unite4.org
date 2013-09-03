@@ -8,7 +8,7 @@ class Need < ActiveRecord::Base
   has_many :contributions
 
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
-  after_create :default_values
+  before_create :default_values
   serialize :settings, JSON
   include Smooth::Presentable
 

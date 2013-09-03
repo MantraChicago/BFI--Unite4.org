@@ -5,9 +5,9 @@ a.close-reveal-modal &#215;
     form.need_form.custom 
       .steps-wrapper
         .step.active 
-          = render 'cash_donations/partials/first_wizard_tab', :need => @need
+          = render 'cash_donation_need/partials/first_wizard_tab', :need => @need
         .step 
-          = render 'cash_donations/partials/second_wizard_tab', :need => @need
+          = render 'cash_donation_need/partials/second_wizard_tab', :need => @need
       .wizard-navigation.centered
         a.button-previous style="display:none"
           |&lt;&nbsp;Back
@@ -16,7 +16,7 @@ a.close-reveal-modal &#215;
         a.btn.pink.button-submit.pink style="display:none"
           | Submit
   .success.hide
-    = render 'cash_donations/partials/success', :need => @need
+    = render 'cash_donation_need/partials/success', :need => @need
 
 javascript:
   $(document).foundation();
