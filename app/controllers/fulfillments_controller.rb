@@ -11,9 +11,6 @@ class FulfillmentsController < ApplicationController
     @fulfillment = fulfillment.new(current_user, need, properties).fulfill!
 
     respond_to do |format|
-      format.js do
-        render "#{ type_of_need }/create", :layout => false#include_layout?
-      end
 
       format.html do
         if @fulfillment.valid?
@@ -44,9 +41,6 @@ class FulfillmentsController < ApplicationController
       "Error"
     end
 
-    def type_of_need
-      need.type.underscore
-    end
 
     def cause_id
       params[:cause_id] || cause.try(:id)

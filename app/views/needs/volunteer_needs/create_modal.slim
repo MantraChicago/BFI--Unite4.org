@@ -12,16 +12,16 @@ hr
   .row
     .large-12.column
       label Need title
-      =text_field(@need_type, :name)
+      =f.text_field(:name)
   .row
     .large-4.column
       label Number of volunteers
-      =text_field(@need_type, :desired_state)
+      =f.text_field( :desired_state)
   
   .row
     .large-12.column
       label Tell us what your volunteers do. Are you looking for particular skills?
-      =text_area(@need_type, :description, :rows => 5)
+      =f.text_area(:description, :rows => 5)
   .row
     .large-12.column
       = submit_tag 'Create Need', class: 'small button expand'

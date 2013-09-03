@@ -2,33 +2,37 @@
   .large-1.column
     img src="/assets/causes/ui/need_icons/goods_donations.png"
   .large-11.column
-    h2 Add goods donations
+    h2 Goods donations
     a.close-reveal-modal &#215;
 hr
 
 =form_for @need do |f|
   =hidden_field_tag :cause_slug, @cause.slug
-  =hidden_field_tag :need_type, @need_type
+  =hidden_field_tag :need, @need.type
   .row
     .large-12.column
       label Need title
-      =text_field(@need_type, :name)
+      =f.text_field :name
   .row
     .large-12.column
       label What types of items are you looking for
+
+    -@need.settings ||= {}
+    -@need.settings['items'] ||= {}
+
     .large-12.column
-        =text_field(@need_type, 'settings[items[0]]')
+        =text_field(@need, @need.settings['items'][0], value: @need.settings['items']['0'])
     .large-12.column
-        =text_field(@need_type, 'settings[items[1]]')
+        =text_field(@need, @need.settings['items'][1], value: @need.settings['items']['1'])
     .large-12.column
-        =text_field(@need_type, 'settings[items[2]]')
+        =text_field(@need, @need.settings['items'][2], value: @need.settings['items']['2'])
     .large-12.column
-        =text_field(@need_type, 'settings[items[3]]')
+        =text_field(@need, @need.settings['items'][3], value: @need.settings['items']['3'])
   
   .row
     .large-12.column
       label What are you going to use the items for?
-      =text_area(@need_type, :description, :rows => 5)
+      =f.text_area(:description, :rows => 5)
   .row
     .large-12.column
       = submit_tag 'Create Need', class: 'small button expand'

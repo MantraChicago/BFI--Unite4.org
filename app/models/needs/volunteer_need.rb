@@ -6,7 +6,8 @@ class VolunteerNeed < Need
       past_personal_action:'I volunteered',
       past_action:'Volunteered',
       color:'black',
-      img_path: '/causes/ui/need_icons/volunteers.png'
+      img_path: '/causes/ui/need_icons/volunteers.png',
+      goal_unit: 'Volunteers'
     }
   end
 

@@ -6,10 +6,11 @@ class CashDonationNeed < Need
       past_personal_action:'I donated money',
       past_action:'Donated',
       color:'green',
-      img_path: '/causes/ui/need_icons/cash_donations.png'
+      img_path: '/causes/ui/need_icons/cash_donations.png',
+      goal_unit: 'Dollars'
     }
   end
-
+  
   def stat_info
     total_donations = contributions.all.inject(0) {|total,contribution| total+contribution.fulfillment.amount }
     "Received $#{total_donations} in cash donations"

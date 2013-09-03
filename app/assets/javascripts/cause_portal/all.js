@@ -13,6 +13,19 @@ $(document).ready(function(){
       }
     });
   })
+   $('.edit_need').click(function(){
+    var url='/volunteer_needs/'+$(this).attr('data-need_id')+'/edit'
+
+    $('#modalWrapper').foundation('reveal','open',{url:url,
+                                                   css : {
+                                                      open : {
+                                                        'background-color':'rgb(249,249,249)',
+                                                        //'padding' :0
+                                                      }
+                                                    }
+                                                  })
+  })
+
   $('.open-create-needs-modal').click(function(){
     var cause_slug=$(this).attr('data-cause_slug')
     var need_type=$(this).attr('data-need_type')

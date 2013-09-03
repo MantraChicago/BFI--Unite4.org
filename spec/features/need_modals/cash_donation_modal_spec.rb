@@ -18,7 +18,7 @@ describe 'cash_donation_modal', :js =>true do
 
     visit "/causes/#{cash_donations_need.cause.slug}"
     
-    first("[data-need-id='"+cash_donations_need.id.to_s+"']").click
+    first("[data-need-id='#{cash_donations_need.id.to_s}']").click
     modal_title='ank you for your interest in donating money'
     sleep 2 #waiting for modals to appear 
 

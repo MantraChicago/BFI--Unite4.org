@@ -8,7 +8,7 @@ class Need < ActiveRecord::Base
   has_many :contributions
 
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
-  before_save :default_values
+  after_create :default_values
   serialize :settings, JSON
   include Smooth::Presentable
 
@@ -23,7 +23,7 @@ class Need < ActiveRecord::Base
 
 
   def default_values
-    self.active ||= true
+    self.is_active ||= true
   end
 
   def percent_complete
@@ -44,10 +44,6 @@ class Need < ActiveRecord::Base
 
   def need
     self
-  end
-
-  def goal_unit
-    type_of_need.humanize.capitalize
   end
 
   def social?

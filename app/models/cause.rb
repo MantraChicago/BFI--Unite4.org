@@ -88,7 +88,7 @@ class Cause < ActiveRecord::Base
   end
 
   def active_campaign
-    needs.find_by_is_primary(true)
+    needs.where(:is_primary => true, :is_active=>true).first
   end
 
   def location

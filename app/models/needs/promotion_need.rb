@@ -6,6 +6,7 @@ class PromotionNeed < Need
       past_personal_action:'I volunteered',
       past_action:'Volunteered',
       color:'black',
+      goal_unit: 'Promotions'
 
     }
   end

@@ -6,7 +6,8 @@ class GoodsDonationNeed < Need
       past_personal_action:'I donated goods',
       past_action:'Donated',
       color:'pink',
-      img_path: '/causes/ui/need_icons/goods_donations.png'
+      img_path: '/causes/ui/need_icons/goods_donations.png',
+      goal_unit: 'Donations'
     }
   end
 
