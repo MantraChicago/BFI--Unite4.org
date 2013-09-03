@@ -17,16 +17,18 @@ describe 'cash_donation_modal', :js =>true do
     cash_donations_need= create(:cash_donation_need)
 
     visit "/causes/#{cash_donations_need.cause.slug}"
+    
+    first('[data-type-of-need="cash_donations"]').click
+    modal_title='Thank you for your interest in donating money'
 
-    first("[data-need-id='#{cash_donations_need.id.to_s}']").click
-    modal_title='ank you for your interest in donating money'
     sleep 2 #waiting for modals to appear 
 
     page.should have_content modal_title
-
-    fill_in 'donation_amount', :with => '20'
+    
+    find('div#donation_amount').set('20')
+    binding.pry
     fill_in 'donation_tip', :with => '5'
-
+    
     expect('total').to have_content '$25'
 
     find('#modalWrapper .close-reveal-modal').click
