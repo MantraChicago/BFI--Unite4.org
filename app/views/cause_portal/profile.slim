@@ -1,103 +1,105 @@
 section.cause-portal
   .row
-    h1 #{@cause.name}
-    h3 Cause admin portal
-  = render 'cause_portal/partials/header', :active => 'profile'
-  = form_for(@cause, :url => '', :html => { :multipart => true, :class=>"custom"} ) do |f|
-    - if @cause.errors.any?
+    .column.large-10.large-centered
+      .row
+        h1 #{@cause.name}
+        h3 Cause admin portal
+      = render 'cause_portal/partials/header', :active => 'profile'
+      = form_for(@cause, :url => '', :html => { :multipart => true, :class=>"custom"} ) do |f|
+        - if @cause.errors.any?
+            .row
+              .large-12.column
+                -for msg in @cause.errors.full_messages.each
+                  .alert-box.alert{data-alert}
+                    = msg
+                    a.close &times;
+        .row.mlimit-top
+          .large-12.column
+            h3 Information
+        .row
+          .large-6.column
+            label Cause Name
+            =text_field(:cause,:name)
+          .large-6.column
+            label Display Name <span class="alert">(Short cause name)</span>
+            =text_field(:cause,:display_name)
+        .row.mlimit-top
+          .large-12.column
+            label Description  <span class="alert">(Include goals, mission, etc)</span>
+            =text_area(:cause,:description, :rows=>5)
+        .row.mlimit-top
+          .large-12.column
+            label Tagline  <span class="alert">(One sentence describing your cause that does not user your cause's name)</span>
+            =text_field(:cause,:short_description, :rows=>5)
+        .row.mlimit-top
+          .large-4.column
+            label Website
+            =text_field(:cause,:website)
+          .large-4.column
+            label Twitter handle
+            =text_field(:cause,:twitter_handle)
+          .large-4.column
+            label Facebook URL
+            =text_field(:cause,:facebook_url)
+        hr
+        .row.mlimit-top
+          .large-12.column
+            h3 Cause Categories
+        .row
+          .large-12.cboxrow style="margin-left:20px"
+            label Cause types
+            - CauseType.all.each do |cause_type|
+              label{for='#{cause_type.id}_cause'}
+                = check_box_tag "cause[cause_type_ids][]", cause_type.id, @cause.cause_types.include?(cause_type) , :id => "#{cause_type.id}_cause", :class => 'hide'
+                span.custom.checkbox
+                | #{cause_type.name}
+        hr
+        .row.mlimit-top
+          .large-12.column
+            h3 Contact Information
         .row
           .large-12.column
-            -for msg in @cause.errors.full_messages.each
-              .alert-box.alert{data-alert}
-                = msg
-                a.close &times;
-    .row.mlimit-top
-      .large-12.column
-        h3 Information
-    .row
-      .large-6.column
-        label Cause Name
-        =text_field(:cause,:name)
-      .large-6.column
-        label Display Name <span class="alert">(Short cause name)</span>
-        =text_field(:cause,:display_name)
-    .row.mlimit-top
-      .large-12.column
-        label Description  <span class="alert">(Include goals, mission, etc)</span>
-        =text_area(:cause,:description, :rows=>5)
-    .row.mlimit-top
-      .large-12.column
-        label Tagline  <span class="alert">(One sentence describing your cause that does not user your cause's name)</span>
-        =text_field(:cause,:short_description, :rows=>5)
-    .row.mlimit-top
-      .large-4.column
-        label Website
-        =text_field(:cause,:website)
-      .large-4.column
-        label Twitter handle
-        =text_field(:cause,:twitter_handle)
-      .large-4.column
-        label Facebook URL
-        =text_field(:cause,:facebook_url)
-    hr
-    .row.mlimit-top
-      .large-12.column
-        h3 Cause Categories
-    .row
-      .large-12.cboxrow style="margin-left:20px"
-        label Cause types
-        - CauseType.all.each do |cause_type|
-          label{for='#{cause_type.id}_cause'}
-            = check_box_tag "cause[cause_type_ids][]", cause_type.id, @cause.cause_types.include?(cause_type) , :id => "#{cause_type.id}_cause", :class => 'hide'
-            span.custom.checkbox
-            | #{cause_type.name}
-    hr
-    .row.mlimit-top
-      .large-12.column
-        h3 Contact Information
-    .row
-      .large-12.column
-        label Address
-        =text_field(:cause,:address)
-    .row.mlimit-top
-      .large-4.column
-        label City
-        =text_field(:cause,:city)
-      .large-4.column
-        label State
-        =select :cause, :state, us_states
-      .large-4.column
-        label Zip
-        =text_field(:cause,:zip_code)
-   
-    .row.mlimit-top
-      .large-6.column
-        label Contact name
-        =text_field(:cause,:contact_name)
-      .large-6.column
-        label Contact email
-        =text_field(:cause,:contact_email)
-    hr
-    .row.mlimit-top
-      .large-12.column
-        h3 Media
-    .row.mlimit-top
-      .large-12.column
-        label Cause images
-        ul.inline-list
-          -@cause.cause_images.all.each do |cause_image|
-            li 
-              .delete-cause-image data-cause_image_id=cause_image.id data-cause_slug=@cause.slug
-                =image_tag cause_image.picture.url(:thumb)
-        label Upload another image         
-        =file_field_tag 'picture'
-    .row.mlimit-top
-      .large-12.column
-        label Video embed link
-        =text_field(:cause,:video_link)
+            label Address
+            =text_field(:cause,:address)
+        .row.mlimit-top
+          .large-4.column
+            label City
+            =text_field(:cause,:city)
+          .large-4.column
+            label State
+            =select :cause, :state, us_states
+          .large-4.column
+            label Zip
+            =text_field(:cause,:zip_code)
+       
+        .row.mlimit-top
+          .large-6.column
+            label Contact name
+            =text_field(:cause,:contact_name)
+          .large-6.column
+            label Contact email
+            =text_field(:cause,:contact_email)
+        hr
+        .row.mlimit-top
+          .large-12.column
+            h3 Media
+        .row.mlimit-top
+          .large-12.column
+            label Cause images
+            ul.inline-list
+              -@cause.cause_images.all.each do |cause_image|
+                li 
+                  .delete-cause-image data-cause_image_id=cause_image.id data-cause_slug=@cause.slug
+                    =image_tag cause_image.picture.url(:thumb)
+            label Upload another image         
+            =file_field_tag 'picture'
+        .row.mlimit-top
+          .large-12.column
+            label Video embed link
+            =text_field(:cause,:video_link)
 
 
-    .row.mlimit-top
-      .large-12.centered.column
-        = f.submit "Save changes"
+        .row.mlimit-top
+          .large-12.centered.column
+            = f.submit "Save changes"
 

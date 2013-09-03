@@ -3,18 +3,16 @@
     .row
       .large-1.column
         img src="/assets/#{need.property(:img_path)}" style="height:50px;"
-      .large-3.column
+      .large-8.column
         h4 #{need.name}
-      .large-4.column
-        .panel
-          =need.stat_info
+        =need.stat_info
       .large-3.columns
         -if need.is_active 
-          .btn.black.edit_need data-need_id=need.id style="margin-right:5px;" Edit
+          .edit_btn.black.edit_need data-need_id=need.id style="margin-right:5px;" Edit
         -if need.is_active 
-          .btn.pink.deactivate_need data-need_id=need.id style="margin-right:5px;" Deactivate
+          .edit_btn.pink.deactivate_need data-need_id=need.id style="margin-right:5px;" Deactivate
         -if need.is_active && !need.is_primary
-          .btn.blue.promote_need data-need_id=need.id Make primary
+          .edit_btn.blue.promote_need data-need_id=need.id Make primary
 
       
 

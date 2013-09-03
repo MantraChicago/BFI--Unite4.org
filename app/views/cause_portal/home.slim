@@ -1,48 +1,50 @@
 section.cause-portal
   .row
-    h1 #{@cause.name}
-    h3 Cause admin portal
-  = render 'cause_portal/partials/header', :active => 'home'
+    .column.large-10.large-centered
+      .row
+        h1 #{@cause.name}
+        h3 Cause admin portal
+      = render 'cause_portal/partials/header', :active => 'home'
 
-  .row
-    .large-12.column.mlimit-top
-      ul.inline-list.needs-list.centered
-        li
-          .panel.centered.smoke-bg
-            h2 #{@cause.followers.count}
-            hr
-            img src="/assets/causes/ui/need_icons/followers.png" style="height:30px;"
-            span.bold Followers
-        li
-          .panel.centered.smoke-bg
-            h2 $#{@cause.total_cash_donations}
-            hr
-            img src="/assets/causes/ui/need_icons/cash_donations.png" style="height:30px;"
-            span.bold Cash Donations
-        li
-          .panel.centered.smoke-bg
-            h2 #{@cause.total_goods_donations}
-            hr
-            img src="/assets/causes/ui/need_icons/goods_donations.png" style="height:30px;"
-            span.bold Item Donations
-        li
-          .panel.centered.smoke-bg
-            h2 #{@cause.total_volunteers}
-            hr
-            img src="/assets/causes/ui/need_icons/volunteers.png" style="height:30px;"
-            span.bold Volunteer Contacts
-  .row
-    .panel
-      h3 Updates feed
-      ul.large-block-grid-1.contributions-feed
-        - @cause.contributions.each do |contribution|
-          -if contribution.user && contribution.need
+      .row
+        .large-12.column.mlimit-top
+          ul.inline-list.needs-list.centered
             li
-              time #{ contribution.created_at.strftime('%d %b %Y') }
-              br
-              =image_tag current_user.avatar.url(:thumb), :style => 'width:50px'
-              = " #{link_to(contribution.user.display_name, url_for(contribution.user))} #{contribution.need.property(:past_action)} to #{link_to(contribution.cause.name, url_for(contribution.cause))}".html_safe
-              -if contribution_info contribution
-                .panel.mlimit-top.contribution-info
-                  =contribution_info contribution
-              hr
+              .panel.centered.smoke-bg
+                h2 #{@cause.followers.count}
+                hr
+                img src="/assets/causes/ui/need_icons/followers.png" style="height:30px;"
+                span.bold Followers
+            li
+              .panel.centered.smoke-bg
+                h2 $#{@cause.total_cash_donations}
+                hr
+                img src="/assets/causes/ui/need_icons/cash_donations.png" style="height:30px;"
+                span.bold Cash Donations
+            li
+              .panel.centered.smoke-bg
+                h2 #{@cause.total_goods_donations}
+                hr
+                img src="/assets/causes/ui/need_icons/goods_donations.png" style="height:30px;"
+                span.bold Item Donations
+            li
+              .panel.centered.smoke-bg
+                h2 #{@cause.total_volunteers}
+                hr
+                img src="/assets/causes/ui/need_icons/volunteers.png" style="height:30px;"
+                span.bold Volunteer Contacts
+      .row
+        .panel
+          h3 Updates feed
+          ul.large-block-grid-1.contributions-feed
+            - @cause.contributions.each do |contribution|
+              -if contribution.user && contribution.need
+                li
+                  time #{ contribution.created_at.strftime('%d %b %Y') }
+                  br
+                  =image_tag current_user.avatar.url(:thumb), :style => 'width:50px'
+                  = " #{link_to(contribution.user.display_name, url_for(contribution.user))} #{contribution.need.property(:past_action)} to #{link_to(contribution.cause.name, url_for(contribution.cause))}".html_safe
+                  -if contribution_info contribution
+                    .contribution-info
+                      =contribution_info contribution
+                  hr
