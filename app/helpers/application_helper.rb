@@ -226,5 +226,14 @@ module ApplicationHelper
       ['Wisconsin', 'WI'],
       ['Wyoming', 'WY']
     ]
-end
+  end
+
+  def render_badges user
+    earned_badges=user.badges.all
+    unearned_badges=[]
+    Badge.all.each do |badge|
+      unearned_badges << badge if earned_badges.include?(badge)
+    end
+    binding.pry
+  end
 end
