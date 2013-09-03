@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
       stored_location_for(resource) || request.referer || root_path
     end
   end
+
+  def cause_edit_auth
+     @cause= (params[:cause_slug] && Cause.find(params[:cause_slug]) ) || Need.find(params[:id]).cause
+     authenticate_user!
+     if @cause.user != current_user
+       redirect_to '/', :alert => 'You are not allowed to edit this cause'
+     end
+  end
 end

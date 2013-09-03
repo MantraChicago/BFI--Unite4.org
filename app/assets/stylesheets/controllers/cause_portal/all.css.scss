@@ -2,17 +2,30 @@
 .cause-portal{
   background-color: white;
   .contribution-info{
-    margin-left: 50px;
+    margin-left: 55px;
   }
 
   .needs-list{
     li{
-      width: 230px;
+      width: 200px;
     } 
+    .panel{
+      padding-left:0px;
+      padding-right:0px;
+    }
   }
 
   .alert{
     color:$cyan;
+  }
+
+  .edit_btn{
+    color: $blue;
+    display: inline-block;
+    &:hover{
+      cursor: pointer;
+      color: $black;
+    }
   }
 
   .delete-cause-image:hover{
@@ -22,6 +35,7 @@
 
   .create_need{
     background-color: $lightGrey;
+    width: 170px;
   }
 
   .need_panel{

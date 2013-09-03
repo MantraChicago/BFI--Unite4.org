@@ -1,23 +1,8 @@
 class NeedsController <ApplicationController
   def new
-    @need=need
-    render "#{ type_of_need }/new", :layout => include_layout?
+    @need=Need.find(params[:need_id])
+    #@cause=need.cause
+    render "#{ @need.type.underscore }/new", :layout => false
   end
 
-  protected
-    def need
-      Need.find(params[:need_id]) if params[:need_id]
-    end
-
-    def cause
-      @cause ||= Cause.find_by_slug(params[:cause_slug])
-    end
-
-    def type_of_need
-      need.present? ? need.type_of_need : params[:type_of_need]
-    end
-
-    def include_layout?
-      params[:partial].nil? || params[:partial] == false
-    end
 end

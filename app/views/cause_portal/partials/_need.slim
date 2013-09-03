@@ -1,9 +1,20 @@
-.panel.need_panel
-  .row
-    .large-1.column
-      img src="/assets/causes/ui/need_icons/#{need.type_of_need}.png" style="height:50px;"
-    .large-7.column
-      h4 #{need.name}
-    .large-4.column
-      .panel
-        =need_stat_info(need)
+-if need
+  .panel.need_panel
+    .row
+      .large-1.column
+        img src="/assets/#{need.property(:img_path)}" style="height:50px;"
+      .large-8.column
+        h4 #{need.name}
+        =need.stat_info
+      .large-3.columns
+        -if need.is_active 
+          .edit_btn.black.edit_need data-need_id=need.id style="margin-right:5px;" Edit
+        -if need.is_active 
+          .edit_btn.pink.deactivate_need data-need_id=need.id style="margin-right:5px;" Deactivate
+        -if need.is_active && !need.is_primary
+          .edit_btn.blue.promote_need data-need_id=need.id Make primary
+
+      
+
+      
+   

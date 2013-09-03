@@ -12,9 +12,9 @@ class Cause < ActiveRecord::Base
   attr_accessor :skip_default_location
   attr_accessible :active,:user_id,:contact_email,:short_description, :city_slug, :display_name,:cause_types, :cause_type_ids, :city, :state, :picture, :is_featured, :description, :twitter_handle, :video_link, :name, :mission_statement, :how_hear, :phone_number, :email, :website, :facebook_url, :skip_default_location
   attr_accessible :contact_email, :contact_name, :contact_phone_number, :contact_address
-  attr_accessible :address, :zip_code, :bank_account, :bank_routing
+  attr_accessible :contact_address, :zip_code, :bank_account, :bank_routing
 
-  has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>", :cause_tile => "81x81#" }, :default_url => "/assets/missing.jpeg"
+  has_attached_file  :picture, :styles => { :medium => "300x300>", :thumb => "100x100>", :cause_tile => "81x81#" }, :default_url => "/assets/missing-square.jpg"
 
   belongs_to :cause_type
 
@@ -22,7 +22,6 @@ class Cause < ActiveRecord::Base
 
   has_many :needs,     :dependent => :delete_all
   has_many :locations, :dependent => :delete_all
-  has_many :campaigns, :dependent => :delete_all
   has_many :followers, :dependent => :delete_all
   has_many :contributions, :dependent => :delete_all
 
@@ -35,18 +34,11 @@ class Cause < ActiveRecord::Base
   belongs_to :user
 
   validates :name, :uniqueness => true
-
-  before_save :set_defaults
   after_create :create_default_records
+
 
   delegate :need_id, :type_of_need, :days_to_go, :desired_state, :current_state, :goal_unit, :percent_complete, :goal_summary, :to => :active_campaign, :allow_nil => true, :prefix => true
 
-  def set_defaults
-    self.city_slug ||= "chicago"
-    if self.cause_type_id.nil? && !cause_types.empty?
-      self.cause_type_id = cause_types.first.try(:id)
-    end
-  end
 
   def urls
     {
@@ -59,48 +51,22 @@ class Cause < ActiveRecord::Base
     User.where(id: followers.map(&:user_id))
   end
 
-  def create_default_location
-    if locations.count == 0 and !skip_default_location
-      locations.create location_attributes.merge(name:"Main Office")
-    end
-  end
-
-  def location_attributes
-    loc = {}
-
-    # this is temporary
-    loc.merge! :address_line_one => self.address_line_one || Unite::Development.random_address_in(:chicago),
-               :address_line_two =>self.address_line_two || '',
-                       :postal_code => self.postal_code || "60610",
-                       :country => self.country || "US",
-                       :region => self.region || "IL",
-                       :city => self.city || "Chicago"
-
-    # any
-    loc[:city]    = "Chicago" if self.city.length == 0
-    loc[:region]  = "IL" if self.region.length == 0
-
-    loc
-  end
-
   def address
-    location_hash= location_attributes
-    "#{name}, #{location_hash[:address_line_one]} #{location_hash[:address_line_two]}, #{location_hash[:city]}, #{location_hash[:state]}, #{location_hash[:postal_code]}"
+    #location_hash= location_attributes
+    "#{name}, #{contact_address}, #{city}, #{state}, #{postal_code}"
   end
 
   def create_default_records
-    create_default_location
-    create_default_campaign(create_default_need)
+    #create_default_location
+    create_default_need
   end
 
-  # every cause by default has a social need ( for followers )
+  # every cause by default has a followers
   def create_default_need
-    if needs.count == 0
-      needs.create({type_of_need:"followers",
-                    name:"Help promote #{name}"})
-    else
-      needs.first
-    end
+    FollowerNeed.create({cause_id:self.id,
+                         desired_state: 100,
+                         end_date: Time.zone.now + 1.month,
+                         is_primary: true})
   end
 
   def total_cash_donations
@@ -121,30 +87,8 @@ class Cause < ActiveRecord::Base
     locations.map {|l| l.present_as(:default) }
   end
 
-  # TEMP
-  # Until the presenter nesting works better in smooth
-  def campaign_details
-    active_campaign && active_campaign.present_as(:cause_profile)
-  end
-
-  def create_default_campaign need=nil
-    campaigns.create(need_id: need.id, active: true, start_date: Time.now, end_date: 30.days.from_now)  if campaigns.count == 0
-    campaigns.update_all(active:true)
-    self
-  end
-
   def active_campaign
-    campaigns.active.limit(1).first
-  end
-
-  def cause_tile_picture_url
-    url = picture.url(:medium)
-
-    if url.match(/missing/)
-      url = "/assets/missing-square.jpg"
-    end
-
-    url
+    needs.where(:is_primary => true, :is_active=>true).first
   end
 
   def location
@@ -158,22 +102,6 @@ class Cause < ActiveRecord::Base
 
   def picture_url style=:medium
     picture.url(style)
-  end
-
-  def state= value
-    self.region = value
-  end
-
-  def state
-    region
-  end
-
-  def zip= value
-    self.postal_code = value
-  end
-
-  def zip
-    postal_code
   end
 
   def facebook_link
@@ -215,7 +143,7 @@ class Cause < ActiveRecord::Base
 
   def self.query(params={})
     results = scoped
-    results = results.includes(:locations,:campaigns,:needs)
+    results = results.includes(:locations,:needs)
 
     if params[:scope].is_a?(Array)
       base, value = params[:scope]

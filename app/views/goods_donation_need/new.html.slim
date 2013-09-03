@@ -4,9 +4,9 @@ a.close-reveal-modal &#215;
     form.good_donation_form
       .steps-wrapper
         .step.active 
-          =render 'goods_donations/partials/first_wizard_tab', :need => @need
+          =render 'goods_donation_need/partials/first_wizard_tab', :need => @need
         .step 
-          =render 'goods_donations/partials/second_wizard_tab', :need => @need
+          =render 'goods_donation_need/partials/second_wizard_tab', :need => @need
       .wizard-navigation.centered
         a.button-previous style="display:none"
           |&lt;&nbsp;Back
@@ -15,13 +15,13 @@ a.close-reveal-modal &#215;
         a.btn.pink.button-submit.pink style="display:none"
           | Submit
   .success.hide
-    = render 'goods_donations/partials/success', :need => @need
+    = render 'goods_donation_need/partials/success', :need => @need
 
 
 javascript:
 
   $('.button-submit').click(function(){
     var form_data=$('.good_donation_form').serializeObject()
-    $.post('/causes/#{@need.cause.slug}/#{@need.type_of_need}/#{@need.id}/fulfillments',form_data,function(){})
+    $.post('/causes/#{@need.id}/fulfillments',form_data,function(){})
   })
 

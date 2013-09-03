@@ -48,6 +48,10 @@ class CashDonation < ActiveRecord::Base
       payment = Unite::PaymentGatewayService.charge stripe_id, total_amount, message
     end
   end
+
+  def get_current_need_state need_id
+    Contribution.find_all_by_need_id(need_id).inject(0) {|total,contribution| total+contribution.fulfillment.amount }
+  end
 end
 
 # == Schema Information

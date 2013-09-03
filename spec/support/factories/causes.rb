@@ -6,6 +6,7 @@ FactoryGirl.define do
 
   factory :cause do
     association(:cause_type)
+    association :user
 
     name { FactoryGirl.generate(:company_name) }
     email { FactoryGirl.generate(:email) }

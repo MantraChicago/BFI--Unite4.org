@@ -1,0 +1,28 @@
+.row
+  .large-1.column
+    img src="/assets/causes/ui/need_icons/cash_donations.png"
+  .large-11.column
+    h2 Cash donation
+    a.close-reveal-modal &#215;
+hr
+
+=form_for @need do |f|
+  =hidden_field_tag :cause_slug, @cause.slug
+  =hidden_field_tag :need_type, @need_type
+  .row
+    .large-12.column
+      label Need title
+      =f.text_field(:name)
+  .row
+    .large-4.column
+      label How much money do you want to raise
+      =f.text_field( :desired_state)
+  .row
+    .large-12.column
+      label Tell us what your are planning to do with the raised money?
+      =f.text_area(:description, :rows => 5)
+  .row
+    .large-12.column
+      = submit_tag 'Submit', class: 'small button expand'
+
+  

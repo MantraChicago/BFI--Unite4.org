@@ -6,7 +6,7 @@ module Unite
       class_attribute :update_campaign_method
 
       after_create :create_contribution_record
-      after_create :update_campaign_progress
+      after_create :update_current_need_state
       
       after_destroy :delete_contribution
     end
@@ -20,7 +20,7 @@ module Unite
 
       return unless need.present?
 
-      Contribution.create(need_type: need.type_of_need,
+      Contribution.create(need_type: need.type,
                           need_id: need.try(:id),
                           cause_id: self.cause_id,
                           user_id: self.user_id,
@@ -44,38 +44,20 @@ module Unite
     end
 
 
-    def update_campaign_progress
-      return if progress_updated?
-      self.delay.update_campaign_progress_safely!
+    def update_current_need_state
+      #TODO add delay
+      self.update_need_current_state(need_id) if (self.need && self.need.is_primary)
     end
 
-    def progress_updated?
-      @progress_updated == true
+    def update_need_current_state(need_id)
+      state=get_current_need_state(need_id)
+      need=Need.find(need_id)
+      need.current_state=state
+      need.save
     end
 
-    def contribution_increment
-      custom_method = self.class.update_campaign_method
-      if !custom_method || respond_to?(custom_method)
-        return 1
-      end
-      send(custom_method).to_i
-    end
-
-    def update_campaign_progress_safely!
-      return unless campaign_object = related_campaign
-
-      campaign_object = Campaign.find(campaign_object.id)
-
-      campaign_object.recalculate_progress!
-      campaign_object.save
-    end
-
-
-    def update_campaign_progress_unsafe!
-      return unless related_campaign.try(:active?)
-      updated_amount = related_campaign.current_state.to_i + contribution_increment
-      related_campaign.current_state = updated_amount
-      @progress_updated = true
+    def get_current_need_state need_id
+      Contribution.find_all_by_need_id(need_id).count
     end
 
     module ClassMethods

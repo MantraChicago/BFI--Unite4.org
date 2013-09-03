@@ -12,7 +12,7 @@
               a.featured_cause_switcher data-type-name=type.name #{type.name}
     .large-9.columns
       -featured_causes_hash.each do |key,cause|
-        - active_campaign = cause.active_campaign
+        
         .row.hide.featured_cause_holder data-type-name=key
           .large-5.columns
             a href="#{url_for cause}"
@@ -21,17 +21,19 @@
             =link_to(cause.name, cause, :class=>'h2 block bold slimit')
             em.secondary.inline.slimit #{cause.location}
             p.mlimit #{cause.short_description}
-            .bold.h4.slimit GOAL:
-            .slimit= active_campaign.goal_summary
-            a href="#{url_for cause}"
-              .row.no-margin
-                  .large-6.columns.left
-                    .row.vertical-center-parent.mlimit
-                      .large-6.small-6.columns.text-center.gray_border
-                        h2.blue-text.no-margin= active_campaign.days_to_go
-                        span.h5.slimit.block days to go
-                      .large-6.small-6.columns.text-center.gray_border
-                        h2.blue-text.no-margin= active_campaign.percent_complete.to_s + "%"
-                        span.h5.slimit.block goal met
+            - active_campaign = cause.active_campaign
+            -if active_campaign
+              .bold.h4.slimit GOAL:
+              .slimit= active_campaign.goal_summary
+              a href="#{url_for cause}"
+                .row.no-margin
+                    .large-6.columns.left
+                      .row.vertical-center-parent.mlimit
+                        .large-6.small-6.columns.text-center.gray_border
+                          h2.blue-text.no-margin= active_campaign.days_to_go
+                          span.h5.slimit.block days to go
+                        .large-6.small-6.columns.text-center.gray_border
+                          h2.blue-text.no-margin= active_campaign.percent_complete.to_s + "%"
+                          span.h5.slimit.block goal met
 
   

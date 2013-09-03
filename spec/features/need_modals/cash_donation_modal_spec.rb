@@ -10,20 +10,15 @@ describe 'cash_donation_modal', :js =>true do
     @user = FactoryGirl.create(:user)
   end
 
-  let(:cause) { create(:cause) }
-  let(:cash_donations_need) { create(:need, :cash, cause: cause) }
-  let(:goods_need) { create(:need, :goods, cause: cause)}
-  let(:social_need) { create(:need, :social, cause: cause)}
-  let(:volunteers_need) { create(:need, :volunteers, cause: cause)}
 
   it 'The cash donation modal should open' do
       
     login_as(@user, :scope => :user)
-    cash_donations_need= create(:need, :cash, cause: cause)
+    cash_donations_need= create(:cash_donation_need)
 
     visit "/causes/#{cash_donations_need.cause.slug}"
-    
-    first('[data-type-of-need="cash_donations"]').click
+
+    first("[data-need-id='#{cash_donations_need.id.to_s}']").click
     modal_title='ank you for your interest in donating money'
     sleep 2 #waiting for modals to appear 
 

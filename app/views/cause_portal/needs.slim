@@ -1,36 +1,52 @@
 section.cause-portal
-  section
-    .row
-      h1 #{@cause.name}
-    = render 'cause_portal/partials/header', :active => 'needs'
-    .row
-      .large-12.column
-        h3 Current needs
-    .row
-      .large-12.column
-        -@cause.needs.all.each do |need|
-          = render 'cause_portal/partials/need', :need => need
+  .row
+    .column.large-10.large-centered
+      section
+        .row
+          h1 #{@cause.name}
+          h3 Cause admin portal
+        = render 'cause_portal/partials/header', :active => 'needs'
 
-  section
-    hr
-    .row
-      .large-12.column
-        h3 Add a need
-    .row
-      .large-12.column
-        ul.inline-list
-          -Need.need_types.each do |need|
-            -properties = need_type_properties need.pluralize.to_s
-            li
-              a.open-create-needs-modal data-need_type=need data-cause_slug=@cause.slug
-                .panel.centered.create_need
-                  img src="/assets/causes/ui/need_icons/#{need}.png"              
-                  h4 #{properties[:singular_name]}
+      section
+        .row.mlimit-top
+          .large-12.column
+            h3 Add a need
+        .row
+          .large-12.column
+            ul.inline-list
+              -Need.need_types.each do |need|
+                -properties= need.new().send(:properties) #hack
+                li
+                  a.open-create-needs-modal data-need_type=need.to_s.underscore.pluralize data-cause_slug=@cause.slug
+                    .panel.centered.create_need
+                      img src="/assets#{asset_path(properties[:img_path])}"              
+                      h4 #{ properties[:singular_name]}
 
-  /.row
-    .large-12.column
-      h3 Past needs
-  /.row
-    .large-12.column
-      -@cause.needs.where_inactive.each do |need|
-        = render 'cause_portal/partials/need', :need => need
+      section
+        hr
+        .row
+          .large-12.column
+            h3 Primary need
+        .row
+          .large-12.column
+            = render 'cause_portal/partials/need', :need => @cause.active_campaign
+
+      section
+        .row
+          .large-12.column
+            h3 Current needs
+        .row
+          .large-12.column
+            -@cause.needs.active.where(:is_primary => false).all.each do |need|
+              = render 'cause_portal/partials/need', :need => need
+      - past_needs= @cause.needs.unscoped.where(:is_active => false)
+
+      - if !past_needs.empty?
+        section
+          .row
+            .large-12.column
+              h3 Past needs
+          .row
+            .large-12.column
+              -past_needs.each do |need|
+                = render 'cause_portal/partials/need', :need => need

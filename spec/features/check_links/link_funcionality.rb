@@ -18,7 +18,7 @@ def check_cause_pages
 		causeLinks.each do |l|
 		visit 'l'
 		checkFooterLinks()
-	
+
 end
 
 
@@ -31,24 +31,25 @@ feature "Check all links" do
 		visit("/")
 		find(:xpath, "//a[@href='/users/sign_in']").click
 		sleep 4
-		
+
 		#Go to city pages
 		cities = ["/charities-in-chicago", "/charities-in-new-york", "/charities-in-san-francisco"]
 		cities.each do |c|
 		visit("/")
 		find(:xpath, "//a[@href='c']").click
 		end
-		
-		
+
+
 		visit("/")
 		list = ["Education", "Social Equality", "Global Outreach", "Environmental", "Health & Wellness", "Youth", "Arts"]
 		list.each do |n|
 		find(:xpath, "//a[@data-type-name='n']").click
 		end
-		
+
 		#Go to footer and come back to main page, go to next footer, repeat
 		checkFooterLinks()
 		end
+
 	
 	scenario "Chicago Page" do
 	
@@ -68,14 +69,19 @@ feature "Check all links" do
 	
 	scenario "Check all cause pages" do
 	
+
 	checkCausePages()
-	
+
 	end
+
 	
 	scenario "Checks cause pages" do
 	
+
 		cause= FactoryGirl.create :cause
   		visit(cause)
-	
+
 	end
+
 	
+

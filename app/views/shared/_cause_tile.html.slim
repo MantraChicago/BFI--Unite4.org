@@ -1,51 +1,52 @@
 - active_campaign = cause.active_campaign
-.cause-listing.oxygen.mlimit.sameheight data-need-id=active_campaign.need_id data-cause-id=cause.id data-cause-slug=cause.slug data-type-of-need=active_campaign.type_of_need
-  a href="#{cause_path(cause)}"
-    .row.cause-tile-header.no-margin.bg-cover style="background-image: url(#{ cause.cause_tile_picture_url });"
-      .grey-mask.transition
-        .large-12.columns.text-center.white.text-shadow
-          h4.blimit-top.uppercase =limit_to_three_words(cause.display_name)
+-if active_campaign
+  .cause-listing.oxygen.mlimit.sameheight data-need-id=active_campaign.id data-cause-id=cause.id data-cause-slug=cause.slug data-type-of-need=active_campaign.type_of_need
+    a href="#{cause_path(cause)}"
+      .row.cause-tile-header.no-margin.bg-cover style="background-image: url(#{ cause.picture(:medium) });"
+        .grey-mask.transition
+          .large-12.columns.text-center.white.text-shadow
+            h4.blimit-top.uppercase =limit_to_three_words(cause.display_name)
 
-  .row.goal.no-margin
-    .large-4.columns
-    .large-6.small-6.columns.slimit.slimit-top
-      p GOAL
-    .large-6.small-6.columns.slimit.slimit-top
-      p.h6.text-right
-        == active_campaign.goal_summary
-  .row.no-margin
-    .large-12.columns
-      .bar-holder.slimit
-        .bar.oxygen style="width:#{ active_campaign.percent_complete }%;" 
-          == active_campaign.percent_complete.to_s + "%"
+    .row.goal.no-margin
+      .large-4.columns
+      .large-3.small-6.columns.slimit.slimit-top
+        p GOAL
+      .large-9.small-6.columns.slimit.slimit-top
+        p.h6.text-right
+          == active_campaign.goal_summary
+    .row.no-margin
+      .large-12.columns
+        .bar-holder.slimit
+          .bar.oxygen style="width:#{ active_campaign.percent_complete }%;" 
+            == active_campaign.percent_complete.to_s + "%"
 
-  .row.no-margin.adjacent-small-columns
-    .large-12.columns
-      =cause_need_button(active_campaign.need, :class=>["tile_button"])
-    /.large-6.small-6.columns
-      a.button.nowrap.open-fulfillment-modal data-need-id=active_campaign.need_id data-type-of-need=active_campaign.type_of_need
-        .icon.heart.circle.inline
-        .h5.inline.uppercase
-          == button_text_for_need(active_campaign.type_of_need)  
+    .row.no-margin.adjacent-small-columns
+      .large-12.columns
+        =cause_need_button(active_campaign.need, :class=>["tile_button"])
+      /.large-6.small-6.columns
+        a.button.nowrap.open-fulfillment-modal data-need-id=active_campaign.id data-type-of-need=active_campaign.type_of_need
+          .icon.heart.circle.inline
+          .h5.inline.uppercase
+            == button_text_for_need(active_campaign.type_of_need)  
 
-    /.large-6.small-6.columns
-      a.button.nowrap.follow-button href=cause_path(cause)
-        .icon.add.circle.inline
-        .h5.inline.uppercase
-          | Details
+      /.large-6.small-6.columns
+        a.button.nowrap.follow-button href=cause_path(cause)
+          .icon.add.circle.inline
+          .h5.inline.uppercase
+            | Details
 
-  .row.stats.no-margin
-    .large-4.small-4.columns.text-center.slimit.slimit-top
-      .bold.secondary.slimit
-         == active_campaign.percent_complete.to_s + "%"
-      .h6.tertiary GOAL MET
-    .large-4.small-4.columns.text-center.slimit.slimit-top
-      .bold.secondary.slimit
-        == active_campaign.current_state 
-      .h6.tertiary.uppercase
-        == active_campaign.goal_unit
-    .large-4.small-4.columns.text-center.slimit.slimit-top
-      .bold.secondary.slimit
-        == active_campaign.days_to_go
-      .h6.tertiary DAYS TO GO
+    .row.stats.no-margin
+      .large-4.small-4.columns.text-center.slimit.slimit-top
+        .bold.secondary.slimit
+           == active_campaign.percent_complete.to_s + "%"
+        .h6.tertiary GOAL MET
+      .large-4.small-4.columns.text-center.slimit.slimit-top
+        .bold.secondary.slimit
+          == active_campaign.current_state.to_i 
+        .h6.tertiary.uppercase
+          == active_campaign.property(:goal_unit)
+      .large-4.small-4.columns.text-center.slimit.slimit-top
+        .bold.secondary.slimit
+          == active_campaign.days_to_go
+        .h6.tertiary DAYS TO GO
 

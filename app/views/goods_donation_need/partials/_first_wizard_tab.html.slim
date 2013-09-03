@@ -6,12 +6,11 @@
       .row
         .large-10.column.large-centered
           h3 #{need.description}
-      - if need.settings.try :items
-        - need.settings[:items].each do |item|
+        - need.settings['items'].each do |item|
           .row
             .large-4.columns
-              input type="checkbox" name=item
+              input type="checkbox" name=item[1]
             .large-8.columns
-              = item
+              = item[1]
 
          

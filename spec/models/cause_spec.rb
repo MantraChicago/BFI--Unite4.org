@@ -22,16 +22,14 @@ describe Cause do
   let(:cause) { Cause.first || create(:cause)}
 
 
-  it "should have a default campaign" do
-    cause.active_campaign.should be_present
-  end
+  
 
   it "should have a default location" do
     cause.locations.should_not be_empty
   end
 
   it "should have a default social need" do
-    cause.needs.first.should be_social
+    cause.needs.first.type.should == 'FollowerNeed' 
   end
 
   it "should allow me to filter by city" do
