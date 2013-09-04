@@ -17,7 +17,7 @@ describe 'goods_donation_modal', :js =>true do
   it 'The goods donation modal should open' do
 
     login_as(@user, :scope => :user)
-    goods_need= create(:need, :goods, cause: cause)
+    goods_need= create(:goods_donation_need, cause: cause)
 
     visit "/causes/#{goods_need.cause.slug}"
 

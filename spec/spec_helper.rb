@@ -65,9 +65,12 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
 
+
+
   config.before(:all) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
+    load "#{Rails.root}/db/seeds.rb" 
   end
 
   config.after(:all) do

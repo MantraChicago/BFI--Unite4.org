@@ -146,7 +146,7 @@ class Cause < ActiveRecord::Base
                           joins(:cause_types).where("causes_cause_types.cause_type_id = ?", cause_type_id) 
                         }
   scope :by_city_slug, lambda {|city_slug| 
-                          city_id= City.find_by_slug(city_slug)
+                          city_id= City.find_by_slug(city_slug).id
                           joins(:cities).where('cities.id = ?', city_id) 
                         }
 

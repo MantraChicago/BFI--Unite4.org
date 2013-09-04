@@ -12,6 +12,9 @@
 -if @current_model
   javascript:
     Application.data.current_model= #{ @current_model.to_json.html_safe };
+-if @closest_city
+  javascript:
+    Application.data.closest_city= #{ @closest_city.to_json.html_safe };
 
 javascript:
   var _cio = _cio || [];

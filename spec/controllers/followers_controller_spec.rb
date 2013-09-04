@@ -16,7 +16,7 @@ describe FollowersController do
 
     post :create, :cause_id => cause.id, :type_of_need => "FollowerNeed"
 
-    cause.following_users.should include(user)
+    cause.followers.first.user.should==user
 
     response.should be_redirect
   end

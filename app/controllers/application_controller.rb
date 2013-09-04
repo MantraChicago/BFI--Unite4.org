@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     @closest_cities= cookies[:closest_cities]
 
     if !cookies[:closest_city_id]
-      cookies[:closest_city_id]=@closest_cities[0]['id']
+      cookies[:closest_city_id]= @closest_cities[0]['id'] 
     end
     @closest_city= City.find cookies[:closest_city_id]
     #binding.pry

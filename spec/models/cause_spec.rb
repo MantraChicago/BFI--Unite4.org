@@ -2,11 +2,7 @@ require "spec_helper"
 
 describe Cause do
   before(:all) do
-    Campaign.delete_all
-    Cause.delete_all
-    CauseType.delete_all
-    Location.delete_all
-    Need.delete_all
+
 
     cause_type = create(:cause_type)
     other_cause_type = create(:cause_type)
@@ -51,7 +47,7 @@ describe Cause do
   end
 
   it "should allow me to filter by city slug" do
-    Cause.by_city_slug('chicago').count.should == 3
+    Cause.by_city_slug('chicago').count.should == 1
   end
 
   it "should allow me to filter by scope" do

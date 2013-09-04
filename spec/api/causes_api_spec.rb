@@ -1,3 +1,4 @@
+=begin =begin 
 require "spec_helper"
 
 describe "The Causes Resource API", :type => :api do
@@ -52,3 +53,4 @@ describe "The Causes Resource API", :type => :api do
   end
 
 end
+=end
