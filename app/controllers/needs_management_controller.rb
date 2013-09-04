@@ -7,13 +7,11 @@ class NeedsManagementController < ApplicationController
   end
 
   def edit
-    #@submit_url ="/causes/#{params[:cause_slug]}/edit/need_modal"
     @need= Need.find(params[:id])
     render "needs/#{@need_type.underscore.pluralize}/create_modal",:layout => false
   end
 
   def new
-    #@submit_url ="/causes/#{params[:cause_slug]}/edit/need_modal"
     @need = @need_type.classify.constantize.new()
     render "needs/#{@need_type}/create_modal",:layout => false
   end

@@ -1,13 +1,11 @@
 require 'spec_helper'
 
 describe City do
-  it "should be able to lookup a city by name" do
-    City["Chicago"].should be_present
-    City["San Francisco"].should be_present
-    City["New York"].should be_present
-  end
 
-  it "should return the coordinates of a city" do
-    City.coordinates_for("Chicago").should be_a(Array)
+  it 'should return the closet city' do
+    City.create_defaults
+    closet_cities=City.get_closest_citys_flat_euclidean 41.8819, 87.6278
+    
+    closet_cities[0].slug.should == 'chicago'
   end
 end

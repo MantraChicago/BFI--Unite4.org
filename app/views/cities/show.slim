@@ -1,0 +1,19 @@
+.row
+  .column-9.column
+    .row
+      .cloumn-12.column
+        h1 Pick a city
+
+    -City.all.group_by {|city| city.state}.sort.each do |state,cities|
+      .row.mlimit
+        .cloumn-12.column
+          .row
+            .cloumn-12.column
+              h4 #{state}
+          .row
+            .cloumn-12.column
+              -cities.each do |city|
+                =link_to city.name, "/charities-in-#{city.slug}?set_as_home_city=true"
+                | &nbsp;&nbsp;&nbsp;
+
+

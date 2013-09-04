@@ -16,6 +16,12 @@ gem "paperclip", "~> 2.7"
 gem 'stripe', :github  => 'stripe/stripe-ruby'
 
 gem 'airbrake'
+#geo location
+gem 'geoip-c'
+#gem 'geokit-rails'
+
+gem 'foreman'
+
 gem 'customerio','0.5.0'
 
 gem 'activeadmin', '0.6.0'

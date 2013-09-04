@@ -19,6 +19,7 @@ class Cause < ActiveRecord::Base
   belongs_to :cause_type
 
   has_and_belongs_to_many :cause_types, :join_table => 'causes_cause_types'
+  has_and_belongs_to_many :cities
 
   has_many :needs,     :dependent => :delete_all
   has_many :locations, :dependent => :delete_all
@@ -38,7 +39,6 @@ class Cause < ActiveRecord::Base
 
 
   delegate :need_id, :type_of_need, :days_to_go, :desired_state, :current_state, :goal_unit, :percent_complete, :goal_summary, :to => :active_campaign, :allow_nil => true, :prefix => true
-
 
   def urls
     {
@@ -81,6 +81,11 @@ class Cause < ActiveRecord::Base
     contributions.by_fullfilment_type('Volunteer').count
   end
 
+  def grouped_by_cause_type_and_city(cause_type_slug,city_slug)
+    Cause.by_city_slug(city_slug).by_cause_type(cause_type_slug).group(:city_slug).count
+  end
+  
+
   # TEMP
   # Until the presenter nesting works better in smooth
   def locations_details
@@ -89,6 +94,7 @@ class Cause < ActiveRecord::Base
 
   def active_campaign
     needs.where(:is_primary => true, :is_active=>true).first
+    #.where('end_date > ?' , Time.zone.now)
   end
 
   def location
@@ -139,7 +145,10 @@ class Cause < ActiveRecord::Base
                           cause_type_id=CauseType.find_by_slug(cause_type_slug).id
                           joins(:cause_types).where("causes_cause_types.cause_type_id = ?", cause_type_id) 
                         }
-  scope :by_city_slug, lambda {|city_slug| where(:city_slug => city_slug) }
+  scope :by_city_slug, lambda {|city_slug| 
+                          city_id= City.find_by_slug(city_slug)
+                          joins(:cities).where('cities.id = ?', city_id) 
+                        }
 
   def self.query(params={})
     results = scoped

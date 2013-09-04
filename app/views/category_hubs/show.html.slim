@@ -4,12 +4,8 @@
     .row
       .large-12.columns.text-center.blimit-top
         .h0.oxygen.bold.white#causetype == @cause_type[:name]
-    .row
-      .large-8.columns.text-center.blimit-top.large-centered
-        h3 #{cause_type_text @cause_type}
-    .row
-      .large-12.columns.text-center.blimit
-        - City.grouped_by_cause_type(@cause_type[:slug]).each do |pair|
+      /.large-12.columns.text-center.blimit
+        - Cause.grouped_by_cause_type_and_city(@cause_type[:slug],@city.slug).each do |pair|
           - key, value = pair
    
   .cboth

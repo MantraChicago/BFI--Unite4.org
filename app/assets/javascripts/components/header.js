@@ -60,11 +60,6 @@ setupHeader=function(){
 	
 	var causes_html=$('#selectcause').html()
 
-	$('#cities_nav').click(function(){
-		$(this).addClass('active')
-		Application.header.toggle_nav(cities_html,'cities')
-	});
-
 
 	$('#causes_nav').click(function(){
 		Application.header.toggle_nav(causes_html, 'causes')
@@ -74,8 +69,8 @@ setupHeader=function(){
 		event.preventDefault();
 		Application.show_login_modal()
 	})
-	$('.popover_tigger').click(function(){
-		$('.profile_drop_down ul').toggleClass('hide')
+	$('.profile_drop_down').click(function(){
+		$(this).find('ul').toggleClass('hide')
 	})
 }
 
