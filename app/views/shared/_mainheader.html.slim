@@ -12,7 +12,7 @@
               a.popover_tigger
                 | #{@closest_city.name}
                 span.down_arrow &#x25BC;
-              ul.hide style="right:-55px"
+              ul.hide style="right:-40px"
                 -@closest_cities[0..4].each do |city|
                   li.bold
                     =link_to city['name'], "/charities-in-#{city['slug']}"
