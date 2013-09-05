@@ -170,7 +170,7 @@ module ApplicationHelper
 
   def get_array_of_badges user
     ret_array=[]
-    earned_badges=user.user_badges.sort_by(&:id)
+    earned_badges=user.user_badges.sort_by(&:id).reverse
     unearned_badges=[]
     Badge.active.all.each do |badge|
       unearned_badges << badge if ! user.badges.include?(badge)

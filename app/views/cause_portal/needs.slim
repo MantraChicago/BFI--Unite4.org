@@ -37,7 +37,7 @@ section.cause-portal
             h3 Current needs
         .row
           .large-12.column
-            -@cause.needs.active.where(:is_primary => false).all.each do |need|
+            -@cause.needs.active.where{is_primary != true}.all.each do |need|
               = render 'cause_portal/partials/need', :need => need
       - past_needs= @cause.needs.unscoped.where(:is_active => false)
 
