@@ -3,7 +3,7 @@ li.badge
     .badge_title
       h3 #{user_badge.badge.name}
     .badge_middle
-      = image_tag("badges/#{user_badge.badge.file_name}", :size => '150x150')
+      = image_tag("badges/badge_#{user_badge.badge.file_name}", :size => '150x150')
     .badge_bottom
       |#{user_badge.formatted_description}
     
