@@ -15,19 +15,19 @@ FactoryGirl.define do
     twitter_handle "soederpop"
     website "http://www.google.com"
 
-    address_line_one { Unite::Development.random_address_in(:chicago) }
-    city "Chicago"
-    city_slug "chicago"
+    address { Unite::Development.random_address_in(:chicago) }
+    cities {[City.find_by_slug('chicago')]}
+    cause_types {[CauseType.first]}
     region "IL"
     country "US"
     postal_code "60010"
 
     trait(:new_york) do
       address_line_one Unite::Development.random_address_in(:new_york)
-      city "New York"
+      cities {[City.find_by_slug('new-york')]}
       country "US"
       postal_code "10004"
-      city_slug "new-york"
+
       region "NY"
     end
 

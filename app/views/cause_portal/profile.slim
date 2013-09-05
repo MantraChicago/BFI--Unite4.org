@@ -95,6 +95,12 @@ section.cause-portal
             =file_field_tag 'picture'
         .row.mlimit-top
           .large-12.column
+            label Main cause image
+            =image_tag @cause.picture.url(:thumb)
+            label Change main image
+            =f.file_field :picture
+        .row.mlimit-top
+          .large-12.column
             label Video embed link
             =text_field(:cause,:video_link)
 

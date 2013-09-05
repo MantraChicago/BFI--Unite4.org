@@ -81,6 +81,8 @@ module Unite
         count.times.map do
           cause = create(:cause, cause_type: options[:cause_type], :skip_default_location => true)
           create(:location, city, cause: cause)
+          #cause.cities << City.find_by_slug(city)
+          #cause.cause_types << CauseType.find_by_slug(options[:cause_type])
           cause
         end
       end
