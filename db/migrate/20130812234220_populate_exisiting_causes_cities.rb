@@ -1,5 +1,6 @@
 class PopulateExisitingCausesCities < ActiveRecord::Migration
   def change
+    add_column :cities, :state, :string
     City.create_defaults
     Cause.all.each do |cause|
       begin
