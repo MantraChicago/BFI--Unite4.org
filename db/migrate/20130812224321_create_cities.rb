@@ -6,7 +6,7 @@ class CreateCities < ActiveRecord::Migration
       t.integer :latitude
       t.integer :longitude
       t.has_attached_file :picture
-
+      t.string :state
       t.timestamps
     end
 
