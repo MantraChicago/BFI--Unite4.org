@@ -4,8 +4,10 @@ class FollowersController < ApplicationController
   respond_to :js, :json, :html
 
   def create
-    #pry
-    @follower = fulfillment.new(current_user, need).fulfill!
+    if need
+      follower = fulfillment.new(current_user, need).fulfill!
+    end
+    current_user.follow(cause)
 
     respond_to do |format|
       format.js do
@@ -13,11 +15,7 @@ class FollowersController < ApplicationController
       end
 
       format.html do
-        if @follower.valid?
-          redirect_to(@follower.cause, success:"You are now following #{ @follower.cause.name }")
-        else
-          redirect_to(@follower.cause, error:"An error occurred while attempting to follow this cause.")
-        end
+        redirect_to(cause, success:"You are now following #{ cause.name }")
       end
     end
   end
@@ -25,7 +23,7 @@ class FollowersController < ApplicationController
   def destroy
     cause=Cause.find(params[:cause_slug])
     current_user.unfollow(cause)
-
+    Contribution.where(cause_id: cause.id, user_id: current_user.id, fulfillment_type: 'Follower').destroy_all 
     redirect_to(cause, success:"You unfollowed #{cause.name }")
   end
 

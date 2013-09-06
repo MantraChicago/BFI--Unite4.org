@@ -11,8 +11,6 @@ class CausesController < ApplicationController
 
 	end
 
-	
-
 	def need
 		@cause = Cause.find(params[:id])
 	end

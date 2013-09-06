@@ -24,11 +24,11 @@ GiveInspireLove::Application.routes.draw do
   resources :cause_applications
   resources :subscribers
 
-  resources :volunteer_needs, :controller => "NeedsManagement"
-  resources :cash_donation_needs, :controller => "NeedsManagement"
-  resources :goods_donation_needs, :controller => "NeedsManagement"
-  resources :follower_needs, :controller => "NeedsManagement"
-  resources :promotion_needs, :controller => "NeedsManagement"
+  resources :volunteer_needs, :controller => "Needs"
+  resources :cash_donation_needs, :controller => "Needs"
+  resources :goods_donation_needs, :controller => "Needs"
+  resources :follower_needs, :controller => "Needs"
+  resources :promotion_needs, :controller => "Needs"
 
   match "/causes/:cause_slug/edit/:action" => "CausePortal#:action"
 

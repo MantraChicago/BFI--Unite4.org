@@ -5,9 +5,6 @@ describe User do
   let(:cause) { create(:cause, :skip_default_location => true) }
   let(:follower) { create(:follower, user: user, cause: cause) }
 
-  before(:all) do
-    Badge.create_defaults
-  end
 
   it "should be presentable" do
     User.new.should respond_to(:present_as)
@@ -23,6 +20,7 @@ describe User do
     user.unfollow(cause)
     user.followed_causes_ids.should be_empty
   end
+
 
   it 'a uses\'s followed causes should be cleared when deleted' do
     user = FactoryGirl.create :user
