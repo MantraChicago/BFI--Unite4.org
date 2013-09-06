@@ -9,5 +9,5 @@
             li
 
               time #{contribution.created_at.strftime("%d %b %Y")}
-              = "#{contribution.need.property(:past_personal_action)  } with #{link_to cause.name, url_for(cause)}".html_safe
+              = "#{contribution.need.property(:past_personal_action)  } #{link_to cause.name, url_for(cause)}".html_safe
        

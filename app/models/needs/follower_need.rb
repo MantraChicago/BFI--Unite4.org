@@ -3,7 +3,7 @@ class FollowerNeed < Need
     {
       call_to_action:'Follow',
       singular_name: 'Follower',
-      past_personal_action:'I followed this cause',
+      past_personal_action:'Followed',
       past_action:'Followed',
       color:'blue',
       img_path: '/causes/ui/need_icons/followers.png',

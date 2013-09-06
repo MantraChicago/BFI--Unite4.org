@@ -3,7 +3,7 @@ class GoodsDonationNeed < Need
     {
       singular_name: 'Good Donation',
       call_to_action:'Donate goods',
-      past_personal_action:'I donated goods',
+      past_personal_action:'Donated Goods to',
       past_action:'Donated',
       color:'pink',
       img_path: '/causes/ui/need_icons/goods_donations.png',

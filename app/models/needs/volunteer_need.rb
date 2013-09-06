@@ -3,7 +3,7 @@ class VolunteerNeed < Need
    {
       call_to_action:'Volunteer',
       singular_name: 'Volunteer',
-      past_personal_action:'I volunteered',
+      past_personal_action:"Expressed interest in volunteering with ",
       past_action:'Volunteered',
       color:'black',
       img_path: '/causes/ui/need_icons/volunteers.png',

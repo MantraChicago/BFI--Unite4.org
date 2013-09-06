@@ -130,6 +130,7 @@ class User < ActiveRecord::Base
   end
 
   def unfollow cause
+    Contribution.where(cause_id: cause.id, user_id: id, fulfillment_type: 'Follower').destroy_all 
     followers.where(cause_id: cause.id).destroy_all
   end
 

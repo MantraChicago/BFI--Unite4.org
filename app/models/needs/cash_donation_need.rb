@@ -3,7 +3,7 @@ class CashDonationNeed < Need
     {
       call_to_action:'Donate money',
       singular_name: 'Cash Donation',
-      past_personal_action:'I donated money',
+      past_personal_action:'Donated money to',
       past_action:'Donated',
       color:'green',
       img_path: '/causes/ui/need_icons/cash_donations.png',
