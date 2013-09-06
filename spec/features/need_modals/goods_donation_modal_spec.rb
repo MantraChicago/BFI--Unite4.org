@@ -21,7 +21,7 @@ describe 'goods_donation_modal', :js =>true do
 
     visit "/causes/#{goods_need.cause.slug}"
 
-    first('[data-type-of-need="goods_donations"]').click
+    first("[data-need-id='#{goods_need.id}']").click
     modal_title='Thank you for your interest in donating goods'
     sleep 2 #waiting for modals to appear
 

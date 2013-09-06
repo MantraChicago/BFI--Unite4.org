@@ -41,7 +41,7 @@ describe Cause do
   end
 
   it "should allow me to filter by city slug" do
-    Cause.by_city_slug('chicago').count.should == 1
+    Cause.by_city_slug('chicago').count.should == City.find_by_slug('chicago').causes.count
   end
 
   it "should allow me to filter by scope" do
