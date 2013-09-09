@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
 
+  has_many :notifications
+
   has_many :user_badges
   has_many :badges, :through => :user_badges
   

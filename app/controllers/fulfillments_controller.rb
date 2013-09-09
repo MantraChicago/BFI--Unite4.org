@@ -3,6 +3,11 @@ class FulfillmentsController < ApplicationController
 
   respond_to :js, :json, :html
 
+  def new
+    @need =need
+    render "#{ need.type.underscore }/new", :layout => false
+  end
+
   def create
 
     properties={type_of_need: need.type,

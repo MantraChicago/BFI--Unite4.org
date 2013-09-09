@@ -11,4 +11,6 @@ class Unite::Badges::BadgeCalculator::BaseBadgeCalculator
     user_badge=UserBadge.create(save_hash)
     user.user_badges<<user_badge
   end
+
+
 end

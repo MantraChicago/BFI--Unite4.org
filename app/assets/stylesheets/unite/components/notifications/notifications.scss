@@ -1,0 +1,29 @@
+@import "unite/colors";
+.notification_holder{
+  position: fixed;
+  bottom:0px;
+  right:10px;
+  width: 300px;
+  z-index: 20;
+  img{
+    height:60px;
+    margin: 5px;
+    float: right;
+  }
+  .notification{
+
+    -moz-box-shadow: 0 0 5px 5px #888;
+    -webkit-box-shadow: 0 0 5px 5px#888;
+    box-shadow: 0 0 5px 5px #888;
+    height: 70px;
+    background-color: $gray;
+    margin-top:10px;
+    h4{
+      margin-bottom: 3px;
+    }
+    .notification_message{
+      padding: 3px;
+      display: inline-block;
+    }
+  }
+}

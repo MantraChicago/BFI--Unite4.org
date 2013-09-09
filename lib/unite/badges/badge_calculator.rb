@@ -1,6 +1,6 @@
 class Unite::Badges::BadgeCalculator
   def self.calculate_all_badges_for_users(badges, users)
-    users.all.each do |user|
+    users.each do |user|
       calculate_badges_for_user(user, badges)
     end
   end

@@ -33,7 +33,7 @@ GiveInspireLove::Application.routes.draw do
   match "/causes/:cause_slug/edit/:action" => "CausePortal#:action"
 
 
-  get "/causes/new_fullfilment/:need_id", :to => "needs#new"
+  get "/causes/new_fullfilment/:need_id", :to => "Fulfillments#new"
   #get "/causes/:cause_slug/:need_id/new", :to => "needs#new"
   post "/causes/:need_id/fulfillments", :to => "Fulfillments#create"
   post "/causes/:cause_slug/followers", :to => "followers#create"

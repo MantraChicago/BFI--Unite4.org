@@ -1,0 +1,9 @@
+.notification
+  .notification_message
+    -if notification.title
+      h4 #{notification.title}
+    =notification.message
+    -if notification.link
+      h5 #{notification.link.html_safe}
+  -if notification.img_link
+    img src='#{notification.img_link}'

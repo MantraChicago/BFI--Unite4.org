@@ -45,6 +45,7 @@ html
     == render "shared/flash", :flash => flash
 
     == yield
+    == render 'notifications/notifications'
     == render 'shared/mainfooter'
 
     == render :partial => "shared/javascripts"
