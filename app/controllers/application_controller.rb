@@ -24,14 +24,18 @@ class ApplicationController < ActionController::Base
     if !cookies[:closest_cities]
       geo_ip_location=$GeoIpLocation.look_up(request.remote_ip) || {:latitude=>41.8819, :longitude=>87.6278 } 
       closest_cities= City.get_closest_citys_flat_euclidean(geo_ip_location[:latitude], geo_ip_location[:longitude]).as_json
-      cookies[:closest_cities]=closest_cities
+      cookies[:closest_cities]={value: closest_cities.to_json,
+                                expires: 1.hour.from_now}
+      @closest_cities= closest_cities
+    else
+      @closest_cities=JSON.parse(cookies[:closest_cities])
     end
-    @closest_cities= cookies[:closest_cities]
+
+    
 
     if !cookies[:closest_city_id]
       cookies[:closest_city_id]= @closest_cities[0]['id'] 
     end
     @closest_city= City.find cookies[:closest_city_id]
-    #binding.pry
   end
 end

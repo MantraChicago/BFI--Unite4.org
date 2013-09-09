@@ -5,7 +5,7 @@
         h1 Pick a city
         hr
 
-    -City.all.group_by {|city| city.state}.sort.each do |state,cities|
+    -City.active.all.group_by {|city| city.state}.sort.each do |state,cities|
       .row.mlimit
         .cloumn-12.column
           .row
