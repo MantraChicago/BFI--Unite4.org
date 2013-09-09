@@ -1,6 +1,6 @@
 class City < ActiveRecord::Base
   attr_accessible :name, :slug, :picture, :state, :latitude, :longitude, :is_active
-  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url =>  "/assets/missing.jpeg"
+  has_attached_file :picture, :styles => {:large => '1600x680', :medium => "300x300>", :thumb => "100x100>" }, :default_url =>  "/assets/missing.jpeg"
   has_and_belongs_to_many :causes
 
 

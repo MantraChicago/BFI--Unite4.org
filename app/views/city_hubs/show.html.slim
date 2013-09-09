@@ -2,7 +2,7 @@
 
 -if @causes.any?
   header.small-static
-    .bg-cover.bg-bottom style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
+    .bg-cover.bg-bottom style="background-image: url(#{@city.picture.url(:large)})"
       .row
         .large-12.columns.text-center
           .h0.oxygen.bold.white.blimit-top.docked-item.transition#cityname == @city[:name]
@@ -17,7 +17,7 @@
                   == value
 -else
   header.small-static#no-cause-found
-    .bg-cover.bg-bottom style="background-image: url(#{ asset_path("cities/large/#{ @city[:slug] }-large.jpg") })"
+    .bg-cover.bg-bottom style="background-image: url(#{@city.picture.url(:large)})"
       .row
         .large-12.columns.text-center
           h1= @city[:name]
