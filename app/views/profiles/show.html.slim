@@ -31,7 +31,7 @@ section
               em Badges
             li
               small Volunteered
-              strong #{@user.contributions.where('need_type' => 'volunteers').count}
+              strong #{@user.contributions.where('fulfillment_type' => 'Volunteer').count}
               em Times
             li
               small Following
@@ -39,7 +39,7 @@ section
               em Causes
             li
               small Given
-              strong #{@user.contributions.where('need_type' => 'cash_donations').count}
+              strong #{@user.contributions.where('fulfillment_type = ? OR fulfillment_type = ?', 'CashDonation', 'GoodDonation').count}
               em Times
       .row
         .large-12.column
