@@ -83,6 +83,14 @@ section.cause-portal
         .row.mlimit-top
           .large-12.column
             h3 Media
+        
+        .row.mlimit-top
+          .large-12.column
+            label Main cause image
+            =image_tag @cause.picture.url(:thumb)
+            label Change main image
+            =f.file_field :picture
+            
         .row.mlimit-top
           .large-12.column
             label Cause images
@@ -93,18 +101,11 @@ section.cause-portal
                     =image_tag cause_image.picture.url(:thumb)
             label Upload another image         
             =file_field_tag 'picture'
-        .row.mlimit-top
-          .large-12.column
-            label Main cause image
-            =image_tag @cause.picture.url(:thumb)
-            label Change main image
-            =f.file_field :picture
+
         .row.mlimit-top
           .large-12.column
             label Video link
             =text_field(:cause,:video_link)
-
-
         .row.mlimit-top
           .large-12.centered.column
             = f.submit "Save", :class => 'pink btn'
