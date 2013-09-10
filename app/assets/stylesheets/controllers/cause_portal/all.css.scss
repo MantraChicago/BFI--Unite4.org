@@ -28,11 +28,27 @@
       color: $black;
     }
   }
-
-  .delete-cause-image:hover{
-    cursor: pointer;
-    border: solid 2px red;
+  .delete-cause-image{
+    position: relative;
+    border: solid 2px gray;
+    &:hover{
+      cursor: pointer;
+      border: solid 2px red;
+      .show-delete{
+        display: inline-block;
+      } 
+    }
   }
+  .show-delete{
+    display: none;
+    position: absolute;
+    color:red;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+  }
+
 
   .create_need{
     background-color: $lightGrey;

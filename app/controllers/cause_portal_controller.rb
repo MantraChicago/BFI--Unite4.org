@@ -36,8 +36,9 @@ class CausePortalController < ApplicationController
     if cause_image.cause == @cause
       cause_image.destroy
       render :nothing => true, :status => 200, :content_type => 'text/html' #could be better
+    else
+      render :nothing => true, :status => 500, :content_type => 'text/html'
     end
-    render :nothing => true, :status => 500, :content_type => 'text/html'
   end
 
   protected
