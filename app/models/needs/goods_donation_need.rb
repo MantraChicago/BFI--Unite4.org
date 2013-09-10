@@ -1,7 +1,7 @@
 class GoodsDonationNeed < Need
   def properties
     {
-      singular_name: 'Good Donation',
+      singular_name: 'Goods Donation',
       call_to_action:'Donate goods',
       past_personal_action:'Donated Goods to',
       past_action:'Donated',
