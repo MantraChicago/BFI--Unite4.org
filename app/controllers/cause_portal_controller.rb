@@ -9,11 +9,15 @@ class CausePortalController < ApplicationController
     params[:cause] ||= {}
     params[:cause][:cause_type_ids] ||= []
 
-    if not request.get? and @cause.update_attributes(params[:cause]) 
-      if params[:picture]
-        CauseImage.create(:picture => params[:picture], :cause_id => @cause.id)
+    if not request.get?
+      @cause.update_attributes(params[:cause]) 
+    
+      if @cause.errors.empty?
+        if params[:picture]
+          CauseImage.create(:picture => params[:picture], :cause_id => @cause.id)
+        end
+        flash[:notice] ="You have successfully updated your cause" 
       end
-      flash[:notice] ="You have successfully updated your cause" 
     end
     #render :action => "profile" 
   end

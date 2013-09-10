@@ -33,6 +33,7 @@ class Cause < ActiveRecord::Base
   has_many :cause_images
 
   belongs_to :user
+  validate :twitter_must_not_be_url 
 
   validates :name, :uniqueness => true
   after_create :create_default_records
@@ -116,6 +117,11 @@ class Cause < ActiveRecord::Base
 
   def twitter_link
     "https://twitter.com/#{twitter_handle}" if ! twitter_handle.empty?
+  end
+
+  def twitter_must_not_be_url
+    match = twitter_handle =~ /^[A-Za-z0-9_]{1,15}$/
+    errors.add(:twitter_handle, "The Twitter handle must be a Twitter handle") if !(match && match >=0)
   end
 
   def self.featured_causes
