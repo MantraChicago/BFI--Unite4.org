@@ -6,21 +6,33 @@
 .horizontal-tabs .column,
 .horizontal-tabs .columns {
   padding: 0;
+  float: left !important;
 }
+
 .horizontal-tabs a {
   display: block;
   width: 100%;
   height: 2.4em;
   line-height: 2.2;
-  border-bottom: 2px solid #ededed;
+  border-left: solid 1px gray;
+  
+  border-bottom: solid 1px gray;
+  border-top: solid 1px gray;
   text-align: center;
   color: #595959;
   text-decoration: none;
   background-color: #ededed;
 }
+.horizontal-tabs .column:last-child a{
+  border-right: solid 1px gray;
+}
+
+
 .horizontal-tabs .active {
-  border-color: #009bd2;
+ 
   background-color: #fff;
+  border-top: 2px solid blue;
+  border-bottom: 2px solid white;
 }
 .user-icon,
 .badge-icon {
