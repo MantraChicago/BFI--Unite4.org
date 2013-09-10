@@ -35,11 +35,21 @@ javascript:
   var calculateTotal=function(){
     var total = (parseFloat($('#donation_tip').text()) || 0) + (parseFloat($('#donation_amount').text()) || 0)
     message= 'Error'
-    console.log(total)
+
     if(!_.isNaN(total)){
-      message='$'+total
+      message=format_money(total)
     }
     $('.cash_total').html(message)
+  }
+
+  var format_money=function(amount){
+    var decimalSeparator = Number("1.2").toLocaleString().substr(1,1);
+    var amountWithCommas = amount.toLocaleString();
+    var arParts = String(amountWithCommas).split(decimalSeparator);
+    var intPart = arParts[0];
+    var decPart = (arParts.length > 1 ? arParts[1] : '');
+    decPart = (decPart + '00').substr(0,2);
+    return '$ ' + intPart + decimalSeparator + decPart;
   }
 
 
