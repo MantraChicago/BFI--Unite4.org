@@ -3,7 +3,7 @@ section.cause-portal
     .column.large-10.large-centered
       .row
         h1 #{@cause.name}
-        h3 Cause admin portal
+
       = render 'cause_portal/partials/header', :active => 'profile'
       = form_for(@cause, :url => '', :html => { :multipart => true, :class=>"custom"} ) do |f|
         - if @cause.errors.any?
