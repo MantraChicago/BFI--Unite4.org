@@ -55,7 +55,11 @@ section.cause-portal
           .large-12.column
             label Address
             =text_field(:cause,:address)
-        .row.mlimit-top
+        .row
+          .large-4.column
+            label Phone number
+            =text_field(:cause,:phone_number)
+        .row
           .large-4.column
             label City
             =text_field(:cause,:city)
