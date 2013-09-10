@@ -11,7 +11,6 @@ ActiveAdmin.register Cause do
 	   f.inputs "Details" do
 
 	    f.input :name
-	    f.input :display_name
       f.input :short_description
 	    f.input :description
 	    f.input :mission_statement
