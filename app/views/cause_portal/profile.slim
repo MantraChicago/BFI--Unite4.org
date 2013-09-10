@@ -39,10 +39,9 @@ section.cause-portal
         hr
         .row.mlimit-top
           .large-12.column
-            h3 Cause Categories
+            h3 Categories
         .row
           .large-12.cboxrow style="margin-left:20px"
-            label Cause types
             - CauseType.all.each do |cause_type|
               label{for='#{cause_type.id}_cause'}
                 = check_box_tag "cause[cause_type_ids][]", cause_type.id, @cause.cause_types.include?(cause_type) , :id => "#{cause_type.id}_cause", :class => 'hide'
