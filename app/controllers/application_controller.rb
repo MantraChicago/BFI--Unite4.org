@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all
   before_filter :determine_nearest_cities
+  before_filter :get_notifications
   
   def after_sign_in_path_for(resource)
     sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => request.protocol)
@@ -31,11 +32,13 @@ class ApplicationController < ActionController::Base
       @closest_cities=JSON.parse(cookies[:closest_cities])
     end
 
-    
-
     if !cookies[:closest_city_id]
       cookies[:closest_city_id]= @closest_cities[0]['id'] 
     end
     @closest_city= City.find cookies[:closest_city_id]
+  end
+
+  def get_notifications
+    @notifications = current_user.notifications if current_user
   end
 end

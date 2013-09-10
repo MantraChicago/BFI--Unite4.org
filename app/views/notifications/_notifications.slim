@@ -1,6 +1,5 @@
--notifications = current_user.try :notifications
--if ! notifications.empty?
+-if notifications && !notifications.empty?
   .notification_holder
     -notifications.each do |notification|
       ==render 'notifications/notification', :notification => notification
-  - notifications.destroy_all
+  -notifications.destroy_all
