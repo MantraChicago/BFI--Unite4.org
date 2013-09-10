@@ -14,24 +14,26 @@
   width: 100%;
   height: 2.4em;
   line-height: 2.2;
-  border-left: solid 1px gray;
-  
-  border-bottom: solid 1px gray;
-  border-top: solid 1px gray;
+  border-left: solid 1px #999;
+  border-bottom: solid 1px #999;
+  border-top: solid 1px #999;
   text-align: center;
   color: #595959;
   text-decoration: none;
   background-color: #ededed;
 }
 .horizontal-tabs .column:last-child a{
-  border-right: solid 1px gray;
+  border-right: solid 1px #999;
 }
 
+.horizontal-tabs a:hover{
+  border-top: 1px solid $pink;
+}
 
 .horizontal-tabs .active {
  
   background-color: #fff;
-  border-top: 2px solid blue;
+  border-top: 2px solid blue !important;
   border-bottom: 2px solid white;
 }
 .user-icon,

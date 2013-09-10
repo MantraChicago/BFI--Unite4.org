@@ -20,11 +20,11 @@ section.cause-portal
         .row.mlimit-top
           .large-12.column
             label Tagline  <span class="alert">(One sentence describing your cause that does not use your cause name)</span>
-            =text_field(:cause,:short_description, :rows=>10)
+            =text_field(:cause,:short_description)
         .row.mlimit-top
           .large-12.column
             label Description  <span class="alert">(Include goals, mission, etc)</span>
-            =text_area(:cause,:description, :rows=>5)
+            =text_area(:cause,:description, :rows=>10)
         
         .row.mlimit-top
           .large-4.column
