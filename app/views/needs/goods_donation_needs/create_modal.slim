@@ -6,9 +6,9 @@
     a.close-reveal-modal &#215;
 hr
 
-=form_for @need do |f|
+=form_for @need, :html =>{ class: 'custom'} do |f|
   =hidden_field_tag :cause_slug, @cause.slug
-  =hidden_field_tag :need, @need.type
+  =hidden_field_tag :need_type, @need.type
   .row
     .large-12.column
       label Need title
@@ -33,8 +33,11 @@ hr
     .large-12.column
       label What are you going to use the items for?
       =f.text_area(:description, :rows => 5)
+  =render 'needs/partials/primary_need', :f => f
   .row
     .large-12.column
       = submit_tag 'Submit', class: 'small button expand'
+javascript:
+  $(document).foundation();
 
   

@@ -20,13 +20,8 @@ class NeedsController < ApplicationController
     @need= Need.find(params[:id])
     need_key = (params[@need_type.underscore]) ? @need_type.underscore : 'need' #kinda a hack
 
-    if params[need_key][:is_primary]=='true'
-      demote_all_needs
-      @need.end_date = Time.zone.now + 1.month
-      @need.save
-
-    end
     params[need_key][:cause_id]=@cause.id
+    setup_primary_need(@need) if @need.is_primary
     @need.update_attributes(params[need_key])
 
     respond_to do |format|
@@ -41,11 +36,27 @@ class NeedsController < ApplicationController
     @need.is_active=true
     @need.type=@need.class.to_s
     @need.update_attributes(params[@need_type.underscore.singularize])
-
+    
+    setup_primary_need(@need) if @need.is_primary
+    
     redirect_back_to_cause_portal
   end
 
   protected
+
+  def setup_primary_need need
+    
+    
+    if params[:time_amount] && !params[:time_amount].empty?
+      demote_all_needs
+      time_future=params[:time_amount].to_i.send(params[:time_unit].downcase)
+      need.reload
+      need.end_date = Time.zone.now + time_future
+      need.is_primary=true
+      need.save
+    end
+    
+  end
 
   def redirect_back_to_cause_portal
     redirect_to "/causes/#{@cause.slug}/edit/needs", :notice => 'Need added'
