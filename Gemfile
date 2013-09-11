@@ -71,8 +71,7 @@ gem 'zurb-foundation', '4.2.3'
 gem 'pry-rails'
 gem 'pry-nav'
 
-# segfault
-#gem 'pry-stack_explorer'
+gem 'rspec_api_documentation'
 
 group :development do
   gem 'better_errors'

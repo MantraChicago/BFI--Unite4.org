@@ -1,6 +1,6 @@
-class Api::ProfilesController < DeviseController
+class Api::ProfilesController < Api::ApiController
   #include Devise::Controllers::InternalHelpers
-
+=begin
   def login
     build_resource
     resource = User.find_for_database_authentication(:login=>params[:user_login][:login])
@@ -19,7 +19,7 @@ class Api::ProfilesController < DeviseController
     @json_data = User.find(params[:id])
     
   end
-
+=end
   def create
     @user = User.new(params[:user])
     if @user.save

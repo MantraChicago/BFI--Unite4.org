@@ -52,8 +52,9 @@ GiveInspireLove::Application.routes.draw do
   match "/smooth/meta_data" => Smooth::MetaData::Application, :anchor => false
 
   namespace :api do
-    resources :users, :controller => "Profiles"
+    match 'profiles/:action', :to => "Profiles#:action"
   end
+
 
 
   get "/api/v1/:resource", :to => "presentables#index", :format => :json, :presenter_format => :default
