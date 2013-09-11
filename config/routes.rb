@@ -53,6 +53,7 @@ GiveInspireLove::Application.routes.draw do
 
   namespace :api do
     match 'profiles/:action', :to => "Profiles#:action"
+    match 'contributions/:action', :to => "Contributions#:action"
   end
 
 

@@ -1,22 +1,26 @@
-=begin We are not using the api functionality yet
 require "spec_helper"
 
-describe "The Contributions API", :type => :api do
-  let(:contribution) { create(:contribution) }
-  let(:user) { contribution.user }
+describe Api::ContributionsController do
+  include RSpec::Rails::RequestExampleGroup
 
-  it "should include all of the users contributions" do
-    get "/api/v1/contributions/default"
-    JSON.parse(response.body).length.should == 0
+  before :each do
+    @user= FactoryGirl.create(:user)
+    @cash_donations_need=  FactoryGirl.create(:cash_donation_need)
   end
 
-  it "should be successful if supplied with an auth token" do
-    Contribution.delete_all
-
-    get "/api/v1/contributions/default?auth_token=#{ user.authentication_token }"
-
-    JSON.parse(response.body).length.should == 1
-    response.should be_success
+  it "Should be able to create a cash donation" do
+    amount= 20
+    tip =14
+    post_data={need_id: @cash_donations_need.id,
+               user_id: @user.id,
+               donation_amount: amount,
+               donation_tip: tip,
+               stripeToken: 'tok_2YOdR7oJS2Poee'
+               }
+    post 'api/contributions/create', post_data
+    CashDonation.last.amount.should ==  amount
+    CashDonation.last.tip_amount.should == tip
   end
+
 end
-=end
+
