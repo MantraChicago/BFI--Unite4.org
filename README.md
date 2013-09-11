@@ -41,6 +41,11 @@ If you a running on mac you will need to install geoip
 brew install geoip
 ```
 
+For linux users (debian/ubuntu):
+```bash
+sudo apt-get install libgeoip-dev
+```
+
 ### Setting up Development Data
 
 ```
