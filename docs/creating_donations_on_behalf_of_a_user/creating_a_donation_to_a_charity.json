@@ -1,0 +1,50 @@
+{
+  "resource": "Creating donations on behalf of a user",
+  "http_method": "POST",
+  "route": "/api/contributions",
+  "description": "Creating a donation to a charity",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "name": "cause_id",
+      "description": "The ID of the cause being donated to"
+    },
+    {
+      "required": true,
+      "name": "donation_amount",
+      "description": "The amount of the donation to go to the specified cause. In dollars and cents. Example: 99.99"
+    },
+    {
+      "required": false,
+      "name": "tip_amount",
+      "description": "The amount of the tip to go to the unite4 organization. In dollars and cents. Defaults to 0.0. Example: 99.99"
+    },
+    {
+      "required": true,
+      "name": "stripe_token",
+      "description": "The transaction token obtained from the Stripe Credit Card process."
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/contributions",
+      "request_body": "auth_token=tCKsAe8xqMUpJCqorPwM&cause_id=1&tip_amount=25.0&donation_amount=0.0&stripe_token=tok_2RK6LqrV6URfA0",
+      "request_headers": {
+        "Host": "example.org",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"amount\":\"0.0\",\"success\":true,\"donation_tracking_code\":\"test-tracking-code\"}",
+      "response_headers": {"Content-Type":"application/json; charset=utf-8","X-UA-Compatible":"IE=Edge,chrome=1","ETag":"\"c6e3e43bc360f2decc40ff73c5dc2afd\"","Cache-Control":"max-age=0, private, must-revalidate","Set-Cookie":"_give-inspire-love_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFRkkiJTFhYWRkNWI4MWI5YjM2ZDcwNWEzYTlmOGUyOGQ4ZDdjBjsAVEkiGXdhcmRlbi51c2VyLnVzZXIua2V5BjsAVFsISSIJVXNlcgY7AEZbBmkGSSIiJDJhJDA0JG1XUDRISUFhZG1aM1JXZXpDUFVkVGUGOwBU--c476d091b2d852139751e303f411f614a931cb62; path=/; HttpOnly","X-Request-Id":"368648cc03b9c9d693097bef3ef19f5a","X-Runtime":"0.104690","Content-Length":"77"},
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+}
+  ]
+}

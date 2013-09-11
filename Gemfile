@@ -81,6 +81,7 @@ end
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'raddocs'
 
 group :test, :development do
   gem 'rspec-rails'
@@ -95,6 +96,7 @@ group :test, :development do
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
   gem 'spork-rails'
+  gem 'rspec_api_documentation'
 end
 group :development, :test do
   gem 'factory_girl_rails'
