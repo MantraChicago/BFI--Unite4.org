@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(:version => 20130909205306) do
     t.string   "category"
     t.string   "badge_type"
     t.string   "sub_text"
-    t.string   "class_name"
     t.string   "slug"
     t.boolean  "is_active"
   end
@@ -227,9 +226,9 @@ ActiveRecord::Schema.define(:version => 20130909205306) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "state"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
-    t.string   "state"
     t.boolean  "is_active"
   end
 
@@ -337,8 +336,8 @@ ActiveRecord::Schema.define(:version => 20130909205306) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "campaign_id"
     t.text     "settings"
     t.integer  "location_id"
@@ -348,7 +347,7 @@ ActiveRecord::Schema.define(:version => 20130909205306) do
     t.float    "desired_state"
     t.float    "current_state"
     t.boolean  "is_primary"
-    t.boolean  "is_active"
+    t.boolean  "is_active",            :default => true
     t.string   "type"
   end
 
@@ -450,6 +449,7 @@ ActiveRecord::Schema.define(:version => 20130909205306) do
     t.integer  "user_id"
     t.integer  "need_id"
     t.integer  "location_id"
+    t.string   "description"
     t.boolean  "user_showed_up", :default => false
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
@@ -457,7 +457,6 @@ ActiveRecord::Schema.define(:version => 20130909205306) do
     t.string   "email"
     t.string   "phone_number"
     t.string   "name"
-    t.text     "description"
   end
 
   add_index "volunteers", ["cause_id"], :name => "index_volunteers_on_cause_id"

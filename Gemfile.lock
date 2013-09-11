@@ -198,6 +198,8 @@ GEM
     guard-rspec (3.0.2)
       guard (>= 1.8)
       rspec (~> 2.13)
+    haml (4.0.3)
+      tilt
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -305,6 +307,10 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    raddocs (0.2.0)
+      haml
+      json
+      sinatra
     rails (3.2.13)
       actionmailer (= 3.2.13)
       actionpack (= 3.2.13)
@@ -477,6 +483,7 @@ DEPENDENCIES
   pry-nav
   pry-rails
   quiet_assets
+  raddocs
   rails (= 3.2.13)
   rb-fchange
   rb-fsevent
