@@ -20,6 +20,16 @@ class Api::ProfilesController < DeviseController
     
   end
 
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      render json: @user
+    else
+      render json: @user.errors, :status => 500
+    end
+
+  end
+
   protected
   def ensure_params_exist
     return unless params[:user_login].blank?
