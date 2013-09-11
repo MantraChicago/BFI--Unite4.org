@@ -22,6 +22,7 @@ hr
     .large-12.column
       label Tell us what your volunteers do. Are you looking for particular skills?
       =f.text_area(:description, :rows => 5)
+  =render 'needs/partials/primary_need', :f => f
   .row
     .large-12.column
       = submit_tag 'Submit', class: 'small button expand'

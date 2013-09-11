@@ -21,6 +21,7 @@ hr
     .large-12.column
       label Tell us what your are planning to do with the raised money?
       =f.text_area(:description, :rows => 5)
+  =render 'needs/partials/primary_need', :f => f
   .row
     .large-12.column
       = submit_tag 'Submit', class: 'small button expand'
