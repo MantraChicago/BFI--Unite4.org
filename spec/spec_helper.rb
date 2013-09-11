@@ -56,6 +56,11 @@ require 'rspec/autorun'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+RspecApiDocumentation.configure do |config|
+  config.format = :json
+  config.docs_dir = Rails.root.join("docs")
+end
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include ApiSpecType, :type => :api
@@ -70,7 +75,7 @@ RSpec.configure do |config|
   config.before(:all) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
-    load "#{Rails.root}/db/seeds.rb" 
+    load "#{Rails.root}/db/seeds.rb"
   end
 
   config.after(:all) do

@@ -1,0 +1,78 @@
+{
+  "resource": "User Registration and Authentication",
+  "http_method": "POST",
+  "route": "/api/profiles",
+  "description": "Registering a user",
+  "explanation": null,
+  "parameters": [
+    {
+      "required": true,
+      "scoped": "user",
+      "name": "email",
+      "description": "The user's email address"
+    },
+    {
+      "required": true,
+      "scoped": "user",
+      "name": "password",
+      "description": "The user's password. Must be at least 6 characters long"
+    },
+    {
+      "required": true,
+      "scoped": "user",
+      "name": "password_confirmation",
+      "description": "The user's password. Must be at least 6 characters long"
+    },
+    {
+      "required": false,
+      "scoped": "user",
+      "name": "first_name",
+      "description": "The user's first name"
+    },
+    {
+      "required": false,
+      "scoped": "user",
+      "name": "last_name",
+      "description": "The user's last name"
+    },
+    {
+      "required": false,
+      "scoped": "user",
+      "name": "city",
+      "description": "The user's city"
+    },
+    {
+      "required": false,
+      "scoped": "user",
+      "name": "state",
+      "description": "The user's state"
+    },
+    {
+      "required": false,
+      "scoped": "user",
+      "name": "bio",
+      "description": "The user's biography paragraph"
+    }
+  ],
+  "requests": [
+    {
+      "request_method": "POST",
+      "request_path": "/api/profiles",
+      "request_body": "user[email]=julian_upton%40stoltenberg.uk&user[password]=password&user[password_confirmation]=password&user[first_name]=Jonathan&user[last_name]=Soeder&user[city]=Chicago&user[state]=Illinois&user[bio]=Jonathan+Soeder+is+also+known+on+the+streets+as+the+people%27s+champ",
+      "request_headers": {
+        "Host": "example.org",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cookie": ""
+      },
+      "request_query_parameters": {
+      },
+      "request_content_type": "application/x-www-form-urlencoded",
+      "response_status": 200,
+      "response_status_text": "OK",
+      "response_body": "{\"id\":2,\"email\":\"julian_upton@stoltenberg.uk\",\"followed_causes_ids\":[],\"first_name\":\"Jonathan\",\"last_name\":\"Soeder\",\"city\":\"Chicago\",\"state\":\"Illinois\",\"bio\":\"Jonathan Soeder is also known on the streets as the people's champ\",\"authentication_token\":\"gp2ESosxQF6pK4kLPEi4\"}",
+      "response_headers": {"Content-Type":"application/json; charset=utf-8","X-UA-Compatible":"IE=Edge,chrome=1","ETag":"\"ec059d951a77e0cf3791e7efd1fca9ce\"","Cache-Control":"max-age=0, private, must-revalidate","X-Request-Id":"7ad2ebfce2c3e321c4de488ba67f1a92","X-Runtime":"0.670644","Content-Length":"273"},
+      "response_content_type": "application/json; charset=utf-8",
+      "curl": null
+}
+  ]
+}

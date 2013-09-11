@@ -1,0 +1,29 @@
+{
+  "resources": [
+    {
+      "name": "Creating donations on behalf of a user",
+      "examples": [
+        {
+          "description": "Creating a donation to a charity",
+          "link": "creating_donations_on_behalf_of_a_user/creating_a_donation_to_a_charity.json",
+          "groups": "all"
+        }
+      ]
+    },
+    {
+      "name": "User Registration and Authentication",
+      "examples": [
+        {
+          "description": "Obtaining a user's authentication token",
+          "link": "user_registration_and_authentication/obtaining_a_users_authentication_token.json",
+          "groups": "all"
+        },
+        {
+          "description": "Registering a user",
+          "link": "user_registration_and_authentication/registering_a_user.json",
+          "groups": "all"
+        }
+      ]
+    }
+  ]
+}
