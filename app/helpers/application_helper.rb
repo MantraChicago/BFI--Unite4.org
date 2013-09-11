@@ -13,7 +13,7 @@ module ApplicationHelper
 
   def render_title
     return @title if @title.present?
-    "Give Inspire Love"
+    "inspire : empower : share : love"
   end
 
   def limit_to_three_words(phrase="")
