@@ -26,7 +26,6 @@ class Cause < ActiveRecord::Base
   has_many :followers, :dependent => :delete_all
   has_many :contributions, :dependent => :delete_all
 
-
   has_many :cash_donations
   has_many :goods_donations
   has_many :volunteers
@@ -36,8 +35,6 @@ class Cause < ActiveRecord::Base
   validate :twitter_must_not_be_url 
 
   validates :name, :uniqueness => true
-  after_create :create_default_records
-
 
   delegate :need_id, :type_of_need, :days_to_go, :desired_state, :current_state, :goal_unit, :percent_complete, :goal_summary, :to => :active_campaign, :allow_nil => true, :prefix => true
 
@@ -57,22 +54,10 @@ class Cause < ActiveRecord::Base
     "#{name}, #{contact_address}, #{city}, #{state}, #{postal_code}"
   end
 
-  def create_default_records
-    #create_default_location
-    create_default_need
-  end
-
   def display_name
     name
   end
 
-  # every cause by default has a followers
-  def create_default_need
-    FollowerNeed.create({cause_id:self.id,
-                         desired_state: 100,
-                         end_date: Time.zone.now + 1.month,
-                         is_primary: true})
-  end
 
   def total_cash_donations
     contributions.by_fullfilment_type('CashDonation').all.inject(0) {|total,contribution| total+contribution.fulfillment.amount }

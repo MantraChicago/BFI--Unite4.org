@@ -13,16 +13,6 @@ describe Cause do
   let(:cause_type) { CauseType.first }
   let(:other_cause_type) { CauseType.last }
   let(:cause) { create(:cause)}
-
-
-  
-
- 
-
-  it "should have a default social need" do
-    cause.needs.first.type.should == 'FollowerNeed' 
-  end
-
   
 
   it "should allow me to filter by cause type" do

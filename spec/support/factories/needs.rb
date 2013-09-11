@@ -10,8 +10,4 @@ FactoryGirl.define do
   factory :volunteer_need do
     association :cause
   end
-
-  factory :follower_need do
-    association :cause
-  end
 end

@@ -18,7 +18,7 @@ class Need < ActiveRecord::Base
   end
 
   def self.need_types
-    [FollowerNeed, GoodsDonationNeed, CashDonationNeed, VolunteerNeed]
+    [GoodsDonationNeed, CashDonationNeed, VolunteerNeed]
   end
 
 

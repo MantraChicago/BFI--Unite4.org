@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Unite::Badges::BadgeCalculator do
-  before :all do
+  before :each do
    Badge.create_defaults
    @user=FactoryGirl.create(:user)
   end
@@ -15,7 +15,8 @@ describe Unite::Badges::BadgeCalculator do
 
   it 'A user should get the "keeping_tabs" badge after they follow a cause' do
     badge = Badge.find_by_slug('keeping_tabs')
-    Unite::NeedsFulfillmentProxy.new(@user, FactoryGirl.create(:follower_need), type_of_need: "followers", cause_id: FactoryGirl.create(:cause)).fulfill!
+    cause = FactoryGirl.create(:cause)
+    @user.follow(cause)
     Unite::Badges::BadgeCalculator.calculate_badges_for_user(@user,Badge.all)
     @user.badges.include? badge
   end
