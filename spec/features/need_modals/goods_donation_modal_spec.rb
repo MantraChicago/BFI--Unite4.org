@@ -25,7 +25,7 @@ describe 'goods_donation_modal', :js =>true do
     modal_title='Thank you for your interest in donating goods'
     sleep 2 #waiting for modals to appear
 
-    find(:xpath, "//a[@class='btn pink button-next']").click
+    find("a.btn.pink.button-next").click
     test_name = "tester"
     fill_in 'name', with: test_name
     test_phone_number = "555-555-5555"
