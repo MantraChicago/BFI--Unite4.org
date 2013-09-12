@@ -1,0 +1,14 @@
+#myModal.reveal-modal
+#modalWrapper.reveal-modal.large
+#cause_type_modal.reveal-modal.small
+  a.close-reveal-modal &#215;
+  h2.centered What are you passionate about?
+  
+  - cache :header_cause_types do
+    ul.large-block-grid-2
+      - CauseType.all.each do |cause_type|
+        li
+          a.cause_type_button.transition href='/charities-supporting-#{cause_type.slug}' 
+            img src="/assets/cause_types/icons/icon_#{cause_type.slug}.png" 
+              span #{cause_type.name}
+            

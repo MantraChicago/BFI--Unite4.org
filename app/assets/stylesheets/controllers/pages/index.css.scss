@@ -64,60 +64,6 @@ h3.areatitle {
 
 
 
-#selectcityContent,
-#selectcauseContent {
-  height: 490px;
-  width: 100%;
-  display: none;
-  cursor: pointer;
-
-  .city {
-    height: 490px;
-    text-align: center;
-    &:hover h1{
-      color: $verylightblue !important;
-    }
-  }
-  .cause {
-    height: 245px;
-    &:hover img {
-      zoom: 1.04;
-    }
-    &:hover h1{
-      color: $verylightblue !important;
-    }
-    h1 {
-      font-size: 2.3em;
-      text-shadow: 0 0 5px rgba(0,0,0,0.5);
-    }
-  }
-  #chicago {
-    background-image: url(/assets/cities/small/chicago-small.jpg/);
-  }
-  #san-francisco {
-    background-image: url(/assets/cities/small/san-francisco-small.jpg);
-  }
-  #new-york {
-    background-image: url(/assets/cities/small/new-york-small.jpg);
-  }
-  #chicago,
-  #san-francisco,
-  #new-york {
-    height: 490px;
-    background-size: cover;
-    background-position: center bottom;
-
-    &:hover img {
-      zoom: 1.04;
-    }
-  }
-
-
-  &.active {
-    opacity: 1;
-    visibility: inherit;
-  }
-}
 
 
 #take-action-form-container {
@@ -125,71 +71,37 @@ h3.areatitle {
     color: rgba(30,30,30,1.0);
   }
 }
-
-
-
-@media only screen and (max-width: 48em) {
-
-  #selectcity,
-  #selectcause {
-    & img {
-      max-width: 50px;
-      height: auto;
-    }
-    .city {
-      height: auto;
-      text-align: center;
-    }
-    .cause {
-      height: 245px;
-      &:hover img {
-        zoom: 1.04;
-      }
-    }
-    #chicago {
-      background-image: url(/assets/cities/small/chicago-small.jpg/);
-    }
-    #san-francisco {
-      background-image: url(/assets/cities/small/san-francisco-small.jpg);
-    }
-    #new-york {
-      background-image: url(/assets/cities/small/new-york-small.jpg);
-    }
-    #chicago,
-    #san-francisco,
-    #new-york {
-      height: 490px;
-      background-size: cover;
-      background-position: center bottom;
-
-      &:hover img {
-        zoom: 1.04;
-      }
-    }
-
-
-    &.active {
-      opacity: 1;
-      visibility: inherit;
-    }
-  }
-
+#cause_type_modal{
+  h2{
+    color: $darkGrey;
+    margin-bottom: 25px;
+  } 
 }
 
-.home-featured-cause{
 
-  .gray_border{
-    a{
-      display: inline-block;
-      width: 100%;
-      padding-left: 3px;
+.cause_type_button{
+
+  width: 100%;
+  display: inline-block;
+  border: solid 1px $lightGrey;
+  padding: 10px;
+  span{
+    font-size: 20px;
+    margin-left: 10px;
+    color: $blue;
+  }
+  &:hover{
+    background-color: $blue;
+    span{
+      color: $white;
     }
-    .bold{
-      color: white;
-      background-color: $verylightblue;
-      
+    img{
+      filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
+      filter: gray; /* IE5+ */
+      -webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome Canary */
+   
     }
-  } 
+  }
 }
 
 #mapholder {

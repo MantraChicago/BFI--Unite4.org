@@ -50,10 +50,8 @@ html
 
     == render :partial => "shared/javascripts"
     == yield :specific_scripts
-
-    /Foundation modal
-    #myModal.reveal-modal
-    #modalWrapper.reveal-modal.large
+    == render 'shared/modals'
+    
 
 -if Rails.env.production?
     javascript:

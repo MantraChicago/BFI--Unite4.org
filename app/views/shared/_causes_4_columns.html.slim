@@ -1,4 +1,5 @@
 ul.cause-listing-container.cause-block-grid
   - causes.each do |cause|
-    li
-      = render :partial => "shared/cause_tile", locals: {cause: cause}
+    -if cause.active_campaign
+      li
+        = render :partial => "shared/cause_tile", locals: {cause: cause}
