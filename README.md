@@ -7,7 +7,7 @@ branch.
 
 The app depends on the following external services or libraries:
   - rvm with ruby 1.9.3-p392
-  - postgresql 9.2
+  - postgresql 9.2(for linux "sudo apt-get install postgresql-9.1"
   - ImageMagick ( for image upload processing )
   - geoip
 
