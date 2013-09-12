@@ -54,11 +54,11 @@ GiveInspireLove::Application.routes.draw do
   match "/smooth/meta_data" => Smooth::MetaData::Application, :anchor => false
 
   namespace :api do
-    resources :profiles, :only => [:create], :format => :json
-    resources :sessions, :only => [:create], :format => :json
-    resources :contributions, :only => [:create], :format => :json
-    #match 'profiles/:action', :to => "Profiles#:action"
-    #match 'contributions/:action', :to => "Contributions#:action"
+    #resources :profiles, :only => [:create], :format => :json
+    #resources :sessions, :only => [:create], :format => :json
+    #resources :contributions, :only => [:create], :format => :json
+    match 'profiles/:action', :to => "Profiles#:action"
+    match 'contributions/:action', :to => "Contributions#:action"
   end
 
 
