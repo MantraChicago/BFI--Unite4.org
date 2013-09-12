@@ -29,7 +29,7 @@ describe 'cash_donation_modal', :js =>true do
     
     find('#donation_amount.money_input').set('20')
     find('#donation_tip.money_input').set('5')
-    binding.pry
+    
     expect('total').to have_content '$25'
 
     find('#modalWrapper .close-reveal-modal').click
