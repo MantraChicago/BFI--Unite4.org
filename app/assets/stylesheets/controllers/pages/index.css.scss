@@ -90,17 +90,21 @@ h3.areatitle {
     margin-left: 10px;
     color: $blue;
   }
+  .hover{
+    display: none;
+  }
   &:hover{
     background-color: $blue;
     span{
       color: $white;
     }
-    img{
-      filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
-      filter: gray; /* IE5+ */
-      -webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome Canary */
-   
+    .hover{
+      display: inline;
     }
+    .non_hover{
+      display: none;
+    }
+    
   }
 }
 

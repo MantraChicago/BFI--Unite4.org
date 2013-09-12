@@ -8,7 +8,8 @@
     ul.large-block-grid-2
       - CauseType.all.each do |cause_type|
         li
-          a.cause_type_button.transition href='/charities-supporting-#{cause_type.slug}' 
-            img src="/assets/cause_types/icons/icon_#{cause_type.slug}.png" 
+          a.cause_type_button.transition href='/charities-supporting-#{cause_type.slug}'
+            img.hover src="/assets/cause_types/icons/icon_#{cause_type.slug}_a.png"
+            img.non_hover src="/assets/cause_types/icons/icon_#{cause_type.slug}.png" 
               span #{cause_type.name}
             

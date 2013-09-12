@@ -33,9 +33,9 @@ class CauseType < ActiveRecord::Base
     'Environment' ,
     'Health & Wellness' ,
     'Youth' ,
-    'Religion' ,
     'Social Equality',
-    'Domestic & Family'
+    'Domestic & Family',
+    'Global Outreach'
     ]
 
   end
