@@ -5,6 +5,7 @@
         h3.areatitle.mlimit-top.mlimit
           | Featured Campaigns
     .row.cause-listing-container
-      - Cause.featured.each do |cause|        
-        .columns.large-3
-          == render :partial => 'shared/cause_tile', :locals => {cause: cause} 
+      - Cause.featured.limit(4).each do |cause|  
+        -if cause.active_campaign      
+          .columns.large-3
+            == render :partial => 'shared/cause_tile', :locals => {cause: cause} 
