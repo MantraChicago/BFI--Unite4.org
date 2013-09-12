@@ -1,7 +1,7 @@
 class Need < ActiveRecord::Base
 
   attr_accessible :name, :settings, :cause_id, :description, :picture, :address, :start_date, :end_date, :type_of_need, :location_id
-  attr_accessible :goal_summary, :timefame_description, :desired_state, :current_state, :is_primary, :is_active, :settings
+  attr_accessible :message, :goal_summary, :timefame_description, :desired_state, :current_state, :is_primary, :is_active, :settings
 
   belongs_to :cause
   belongs_to :location
@@ -18,7 +18,7 @@ class Need < ActiveRecord::Base
   end
 
   def self.need_types
-    [GoodsDonationNeed, CashDonationNeed, VolunteerNeed]
+    [GoodsDonationNeed, CashDonationNeed, VolunteerNeed, PromotionNeed]
   end
 
 

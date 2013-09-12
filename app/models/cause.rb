@@ -30,6 +30,7 @@ class Cause < ActiveRecord::Base
   has_many :goods_donations
   has_many :volunteers
   has_many :cause_images
+  has_many :promotions
 
   belongs_to :user
   validate :twitter_must_not_be_url 

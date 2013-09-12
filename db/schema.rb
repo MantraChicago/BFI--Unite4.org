@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130912182604) do
+ActiveRecord::Schema.define(:version => 20130912220628) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -350,6 +350,7 @@ ActiveRecord::Schema.define(:version => 20130912182604) do
     t.boolean  "is_primary"
     t.boolean  "is_active"
     t.string   "type"
+    t.string   "message"
   end
 
   add_index "needs", ["campaign_id"], :name => "index_needs_on_campaign_id"
@@ -365,6 +366,14 @@ ActiveRecord::Schema.define(:version => 20130912182604) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "promotions", :force => true do |t|
+    t.integer "need_id"
+    t.integer "user_id"
+    t.integer "cause_id"
+    t.string  "message"
+    t.string  "method"
   end
 
   create_table "subscribers", :force => true do |t|

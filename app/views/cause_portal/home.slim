@@ -37,7 +37,7 @@ section.cause-portal
         .panel
           h3 Updates feed
           ul.large-block-grid-1.contributions-feed
-            - @cause.contributions.each do |contribution|
+            - @cause.contributions.order(:id).reverse.each do |contribution|
               -if contribution.user && contribution.need
                 li
                   time #{ contribution.created_at.strftime('%d %b %Y') }
