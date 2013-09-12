@@ -1,3 +1,5 @@
+
+
 require 'spec_helper'
 require 'capybara/rspec'
 
@@ -18,17 +20,16 @@ describe 'cash_donation_modal', :js =>true do
 
     visit "/causes/#{cash_donations_need.cause.slug}"
     
-    first("[data-type-of-need='#{cash_donations_need.id}']").click
+    first('a.btn.green.open-fulfillment-modal').click
     modal_title='Thank you for your interest in donating money'
 
     sleep 2 #waiting for modals to appear 
 
     page.should have_content modal_title
     
-    find('div#donation_amount').set('20')
+    find('#donation_amount.money_input').set('20')
+    find('#donation_tip.money_input').set('5')
     binding.pry
-    fill_in 'donation_tip', :with => '5'
-    
     expect('total').to have_content '$25'
 
     find('#modalWrapper .close-reveal-modal').click
