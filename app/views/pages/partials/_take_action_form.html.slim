@@ -8,7 +8,7 @@
       .large-2.columns
         h3 causes near 
       .large-3.columns
-        =select_tag 'city', options_for_select(City.all.collect {|city| [ city.name, city.slug ] }, @closest_city.slug)
+        =select_tag 'city', options_for_select(City.active.all.collect {|city| [ city.name, city.slug ] }, @closest_city.slug)
        
       .large-2.columns
         button.search-btn type="submit"
