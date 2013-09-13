@@ -11,7 +11,11 @@ it 'goes through all city pages' do
 
     page_title = city.name
     visit "/"
-    select city.slug, :from => find("#city")
+    page.all('a.current')[1].click
+    within(page.all('ul')[4]) {
+      puts all('li')
+    select(page_title)
+     }
     click_button('Search')
     page.should have_content page_title
 
