@@ -10,10 +10,8 @@ javascript:
     FB.ui(
       {
         method: 'feed',
-        name: '#{need.id}',
-        //link: 'https://developers.facebook.com/docs/dialogs/',
-        //picture: 'http://fbrell.com/f8.jpg',
-        //caption: 'Subheadline',
+        name: '#{need.message}',
+        link: '#{request.original_url}',
         description: '#{need.message}'
       },
       function(response) {
@@ -23,7 +21,7 @@ javascript:
             user_id:#{current_user.id},
             method: 'facebook'
           }
-          $.post('/api/promotions',data,function(){
+          $.post('/api/contributions',data,function(){
             $('.wizard').html($('.success').show())
           })
         } else {
