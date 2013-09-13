@@ -1,11 +1,11 @@
 /-cache :featured_causes, :expires_in => 10.minutes do # jon will hate this
-  #causes.causes
-    .row
-      .large-12.columns
-        h3.areatitle.mlimit-top.mlimit
-          | Featured Campaigns
-    .row.cause-listing-container
-      - Cause.featured.order('random()').limit(4).each do |cause|  
-        -if cause.active_campaign      
-          .columns.large-3
-            == render :partial => 'shared/cause_tile', :locals => {cause: cause} 
+#causes.causes
+  .row
+    .large-12.columns
+      h3.areatitle.mlimit-top.mlimit
+        | Featured Campaigns
+  .row.cause-listing-container
+    - Cause.featured.order('random()').limit(4).each do |cause|  
+      -if cause.active_campaign      
+        .columns.large-3
+          == render :partial => 'shared/cause_tile', :locals => {cause: cause} 

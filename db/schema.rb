@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130912220628) do
+ActiveRecord::Schema.define(:version => 20130913201849) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(:version => 20130912220628) do
     t.integer  "zip_code"
     t.integer  "bank_account"
     t.integer  "bank_routing"
+    t.integer  "promotions_count"
   end
 
   add_index "causes", ["cause_type_id"], :name => "index_causes_on_cause_type_id"
@@ -447,6 +448,7 @@ ActiveRecord::Schema.define(:version => 20130912220628) do
     t.string   "authentication_token"
     t.boolean  "cause_admin"
     t.integer  "cause_admin_id"
+    t.integer  "promotions_count"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token"
