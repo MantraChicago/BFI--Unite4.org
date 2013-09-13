@@ -11,6 +11,11 @@ class AddEndStateToPromotions < ActiveRecord::Migration
         p_need.save
       end
 
+      if ! p_need.description
+        p_need.description = 'Help promote our cause'
+        p_need.save
+      end
+
     end
   end
 end
