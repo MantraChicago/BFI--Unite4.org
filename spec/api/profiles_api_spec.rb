@@ -11,7 +11,7 @@ describe Api::ProfilesController do
     post_data={:email=>@user.email,
                :password=> @user.password,
                :first_name => @user.first_name}
-    post 'api/profiles/create', :user => post_data
+    post 'api/profiles', :user => post_data
     User.last.first_name.should ==  @user.first_name
     User.last.email.should ==  @user.email
     response.status.should==200
@@ -21,7 +21,7 @@ describe Api::ProfilesController do
 
     post_data={:email=>@user.email,
                :first_name => @user.first_name}
-    post 'api/profiles/create', :user => post_data
+    post 'api/profiles', :user => post_data
     response.status.should==500
     
   end
