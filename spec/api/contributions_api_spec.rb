@@ -20,6 +20,7 @@ describe Api::ContributionsController do
     post 'api/contributions/create', post_data
     CashDonation.last.amount.should ==  amount
     CashDonation.last.tip_amount.should == tip
+    
   end
 
 end
