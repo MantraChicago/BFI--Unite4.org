@@ -12,7 +12,7 @@ describe 'follower_test', :js =>true do
 
   let(:cause) { create(:cause) }
 
-  @user = FactoryGirl.create(:cause)
+  
   it 'Should follow' do
 
     login_as(@user, :scope => :user)

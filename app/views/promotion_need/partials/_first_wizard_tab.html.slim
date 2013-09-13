@@ -1,16 +1,37 @@
 .centered
-  h3 Show your support!
-  h4.mlimit First, support us by liking and following.
-  .support_boxes
-    -unless need.cause.facebook_url.try(:empty?)
-      .support_box.fb_support
-          a href="#{need.cause.facebook_url}" target="_blank"
-            img src="/assets/follow_facebook_button.jpg"
-    .support_box.u4g_support
-      - follow_img= current_user.is_following_cause(need.cause) ? 'u4g-following.jpg' : 'follow_u4g_button.jpg'
-      a href="/causes/#{need.cause.slug}/followers" data-method="post" 
-        img src="/assets/#{follow_img}"
-    -if not need.cause.twitter_handle.empty?
-      .support_box.twitter_support
-        a href="#{need.cause.twitter_handle}" target="_blank"
-          img src="/assets/follow_twitter_button.jpg"
+  h2 Spread the word.
+  .row
+    .column.large-8
+      span.strong Share on:&nbsp;
+      a href="#" class="post_to_facebook" 
+        img src="/assets/follow_facebook_button.jpg"
+javascript:
+  $('.post_to_facebook').click(function(){
+    FB.ui(
+      {
+        method: 'feed',
+        name: '#{need.id}',
+        //link: 'https://developers.facebook.com/docs/dialogs/',
+        //picture: 'http://fbrell.com/f8.jpg',
+        //caption: 'Subheadline',
+        description: '#{need.message}'
+      },
+      function(response) {
+        if (response && response.post_id) {
+          data={
+            need_id:#{need.id},
+            user_id:#{current_user.id},
+            method: 'facebook'
+          }
+          $.post('/api/promotions',data,function(){
+            $('.wizard').html($('.success').show())
+          })
+        } else {
+          alert('Post was not published.');
+        }
+      }
+    );
+  })
+ 
+
+   

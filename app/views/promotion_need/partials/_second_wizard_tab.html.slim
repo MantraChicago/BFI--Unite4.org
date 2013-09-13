@@ -1,36 +1,6 @@
 .centered
-  h4.social_header.mlimit Next, support us by sharing our cause with your friend
-  .social_holder.centered
-    textarea placeholder="Type your message"
-    a.facebook_post_to_wall_link.btn.blue onClick='javascript:void(0)' Share on Facebook
-    |&nbsp;&nbsp;&nbsp;
-    a href="https://twitter.com/share" class="twitter-share-button" data-text="#{"set this to a variable, app/views/followers/partials/_first_wizard_tab.html.slim"}" data-size="large" data-via="via_user" data-related="rec_username" data-hashtags="hashtag"
-      img src="/assets/follow_twitter_button.jpg"
-      .btn.verylightblue Share on Twitter
-javascript: 
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-  
-  $(function() {
-    $($('.facebook_post_to_wall_link')[0]).on('click', function(event) {
-      FB.ui({
-        method: 'feed',
-        name: 'Facebook Dialogs',
-        link: 'https://developers.facebook.com/docs/reference/dialogs/',
-        picture: 'http://fbrell.com/f8.jpg',
-        caption: 'Reference Documentation',
-        description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
-      }, function(response) {
-        if (response && response.post_id) {
-          console.log("Posted: " + response.post_id);
-          $.ajax({
-            type: 'POST',
-            url: '/user/did/facebook_post',
-            dataType: 'json',
-            data: { post_id: response.post_id }
-          })
-        } else {
-          console.log("Not Posted")
-        }
-      });
-    });
-  });
+  .modal_middle
+    h1 Thank you!
+    h2 Thank you for your helping spread the message for <span class="bold">#{need.name}</span>
+
+    .btn.purple onclick="$('#myModal').foundation('reveal', 'close');" Close

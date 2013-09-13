@@ -56,10 +56,9 @@ GiveInspireLove::Application.routes.draw do
   namespace :api do
     resources :profiles, :only => [:create], :format => :json
     resources :sessions, :only => [:create], :format => :json
-    resources :contributions, :only => [:create]
-    #match 'profiles/:action', :to => "Profiles#:action"
-    #match 'contributions/:action', :to => "Contributions#:action"
-    #match 'sessions/:action', :to => "Sessions#:action"
+    #resources :contributions, :only => [:create]
+    post 'contributions/', :to => "Contributions#create"
+
   end
 
 
