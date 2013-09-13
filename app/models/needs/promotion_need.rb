@@ -1,7 +1,7 @@
 class PromotionNeed < Need
   def properties
     {
-      call_to_action:'Promote',
+      call_to_action:'Spread the word',
       singular_name: 'Promotion',
       past_personal_action:'Promoted',
       past_action:'Promoted',
