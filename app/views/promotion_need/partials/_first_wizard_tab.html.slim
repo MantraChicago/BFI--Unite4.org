@@ -11,7 +11,7 @@ javascript:
       {
         method: 'feed',
         name: '#{need.message}',
-        link: '#{request.original_url}',
+        link: '#{request.original_url.html_safe}',
         description: '#{need.message}'
       },
       function(response) {
