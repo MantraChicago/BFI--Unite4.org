@@ -17,10 +17,11 @@ describe Api::ContributionsController do
                donation_tip: tip,
                stripeToken: 'tok_2YOdR7oJS2Poee'
                }
-    post 'api/contributions/create', post_data
+    post 'api/contributions', post_data
+    
     CashDonation.last.amount.should ==  amount
     CashDonation.last.tip_amount.should == tip
-    
+
   end
 
 end
