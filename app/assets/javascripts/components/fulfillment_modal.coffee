@@ -1,4 +1,4 @@
-$('.open-fulfillment-modal').on "click", (e)->
+$( "body" ).delegate ".open-fulfillment-modal", "click", (e)->
   e.preventDefault()
   $target = $(e.currentTarget).closest('.open-fulfillment-modal')
   need_id = $target.data('need-id')
