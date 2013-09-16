@@ -8,9 +8,11 @@
           .h0.oxygen.bold.white.blimit-top.docked-item.transition#cityname == @city[:name]
         .large-12.columns.text-center.mlimit
           - CauseType.grouped_by_city(@city[:slug]).each do |pair|
+
             - key, value = pair
-            .tag-block.docked-medium.transition
-              a href="/charities-in-#{ @city[:slug] }/supporting-#{ key.parameterize }.html?partial=true" data-update=true data-target="#city-hub-cause-listings"
+            - active_class= (@cause_type && @cause_type.name == key) ? 'active' : ''
+            .tag-block.docked-medium.transition class="#{active_class}"
+              a href="/charities-in-#{ @city[:slug] }?cause_type_slug=#{key.parameterize}"  data-target="#city-hub-cause-listings"
                 .tag-block-detail 
                   == key
                 .tag-block-detail.tertiary
@@ -27,7 +29,6 @@
           .row
             .large-9.large-centered.columns
               = render :partial => "pages/partials/take_action_form"
-
 -if @causes.any?
   #causes.mlimit.causes
     .row
@@ -35,7 +36,10 @@
         h3.areatitle.mlimit-top
           | Browse charities in  
           span
-            == @city[:name] 
+            == @city[:name]
+          -if @cause_type
+            |&nbsp;supporting 
+            span #{@cause_type.name}
 
   #city-hub-cause-listings.row
     .large-12.columns

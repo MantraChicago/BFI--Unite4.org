@@ -424,15 +424,21 @@ input.bubble {
   font-weight: 700;
   color: rgba(0,0,0,0.9);
   background-color: #f0f0f0;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f0f0f0), to(#cdcdcd)); /* Chrome, Safari 4+ */
-  background-image: -webkit-linear-gradient(top, #f0f0f0, #cdcdcd); /* Chrome 10-25, iOS 5+, Safari 5.1+ */
-  background-image:    -moz-linear-gradient(top, #f0f0f0, #cdcdcd); /* Firefox 3.6-15 */
-  background-image:      -o-linear-gradient(top, #f0f0f0, #cdcdcd); /* Opera 11.10-12.00 */
-  background-image:         linear-gradient(to bottom, #f0f0f0, #cdcdcd); /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+  
 
+  &.active{
+    background-color: $pink;
+    .tag-block-detail{
+      color: white;
+    }
+    .tertiary{
+      color: white;
+    }
+  }
   a {
     color: rgba(0,0,0,0.9);
   }
+
   .tag-block-detail {
 
     display: inline-block;

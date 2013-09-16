@@ -4,7 +4,12 @@ $( "body" ).delegate ".open-fulfillment-modal", "click", (e)->
   need_id = $target.data('need-id')
   type_of_need = $target.data('type-of-need')
   slug = $target.data('cause-slug')
-  Application.open_need_modal(need_id, type_of_need,slug)
+  if type_of_need == 'PromotionNeed'
+    $.getScript("/causes/new_fullfilment/#{ need_id }", (data)->
+      console.log(data)
+    )
+  else
+    Application.open_need_modal(need_id, type_of_need,slug)
 
 $('.first-sign-in').on "click", (e)->
 

@@ -10,9 +10,11 @@ class CityHubsController < ApplicationController
        @closest_city=@city
     end
 
-    @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
+    @cause_type = CauseType.find params[:cause_type_id] if params[:cause_type_id]
+    @cause_type = CauseType.find_by_slug params[:cause_type_slug] if params[:cause_type_slug]  
 
-    Rails.logger.info "Rendering #{ @causes.length } causes"
+    @causes ||= Cause.by_city_slug(@city[:slug])
+    @causes= Cause.by_city_slug(@city[:slug]).by_cause_type(@cause_type.slug) if @cause_type
 
     if params[:partial] and html?
       render :partial => "city_hubs/partials/cause_listings"

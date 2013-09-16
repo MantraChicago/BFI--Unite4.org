@@ -103,11 +103,10 @@ module ApplicationHelper
     if has_contributed
       button_classes << 'contributed'
     end
-    method = need.type_of_need =='followers' && !show_modal_on_cause_page ? 'post' : ''
 
     text = need.property(:call_to_action)
 
-    link_to text, href, 'class' =>  button_classes.join(' '), 'data-method' => method, 'data-need-id' => need.id
+    link_to text, href, 'class' =>  button_classes.join(' '),'data-type-of-need' => need.type, 'data-need-id' => need.id
   end
 
   def us_states
