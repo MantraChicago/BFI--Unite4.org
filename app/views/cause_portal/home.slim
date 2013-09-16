@@ -42,7 +42,7 @@ section.cause-portal
                 li
                   time #{ contribution.created_at.strftime('%d %b %Y') }
                   br
-                  =image_tag current_user.avatar.url(:thumb), :style => 'width:50px'
+                  =image_tag  contribution.user.avatar.url(:thumb), :style => 'width:50px'
                   = " #{link_to(contribution.user.display_name, url_for(contribution.user))} #{contribution.need.property(:past_personal_action).downcase} #{link_to(contribution.cause.name, url_for(contribution.cause))}".html_safe
                   -if contribution_info contribution
                     .contribution-info
