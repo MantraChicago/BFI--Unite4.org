@@ -7,7 +7,7 @@
         -cache 'footer_cause_types' do
           -CauseType.all.each do |cause_type|
             li
-              = link_to cause_type.name, "/charities-supporting-#{cause_type.slug}"
+              = link_to cause_type.name, "/charities-in-#{@closest_city.slug}?cause_type_id=#{cause_type.id}"
 
     .large-3.columns.mlimit-top
       h4.tertiary Get Involved

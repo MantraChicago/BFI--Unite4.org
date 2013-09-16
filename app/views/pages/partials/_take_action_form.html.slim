@@ -4,7 +4,7 @@
       .large-2.columns
         h3 I want to help
       .large-3.columns
-        =select 'cause_type', 'cause', CauseType.all.collect {|p| [ p.name, p.id ] }, {}
+        =select_tag 'cause_type', options_for_select(CauseType.all.collect {|cause_type| [ cause_type.name, cause_type.id ] })
       .large-2.columns
         h3 causes near 
       .large-3.columns

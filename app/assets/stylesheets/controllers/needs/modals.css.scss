@@ -17,7 +17,9 @@
     width: 70px;
     border-color: transparent;
     margin-left: 3px;
-    height: 21px;
+    height: 26px;
+    overflow: hidden;
+    white-space: nowrap;
 
   }
   .money_input:focus{

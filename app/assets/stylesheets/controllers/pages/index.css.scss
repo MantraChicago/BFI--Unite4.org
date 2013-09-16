@@ -80,7 +80,8 @@ h3.areatitle {
 
 
 .cause_type_button{
-
+  min-width: 200px;
+  white-space: nowrap;
   width: 100%;
   display: inline-block;
   border: solid 1px $lightGrey;
