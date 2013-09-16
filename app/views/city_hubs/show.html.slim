@@ -5,7 +5,7 @@
     .bg-cover.bg-bottom style="background-image: url(#{@city.picture.url(:large)})"
       .row
         .large-12.columns.text-center
-          .h0.oxygen.bold.white.blimit-top.docked-item.transition#cityname == @city[:name]
+          .h0.oxygen.bold.white.blimit-top#cityname == @city[:name]
         .large-12.columns.text-center.mlimit
           - CauseType.grouped_by_city(@city[:slug]).each do |pair|
 
