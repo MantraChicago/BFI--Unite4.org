@@ -19,7 +19,7 @@ class Cause < ActiveRecord::Base
   belongs_to :cause_type
 
   has_and_belongs_to_many :cause_types, :join_table => 'causes_cause_types'
-  has_and_belongs_to_many :cities
+  has_and_belongs_to_many :cities, :uniq => true
 
   has_many :needs,     :dependent => :delete_all
   has_many :locations, :dependent => :delete_all

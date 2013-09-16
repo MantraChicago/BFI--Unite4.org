@@ -16,6 +16,8 @@ class CityHubsController < ApplicationController
     @causes ||= Cause.by_city_slug(@city[:slug])
     @causes= Cause.by_city_slug(@city[:slug]).by_cause_type(@cause_type.slug) if @cause_type
 
+    Rails.logger.info "Rendering #{ @causes.length } causes"
+
     if params[:partial] and html?
       render :partial => "city_hubs/partials/cause_listings"
     else

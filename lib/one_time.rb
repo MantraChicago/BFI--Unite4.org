@@ -30,6 +30,7 @@ module OneTime
         need = Need.find(id)
         description = need_hash[:description].gsub!( /\\r\\n/, "\n")
         need.description = description
+        need.name = need[:name]
         need.save
       rescue 
         puts "no need #{id}"
