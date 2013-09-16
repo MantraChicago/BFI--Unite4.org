@@ -28,7 +28,9 @@ module OneTime
       
       begin 
         need = Need.find(id)
-        need.description = need_hash[:description]
+        description = need_hash[:description].gsub!( /\\r\\n/, "\n")
+        need.description = description
+        need.save
       rescue 
         puts "no need #{id}"
       end
