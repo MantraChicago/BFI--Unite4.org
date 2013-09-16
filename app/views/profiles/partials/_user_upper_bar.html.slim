@@ -13,6 +13,11 @@
         =link_to profiles_edit_path do
           i.icon-cog
           | &#160;Settings
+      -if current_user.cause
+        li.bold
+          =link_to "/causes/#{current_user.cause.slug}/edit/home" do
+              i.icon-user
+              | &#160;Cause Settings
       li.bold
         =link_to destroy_user_session_path, :method=>'delete' do
           i.icon-signout
