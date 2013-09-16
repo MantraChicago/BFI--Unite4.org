@@ -2,7 +2,7 @@ FB.ui(
   {
     method: 'feed',
     name: '<%=@need.message %>',
-    link: '<%=request.original_url.html_safe %>',
+    link: '<%= "http://unite4.org/causes/#{@need.cause.slug}" %>',
     description: '<%= @need.message %>'
   },
   function(response) {
