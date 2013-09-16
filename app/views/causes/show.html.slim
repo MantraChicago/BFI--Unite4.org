@@ -47,7 +47,7 @@
 -if params[:show_campaign_modal]
   javascript:
     window.addEventListener('load', function() {
-       Application.open_need_modal(#{@cause.active_campaign.need.id}, "#{@cause.active_campaign.need.type_of_need}","#{@cause.slug}" )
+       Application.open_need_modal(#{@cause.active_campaign.need.id}, "#{@cause.active_campaign.need.type}","#{@cause.slug}" )
     }, false)
 
 
