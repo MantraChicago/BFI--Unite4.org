@@ -1,0 +1,19 @@
+.newsletter_background
+  -if @subscribe.errors.full_messages.any?
+    - @subscribe.errors.full_messages.each do |error_message|
+      =error_message if @subscribe.errors.full_messages.first == error_message
+
+  =form_for(@subscribe) do |f|
+    .custom.subscriber_form
+      .row#home-select-group
+        .large-5.columns
+          h3 Take the first action! Sign up for the news letter
+          h4 Your email will never be shared
+        .large-5.columns
+          =email_field(:subscribe, :email, :placeholder => 'Your email') 
+
+        .large-2.columns
+          button.search-btn type="submit"
+            i.icon-search
+            | Subscribe
+
