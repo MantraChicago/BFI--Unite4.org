@@ -38,15 +38,6 @@ section.edit-profile
           .large-12.column
             label{for='user_state'} State
             = text_field(:user, :state)
-        .row
-          h3 Followed Causes
-          .large-12.column
-            - for cause in Cause.all
-              .large-12.cboxrow
-                label{for='#{cause.id}_cause'}
-                  = check_box_tag "user[cause_ids][]", cause.id, @user.causes.include?(cause) , :id => "#{cause.id}_cause", :class => 'hide'
-                  span.custom.checkbox
-                  | #{cause.display_name}
 
 
       .large-6.columns
