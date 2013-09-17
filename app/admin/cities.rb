@@ -1,5 +1,5 @@
 ActiveAdmin.register City do
-form :html => { :enctype => "multipart/form-data" } do |f|
+  form :html => { :enctype => "multipart/form-data" } do |f|
      f.inputs "Details" do
 
       f.input :name
