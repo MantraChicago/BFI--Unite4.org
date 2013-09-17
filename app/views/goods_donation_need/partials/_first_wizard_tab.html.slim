@@ -9,10 +9,11 @@
       .row
         - if need.settings && need.settings['items']
           - need.settings['items'].each do |item|
-            .row
-              .large-1.columns
-                input type="checkbox" name=item[1]
-              .large-11.columns
-                = item[1]
+            - if !item[1].empty?
+              .row
+                .large-1.columns
+                  input type="checkbox" name=item[1]
+                .large-11.columns
+                  = item[1]
 
          

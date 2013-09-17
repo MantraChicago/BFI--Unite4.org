@@ -1,3 +1,4 @@
+=begin Commented out for until frontend redesign
 require 'spec_helper'
 require 'capybara/rspec'
 
@@ -26,3 +27,4 @@ describe 'Sign_up', :js =>true do
     last_registered_user.email = test_email
   end
 end
+=end
