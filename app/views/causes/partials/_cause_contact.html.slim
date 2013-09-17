@@ -1,5 +1,5 @@
 .row.cause_contact
-  -if !cause.contact_name.blank? && !cause.contact_email.blank? && !cause.contact_phone_number.blank? && !cause.contact_address.blank?
+  -if !cause.contact_name.blank? || !cause.contact_email.blank? || !cause.contact_phone_number.blank? || !cause.contact_address.blank?
     .large-12.columns.mlimit
       h2 CONTACT INFO
     -if !cause.contact_name.blank?
@@ -10,14 +10,14 @@
       .large-12.columns
         h4 EMAIL
         h3 #{cause.contact_email}
-    -if !cause.contact_phone_number.blank?
+    -if !cause.phone_number.blank?
       .large-12.columns
         h4 PHONE
-        h3 #{cause.contact_phone_number}
-    -if !cause.contact_address.blank?
+        h3 #{cause.phone_number}
+    -if !cause.address.blank?
       .large-12.columns
         h4 ADDRESS
-        h3 #{cause.contact_address}
+        h3 #{cause.address}
 
   .large-3.column.mlimit-top
     -if !cause.facebook_link.blank?

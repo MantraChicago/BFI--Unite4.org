@@ -51,8 +51,13 @@ class Cause < ActiveRecord::Base
   end
 
   def address
-    #location_hash= location_attributes
-    "#{name}, #{contact_address}, #{city}, #{state}, #{postal_code}"
+    ret_address= name
+    ret_address += "#{contact_address}," if ! contact_address.blank?
+    ret_address += " #{city}," if ! city.blank?
+    ret_address += " #{state}," if ! state.blank?
+    ret_address += " #{postal_code}," if ! postal_code.blank?
+    ret_address.chop!
+    ret_address
   end
 
   def display_name

@@ -1,7 +1,9 @@
 .row.collapse
-  h4 FOLLOWERS
-  ul.large-block-grid-3
-    -cause.following_users.each do |follower|
-      li
-        a href=url_for(follower)
-          img src=follower.avatar.url(:thumb)
+  - followers = cause.following_users.all
+  -if followers.count >0
+    h4 FOLLOWERS
+    ul.large-block-grid-3
+      -followers.each do |follower|
+        li
+          a href=url_for(follower)
+            img src=follower.avatar.url(:thumb)
