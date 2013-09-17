@@ -5,7 +5,7 @@ class CityHubsController < ApplicationController
 
     @city = City.find_by_slug(params[:city_slug])
 
-    if params[:set_as_home_city]
+    if params[:set_as_home_city] && @city.is_active
        cookies[:closest_city_id]=@city.id
        @closest_city=@city
     end

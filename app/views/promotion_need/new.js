@@ -16,7 +16,7 @@ FB.ui(
         //$('.wizard').html($('.success').show())
       })
     } else {
-      alert('Post was not published.');
+      //alert('Post was not published.');
     }
   }
 );

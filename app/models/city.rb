@@ -18,7 +18,7 @@ class City < ActiveRecord::Base
     {is_active: false, name: 'Nashville', slug: 'nashville', latitude: '36.1658', longitude: '-86.7833', state: 'Tennessee'},
     {is_active: false, name: 'Atlanta', slug: 'atlanta', latitude: '33.7489', longitude: '-84.3900', state: 'Georgia'},
     {is_active: false, name: 'Athens', slug: 'athens', latitude: '39.3292', longitude: '-82.0961', state: 'Ohio'}, 
-    {is_active: true, name: 'Orlando', slug: 'orlando', latitude: '28.5381', longitude: '-81.3794', state: 'Florida'},
+    {is_active: false, name: 'Orlando', slug: 'orlando', latitude: '28.5381', longitude: '-81.3794', state: 'Florida'},
     {is_active: true, name: 'Miami', slug: 'miami', latitude: '25.7216', longitude: '-80.2793', state: 'Florida'},
     {is_active: false, name: 'Tampa', slug: 'tampa', latitude: '27.9710', longitude: '-82.4650', state: 'Florida'},
     {is_active: false, name: 'New Orleans', slug: 'new-orleans', latitude: '29.9728', longitude: '-90.0590', state: 'Louisiana'},
