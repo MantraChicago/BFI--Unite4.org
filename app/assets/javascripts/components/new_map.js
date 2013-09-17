@@ -43,10 +43,12 @@ var MapView=Backbone.View.extend({
     return this.map
   },
   clearMapOverlays:function() {
+    
     for (var i = 0; i < this.markers.length; i++ ) {
       this.markers[i].setMap(null);
     }
     this.markers= [];
+    
   },
   populateMapMarkers:function(locations){
 
@@ -74,7 +76,7 @@ var MapView=Backbone.View.extend({
       }
       
     }
-      
+    
 
   }
 })

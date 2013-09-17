@@ -700,3 +700,9 @@ body > section {
     }
   }
 }
+
+/*
+Fix for foundation google maps issues
+*/
+.gm-style img { max-width: none; }
+.gm-style label { width: auto; display: inline; }
