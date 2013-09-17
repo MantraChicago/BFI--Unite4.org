@@ -111,7 +111,7 @@ class Cause < ActiveRecord::Base
 
   def twitter_must_not_be_url
     match = twitter_handle =~ /^[A-Za-z0-9_]{1,15}$/
-    errors.add(:twitter_handle, "The Twitter handle must be a Twitter handle") if !(match && match >=0 && !twitter_handle.empty?)
+    errors.add(:twitter_handle, "The Twitter handle must be a Twitter handle") if !(match && match >=0) && !twitter_handle.empty?
   end
 
   def self.featured_causes
