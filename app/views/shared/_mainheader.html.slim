@@ -15,7 +15,7 @@
               ul.hide style="right:-40px"
                 -@closest_cities[0..4].each do |city|
                   li.bold
-                    =link_to city['name'], "/charities-in-#{city['slug']}"
+                    =link_to city['name'], "/charities-in-#{city['slug']}?set_as_home_city=true"
                 li.bold
                   a.blue href="/cities" Browse All Cities
 
