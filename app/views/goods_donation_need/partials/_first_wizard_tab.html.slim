@@ -2,17 +2,17 @@
   h2 Pick items to donate to
   h2.mlimit.bold #{need.cause.name}
 .row
-  .large-10.column.large-centered.modal-max-width
+  .large-8.column.large-centered.modal-max-width
       .row
-        .large-10.column.large-centered
-          h3 #{need.description}
+        .large-10.column
+          p #{need.description}
+      .row
         - if need.settings && need.settings['items']
           - need.settings['items'].each do |item|
-
             .row
-              .large-4.columns
+              .large-1.columns
                 input type="checkbox" name=item[1]
-              .large-8.columns
+              .large-11.columns
                 = item[1]
 
          

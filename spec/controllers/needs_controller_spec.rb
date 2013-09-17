@@ -25,7 +25,7 @@ describe NeedsController do
   it 'should be able to promote need to primary' do
     sign_in(@user)
 
-    put :update, :id => @goods_donation_need.id, 'need' => {:is_primary => 'true'}
+    put :update, :id => @goods_donation_need.id, 'goods_donation_need' => {:is_primary => 'true'}
     @goods_donation_need.reload
     @goods_donation_need.is_primary.should == true
     @cause.reload
@@ -35,7 +35,7 @@ describe NeedsController do
   it 'should be able to deactive a need' do
     sign_in(@user)
 
-    put :update, :id => @goods_donation_need.id, 'need' => {:is_active => 'false'}
+    put :update, :id => @goods_donation_need.id, 'goods_donation_need' => {:is_active => 'false'}
     @goods_donation_need.reload
     @goods_donation_need.is_active.should == false
   end

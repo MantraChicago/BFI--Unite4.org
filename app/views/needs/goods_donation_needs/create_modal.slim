@@ -21,13 +21,13 @@ hr
     -@need.settings['items'] ||= {}
 
     .large-12.column
-        =text_field(@need, @need.settings['items'][0], value: @need.settings['items']['0'])
+        =text_field(@need.type.underscore, "settings[items][0]", value: @need.settings['items']['0'])
     .large-12.column
-        =text_field(@need, @need.settings['items'][1], value: @need.settings['items']['1'])
+        =text_field(@need.type.underscore,  "settings[items][1]", value: @need.settings['items']['1'])
     .large-12.column
-        =text_field(@need, @need.settings['items'][2], value: @need.settings['items']['2'])
+        =text_field(@need.type.underscore,  "settings[items][2]", value: @need.settings['items']['2'])
     .large-12.column
-        =text_field(@need, @need.settings['items'][3], value: @need.settings['items']['3'])
+        =text_field(@need.type.underscore,  "settings[items][3]", value: @need.settings['items']['3'])
   
   .row
     .large-12.column

@@ -10,6 +10,9 @@ class Need < ActiveRecord::Base
   has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "/assets/missing.jpeg"
   before_create :default_values
   serialize :settings, JSON
+
+  before_save :check_for_primary_need
+
   include Smooth::Presentable
 
   def days_to_go
@@ -21,6 +24,19 @@ class Need < ActiveRecord::Base
     [GoodsDonationNeed, CashDonationNeed, VolunteerNeed, PromotionNeed]
   end
 
+  def check_for_primary_need
+    if is_primary
+      demote_all_needs
+      is_primary=true
+    end
+  end
+
+  def demote_all_needs
+    cause.needs.all.each do |need|
+      need.is_primary=false
+      need.save
+    end
+  end
 
   def default_values
     self.is_active ||= true
