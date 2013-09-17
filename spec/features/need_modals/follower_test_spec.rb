@@ -1,3 +1,4 @@
+=begin Commented out for until frontend redesign
 require 'spec_helper'
 require 'capybara/rspec'
 
@@ -31,3 +32,4 @@ describe 'follower_test', :js =>true do
     sleep 2
   end
 end
+=end

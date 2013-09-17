@@ -1,3 +1,4 @@
+=begin Commented out for until frontend redesign
 require 'spec_helper'
 require 'capybara/rspec'
 
@@ -18,3 +19,4 @@ describe 'find_causes_modal', :js =>true do
     page.should_not have_content modal_title
   end
 end
+=end

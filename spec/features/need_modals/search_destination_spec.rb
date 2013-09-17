@@ -1,3 +1,4 @@
+=begin Commented out for until frontend redesign
 require 'spec_helper'
 require 'capybara/rspec'
 
@@ -22,3 +23,4 @@ it 'goes through all city pages' do
     end
   end
 end
+=end

@@ -1,3 +1,4 @@
+=begin Commented out for until frontend redesign
 require 'spec_helper'
 require 'capybara/rspec'
 
@@ -37,3 +38,4 @@ describe 'goods_donation_modal', :js =>true do
     last_goods_donation.phone_number.should == test_phone_number
   end
 end
+=end
