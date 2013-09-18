@@ -13,7 +13,7 @@ class PromotionNeed < Need
 
   def stat_info
     total_new_followers= contributions.count
-    "Received #{total_new_followers} new followers"
+    "Received #{total_new_followers} new promotions"
   end
 
   def create_fullfilment(user, params)
