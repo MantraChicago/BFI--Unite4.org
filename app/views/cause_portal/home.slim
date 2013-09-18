@@ -8,7 +8,7 @@ section.cause-portal
 
       .row
         .large-12.column.mlimit-top
-          ul.inline-list.needs-list.centered
+          ul.needs-list.centered.large-block-grid-5
             li
               .panel.centered.smoke-bg
                 h2 #{@cause.followers.count}
@@ -23,16 +23,22 @@ section.cause-portal
                 span.bold Cash Donations
             li
               .panel.centered.smoke-bg
-                h2 #{@cause.total_goods_donations}
+                h2 #{@cause.goods_donations_count}
                 hr
                 img src="/assets/causes/ui/need_icons/goods_donations.png" style="height:30px;"
                 span.bold Item Donations
             li
               .panel.centered.smoke-bg
-                h2 #{@cause.total_volunteers}
+                h2 #{@cause.volunteers_count}
+                hr
+                img src="/assets/causes/ui/need_icons/followers.png" style="height:30px;"
+                span.bold Volunteer Contacts
+            li
+              .panel.centered.smoke-bg
+                h2 #{@cause.promotions_count || 0}
                 hr
                 img src="/assets/causes/ui/need_icons/volunteers.png" style="height:30px;"
-                span.bold Volunteer Contacts
+                span.bold Promotions
       .row
         .panel
           h3 Updates feed

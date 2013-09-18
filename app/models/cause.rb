@@ -69,14 +69,6 @@ class Cause < ActiveRecord::Base
     contributions.by_fullfilment_type('CashDonation').all.inject(0) {|total,contribution| total+contribution.fulfillment.amount }
   end
 
-  def total_goods_donations
-    contributions.by_fullfilment_type('GoodsDonation').count
-  end
-
-  def total_volunteers
-    contributions.by_fullfilment_type('Volunteer').count
-  end
-
   def grouped_by_cause_type_and_city(cause_type_slug,city_slug)
     Cause.by_city_slug(city_slug).by_cause_type(cause_type_slug).group(:city_slug).count
   end
