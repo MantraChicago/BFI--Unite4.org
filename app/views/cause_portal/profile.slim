@@ -96,9 +96,8 @@ section.cause-portal
               -@cause.cause_images.all.each do |cause_image|
                 li 
                   .delete-cause-image data-cause_image_id=cause_image.id data-cause_slug=@cause.slug
-                    .show-delete DELETE
-
                     =image_tag cause_image.picture.url(:thumb)
+                    .show-delete DELETE
             label Upload another image         
             =file_field_tag 'picture'
 

@@ -32,19 +32,16 @@
     &:hover{
       cursor: pointer;
       border: solid 2px red;
-      .show-delete{
-        display: inline-block;
-      } 
+      
     }
   }
   .show-delete{
-    display: none;
-    position: absolute;
+    
     color:red;
     width: 100%;
     font-weight: bold;
     text-align: center;
-    margin-top: 15px;
+
   }
 
 
