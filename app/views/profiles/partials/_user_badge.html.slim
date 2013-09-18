@@ -2,8 +2,11 @@ li.badge
   .badge_wrapper
     .badge_title
       h3 #{user_badge.badge.name}
-    .badge_middle
-      = image_tag("badges/badge_#{user_badge.badge.file_name}", :size => '113x113')
-    .badge_bottom
-      |#{user_badge.formatted_description}
+    .lower_badge
+      .badge_description
+          |#{user_badge.formatted_description}
+      .badge_middle
+        = image_tag("badges/badge_#{user_badge.badge.file_name}", :size => '113x113')
+      .badge_bottom
+        |#{user_badge.badge.sub_text}
     
