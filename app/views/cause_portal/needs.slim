@@ -30,17 +30,18 @@ section.cause-portal
         .row
           .large-12.column
             = render 'cause_portal/partials/need', :need => @cause.active_campaign
+      -current_needs=@cause.needs.active.where{is_primary != true}.all
+      - if !current_needs.empty?
+        section
+          .row
+            .large-12.column
+              h3 Current needs
+          .row
+            .large-12.column
+              -current_needs.each do |need|
+                = render 'cause_portal/partials/need', :need => need
 
-      section
-        .row
-          .large-12.column
-            h3 Current needs
-        .row
-          .large-12.column
-            -@cause.needs.active.where{is_primary != true}.all.each do |need|
-              = render 'cause_portal/partials/need', :need => need
       - past_needs= @cause.needs.unscoped.where(:is_active => false)
-
       - if !past_needs.empty?
         section
           .row
