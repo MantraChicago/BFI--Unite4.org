@@ -1,10 +1,4 @@
-.row
-  .large-1.column
-    img src="/assets/causes/ui/need_icons/cash_donations.png"
-  .large-11.column
-    h2 Cash donation
-    a.close-reveal-modal &#215;
-hr
+=render 'needs/partials/need_header', :need => @need
 
 =form_for @need, :html =>{ class: 'custom'}  do |f|
   =hidden_field_tag :cause_slug, @cause.slug
