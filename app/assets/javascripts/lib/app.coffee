@@ -82,6 +82,7 @@ class Application.App extends Backbone.Events
   setupGlobalElements: ()->
     Application.setupSuperNavElements()
     Application.setupCauseListingEvents()
+    Application.Notifications.setupNotifications()
 
   # Viewport Sizing Change Events
   #
