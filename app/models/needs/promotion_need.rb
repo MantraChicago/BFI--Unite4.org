@@ -5,7 +5,7 @@ class PromotionNeed < Need
       singular_name: 'Promote',
       past_personal_action:'Promoted',
       past_action:'Promoted',
-      color:'blue',
+      color:'black',
       img_path: '/causes/ui/need_icons/volunteers.png',
       goal_unit: 'Promotions'
     }
