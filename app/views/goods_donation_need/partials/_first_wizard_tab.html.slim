@@ -7,13 +7,16 @@
         .large-10.column
           p #{need.description}
       .row
-        - if need.settings && need.settings['items']
+        - if (need.settings.is_a? Hash) && need.settings['items']
           - need.settings['items'].each do |item|
             - if !item[1].empty?
               .row
                 .large-1.columns
-                  input type="checkbox" name=item[1]
+                  input.item-checkbox type="checkbox" name=item[1]
                 .large-11.columns
                   = item[1]
+
+
+
 
          
