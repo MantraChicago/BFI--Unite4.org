@@ -116,20 +116,7 @@ class User < ActiveRecord::Base
   end
 
   def location
-    location = ""
-
-    if city && !city.empty? && state && !state.empty?
-      location = "#{city}, #{state}"
-    end
-
-    if city && !city.empty?
-      location = city
-    end
-
-    if state && !state.empty?
-      location = state
-    end
-    location
+    "#{city}, #{state}"
   end
 
   def follow cause

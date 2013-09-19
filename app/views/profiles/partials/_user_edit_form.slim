@@ -1,0 +1,16 @@
+= form_for(user, :html => { :class => 'custom profile_edit_form'} ) do |f|
+  .row.mlimit-top
+    .large-5.columns
+      = f.text_field(:first_name, :placeholder => "First name")
+    .large-6.columns
+      = f.text_field(:last_name, :placeholder => "Last name")
+  .row
+    .large-5.columns
+      = f.text_field(:city, :placeholder => "City")
+    .large-6.columns
+      = f.select :state, us_states
+  .row
+    .large-12.columns
+      = f.text_area(:bio, :placeholder => "Bio", :rows => 3)
+  
+    

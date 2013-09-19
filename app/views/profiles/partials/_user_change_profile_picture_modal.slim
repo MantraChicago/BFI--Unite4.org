@@ -1,0 +1,22 @@
+.reveal-modal.small.change-profile-picture
+    a.close-reveal-modal &#215;
+    
+    = form_for(user, :html => { :class => 'custom profile_edit_form'} ) do |f|
+      .row
+        .large-12.column
+          h3 Upload photo
+      .row
+        .large-6.column
+          .row
+            .large-12.columns
+              input#fake-upload{type='text'}
+          .row
+            .large-12.columns
+              button#fake-trigger.small.button Browse
+          = f.file_field :avatar, class: 'hide'
+        .large-6.column
+          = image_tag @user.avatar.url, id: 'user-avatar'
+      .row
+        .large-10.column
+        .large-2.column
+          = f.submit 'Save', class: 'small btn pink'

@@ -6,9 +6,18 @@ section
           = image_tag @user.avatar.url
         .large-9.column
           .user-info
-            h2= @user.display_name
-            small= @user.location
-            p= @user.bio
+            -if current_user && @user==current_user
+              a.edit-link Edit
+
+            .profile_content
+              .hide.profile-edit-form
+                =render 'profiles/partials/user_edit_form', :user => @user
+              .profile-info
+                h2= @user.display_name
+                small= @user.location
+                p= @user.bio
+                -if @user==current_user
+                  a.profile_change_photo Change Photo
       .row.collapse
         .large-12.column
           .panel.panel-no-bottom
@@ -44,25 +53,9 @@ section
       .row
         .large-12.column
           =render 'profiles/partials/user_cause_follows', :user => @user
-      -if @user== current_user #only show if user
+      -if @user== current_user #only show if current_user
         .row
           .large-12.column
             =render 'profiles/partials/user_cause_contributions', :user => @user
-          
-
-
-      
-
-  /section#user-data
-    .row
-      .large-6.column
-        =render 'profiles/partials/user_about_me', :user => @user
-        =render 'profiles/partials/user_cause_contributions', :user => @user
-
-      .large-6.column
-        
-        =render 'profiles/partials/user_cause_follows', :user => @user
-
-  section#user-badges
-   
-
+-if @user == current_user
+  =render 'profiles/partials/user_change_profile_picture_modal', :user => @user

@@ -36,18 +36,17 @@ class ProfilesController < ApplicationController
 		end
 	end
 
+	def update
+		@user = User.find(current_user.id)	
+    if @user.update_attributes(params[:user]) 
+        redirect_to profiles_path, :notice => "You have successfully updated your profile" 
+    else
+        redirect_to profiles_path, :notice => "There was an error updating your profile" 
+    end
+	end
+
 	def edit
-	    @user = User.find(current_user.id)
-
-	    params[:user] ||= {}
-			params[:user][:cause_ids] ||= []
-
-	    if not request.get? and @user.update_attributes(params[:user]) 
-
-	        redirect_to profiles_path, :notice => "You have successfully updated your profile" 
-	    else
-	        render :action => "edit" 
-	    end
+		@user = User.find(current_user.id)
 
 	end
 
