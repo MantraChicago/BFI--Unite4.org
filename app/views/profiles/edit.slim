@@ -1,67 +1,29 @@
 - @title = "Edit profile"
 
 section.edit-profile
+  
   = form_for(@user, :html => { :multipart => true, :class => 'custom'} ) do |f|
     .row
-      .large-12.column
-        h1 Edit your profile
-
-      - if @user.errors.any?
+      .large-8.column.large-centered
         .row
           .large-12.column
-            -for msg in @user.errors.full_messages.each
-              .alert-box.alert{data-alert}
-                = msg
-                a.close &times;
-
-    .row
-      .large-6.columns
-        .row
-          h3 Basic Info
-
-          .large-12.column
-            label{for='user_first_name'} Name
-            = text_field(:user, :first_name, :placeholder => "John")
-        .row
-          .large-12.column
-            label{for='user_last_name'} Last Name
-            = text_field(:user, :last_name, :placeholder => "Doe")
-        .row
-          .large-12.column
-            label{for='user_email'} Email
-            = text_field(:user, :email, :placeholder => "john@doe.com", :type => "email")
+            h2 Settings
+          .large-5.column
+            h4 Basic info
+            label Email address
+            =f.text_field :email
+          .large-5.column
+            
+            /.large-12.column
+              h4 Change password
+              label Current password
+              =f.password_field :current_password, :value=>''
+              br
+              label New password
+              =f.password_field :password, :autocomplete => "off"
+              br
+              label Confirm password
+              =f.password_field :password_confirmation
         .row
           .large-12.column
-            label{for='user_city'} City
-            = text_field(:user, :city)
-        .row
-          .large-12.column
-            label{for='user_state'} State
-            = text_field(:user, :state)
-
-
-      .large-6.columns
-        .row
-          h3 Biography
-
-          .large-12.column
-            label{for='user_bio'} Tell us about yourself
-            = text_area(:user, :bio, :placeholder => 'About yourself')
-        .row
-          h3 Avatar
-
-          .large-12.column
-
-            = image_tag @user.avatar.url, id: 'user-avatar'
-
-            label{for='fake-upload'} Upload your Avatar
-            .row
-              .large-10.columns
-                input#fake-upload{type='text'}
-              .large-2.columns
-                button#fake-trigger.small.button Browse
-            = f.file_field :avatar, class: 'hide'
-
-        .row
-          .large-12.column
-            = f.submit 'Save Profile Changes', class: 'small button expand'
+            = f.submit 'Save', class: 'small btn pink', style: "float:right"

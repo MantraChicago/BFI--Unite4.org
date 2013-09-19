@@ -17,38 +17,42 @@ class ProfilesController < ApplicationController
 		@user=User.find(params[:id])
 	end
 
-	def follow_cause 
-		if not user_signed_in?
-			session["user_return_to"] = request.url
-			redirect_to new_user_registration_path, :notice => "You need to have an account to follow a cause." 
-		else
-			user=User.find(current_user.id)
-			cause = Cause.find(params[:id])
-
-			message = "You are already following "+cause.display_name
-			unless user.causes.include? cause
-				
-				user.causes << cause
-				user.save
-				message = "You are now following "+cause.display_name
-			end
-			redirect_to cause, :notice =>  message
-		end
-	end
 
 	def update
-		@user = User.find(current_user.id)	
-    if @user.update_attributes(params[:user]) 
+		@user = User.find(current_user.id)
+		method= 'update_attributes'
+		current_password = params[:user][:current_password]
+		if current_password # changing password
+			method='update_with_password'
+
+			if !@user.valid_password?(current_password)
+				redirect_to profiles_path, :notice => "Your current password is incorrect" 
+				return
+			end
+			#@user.current_password= current_password
+			params[:user].delete :current_password
+
+		end
+
+    if @user.send(method, params[:user]) 
         redirect_to profiles_path, :notice => "You have successfully updated your profile" 
     else
         redirect_to profiles_path, :notice => "There was an error updating your profile" 
     end
+
 	end
 
 	def edit
 		@user = User.find(current_user.id)
 
 	end
+
+	private
+
+  def user_params #https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-edit-their-password
+    # NOTE: Using `strong_parameters` gem
+    params.required(:user).permit(:password, :password_confirmation)
+  end
 
 	
 
