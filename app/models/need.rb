@@ -16,8 +16,12 @@ class Need < ActiveRecord::Base
   include Smooth::Presentable
 
   def days_to_go
-    days=(-1 * ((Time.zone.now - end_date) / 1.day).to_i) + 1
-    (days <=0 )? 0: days
+    if end_date
+      days=(-1 * ((Time.zone.now - end_date) / 1.day).to_i) + 1
+      (days <=0 )? 0: days
+    else
+      0
+    end
   end
 
   def self.need_types
