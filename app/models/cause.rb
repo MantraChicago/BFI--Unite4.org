@@ -110,29 +110,30 @@ class Cause < ActiveRecord::Base
     match = twitter_handle =~ /^[A-Za-z0-9_]{1,15}$/
     errors.add(:twitter_handle, "The Twitter handle must be a Twitter handle") if !(match && match >=0) && !twitter_handle.empty?
   end
-
-  def self.featured_causes
+  
+  def self.featured_causes city_slug
     featured_causes={}
     CauseType.all.each do |cause_type|
-      featured_cause = Cause.by_cause_type(cause_type.slug).where('is_featured',true).order("RANDOM()").first
+      featured_cause = Cause.by_city_slug(city_slug).by_cause_type(cause_type.slug).where('is_featured',true).order("RANDOM()").first
       if featured_cause
         featured_causes[cause_type.name]= featured_cause
       end
     end
     featured_causes
   end
-
+=begin
   def self.featured count=4
     cause_ids = FeaturedCause.cause_ids
     where(id: cause_ids ).limit(4)
   end
-
+=end
 
   QueryableScopes = %w{by_type_of_need by_cause_type by_city_slug}
 
   default_scope where( :active => true )
 
   scope :all_causes, lambda{}
+  scope :featured,lambda { where(:is_featured => true) } 
   scope :by_type_of_need, lambda {|type_of_need| joins(:needs).where("needs.type_of_need = ?", type_of_need) }
   scope :by_cause_type, lambda {|cause_type_slug| 
                           cause_type_id=CauseType.find_by_slug(cause_type_slug).id

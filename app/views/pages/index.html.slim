@@ -15,11 +15,12 @@
   .cboth
 == render "shared/hub_page_subheader"
 
--cache :featured_campaigns, :expires_in => 10.minutes do
-  == render "pages/partials/featured_cause", :featured_causes_hash =>Cause.featured_causes
+-cache "featured_causes_in_#{@closest_city.slug}", :expires_in => 10.minutes do
+  == render "pages/partials/featured_cause", :featured_causes_hash =>Cause.featured_causes(@closest_city.slug), :city => @closest_city
 
 .whitesmoke-bg
-  == render  "pages/partials/featured_campaigns"
+  -cache "featured_campaigns_in_#{@closest_city.slug}", :expires_in => 10.minutes do
+    == render  "pages/partials/featured_campaigns", :causes=>Cause.by_city_slug(@closest_city.slug).featured.order('random()').limit(4), :city => @closest_city
 
 .smoke-bg.companies.mlimit
   == render "pages/partials/companies"
