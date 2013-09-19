@@ -3,7 +3,6 @@ form :html => { :enctype => "multipart/form-data" } do |f|
      f.inputs "Details" do
 
       f.input :name
-      f.input :is_primary
       f.input :is_active
 
       f.input :cause
