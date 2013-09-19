@@ -24,11 +24,14 @@
   $(document).on('click', '.wizard .button-next, .wizard .button-previous', function (e) {
     e.preventDefault()
     var element= $(this)
-    if(element.hasClass('button-next')){
-      element.MT_wizard('next')
-    }else{
-      element.MT_wizard('prev')
+    if(!$(this.target).hasClass('disabled')){
+      if(element.hasClass('button-next')){
+        element.MT_wizard('next')
+      }else{
+        element.MT_wizard('prev')
+      }
     }
+    
     
   })
 

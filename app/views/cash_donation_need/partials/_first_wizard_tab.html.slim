@@ -54,17 +54,17 @@ javascript:
 
 
   $('.money_input').on('keyup',function(){
-    var valid = $(this).text().match(/[\d,]+(\.\d*)?$/) || $(this).text().length==0
+    var valid = $(this).text().match(/[\d,]+(\.\d*)?$/) 
     var element =$(this).parent().find('.cash_error')
     if(!valid){
       $(this).parent().addClass('border_error')
       element.html('Invalid number')
-      $('.button-next').hide()
+      $('.button-next').addClass('disabled')
     }else{
       $(this).parent().removeClass('border_error')
       element.html('')
       $(this).parent().find('.hidden_input').val($(this).text())
-      $('.button-next').show()
+      $('.button-next').removeClass('disabled')
     }
     calculateTotal()
   })
