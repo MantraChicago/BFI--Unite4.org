@@ -14,7 +14,7 @@ section
                 =render 'profiles/partials/user_edit_form', :user => @user
               .profile-info
                 h2= @user.display_name
-                small= @user.location
+                .profile_location = @user.location
                 p= @user.bio
                 -if @user==current_user
                   a.profile_change_photo Change Photo
