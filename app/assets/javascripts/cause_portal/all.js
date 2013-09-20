@@ -42,28 +42,13 @@ $(document).ready(function(){
                                                   })
   })
 
-  $('.promote_need').click(function(){
-    var url='/volunteer_needs/'+$(this).attr('data-need_id')
-
-    var data={ 
-                need:{is_primary: true }
-              }
-    $.ajax({
-       url: url,
-       type: 'PUT',
-       data: data,
-       success: function(response) {
-         window.location=window.location
-       }
-    });
-
-  })
 
   $('.deactivate_need').click(function(){
     var url='/volunteer_needs/'+$(this).attr('data-need_id')
-    var data={ 
-                need:{is_active:false}
-              }
+    var need_type=$(this).attr('data-need_type')
+    var data={}
+    data[need_type]={is_active:false}
+     
     $.ajax({
        url: url,
        type: 'PUT',

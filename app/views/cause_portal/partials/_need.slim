@@ -11,7 +11,7 @@
         -if need.is_active 
           .edit_btn.black.edit_need data-need_id=need.id style="margin-right:5px;" Edit
         -if need.is_active 
-          .edit_btn.pink.deactivate_need data-need_id=need.id style="margin-right:5px;" Deactivate
+          .edit_btn.pink.deactivate_need data-need_id=need.id  data-need_type=need.type.underscore.singularize style="margin-right:5px;" Deactivate
 
 
       
