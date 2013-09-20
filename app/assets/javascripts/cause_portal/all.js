@@ -13,6 +13,7 @@ $(document).ready(function(){
       }
     });
   })
+  // could be combined into one function
    $('.edit_need').click(function(){
     var url='/volunteer_needs/'+$(this).attr('data-need_id')+'/edit'
 

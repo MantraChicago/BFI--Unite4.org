@@ -1,0 +1,7 @@
+.need_modal
+  a.close-reveal-modal &#215;
+  .centered
+    .modal_middle
+      h1 Thank you!
+      h2 Thank you for promotion
+      .btn.purple onclick="$('#myModal').foundation('reveal', 'close');" Close

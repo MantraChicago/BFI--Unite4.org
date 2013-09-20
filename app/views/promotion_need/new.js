@@ -13,7 +13,8 @@ FB.ui(
         method: 'facebook'
       }
       $.post('/api/contributions',data,function(){
-        //$('.wizard').html($('.success').show())
+        $('#myModal').foundation('reveal', 'open');
+        $('#myModal').html(JST['templates/promotions/success']())
       })
     } else {
       //alert('Post was not published.');
