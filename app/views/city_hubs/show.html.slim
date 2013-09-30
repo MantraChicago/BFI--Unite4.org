@@ -1,8 +1,10 @@
 /- @causes ||= Cause.by_city_slug(@city[:slug]).query(params)
 
+- background_div_style = (@city.picture.exists?) ? "background-image: url(#{@city.picture.url(:large)})" : "background-color:#cecece"
+
 -if @causes.any?
   header.small-static
-    .bg-cover.bg-bottom style="background-image: url(#{@city.picture.url(:large)})"
+    .bg-cover.bg-bottom style=background_div_style
       .row
         .large-12.columns.text-center
           .h0.oxygen.bold.white.blimit-top#cityname == @city[:name]
@@ -19,7 +21,7 @@
                   == value
 -else
   header.small-static#no-cause-found
-    .bg-cover.bg-bottom style="background-color:#cecece"
+    .bg-cover.bg-bottom style=background_div_style
       .row
         .large-12.columns.text-center
           h1= @city[:name]
