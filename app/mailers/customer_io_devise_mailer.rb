@@ -9,7 +9,8 @@ class CustomerIoDeviseMailer < Devise::Mailer
 
   def reset_password_instructions(record, token, opts={})
     token=record.reset_password_token # idk why token is an empty array
-    reset_link= "#{root_url}users/password/edit/?reset_password_token=#{token}" #edit_password_url(@resource, :reset_password_token => @token)
+    base_url= 'http://unite4.org/' #might need to make more dynamic
+    reset_link= "#{base_url}users/password/edit/?reset_password_token=#{token}"
     $customerio_user.track(record.customer_io_id, "password_retrieval", {reset_link:reset_link})
   end
 
