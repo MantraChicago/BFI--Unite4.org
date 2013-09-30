@@ -1,5 +1,5 @@
 class Api::ContributionsController < Api::ApiController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
 
   def create
     #render :json => {amount: params[:donation_amount], success:true,donation_tracking_code:"test-tracking-code"}, :status => 200

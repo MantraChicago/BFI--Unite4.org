@@ -54,6 +54,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 
 
+
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RspecApiDocumentation.configure do |config|
@@ -62,6 +63,7 @@ RspecApiDocumentation.configure do |config|
 end
 
 RSpec.configure do |config|
+  #config.include Devise::TestHelpers
   config.include FactoryGirl::Syntax::Methods
   config.include ApiSpecType, :type => :api
   config.include FactoryHelpers
